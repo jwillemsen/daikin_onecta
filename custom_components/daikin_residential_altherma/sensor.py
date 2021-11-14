@@ -42,10 +42,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     sensors = []
     prog = 0
-
-    # for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-    #     print("DAMIANO %s dev_id = %s", prog, dev_id)
-    #     prog += 1
         
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         sensor = DaikinSensor.factory(device, ATTR_INSIDE_TEMPERATURE)
@@ -54,30 +50,21 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
         if device.support_tank_temperature:
             sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE)
-            #print("DAMIANO append sensor = %s", sensor)
             sensors.append(sensor)
 
         if device.support_outside_temperature:
-            #print("DAMIANO support_outside_temperature TRUE")
             sensor = DaikinSensor.factory(device, ATTR_OUTSIDE_TEMPERATURE)
-            #print("DAMIANO append2 sensor = %s", sensor)
             sensors.append(sensor)
 
         if device.support_energy_consumption:
-            #print("DAMIANO support_energy_consumption TRUE")
             for period in SENSOR_PERIODS:
-                #print("DAMIANO period = %s", period)
-
                 sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY, period)
-                #print("DAMIANO append3 sensor = %s", sensor)
                 sensors.append(sensor)
 
                 sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY, period)
-                #print("DAMIANO append4 sensor = %s", sensor)
                 sensors.append(sensor)
 
                 sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY, period)
-                #print("DAMIANO append4 sensor = %s", sensor)
                 sensors.append(sensor)
         
     #print("DAMIANO add_entities: %s", sensors)

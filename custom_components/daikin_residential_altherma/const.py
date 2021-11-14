@@ -23,29 +23,6 @@ DAIKIN_API = "daikin_api"
 DAIKIN_DEVICES = "daikin_devices"
 DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
-
-#ATTR_ON_OFF = "on_off"
-# ATTR_PRESET_MODE = "preset_mode"
-# ATTR_OPERATION_MODE = "operation_mode"
-# ATTR_TEMPERATURE = "temperature"
-# ATTR_TARGET_TEMPERATURE = "target_temperature"
-# ATTR_INSIDE_TEMPERATURE = "inside_temperature"
-# ATTR_OUTSIDE_TEMPERATURE = "outside_temperature"
-# # ORIG
-# ATTR_ENERGY_CONSUMPTION = "energy_consumption"
-# ATTR_HUMIDITY = "humidity"
-# ATTR_TARGET_HUMIDITY = "target_humidity"
-# ATTR_FAN_MODE = "fan_mode"
-# ATTR_FAN_SPEED = "fan_speed"
-# ATTR_HSWING_MODE = "hswing_mode"
-# ATTR_VSWING_MODE = "vswing_mode"
-# ATTR_SWING_AUTO = "auto"
-# ATTR_SWING_SWING = "swing"
-# ATTR_SWING_STOP = "stop"
-# ATTR_COOL_ENERGY = "cool_energy"
-# ATTR_HEAT_ENERGY = "heat_energy"
-
-
 # MANAGEMENT POINTS
 # ORIG
 #MP_CLIMATE = "climateControl"

@@ -15,7 +15,6 @@ from .daikin_api import DaikinApi
 _LOGGER = logging.getLogger(__name__)
 
 ENTRY_IS_SETUP = "daikin_entry_is_setup"
-_LOGGER.debug("DAMIANO daikin_entry_is_setup")
 
 PARALLEL_UPDATES = 0
 
