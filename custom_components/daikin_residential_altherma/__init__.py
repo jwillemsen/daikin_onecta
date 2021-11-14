@@ -25,7 +25,7 @@ SERVICE_PULL_DEVICES = "pull_devices"
 SIGNAL_DELETE_ENTITY = "daikin_delete"
 SIGNAL_UPDATE_ENTITY = "daikin_update"
 
-TOKENSET_FILE = "altherma_tokenset.json"
+TOKENSET_FILE = "tokenset.json"
 
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
 
