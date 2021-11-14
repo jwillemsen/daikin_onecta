@@ -1,0 +1,28 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "The integration is already configured.",
+            "cannot_connect": "Failed to connect to Daikin Cloud.",
+            "init_failed": "Failed to initialize Daikin API.",
+            "token_retrieval_failed": "Failed to retrieve access token set."
+        },
+        "error": {
+            "cannot_connect": "Failed to connect",
+            "device_fail": "Unexpected error",
+            "device_timeout": "Failed to connect",
+            "forbidden": "Invalid authentication",
+            "invalid_auth": "Invalid authentication",
+            "unknown": "Unexpected error"
+        },
+        "step": {
+            "user": {
+                "data": {
+		  "email": "Email address",
+		  "password": "Password"
+                },
+	        "description": "Enter the email address and password you use to login to Daikin Cloud, then press Submit.",
+                "title": "Configure Daikin Residential Controller AC"
+            }
+        }
+    }
+}

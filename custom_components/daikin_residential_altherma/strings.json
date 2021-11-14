@@ -1,0 +1,25 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Configure Daikin Residential Controller AC",
+        "description": "Enter the [%key:common::config_flow::data::email] and [%key:common::config_flow::data::password%] you use to login to Daikin Cloud, then press Submit.",
+        "data": {
+          "email": "[%key:common::config_flow::data::email]",
+          "password": "[%key:common::config_flow::data::password%]"
+        }
+      }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured]",
+      "init_failed": "[%key:common::config_flow::abort::init_failed]",
+      "token_retrieval_failed": "[%key:common::config_flow::abort::token_retrieval_failed]",
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]"
+    },
+    "error": {
+      "unknown": "[%key:common::config_flow::error::unknown%]",
+      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
+      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]"
+    }
+  }
+}

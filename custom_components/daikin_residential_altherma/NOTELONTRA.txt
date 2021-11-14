@@ -1,0 +1,100 @@
+
+ * * * * * * INSERIMENTO DI UN NUOVO SENSORE  * * * * * * 
+
+
+ 
+
+
+1) const.py: Aggiungere una costante ATTR battezzandone il nuovo nome, es:
+
+
+	ATTR_TANK_TEMPERATURE = "tankTemperature"
+
+
+2) const.py: Aggiungere il CMD_SET con il percorso MP,DP e Value:
+
+
+	DAIKIN_CMD_SETS = {
+		...
+		ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
+
+
+dove "/tankTemperature" deve corrispondere al JSON:
+
+
+                "sensoryData": {
+                    "ref": "#sensoryData",
+                    "settable": false,
+                    "value": {
+                        "tankTemperature": {
+                            "maxValue": 127,
+                            "minValue": -127,
+                            "requiresReboot": false,
+                            "settable": false,
+                            "stepValue": 1,
+                            "value": 38
+
+
+3) const.py: nei SENSOR_TYPES aggiungere la definizione del nuovo sensore:
+
+
+	SENSOR_TYPES = {
+		...
+		ATTR_TANK_TEMPERATURE: {
+			CONF_NAME: "Tank Temperature",
+			CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
+			CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+			CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+		},
+
+
+4) daikin_base.py: aggiungere l'attributo all'import:
+
+
+		from .const import(
+			...,
+			ATTR_TANK_TEMPERATURE,
+
+
+5) daikin_base.py: definire le nuove property "support_xxx" e "xxx":
+
+
+    @property
+    def support_tank_temperature(self):
+        """Return True if the device supports outsite temperature measurement."""
+        return self.getData(ATTR_TANK_TEMPERATURE) is not None
+
+    @property
+    def tank_temperature(self):
+        """Return current outside temperature."""
+        return float(self.getValue(ATTR_TANK_TEMPERATURE))
+
+
+6) sensor.py: aggiungere l'attributo all'import:
+
+
+	from .const import (
+		...,
+		ATTR_TANK_TEMPERATURE,
+
+
+7) sensor.py: Append Se il sensore è supportato
+
+
+        if device.support_tank_temperature:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE)
+            _LOGGER.debug("DAMIANO append sensor = %s", sensor)
+            sensors.append(sensor)
+
+
+8) sensor.py: Aggiungere la proprietà di stato
+
+
+		@property
+		def state(self):
+			"""Return the internal state of the sensor."""
+			...			
+			if self._device_attribute == ATTR_TANK_TEMPERATURE:
+				return self._device.tank_temperature
+			return None
+
