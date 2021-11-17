@@ -499,6 +499,7 @@ class DaikinApi:
             #_LOGGER.warning("DAMIANO daikin_api.py - Device '%s'", device_model)
             if device_model is None:
                 _LOGGER.warning("Device '%s' is filtered out", device_model)
+                device_model = device.get_value("0", "modelInfo") # for BigFoot2020
             else:
                 res[dev_data["id"]] = device
         return res

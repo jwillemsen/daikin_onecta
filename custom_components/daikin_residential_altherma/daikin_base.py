@@ -173,7 +173,10 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     @property
     def mac(self):
         """Return device's MAC address."""
-        return self.get_value("gateway", "macAddress")
+        mac_add = self.get_value("gateway", "macAddress")
+        if mac_add is None:
+            self.get_value("0", "macAddress") # for BigFoot2020
+        return mac_add
 
     @property
     def hvac_mode(self):
