@@ -23,9 +23,9 @@ from .const import(
     DAIKIN_CMD_SETS,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
-    # DAMIANO    
+    # DAMIANO
     #ATTR_ON_OFF,
-    
+
     ATTR_OPERATION_MODE,
     # ATTR_FAN_SPEED,
     # ATTR_HSWING_MODE,
@@ -35,7 +35,7 @@ from .const import(
     # DAMIANO
     ATTR_ENERGY_CONSUMPTION,
     ATTR_ENERGY_CONSUMPTION_TANK,
-    
+
     SENSOR_PERIOD_WEEKLY,
 )
 
@@ -107,7 +107,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         #print("DAMIANO getCommandSet param = %s",param)
 
         if param in HA_PRESET_TO_DAIKIN.values():
-            
+
             def keyByVal(dict,v):
                 for k, v in dict.items():
                     if v == param:
@@ -123,7 +123,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
                 cmd_set[1] = param
         else:
             cmd_set = DAIKIN_CMD_SETS[param].copy()
-    
+
         if "%operationMode%" in cmd_set[2]:
             operation_mode = self.getValue(ATTR_OPERATION_MODE)
             cmd_set[2] = cmd_set[2].replace("%operationMode%", operation_mode)
@@ -134,7 +134,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         cmd_set = self.getCommandSet(param)
         v = self.get_data(cmd_set[0], cmd_set[1], cmd_set[2])
         return v
-    
+
     def getDataEC(self, param, mode, period):
         """Get the current data of a data object."""
         if param == "energy_consumption":
@@ -145,7 +145,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return self.get_data(cmd_set[0], cmd_set[1], r"{}/{}/{}".format(cmd_set[2],mode,period))
 
         return None
-    
+
 
     def getValue(self, param):
         """Get the current value of a data object."""
@@ -330,7 +330,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     @property
     def tank_temperature(self):
-        """Return current outside temperature."""
+        """Return tank temperature."""
         fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
         return fl
 
@@ -374,7 +374,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     #     if operationMode not in ["auto", "cooling", "heating"]:
     #         return None
     #     return float(self.getData(ATTR_TARGET_TEMPERATURE)["stepValue"])
- 
+
     async def async_set_temperature(self, value):
         """Set new target temperature."""
         operationMode = self.getValue(ATTR_OPERATION_MODE)
@@ -390,14 +390,14 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         #DAMIANO secondo me è un baco
         return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
         return True
-	
+
     def energy_consumption(self, mode, period):
         #DAMIANO
         #def energy_consumption_domestic(self, mode, period):
         """Return the last hour heat power consumption of a given mode in kWh."""
         energy_data = [
             0 if v is None else v
-            
+
             #damiano
             #for v in self.getData(ATTR_ENERGY_CONSUMPTION)[mode][period]
             # passo anche mode e period
@@ -411,7 +411,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return the last hour heat tank power consumption of a given mode in kWh."""
         energy_data = [
             0 if v is None else v
-            
+
             #damiano
             #for v in self.getData(ATTR_ENERGY_CONSUMPTION)[mode][period]
             # passo anche mode e period

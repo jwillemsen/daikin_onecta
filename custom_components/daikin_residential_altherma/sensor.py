@@ -42,7 +42,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     sensors = []
     prog = 0
-        
+
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         sensor = DaikinSensor.factory(device, ATTR_INSIDE_TEMPERATURE)
         print("DAMIANO append sensor = {}".format(sensor))
@@ -66,7 +66,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
                 sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY, period)
                 sensors.append(sensor)
-        
+
     #print("DAMIANO add_entities: %s", sensors)
     async_add_entities(sensors)
 
@@ -158,10 +158,10 @@ class DaikinClimateSensor(DaikinSensor):
             #DAMIANO
             # return self._device.inside_temperature
             return self._device.leavingWaterTemperature
-        
+
         if self._device_attribute == ATTR_OUTSIDE_TEMPERATURE:
             return self._device.outside_temperature
-        
+
         if self._device_attribute == ATTR_TANK_TEMPERATURE:
             return self._device.tank_temperature
 
@@ -176,10 +176,10 @@ class DaikinPowerSensor(DaikinSensor):
         """Return the state of the sensor."""
         if self._device_attribute == ATTR_COOL_ENERGY:
             return round(self._device.energy_consumption("cooling", self._period), 3)
-            
+
         if self._device_attribute == ATTR_HEAT_ENERGY:
             return round(self._device.energy_consumption("heating", self._period), 3)
-        
+
         # DAMIANO
         if self._device_attribute == ATTR_HEAT_TANK_ENERGY:
             return round(self._device.energy_consumption_tank("heating", self._period), 3)

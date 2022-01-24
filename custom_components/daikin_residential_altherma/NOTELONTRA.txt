@@ -1,5 +1,5 @@
 
- * * * * * * INSERIMENTO DI UN NUOVO SENSORE  * * * * * * 
+ * * * * * * INSERIMENTO DI UN NUOVO SENSORE  * * * * * *
 
 
 1) const.py: Aggiungere una costante ATTR battezzandone il nuovo nome, es:
@@ -58,12 +58,12 @@ dove "/tankTemperature" deve corrispondere al JSON:
 
     @property
     def support_tank_temperature(self):
-        """Return True if the device supports outsite temperature measurement."""
+        """Return True if the device supports tank temperature measurement."""
         return self.getData(ATTR_TANK_TEMPERATURE) is not None
 
     @property
     def tank_temperature(self):
-        """Return current outside temperature."""
+        """Return current tank temperature."""
         return float(self.getValue(ATTR_TANK_TEMPERATURE))
 
 
@@ -90,7 +90,7 @@ dove "/tankTemperature" deve corrispondere al JSON:
 		@property
 		def state(self):
 			"""Return the internal state of the sensor."""
-			...			
+			...
 			if self._device_attribute == ATTR_TANK_TEMPERATURE:
 				return self._device.tank_temperature
 			return None
