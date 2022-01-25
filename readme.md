@@ -26,12 +26,11 @@ Follow the instructions, you just have to type the email and password used in th
 
 Just add the following lines to your configuration.yaml file specifying the email and password used in the Daikin Residential App, and the Daikin devices connected to your cloud account will be created.
 
-
+```
 daikin_residential_altherma:
   email: [your_email]
   password: [your_pwd]
-
-
+```
 
 # Thanks to:
 
