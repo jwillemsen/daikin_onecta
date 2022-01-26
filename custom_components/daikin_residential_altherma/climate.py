@@ -55,7 +55,7 @@ HA_ATTR_TO_DAIKIN = {
     ATTR_HVAC_MODE: "mode",
     ATTR_LEAVINGWATER_TEMPERATURE: "c",
     ATTR_OUTSIDE_TEMPERATURE: "otemp",
-    #ATTR_TARGET_TEMPERATURE: "c",
+    ATTR_ROOM_TEMPERATURE: "stemp",
 }
 
 DAIKIN_ATTR_ADVANCED = "adv"
@@ -90,9 +90,10 @@ class DaikinClimate(ClimateEntity):
 
         # At the moment we have a separate room temperature we
         # can control that
-        #if self._device.support_room_temperature:
-        #    self._supported_features = SUPPORT_TARGET_TEMPERATURE
-        self._supported_features = 0
+        if self._device.support_room_temperature:
+            self._supported_features = SUPPORT_TARGET_TEMPERATURE
+        else:
+            self._supported_features = 0
 
         self._supported_preset_modes = [PRESET_NONE]
         self._current_preset_mode = PRESET_NONE
@@ -180,15 +181,15 @@ class DaikinClimate(ClimateEntity):
         """Return the minimum temperature we are allowed to set."""
         return self._device.min_temp
 
-    #@property
-    #def target_temperature(self):
-        #"""Return the temperature we try to reach."""
-        #return self._device.target_temperature
+    @property
+    def target_temperature(self):
+        """Return the temperature we try to reach."""
+        return self._device.target_temperature
 
-    #@property
-    #def target_temperature_step(self):
-        #"""Return the supported step of target temperature."""
-        #return self._device.target_temperature_step
+    @property
+    def target_temperature_step(self):
+        """Return the supported step of target temperature."""
+        return self._device.target_temperature_step
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""

@@ -18,8 +18,6 @@ from .const import(
     DAIKIN_CMD_SETS,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
-    # DAMIANO
-    #ATTR_ON_OFF,
     ATTR_OPERATION_MODE,
     ATTR_ENERGY_CONSUMPTION,
     ATTR_ENERGY_CONSUMPTION_TANK,
@@ -267,23 +265,24 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return None
 
     def target_temperature_step(self):
-        #"""Return current target temperature step."""
-        #if self.support_room_temperature:
-            #operationMode = self.getValue(ATTR_OPERATION_MODE)
-            #if operationMode not in ["auto", "cooling", "heating"]:
-                #return None
-            #return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
+        """Return current target temperature step."""
+        if self.support_room_temperature:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return None
+            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
         return None
 
     async def async_set_temperature(self, value):
         """Set new target temperature."""
         # When we have a separate room temperature we can set the value
-        #if self.support_room_temperature:
-            #operationMode = self.getValue(ATTR_OPERATION_MODE)
-            #if operationMode not in ["auto", "cooling", "heating"]:
-                #return None
-            #return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
-        _LOGGER.warning("Set target temperature not supported")
+        if self.support_room_temperature:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return None
+            return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
+        else:
+            _LOGGER.warning("Set target temperature not supported")
         return None
 
     @property
