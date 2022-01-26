@@ -124,9 +124,9 @@ class DaikinClimate(ClimateEntity):
             elif attr == ATTR_TEMPERATURE:
                 try:
                     if self._device.support_room_temperature:
-                          values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
-                    else
-                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
+                          values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value))
+                    else:
+                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
                 except ValueError:
                     _LOGGER.error("Invalid temperature %s", value)
 
