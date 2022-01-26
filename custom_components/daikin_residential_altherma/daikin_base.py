@@ -5,7 +5,6 @@ import logging
 from .device import DaikinResidentialDevice
 
 from .const import(
-    #PRESET_STREAMER,
     PRESET_BOOST,
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
@@ -67,7 +66,6 @@ HA_PRESET_TO_DAIKIN = {
     PRESET_BOOST: "powerfulMode",
     PRESET_COMFORT: "comfortMode",
     PRESET_ECO: "econoMode",
-    #PRESET_STREAMER: "streamerMode",
     PRESET_TANK_ONOFF: "onOffMode",
     PRESET_SETPOINT_MODE: "setpointMode"
 }

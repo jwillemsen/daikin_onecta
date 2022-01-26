@@ -126,7 +126,6 @@ SWING_BOTH = "3D"
 SWING_VERTICAL = "Vertical"
 SWING_HORIZONTAL = "Horizontal"
 
-#PRESET_STREAMER = "streamer"
 PRESET_BOOST= "boost"
 PRESET_TANK_ONOFF= "ACS_state"
 PRESET_SETPOINT_MODE = "setpointMode"
