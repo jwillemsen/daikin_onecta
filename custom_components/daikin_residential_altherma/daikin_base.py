@@ -249,7 +249,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return the maximum temperature we are allowed to set."""
         # Only with a separate room temperature we have a
         # max value we can use
-        if self._device.support_room_temperature:
+        if self.support_room_temperature:
             operationMode = self.getValue(ATTR_OPERATION_MODE)
             if operationMode not in ["auto", "cooling", "heating"]:
                 return DEFAULT_MAX_TEMP
@@ -261,7 +261,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return the minimum temperature we are allowed to set."""
         # Only with a separate room temperature we have a
         # min value we can use
-        if self._device.support_room_temperature:
+        if self.support_room_temperature:
             operationMode = self.getValue(ATTR_OPERATION_MODE)
             if operationMode not in ["auto", "cooling", "heating"]:
               return DEFAULT_MIN_TEMP
@@ -289,7 +289,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     async def async_set_temperature(self, value):
         """Set new target temperature."""
         # When we have a separate room temperature we can set the value
-        if self._device.support_room_temperature:
+        if self.support_room_temperature:
             operationMode = self.getValue(ATTR_OPERATION_MODE)
             if operationMode not in ["auto", "cooling", "heating"]:
                 return None
