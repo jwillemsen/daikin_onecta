@@ -283,7 +283,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             if operationMode not in ["auto", "cooling", "heating"]:
                 return None
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
-        _LOGGER.warning("Set ATTR_TARGET_TEMPERATURE not supported without a separate room temperatur")
+        _LOGGER.warning("Set target temperature not supported without a separate room temperatur")
         return None
 
     @property
@@ -308,7 +308,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
         return sum(energy_data[start_index:])
 
-    # DAMIANO
     def energy_consumption_tank(self, mode, period):
         """Return the last hour heat tank power consumption of a given mode in kWh."""
         energy_data = [
