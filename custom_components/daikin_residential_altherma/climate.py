@@ -56,7 +56,7 @@ HA_ATTR_TO_DAIKIN = {
     ATTR_HVAC_MODE: "mode",
     ATTR_INSIDE_TEMPERATURE: "c",
     ATTR_OUTSIDE_TEMPERATURE: "otemp",
-    #ATTR_TARGET_TEMPERATURE: "stemp", # DAMIANO non esistente
+    ATTR_TARGET_TEMPERATURE: "stemp"
 }
 
 DAIKIN_ATTR_ADVANCED = "adv"
@@ -89,7 +89,10 @@ class DaikinClimate(ClimateEntity):
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
         }
 
-        self._supported_features = SUPPORT_TARGET_TEMPERATURE
+        # At the moment we have a separate room temperature we
+        # can control that
+        if self._device.support_room_temperature:
+            self._supported_features = SUPPORT_TARGET_TEMPERATURE
 
         self._supported_preset_modes = [PRESET_NONE]
         self._current_preset_mode = PRESET_NONE
