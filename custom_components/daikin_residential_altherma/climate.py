@@ -92,6 +92,7 @@ class DaikinClimate(ClimateEntity):
         # can control that
         #if self._device.support_room_temperature:
         #    self._supported_features = SUPPORT_TARGET_TEMPERATURE
+        self._supported_features = None
 
         self._supported_preset_modes = [PRESET_NONE]
         self._current_preset_mode = PRESET_NONE
