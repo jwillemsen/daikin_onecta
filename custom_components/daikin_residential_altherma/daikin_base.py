@@ -8,7 +8,7 @@ from .const import(
     PRESET_BOOST,
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
-    ATTR_INSIDE_TEMPERATURE,
+    ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
@@ -232,13 +232,13 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def inside_temperature(self):
         """Return current inside temperature."""
         #print("DAMIANO ATTR_INSIDE_TEMPERATURE = %s",self.getValue(ATTR_INSIDE_TEMPERATURE))
-        return float(self.getValue(ATTR_INSIDE_TEMPERATURE))
+        return float(self.getValue(ATTR_LEAVINGWATER_TEMPERATURE))
 
     #DAMIANO tutta la proprieta
     @property
     def leaving_water_temperature(self):
         """Return current inside temperature."""
-        t = float(self.getValue(ATTR_INSIDE_TEMPERATURE))
+        t = float(self.getValue(ATTR_LEAVINGWATER_TEMPERATURE))
         return t
 
     @property

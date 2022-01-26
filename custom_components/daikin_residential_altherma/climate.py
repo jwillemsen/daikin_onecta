@@ -25,7 +25,7 @@ import homeassistant.helpers.config_validation as cv
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
-    ATTR_INSIDE_TEMPERATURE,
+    ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
@@ -52,7 +52,7 @@ HA_HVAC_TO_DAIKIN = {
 HA_ATTR_TO_DAIKIN = {
     ATTR_PRESET_MODE: "en_hol",
     ATTR_HVAC_MODE: "mode",
-    ATTR_INSIDE_TEMPERATURE: "c",
+    ATTR_LEAVINGWATER_TEMPERATURE: "c",
     ATTR_OUTSIDE_TEMPERATURE: "otemp",
     #ATTR_TARGET_TEMPERATURE: "stemp"
 }
@@ -122,7 +122,7 @@ class DaikinClimate(ClimateEntity):
             # temperature
             elif attr == ATTR_TEMPERATURE:
                 try:
-                    values[HA_ATTR_TO_DAIKIN[ATTR_INSIDE_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
+                    values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
                 except ValueError:
                     _LOGGER.error("Invalid temperature %s", value)
 

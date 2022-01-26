@@ -45,8 +45,8 @@ ATTR_ON_OFF_TANK = "on_off_tank"
 ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
 ATTR_TARGET_ROOM_TEMPERATURE = "target_temperature"
-ATTR_INSIDE_TEMPERATURE = "leavingWaterTemperature" #inside_temperature
-ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature" #outside_temperature
+ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
+ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
 ATTR_TANK_TEMPERATURE = "tankTemperature"
 ATTR_ENERGY_CONSUMPTION = "energy_consumption"
@@ -63,7 +63,7 @@ DAIKIN_CMD_SETS = {
     ATTR_OPERATION_MODE: [MP_CLIMATE, DP_OPERATION_MODE, ""],
     ATTR_OUTSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/outdoorTemperature"],
     ATTR_ROOM_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/roomTemperature"],
-    ATTR_INSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
+    ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
     ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
     ATTR_TARGET_ROOM_TEMPERATURE: [
         MP_DOMESTIC_HWT,
@@ -99,8 +99,7 @@ SENSOR_PERIODS = {
 }
 
 SENSOR_TYPES = {
-    ATTR_INSIDE_TEMPERATURE: {
-        #CONF_NAME: "Inside Temperature",
+    ATTR_LEAVINGWATER_TEMPERATURE: {
         CONF_NAME: "Leaving Water Temperature",
         CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
