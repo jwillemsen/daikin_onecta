@@ -278,12 +278,12 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     async def async_set_temperature(self, value):
         """Set new target temperature."""
         # When we have a separate room temperature we can set the value
-        if self.support_room_temperature:
-            operationMode = self.getValue(ATTR_OPERATION_MODE)
-            if operationMode not in ["auto", "cooling", "heating"]:
-                return None
-            return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
-        _LOGGER.warning("Set target temperature not supported without a separate room temperatur")
+        #if self.support_room_temperature:
+            #operationMode = self.getValue(ATTR_OPERATION_MODE)
+            #if operationMode not in ["auto", "cooling", "heating"]:
+                #return None
+            #return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
+        _LOGGER.warning("Set target temperature not supported")
         return None
 
     @property
