@@ -85,11 +85,9 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
     await daikin_api.getCloudDeviceDetails()
 
     devices = await daikin_api.getCloudDevices()
-    _LOGGER.warning("Get devices: ", devices)
     hass.data[DOMAIN] = {DAIKIN_API: daikin_api, DAIKIN_DEVICES: devices}
 
     for component in COMPONENT_TYPES:
-        #print("DAMIANO component %S", component)
         hass.async_create_task(
             hass.config_entries.async_forward_entry_setup(entry, component)
         )
