@@ -81,7 +81,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         #print("DAMIANO getCommandSet param = %s",param)
 
         if param in HA_PRESET_TO_DAIKIN.values():
-
             def keyByVal(dict,v):
                 for k, v in dict.items():
                     if v == param:
@@ -97,7 +96,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
                 cmd_set[1] = param
         else:
             cmd_set = DAIKIN_CMD_SETS[param].copy()
-
         if "%operationMode%" in cmd_set[2]:
             operation_mode = self.getValue(ATTR_OPERATION_MODE)
             cmd_set[2] = cmd_set[2].replace("%operationMode%", operation_mode)
@@ -248,11 +246,11 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return the maximum temperature we are allowed to set."""
         # Only with a separate room temperature we have a
         # max value we can use
-        if self.support_room_temperature:
-            operationMode = self.getValue(ATTR_OPERATION_MODE)
-            if operationMode not in ["auto", "cooling", "heating"]:
-                return DEFAULT_MAX_TEMP
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
+        #if self.support_room_temperature:
+        #    operationMode = self.getValue(ATTR_OPERATION_MODE)
+        #    if operationMode not in ["auto", "cooling", "heating"]:
+        #        return DEFAULT_MAX_TEMP
+        #    return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
         return DEFAULT_MAX_TEMP
 
     @property
@@ -260,12 +258,12 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return the minimum temperature we are allowed to set."""
         # Only with a separate room temperature we have a
         # min value we can use
-        if self.support_room_temperature:
-            operationMode = self.getValue(ATTR_OPERATION_MODE)
-            if operationMode not in ["auto", "cooling", "heating"]:
-              return DEFAULT_MIN_TEMP
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
-        return DEFAULT_MAX_TEMP
+        #if self.support_room_temperature:
+        #    operationMode = self.getValue(ATTR_OPERATION_MODE)
+        #    if operationMode not in ["auto", "cooling", "heating"]:
+        #      return DEFAULT_MIN_TEMP
+        #    return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
+        return DEFAULT_MIN_TEMP
 
     # DAMIANO
     # @property
