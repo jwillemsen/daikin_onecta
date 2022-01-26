@@ -32,7 +32,6 @@ from .const import (
     ATTR_ON_OFF_TANK,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
-    ATTR_TARGET_ROOM_TEMPERATURE,
 )
 
 _LOGGER = logging.getLogger(__name__)
