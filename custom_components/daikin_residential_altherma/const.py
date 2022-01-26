@@ -66,7 +66,7 @@ DAIKIN_CMD_SETS = {
     ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
     ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
     ATTR_TARGET_ROOM_TEMPERATURE: [
-        MP_DOMESTIC_HWT,
+        MP_CLIMATE,
         DP_TEMPERATURE,
         "/operationModes/%operationMode%/setpoints/roomTemperature",
     ],
