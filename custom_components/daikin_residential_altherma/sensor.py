@@ -21,7 +21,6 @@ from .const import (
     ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
     SENSOR_TYPE_ENERGY,
-    SENSOR_TYPE_HUMIDITY,
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
     SENSOR_PERIODS,
@@ -85,7 +84,6 @@ class DaikinSensor(Entity):
         #print("DAMIANO monitored_state = %s",monitored_state)
         cls = {
             SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
-            SENSOR_TYPE_HUMIDITY: DaikinClimateSensor,
             SENSOR_TYPE_POWER: DaikinPowerSensor,
             SENSOR_TYPE_ENERGY: DaikinPowerSensor,
         }[SENSOR_TYPES[monitored_state][CONF_TYPE]]

@@ -12,8 +12,6 @@ from homeassistant.const import (
     TEMP_CELSIUS,
 )
 
-# Damiano
-#DOMAIN = "daikin_residential"
 DOMAIN = "daikin_residential_altherma"
 
 CONF_TOKENSET = CONF_TOKEN + "set"
@@ -24,15 +22,12 @@ DAIKIN_DEVICES = "daikin_devices"
 DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
 # MANAGEMENT POINTS
-# ORIG
-#MP_CLIMATE = "climateControl"
-# DAMIANO
-MP_CLIMATE = "climateControlMainZone" #"climateControl"
+MP_CLIMATE = "climateControlMainZone"
 MP_GATEWAY = "gateway" # NEW
-MP_DOMESTIC_HWT = "domesticHotWaterTank"  # NEW
-MP_INDOOR_UNIT = "indoorUnitHydro"  # NEW
-MP_OUDOOR_UNIT = "outdoorUnit"  # NEW
-MP_USER_INTERFACE = "userInterface"  # NEW
+MP_DOMESTIC_HWT = "domesticHotWaterTank"
+MP_INDOOR_UNIT = "indoorUnitHydro"
+MP_OUDOOR_UNIT = "outdoorUnit"
+MP_USER_INTERFACE = "userInterface"
 
 # DATA POINTS
 DP_ON_OFF_CLIMATE = "onOffMode"
@@ -40,7 +35,6 @@ DP_ON_OFF_TANK = "onOffMode"
 DP_OPERATION_MODE = "operationMode"
 DP_SENSORS = "sensoryData"
 DP_TEMPERATURE = "temperatureControl"
-DP_FAN = "fanControl"
 DP_CONSUMPTION = "consumptionData"
 
 # DAMIANO HEAT PUMP ALTHERMA
@@ -55,28 +49,16 @@ ATTR_INSIDE_TEMPERATURE = "leavingWaterTemperature" #inside_temperature
 ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature" #outside_temperature
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
 ATTR_TANK_TEMPERATURE = "tankTemperature"
-# ORIG
 ATTR_ENERGY_CONSUMPTION = "energy_consumption"
 ATTR_ENERGY_CONSUMPTION_TANK = "energy_consumption_tank"
-# ATTR_HUMIDITY = "humidity"                    # non presente
-#ATTR_TARGET_HUMIDITY = "target_humidity"       # non presente
-#ATTR_FAN_MODE = "fan_mode"                     # non presente
-#ATTR_FAN_SPEED = "fan_speed"                   # non presente
-#ATTR_HSWING_MODE = "hswing_mode"               # non presente
-#ATTR_VSWING_MODE = "vswing_mode"               # non presente
-#ATTR_SWING_AUTO = "auto"                       # non presente
-#ATTR_SWING_SWING = "swing"                     # non presente
-#ATTR_SWING_STOP = "stop"                     # non presente
 ATTR_COOL_ENERGY = "cool_energy"
 ATTR_HEAT_ENERGY = "heat_energy"
 ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
 
 DAIKIN_CMD_SETS = {
-    # DAMIANO
     #ATTR_ON_OFF: [MP_CLIMATE, DP_ON_OFF, "onOffMode"],
     ATTR_ON_OFF_CLIMATE: [MP_CLIMATE, DP_ON_OFF_CLIMATE, ""],
     ATTR_ON_OFF_TANK: [MP_DOMESTIC_HWT, DP_ON_OFF_TANK, ""],
-    # DAMIANO
     ATTR_PRESET_MODE: [MP_CLIMATE, "", ""],
     ATTR_OPERATION_MODE: [MP_CLIMATE, DP_OPERATION_MODE, ""],
     ATTR_OUTSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/outdoorTemperature"],
@@ -88,43 +70,12 @@ DAIKIN_CMD_SETS = {
         DP_TEMPERATURE,
         "/operationModes/%operationMode%/setpoints/roomTemperature",
     ],
-    # ATTR_FAN_MODE: [
-    #     MP_CLIMATE,
-    #     DP_FAN,
-    #     "/operationModes/%operationMode%/fanSpeed/currentMode",
-    # ],
-    # ATTR_FAN_SPEED: [
-    #     MP_CLIMATE,
-    #     DP_FAN,
-    #     "/operationModes/%operationMode%/fanSpeed/modes/fixed",
-    # ],
-    # ATTR_HSWING_MODE: [
-    #     MP_CLIMATE,
-    #     DP_FAN,
-    #     "/operationModes/%operationMode%/fanDirection/horizontal/currentMode",
-    # ],
-    # ATTR_VSWING_MODE: [
-    #     MP_CLIMATE,
-    #     DP_FAN,
-    #     "/operationModes/%operationMode%/fanDirection/vertical/currentMode",
-    # ],
-
-    # DAMIANO
     ATTR_ENERGY_CONSUMPTION: [MP_CLIMATE, DP_CONSUMPTION, "/electrical"],
     ATTR_ENERGY_CONSUMPTION_TANK: [MP_DOMESTIC_HWT, DP_CONSUMPTION, "/electrical"]
-
 }
 
 ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
-
-FAN_FIXED = "fixed"
-FAN_QUIET = "Silence"
-
-SWING_OFF = "Off"
-SWING_BOTH = "3D"
-SWING_VERTICAL = "Vertical"
-SWING_HORIZONTAL = "Horizontal"
 
 PRESET_BOOST= "boost"
 PRESET_TANK_ONOFF= "ACS_state"
@@ -135,7 +86,6 @@ DAIKIN_SWITCHES_ICONS ={PRESET_BOOST:'mdi:bike-fast',PRESET_TANK_ONOFF: 'mdi:bat
 SWITCH_DEFAULT_ICON = "hass:air-filter"
 
 SENSOR_TYPE_TEMPERATURE = "temperature"
-SENSOR_TYPE_HUMIDITY = "humidity"
 SENSOR_TYPE_POWER = "power"
 SENSOR_TYPE_ENERGY = "energy"
 SENSOR_TYPE_INFO = "info"

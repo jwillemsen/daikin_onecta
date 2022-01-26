@@ -5,13 +5,10 @@ import voluptuous as vol
 
 from homeassistant.components.climate import PLATFORM_SCHEMA, ClimateEntity
 from homeassistant.components.climate.const import (
-    #ATTR_FAN_MODE, DAMIANO
     ATTR_HVAC_MODE,
     ATTR_PRESET_MODE, # DAMIANO lasciare
-    #ATTR_SWING_MODE, DAMIANO
     HVAC_MODE_COOL,
     HVAC_MODE_DRY,
-    HVAC_MODE_FAN_ONLY,
     HVAC_MODE_HEAT,
     HVAC_MODE_HEAT_COOL,
     HVAC_MODE_OFF,
@@ -21,9 +18,7 @@ from homeassistant.components.climate.const import (
     PRESET_ECO,
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
-    SUPPORT_FAN_MODE,
     SUPPORT_PRESET_MODE,
-    #SUPPORT_SWING_MODE,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
 import homeassistant.helpers.config_validation as cv
@@ -50,7 +45,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 PRESET_MODES = {PRESET_BOOST, PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
 
 HA_HVAC_TO_DAIKIN = {
-    HVAC_MODE_FAN_ONLY: "fanOnly",
     HVAC_MODE_DRY: "dry",
     HVAC_MODE_COOL: "cooling",
     HVAC_MODE_HEAT: "heating",
@@ -61,8 +55,6 @@ HA_HVAC_TO_DAIKIN = {
 HA_ATTR_TO_DAIKIN = {
     ATTR_PRESET_MODE: "en_hol",
     ATTR_HVAC_MODE: "mode",
-    #ATTR_FAN_MODE: "f_rate", DAMIANO
-    #ATTR_SWING_MODE: "f_dir",
     ATTR_INSIDE_TEMPERATURE: "c",
     ATTR_OUTSIDE_TEMPERATURE: "otemp",
     #ATTR_TARGET_TEMPERATURE: "stemp", # DAMIANO non esistente
@@ -96,7 +88,6 @@ class DaikinClimate(ClimateEntity):
         self._device = device
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
-            #ATTR_SWING_MODE: self._device.swing_modes,  #DAMIANO
         }
 
         self._supported_features = SUPPORT_TARGET_TEMPERATURE
@@ -110,18 +101,11 @@ class DaikinClimate(ClimateEntity):
                 self._supported_features |= SUPPORT_PRESET_MODE
             print("DAMIANO support_preset_mode {}: {}".format(mode,support_preset))
 
-        # DAMIANO
-        # if self._device.support_fan_rate:
-        #     self._supported_features |= SUPPORT_FAN_MODE
-
-        # if self._device.support_swing_mode:
-        #     self._supported_features |= SUPPORT_SWING_MODE
-
     async def _set(self, settings):
         """Set device settings using API."""
         values = {}
 
-        for attr in [ATTR_TEMPERATURE, ATTR_HVAC_MODE]: #ATTR_FAN_MODE, ATTR_SWING_MODE,
+        for attr in [ATTR_TEMPERATURE, ATTR_HVAC_MODE]:
             value = settings.get(attr)
             if value is None:
                 continue
@@ -231,36 +215,6 @@ class DaikinClimate(ClimateEntity):
         """Set HVAC mode."""
         print("DAMIANO {} TO {}".format(self.entity_id,hvac_mode))
         await self._device.async_set_hvac_mode(HA_HVAC_TO_DAIKIN[hvac_mode])
-
-    # DAMIANO
-    # @property
-    # def fan_mode(self):
-    #     """Return the fan setting."""
-    #     return self._device.fan_mode
-
-    # @property
-    # def fan_modes(self):
-    #     """List of available fan modes."""
-    #     return self._device.fan_modes
-
-    # async def async_set_fan_mode(self, fan_mode):
-    #     """Set new fan mode."""
-    #     await self._device.async_set_fan_mode(fan_mode)
-
-    # DAMIANO
-    # @property
-    # def swing_mode(self):
-    #     """Return the swing setting."""
-    #     return self._device.swing_mode
-
-    # @property
-    # def swing_modes(self):
-    #     """List of available swing modes."""
-    #     return self._device.swing_modes
-
-    # async def async_set_swing_mode(self, swing_mode):
-    #     """Set new swing mode."""
-    #     await self._device.async_set_swing_mode(swing_mode)
 
     @property
     def preset_mode(self):

@@ -15,11 +15,6 @@ from .const import(
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
     ATTR_TARGET_ROOM_TEMPERATURE,
-    FAN_QUIET,
-    SWING_OFF,
-    SWING_BOTH,
-    SWING_VERTICAL,
-    SWING_HORIZONTAL,
     DAIKIN_CMD_SETS,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
@@ -27,12 +22,6 @@ from .const import(
     #ATTR_ON_OFF,
 
     ATTR_OPERATION_MODE,
-    # ATTR_FAN_SPEED,
-    # ATTR_HSWING_MODE,
-    # ATTR_VSWING_MODE,
-    # ATTR_SWING_SWING,
-    # ATTR_SWING_STOP,
-    # DAMIANO
     ATTR_ENERGY_CONSUMPTION,
     ATTR_ENERGY_CONSUMPTION_TANK,
 
@@ -40,12 +29,8 @@ from .const import(
 )
 
 from homeassistant.components.climate.const import (
-    #ATTR_FAN_MODE,
     ATTR_PRESET_MODE,
-    FAN_AUTO,
     HVAC_MODE_COOL,
-    HVAC_MODE_DRY,
-    HVAC_MODE_FAN_ONLY,
     HVAC_MODE_HEAT,
     HVAC_MODE_HEAT_COOL,
     HVAC_MODE_OFF,
@@ -71,21 +56,12 @@ HA_PRESET_TO_DAIKIN = {
 }
 
 DAIKIN_HVAC_TO_HA = {
-    "fanOnly": HVAC_MODE_FAN_ONLY,
     "dry": HVAC_MODE_DRY,
     "cooling": HVAC_MODE_COOL,
     "heating": HVAC_MODE_HEAT,
     "auto": HVAC_MODE_HEAT_COOL,
     "off": HVAC_MODE_OFF,
 }
-
-DAIKIN_FAN_TO_HA = {"auto": FAN_AUTO, "quiet": FAN_QUIET}
-
-HA_FAN_TO_DAIKIN = {
-    DAIKIN_FAN_TO_HA["auto"]: "auto",
-    DAIKIN_FAN_TO_HA["quiet"]: "quiet",
-}
-
 
 class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-methods
     """Daikin main appliance class."""
@@ -224,105 +200,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if self.getData(mode) is None:
             return
         return await self.setValue(mode, status)
-
-    @property
-    def support_fan_rate(self):
-        """Return True if the device support setting fan_rate."""
-        return True
-
-    # DAMIANO
-    # @property
-    # def fan_mode(self):
-    #     """Return current fan mode."""
-    #     fanMode = self.getValue(ATTR_FAN_MODE)
-    #     if fanMode in DAIKIN_FAN_TO_HA:
-    #         fanMode = DAIKIN_FAN_TO_HA[fanMode]
-    #     else:
-    #         fanMode = self.getValue(ATTR_FAN_SPEED)
-    #     return fanMode
-
-    # @property
-    # def fan_modes(self):
-    #     """Return available fan modes for current HVAC mode."""
-    #     fanModes = []
-    #     modes = self.getValidValues(ATTR_FAN_MODE)
-    #     for val in modes:
-    #         if val in DAIKIN_FAN_TO_HA:
-    #             fanModes.append(DAIKIN_FAN_TO_HA[val])
-    #         else:
-    #             fixedModes = self.getData(ATTR_FAN_SPEED)
-    #             minVal = int(fixedModes["minValue"])
-    #             maxVal = int(fixedModes["maxValue"])
-    #             for val in range(minVal, maxVal + 1):
-    #                 fanModes.append(str(val))
-    #     return fanModes
-
-    async def async_set_fan_mode(self, mode):
-        """Set the preset mode status."""
-        if mode in HA_FAN_TO_DAIKIN.keys():
-            return await self.setValue(ATTR_FAN_MODE, HA_FAN_TO_DAIKIN[mode])
-        if mode.isnumeric():
-            mode = int(mode)
-        return await self.setValue(ATTR_FAN_SPEED, mode)
-
-    # DAMIANO
-    # @property
-    # def support_swing_mode(self):
-    #     """Return True if the device support setting swing_mode."""
-    #     return self.getData(ATTR_VSWING_MODE) is not None
-
-    # @property
-    # def swing_mode(self):
-    #     swingMode = SWING_OFF
-    #     hMode = self.getValue(ATTR_HSWING_MODE)
-    #     vMode = self.getValue(ATTR_VSWING_MODE)
-    #     if hMode != ATTR_SWING_STOP:
-    #         swingMode = SWING_HORIZONTAL
-    #     if vMode != ATTR_SWING_STOP:
-    #         if hMode != ATTR_SWING_STOP:
-    #             swingMode = SWING_BOTH
-    #         else:
-    #             swingMode = SWING_VERTICAL
-    #     return swingMode
-
-    # DAMIANO
-    # @property
-    # def swing_modes(self):
-    #     """Return list of supported swing modes."""
-    #     swingModes = [SWING_OFF]
-    #     hMode = self.getData(ATTR_HSWING_MODE)
-    #     vMode = self.getData(ATTR_VSWING_MODE)
-    #     if hMode is not None:
-    #         swingModes.append(SWING_HORIZONTAL)
-    #     if vMode is not None:
-    #         swingModes.append(SWING_VERTICAL)
-    #         if hMode is not None:
-    #             swingModes.append(SWING_BOTH)
-    #     return swingModes
-
-    async def async_set_swing_mode(self, mode):
-        """Set the preset mode status."""
-        hMode = self.getValue(ATTR_HSWING_MODE)
-        vMode = self.getValue(ATTR_VSWING_MODE)
-        new_hMode = (
-            ATTR_SWING_SWING
-            if mode == SWING_HORIZONTAL or mode == SWING_BOTH
-            else ATTR_SWING_STOP
-        )
-        new_vMode = (
-            ATTR_SWING_SWING
-            if mode == SWING_VERTICAL or mode == SWING_BOTH
-            else ATTR_SWING_STOP
-        )
-        if hMode != new_hMode:
-            await self.setValue(ATTR_HSWING_MODE, new_hMode)
-        if vMode != new_vMode:
-            await self.setValue(ATTR_VSWING_MODE, new_vMode)
-
-    @property
-    def support_humidity(self):
-        """Return True if the device has humidity sensor."""
-        return False
 
     @property
     def support_tank_temperature(self):
