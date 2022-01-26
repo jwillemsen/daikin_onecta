@@ -53,7 +53,7 @@ HA_HVAC_TO_DAIKIN = {
 HA_ATTR_TO_DAIKIN = {
     ATTR_PRESET_MODE: "en_hol",
     ATTR_HVAC_MODE: "mode",
-    ATTR_LEAVINGWATER_TEMPERATURE: "htemp",
+    ATTR_LEAVINGWATER_TEMPERATURE: "stemp",
     ATTR_OUTSIDE_TEMPERATURE: "otemp",
     ATTR_ROOM_TEMPERATURE: "stemp"
 }
@@ -123,7 +123,10 @@ class DaikinClimate(ClimateEntity):
             # temperature
             elif attr == ATTR_TEMPERATURE:
                 try:
-                    values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
+                    if self._device.support_room_temperature:
+                          values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
+                    else
+                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value)) #DAMIANO ATTR_TARGET_TEMPERATURE
                 except ValueError:
                     _LOGGER.error("Invalid temperature %s", value)
 
@@ -190,8 +193,6 @@ class DaikinClimate(ClimateEntity):
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
-
-        print("DAMIANO trying to Set new target temperature")
         if ATTR_HVAC_MODE in kwargs:
             await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
 
@@ -200,8 +201,7 @@ class DaikinClimate(ClimateEntity):
     @property
     def hvac_mode(self):
         """Return current operation ie. heat, cool, idle."""
-        mode = self._device.hvac_mode
-        return mode
+        return self._device.hvac_mode
 
     @property
     def hvac_modes(self):
@@ -210,7 +210,6 @@ class DaikinClimate(ClimateEntity):
 
     async def async_set_hvac_mode(self, hvac_mode):
         """Set HVAC mode."""
-        print("DAMIANO {} TO {}".format(self.entity_id,hvac_mode))
         await self._device.async_set_hvac_mode(HA_HVAC_TO_DAIKIN[hvac_mode])
 
     @property
@@ -237,17 +236,14 @@ class DaikinClimate(ClimateEntity):
 
     async def async_update(self):
         """Retrieve latest state."""
-        print("DAMIANO {}:  ASINC UPDATE CLIMATE".format(self))
         await self._device.api.async_update()
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
-        print("DAMIANO {} to on".format(self._device))
         await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_ON)
 
     async def async_turn_off(self):
         """Turn device CLIMATE off."""
-        print("DAMIANO {} to off".format(self._device))
         await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_OFF)
 
     # async def async_turn_tank_on(self):
