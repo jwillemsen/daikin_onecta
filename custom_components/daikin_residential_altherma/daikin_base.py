@@ -255,6 +255,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return float(self.getData(ATTR_TARGET_TEMPERATURE)["minValue"])
         return DEFAULT_MIN_TEMP
 
+    @property
     def target_temperature(self):
         """Return current target temperature."""
         if self.support_room_temperature:
@@ -264,6 +265,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return float(self.getValue(ATTR_TARGET_TEMPERATURE))
         return None
 
+    @property
     def target_temperature_step(self):
         """Return current target temperature step."""
         if self.support_room_temperature:
