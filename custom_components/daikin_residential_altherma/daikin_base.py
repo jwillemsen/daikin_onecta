@@ -55,7 +55,6 @@ HA_PRESET_TO_DAIKIN = {
 }
 
 DAIKIN_HVAC_TO_HA = {
-    "dry": HVAC_MODE_DRY,
     "cooling": HVAC_MODE_COOL,
     "heating": HVAC_MODE_HEAT,
     "auto": HVAC_MODE_HEAT_COOL,

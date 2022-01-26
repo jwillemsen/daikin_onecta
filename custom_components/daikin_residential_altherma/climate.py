@@ -8,7 +8,6 @@ from homeassistant.components.climate.const import (
     ATTR_HVAC_MODE,
     ATTR_PRESET_MODE, # DAMIANO lasciare
     HVAC_MODE_COOL,
-    HVAC_MODE_DRY,
     HVAC_MODE_HEAT,
     HVAC_MODE_HEAT_COOL,
     HVAC_MODE_OFF,
@@ -44,7 +43,6 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 PRESET_MODES = {PRESET_BOOST, PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
 
 HA_HVAC_TO_DAIKIN = {
-    HVAC_MODE_DRY: "dry",
     HVAC_MODE_COOL: "cooling",
     HVAC_MODE_HEAT: "heating",
     HVAC_MODE_HEAT_COOL: "auto",
