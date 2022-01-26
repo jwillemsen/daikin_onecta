@@ -15,7 +15,7 @@ from .const import(
     ATTR_TANK_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
-    #ATTR_TARGET_TEMPERATURE,
+    ATTR_TARGET_ROOM_TEMPERATURE,
     FAN_QUIET,
     SWING_OFF,
     SWING_BOTH,
@@ -55,6 +55,8 @@ from homeassistant.components.climate.const import (
     PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
+    DEFAULT_MAX_TEMP,
+    DEFAULT_MIN_TEMP,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -364,10 +366,34 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     #DAMIANO tutta la proprieta
     @property
-    def leavingWaterTemperature(self):
+    def leaving_water_temperature(self):
         """Return current inside temperature."""
         t = float(self.getValue(ATTR_INSIDE_TEMPERATURE))
         return t
+
+    @property
+    def max_temp(self):
+        """Return the maximum temperature we are allowed to set."""
+        # Only with a separate room temperature we have a
+        # max value we can use
+        if self._device.support_room_temperature:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return DEFAULT_MAX_TEMP
+            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
+        return DEFAULT_MAX_TEMP
+
+    @property
+    def min_temp(self):
+        """Return the minimum temperature we are allowed to set."""
+        # Only with a separate room temperature we have a
+        # min value we can use
+        if self._device.support_room_temperature:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+              return DEFAULT_MIN_TEMP
+            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
+        return DEFAULT_MAX_TEMP
 
     # DAMIANO
     # @property
@@ -389,11 +415,13 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     async def async_set_temperature(self, value):
         """Set new target temperature."""
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in ["auto", "cooling", "heating"]:
-            return None
-        _LOGGER.warning("DAMIANO Set ATTR_TARGET_TEMPERATURE non supportata")
-        #return await self.setValue(ATTR_TARGET_TEMPERATURE, value)
+        # When we have a separate room temperature we can set the value
+        if self._device.support_room_temperature:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return None
+            return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
+        _LOGGER.warning("Set ATTR_TARGET_TEMPERATURE not supported without a separate room temperatur")
         return None
 
     @property

@@ -83,11 +83,11 @@ DAIKIN_CMD_SETS = {
     ATTR_ROOM_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/roomTemperature"],
     ATTR_INSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
     ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
-    # ATTR_TARGET_TEMPERATURE: [
-    #     MP_DOMESTIC_HWT,
-    #     DP_TEMPERATURE,
-    #     "/operationModes/%operationMode%/setpoints/roomTemperature",
-    # ],
+    ATTR_TARGET_ROOM_TEMPERATURE: [
+        MP_DOMESTIC_HWT,
+        DP_TEMPERATURE,
+        "/operationModes/%operationMode%/setpoints/roomTemperature",
+    ],
     # ATTR_FAN_MODE: [
     #     MP_CLIMATE,
     #     DP_FAN,

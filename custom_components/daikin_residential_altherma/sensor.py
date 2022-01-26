@@ -162,7 +162,7 @@ class DaikinClimateSensor(DaikinSensor):
         if self._device_attribute == ATTR_INSIDE_TEMPERATURE:
             #DAMIANO
             # return self._device.inside_temperature
-            return self._device.leavingWaterTemperature
+            return self._device.leaving_water_temperature
 
         if self._device_attribute == ATTR_OUTSIDE_TEMPERATURE:
             return self._device.outside_temperature

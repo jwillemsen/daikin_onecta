@@ -37,7 +37,7 @@ from .const import (
     ATTR_ON_OFF_TANK,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
-    #ATTR_TARGET_TEMPERATURE,
+    ATTR_TARGET_ROOM_TEMPERATURE,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -175,9 +175,21 @@ class DaikinClimate(ClimateEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
-        #DAMIANO
-        #return self._device.inside_temperature
-        return self._device.leavingWaterTemperature
+        # At the moment the device supports a separate
+        # room temperature do return that
+        if self._device.support_room_temperature:
+          return self._device.room_temperature
+        return self._device.leaving_water_temperature
+
+    @property
+    def max_temp(self):
+        """Return the maximum temperature we are allowed to set."""
+        return self._device.max_temp
+
+    @property
+    def min_temp(self):
+        """Return the minimum temperature we are allowed to set."""
+        return self._device.min_temp
 
     # DAMIANO
     # @property
