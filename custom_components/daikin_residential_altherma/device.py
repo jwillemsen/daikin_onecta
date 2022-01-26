@@ -22,17 +22,17 @@ class DaikinResidentialDevice:
         self.api = apiInstance
 
         self.setJsonData(jsonData)
-        
+
         #DAMIANO
         #self.name = self.get_value("climateControl", "name")
         # per prendere il nome del device coretto
         self.name = self.getName()
-        
-                
+
+
         # self.ip_address = device.device_ip
         # DAMIANO
         self._available = True
-		
+
         _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)",
             self.name,
             self.getId(),
@@ -120,7 +120,7 @@ class DaikinResidentialDevice:
             # # Damiano deccommentato
             #print('AAAA: [{}] [{}]'.format(mp['embeddedId'], mp))
             #_LOGGER.warning('AAAA: [{}] [{}]'.format(mp['embeddedId'], mp))
-            
+
             dataPoints = {}
             for key in mp.keys():
                 dataPoints[key] = {}
@@ -133,7 +133,7 @@ class DaikinResidentialDevice:
                 ):
                     dataPoints[key] = mp[key]
                 else:
-                    # DAMIANO decommentato 
+                    # DAMIANO decommentato
                     #print('TRAVERSE ' + key + ': ' + json.dumps(dataPoints[key]));
                     dataPoints[key] = self._traverseDatapointStructure(
                         mp[key]["value"], {}
@@ -150,7 +150,7 @@ class DaikinResidentialDevice:
         #print('MPS FOUND: [{}]'.format(self.managementPoints.keys()))
         #_LOGGER.warning('MPS FOUND: [{}]'.format(self.managementPoints))
         #_LOGGER.warning('MPS FOUND: [{}]'.format(self.managementPoints.keys()))
-        
+
 
     def getId(self):
         """Get Daikin Device UUID."""
