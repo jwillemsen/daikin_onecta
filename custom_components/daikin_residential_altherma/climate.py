@@ -185,9 +185,9 @@ class DaikinClimate(ClimateEntity):
         """Return the temperature we try to reach."""
         return self._device.target_temperature
 
-    def target_temperature_step(self):
-        """Return the supported step of target temperature."""
-        return self._device.target_temperature_step
+    #def target_temperature_step(self):
+    #    """Return the supported step of target temperature."""
+    #    return self._device.target_temperature_step
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
