@@ -58,7 +58,6 @@ HA_HVAC_TO_DAIKIN = {
     HVAC_MODE_OFF: "off",
 }
 
-
 HA_ATTR_TO_DAIKIN = {
     ATTR_PRESET_MODE: "en_hol",
     ATTR_HVAC_MODE: "mode",
@@ -198,7 +197,7 @@ class DaikinClimate(ClimateEntity):
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
-        
+
         print("DAMIANO trying to Set new target temperature")
         if ATTR_HVAC_MODE in kwargs:
             await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])

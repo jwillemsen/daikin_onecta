@@ -18,6 +18,7 @@ from .const import (
     ATTR_HEAT_TANK_ENERGY,
     ATTR_INSIDE_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
+    ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_HUMIDITY,
@@ -47,6 +48,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         sensor = DaikinSensor.factory(device, ATTR_INSIDE_TEMPERATURE)
         print("DAMIANO append sensor = {}".format(sensor))
         sensors.append(sensor)
+
+        if device.support_room_temperature:
+            sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE)
+            sensors.append(sensor)
 
         if device.support_tank_temperature:
             sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE)
@@ -164,6 +169,9 @@ class DaikinClimateSensor(DaikinSensor):
 
         if self._device_attribute == ATTR_TANK_TEMPERATURE:
             return self._device.tank_temperature
+
+        if self._device_attribute == ATTR_ROOM_TEMPERATURE:
+            return self._device.room_temperature
 
         return None
 

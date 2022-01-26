@@ -11,6 +11,7 @@ from .const import(
     PRESET_SETPOINT_MODE,
     ATTR_INSIDE_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
+    ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
@@ -332,6 +333,17 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def tank_temperature(self):
         """Return tank temperature."""
         fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
+        return fl
+
+    @property
+    def support_room_temperature(self):
+        """Return True if the device supports room temperature measurement."""
+        return self.getData(ATTR_ROOM_TEMPERATURE) is not None
+
+    @property
+    def room_temperature(self):
+        """Return room temperature."""
+        fl = float(self.getValue(ATTR_ROOM_TEMPERATURE))
         return fl
 
     @property
