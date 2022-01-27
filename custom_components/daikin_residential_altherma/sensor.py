@@ -66,7 +66,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
         if device.support_energy_consumption:
             for period in SENSOR_PERIODS:
-                if device.supports_cooling
+                if device.supports_cooling:
                     sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY, period)
                     sensors.append(sensor)
 
