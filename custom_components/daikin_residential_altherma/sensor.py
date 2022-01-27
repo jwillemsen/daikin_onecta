@@ -6,7 +6,12 @@ from homeassistant.const import (
     CONF_TYPE,
     CONF_UNIT_OF_MEASUREMENT,
 )
-from homeassistant.helpers.entity import Entity
+
+from homeassistant.components.sensor import (
+    SensorEntity,
+    STATE_CLASS_MEASUREMENT,
+    STATE_CLASS_TOTAL_INCREASING,
+)
 
 from .daikin_base import Appliance
 
@@ -74,7 +79,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     async_add_entities(sensors)
 
 
-class DaikinSensor(Entity):
+class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
 
     @staticmethod
@@ -83,8 +88,8 @@ class DaikinSensor(Entity):
         #print("DAMIANO monitored_state = %s",monitored_state)
         cls = {
             SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
-            SENSOR_TYPE_POWER: DaikinPowerSensor,
-            SENSOR_TYPE_ENERGY: DaikinPowerSensor,
+            SENSOR_TYPE_POWER: DaikinEnergySensor,
+            SENSOR_TYPE_ENERGY: DaikinEnergySensor,
         }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
         return cls(device, monitored_state, period)
 
@@ -170,8 +175,11 @@ class DaikinClimateSensor(DaikinSensor):
 
         return None
 
+    @property
+    def state_class(self):
+        return STATE_CLASS_MEASUREMENT
 
-class DaikinPowerSensor(DaikinSensor):
+class DaikinEnergySensor(DaikinSensor):
     """Representation of a power/energy consumption sensor."""
 
     @property
@@ -187,3 +195,7 @@ class DaikinPowerSensor(DaikinSensor):
         if self._device_attribute == ATTR_HEAT_TANK_ENERGY:
             return round(self._device.energy_consumption_tank("heating", self._period), 3)
         return None
+
+    @property
+    def state_class(self):
+        return STATE_CLASS_TOTAL_INCREASING
