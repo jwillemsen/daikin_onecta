@@ -269,9 +269,9 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def supports_cooling(self):
         availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
         if "cooling" in availableOperationModes:
-            return true
+            return True
         else:
-            return false
+            return False
 
     @property
     def target_temperature_step(self):
