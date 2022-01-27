@@ -196,7 +196,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     @property
     def support_tank_temperature(self):
-        """Return True if the device supports outsite temperature measurement."""
+        """Return True if the device supports tank temperature measurement."""
         return self.getData(ATTR_TANK_TEMPERATURE) is not None
 
     @property
@@ -218,7 +218,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     @property
     def support_outside_temperature(self):
-        """Return True if the device supports outsite temperature measurement."""
+        """Return True if the device supports outside temperature measurement."""
         return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
 
     @property
