@@ -66,14 +66,18 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
         if device.support_energy_consumption:
             for period in SENSOR_PERIODS:
-                sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY, period)
-                sensors.append(sensor)
+                if device.supports_cooling:
+                    sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY, period)
+                    sensors.append(sensor)
 
                 sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY, period)
                 sensors.append(sensor)
 
-                sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY, period)
-                sensors.append(sensor)
+                # When we don't have a tank temperature we also don't have
+                # tank energy values
+                if device.support_tank_temperature:
+                    sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY, period)
+                    sensors.append(sensor)
 
     #print("DAMIANO add_entities: %s", sensors)
     async_add_entities(sensors)
