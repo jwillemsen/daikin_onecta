@@ -3,14 +3,14 @@
 This work is inspired from Rospogrigio "daikin_residential" repository (https://github.com/rospogrigio/daikin_residential) and modified to support Daikin Altherma 3 Heat Pump.
 
 # WARNING
-This is a first experimental release, tested on my Daikin Altherma 3 (BRP069A78) (installed in July 2021) and Home assistant Portable version for Windows.
-The HA Integration was cloned by Rospogrigio's work, i'm not sure at 100% that is correct and i think that this integrations cannot be cannot coexist in the same home assistant. This can be a goal of next releases...
+This is an experimental integration, tested on some Daikin Altherma 3 (BRP069A78) units.
+The HA Integration was cloned by Rospogrigio's work and can coexisting with the daiking_residential integration.
 
 # Installation using HACS:
 
 Open "HACS" section then "Integrations" and click on three points menu at top right. Click on "custom reporitories" and add "https://github.com/speleolontra/daikin_residential_altherma" as integration category.
 this will copy the "daikin_residential_altherma" folder in the "custom_components" folder of Home Assistant.
-Make sure tu restart home Assistant, then go to "Using config flow" chapter.
+Make sure to restart home Assistant, then go to "Using config flow" chapter.
 
 # Manual Installation
 
@@ -38,7 +38,6 @@ This code is based on @Rospogrigio's work that in turn is based on @Apollon77 's
 
 # Next steps
 
-- Evaluate an unique integration with @Rospogrigio for both device Air Conditioning and Heat Punp.
 - Better manage of climate entity (Target temperature doesn't exist on Heat Pumps)
 - Insert other read only parameter
 - Way to measure COP and SCOP.
