@@ -21,11 +21,11 @@ from .const import (
     ATTR_COOL_ENERGY,
     ATTR_HEAT_ENERGY,
     ATTR_HEAT_TANK_ENERGY,
-    ATTR_INSIDE_TEMPERATURE,
+    ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
+    ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
     SENSOR_TYPE_ENERGY,
-    SENSOR_TYPE_HUMIDITY,
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
     SENSOR_PERIODS,
@@ -49,9 +49,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        sensor = DaikinSensor.factory(device, ATTR_INSIDE_TEMPERATURE)
-        print("DAMIANO append sensor = {}".format(sensor))
+        sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE)
         sensors.append(sensor)
+
+        if device.support_room_temperature:
+            sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE)
+            sensors.append(sensor)
 
         if device.support_tank_temperature:
             sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE)
@@ -85,7 +88,6 @@ class DaikinSensor(SensorEntity):
         #print("DAMIANO monitored_state = %s",monitored_state)
         cls = {
             SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
-            SENSOR_TYPE_HUMIDITY: DaikinClimateSensor,
             SENSOR_TYPE_POWER: DaikinEnergySensor,
             SENSOR_TYPE_ENERGY: DaikinEnergySensor,
         }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
@@ -159,16 +161,17 @@ class DaikinClimateSensor(DaikinSensor):
     @property
     def state(self):
         """Return the internal state of the sensor."""
-        if self._device_attribute == ATTR_INSIDE_TEMPERATURE:
-            #DAMIANO
-            # return self._device.inside_temperature
-            return self._device.leavingWaterTemperature
+        if self._device_attribute == ATTR_LEAVINGWATER_TEMPERATURE:
+            return self._device.leaving_water_temperature
 
         if self._device_attribute == ATTR_OUTSIDE_TEMPERATURE:
             return self._device.outside_temperature
 
         if self._device_attribute == ATTR_TANK_TEMPERATURE:
             return self._device.tank_temperature
+
+        if self._device_attribute == ATTR_ROOM_TEMPERATURE:
+            return self._device.room_temperature
 
         return None
 
