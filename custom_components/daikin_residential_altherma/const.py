@@ -37,6 +37,7 @@ DP_OPERATION_MODE = "operationMode"
 DP_SENSORS = "sensoryData"
 DP_TEMPERATURE = "temperatureControl"
 DP_CONSUMPTION = "consumptionData"
+DP_CONTROL_MODE = "controlMode"
 
 # DAMIANO HEAT PUMP ALTHERMA
 
@@ -55,6 +56,25 @@ ATTR_ENERGY_CONSUMPTION_TANK = "energy_consumption_tank"
 ATTR_COOL_ENERGY = "cool_energy"
 ATTR_HEAT_ENERGY = "heat_energy"
 ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
+ATTR_SETPOINT_MODE = "setpointMode"
+ATTR_TANK_SETPOINT_MODE = "@TanksetpointMode"
+ATTR_CONTROL_MODE = "controlMode"
+ATTR_IS_HOLIDAY_MODE_ACTIVE = "isHolidayModeActive"
+ATTR_IS_IN_EMERGENCY_STATE = "isInEmergencyState"
+ATTR_IS_IN_ERROR_STATE = "isInErrorState"
+ATTR_IS_IN_INSTALLER_STATE = "isInInstallerState"
+ATTR_IS_IN_WARNING_STATE = "isInWarningState"
+ATTR_TANK_HEATUP_MODE = "heatupMode"
+ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE = "@TankisHolidayModeActive"
+ATTR_TANK_IS_IN_EMERGENCY_STATE = "@TankisInEmergencyState"
+ATTR_TANK_IS_IN_ERROR_STATE = "@TankisInErrorState"
+ATTR_TANK_IS_IN_INSTALLER_STATE = "@TankisInInstallerState"
+ATTR_TANK_IS_IN_WARNING_STATE = "@TankisInWarningState"
+ATTR_TANK_IS_POWERFUL_MODE_ACTIVE = "@TankisPowerfulModeActive"
+    
+
+
+
 
 DAIKIN_CMD_SETS = {
     #ATTR_ON_OFF: [MP_CLIMATE, DP_ON_OFF, "onOffMode"],
@@ -72,7 +92,24 @@ DAIKIN_CMD_SETS = {
         "/operationModes/%operationMode%/setpoints/roomTemperature",
     ],
     ATTR_ENERGY_CONSUMPTION: [MP_CLIMATE, DP_CONSUMPTION, "/electrical"],
-    ATTR_ENERGY_CONSUMPTION_TANK: [MP_DOMESTIC_HWT, DP_CONSUMPTION, "/electrical"]
+    ATTR_ENERGY_CONSUMPTION_TANK: [MP_DOMESTIC_HWT, DP_CONSUMPTION, "/electrical"],
+    ATTR_SETPOINT_MODE: [MP_CLIMATE, "setpointMode", ""],
+    ATTR_TANK_SETPOINT_MODE: [MP_DOMESTIC_HWT, "@TanksetpointMode", ""],
+    ATTR_CONTROL_MODE: [MP_CLIMATE, DP_CONTROL_MODE, ""],
+    # FLAG HEAT PUMP
+    ATTR_IS_HOLIDAY_MODE_ACTIVE: [MP_CLIMATE, "isHolidayModeActive", ""],
+    ATTR_IS_IN_EMERGENCY_STATE: [MP_CLIMATE, "isInEmergencyState", ""],
+    ATTR_IS_IN_ERROR_STATE: [MP_CLIMATE, "isInErrorState", ""],
+    ATTR_IS_IN_INSTALLER_STATE: [MP_CLIMATE, "isInInstallerState", ""],
+    ATTR_IS_IN_WARNING_STATE: [MP_CLIMATE, "isInWarningState", ""],
+    #  FLAG HOT WATER TANK
+    ATTR_TANK_HEATUP_MODE: [MP_DOMESTIC_HWT, "heatupMode", ""],
+    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisHolidayModeActive", ""],
+    ATTR_TANK_IS_IN_EMERGENCY_STATE: [MP_DOMESTIC_HWT, "@TankisInEmergencyState", ""],
+    ATTR_TANK_IS_IN_ERROR_STATE: [MP_DOMESTIC_HWT, "@TankisInErrorState", ""],
+    ATTR_TANK_IS_IN_INSTALLER_STATE: [MP_DOMESTIC_HWT, "@TankisInInstallerState", ""],
+    ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
+    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisPowerfulModeActive", ""],
 }
 
 ATTR_STATE_ON = "on"
@@ -81,7 +118,6 @@ ATTR_STATE_OFF = "off"
 PRESET_BOOST= "boost"
 PRESET_TANK_ONOFF= "ACS_state"
 PRESET_SETPOINT_MODE = "setpointMode"
-# DAMIANO
 DAIKIN_SWITCHES = [PRESET_BOOST,PRESET_TANK_ONOFF,] #PRESET_SETPOINT_MODE
 DAIKIN_SWITCHES_ICONS ={PRESET_BOOST:'mdi:bike-fast',PRESET_TANK_ONOFF: 'mdi:bathtub-outline',PRESET_SETPOINT_MODE:'mdi:thermometer-lines'}
 SWITCH_DEFAULT_ICON = "hass:air-filter"
@@ -89,7 +125,7 @@ SWITCH_DEFAULT_ICON = "hass:air-filter"
 SENSOR_TYPE_TEMPERATURE = "temperature"
 SENSOR_TYPE_POWER = "power"
 SENSOR_TYPE_ENERGY = "energy"
-SENSOR_TYPE_INFO = "info"
+SENSOR_TYPE_INFO = None
 SENSOR_PERIOD_DAILY = "d"
 SENSOR_PERIOD_WEEKLY = "w"
 SENSOR_PERIOD_YEARLY = "m"
@@ -146,6 +182,111 @@ SENSOR_TYPES = {
         CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
     },
+    ATTR_SETPOINT_MODE: {
+        CONF_NAME: "Info Setpoint Mode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_SETPOINT_MODE: {
+        CONF_NAME: "Info Tank Setpoint Mode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_CONTROL_MODE: {
+        CONF_NAME: "Info Control Mode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_IS_HOLIDAY_MODE_ACTIVE: {
+        CONF_NAME: "Info is Holiday Mode Active",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },    
+    ATTR_IS_IN_EMERGENCY_STATE: {
+        CONF_NAME: "Info is In Emergency State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_IS_IN_ERROR_STATE: {
+        CONF_NAME: "Info is In Error State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_IS_IN_INSTALLER_STATE: {
+        CONF_NAME: "Info is InInstaller State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_IS_IN_WARNING_STATE: {
+        CONF_NAME: "Info is In Warning State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_HEATUP_MODE:{
+        CONF_NAME: "Info heatupMode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: {
+        CONF_NAME: "Info Tank is Holiday Mode Active",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },    
+    ATTR_TANK_IS_IN_EMERGENCY_STATE: {
+        CONF_NAME: "Info Tank is In Emergency State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_IS_IN_ERROR_STATE: {
+        CONF_NAME: "Info Tank is In Error State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_IS_IN_INSTALLER_STATE: {
+        CONF_NAME: "Info Tank is InInstaller State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_IS_IN_WARNING_STATE: {
+        CONF_NAME: "Info Tank is In Warning State",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: {
+        CONF_NAME: "Info Tank is Powerful Mode Active",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    }
 }
 
 CONF_UUID = "uuid"

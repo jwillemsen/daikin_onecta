@@ -1,4 +1,6 @@
 """Support for Daikin AC sensors."""
+
+from unicodedata import name
 from homeassistant.const import (
     CONF_DEVICE_CLASS,
     CONF_ICON,
@@ -25,9 +27,25 @@ from .const import (
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
+    ATTR_SETPOINT_MODE,
+    ATTR_TANK_SETPOINT_MODE,
+    ATTR_CONTROL_MODE,
+    ATTR_IS_HOLIDAY_MODE_ACTIVE,
+    ATTR_IS_IN_EMERGENCY_STATE,
+    ATTR_IS_IN_ERROR_STATE,
+    ATTR_IS_IN_INSTALLER_STATE,
+    ATTR_IS_IN_WARNING_STATE,
+    ATTR_TANK_HEATUP_MODE,
+    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
+    ATTR_TANK_IS_IN_EMERGENCY_STATE,
+    ATTR_TANK_IS_IN_ERROR_STATE,
+    ATTR_TANK_IS_IN_INSTALLER_STATE,
+    ATTR_TANK_IS_IN_WARNING_STATE,
+    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
+    SENSOR_TYPE_INFO,
     SENSOR_PERIODS,
     SENSOR_TYPES,
 )
@@ -49,36 +67,160 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE)
+        sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
         sensors.append(sensor)
 
         if device.support_room_temperature:
-            sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE)
+            sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE,"")
             sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports room_temperature")
 
         if device.support_tank_temperature:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE)
+            sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE,"")
             sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports tank_temperature")
 
         if device.support_outside_temperature:
-            sensor = DaikinSensor.factory(device, ATTR_OUTSIDE_TEMPERATURE)
+            sensor = DaikinSensor.factory(device, ATTR_OUTSIDE_TEMPERATURE,"")
             sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports outside_temperature")
 
         if device.support_energy_consumption:
             for period in SENSOR_PERIODS:
                 if device.supports_cooling:
-                    sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY, period)
+                    sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY,"", period)
+                    _LOGGER.debug("append sensor = %s", sensor)
                     sensors.append(sensor)
+                else:
+                    _LOGGER.debug("device NOT supports_cooling")
 
-                sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY, period)
+                sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY,"", period)
                 sensors.append(sensor)
 
                 # When we don't have a tank temperature we also don't have
                 # tank energy values
                 if device.support_tank_temperature:
-                    sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY, period)
+                    sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
+                    _LOGGER.debug("append sensor = %s", sensor)
                     sensors.append(sensor)
+                else:
+                    _LOGGER.debug("device NOT support_tank_temperature")
+        else:
+            _LOGGER.debug("device NOT supports energy_consumption")
 
+        if device.support_setpoint_mode:
+            sensor = DaikinSensor.factory(device, ATTR_SETPOINT_MODE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT support_control_mode", sensor)
+            
+        if device.support_tank_setpoint_mode:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_SETPOINT_MODE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT support_control_mode", sensor)
+
+        if device.support_control_mode:
+            sensor = DaikinSensor.factory(device, ATTR_CONTROL_MODE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT support_control_mode", sensor)
+
+        if device.support_is_holiday_mode_active:
+            sensor = DaikinSensor.factory(device, ATTR_IS_HOLIDAY_MODE_ACTIVE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_holiday_mode_active")
+
+        if device.support_is_in_emergency_state:
+            sensor = DaikinSensor.factory(device, ATTR_IS_IN_EMERGENCY_STATE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_emergency_state")
+
+        if device.support_is_in_error_state:
+            sensor = DaikinSensor.factory(device, ATTR_IS_IN_ERROR_STATE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_error_state")
+
+        if device.support_is_in_installer_state:
+            sensor = DaikinSensor.factory(device, ATTR_IS_IN_INSTALLER_STATE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_installer_state")
+
+        if device.support_is_in_warning_state:
+            sensor = DaikinSensor.factory(device, ATTR_IS_IN_WARNING_STATE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_warning_state")
+
+        #heatup
+        if device.support_heatupMode:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_HEATUP_MODE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_warning_state")
+
+        # TANK
+        # TODO: ripartire da qui
+        if device.support_tank_is_holiday_mode_active:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,"TANK")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_holiday_mode_active")
+
+        if device.support_tank_is_in_emergency_state:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_EMERGENCY_STATE,"TANK")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_emergency_state")
+
+        if device.support_tank_is_in_error_state:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_ERROR_STATE,"TANK")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_error_state")
+
+        if device.support_tank_is_in_installer_state:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_INSTALLER_STATE,"TANK")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_installer_state")
+
+        if device.support_tank_is_in_warning_state:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_WARNING_STATE,"TANK")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_in_warning_state")
+
+        if device.support_tank_is_powerful_mode_active:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"TANK")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.debug("device NOT supports is_powerful_mode_active")
+
+    #for s in sensors:
+    #    print("{} - {}".format(s.name,s.unique_id))
     #print("DAMIANO add_entities: %s", sensors)
     async_add_entities(sensors)
 
@@ -87,17 +229,25 @@ class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
 
     @staticmethod
-    def factory(device: Appliance, monitored_state: str, period=""):
+    def factory(device: Appliance, monitored_state: str, type, period=""):
         """Initialize any DaikinSensor."""
-        #print("DAMIANO monitored_state = %s",monitored_state)
-        cls = {
-            SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
-            SENSOR_TYPE_POWER: DaikinEnergySensor,
-            SENSOR_TYPE_ENERGY: DaikinEnergySensor,
-        }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
-        return cls(device, monitored_state, period)
+        try:
+            # DAMIANO
+            #monitored_state = monitored_state.replace("T-@Tank","")
+            print(type)
+            cls = {
+                SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
+                SENSOR_TYPE_POWER: DaikinEnergySensor,
+                SENSOR_TYPE_ENERGY: DaikinEnergySensor,
+                SENSOR_TYPE_INFO: DaikinInfoSensor,
+            }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
+            return cls(device, monitored_state,type, period)
+        except Exception as error:
+            print("error: " + error)
+            _LOGGER.error("%s", format(error))
+            return
 
-    def __init__(self, device: Appliance, monitored_state: str, period="") -> None:
+    def __init__(self, device: Appliance, monitored_state: str, type,  period="") -> None:
         """Initialize the sensor."""
         self._device = device
         self._sensor = SENSOR_TYPES[monitored_state]
@@ -106,7 +256,13 @@ class DaikinSensor(SensorEntity):
             periodName = SENSOR_PERIODS[period]
             self._name = f"{device.name} {periodName} {self._sensor[CONF_NAME]}"
         else:
-            self._name = f"{device.name} {self._sensor[CONF_NAME]}"
+            if type == '':
+                # Name for Heat Pump Flags
+                self._name = f"{device.name} {self._sensor[CONF_NAME]}"
+            elif type == 'TANK':
+                # Name for Hot Water Tank Flags
+                #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
+                self._name = f"{device.name} {self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
         print("  DAMIANO Initialized sensor: {}".format(self._name))
 
@@ -149,15 +305,80 @@ class DaikinSensor(SensorEntity):
         uom = self._sensor[CONF_UNIT_OF_MEASUREMENT]
         return uom
 
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()
-
     @property
     def device_info(self):
         """Return a device description for device registry."""
         return self._device.device_info()
 
+    '''
+    @property
+    def state(self):
+        """Return the internal state of the sensor."""
+        if self._device_attribute == ATTR_CONTROL_MODE:
+            return self._device.control_mode
+        return None
+    '''
+
+    async def async_update(self):
+        """Retrieve latest state."""
+        await self._device.api.async_update()
+
+class DaikinInfoSensor(DaikinSensor):
+    """Representation of a Climate Sensor."""
+
+    @property
+    def state(self):
+        """Return the internal state of the sensor."""
+
+        if self._device_attribute == ATTR_SETPOINT_MODE:
+            return self._device.control_mode
+
+        if self._device_attribute == ATTR_TANK_SETPOINT_MODE:
+            return self._device.control_mode
+
+        if self._device_attribute == ATTR_CONTROL_MODE:
+            return self._device.control_mode
+
+        if self._device_attribute == ATTR_IS_HOLIDAY_MODE_ACTIVE:
+            return self._device.is_holiday_mode_active
+
+        if self._device_attribute == ATTR_IS_IN_EMERGENCY_STATE:
+            return self._device.is_in_emergency_state
+
+        if self._device_attribute == ATTR_IS_IN_ERROR_STATE:
+            return self._device.is_in_error_state
+
+        if self._device_attribute == ATTR_IS_IN_INSTALLER_STATE:
+            return self._device.is_in_installer_state
+
+        if self._device_attribute == ATTR_IS_IN_WARNING_STATE:
+            return self._device.is_in_warning_state
+
+        if self._device_attribute == ATTR_TANK_HEATUP_MODE:
+            return self._device.heatupMode            
+
+        if self._device_attribute == ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE:
+            return self._device.tank_is_holiday_mode_active
+
+        if self._device_attribute == ATTR_TANK_IS_IN_EMERGENCY_STATE:
+            return self._device.tank_is_in_emergency_state
+
+        if self._device_attribute == ATTR_TANK_IS_IN_ERROR_STATE:
+            return self._device.tank_is_in_error_state
+
+        if self._device_attribute == ATTR_TANK_IS_IN_INSTALLER_STATE:
+            return self._device.tank_is_in_installer_state
+
+        if self._device_attribute == ATTR_TANK_IS_IN_WARNING_STATE:
+            return self._device.tank_is_in_warning_state
+
+        if self._device_attribute == ATTR_TANK_IS_POWERFUL_MODE_ACTIVE:
+            return self._device.tank_is_powerful_mode_active
+        return None
+
+    @property
+    def state_class(self):
+        return STATE_CLASS_MEASUREMENT
 
 class DaikinClimateSensor(DaikinSensor):
     """Representation of a Climate Sensor."""
