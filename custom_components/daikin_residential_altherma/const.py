@@ -225,7 +225,7 @@ SENSOR_TYPES = {
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_IS_IN_INSTALLER_STATE: {
-        CONF_NAME: "Info is InInstaller State",
+        CONF_NAME: "Info is In Installer State",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
@@ -267,7 +267,7 @@ SENSOR_TYPES = {
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_TANK_IS_IN_INSTALLER_STATE: {
-        CONF_NAME: "Info Tank is InInstaller State",
+        CONF_NAME: "Info Tank is In Installer State",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
