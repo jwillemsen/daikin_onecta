@@ -171,7 +171,7 @@ SENSOR_TYPES = {
     ATTR_HEAT_ENERGY: {
         CONF_NAME: "Heat Energy Consumption",
         CONF_TYPE: SENSOR_TYPE_ENERGY,
-        CONF_ICON: "mdi:waves-arrow-up",
+        CONF_ICON: "mdi:fire",
         CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
     },
