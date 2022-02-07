@@ -331,10 +331,10 @@ class DaikinInfoSensor(DaikinSensor):
         """Return the internal state of the sensor."""
         print("state")
         if self._device_attribute == ATTR_SETPOINT_MODE:
-            return self._device.control_mode
+            return self._device.setpoint_mode
 
         if self._device_attribute == ATTR_TANK_SETPOINT_MODE:
-            return self._device.control_mode
+            return self._device.tank_setpoint_mode
 
         if self._device_attribute == ATTR_CONTROL_MODE:
             return self._device.control_mode
