@@ -187,6 +187,16 @@ class DaikinResidentialDevice:
             # return all data
             return self.managementPoints
 
+        # DAMIANO Control_mode
+        if dataPoint == "controlMode" and dataPointPath == "":
+            # return data from one managementPoint and dataPoint
+            return self.managementPoints[managementPoint][dataPoint]
+
+        # DAMIANO heatupMode
+        if dataPoint == "heatupMode" and dataPointPath == "":
+            # return data from one managementPoint and dataPoint
+            return self.managementPoints[managementPoint][dataPoint]
+
         if managementPoint not in self.managementPoints:
             #print("DAMIANO MNGP device.py managementPoint = %s",managementPoint)
             return None
