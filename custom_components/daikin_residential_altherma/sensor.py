@@ -35,6 +35,8 @@ from .const import (
     ATTR_IS_IN_ERROR_STATE,
     ATTR_IS_IN_INSTALLER_STATE,
     ATTR_IS_IN_WARNING_STATE,
+    ATTR_ERROR_CODE,
+    #TANK
     ATTR_TANK_HEATUP_MODE,
     ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
     ATTR_TANK_IS_IN_EMERGENCY_STATE,
@@ -42,6 +44,7 @@ from .const import (
     ATTR_TANK_IS_IN_INSTALLER_STATE,
     ATTR_TANK_IS_IN_WARNING_STATE,
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
+    ATTR_TANK_ERROR_CODE,
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
@@ -167,6 +170,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
 
+        if device.support_error_code:
+            sensor = DaikinSensor.factory(device, ATTR_ERROR_CODE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
+
+
         #heatup
         if device.support_heatupMode:
             sensor = DaikinSensor.factory(device, ATTR_TANK_HEATUP_MODE,"")
@@ -213,15 +224,19 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
 
         if device.support_tank_is_powerful_mode_active:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"TANK")
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_powerful_mode_active")
 
-    #for s in sensors:
-    #    print("{} - {}".format(s.name,s.unique_id))
-    #print("DAMIANO add_entities: %s", sensors)
+        if device.support_tank_error_code:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
+            sensors.append(sensor)
+        else:
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank error code")
+
     async_add_entities(sensors)
 
 
@@ -234,7 +249,6 @@ class DaikinSensor(SensorEntity):
         try:
             # DAMIANO
             #monitored_state = monitored_state.replace("T-@Tank","")
-            print(type)
             cls = {
                 SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
                 SENSOR_TYPE_POWER: DaikinEnergySensor,
@@ -354,6 +368,9 @@ class DaikinInfoSensor(DaikinSensor):
         if self._device_attribute == ATTR_IS_IN_WARNING_STATE:
             return self._device.is_in_warning_state
 
+        if self._device_attribute == ATTR_ERROR_CODE:
+            return self._device.error_code
+
         if self._device_attribute == ATTR_TANK_HEATUP_MODE:
             return self._device.heatupMode            
 
@@ -374,6 +391,9 @@ class DaikinInfoSensor(DaikinSensor):
 
         if self._device_attribute == ATTR_TANK_IS_POWERFUL_MODE_ACTIVE:
             return self._device.tank_is_powerful_mode_active
+
+        if self._device_attribute == ATTR_TANK_ERROR_CODE:
+            return self._device.tank_error_code
         return None
 
     @property

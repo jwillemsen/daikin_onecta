@@ -5,6 +5,7 @@ import logging
 from .device import DaikinResidentialDevice
 
 from .const import(
+    ATTR_TANK_ERROR_CODE,
     PRESET_BOOST,
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
@@ -30,6 +31,7 @@ from .const import(
     ATTR_IS_IN_ERROR_STATE,
     ATTR_IS_IN_INSTALLER_STATE,
     ATTR_IS_IN_WARNING_STATE,
+    ATTR_ERROR_CODE,
     # TANK
     ATTR_TANK_HEATUP_MODE,
     ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
@@ -38,6 +40,7 @@ from .const import(
     ATTR_TANK_IS_IN_INSTALLER_STATE,
     ATTR_TANK_IS_IN_WARNING_STATE,
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
+    ATTR_TANK_ERROR_CODE,
 )
 
 from homeassistant.components.climate.const import (
@@ -433,6 +436,16 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return current is_in_warning_state."""
         return self.getValue(ATTR_IS_IN_WARNING_STATE)
 
+    @property   # ATTR_ERROR_CODE
+    def support_error_code(self):
+        """Return True if the device supports error code."""
+        return self.getData(ATTR_ERROR_CODE) is not None
+
+    @property   
+    def error_code(self):
+        """Return current error code."""
+        return self.getValue(ATTR_ERROR_CODE)
+
     @property   # ATTR_TANK_HEATUP_MODE
     def support_heatupMode(self):
         """Return True if the device supports heatupMode."""
@@ -508,6 +521,18 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return current flag: is_powerful_mode_active"""
         return self.getValue(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE)
 
+    @property   # ATTR_TANK_ERROR_CODE
+    def support_tank_error_code(self):
+        """Return True if the device supports tank error code."""
+        return self.getData(ATTR_TANK_ERROR_CODE) is not None
+
+    @property   
+    def tank_error_code(self):
+        """Return current tank error code."""
+        return self.getValue(ATTR_TANK_ERROR_CODE)
+
+
     async def set(self, settings):
         """Set settings on Daikin device."""
         raise NotImplementedError
+

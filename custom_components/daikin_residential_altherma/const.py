@@ -59,18 +59,22 @@ ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
 ATTR_SETPOINT_MODE = "setpointMode"
 ATTR_TANK_SETPOINT_MODE = "@TanksetpointMode"
 ATTR_CONTROL_MODE = "controlMode"
+
 ATTR_IS_HOLIDAY_MODE_ACTIVE = "isHolidayModeActive"
 ATTR_IS_IN_EMERGENCY_STATE = "isInEmergencyState"
 ATTR_IS_IN_ERROR_STATE = "isInErrorState"
 ATTR_IS_IN_INSTALLER_STATE = "isInInstallerState"
 ATTR_IS_IN_WARNING_STATE = "isInWarningState"
+ATTR_ERROR_CODE = "errorCode"
+
 ATTR_TANK_HEATUP_MODE = "heatupMode"
 ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE = "@TankisHolidayModeActive"
 ATTR_TANK_IS_IN_EMERGENCY_STATE = "@TankisInEmergencyState"
 ATTR_TANK_IS_IN_ERROR_STATE = "@TankisInErrorState"
 ATTR_TANK_IS_IN_INSTALLER_STATE = "@TankisInInstallerState"
 ATTR_TANK_IS_IN_WARNING_STATE = "@TankisInWarningState"
-ATTR_TANK_IS_POWERFUL_MODE_ACTIVE = "@TankisPowerfulModeActive"
+ATTR_TANK_IS_POWERFUL_MODE_ACTIVE = "isPowerfulModeActive"
+ATTR_TANK_ERROR_CODE = "@TankErrorCode"
     
 
 
@@ -102,6 +106,7 @@ DAIKIN_CMD_SETS = {
     ATTR_IS_IN_ERROR_STATE: [MP_CLIMATE, "isInErrorState", ""],
     ATTR_IS_IN_INSTALLER_STATE: [MP_CLIMATE, "isInInstallerState", ""],
     ATTR_IS_IN_WARNING_STATE: [MP_CLIMATE, "isInWarningState", ""],
+    ATTR_ERROR_CODE: [MP_CLIMATE, "errorCode", ""],
     #  FLAG HOT WATER TANK
     ATTR_TANK_HEATUP_MODE: [MP_DOMESTIC_HWT, "heatupMode", ""],
     ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisHolidayModeActive", ""],
@@ -109,7 +114,8 @@ DAIKIN_CMD_SETS = {
     ATTR_TANK_IS_IN_ERROR_STATE: [MP_DOMESTIC_HWT, "@TankisInErrorState", ""],
     ATTR_TANK_IS_IN_INSTALLER_STATE: [MP_DOMESTIC_HWT, "@TankisInInstallerState", ""],
     ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
-    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisPowerfulModeActive", ""],
+    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "isPowerfulModeActive", ""],
+    ATTR_TANK_ERROR_CODE: [MP_DOMESTIC_HWT, "errorCode", ""],
 }
 
 ATTR_STATE_ON = "on"
@@ -238,6 +244,13 @@ SENSOR_TYPES = {
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
+    ATTR_ERROR_CODE: {
+        CONF_NAME: "Info Error Code",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
     ATTR_TANK_HEATUP_MODE:{
         CONF_NAME: "Info heatupMode",
         CONF_TYPE: None,
@@ -286,7 +299,14 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
-    }
+    },
+        ATTR_TANK_ERROR_CODE: {
+        CONF_NAME: "Info Tank Error Code",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
 }
 
 CONF_UUID = "uuid"
