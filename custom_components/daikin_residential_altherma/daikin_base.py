@@ -64,7 +64,7 @@ HA_PRESET_TO_DAIKIN = {
     PRESET_COMFORT: "comfortMode",
     PRESET_ECO: "econoMode",
     PRESET_TANK_ONOFF: "onOffMode",
-    PRESET_SETPOINT_MODE: "setpointMode"
+    #PRESET_SETPOINT_MODE: "setpointMode" DAMIANO
 }
 
 DAIKIN_HVAC_TO_HA = {
@@ -92,8 +92,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         raise NotImplementedError
 
     def getCommandSet(self, param):
-        #print("DAMIANO getCommandSet param = %s",param)
-
         if param in HA_PRESET_TO_DAIKIN.values():
             def keyByVal(dict,v):
                 for k, v in dict.items():
@@ -441,9 +439,9 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return self.getData(ATTR_TANK_HEATUP_MODE) is not None
 
     @property   
-    def is_in_warning_state(self):
+    def heatupMode(self):
         """Return current heatupMode."""
-        return self.getValue(ATTR_IS_IN_WARNING_STATE)        
+        return self.getValue(ATTR_TANK_HEATUP_MODE)        
 
     @property   # ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE
     def support_tank_is_holiday_mode_active(self):

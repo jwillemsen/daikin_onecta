@@ -187,8 +187,13 @@ class DaikinResidentialDevice:
             # return all data
             return self.managementPoints
 
-        # DAMIANO Control_mode
+        # DAMIANO control_mode
         if dataPoint == "controlMode" and dataPointPath == "":
+            # return data from one managementPoint and dataPoint
+            return self.managementPoints[managementPoint][dataPoint]
+
+        # DAMIANO setpoint_mode
+        if dataPoint == "setpointMode" and dataPointPath == "":
             # return data from one managementPoint and dataPoint
             return self.managementPoints[managementPoint][dataPoint]
 
