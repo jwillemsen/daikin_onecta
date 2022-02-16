@@ -342,6 +342,7 @@ class DaikinSensor(SensorEntity):
             ATTR_SETPOINT_MODE,
             ATTR_TANK_SETPOINT_MODE,
             ATTR_CONTROL_MODE,
+            ATTR_IS_HOLIDAY_MODE_ACTIVE,
             ATTR_TANK_HEATUP_MODE,
             ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
             ATTR_TANK_IS_POWERFUL_MODE_ACTIVE
