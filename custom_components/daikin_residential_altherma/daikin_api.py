@@ -478,19 +478,19 @@ class DaikinApi:
 
     async def getCloudDevices(self):
         """Get array of DaikinResidentialDevice objects and get their data."""
-        json_data = await self.getCloudDeviceDetails()
+        self.json_data = await self.getCloudDeviceDetails()
 
         # DAMIANO Export JSON
         try:
             jsonPath = self.hass.config.path("daikin_data.json")
             with open(jsonPath, 'w') as jsonFile:
-                json.dump(json_data, jsonFile, indent=4, sort_keys=True)
+                json.dump(self.json_data, jsonFile, indent=4, sort_keys=True)
                 #_LOGGER.info("Damiano export 2  ok")
         except Exception as e:
             _LOGGER.error("DAMIANO - export 2 error '%s'", e)
 
         res = {}
-        for dev_data in json_data or []:
+        for dev_data in self.json_data or []:
             device = Appliance(dev_data, self)
             #DAMIANO
             #_LOGGER.warning("DAMIANO daikin_api.py - deviceobj '%s'", str(dev_data))
@@ -513,8 +513,8 @@ class DaikinApi:
         """Pull the latest data from Daikin."""
         _LOGGER.debug("API UPDATE")
 
-        json_data = await self.getCloudDeviceDetails()
-        for dev_data in json_data or []:
+        self.json_data = await self.getCloudDeviceDetails()
+        for dev_data in self.json_data or []:
             #print("DAMIANO dev_data %s", dev_data)
             #print("DAMIANO 'self.hass.data[DOMAIN][DAIKIN_DEVICES]' %s", self.hass.data[DOMAIN][DAIKIN_DEVICES])
 
