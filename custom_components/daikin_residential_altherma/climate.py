@@ -17,6 +17,7 @@ from homeassistant.components.climate.const import (
     PRESET_ECO,
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
+    #SUPPORT_TARGET_TEMPERATURE_RANGE,
     SUPPORT_PRESET_MODE,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
@@ -28,6 +29,7 @@ from .const import (
     ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
+    ATTR_LEAVINGWATER_OFFSET,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
     ATTR_STATE_OFF,
@@ -92,6 +94,8 @@ class DaikinClimate(ClimateEntity):
         # can control that
         if self._device.support_room_temperature:
             self._supported_features = SUPPORT_TARGET_TEMPERATURE
+        elif self._device.support_leaving_water_offset:
+            self._supported_features = SUPPORT_TARGET_TEMPERATURE
         else:
             self._supported_features = 0
 
@@ -127,6 +131,8 @@ class DaikinClimate(ClimateEntity):
                 try:
                     if self._device.support_room_temperature:
                           values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value))
+                    if self._device.support_leaving_water_offset:
+                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_OFFSET]] = str(int(value))
                     else:
                           values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
                 except ValueError:
@@ -168,8 +174,11 @@ class DaikinClimate(ClimateEntity):
         # At the moment the device supports a separate
         # room temperature do return that
         if self._device.support_room_temperature:
-          return self._device.room_temperature
-        return self._device.leaving_water_temperature
+            return self._device.room_temperature
+        if self._device.support_leaving_water_offset:
+            return self._device.leaving_water_offset
+        else: 
+            return self._device.leaving_water_temperature
 
     @property
     def max_temp(self):
@@ -184,7 +193,14 @@ class DaikinClimate(ClimateEntity):
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
-        return self._device.target_temperature
+        if self._device.support_room_temperature:
+            return self._device.target_temperature
+
+        if self._device.support_leaving_water_offset:
+            return self._device.leaving_water_offset
+            
+        else: 
+            return None
 
     @property
     def target_temperature_step(self):
@@ -200,6 +216,8 @@ class DaikinClimate(ClimateEntity):
             await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
 
         await self._device.async_set_temperature(kwargs[ATTR_TEMPERATURE])
+        # ADDED for instant update
+        await self._device.api.async_update()
 
     @property
     def hvac_mode(self):

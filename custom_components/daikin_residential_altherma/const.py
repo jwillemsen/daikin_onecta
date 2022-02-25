@@ -50,6 +50,7 @@ ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
 ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
 ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
+ATTR_LEAVINGWATER_OFFSET = "leavingWaterOffset"
 ATTR_TANK_TEMPERATURE = "tankTemperature"
 ATTR_ENERGY_CONSUMPTION = "energy_consumption"
 ATTR_ENERGY_CONSUMPTION_TANK = "energy_consumption_tank"
@@ -88,6 +89,7 @@ DAIKIN_CMD_SETS = {
     ATTR_OPERATION_MODE: [MP_CLIMATE, DP_OPERATION_MODE, ""],
     ATTR_OUTSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/outdoorTemperature"],
     ATTR_ROOM_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/roomTemperature"],
+    ATTR_LEAVINGWATER_OFFSET: [MP_CLIMATE, DP_TEMPERATURE, "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
     ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
     ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
     ATTR_TARGET_ROOM_TEMPERATURE: [
@@ -160,6 +162,13 @@ SENSOR_TYPES = {
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
     },
+    ATTR_LEAVINGWATER_OFFSET: {
+        CONF_NAME: "Leaving Water Offset",
+        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
+        CONF_ICON: "mdi:cursor-pointer",
+        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+    },    
     ATTR_TANK_TEMPERATURE: {
         CONF_NAME: "Tank Temperature",
         CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
