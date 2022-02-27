@@ -24,6 +24,7 @@ from .const import (
     ATTR_HEAT_ENERGY,
     ATTR_HEAT_TANK_ENERGY,
     ATTR_LEAVINGWATER_TEMPERATURE,
+    ATTR_LEAVINGWATER_OFFSET,
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
@@ -71,6 +72,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
+        sensors.append(sensor)
+
+        sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
         sensors.append(sensor)
 
         if device.support_room_temperature:
@@ -383,7 +387,6 @@ class DaikinInfoSensor(DaikinSensor):
     @property
     def state(self):
         """Return the internal state of the sensor."""
-        print("state")
         if self._device_attribute == ATTR_SETPOINT_MODE:
             return self._device.setpoint_mode
 
@@ -448,6 +451,9 @@ class DaikinClimateSensor(DaikinSensor):
         """Return the internal state of the sensor."""
         if self._device_attribute == ATTR_LEAVINGWATER_TEMPERATURE:
             return self._device.leaving_water_temperature
+
+        if self._device_attribute == ATTR_LEAVINGWATER_OFFSET:
+            return self._device.leaving_water_offset
 
         if self._device_attribute == ATTR_OUTSIDE_TEMPERATURE:
             return self._device.outside_temperature

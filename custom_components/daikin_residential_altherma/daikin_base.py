@@ -12,6 +12,7 @@ from .const import(
     ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
+    ATTR_LEAVINGWATER_OFFSET,
     ATTR_TANK_TEMPERATURE,
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_STATE_OFF,
@@ -226,6 +227,18 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
         return fl
 
+    # support_leaving_water_offset
+    @property
+    def support_leaving_water_offset(self):
+        """Return True if the device supports leaving water offset measurement."""
+        return self.getData(ATTR_LEAVINGWATER_OFFSET) is not None
+
+    @property
+    def leaving_water_offset(self):
+        """Return room temperature."""
+        fl = float(self.getValue(ATTR_LEAVINGWATER_OFFSET))
+        return fl
+
     @property
     def support_room_temperature(self):
         """Return True if the device supports room temperature measurement."""
@@ -262,6 +275,13 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             if operationMode not in ["auto", "cooling", "heating"]:
                 return DEFAULT_MAX_TEMP
             return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
+
+        if self.support_leaving_water_offset:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return DEFAULT_MAX_TEMP
+            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["maxValue"])
+
         return DEFAULT_MAX_TEMP
 
     @property
@@ -274,6 +294,13 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             if operationMode not in ["auto", "cooling", "heating"]:
               return DEFAULT_MIN_TEMP
             return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
+
+        if self.support_leaving_water_offset:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return DEFAULT_MAX_TEMP
+            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["minValue"])
+
         return DEFAULT_MIN_TEMP
 
     @property
@@ -302,6 +329,11 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             if operationMode not in ["auto", "cooling", "heating"]:
                 return None
             return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
+        if self.support_leaving_water_offset:
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return None
+            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["stepValue"])
         return None
 
     async def async_set_temperature(self, value):
@@ -312,6 +344,12 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             if operationMode not in ["auto", "cooling", "heating"]:
                 return None
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
+        if self.support_leaving_water_offset:
+            value = int(value)# convert value to int
+            operationMode = self.getValue(ATTR_OPERATION_MODE)
+            if operationMode not in ["auto", "cooling", "heating"]:
+                return None
+            return await self.setValue(ATTR_LEAVINGWATER_OFFSET, value)
         else:
             _LOGGER.warning("Set target temperature not supported")
         return None

@@ -197,10 +197,16 @@ class DaikinResidentialDevice:
             # return data from one managementPoint and dataPoint
             return self.managementPoints[managementPoint][dataPoint]
 
+        # DAMIANO temperatureControl
+        #if dataPoint == "temperatureControl":
+            # return data from one managementPoint and dataPoint
+            #print("aaa")
+            #return self.managementPoints[managementPoint][dataPoint]
+
         # DAMIANO heatupMode
         if dataPoint == "heatupMode" and dataPointPath == "":
             # return data from one managementPoint and dataPoint
-            return self.managementPoints[managementPoint][dataPoint]
+            return self.managementPoints[managementPoint][dataPoint]            
 
         if managementPoint not in self.managementPoints:
             #print("DAMIANO MNGP device.py managementPoint = %s",managementPoint)
@@ -225,7 +231,7 @@ class DaikinResidentialDevice:
 
     def get_value(self, managementPoint=None, dataPoint=None, dataPointPath=""):
         """Get the current value of a data object."""
-        #print("  DAMIANO Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
+        print("  DAMIANO Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
         data = self.get_data(managementPoint, dataPoint, dataPointPath)
         if data is None:
             return None
