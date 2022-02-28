@@ -74,7 +74,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
         sensors.append(sensor)
 
-        if self.support_leaving_water_offset:
+        if device.support_leaving_water_offset:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
             sensors.append(sensor)
         else:
