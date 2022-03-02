@@ -177,7 +177,7 @@ class DaikinClimate(ClimateEntity):
             return self._device.room_temperature
         if self._device.support_leaving_water_offset:
             return self._device.leaving_water_offset
-        else: 
+        else:
             return self._device.leaving_water_temperature
 
     @property
@@ -198,8 +198,8 @@ class DaikinClimate(ClimateEntity):
 
         if self._device.support_leaving_water_offset:
             return self._device.leaving_water_offset
-            
-        else: 
+
+        else:
             return None
 
     @property

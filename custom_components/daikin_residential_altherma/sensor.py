@@ -74,8 +74,11 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
         sensors.append(sensor)
 
-        sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
-        sensors.append(sensor)
+        if device.support_leaving_water_offset:
+            sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
+            sensors.append(sensor)
+        else:
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports room_leavingwater offset")
 
         if device.support_room_temperature:
             sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE,"")
@@ -124,7 +127,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             sensors.append(sensor)
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
-            
+
         if device.support_tank_setpoint_mode:
             sensor = DaikinSensor.factory(device, ATTR_TANK_SETPOINT_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
@@ -333,13 +336,13 @@ class DaikinSensor(SensorEntity):
         """
         Return the entity_category the sensor.
         CONFIG:Set to config for an entity which allows changing the configuration
-         of a device, for example a switch entity making it possible to turn the 
-         background illumination of a switch on and off. 
-         
-        DIAGNOSTIC: Set to diagnostic for an entity exposing some configuration 
-         parameter or diagnostics of a device but does not allow changing it, 
-        
-        SYSTEM: Set to system for an entity which is not useful for the user 
+         of a device, for example a switch entity making it possible to turn the
+         background illumination of a switch on and off.
+
+        DIAGNOSTIC: Set to diagnostic for an entity exposing some configuration
+         parameter or diagnostics of a device but does not allow changing it,
+
+        SYSTEM: Set to system for an entity which is not useful for the user
          to interact with. """
 
         configList = [
@@ -415,7 +418,7 @@ class DaikinInfoSensor(DaikinSensor):
             return self._device.error_code
 
         if self._device_attribute == ATTR_TANK_HEATUP_MODE:
-            return self._device.heatupMode            
+            return self._device.heatupMode
 
         if self._device_attribute == ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE:
             return self._device.tank_is_holiday_mode_active
