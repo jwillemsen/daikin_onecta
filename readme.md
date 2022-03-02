@@ -38,7 +38,5 @@ This code is based on @Rospogrigio's work that in turn is based on @Apollon77 's
 
 # Next steps
 
-- Better manage of climate entity (Target temperature doesn't exist on Heat Pumps)
-- Insert other read only parameter
-- Way to measure COP and SCOP.
-- other ideas?
+- Better support of the hot water tank entity
+- Other ideas?
