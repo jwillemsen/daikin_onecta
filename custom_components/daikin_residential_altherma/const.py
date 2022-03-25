@@ -76,7 +76,7 @@ ATTR_TANK_IS_IN_INSTALLER_STATE = "@TankisInInstallerState"
 ATTR_TANK_IS_IN_WARNING_STATE = "@TankisInWarningState"
 ATTR_TANK_IS_POWERFUL_MODE_ACTIVE = "isPowerfulModeActive"
 ATTR_TANK_ERROR_CODE = "@TankErrorCode"
-    
+
 
 
 
@@ -124,7 +124,7 @@ ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
 
 PRESET_BOOST= "boost"
-PRESET_TANK_ONOFF= "ACS_state"
+PRESET_TANK_ONOFF= "Tank"
 PRESET_SETPOINT_MODE = "setpointMode"
 DAIKIN_SWITCHES = [PRESET_BOOST,PRESET_TANK_ONOFF,] #PRESET_SETPOINT_MODE
 DAIKIN_SWITCHES_ICONS ={PRESET_BOOST:'mdi:bike-fast',PRESET_TANK_ONOFF: 'mdi:bathtub-outline',PRESET_SETPOINT_MODE:'mdi:thermometer-lines'}
@@ -168,7 +168,7 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:cursor-pointer",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },    
+    },
     ATTR_TANK_TEMPERATURE: {
         CONF_NAME: "Tank Temperature",
         CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
@@ -224,7 +224,7 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
-    },    
+    },
     ATTR_IS_IN_EMERGENCY_STATE: {
         CONF_NAME: "Info is In Emergency State",
         CONF_TYPE: None,
@@ -273,7 +273,7 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
-    },    
+    },
     ATTR_TANK_IS_IN_EMERGENCY_STATE: {
         CONF_NAME: "Info Tank is In Emergency State",
         CONF_TYPE: None,
