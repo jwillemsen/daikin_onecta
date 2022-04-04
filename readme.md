@@ -1,6 +1,6 @@
 # Daikin Residential for Altherma 3
 
-This work is inspired from Rospogrigio "daikin_residential" repository (https://github.com/rospogrigio/daikin_residential) and modified to support Daikin Altherma 3 Heat Pump.
+This work is inspired from Rospogrigio [daikin_residential](https://github.com/rospogrigio/daikin_residential) integration and modified to support Daikin Altherma 3 Heat Pump. For a Altherma 3 using a BRP069A61 or BRP069A62 adapter you can use the [daikin_residential_brp069a62](https://github.com/BigFoot2020/daikin_residential_brp069a62) integration.
 
 # WARNING
 This is an experimental integration, tested on some Daikin Altherma 3 (BRP069A78) units.
