@@ -104,7 +104,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
                     else:
                         continue
                 return None
-            if keyByVal(HA_PRESET_TO_DAIKIN,"ACS_state") == param:
+            if keyByVal(HA_PRESET_TO_DAIKIN,"Tank") == param:
                 cmd_set = DAIKIN_CMD_SETS[ATTR_ON_OFF_TANK].copy()
                 cmd_set[1] = param
             else:
