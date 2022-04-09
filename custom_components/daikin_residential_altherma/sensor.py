@@ -372,7 +372,7 @@ class DaikinSensor(SensorEntity):
                 return self._entity_category
             elif self._device_attribute in diagnosticList:
                 self._entity_category = EntityCategory.DIAGNOSTIC
-                return self.
+                return self._entity_category
 
             else:
                 return None
