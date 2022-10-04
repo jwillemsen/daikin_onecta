@@ -36,7 +36,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for switch in switches:
 
             if device.support_preset_mode(switch):
-                print("DAMIANO Adding Switch {}".format(switch))
+                _LOGGER.info("DAMIANO Adding Switch {}".format(switch))
                 async_add_entities([DaikinSwitch(device, switch)])
 
 
@@ -89,15 +89,15 @@ class DaikinSwitch(ToggleEntity):
 
     async def async_update(self):
         """Retrieve latest state."""
-        print("DAMIANO {}: ASINC UPDATE SWITCH".format(self))
+        _LOGGER.info("DAMIANO {}: ASYNC UPDATE SWITCH".format(self))
         await self._device.api.async_update()
 
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
-        print("DAMIANO {}: SWITCH TO {}".format(self._switch_id, ATTR_STATE_ON))
+        _LOGGER.info("DAMIANO {}: SWITCH TO {}".format(self._switch_id, ATTR_STATE_ON))
         await self._device.set_preset_mode_status(self._switch_id, ATTR_STATE_ON)
 
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
-        print("DAMIANO {} SWITCH TO: {}".format(self._switch_id, ATTR_STATE_ON))
+        _LOGGER.info("DAMIANO {} SWITCH TO {}".format(self._switch_id, ATTR_STATE_ON))
         await self._device.set_preset_mode_status(self._switch_id, ATTR_STATE_OFF)
