@@ -464,30 +464,11 @@ class DaikinApi:
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
         json_puredata = await self.doBearerRequest("/v1/gateway-devices")
-
-        # DAMIANO Export JSON
-        try:
-            jsonPath = self.hass.config.path("daikin_puredata.json")
-            with open(jsonPath, 'w') as jsonFile:
-                json.dump(json_puredata, jsonFile, indent=4, sort_keys=True)
-                #_LOGGER.info("Damiano export 1 ok")
-        except Exception as e:
-            _LOGGER.error("DAMIANO - export 1 error '%s'", e)
-
         return json_puredata
 
     async def getCloudDevices(self):
         """Get array of DaikinResidentialDevice objects and get their data."""
         self.json_data = await self.getCloudDeviceDetails()
-
-        # DAMIANO Export JSON
-        try:
-            jsonPath = self.hass.config.path("daikin_data.json")
-            with open(jsonPath, 'w') as jsonFile:
-                json.dump(self.json_data, jsonFile, indent=4, sort_keys=True)
-                #_LOGGER.info("Damiano export 2  ok")
-        except Exception as e:
-            _LOGGER.error("DAMIANO - export 2 error '%s'", e)
 
         res = {}
         for dev_data in self.json_data or []:
