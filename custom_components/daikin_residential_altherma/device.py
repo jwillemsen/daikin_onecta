@@ -166,7 +166,7 @@ class DaikinResidentialDevice:
 
     def getLastUpdated(self):
         """Get the timestamp when data were last updated."""
-        print("DAMIANO {}: LAST UPDATE DEVICE".format(self))
+        _LOGGER.info("DAMIANO {}: LAST UPDATE DEVICE".format(self))
         return self.desc["lastUpdateReceived"]
         # return new Date(self.desc.lastUpdateReceived)
 
@@ -231,7 +231,7 @@ class DaikinResidentialDevice:
 
     def get_value(self, managementPoint=None, dataPoint=None, dataPointPath=""):
         """Get the current value of a data object."""
-        print("  DAMIANO Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
+        _LOGGER.info("  DAMIANO Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
         data = self.get_data(managementPoint, dataPoint, dataPointPath)
         if data is None:
             return None
@@ -250,11 +250,11 @@ class DaikinResidentialDevice:
         return
         # TODO: Enhance self method to also allow to get some partial data
         # like only one managementPoint or such; needs checking how to request
-        print("DEV UPDATE " + self.name)
+        _LOGGER.info("DEV UPDATE " + self.name)
         desc = await self.api.doBearerRequest("/v1/gateway-devices/" + self.getId())
         self.setJsonData(desc)
-        print("DEVICE: " + self.name)
-        print(
+        _LOGGER.info("DEVICE: " + self.name)
+        _LOGGER.info(
             "    temp: inner "
             + str(self.get_value("climateControl", "sensoryData", "/roomTemperature"))
             + " outer "
@@ -262,13 +262,13 @@ class DaikinResidentialDevice:
                 self.get_value("climateControl", "sensoryData", "/outdoorTemperature")
             )
         )
-        print(
+        _LOGGER.info(
             "    current mode: "
             + str(self.get_value("climateControl", "operationMode"))
             + "  "
             + str(self.get_value("climateControl", "onOffMode"))
         )
-        print(
+        _LOGGER.info(
             "    target temp: "
             + str(
                 self.get_value(
@@ -278,7 +278,7 @@ class DaikinResidentialDevice:
                 )
             )
         )
-        print(
+        _LOGGER.info(
             "    FAN: mode [{}] speed [{}]\n".format(
                 self.get_value(
                     "climateControl",
