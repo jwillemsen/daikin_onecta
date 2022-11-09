@@ -12,6 +12,8 @@ from homeassistant.const import (
     DEVICE_CLASS_SIGNAL_STRENGTH,
     ENERGY_KILO_WATT_HOUR,
     TEMP_CELSIUS,
+    PERCENTAGE,
+    SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
 )
 
 DOMAIN = "daikin_residential_altherma"
