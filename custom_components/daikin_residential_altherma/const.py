@@ -9,8 +9,11 @@ from homeassistant.const import (
     CONF_UNIT_OF_MEASUREMENT,
     DEVICE_CLASS_TEMPERATURE,
     DEVICE_CLASS_ENERGY,
+    DEVICE_CLASS_SIGNAL_STRENGTH,
     ENERGY_KILO_WATT_HOUR,
     TEMP_CELSIUS,
+    PERCENTAGE,
+    SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
 )
 
 DOMAIN = "daikin_residential_altherma"
@@ -24,7 +27,7 @@ DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
 # MANAGEMENT POINTS
 MP_CLIMATE = "climateControlMainZone"
-MP_GATEWAY = "gateway" # NEW
+MP_GATEWAY = "gateway"
 MP_DOMESTIC_HWT = "domesticHotWaterTank"
 MP_INDOOR_UNIT = "indoorUnitHydro"
 MP_OUDOOR_UNIT = "outdoorUnit"
@@ -38,6 +41,11 @@ DP_SENSORS = "sensoryData"
 DP_TEMPERATURE = "temperatureControl"
 DP_CONSUMPTION = "consumptionData"
 DP_CONTROL_MODE = "controlMode"
+DP_WIFI_STRENGTH = "wifiConnectionStrength"
+DP_WIFI_SSID = "wifiConnectionSSID"
+DP_LOCAL_SSID = "ssid"
+DP_MAC_ADDRESS = "macAddress"
+DP_SERIAL_NUMBER = "serialNumber"
 
 # DAMIANO HEAT PUMP ALTHERMA
 
@@ -77,9 +85,11 @@ ATTR_TANK_IS_IN_WARNING_STATE = "@TankisInWarningState"
 ATTR_TANK_IS_POWERFUL_MODE_ACTIVE = "isPowerfulModeActive"
 ATTR_TANK_ERROR_CODE = "@TankErrorCode"
 
-
-
-
+ATTR_WIFI_STRENGTH = "wifi_strength"
+ATTR_WIFI_SSID = "wifi_ssid"
+ATTR_LOCAL_SSID = "local_ssid"
+ATTR_MAC_ADDRESS = "mac_address"
+ATTR_SERIAL_NUMBER = "serial_number"
 
 DAIKIN_CMD_SETS = {
     #ATTR_ON_OFF: [MP_CLIMATE, DP_ON_OFF, "onOffMode"],
@@ -118,6 +128,12 @@ DAIKIN_CMD_SETS = {
     ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "isPowerfulModeActive", ""],
     ATTR_TANK_ERROR_CODE: [MP_DOMESTIC_HWT, "errorCode", ""],
+    #  Gateway settings
+    ATTR_WIFI_STRENGTH: [MP_GATEWAY, DP_WIFI_STRENGTH, ""],
+    ATTR_WIFI_SSID: [MP_GATEWAY, DP_WIFI_SSID, ""],
+    ATTR_LOCAL_SSID: [MP_GATEWAY, DP_LOCAL_SSID, ""],
+    ATTR_MAC_ADDRESS: [MP_GATEWAY, DP_MAC_ADDRESS, ""],
+    ATTR_SERIAL_NUMBER: [MP_GATEWAY, DP_SERIAL_NUMBER, ""],
 }
 
 ATTR_STATE_ON = "on"
@@ -134,6 +150,7 @@ SENSOR_TYPE_TEMPERATURE = "temperature"
 SENSOR_TYPE_POWER = "power"
 SENSOR_TYPE_ENERGY = "energy"
 SENSOR_TYPE_INFO = None
+SENSOR_TYPE_GATEWAY_DIAGNOSTIC = "gateway_diagnostic"
 SENSOR_PERIOD_DAILY = "d"
 SENSOR_PERIOD_WEEKLY = "w"
 SENSOR_PERIOD_YEARLY = "m"
@@ -315,6 +332,38 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_WIFI_STRENGTH: {
+        CONF_NAME: "WiFi Strength",
+        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
+        CONF_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
+        CONF_UNIT_OF_MEASUREMENT: SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
+    },
+    ATTR_WIFI_SSID: {
+        CONF_NAME: "WiFi SSID",
+        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
+        CONF_ICON: "mdi:access-point-network",
+        CONF_DEVICE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+    },
+    ATTR_LOCAL_SSID: {
+        CONF_NAME: "Internal SSID",
+        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
+        CONF_DEVICE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+    },
+    ATTR_MAC_ADDRESS: {
+        CONF_NAME: "Mac Address",
+        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
+        CONF_DEVICE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+    },
+    ATTR_SERIAL_NUMBER: {
+        CONF_NAME: "Serial Number",
+        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
+        CONF_ICON: "mdi:numeric",
+        CONF_DEVICE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
     },
 }
 
