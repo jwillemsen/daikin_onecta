@@ -394,6 +394,11 @@ class DaikinSensor(SensorEntity):
             ATTR_TANK_IS_IN_INSTALLER_STATE,
             ATTR_TANK_IS_IN_WARNING_STATE,
             ATTR_TANK_ERROR_CODE,
+            ATTR_WIFI_STRENGTH,
+            ATTR_WIFI_SSID,
+            ATTR_LOCAL_SSID,
+            ATTR_MAC_ADDRESS,
+            ATTR_SERIAL_NUMBER,
             ]
         try:
             if self._device_attribute in configList:
