@@ -50,6 +50,7 @@ from .const import (
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
     SENSOR_TYPE_INFO,
+    SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
     SENSOR_PERIODS,
     SENSOR_TYPES,
     ATTR_WIFI_STRENGTH,
@@ -287,6 +288,7 @@ class DaikinSensor(SensorEntity):
                 SENSOR_TYPE_POWER: DaikinEnergySensor,
                 SENSOR_TYPE_ENERGY: DaikinEnergySensor,
                 SENSOR_TYPE_INFO: DaikinInfoSensor,
+                SENSOR_TYPE_GATEWAY_DIAGNOSTIC: DaikinGatewaySensor,
             }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
             return cls(device, monitored_state,type, period)
         except Exception as error:
