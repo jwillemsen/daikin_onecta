@@ -15,6 +15,8 @@ from homeassistant.components.sensor import (
     STATE_CLASS_TOTAL_INCREASING,
 )
 
+from homeassistant.helpers.entity import EntityCategory
+
 from .daikin_base import Appliance
 
 from .const import (
