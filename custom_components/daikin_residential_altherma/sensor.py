@@ -293,7 +293,7 @@ class DaikinSensor(SensorEntity):
             }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
             return cls(device, monitored_state,type, period)
         except Exception as error:
-            print("error: " + error)
+            # print("error: " + error)
             _LOGGER.error("%s", format(error))
             return
 
@@ -314,7 +314,7 @@ class DaikinSensor(SensorEntity):
                 #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
                 self._name = f"{device.name} {self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
-        print("  DAMIANO Initialized sensor: {}".format(self._name))
+        _LOGGER.info("  DAMIANO Initialized sensor: {}".format(self._name))
 
     @property
     def available(self):
