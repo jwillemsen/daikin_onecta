@@ -38,6 +38,11 @@ DP_SENSORS = "sensoryData"
 DP_TEMPERATURE = "temperatureControl"
 DP_CONSUMPTION = "consumptionData"
 DP_CONTROL_MODE = "controlMode"
+DP_WIFI_STRENGTH = "wifiConnectionStrength"
+DP_WIFI_SSID = "wifiConnectionSSID"
+DP_LOCAL_SSID = "ssid"
+DP_MAC_ADDRESS = "macAddress"
+DP_SERIAL_NUMBER = "serialNumber"
 
 # DAMIANO HEAT PUMP ALTHERMA
 
