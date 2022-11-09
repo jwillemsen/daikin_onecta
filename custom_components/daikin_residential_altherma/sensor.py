@@ -192,6 +192,26 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
 
+        if device.support_wifi_strength:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi signal strength")
+            sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
+            sensors.append(sensor)
+        if device.support_wifi_ssid:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi ssid")
+            sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
+            sensors.append(sensor)
+        if device.support_local_ssid:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports local ssid")
+            sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
+            sensors.append(sensor)
+        if device.support_mac_address:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports mac address")
+            sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
+            sensors.append(sensor)
+        if device.support_serial_number:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports serial number")
+            sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
+            sensors.append(sensor)
 
         #heatup
         if device.support_heatupMode:
@@ -251,27 +271,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             sensors.append(sensor)
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank error code")
-
-        if device.support_wifi_strength:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi signal strength")
-            sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
-            sensors.append(sensor)
-        if device.support_wifi_ssid:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi ssid")
-            sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
-            sensors.append(sensor)
-        if device.support_local_ssid:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports local ssid")
-            sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
-            sensors.append(sensor)
-        if device.support_mac_address:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports mac address")
-            sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
-            sensors.append(sensor)
-        if device.support_serial_number:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports serial number")
-            sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
-            sensors.append(sensor)
 
     async_add_entities(sensors)
 

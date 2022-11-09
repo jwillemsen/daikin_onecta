@@ -27,7 +27,7 @@ DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
 # MANAGEMENT POINTS
 MP_CLIMATE = "climateControlMainZone"
-MP_GATEWAY = "gateway" # NEW
+MP_GATEWAY = "gateway"
 MP_DOMESTIC_HWT = "domesticHotWaterTank"
 MP_INDOOR_UNIT = "indoorUnitHydro"
 MP_OUDOOR_UNIT = "outdoorUnit"
@@ -128,6 +128,7 @@ DAIKIN_CMD_SETS = {
     ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "isPowerfulModeActive", ""],
     ATTR_TANK_ERROR_CODE: [MP_DOMESTIC_HWT, "errorCode", ""],
+    #  Gateway settings
     ATTR_WIFI_STRENGTH: [MP_GATEWAY, DP_WIFI_STRENGTH, ""],
     ATTR_WIFI_SSID: [MP_GATEWAY, DP_WIFI_SSID, ""],
     ATTR_LOCAL_SSID: [MP_GATEWAY, DP_LOCAL_SSID, ""],
