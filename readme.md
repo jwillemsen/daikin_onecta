@@ -14,7 +14,7 @@ Make sure to restart home Assistant, then go to "Using config flow" chapter.
 
 # Manual Installation
 
-Copy the "daikin_residential_altherma" folder and all of its contents into your Home Assistant's "custom_components" folder. This is often located inside of your "/config" folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the "custom_components" folder might be located at "/usr/share/hassio/homeassistant". It is possible that your "custom_components" folder does not exist. If that is the case, create the folder in the proper location, and then copy the "daikin_residential_altherma" folder and all of its contents inside the newly created "custom_components" folder.
+Copy the "daikin_residential_altherma" folder and all of its contents into your Home Assistant's "custom_components" folder. This is often located inside of your "/config" folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the "custom_components" folder might be located at "/usr/share/hassio/homeassistant". It is possible that your "custom_components" folder does not exist. If that is the case, create the folder in the proper location, and then copy the "daikin_residential_altherma" folder and all of its contents inside the newly created "custom_components" folder. Then you have to restart Home Assistant for the component to be loaded properly.
 
 # Using config flow
 
@@ -30,6 +30,24 @@ Just add the following lines to your configuration.yaml file specifying the emai
 daikin_residential_altherma:
   email: [your_email]
   password: [your_pwd]
+```
+
+# Setting the log level
+
+If you'd like to see more granular logs, to investigate the communication or for other debugging purposes, you can set the log level in the Home Assistant config. The following lines can be added to set the overall log level for the component:
+
+```
+logger:
+  logs:
+    custom_components.daikin_residential_altherma: debug
+```
+
+If you only want to change log level on a per module basis, you can do that as well, for example if you only want debug logs for the climate:
+
+```
+logger:
+  logs:
+    custom_components.daikin_residential_altherma.climate: debug
 ```
 
 # Thanks to:

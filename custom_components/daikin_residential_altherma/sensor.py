@@ -15,6 +15,8 @@ from homeassistant.components.sensor import (
     STATE_CLASS_TOTAL_INCREASING,
 )
 
+from homeassistant.helpers.entity import EntityCategory
+
 from .daikin_base import Appliance
 
 from .const import (
@@ -50,8 +52,14 @@ from .const import (
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
     SENSOR_TYPE_INFO,
+    SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
     SENSOR_PERIODS,
     SENSOR_TYPES,
+    ATTR_WIFI_STRENGTH,
+    ATTR_WIFI_SSID,
+    ATTR_LOCAL_SSID,
+    ATTR_MAC_ADDRESS,
+    ATTR_SERIAL_NUMBER,
 )
 
 import logging
@@ -184,6 +192,26 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
 
+        if device.support_wifi_strength:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi signal strength")
+            sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
+            sensors.append(sensor)
+        if device.support_wifi_ssid:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi ssid")
+            sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
+            sensors.append(sensor)
+        if device.support_local_ssid:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports local ssid")
+            sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
+            sensors.append(sensor)
+        if device.support_mac_address:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports mac address")
+            sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
+            sensors.append(sensor)
+        if device.support_serial_number:
+            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports serial number")
+            sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
+            sensors.append(sensor)
 
         #heatup
         if device.support_heatupMode:
@@ -261,10 +289,11 @@ class DaikinSensor(SensorEntity):
                 SENSOR_TYPE_POWER: DaikinEnergySensor,
                 SENSOR_TYPE_ENERGY: DaikinEnergySensor,
                 SENSOR_TYPE_INFO: DaikinInfoSensor,
+                SENSOR_TYPE_GATEWAY_DIAGNOSTIC: DaikinGatewaySensor,
             }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
             return cls(device, monitored_state,type, period)
         except Exception as error:
-            print("error: " + error)
+            # print("error: " + error)
             _LOGGER.error("%s", format(error))
             return
 
@@ -285,7 +314,7 @@ class DaikinSensor(SensorEntity):
                 #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
                 self._name = f"{device.name} {self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
-        print("  DAMIANO Initialized sensor: {}".format(self._name))
+        _LOGGER.info("  DAMIANO Initialized sensor: {}".format(self._name))
 
     @property
     def available(self):
@@ -365,6 +394,11 @@ class DaikinSensor(SensorEntity):
             ATTR_TANK_IS_IN_INSTALLER_STATE,
             ATTR_TANK_IS_IN_WARNING_STATE,
             ATTR_TANK_ERROR_CODE,
+            ATTR_WIFI_STRENGTH,
+            ATTR_WIFI_SSID,
+            ATTR_LOCAL_SSID,
+            ATTR_MAC_ADDRESS,
+            ATTR_SERIAL_NUMBER,
             ]
         try:
             if self._device_attribute in configList:
@@ -494,3 +528,37 @@ class DaikinEnergySensor(DaikinSensor):
     @property
     def state_class(self):
         return STATE_CLASS_TOTAL_INCREASING
+
+class DaikinGatewaySensor(DaikinSensor):
+    """Representation of a WiFi Sensor."""
+
+    # set default category for these entities
+    _attr_entity_category = EntityCategory.DIAGNOSTIC
+
+    @property
+    def state(self):
+        """Return the internal state of the sensor."""
+        if self._device_attribute == ATTR_WIFI_STRENGTH:
+            return self._device.wifi_strength
+        if self._device_attribute == ATTR_WIFI_SSID:
+            return self._device.wifi_ssid
+        if self._device_attribute == ATTR_LOCAL_SSID:
+            return self._device.local_ssid
+        if self._device_attribute == ATTR_MAC_ADDRESS:
+            return self._device.mac_address
+        if self._device_attribute == ATTR_SERIAL_NUMBER:
+            return self._device.serial_number
+        return None
+
+    @property
+    def state_class(self):
+        if self._device_attribute == ATTR_WIFI_STRENGTH:
+            return STATE_CLASS_MEASUREMENT
+        else:
+            return None
+
+    @property
+    def entity_registry_enabled_default(self):
+        # auto disable these entities when added for the first time
+        # except the wifi signal
+        return self._device_attribute == ATTR_WIFI_STRENGTH

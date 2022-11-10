@@ -84,7 +84,7 @@ class DaikinClimate(ClimateEntity):
 
     def __init__(self, device):
         """Initialize the climate device."""
-        print("DAMIANO Initializing CLIMATE...")
+        _LOGGER.info("DAMIANO Initializing CLIMATE...")
         self._device = device
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
@@ -106,7 +106,7 @@ class DaikinClimate(ClimateEntity):
             if support_preset:
                 self._supported_preset_modes.append(mode)
                 self._supported_features |= SUPPORT_PRESET_MODE
-            print("DAMIANO support_preset_mode {}: {}".format(mode,support_preset))
+            _LOGGER.info("DAMIANO support_preset_mode {}: {}".format(mode,support_preset))
 
     async def _set(self, settings):
         """Set device settings using API."""
