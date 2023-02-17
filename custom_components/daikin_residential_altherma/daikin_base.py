@@ -182,8 +182,8 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     async def setValue(self, param, value):
         """Set the current value of a data object."""
-        #cmd_set = self.getCommandSet(param)
-        #return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
+        cmd_set = self.getCommandSet(param)
+        return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
 
     @property
     def mac(self):

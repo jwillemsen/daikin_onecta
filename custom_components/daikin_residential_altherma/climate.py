@@ -17,7 +17,6 @@ from homeassistant.components.climate.const import (
     PRESET_ECO,
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
-    #SUPPORT_TARGET_TEMPERATURE_RANGE,
     SUPPORT_PRESET_MODE,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
@@ -213,7 +212,7 @@ class DaikinClimate(ClimateEntity):
         if ATTR_HVAC_MODE in kwargs:
             await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
 
-        #await self._device.async_set_temperature(kwargs[ATTR_TEMPERATURE])
+        await self._device.async_set_temperature(kwargs[ATTR_TEMPERATURE])
         # ADDED for instant update
         await self._device.api.async_update()
 

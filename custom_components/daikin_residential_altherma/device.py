@@ -412,7 +412,7 @@ class DaikinResidentialDevice:
 
         _LOGGER.debug("Path: " + setPath + " , options: %s", setOptions)
 
-#       res = await self.api.doBearerRequest(setPath, setOptions)
+        res = await self.api.doBearerRequest(setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
         if res is True:
             self.get_data(managementPoint, dataPoint, dataPointPath)["value"] = value
