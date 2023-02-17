@@ -8,7 +8,7 @@ The HA Integration was cloned by Rospogrigio's work and can coexisting with the 
 
 # Installation using HACS:
 
-Open "HACS" section then "Integrations" and click on three points menu at top right. Click on "custom reporitories" and add "https://github.com/speleolontra/daikin_residential_altherma" as integration category.
+Open "HACS" section then "Integrations" and click on three points menu at top right. Click on "custom repositories" and add "https://github.com/speleolontra/daikin_residential_altherma" as integration category.
 this will copy the "daikin_residential_altherma" folder in the "custom_components" folder of Home Assistant.
 Make sure to restart home Assistant, then go to "Using config flow" chapter.
 
