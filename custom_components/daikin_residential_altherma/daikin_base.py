@@ -14,6 +14,12 @@ from .const import(
     ATTR_ROOM_TEMPERATURE,
     ATTR_LEAVINGWATER_OFFSET,
     ATTR_TANK_TEMPERATURE,
+    ATTR_TANK_TARGET_TEMPERATURE,
+    ATTR_TANK_ON_OFF,
+    ATTR_TANK_POWERFUL,
+    ATTR_TANK_STATE_OFF,
+    ATTR_TANK_STATE_HEAT_PUMP,
+    ATTR_TANK_STATE_PERFOMANCE,
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
@@ -64,6 +70,12 @@ from homeassistant.components.climate.const import (
     DEFAULT_MIN_TEMP,
 )
 
+from homeassistant.components.water_heater import (
+    STATE_PERFORMANCE,
+    STATE_HEAT_PUMP,
+    STATE_OFF,
+)
+
 _LOGGER = logging.getLogger(__name__)
 
 HA_PRESET_TO_DAIKIN = {
@@ -81,6 +93,12 @@ DAIKIN_HVAC_TO_HA = {
     "heating": HVAC_MODE_HEAT,
     "auto": HVAC_MODE_HEAT_COOL,
     "off": HVAC_MODE_OFF,
+}
+
+DAIKIN_TANK_TO_HA = {
+    ATTR_TANK_STATE_PERFOMANCE: STATE_PERFORMANCE,
+    ATTR_TANK_STATE_HEAT_PUMP: STATE_HEAT_PUMP,
+    ATTR_TANK_STATE_OFF: STATE_OFF,
 }
 
 class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-methods
@@ -222,6 +240,23 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return await self.setValue(mode, status)
 
     @property
+    def tank_state(self):
+        """Return current HVAC mode."""
+        state = ATTR_TANK_STATE_OFF
+        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_OFF:
+            if self.getValue(ATTR_TANK_POWERFUL) == ATTR_STATE_ON:
+                state = ATTR_TANK_STATE_PERFOMANCE
+            else:
+                state = ATTR_TANK_STATE_HEAT_PUMP
+        return DAIKIN_TANK_TO_HA.get(state)
+
+    @property
+    def tank_states(self):
+        """Return the list of available HVAC modes."""
+        states = [STATE_OFF, STATE_HEAT_PUMP, STATE_PERFORMANCE]
+        return states
+
+    @property
     def support_tank_temperature(self):
         """Return True if the device supports tank temperature measurement."""
         return self.getData(ATTR_TANK_TEMPERATURE) is not None
@@ -240,8 +275,22 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     @property
     def tank_target_temperature(self):
         """Return tank target temperature."""
-        fl = float(self.getValue(ATTR_TANK_TARGET_TEMPERATURE))
-        return fl
+        return float(self.getValue(ATTR_TANK_TARGET_TEMPERATURE))
+
+    @property
+    def tank_target_temperature_step(self):
+        """Return current target temperature step value."""
+        return float(self.getData(ATTR_TANK_TARGET_TEMPERATURE)["stepValue"])
+
+    @property
+    def tank_target_temperature_minValue(self):
+        """Return current target temperature minimum value."""
+        return float(self.getData(ATTR_TANK_TARGET_TEMPERATURE)["minValue"])
+
+    @property
+    def tank_target_temperature_maxValue(self):
+        """Return current target temperature maximum value."""
+        return float(self.getData(ATTR_TANK_TARGET_TEMPERATURE)["maxValue"])
 
     # support_leaving_water_offset
     @property
@@ -628,6 +677,29 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def tank_error_code(self):
         """Return current tank error code."""
         return self.getValue(ATTR_TANK_ERROR_CODE)
+
+    async def async_set_tank_temperature(self, value):
+        """Set new target temperature."""
+        _LOGGER.debug("Set tank temperature: %s", value)
+        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+            return None
+        return await self.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
+
+    async def async_set_tank_stat(self, tank_state):
+        """Set new tank state."""
+        _LOGGER.debug("Set tank state: %s", tank_state)
+        if tank_state == STATE_OFF:
+            return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_OFF)
+        if tank_state == STATE_PERFORMANCE:
+            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+                await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
+            return await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_ON)
+        if tank_state == STATE_HEAT_PUMP:
+            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+                return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
+            await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
+        _LOGGER.warning("Invalid tank state: %s", tank_state)
+        return None
 
 
     async def set(self, settings):

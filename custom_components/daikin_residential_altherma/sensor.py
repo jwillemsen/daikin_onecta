@@ -30,6 +30,7 @@ from .const import (
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
     ATTR_TANK_TEMPERATURE,
+    ATTR_TANK_TARGET_TEMPERATURE,
     ATTR_SETPOINT_MODE,
     ATTR_TANK_SETPOINT_MODE,
     ATTR_CONTROL_MODE,
@@ -99,6 +100,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             sensors.append(sensor)
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank_temperature")
+
+        if device.support_tank_target_temperature:
+            sensor = DaikinSensor.factory(device, ATTR_TANK_TARGET_TEMPERATURE,"")
+            sensors.append(sensor)
+        else:
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports target tank_temperature")
 
         if device.support_outside_temperature:
             sensor = DaikinSensor.factory(device, ATTR_OUTSIDE_TEMPERATURE,"")
@@ -282,8 +289,6 @@ class DaikinSensor(SensorEntity):
     def factory(device: Appliance, monitored_state: str, type, period=""):
         """Initialize any DaikinSensor."""
         try:
-            # DAMIANO
-            #monitored_state = monitored_state.replace("T-@Tank","")
             cls = {
                 SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
                 SENSOR_TYPE_POWER: DaikinEnergySensor,

@@ -16,20 +16,22 @@ from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
-    ATTR_DHW_MODE,
-    ATTR_DHW_MODE_SET,
-    ATTR_DHW_STATE_OFF,
-    ATTR_DHW_STATE_PERFOMANCE,
+    ATTR_TANK_MODE,
+    ATTR_TANK_MODE_SET,
+    ATTR_TANK_STATE_OFF,
+    ATTR_TANK_STATE_HEAT_PUMP,
+    ATTR_TANK_STATE_PERFOMANCE,
     ATTR_TANK_TARGET_TEMPERATURE,
 )
 
-HA_DHW_MODE_TO_DAIKIN = {
-    STATE_PERFORMANCE: ATTR_DHW_STATE_PERFOMANCE,
-    STATE_OFF: ATTR_DHW_STATE_OFF,
+HA_TANK_MODE_TO_DAIKIN = {
+    STATE_PERFORMANCE: ATTR_TANK_STATE_PERFOMANCE,
+    STATE_HEAT_PUMP: ATTR_TANK_STATE_HEAT_PUMP,
+    STATE_OFF: ATTR_TANK_STATE_OFF,
 }
 
-HA_DHW_ATTR_TO_DAIKIN = {
-    ATTR_DHW_MODE: ATTR_DHW_MODE_SET,
+HA_TANK_ATTR_TO_DAIKIN = {
+    ATTR_TANK_MODE: ATTR_TANK_MODE_SET,
     ATTR_TANK_TARGET_TEMPERATURE: ATTR_TANK_TARGET_TEMPERATURE,
 }
 
@@ -45,32 +47,32 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate entities."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        async_add_entities([DaikinDHWTank(device)], update_before_add=True)
+        async_add_entities([DaikinWaterTank(device)], update_before_add=True)
 
 
-class DaikinDHWTank(WaterHeaterEntity):
-    """Representation of a Daikin DHW Tank."""
+class DaikinWaterTank(WaterHeaterEntity):
+    """Representation of a Daikin Water Tank."""
 
     def __init__(self, device):
-        """Initialize the DHW device."""
+        """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         self._device = device
         self._list = {
-            ATTR_DHW_MODE: list(HA_DHW_MODE_TO_DAIKIN),
+            ATTR_TANK_MODE: list(HA_TANK_MODE_TO_DAIKIN),
         }
         self._supported_features = SUPPORT_TARGET_TEMPERATURE + SUPPORT_OPERATION_MODE
 
     async def _set(self, settings):
         """Set device settings using API."""
         values = {}
-        for attr in [ATTR_TEMPERATURE, ATTR_DHW_MODE]:
+        for attr in [ATTR_TEMPERATURE, ATTR_TANK_MODE]:
             value = settings.get(attr)
             if value is None:
                 continue
-            daikin_attr = HA_DHW_ATTR_TO_DAIKIN.get(attr)
+            daikin_attr = HA_TANK_ATTR_TO_DAIKIN.get(attr)
             if daikin_attr is not None:
-                if attr == ATTR_DHW_MODE:
-                    values[daikin_attr] = HA_DHW_MODE_TO_DAIKIN[value]
+                if attr == ATTR_TANK_MODE:
+                    values[daikin_attr] = HA_TANK_MODE_TO_DAIKIN[value]
                 elif value in self._list[attr]:
                     values[daikin_attr] = value.lower()
                 else:
@@ -78,7 +80,7 @@ class DaikinDHWTank(WaterHeaterEntity):
             # temperature
             elif attr == ATTR_TEMPERATURE:
                 try:
-                    values[HA_DHW_ATTR_TO_DAIKIN[ATTR_TANK_TARGET_TEMPERATURE]] = str(int(value))
+                    values[HA_TANK_ATTR_TO_DAIKIN[ATTR_TANK_TARGET_TEMPERATURE]] = str(int(value))
                 except ValueError:
                     _LOGGER.error("Invalid temperature %s", value)
         if values:
@@ -113,29 +115,29 @@ class DaikinDHWTank(WaterHeaterEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
-        return self._device.tank_temperatur
+        return self._device.tank_temperature
 
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
-        return self._device.dhw_target_temperature
+        return self._device.tank_target_temperature
 
     @property
     def target_temperature_step(self):
         """Return the supported step of target temperature."""
-        stepVal = self._device.dhw_target_temperature_step
+        stepVal = self._device.tank_target_temperature_step
         return stepVal
 
     @property
     def min_temp(self):
         """Return the supported step of target temperature."""
-        stepVal = self._device.dhw_target_temperature_minValue
+        stepVal = self._device.tank_target_temperature_minValue
         return stepVal
 
     @property
     def max_temp(self):
         """Return the supported step of target temperature."""
-        stepVal = self._device.dhw_target_temperature_maxValue
+        stepVal = self._device.tank_target_temperature_maxValue
         return stepVal
 
     async def async_set_temperature(self, **kwargs):
@@ -143,8 +145,7 @@ class DaikinDHWTank(WaterHeaterEntity):
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
-
-        #await self._device.async_set_dhw_temperature(kwargs[ATTR_TEMPERATURE])
+        await self._device.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
 
     async def async_update(self):
         """Retrieve latest state."""
@@ -153,29 +154,19 @@ class DaikinDHWTank(WaterHeaterEntity):
     @property
     def current_operation(self):
         """Return current operation ie. heat, cool, idle."""
-        return self._device.dhw_state
+        return self._device.tank_state
 
     @property
     def operation_list(self):
         """Return the list of available operation modes."""
-        return self._device.dhw_states
+        return self._device.tank_states
 
-    async def async_set_operation_mode(self, dhw_state):
-        """Set new target DHW mode."""
-        dhw_state = HA_DHW_MODE_TO_DAIKIN[dhw_state]
-        #await self._device.async_set_dhw_state(dhw_state)
+    async def async_set_operation_mode(self, tank_state):
+        """Set new target tank mode."""
+        tank_state = HA_TANK_MODE_TO_DAIKIN[tank_state]
+        await self._device.async_set_tank_state(tank_state)
 
     @property
     def device_info(self):
         """Return a device description for device registry."""
         return self._device.device_info()
-
-    # async def async_turn_tank_on(self):
-    #     """Turn device TANK on."""
-    #     print("DAMIANO {} to on".format(self._device))
-    #     await self._device.setValue(ATTR_ON_OFF_TANK, ATTR_STATE_ON)
-
-    # async def async_turn_tank_off(self):
-    #     """Turn device TANK off."""
-    #     print("DAMIANO {} to off".format(self._device))
-    #     await self._device.setValue(ATTR_ON_OFF_TANK, ATTR_STATE_OFF)
