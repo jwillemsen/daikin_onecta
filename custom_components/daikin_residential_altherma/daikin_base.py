@@ -685,7 +685,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return None
         return await self.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
 
-    async def async_set_tank_stat(self, tank_state):
+    async def async_set_tank_state(self, tank_state):
         """Set new tank state."""
         _LOGGER.debug("Set tank state: %s", tank_state)
         if tank_state == STATE_OFF:
@@ -700,7 +700,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
         _LOGGER.warning("Invalid tank state: %s", tank_state)
         return None
-
 
     async def set(self, settings):
         """Set settings on Daikin device."""

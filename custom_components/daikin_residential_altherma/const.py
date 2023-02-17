@@ -36,7 +36,7 @@ MP_USER_INTERFACE = "userInterface"
 # DATA POINTS
 DP_ON_OFF_MODE = "onOffMode"
 DP_TANK_POWERFUL_MODE = "powerfulMode"
-DP_TANK_TEMPERATURE = "temperatureControl"
+DP_TANK_TEMPERATURECONTROL = "temperatureControl"
 
 DP_ON_OFF_CLIMATE = "onOffMode"
 DP_ON_OFF_TANK = "onOffMode"
@@ -141,7 +141,7 @@ DAIKIN_CMD_SETS = {
     ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "isPowerfulModeActive", ""],
     ATTR_TANK_ERROR_CODE: [MP_DOMESTIC_HWT, "errorCode", ""],
-    ATTR_TANK_TARGET_TEMPERATURE: [MP_DOMESTIC_HWT, DP_TANK_TEMPERATURE, "/operationModes/heating/setpoints/domesticHotWaterTemperature"],
+    ATTR_TANK_TARGET_TEMPERATURE: [MP_DOMESTIC_HWT, DP_TANK_TEMPERATURECONTROL, "/operationModes/heating/setpoints/domesticHotWaterTemperature"],
     #  Gateway settings
     ATTR_WIFI_STRENGTH: [MP_GATEWAY, DP_WIFI_STRENGTH, ""],
     ATTR_WIFI_SSID: [MP_GATEWAY, DP_WIFI_SSID, ""],
@@ -236,14 +236,12 @@ SENSOR_TYPES = {
         CONF_NAME: "Info Setpoint Mode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
-        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_TANK_SETPOINT_MODE: {
         CONF_NAME: "Info Tank Setpoint Mode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
-        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_CONTROL_MODE: {
@@ -384,7 +382,7 @@ SENSOR_TYPES = {
         CONF_UNIT_OF_MEASUREMENT: None,
     },
     ATTR_TANK_TARGET_TEMPERATURE: {
-        CONF_NAME: "Tank Setpoint",
+        CONF_NAME: "Tank target tempeature",
         CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
         CONF_ICON: "mdi:bathtub-outline",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,

@@ -141,21 +141,21 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support setpoint_mode", sensor)
 
         if device.support_tank_setpoint_mode:
             sensor = DaikinSensor.factory(device, ATTR_TANK_SETPOINT_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support setpoint_mode", sensor)
 
         if device.support_control_mode:
             sensor = DaikinSensor.factory(device, ATTR_CONTROL_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support control_mode", sensor)
 
         if device.support_is_holiday_mode_active:
             sensor = DaikinSensor.factory(device, ATTR_IS_HOLIDAY_MODE_ACTIVE,"")

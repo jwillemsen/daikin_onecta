@@ -70,8 +70,8 @@ class DaikinSwitch(ToggleEntity):
     @property
     def icon(self):
         """Icon to use in the frontend, if any."""
-
         return DAIKIN_SWITCHES_ICONS[self._switch_id]
+
     @property
     def name(self):
         """Return the name of the switch."""
