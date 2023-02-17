@@ -20,23 +20,11 @@ class DaikinResidentialDevice:
     def __init__(self, jsonData, apiInstance):
         """Initialize a new Daikin Residential Device."""
         self.api = apiInstance
-
         self.setJsonData(jsonData)
-
-        #DAMIANO
-        #self.name = self.get_value("climateControl", "name")
-        # per prendere il nome del device coretto
         self.name = self.getName()
-
-
-        # self.ip_address = device.device_ip
-        # DAMIANO
         self._available = True
 
-        _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)",
-            self.name,
-            self.getId(),
-        )
+        _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)", self.name, self.getId())
 
     @property
     def available(self) -> bool:
@@ -168,7 +156,6 @@ class DaikinResidentialDevice:
         """Get the timestamp when data were last updated."""
         _LOGGER.info("DAMIANO {}: LAST UPDATE DEVICE".format(self))
         return self.desc["lastUpdateReceived"]
-        # return new Date(self.desc.lastUpdateReceived)
 
     """
      * Get a current data object (includes value and meta information).
@@ -231,7 +218,7 @@ class DaikinResidentialDevice:
 
     def get_value(self, managementPoint=None, dataPoint=None, dataPointPath=""):
         """Get the current value of a data object."""
-        _LOGGER.info("  DAMIANO Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
+        _LOGGER.info("Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
         data = self.get_data(managementPoint, dataPoint, dataPointPath)
         if data is None:
             return None
@@ -425,7 +412,7 @@ class DaikinResidentialDevice:
 
         _LOGGER.debug("Path: " + setPath + " , options: %s", setOptions)
 
-        res = await self.api.doBearerRequest(setPath, setOptions)
+#       res = await self.api.doBearerRequest(setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
         if res is True:
             self.get_data(managementPoint, dataPoint, dataPointPath)["value"] = value

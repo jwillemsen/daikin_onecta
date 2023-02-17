@@ -314,7 +314,7 @@ class DaikinSensor(SensorEntity):
                 #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
                 self._name = f"{device.name} {self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
-        _LOGGER.info("  DAMIANO Initialized sensor: {}".format(self._name))
+        _LOGGER.info("Initialized sensor: {}".format(self._name))
 
     @property
     def available(self):

@@ -164,8 +164,8 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
     async def setValue(self, param, value):
         """Set the current value of a data object."""
-        cmd_set = self.getCommandSet(param)
-        return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
+        #cmd_set = self.getCommandSet(param)
+        #return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
 
     @property
     def mac(self):
@@ -230,6 +230,17 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def tank_temperature(self):
         """Return tank temperature."""
         fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
+        return fl
+
+    @property
+    def support_tank_target_temperature(self):
+        """Return True if the device supports outsite temperature measurement."""
+        return self.getData(ATTR_TANK_TARGET_TEMPERATURE) is not None
+
+    @property
+    def tank_target_temperature(self):
+        """Return tank target temperature."""
+        fl = float(self.getValue(ATTR_TANK_TARGET_TEMPERATURE))
         return fl
 
     # support_leaving_water_offset
