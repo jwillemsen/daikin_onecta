@@ -123,16 +123,9 @@ class DaikinWaterTank(WaterHeaterEntity):
         return self._device.tank_target_temperature
 
     @property
-    def target_temperature_step(self):
-        """Return the supported step of target temperature."""
-        stepVal = self._device.tank_target_temperature_step
-        return stepVal
-
-    @property
     def extra_state_attributes(self):
-        _LOGGER.info("Initializing Daiking Altherma HotWaterTank... %s", self._device.tank_target_temperature_step)
         """Return the optional device state attributes."""
-        data = {"target_temp_step": 1.0}
+        data = {"target_temp_step": self._device.tank_target_temperature_step}
         return data
 
     @property
