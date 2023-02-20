@@ -148,7 +148,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support setpoint_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support tank setpoint_mode", sensor)
 
         if device.support_control_mode:
             sensor = DaikinSensor.factory(device, ATTR_CONTROL_MODE,"")
@@ -226,7 +226,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports support_heatupMode")
 
         # TANK
         # TODO: ripartire da qui
@@ -266,14 +266,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
 
         if device.support_tank_is_powerful_mode_active:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"")
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_powerful_mode_active")
 
         if device.support_tank_error_code:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"")
+            sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
