@@ -37,16 +37,8 @@ class DaikinResidentialDevice:
     def device_info(self):
         """Return a device description for device registry."""
         mac_add = self.get_value("gateway", "macAddress")
-        if mac_add is None:
-            mac_add = self.get_value("0", "macAddress") # for BigFoot2020
-
         model = self.get_value("gateway", "modelInfo")
-        if model is None:
-            model = self.get_value("0", "modelInfo") # for BigFoot2020
-
         sw_vers = self.get_value("gateway", "firmwareVersion")
-        if sw_vers is None:
-            sw_vers = self.get_value("0", "firmwareVersion")  # for BigFoot2020
         return {
             "identifiers": {
                 # Serial numbers are unique identifiers within a specific domain
