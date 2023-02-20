@@ -90,12 +90,6 @@ DAIKIN_HVAC_TO_HA = {
     "off": HVAC_MODE_OFF,
 }
 
-DAIKIN_TANK_TO_HA = {
-    ATTR_TANK_STATE_PERFOMANCE: STATE_PERFORMANCE,
-    ATTR_TANK_STATE_HEAT_PUMP: STATE_HEAT_PUMP,
-    ATTR_TANK_STATE_OFF: STATE_OFF,
-}
-
 class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-methods
     """Daikin main appliance class."""
 
@@ -233,17 +227,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if self.getData(mode) is None:
             return
         return await self.setValue(mode, status)
-
-    @property
-    def tank_state(self):
-        """Return current HVAC mode."""
-        state = ATTR_TANK_STATE_OFF
-        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_OFF:
-            if self.getValue(ATTR_TANK_POWERFUL) == ATTR_STATE_ON:
-                state = ATTR_TANK_STATE_PERFOMANCE
-            else:
-                state = ATTR_TANK_STATE_HEAT_PUMP
-        return DAIKIN_TANK_TO_HA.get(state)
 
     @property
     def support_tank_temperature(self):

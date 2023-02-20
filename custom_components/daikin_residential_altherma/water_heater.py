@@ -23,6 +23,10 @@ from .const import (
     ATTR_TANK_STATE_PERFOMANCE,
     ATTR_TANK_TEMPERATURE,
     ATTR_TANK_TARGET_TEMPERATURE,
+    ATTR_TANK_ON_OFF,
+    ATTR_TANK_POWERFUL,
+    ATTR_STATE_OFF,
+    ATTR_STATE_ON,
 )
 
 HA_TANK_MODE_TO_DAIKIN = {
@@ -34,6 +38,12 @@ HA_TANK_MODE_TO_DAIKIN = {
 HA_TANK_ATTR_TO_DAIKIN = {
     ATTR_TANK_MODE: ATTR_TANK_MODE_SET,
     ATTR_TANK_TARGET_TEMPERATURE: ATTR_TANK_TARGET_TEMPERATURE,
+}
+
+DAIKIN_TANK_TO_HA = {
+    ATTR_TANK_STATE_PERFOMANCE: STATE_PERFORMANCE,
+    ATTR_TANK_STATE_HEAT_PUMP: STATE_HEAT_PUMP,
+    ATTR_TANK_STATE_OFF: STATE_OFF,
 }
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
@@ -160,7 +170,13 @@ class DaikinWaterTank(WaterHeaterEntity):
     @property
     def current_operation(self):
         """Return current operation ie. heat, cool, idle."""
-        return self._device.tank_state
+        state = ATTR_TANK_STATE_OFF
+        if self._device.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_OFF:
+            if self._device.getValue(ATTR_TANK_POWERFUL) == ATTR_STATE_ON:
+                state = ATTR_TANK_STATE_PERFOMANCE
+            else:
+                state = ATTR_TANK_STATE_HEAT_PUMP
+        return DAIKIN_TANK_TO_HA.get(state)
 
     @property
     def operation_list(self):
