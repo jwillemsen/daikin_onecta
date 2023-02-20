@@ -46,10 +46,15 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 
 async def async_setup_entry(hass, entry, async_add_entities):
-    """Set up Daikin climate entities."""
+    """Set up Daikin water tank entities."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        async_add_entities([DaikinWaterTank(device)], update_before_add=True)
-
+        device_model = device.desc["deviceModel"]
+        """ When the device has a tank temperatature we add a water heater """
+        if device.getData(ATTR_TANK_TEMPERATURE) is not None:
+            _LOGGER.info("'%s' has a tank temparature, adding Water Heater", device_model)
+            async_add_entities([DaikinWaterTank(device)], update_before_add=True)
+        else:
+            _LOGGER.info("'%s' has not a tank temparature, ignoring")
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
