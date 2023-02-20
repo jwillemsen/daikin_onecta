@@ -267,16 +267,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
         return fl
 
-    @property
-    def support_tank_target_temperature(self):
-        """Return True if the device supports outsite temperature measurement."""
-        return self.getData(ATTR_TANK_TARGET_TEMPERATURE) is not None
-
-    @property
-    def tank_target_temperature(self):
-        """Return tank target temperature."""
-        return float(self.getValue(ATTR_TANK_TARGET_TEMPERATURE))
-
     # support_leaving_water_offset
     @property
     def support_leaving_water_offset(self):
@@ -578,7 +568,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return device serial number."""
         return self.getValue(ATTR_SERIAL_NUMBER) if self.support_serial_number else None
 
-    @property   # ATTR_TANK_HEATUP_MODE
+    @property
     def support_heatupMode(self):
         """Return True if the device supports heatupMode."""
         return self.getData(ATTR_TANK_HEATUP_MODE) is not None
@@ -588,7 +578,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return current heatupMode."""
         return self.getValue(ATTR_TANK_HEATUP_MODE)
 
-    @property   # ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE
+    @property
     def support_tank_is_holiday_mode_active(self):
         """Return True if the device supports tank_is_holiday_mode_active."""
         return self.getData(ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE) is not None
@@ -599,7 +589,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return self.getValue(ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE)
 
 
-    @property   # ATTR_TANK_IS_IN_EMERGENCY_STATE
+    @property
     def support_tank_is_in_emergency_state(self):
         """Return True if the device supports tank_is_in_emergency_state."""
         return self.getData(ATTR_TANK_IS_IN_EMERGENCY_STATE) is not None
@@ -610,7 +600,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return self.getValue(ATTR_TANK_IS_IN_EMERGENCY_STATE)
 
 
-    @property   # ATTR_TANK_IS_IN_ERROR_STATE
+    @property
     def support_tank_is_in_error_state(self):
         """Return True if the device supports tank_is_in_error_state."""
         return self.getData(ATTR_TANK_IS_IN_ERROR_STATE) is not None
@@ -621,7 +611,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return self.getValue(ATTR_TANK_IS_IN_ERROR_STATE)
 
 
-    @property   # ATTR_TANK_IS_IN_INSTALLER_STATE
+    @property
     def support_tank_is_in_installer_state(self):
         """Return True if the device supports tank_is_in_installer_state."""
         return self.getData(ATTR_TANK_IS_IN_INSTALLER_STATE) is not None
@@ -632,7 +622,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return self.getValue(ATTR_TANK_IS_IN_INSTALLER_STATE)
 
 
-    @property   # ATTR_TANK_IS_IN_WARNING_STATE
+    @property
     def support_tank_is_in_warning_state(self):
         """Return True if the device supports tank_is_in_warning_state."""
         return self.getData(ATTR_TANK_IS_IN_WARNING_STATE) is not None
@@ -642,7 +632,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return current tank_is_in_warning_state."""
         return self.getValue(ATTR_TANK_IS_IN_WARNING_STATE)
 
-    @property   # ATTR_TANK_IS_POWERFUL_MODE_ACTIVE
+    @property
     def support_tank_is_powerful_mode_active(self):
         """Return True if the device supports flag: is_powerful_mode_active"""
         return self.getData(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE) is not None
@@ -652,7 +642,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return current flag: is_powerful_mode_active"""
         return self.getValue(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE)
 
-    @property   # ATTR_TANK_ERROR_CODE
+    @property
     def support_tank_error_code(self):
         """Return True if the device supports tank error code."""
         return self.getData(ATTR_TANK_ERROR_CODE) is not None

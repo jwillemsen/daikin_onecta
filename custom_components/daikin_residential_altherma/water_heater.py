@@ -150,6 +150,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
+
         await self._device.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
 
     async def async_update(self):

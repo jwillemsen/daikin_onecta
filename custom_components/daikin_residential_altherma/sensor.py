@@ -101,12 +101,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank_temperature")
 
-        if device.support_tank_target_temperature:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_TARGET_TEMPERATURE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports target tank_temperature")
-
         if device.support_outside_temperature:
             sensor = DaikinSensor.factory(device, ATTR_OUTSIDE_TEMPERATURE,"")
             sensors.append(sensor)
