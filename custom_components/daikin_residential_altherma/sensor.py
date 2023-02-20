@@ -193,23 +193,23 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
 
         if device.getData(ATTR_WIFI_STRENGTH) is not None:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi signal strength")
+            _LOGGER.debug("device %s supports wifi signal strength", device.name)
             sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
             sensors.append(sensor)
         if device.getData(ATTR_WIFI_SSID) is not None:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi ssid")
+            _LOGGER.debug("device %s supports wifi ssid", device.name)
             sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
             sensors.append(sensor)
         if device.getData(ATTR_LOCAL_SSID) is not None:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports local ssid")
+            _LOGGER.debug("device %s supports local ssid", device.name)
             sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
             sensors.append(sensor)
         if device.getData(ATTR_MAC_ADDRESS) is not None:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports mac address")
+            _LOGGER.debug("device %s supports mac address", device.name)
             sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
             sensors.append(sensor)
         if device.getData(ATTR_SERIAL_NUMBER) is not None:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports serial number")
+            _LOGGER.debug("device %s supports serial number", device.name)
             sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
             sensors.append(sensor)
 
@@ -279,7 +279,7 @@ class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
 
     @staticmethod
-    def factory(device: Appliance, monitored_state: str, type, period="", ):
+    def factory(device: Appliance, monitored_state: str, type, period=""):
         """Initialize any DaikinSensor."""
         try:
             cls = {
