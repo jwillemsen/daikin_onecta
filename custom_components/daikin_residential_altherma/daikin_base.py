@@ -246,12 +246,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return DAIKIN_TANK_TO_HA.get(state)
 
     @property
-    def tank_states(self):
-        """Return the list of available HVAC modes."""
-        states = [STATE_OFF, STATE_HEAT_PUMP, STATE_PERFORMANCE]
-        return states
-
-    @property
     def support_tank_temperature(self):
         """Return True if the device supports tank temperature measurement."""
         return self.getData(ATTR_TANK_TEMPERATURE) is not None
