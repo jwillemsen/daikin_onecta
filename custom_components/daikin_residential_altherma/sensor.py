@@ -192,23 +192,23 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
 
-        if device.support_wifi_strength:
+        if device.getData(ATTR_WIFI_STRENGTH) is not None:
             _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi signal strength")
             sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
             sensors.append(sensor)
-        if device.support_wifi_ssid:
+        if device.getData(ATTR_WIFI_SSID) is not None:
             _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi ssid")
             sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
             sensors.append(sensor)
-        if device.support_local_ssid:
+        if device.getData(ATTR_LOCAL_SSID) is not None:
             _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports local ssid")
             sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
             sensors.append(sensor)
-        if device.support_mac_address:
+        if device.getData(ATTR_MAC_ADDRESS) is not None:
             _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports mac address")
             sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
             sensors.append(sensor)
-        if device.support_serial_number:
+        if device.getData(ATTR_SERIAL_NUMBER) is not None:
             _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports serial number")
             sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
             sensors.append(sensor)
@@ -279,7 +279,7 @@ class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
 
     @staticmethod
-    def factory(device: Appliance, monitored_state: str, type, period=""):
+    def factory(device: Appliance, monitored_state: str, type, period="", ):
         """Initialize any DaikinSensor."""
         try:
             cls = {
@@ -536,17 +536,7 @@ class DaikinGatewaySensor(DaikinSensor):
     @property
     def state(self):
         """Return the internal state of the sensor."""
-        if self._device_attribute == ATTR_WIFI_STRENGTH:
-            return self._device.wifi_strength
-        if self._device_attribute == ATTR_WIFI_SSID:
-            return self._device.wifi_ssid
-        if self._device_attribute == ATTR_LOCAL_SSID:
-            return self._device.local_ssid
-        if self._device_attribute == ATTR_MAC_ADDRESS:
-            return self._device.mac_address
-        if self._device_attribute == ATTR_SERIAL_NUMBER:
-            return self._device.serial_number
-        return None
+        return self._device.getValue(self._device_attribute)
 
     @property
     def state_class(self):

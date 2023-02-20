@@ -48,11 +48,6 @@ from .const import(
     ATTR_TANK_IS_IN_WARNING_STATE,
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
     ATTR_TANK_ERROR_CODE,
-    ATTR_WIFI_STRENGTH,
-    ATTR_WIFI_SSID,
-    ATTR_LOCAL_SSID,
-    ATTR_MAC_ADDRESS,
-    ATTR_SERIAL_NUMBER,
 )
 
 from homeassistant.components.climate.const import (
@@ -519,56 +514,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return self.getValue(ATTR_ERROR_CODE)
 
     @property
-    def support_wifi_strength(self):
-        """Return True if the device supports wifi connection strength."""
-        return self.getData(ATTR_WIFI_STRENGTH) is not None
-
-    @property
-    def wifi_strength(self):
-        """Return current wifi connection strength."""
-        return self.getValue(ATTR_WIFI_STRENGTH) if self.support_wifi_strength else None
-
-    @property
-    def support_wifi_ssid(self):
-        """Return True if the device supports wifi connection ssid."""
-        return self.getData(ATTR_WIFI_SSID) is not None
-
-    @property
-    def wifi_ssid(self):
-        """Return current wifi connection ssid."""
-        return self.getValue(ATTR_WIFI_SSID) if self.support_wifi_ssid else None
-
-    @property
-    def support_local_ssid(self):
-        """Return True if the device supports internal ssid."""
-        return self.getData(ATTR_LOCAL_SSID) is not None
-
-    @property
-    def local_ssid(self):
-        """Return current internal ssid."""
-        return self.getValue(ATTR_LOCAL_SSID) if self.support_local_ssid else None
-
-    @property
-    def support_mac_address(self):
-        """Return True if the device reports its mac address."""
-        return self.getData(ATTR_MAC_ADDRESS) is not None
-
-    @property
-    def mac_address(self):
-        """Return device mac address."""
-        return self.getValue(ATTR_MAC_ADDRESS) if self.support_mac_address else None
-
-    @property
-    def support_serial_number(self):
-        """Return True if the device reports its serial number."""
-        return self.getData(ATTR_SERIAL_NUMBER) is not None
-
-    @property
-    def serial_number(self):
-        """Return device serial number."""
-        return self.getValue(ATTR_SERIAL_NUMBER) if self.support_serial_number else None
-
-    @property
     def support_heatupMode(self):
         """Return True if the device supports heatupMode."""
         return self.getData(ATTR_TANK_HEATUP_MODE) is not None
@@ -609,7 +554,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def tank_is_in_error_state(self):
         """Return current tank_is_in_error_state."""
         return self.getValue(ATTR_TANK_IS_IN_ERROR_STATE)
-
 
     @property
     def support_tank_is_in_installer_state(self):
