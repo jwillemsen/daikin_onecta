@@ -277,21 +277,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return tank target temperature."""
         return float(self.getValue(ATTR_TANK_TARGET_TEMPERATURE))
 
-    @property
-    def tank_target_temperature_step(self):
-        """Return current target temperature step value."""
-        return float(self.getData(ATTR_TANK_TARGET_TEMPERATURE)["stepValue"])
-
-    @property
-    def tank_target_temperature_minValue(self):
-        """Return current target temperature minimum value."""
-        return float(self.getData(ATTR_TANK_TARGET_TEMPERATURE)["minValue"])
-
-    @property
-    def tank_target_temperature_maxValue(self):
-        """Return current target temperature maximum value."""
-        return float(self.getData(ATTR_TANK_TARGET_TEMPERATURE)["maxValue"])
-
     # support_leaving_water_offset
     @property
     def support_leaving_water_offset(self):
@@ -656,7 +641,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def tank_is_in_warning_state(self):
         """Return current tank_is_in_warning_state."""
         return self.getValue(ATTR_TANK_IS_IN_WARNING_STATE)
-
 
     @property   # ATTR_TANK_IS_POWERFUL_MODE_ACTIVE
     def support_tank_is_powerful_mode_active(self):

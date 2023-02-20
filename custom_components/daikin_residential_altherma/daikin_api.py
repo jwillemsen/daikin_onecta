@@ -492,9 +492,6 @@ class DaikinApi:
         res = {}
         for dev_data in self.json_data or []:
             device = Appliance(dev_data, self)
-            #DAMIANO
-            #_LOGGER.warning("DAMIANO daikin_api.py - deviceobj '%s'", str(dev_data))
-            #DAMIANO
             gateway_model = device.get_value("gateway", "modelInfo")
             device_model = device.desc["deviceModel"]
             _LOGGER.info("Found device '%s' with gateway model '%s'", device_model, gateway_model)

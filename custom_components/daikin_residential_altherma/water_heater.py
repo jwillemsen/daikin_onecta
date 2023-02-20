@@ -21,6 +21,7 @@ from .const import (
     ATTR_TANK_STATE_OFF,
     ATTR_TANK_STATE_HEAT_PUMP,
     ATTR_TANK_STATE_PERFOMANCE,
+    ATTR_TANK_TEMPERATURE,
     ATTR_TANK_TARGET_TEMPERATURE,
 )
 
@@ -114,30 +115,30 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     @property
     def current_temperature(self):
-        """Return the current temperature."""
-        return self._device.tank_temperature
+        """Return tank temperature."""
+        return float(self._device.getValue(ATTR_TANK_TEMPERATURE))
 
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
-        return self._device.tank_target_temperature
+        return float(self._device.getValue(ATTR_TANK_TARGET_TEMPERATURE))
 
     @property
     def extra_state_attributes(self):
         """Return the optional device state attributes."""
-        data = {"target_temp_step": self._device.tank_target_temperature_step}
+        data = {"target_temp_step": float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["stepValue"])}
         return data
 
     @property
     def min_temp(self):
         """Return the supported step of target temperature."""
-        stepVal = self._device.tank_target_temperature_minValue
+        stepVal = float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["minValue"])
         return stepVal
 
     @property
     def max_temp(self):
         """Return the supported step of target temperature."""
-        stepVal = self._device.tank_target_temperature_maxValue
+        stepVal = float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["maxValue"])
         return stepVal
 
     async def async_set_temperature(self, **kwargs):
@@ -159,14 +160,17 @@ class DaikinWaterTank(WaterHeaterEntity):
     @property
     def operation_list(self):
         """Return the list of available operation modes."""
-        return self._device.tank_states
+        states = [STATE_OFF, STATE_HEAT_PUMP, STATE_PERFORMANCE]
+        return states
 
-    async def async_set_operation_mode(self, tank_state):
-        """Set new target tank mode."""
-        tank_state = HA_TANK_MODE_TO_DAIKIN[tank_state]
+    async def async_set_operation_mode(self, operation_mode):
+        """Set new target tank operation mode."""
+        _LOGGER.info("Setting operation mode %s", operation_mode)
+        tank_state = HA_TANK_MODE_TO_DAIKIN[operation_mode]
         await self._device.async_set_tank_state(tank_state)
 
     @property
     def device_info(self):
         """Return a device description for device registry."""
         return self._device.device_info()
+

@@ -209,6 +209,13 @@ SENSOR_TYPES = {
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
     },
+    ATTR_TANK_TARGET_TEMPERATURE: {
+        CONF_NAME: "Tank Target tempeature",
+        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
+        CONF_ICON: "mdi:bathtub-outline",
+        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+    },
     ATTR_COOL_ENERGY: {
         CONF_NAME: "Cool Energy Consumption",
         CONF_TYPE: SENSOR_TYPE_ENERGY,
@@ -292,7 +299,7 @@ SENSOR_TYPES = {
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_TANK_HEATUP_MODE:{
-        CONF_NAME: "Info heatupMode",
+        CONF_NAME: "Info Tank heatupMode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
@@ -378,13 +385,6 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:numeric",
         CONF_DEVICE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
-    },
-    ATTR_TANK_TARGET_TEMPERATURE: {
-        CONF_NAME: "Tank target tempeature",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_ICON: "mdi:bathtub-outline",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
     },
 }
 
