@@ -167,14 +167,16 @@ class DaikinClimate(ClimateEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+
         # At the moment the device supports a separate
         # room temperature do return that
-        if self._device.support_room_temperature:
+        if controlMode == "roomTemperature":
             return self._device.room_temperature
-        if self._device.support_leaving_water_offset:
-            return self._device.leaving_water_offset
-        else:
+        if controlMode == "leavingWaterTemperature":
             return self._device.leaving_water_temperature
+        return None
 
     @property
     def max_temp(self):
@@ -189,14 +191,13 @@ class DaikinClimate(ClimateEntity):
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
-        if self._device.support_room_temperature:
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+        if controlMode == "roomTemperature":
             return self._device.target_temperature
-
-        if self._device.support_leaving_water_offset:
+        if controlMode == "leavingWaterTemperature":
             return self._device.leaving_water_offset
-
-        else:
-            return None
+        return None
 
     @property
     def target_temperature_step(self):
