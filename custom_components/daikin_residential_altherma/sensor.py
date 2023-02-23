@@ -134,21 +134,21 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support setpoint_mode", sensor)
 
         if device.support_tank_setpoint_mode:
             sensor = DaikinSensor.factory(device, ATTR_TANK_SETPOINT_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support tank setpoint_mode", sensor)
 
         if device.support_control_mode:
             sensor = DaikinSensor.factory(device, ATTR_CONTROL_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_control_mode", sensor)
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support control_mode", sensor)
 
         if device.support_is_holiday_mode_active:
             sensor = DaikinSensor.factory(device, ATTR_IS_HOLIDAY_MODE_ACTIVE,"")
@@ -192,24 +192,24 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
 
-        if device.support_wifi_strength:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi signal strength")
+        if device.getData(ATTR_WIFI_STRENGTH) is not None:
+            _LOGGER.debug("device %s supports wifi signal strength", device.name)
             sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
             sensors.append(sensor)
-        if device.support_wifi_ssid:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports wifi ssid")
+        if device.getData(ATTR_WIFI_SSID) is not None:
+            _LOGGER.debug("device %s supports wifi ssid", device.name)
             sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
             sensors.append(sensor)
-        if device.support_local_ssid:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports local ssid")
+        if device.getData(ATTR_LOCAL_SSID) is not None:
+            _LOGGER.debug("device %s supports local ssid", device.name)
             sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
             sensors.append(sensor)
-        if device.support_mac_address:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports mac address")
+        if device.getData(ATTR_MAC_ADDRESS) is not None:
+            _LOGGER.debug("device %s supports mac address", device.name)
             sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
             sensors.append(sensor)
-        if device.support_serial_number:
-            _LOGGER.debug("DAIKIN RESIDENTIAL ALTHERMA: supports serial number")
+        if device.getData(ATTR_SERIAL_NUMBER) is not None:
+            _LOGGER.debug("device %s supports serial number", device.name)
             sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
             sensors.append(sensor)
 
@@ -219,7 +219,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports support_heatupMode")
 
         # TANK
         # TODO: ripartire da qui
@@ -259,14 +259,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
 
         if device.support_tank_is_powerful_mode_active:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"")
+            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
             _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_powerful_mode_active")
 
         if device.support_tank_error_code:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"")
+            sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
@@ -282,8 +282,6 @@ class DaikinSensor(SensorEntity):
     def factory(device: Appliance, monitored_state: str, type, period=""):
         """Initialize any DaikinSensor."""
         try:
-            # DAMIANO
-            #monitored_state = monitored_state.replace("T-@Tank","")
             cls = {
                 SENSOR_TYPE_TEMPERATURE: DaikinClimateSensor,
                 SENSOR_TYPE_POWER: DaikinEnergySensor,
@@ -314,7 +312,7 @@ class DaikinSensor(SensorEntity):
                 #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
                 self._name = f"{device.name} {self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
-        _LOGGER.info("  DAMIANO Initialized sensor: {}".format(self._name))
+        _LOGGER.info("Initialized sensor: {}".format(self._name))
 
     @property
     def available(self):
@@ -538,17 +536,7 @@ class DaikinGatewaySensor(DaikinSensor):
     @property
     def state(self):
         """Return the internal state of the sensor."""
-        if self._device_attribute == ATTR_WIFI_STRENGTH:
-            return self._device.wifi_strength
-        if self._device_attribute == ATTR_WIFI_SSID:
-            return self._device.wifi_ssid
-        if self._device_attribute == ATTR_LOCAL_SSID:
-            return self._device.local_ssid
-        if self._device_attribute == ATTR_MAC_ADDRESS:
-            return self._device.mac_address
-        if self._device_attribute == ATTR_SERIAL_NUMBER:
-            return self._device.serial_number
-        return None
+        return self._device.getValue(self._device_attribute)
 
     @property
     def state_class(self):

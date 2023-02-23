@@ -32,12 +32,12 @@ async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         switches = DAIKIN_SWITCHES
-
         for switch in switches:
-
             if device.support_preset_mode(switch):
-                _LOGGER.info("DAMIANO Adding Switch {}".format(switch))
+                _LOGGER.info("Daikin Adding Switch {}".format(switch))
                 async_add_entities([DaikinSwitch(device, switch)])
+            else:
+                _LOGGER.info("Daikin Ignoring Switch {}".format(switch))
 
 
 
@@ -70,8 +70,8 @@ class DaikinSwitch(ToggleEntity):
     @property
     def icon(self):
         """Icon to use in the frontend, if any."""
-
         return DAIKIN_SWITCHES_ICONS[self._switch_id]
+
     @property
     def name(self):
         """Return the name of the switch."""
@@ -89,7 +89,7 @@ class DaikinSwitch(ToggleEntity):
 
     async def async_update(self):
         """Retrieve latest state."""
-        _LOGGER.info("DAMIANO {}: ASYNC UPDATE SWITCH".format(self))
+        _LOGGER.info("Async update switch {}".format(self))
         await self._device.api.async_update()
 
     async def async_turn_on(self, **kwargs):

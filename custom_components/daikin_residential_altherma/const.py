@@ -34,6 +34,10 @@ MP_OUDOOR_UNIT = "outdoorUnit"
 MP_USER_INTERFACE = "userInterface"
 
 # DATA POINTS
+DP_ON_OFF_MODE = "onOffMode"
+DP_TANK_POWERFUL_MODE = "powerfulMode"
+DP_TANK_TEMPERATURECONTROL = "temperatureControl"
+
 DP_ON_OFF_CLIMATE = "onOffMode"
 DP_ON_OFF_TANK = "onOffMode"
 DP_OPERATION_MODE = "operationMode"
@@ -68,6 +72,15 @@ ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
 ATTR_SETPOINT_MODE = "setpointMode"
 ATTR_TANK_SETPOINT_MODE = "@TanksetpointMode"
 ATTR_CONTROL_MODE = "controlMode"
+
+ATTR_TANK_ON_OFF = "tank_on_off"
+ATTR_TANK_POWERFUL = "powerfulMode"
+ATTR_TANK_STATE_HEAT_PUMP = "on"
+ATTR_TANK_TARGET_TEMPERATURE = "targetTemperature"
+ATTR_TANK_MODE = "tank_mode"
+ATTR_TANK_MODE_SET = "tank_state"
+ATTR_TANK_STATE_OFF = "off"
+ATTR_TANK_STATE_PERFOMANCE = "powerfulMode"
 
 ATTR_IS_HOLIDAY_MODE_ACTIVE = "isHolidayModeActive"
 ATTR_IS_IN_EMERGENCY_STATE = "isInEmergencyState"
@@ -128,12 +141,15 @@ DAIKIN_CMD_SETS = {
     ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "isPowerfulModeActive", ""],
     ATTR_TANK_ERROR_CODE: [MP_DOMESTIC_HWT, "errorCode", ""],
+    ATTR_TANK_TARGET_TEMPERATURE: [MP_DOMESTIC_HWT, DP_TANK_TEMPERATURECONTROL, "/operationModes/heating/setpoints/domesticHotWaterTemperature"],
     #  Gateway settings
     ATTR_WIFI_STRENGTH: [MP_GATEWAY, DP_WIFI_STRENGTH, ""],
     ATTR_WIFI_SSID: [MP_GATEWAY, DP_WIFI_SSID, ""],
     ATTR_LOCAL_SSID: [MP_GATEWAY, DP_LOCAL_SSID, ""],
     ATTR_MAC_ADDRESS: [MP_GATEWAY, DP_MAC_ADDRESS, ""],
     ATTR_SERIAL_NUMBER: [MP_GATEWAY, DP_SERIAL_NUMBER, ""],
+    ATTR_TANK_ON_OFF: [MP_DOMESTIC_HWT, DP_ON_OFF_MODE, ""],
+    ATTR_TANK_POWERFUL: [MP_DOMESTIC_HWT, DP_TANK_POWERFUL_MODE, ""],
 }
 
 ATTR_STATE_ON = "on"
@@ -142,7 +158,7 @@ ATTR_STATE_OFF = "off"
 PRESET_BOOST= "boost"
 PRESET_TANK_ONOFF= "Tank"
 PRESET_SETPOINT_MODE = "setpointMode"
-DAIKIN_SWITCHES = [PRESET_BOOST,PRESET_TANK_ONOFF,] #PRESET_SETPOINT_MODE
+DAIKIN_SWITCHES = [PRESET_BOOST,PRESET_TANK_ONOFF] #PRESET_SETPOINT_MODE
 DAIKIN_SWITCHES_ICONS ={PRESET_BOOST:'mdi:bike-fast',PRESET_TANK_ONOFF: 'mdi:bathtub-outline',PRESET_SETPOINT_MODE:'mdi:thermometer-lines'}
 SWITCH_DEFAULT_ICON = "hass:air-filter"
 
@@ -193,6 +209,13 @@ SENSOR_TYPES = {
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
     },
+    ATTR_TANK_TARGET_TEMPERATURE: {
+        CONF_NAME: "Tank Target tempeature",
+        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
+        CONF_ICON: "mdi:bathtub-outline",
+        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+    },
     ATTR_COOL_ENERGY: {
         CONF_NAME: "Cool Energy Consumption",
         CONF_TYPE: SENSOR_TYPE_ENERGY,
@@ -218,14 +241,12 @@ SENSOR_TYPES = {
         CONF_NAME: "Info Setpoint Mode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
-        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_TANK_SETPOINT_MODE: {
         CONF_NAME: "Info Tank Setpoint Mode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
-        #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_CONTROL_MODE: {
@@ -278,7 +299,7 @@ SENSOR_TYPES = {
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
     ATTR_TANK_HEATUP_MODE:{
-        CONF_NAME: "Info heatupMode",
+        CONF_NAME: "Info Tank heatupMode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         #CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
@@ -373,3 +394,4 @@ KEY_MAC = "mac"
 KEY_IP = "ip"
 
 TIMEOUT = 60
+

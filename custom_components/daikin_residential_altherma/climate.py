@@ -13,11 +13,9 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_OFF,
     PRESET_AWAY,
     PRESET_COMFORT,
-    PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
-    #SUPPORT_TARGET_TEMPERATURE_RANGE,
     SUPPORT_PRESET_MODE,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
@@ -43,7 +41,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 )
 
 
-PRESET_MODES = {PRESET_BOOST, PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
+PRESET_MODES = {PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
 
 HA_HVAC_TO_DAIKIN = {
     HVAC_MODE_COOL: "cooling",
@@ -75,8 +73,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         async_add_entities([DaikinClimate(device)], update_before_add=True)
-    # daikin_api = hass.data[DAIKIN_DOMAIN].get(entry.entry_id)
-    # async_add_entities([DaikinClimate(daikin_api)], update_before_add=True)
 
 
 class DaikinClimate(ClimateEntity):
@@ -84,7 +80,7 @@ class DaikinClimate(ClimateEntity):
 
     def __init__(self, device):
         """Initialize the climate device."""
-        _LOGGER.info("DAMIANO Initializing CLIMATE...")
+        _LOGGER.info("Initializing Daiking Altherma...")
         self._device = device
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
@@ -106,7 +102,7 @@ class DaikinClimate(ClimateEntity):
             if support_preset:
                 self._supported_preset_modes.append(mode)
                 self._supported_features |= SUPPORT_PRESET_MODE
-            _LOGGER.info("DAMIANO support_preset_mode {}: {}".format(mode,support_preset))
+            _LOGGER.info("Support_preset_mode {}: {}".format(mode,support_preset))
 
     async def _set(self, settings):
         """Set device settings using API."""
@@ -266,16 +262,6 @@ class DaikinClimate(ClimateEntity):
     async def async_turn_off(self):
         """Turn device CLIMATE off."""
         await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_OFF)
-
-    # async def async_turn_tank_on(self):
-    #     """Turn device TANK on."""
-    #     print("DAMIANO {} to on".format(self._device))
-    #     await self._device.setValue(ATTR_ON_OFF_TANK, ATTR_STATE_ON)
-
-    # async def async_turn_tank_off(self):
-    #     """Turn device TANK off."""
-    #     print("DAMIANO {} to off".format(self._device))
-    #     await self._device.setValue(ATTR_ON_OFF_TANK, ATTR_STATE_OFF)
 
     @property
     def device_info(self):
