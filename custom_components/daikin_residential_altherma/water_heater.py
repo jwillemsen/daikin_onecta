@@ -164,23 +164,23 @@ class DaikinWaterTank(WaterHeaterEntity):
     async def async_set_tank_temperature(self, value):
         """Set new target temperature."""
         _LOGGER.debug("Set tank temperature: %s", value)
-        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+        if self._device.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
             return None
-        return await self.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
+        return await self._device.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
 
     async def async_set_tank_state(self, tank_state):
         """Set new tank state."""
         _LOGGER.debug("Set tank state: %s", tank_state)
         if tank_state == STATE_OFF:
-            return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_OFF)
+            return await self._device.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_OFF)
         if tank_state == STATE_PERFORMANCE:
-            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-                await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            return await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_ON)
+            if self._device.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+                await self._device.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
+            return await self._device.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_ON)
         if tank_state == STATE_HEAT_PUMP:
-            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-                return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
+            if self._device.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+                return await self._device.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
+            await self._device.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
         _LOGGER.warning("Invalid tank state: %s", tank_state)
         return None
 
