@@ -8,19 +8,12 @@ from .const import(
     PRESET_BOOST,
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
-    ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
-    ATTR_ROOM_TEMPERATURE,
-    ATTR_LEAVINGWATER_OFFSET,
-    ATTR_TANK_TARGET_TEMPERATURE,
-    ATTR_TANK_ON_OFF,
-    ATTR_TANK_POWERFUL,
-    ATTR_TANK_STATE_OFF,
-    ATTR_TANK_STATE_HEAT_PUMP,
-    ATTR_TANK_STATE_PERFOMANCE,
     ATTR_TARGET_ROOM_TEMPERATURE,
+    ATTR_TARGET_LEAVINGWATER_OFFSET,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
+    ATTR_CONTROL_MODE,
     DAIKIN_CMD_SETS,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
@@ -41,8 +34,6 @@ from homeassistant.components.climate.const import (
     PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
-    DEFAULT_MAX_TEMP,
-    DEFAULT_MIN_TEMP,
 )
 
 from homeassistant.components.water_heater import (
@@ -72,11 +63,6 @@ DAIKIN_HVAC_TO_HA = {
 
 class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-methods
     """Daikin main appliance class."""
-
-    @staticmethod
-    def translate_mac(value):
-        """Return translated MAC address."""
-        return ":".join(value[i : i + 2] for i in range(0, len(value), 2))
 
     def __init__(self, jsonData, apiInstance):
         """Init the pydaikin appliance, representing one Daikin device."""
@@ -155,12 +141,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
 
     @property
-    def mac(self):
-        """Return device's MAC address."""
-        mac_add = self.get_value("gateway", "macAddress")
-        return mac_add
-
-    @property
     def hvac_mode(self):
         """Return current HVAC mode."""
         mode = HVAC_MODE_OFF
@@ -206,91 +186,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return
         return await self.setValue(mode, status)
 
-    # support_leaving_water_offset
-    @property
-    def support_leaving_water_offset(self):
-        """Return True if the device supports leaving water offset measurement."""
-        return self.getData(ATTR_LEAVINGWATER_OFFSET) is not None
-
-    @property
-    def leaving_water_offset(self):
-        """Return room temperature."""
-        fl = float(self.getValue(ATTR_LEAVINGWATER_OFFSET))
-        return fl
-
-    @property
-    def support_room_temperature(self):
-        """Return True if the device supports room temperature measurement."""
-        return self.getData(ATTR_ROOM_TEMPERATURE) is not None
-
-    @property
-    def room_temperature(self):
-        """Return room temperature."""
-        fl = float(self.getValue(ATTR_ROOM_TEMPERATURE))
-        return fl
-
-    @property
-    def support_outside_temperature(self):
-        """Return True if the device supports outside temperature measurement."""
-        return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
-
-    @property
-    def outside_temperature(self):
-        """Return current outside temperature."""
-        return float(self.getValue(ATTR_OUTSIDE_TEMPERATURE))
-
-    @property
-    def leaving_water_temperature(self):
-        """Return current inside temperature."""
-        return float(self.getValue(ATTR_LEAVINGWATER_TEMPERATURE))
-
-    @property
-    def max_temp(self):
-        """Return the maximum temperature we are allowed to set."""
-        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in availableOperationModes:
-            return DEFAULT_MAX_TEMP
-
-        # Only with a separate room temperature we have a
-        # max value we can use
-        if self.support_room_temperature:
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
-
-        if self.support_leaving_water_offset:
-            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["maxValue"])
-
-        return DEFAULT_MAX_TEMP
-
-    @property
-    def min_temp(self):
-        """Return the minimum temperature we are allowed to set."""
-        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in availableOperationModes:
-            return DEFAULT_MIN_TEMP
-
-        # Only with a separate room temperature we have a
-        # min value we can use
-        if self.support_room_temperature:
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
-
-        if self.support_leaving_water_offset:
-            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["minValue"])
-
-        return DEFAULT_MIN_TEMP
-
-    @property
-    def target_temperature(self):
-        """Return current target temperature."""
-        if self.support_room_temperature:
-            availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-            operationMode = self.getValue(ATTR_OPERATION_MODE)
-            if operationMode not in availableOperationModes:
-                return None
-            return float(self.getValue(ATTR_TARGET_ROOM_TEMPERATURE))
-        return None
-
     @property
     def supports_cooling(self):
         availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
@@ -299,22 +194,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         else:
             return False
 
-    @property
-    def target_temperature_step(self):
-        """Return current target temperature step."""
-        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in availableOperationModes:
-            return None
-
-        if self.support_room_temperature:
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
-
-        if self.support_leaving_water_offset:
-            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["stepValue"])
-
-        return None
-
     async def async_set_temperature(self, value):
         """Set new target temperature."""
         availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
@@ -322,14 +201,13 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if operationMode not in availableOperationModes:
             return None
 
-        # When we have a separate room temperature we can set the value
-        if self.support_room_temperature:
+        # Check which controlMode is used to control the device
+        controlMode = self.getValue(ATTR_CONTROL_MODE)
+
+        if controlMode == "roomTemperature":
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
-
-        if self.support_leaving_water_offset:
-            value = int(value)# convert value to int
-            return await self.setValue(ATTR_LEAVINGWATER_OFFSET, value)
-
+        if controlMode == "leavingWaterTemperature":
+            return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, value)
         return None
 
     @property
@@ -365,29 +243,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         ]
         start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
         return sum(energy_data[start_index:])
-
-    async def async_set_tank_temperature(self, value):
-        """Set new target temperature."""
-        _LOGGER.debug("Set tank temperature: %s", value)
-        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-            return None
-        return await self.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
-
-    async def async_set_tank_state(self, tank_state):
-        """Set new tank state."""
-        _LOGGER.debug("Set tank state: %s", tank_state)
-        if tank_state == STATE_OFF:
-            return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_OFF)
-        if tank_state == STATE_PERFORMANCE:
-            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-                await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            return await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_ON)
-        if tank_state == STATE_HEAT_PUMP:
-            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-                return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
-        _LOGGER.warning("Invalid tank state: %s", tank_state)
-        return None
 
     async def set(self, settings):
         """Set settings on Daikin device."""

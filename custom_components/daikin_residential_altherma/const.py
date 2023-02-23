@@ -59,6 +59,7 @@ ATTR_ON_OFF_TANK = "on_off_tank"
 ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
 ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
+ATTR_TARGET_LEAVINGWATER_OFFSET = "target_leavingwater_offset"
 ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
 ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
@@ -81,6 +82,7 @@ ATTR_TANK_MODE = "tank_mode"
 ATTR_TANK_MODE_SET = "tank_state"
 ATTR_TANK_STATE_OFF = "off"
 ATTR_TANK_STATE_PERFOMANCE = "powerfulMode"
+ATTR_TANK_OPERATION_MODE = "@TankoperationMode"
 
 ATTR_IS_HOLIDAY_MODE_ACTIVE = "isHolidayModeActive"
 ATTR_IS_IN_EMERGENCY_STATE = "isInEmergencyState"
@@ -112,19 +114,21 @@ DAIKIN_CMD_SETS = {
     ATTR_OPERATION_MODE: [MP_CLIMATE, DP_OPERATION_MODE, ""],
     ATTR_OUTSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/outdoorTemperature"],
     ATTR_ROOM_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/roomTemperature"],
-    ATTR_LEAVINGWATER_OFFSET: [MP_CLIMATE, DP_TEMPERATURE, "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
-    ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
+    ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"],
     ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
+    ATTR_TARGET_LEAVINGWATER_OFFSET: [
+        MP_CLIMATE,
+        DP_TEMPERATURE,
+        "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
     ATTR_TARGET_ROOM_TEMPERATURE: [
         MP_CLIMATE,
         DP_TEMPERATURE,
-        "/operationModes/%operationMode%/setpoints/roomTemperature",
-    ],
+        "/operationModes/%operationMode%/setpoints/roomTemperature"],
     ATTR_ENERGY_CONSUMPTION: [MP_CLIMATE, DP_CONSUMPTION, "/electrical"],
     ATTR_ENERGY_CONSUMPTION_TANK: [MP_DOMESTIC_HWT, DP_CONSUMPTION, "/electrical"],
     ATTR_SETPOINT_MODE: [MP_CLIMATE, "setpointMode", ""],
-    ATTR_TANK_SETPOINT_MODE: [MP_DOMESTIC_HWT, "@TanksetpointMode", ""],
     ATTR_CONTROL_MODE: [MP_CLIMATE, DP_CONTROL_MODE, ""],
+    ATTR_TANK_SETPOINT_MODE: [MP_DOMESTIC_HWT, "@TanksetpointMode", ""],
     # FLAG HEAT PUMP
     ATTR_IS_HOLIDAY_MODE_ACTIVE: [MP_CLIMATE, "isHolidayModeActive", ""],
     ATTR_IS_IN_EMERGENCY_STATE: [MP_CLIMATE, "isInEmergencyState", ""],
@@ -134,6 +138,7 @@ DAIKIN_CMD_SETS = {
     ATTR_ERROR_CODE: [MP_CLIMATE, "errorCode", ""],
     #  FLAG HOT WATER TANK
     ATTR_TANK_HEATUP_MODE: [MP_DOMESTIC_HWT, "heatupMode", ""],
+    ATTR_TANK_OPERATION_MODE: [MP_DOMESTIC_HWT, "@TankoperationMode", ""],
     ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisHolidayModeActive", ""],
     ATTR_TANK_IS_IN_EMERGENCY_STATE: [MP_DOMESTIC_HWT, "@TankisInEmergencyState", ""],
     ATTR_TANK_IS_IN_ERROR_STATE: [MP_DOMESTIC_HWT, "@TankisInErrorState", ""],
@@ -237,6 +242,12 @@ SENSOR_TYPES = {
         CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
     },
+    ATTR_OPERATION_MODE: {
+        CONF_NAME: "Operation Mode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
     ATTR_SETPOINT_MODE: {
         CONF_NAME: "Info Setpoint Mode",
         CONF_TYPE: None,
@@ -293,6 +304,12 @@ SENSOR_TYPES = {
     },
     ATTR_TANK_HEATUP_MODE:{
         CONF_NAME: "Info Tank heatupMode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_OPERATION_MODE:{
+        CONF_NAME: "Tank operationMode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         CONF_UNIT_OF_MEASUREMENT: " ",
