@@ -35,7 +35,7 @@ from .const import (
     ATTR_CONTROL_MODE,
     ATTR_OPERATION_MODE,
     ATTR_TARGET_ROOM_TEMPERATURE,
-    ATTR_LEAVINGWATER_OFFSET,
+    ATTR_TARGET_LEAVINGWATER_OFFSET,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -92,12 +92,13 @@ class DaikinClimate(ClimateEntity):
 
         # At the moment we have a separate room temperature we
         # can control that
-        if device.getData(ATTR_ROOM_TEMPERATURE) is not None:
+        if device.getData(ATTR_TARGET_ROOM_TEMPERATURE) is not None:
             self._supported_features = SUPPORT_TARGET_TEMPERATURE
-        if device.getData(ATTR_LEAVINGWATER_OFFSET) is not None:
+        if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
             self._supported_features = SUPPORT_TARGET_TEMPERATURE
         else:
             self._supported_features = 0
+
 
         self._supported_preset_modes = [PRESET_NONE]
         self._current_preset_mode = PRESET_NONE
@@ -196,7 +197,7 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
         if controlMode == "leavingWaterTemperature":
-            return float(self._device.getData(ATTR_LEAVINGWATER_OFFSET)["maxValue"])
+            return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["maxValue"])
         return DEFAULT_MAX_TEMP
 
     @property
@@ -213,18 +214,22 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
         if controlMode == "leavingWaterTemperature":
-            return float(self._device.getData(ATTR_LEAVINGWATER_OFFSET)["minValue"])
+            return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["minValue"])
         return DEFAULT_MIN_TEMP
 
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
+        availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+        operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in availableOperationModes:
+            return None
         # Check which controlMode is used to control the device
         controlMode = self._device.getValue(ATTR_CONTROL_MODE)
         if controlMode == "roomTemperature":
-            return self._device.target_room_temperature
+            return float(self._device.getValue(ATTR_TARGET_ROOM_TEMPERATURE))
         if controlMode == "leavingWaterTemperature":
-            return self._device.leaving_water_offset
+            return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
         return None
 
     @property
@@ -241,7 +246,7 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
         if controlMode == "leavingWaterTemperature":
-            return float(self._device.getData(ATTR_LEAVINGWATER_OFFSET)["stepValue"])
+            return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["stepValue"])
         return None
 
     async def async_set_temperature(self, **kwargs):

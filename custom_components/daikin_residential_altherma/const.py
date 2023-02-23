@@ -59,6 +59,7 @@ ATTR_ON_OFF_TANK = "on_off_tank"
 ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
 ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
+ATTR_TARGET_LEAVINGWATER_OFFSET = "target_leavingwater_offset"
 ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
 ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
@@ -112,8 +113,8 @@ DAIKIN_CMD_SETS = {
     ATTR_OPERATION_MODE: [MP_CLIMATE, DP_OPERATION_MODE, ""],
     ATTR_OUTSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/outdoorTemperature"],
     ATTR_ROOM_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/roomTemperature"],
-    ATTR_LEAVINGWATER_OFFSET: [MP_CLIMATE, DP_TEMPERATURE, "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
-    ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"], # "/roomTemperature"
+    ATTR_TARGET_LEAVINGWATER_OFFSET: [MP_CLIMATE, DP_TEMPERATURE, "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
+    ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"],
     ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
     ATTR_TARGET_ROOM_TEMPERATURE: [
         MP_CLIMATE,

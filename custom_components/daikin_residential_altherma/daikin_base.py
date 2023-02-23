@@ -207,21 +207,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return await self.setValue(mode, status)
 
     @property
-    def leaving_water_offset(self):
-        """Return room temperature."""
-        fl = float(self.getValue(ATTR_LEAVINGWATER_OFFSET))
-        return fl
-
-    @property
-    def target_room_temperature(self):
-        """Return current target temperature."""
-        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in availableOperationModes:
-            return None
-        return float(self.getValue(ATTR_TARGET_ROOM_TEMPERATURE))
-
-    @property
     def supports_cooling(self):
         availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
         if "cooling" in availableOperationModes:
@@ -242,7 +227,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if controlMode == "roomTemperature":
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
         if controlMode == "leavingWaterTemperature":
-            return await self.setValue(ATTR_LEAVINGWATER_OFFSET, value)
+            return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, value)
         return None
 
     @property
