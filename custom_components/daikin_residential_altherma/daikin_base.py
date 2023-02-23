@@ -72,11 +72,6 @@ DAIKIN_HVAC_TO_HA = {
 class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-methods
     """Daikin main appliance class."""
 
-    @staticmethod
-    def translate_mac(value):
-        """Return translated MAC address."""
-        return ":".join(value[i : i + 2] for i in range(0, len(value), 2))
-
     def __init__(self, jsonData, apiInstance):
         """Init the pydaikin appliance, representing one Daikin device."""
         super().__init__(jsonData, apiInstance)
@@ -152,12 +147,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Set the current value of a data object."""
         cmd_set = self.getCommandSet(param)
         return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
-
-    @property
-    def mac(self):
-        """Return device's MAC address."""
-        mac_add = self.get_value("gateway", "macAddress")
-        return mac_add
 
     @property
     def hvac_mode(self):
