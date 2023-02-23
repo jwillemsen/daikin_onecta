@@ -58,5 +58,4 @@ This code is based on [@rospogrigio](https://github.com/rospogrigio) work that i
 
 # Next steps
 
-- Better support of the hot water tank entity
-- Other ideas?
+- Simplify integration by grouping all sensors in their management point, there is a lot of code duplication and special handling for the Altherma water tank in the current code which we want to simplify
