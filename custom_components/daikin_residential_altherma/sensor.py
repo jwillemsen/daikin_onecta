@@ -120,7 +120,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
                 # When we don't have a tank temperature we also don't have
                 # tank energy values
-                if device.support_tank_temperature:
+                if device.getData(ATTR_TANK_TEMPERATURE) is not None:
                     sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
                     _LOGGER.debug("append sensor = %s", sensor)
                     sensors.append(sensor)

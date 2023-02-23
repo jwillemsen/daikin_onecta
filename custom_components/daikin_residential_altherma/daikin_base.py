@@ -12,7 +12,6 @@ from .const import(
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
     ATTR_LEAVINGWATER_OFFSET,
-    ATTR_TANK_TEMPERATURE,
     ATTR_TANK_TARGET_TEMPERATURE,
     ATTR_TANK_ON_OFF,
     ATTR_TANK_POWERFUL,
@@ -206,17 +205,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if self.getData(mode) is None:
             return
         return await self.setValue(mode, status)
-
-    @property
-    def support_tank_temperature(self):
-        """Return True if the device supports tank temperature measurement."""
-        return self.getData(ATTR_TANK_TEMPERATURE) is not None
-
-    @property
-    def tank_temperature(self):
-        """Return tank temperature."""
-        fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
-        return fl
 
     # support_leaving_water_offset
     @property
