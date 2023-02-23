@@ -17,6 +17,8 @@ from homeassistant.components.climate.const import (
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
     SUPPORT_PRESET_MODE,
+    DEFAULT_MAX_TEMP,
+    DEFAULT_MIN_TEMP,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
 import homeassistant.helpers.config_validation as cv

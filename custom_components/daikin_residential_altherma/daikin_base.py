@@ -34,8 +34,6 @@ from homeassistant.components.climate.const import (
     PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
-    DEFAULT_MAX_TEMP,
-    DEFAULT_MIN_TEMP,
 )
 
 from homeassistant.components.water_heater import (
