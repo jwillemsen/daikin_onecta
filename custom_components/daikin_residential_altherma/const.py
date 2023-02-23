@@ -82,6 +82,7 @@ ATTR_TANK_MODE = "tank_mode"
 ATTR_TANK_MODE_SET = "tank_state"
 ATTR_TANK_STATE_OFF = "off"
 ATTR_TANK_STATE_PERFOMANCE = "powerfulMode"
+ATTR_TANK_OPERATION_MODE = "@TankoperationMode"
 
 ATTR_IS_HOLIDAY_MODE_ACTIVE = "isHolidayModeActive"
 ATTR_IS_IN_EMERGENCY_STATE = "isInEmergencyState"
@@ -137,6 +138,7 @@ DAIKIN_CMD_SETS = {
     ATTR_ERROR_CODE: [MP_CLIMATE, "errorCode", ""],
     #  FLAG HOT WATER TANK
     ATTR_TANK_HEATUP_MODE: [MP_DOMESTIC_HWT, "heatupMode", ""],
+    ATTR_TANK_OPERATION_MODE: [MP_DOMESTIC_HWT, "@TankoperationMode", ""],
     ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisHolidayModeActive", ""],
     ATTR_TANK_IS_IN_EMERGENCY_STATE: [MP_DOMESTIC_HWT, "@TankisInEmergencyState", ""],
     ATTR_TANK_IS_IN_ERROR_STATE: [MP_DOMESTIC_HWT, "@TankisInErrorState", ""],
@@ -240,6 +242,12 @@ SENSOR_TYPES = {
         CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
         CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
     },
+    ATTR_OPERATION_MODE: {
+        CONF_NAME: "Operation Mode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
     ATTR_SETPOINT_MODE: {
         CONF_NAME: "Info Setpoint Mode",
         CONF_TYPE: None,
@@ -296,6 +304,12 @@ SENSOR_TYPES = {
     },
     ATTR_TANK_HEATUP_MODE:{
         CONF_NAME: "Info Tank heatupMode",
+        CONF_TYPE: None,
+        CONF_ICON: "mdi:information-outline",
+        CONF_UNIT_OF_MEASUREMENT: " ",
+    },
+    ATTR_TANK_OPERATION_MODE:{
+        CONF_NAME: "Tank operationMode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         CONF_UNIT_OF_MEASUREMENT: " ",
