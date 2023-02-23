@@ -9,12 +9,6 @@ from .const import(
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
     ATTR_OUTSIDE_TEMPERATURE,
-    ATTR_TANK_TARGET_TEMPERATURE,
-    ATTR_TANK_ON_OFF,
-    ATTR_TANK_POWERFUL,
-    ATTR_TANK_STATE_OFF,
-    ATTR_TANK_STATE_HEAT_PUMP,
-    ATTR_TANK_STATE_PERFOMANCE,
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_TARGET_LEAVINGWATER_OFFSET,
     ATTR_STATE_OFF,
@@ -251,29 +245,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         ]
         start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
         return sum(energy_data[start_index:])
-
-    async def async_set_tank_temperature(self, value):
-        """Set new target temperature."""
-        _LOGGER.debug("Set tank temperature: %s", value)
-        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-            return None
-        return await self.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
-
-    async def async_set_tank_state(self, tank_state):
-        """Set new tank state."""
-        _LOGGER.debug("Set tank state: %s", tank_state)
-        if tank_state == STATE_OFF:
-            return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_OFF)
-        if tank_state == STATE_PERFORMANCE:
-            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-                await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            return await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_ON)
-        if tank_state == STATE_HEAT_PUMP:
-            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
-                return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
-        _LOGGER.warning("Invalid tank state: %s", tank_state)
-        return None
 
     async def set(self, settings):
         """Set settings on Daikin device."""

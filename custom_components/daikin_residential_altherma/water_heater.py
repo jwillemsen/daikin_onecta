@@ -161,13 +161,36 @@ class DaikinWaterTank(WaterHeaterEntity):
         stepVal = float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["maxValue"])
         return stepVal
 
+    async def async_set_tank_temperature(self, value):
+        """Set new target temperature."""
+        _LOGGER.debug("Set tank temperature: %s", value)
+        if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+            return None
+        return await self.setValue(ATTR_TANK_TARGET_TEMPERATURE, int(value))
+
+    async def async_set_tank_state(self, tank_state):
+        """Set new tank state."""
+        _LOGGER.debug("Set tank state: %s", tank_state)
+        if tank_state == STATE_OFF:
+            return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_OFF)
+        if tank_state == STATE_PERFORMANCE:
+            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+                await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
+            return await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_ON)
+        if tank_state == STATE_HEAT_PUMP:
+            if self.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
+                return await self.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
+            await self.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
+        _LOGGER.warning("Invalid tank state: %s", tank_state)
+        return None
+
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
 
-        await self._device.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
+        await self.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
 
     async def async_update(self):
         """Retrieve latest state."""
@@ -194,7 +217,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         """Set new target tank operation mode."""
         _LOGGER.info("Setting operation mode %s", operation_mode)
         tank_state = HA_TANK_MODE_TO_DAIKIN[operation_mode]
-        await self._device.async_set_tank_state(tank_state)
+        await self.async_set_tank_state(tank_state)
 
     @property
     def device_info(self):
