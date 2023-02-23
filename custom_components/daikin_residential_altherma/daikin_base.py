@@ -214,22 +214,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return fl
 
     @property
-    def room_temperature(self):
-        """Return room temperature."""
-        fl = float(self.getValue(ATTR_ROOM_TEMPERATURE))
-        return fl
-
-    @property
-    def outside_temperature(self):
-        """Return current outside temperature."""
-        return float(self.getValue(ATTR_OUTSIDE_TEMPERATURE))
-
-    @property
-    def leaving_water_temperature(self):
-        """Return current inside temperature."""
-        return float(self.getValue(ATTR_LEAVINGWATER_TEMPERATURE))
-
-    @property
     def target_room_temperature(self):
         """Return current target temperature."""
         availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)

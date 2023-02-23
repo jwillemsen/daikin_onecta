@@ -177,9 +177,9 @@ class DaikinClimate(ClimateEntity):
         # At the moment the device supports a separate
         # room temperature do return that
         if controlMode == "roomTemperature":
-            return self._device.room_temperature
+            return self._device.getValue(ATTR_ROOM_TEMPERATURE)
         if controlMode == "leavingWaterTemperature":
-            return self._device.leaving_water_temperature
+            return self._device.getValue(ATTR_LEAVINGWATER_TEMPERATURE)
         return None
 
     @property
