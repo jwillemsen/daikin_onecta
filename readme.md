@@ -2,6 +2,8 @@
 
 This work is inspired from Rospogrigio [daikin_residential](https://github.com/rospogrigio/daikin_residential) integration and modified to support Daikin Altherma 3 Heat Pump. For a Altherma 3 using a BRP069A61 or BRP069A62 adapter you can use the [daikin_residential_brp069a62](https://github.com/BigFoot2020/daikin_residential_brp069a62) integration.
 
+This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
+
 # WARNING
 This is an experimental integration, tested on some Daikin Altherma 3 (BRP069A78) units.
 The HA Integration was cloned by Rospogrigio's work and can coexisting with the daiking_residential integration.
@@ -52,7 +54,7 @@ logger:
 
 # Thanks to:
 
-This code is based on @Rospogrigio's work that in turn is based on @Apollon77 's work, in finding a way to retrieve the token set, and to send the HTTP commands over the cloud. This integration would not exist without their precious job, my job was to try and debug Rospogrigio's code to adapt at JSON from Altherma 3 controlled by Daikin Residential App.
+This code is based on [@rospogrigio](https://github.com/rospogrigio) work that in turn is based on [@Apollon77](https://github.com/Apollon77) work, in finding a way to retrieve the token set, and to send the HTTP commands over the cloud. This integration would not exist without their precious job, my job was to try and debug Rospogrigio's code to adapt at JSON from Altherma 3 controlled by Daikin Residential App.
 
 # Next steps
 
