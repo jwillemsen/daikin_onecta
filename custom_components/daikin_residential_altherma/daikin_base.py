@@ -21,6 +21,7 @@ from .const import(
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
+    ATTR_CONTROL_MODE,
     DAIKIN_CMD_SETS,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
@@ -255,9 +256,9 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         # Check which controlMode is used to control the device
         controlMode = self.getValue(ATTR_CONTROL_MODE)
 
-        if controlMode == "roomTemperature"
+        if controlMode == "roomTemperature":
             return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
-        if controlMode == "leavingWaterTemperature"
+        if controlMode == "leavingWaterTemperature":
             return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["maxValue"])
         return DEFAULT_MAX_TEMP
 
@@ -272,9 +273,9 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         # Check which controlMode is used to control the device
         controlMode = self.getValue(ATTR_CONTROL_MODE)
 
-        if controlMode == "roomTemperature"
+        if controlMode == "roomTemperature":
             return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
-        if controlMode == "leavingWaterTemperature"
+        if controlMode == "leavingWaterTemperature":
             return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["minValue"])
         return DEFAULT_MIN_TEMP
 
@@ -308,9 +309,9 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         # Check which controlMode is used to control the device
         controlMode = self.getValue(ATTR_CONTROL_MODE)
 
-        if controlMode == "roomTemperature"
+        if controlMode == "roomTemperature":
             return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
-        if controlMode == "leavingWaterTemperature"
+        if controlMode == "leavingWaterTemperature":
             return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["stepValue"])
         return None
 
@@ -324,12 +325,11 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         # Check which controlMode is used to control the device
         controlMode = self.getValue(ATTR_CONTROL_MODE)
 
-        if controlMode == "roomTemperature"
+        if controlMode == "roomTemperature":
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
-        if controlMode == "leavingWaterTemperature"
+        if controlMode == "leavingWaterTemperature":
             value = int(value)# convert value to int
             return await self.setValue(ATTR_LEAVINGWATER_OFFSET, value)
-
         return None
 
     @property
