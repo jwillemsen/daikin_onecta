@@ -207,7 +207,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if controlMode == "roomTemperature":
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
         if controlMode == "leavingWaterTemperature":
-            return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, value)
+            return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, int(value))
         return None
 
     @property
