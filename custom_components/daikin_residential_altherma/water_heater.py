@@ -25,6 +25,7 @@ from .const import (
     ATTR_TANK_TARGET_TEMPERATURE,
     ATTR_TANK_ON_OFF,
     ATTR_TANK_POWERFUL,
+    ATTR_TANK_SETPOINT_MODE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
 )
@@ -58,12 +59,12 @@ async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin water tank entities."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         device_model = device.desc["deviceModel"]
-        """ When the device has a tank temperatature we add a water heater """
+        """ When the device has a tank temperature we add a water heater """
         if device.getData(ATTR_TANK_TEMPERATURE) is not None:
-            _LOGGER.info("'%s' has a tank temparature, adding Water Heater", device_model)
+            _LOGGER.info("'%s' has a tank temperature, adding Water Heater", device_model)
             async_add_entities([DaikinWaterTank(device)], update_before_add=True)
         else:
-            _LOGGER.info("'%s' has not a tank temparature, ignoring")
+            _LOGGER.info("'%s' has not a tank temperature, ignoring")
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
@@ -75,7 +76,12 @@ class DaikinWaterTank(WaterHeaterEntity):
         self._list = {
             ATTR_TANK_MODE: list(HA_TANK_MODE_TO_DAIKIN),
         }
-        self._supported_features = SUPPORT_TARGET_TEMPERATURE + SUPPORT_OPERATION_MODE
+        self._supported_features = SUPPORT_OPERATION_MODE
+
+        # Only when we have a fixed setpointMode we can control the target
+        # temperature of the tank
+        if device.getValue(ATTR_TANK_SETPOINT_MODE) == "fixed":
+            self._supported_features |= SUPPORT_TARGET_TEMPERATURE
 
     async def _set(self, settings):
         """Set device settings using API."""
