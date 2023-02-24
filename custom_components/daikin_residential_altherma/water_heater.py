@@ -180,7 +180,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         if tank_state == STATE_HEAT_PUMP:
             if self._device.getValue(ATTR_TANK_ON_OFF) != ATTR_STATE_ON:
                 return await self._device.setValue(ATTR_TANK_ON_OFF, ATTR_STATE_ON)
-            await self._device.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
+            return await self._device.setValue(ATTR_TANK_POWERFUL, ATTR_STATE_OFF)
         _LOGGER.warning("Invalid tank state: %s", tank_state)
         return None
 
@@ -215,9 +215,7 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     async def async_set_operation_mode(self, operation_mode):
         """Set new target tank operation mode."""
-        _LOGGER.info("Setting operation mode %s", operation_mode)
-        tank_state = HA_TANK_MODE_TO_DAIKIN[operation_mode]
-        await self.async_set_tank_state(tank_state)
+        await self.async_set_tank_state(operation_mode)
 
     @property
     def device_info(self):
