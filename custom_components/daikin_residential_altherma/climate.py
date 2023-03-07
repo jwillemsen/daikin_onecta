@@ -202,9 +202,9 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
         if controlMode == "leavingWaterTemperature":
-            if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["maxValue"])
-            if device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["maxValue"])
         return DEFAULT_MAX_TEMP
 
