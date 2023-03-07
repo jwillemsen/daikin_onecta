@@ -121,7 +121,7 @@ DAIKIN_CMD_SETS = {
         MP_CLIMATE,
         DP_TEMPERATURE,
         "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
-    ATTR_TARGET_LEAVINGWATER_TEMPERATUR: [
+    ATTR_TARGET_LEAVINGWATER_TEMPERATURE: [
         MP_CLIMATE,
         DP_TEMPERATURE,
         "/operationModes/%operationMode%/setpoints/leavingWaterTemperature"],
