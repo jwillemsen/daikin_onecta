@@ -222,9 +222,9 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
         if controlMode == "leavingWaterTemperature":
-            if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["minValue"])
-            if device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["minValue"])
         return DEFAULT_MIN_TEMP
 
@@ -240,9 +240,9 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getValue(ATTR_TARGET_ROOM_TEMPERATURE))
         if controlMode == "leavingWaterTemperature":
-            if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
                 return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
-            if device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE))
         return None
 
@@ -260,9 +260,9 @@ class DaikinClimate(ClimateEntity):
         if controlMode == "roomTemperature":
             return float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
         if controlMode == "leavingWaterTemperature":
-            if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["stepValue"])
-            if device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["stepValue"])
         return None
 
