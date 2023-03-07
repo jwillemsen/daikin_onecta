@@ -60,6 +60,7 @@ ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
 ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
 ATTR_TARGET_LEAVINGWATER_OFFSET = "target_leavingwater_offset"
+ATTR_TARGET_LEAVINGWATER_TEMPERATURE = "target_leavingwater_temperature"
 ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
 ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
@@ -120,6 +121,10 @@ DAIKIN_CMD_SETS = {
         MP_CLIMATE,
         DP_TEMPERATURE,
         "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
+    ATTR_TARGET_LEAVINGWATER_TEMPERATURE: [
+        MP_CLIMATE,
+        DP_TEMPERATURE,
+        "/operationModes/%operationMode%/setpoints/leavingWaterTemperature"],
     ATTR_TARGET_ROOM_TEMPERATURE: [
         MP_CLIMATE,
         DP_TEMPERATURE,
