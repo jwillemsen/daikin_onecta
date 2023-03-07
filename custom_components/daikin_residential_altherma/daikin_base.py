@@ -11,6 +11,7 @@ from .const import(
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_TARGET_LEAVINGWATER_OFFSET,
+    ATTR_TARGET_LEAVINGWATER_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
     ATTR_CONTROL_MODE,
@@ -207,7 +208,11 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if controlMode == "roomTemperature":
             return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
         if controlMode == "leavingWaterTemperature":
-            return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, int(value))
+            if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, int(value))
+            if device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                return await self.setValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE, int(value))
+
         return None
 
     @property
