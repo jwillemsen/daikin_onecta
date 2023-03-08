@@ -136,12 +136,22 @@ class DaikinClimate(ClimateEntity):
             # temperature
             elif attr == ATTR_TEMPERATURE:
                 try:
-                    if device.getData(ATTR_ROOM_TEMPERATURE) is not None:
+                    availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+                    operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+                    if operationMode not in availableOperationModes:
+                        return None
+
+                    # Check which controlMode is used to control the device
+                    controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+                    if controlMode == "roomTemperature":
                           values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value))
-                    if device.getData(ATTR_LEAVINGWATER_OFFSET) is not None:
+                    if controlMode == "leavingWaterTemperature":
+                        if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                            values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_OFFSET]] = str(int(value))
+                        if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                            values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
+                    if controlMode == "externalRoomTemperature":
                           values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_OFFSET]] = str(int(value))
-                    else:
-                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
                 except ValueError:
                     _LOGGER.error("Invalid temperature %s", value)
 
