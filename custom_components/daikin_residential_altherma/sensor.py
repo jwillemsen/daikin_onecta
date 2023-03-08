@@ -88,7 +88,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports room_leavingwater offset")
+            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports leavingwater offset")
 
         if device.getData(ATTR_ROOM_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE,"")
