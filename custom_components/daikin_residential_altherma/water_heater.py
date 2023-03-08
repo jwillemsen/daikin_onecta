@@ -80,8 +80,9 @@ class DaikinWaterTank(WaterHeaterEntity):
 
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
-        if self._device.getValue(ATTR_TANK_SETPOINT_MODE) == "fixed":
+        if self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["settable"]:
             self._supported_features |= SUPPORT_TARGET_TEMPERATURE
+            _LOGGER.debug("Tank temperature is settable")
 
     async def _set(self, settings):
         """Set device settings using API."""
