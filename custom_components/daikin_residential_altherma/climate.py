@@ -251,8 +251,7 @@ class DaikinClimate(ClimateEntity):
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE))
         if controlMode == "externalRoomTemperature":
-            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
-                return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
+            return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
         return None
 
     @property
