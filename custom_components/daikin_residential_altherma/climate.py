@@ -186,6 +186,8 @@ class DaikinClimate(ClimateEntity):
             return self._device.getValue(ATTR_ROOM_TEMPERATURE)
         if controlMode == "leavingWaterTemperature":
             return self._device.getValue(ATTR_LEAVINGWATER_TEMPERATURE)
+        if controlMode == "externalRoomTemperature":
+            return self._device.getValue(ATTR_LEAVINGWATER_TEMPERATURE)
         return None
 
     @property
@@ -206,6 +208,8 @@ class DaikinClimate(ClimateEntity):
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["maxValue"])
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["maxValue"])
+        if controlMode == "externalRoomTemperature":
+            return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["maxValue"])
         return DEFAULT_MAX_TEMP
 
     @property
@@ -226,6 +230,8 @@ class DaikinClimate(ClimateEntity):
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["minValue"])
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["minValue"])
+        if controlMode == "externalRoomTemperature":
+            return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["minValue"])
         return DEFAULT_MIN_TEMP
 
     @property
@@ -244,6 +250,8 @@ class DaikinClimate(ClimateEntity):
                 return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE))
+        if controlMode == "externalRoomTemperature":
+            return float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
         return None
 
     @property
@@ -264,6 +272,8 @@ class DaikinClimate(ClimateEntity):
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["stepValue"])
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["stepValue"])
+        if controlMode == "externalRoomTemperature":
+            return float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["stepValue"])
         return None
 
     async def async_set_temperature(self, **kwargs):
