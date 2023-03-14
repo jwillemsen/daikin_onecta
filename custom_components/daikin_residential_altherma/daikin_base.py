@@ -5,18 +5,16 @@ import logging
 from .device import DaikinResidentialDevice
 
 from .const import(
-    ATTR_TANK_ERROR_CODE,
     PRESET_BOOST,
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
-    ATTR_LEAVINGWATER_TEMPERATURE,
     ATTR_OUTSIDE_TEMPERATURE,
-    ATTR_ROOM_TEMPERATURE,
-    ATTR_LEAVINGWATER_OFFSET,
-    ATTR_TANK_TEMPERATURE,
     ATTR_TARGET_ROOM_TEMPERATURE,
+    ATTR_TARGET_LEAVINGWATER_OFFSET,
+    ATTR_TARGET_LEAVINGWATER_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
+    ATTR_CONTROL_MODE,
     DAIKIN_CMD_SETS,
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
@@ -24,29 +22,6 @@ from .const import(
     ATTR_ENERGY_CONSUMPTION,
     ATTR_ENERGY_CONSUMPTION_TANK,
     SENSOR_PERIOD_WEEKLY,
-    ATTR_SETPOINT_MODE,
-    ATTR_TANK_SETPOINT_MODE,
-    ATTR_CONTROL_MODE,
-    ATTR_IS_HOLIDAY_MODE_ACTIVE,
-    ATTR_IS_IN_EMERGENCY_STATE,
-    ATTR_IS_IN_ERROR_STATE,
-    ATTR_IS_IN_INSTALLER_STATE,
-    ATTR_IS_IN_WARNING_STATE,
-    ATTR_ERROR_CODE,
-    # TANK
-    ATTR_TANK_HEATUP_MODE,
-    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
-    ATTR_TANK_IS_IN_EMERGENCY_STATE,
-    ATTR_TANK_IS_IN_ERROR_STATE,
-    ATTR_TANK_IS_IN_INSTALLER_STATE,
-    ATTR_TANK_IS_IN_WARNING_STATE,
-    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
-    ATTR_TANK_ERROR_CODE,
-    ATTR_WIFI_STRENGTH,
-    ATTR_WIFI_SSID,
-    ATTR_LOCAL_SSID,
-    ATTR_MAC_ADDRESS,
-    ATTR_SERIAL_NUMBER,
 )
 
 from homeassistant.components.climate.const import (
@@ -60,8 +35,12 @@ from homeassistant.components.climate.const import (
     PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
-    DEFAULT_MAX_TEMP,
-    DEFAULT_MIN_TEMP,
+)
+
+from homeassistant.components.water_heater import (
+    STATE_PERFORMANCE,
+    STATE_HEAT_PUMP,
+    STATE_OFF,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -85,11 +64,6 @@ DAIKIN_HVAC_TO_HA = {
 
 class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-methods
     """Daikin main appliance class."""
-
-    @staticmethod
-    def translate_mac(value):
-        """Return translated MAC address."""
-        return ":".join(value[i : i + 2] for i in range(0, len(value), 2))
 
     def __init__(self, jsonData, apiInstance):
         """Init the pydaikin appliance, representing one Daikin device."""
@@ -168,14 +142,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
 
     @property
-    def mac(self):
-        """Return device's MAC address."""
-        mac_add = self.get_value("gateway", "macAddress")
-        if mac_add is None:
-            self.get_value("0", "macAddress") # for BigFoot2020
-        return mac_add
-
-    @property
     def hvac_mode(self):
         """Return current HVAC mode."""
         mode = HVAC_MODE_OFF
@@ -222,99 +188,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         return await self.setValue(mode, status)
 
     @property
-    def support_tank_temperature(self):
-        """Return True if the device supports tank temperature measurement."""
-        return self.getData(ATTR_TANK_TEMPERATURE) is not None
-
-    @property
-    def tank_temperature(self):
-        """Return tank temperature."""
-        fl = float(self.getValue(ATTR_TANK_TEMPERATURE))
-        return fl
-
-    # support_leaving_water_offset
-    @property
-    def support_leaving_water_offset(self):
-        """Return True if the device supports leaving water offset measurement."""
-        return self.getData(ATTR_LEAVINGWATER_OFFSET) is not None
-
-    @property
-    def leaving_water_offset(self):
-        """Return room temperature."""
-        fl = float(self.getValue(ATTR_LEAVINGWATER_OFFSET))
-        return fl
-
-    @property
-    def support_room_temperature(self):
-        """Return True if the device supports room temperature measurement."""
-        return self.getData(ATTR_ROOM_TEMPERATURE) is not None
-
-    @property
-    def room_temperature(self):
-        """Return room temperature."""
-        fl = float(self.getValue(ATTR_ROOM_TEMPERATURE))
-        return fl
-
-    @property
-    def support_outside_temperature(self):
-        """Return True if the device supports outside temperature measurement."""
-        return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
-
-    @property
-    def outside_temperature(self):
-        """Return current outside temperature."""
-        return float(self.getValue(ATTR_OUTSIDE_TEMPERATURE))
-
-    @property
-    def leaving_water_temperature(self):
-        """Return current inside temperature."""
-        return float(self.getValue(ATTR_LEAVINGWATER_TEMPERATURE))
-
-    @property
-    def max_temp(self):
-        """Return the maximum temperature we are allowed to set."""
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in ["auto", "cooling", "heating"]:
-            return DEFAULT_MAX_TEMP
-
-        # Only with a separate room temperature we have a
-        # max value we can use
-        if self.support_room_temperature:
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
-
-        if self.support_leaving_water_offset:
-            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["maxValue"])
-
-        return DEFAULT_MAX_TEMP
-
-    @property
-    def min_temp(self):
-        """Return the minimum temperature we are allowed to set."""
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in ["auto", "cooling", "heating"]:
-            return DEFAULT_MIN_TEMP
-
-        # Only with a separate room temperature we have a
-        # min value we can use
-        if self.support_room_temperature:
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
-
-        if self.support_leaving_water_offset:
-            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["minValue"])
-
-        return DEFAULT_MIN_TEMP
-
-    @property
-    def target_temperature(self):
-        """Return current target temperature."""
-        if self.support_room_temperature:
-            operationMode = self.getValue(ATTR_OPERATION_MODE)
-            if operationMode not in ["auto", "cooling", "heating"]:
-                return None
-            return float(self.getValue(ATTR_TARGET_ROOM_TEMPERATURE))
-        return None
-
-    @property
     def supports_cooling(self):
         availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
         if "cooling" in availableOperationModes:
@@ -322,34 +195,23 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         else:
             return False
 
-    @property
-    def target_temperature_step(self):
-        """Return current target temperature step."""
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in ["auto", "cooling", "heating"]:
-            return None
-
-        if self.support_room_temperature:
-            return float(self.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
-
-        if self.support_leaving_water_offset:
-            return float(self.getData(ATTR_LEAVINGWATER_OFFSET)["stepValue"])
-
-        return None
-
     async def async_set_temperature(self, value):
         """Set new target temperature."""
+        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
         operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in ["auto", "cooling", "heating"]:
+        if operationMode not in availableOperationModes:
             return None
 
-        # When we have a separate room temperature we can set the value
-        if self.support_room_temperature:
-            return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
+        # Check which controlMode is used to control the device
+        controlMode = self.getValue(ATTR_CONTROL_MODE)
 
-        if self.support_leaving_water_offset:
-            value = int(value)# convert value to int
-            return await self.setValue(ATTR_LEAVINGWATER_OFFSET, value)
+        if controlMode == "roomTemperature":
+            return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            if self.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, int(value))
+            if self.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                return await self.setValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE, int(value))
 
         return None
 
@@ -358,7 +220,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return True if the device supports energy consumption monitoring."""
         #DAMIANO secondo me è un baco
         return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
-        return True
 
     def energy_consumption(self, mode, period):
         #DAMIANO
@@ -387,237 +248,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         ]
         start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
         return sum(energy_data[start_index:])
-
-    @property   # ATTR_SETPOINT_MODE
-    def support_setpoint_mode(self):
-        """Return True if the device supports setpoint mode."""
-        return self.getData(ATTR_SETPOINT_MODE) is not None
-
-    @property
-    def setpoint_mode(self):
-        """Return current setpoint mode."""
-        return self.getValue(ATTR_SETPOINT_MODE)
-
-    @property   # ATTR_TANK_SETPOINT_MODE
-    def support_tank_setpoint_mode(self):
-        """Return True if the device supports tank setpoint mode."""
-        return self.getData(ATTR_TANK_SETPOINT_MODE) is not None
-
-    @property
-    def tank_setpoint_mode(self):
-        """Return current tank tank setpoint mode."""
-        return self.getValue(ATTR_TANK_SETPOINT_MODE)
-
-    @property   # ATTR_CONTROL_MODE
-    def support_control_mode(self):
-        """Return True if the device supports control mode."""
-        return self.getData(ATTR_CONTROL_MODE) is not None
-
-    @property
-    def control_mode(self):
-        """Return current control mode."""
-        return self.getValue(ATTR_CONTROL_MODE)
-
-
-    @property   # ATTR_IS_HOLIDAY_MODE_ACTIVE
-    def support_is_holiday_mode_active(self):
-        """Return True if the device supports is_holiday_mode_active."""
-        return self.getData(ATTR_IS_HOLIDAY_MODE_ACTIVE) is not None
-
-    @property
-    def is_holiday_mode_active(self):
-        """Return current is_holiday_mode_active."""
-        return self.getValue(ATTR_IS_HOLIDAY_MODE_ACTIVE)
-
-
-    @property   # ATTR_IS_IN_EMERGENCY_STATE
-    def support_is_in_emergency_state(self):
-        """Return True if the device supports is_in_emergency_state."""
-        return self.getData(ATTR_IS_IN_EMERGENCY_STATE) is not None
-
-    @property
-    def is_in_emergency_state(self):
-        """Return current is_in_emergency_state."""
-        return self.getValue(ATTR_IS_IN_EMERGENCY_STATE)
-
-
-    @property   # ATTR_IS_IN_ERROR_STATE
-    def support_is_in_error_state(self):
-        """Return True if the device supports is_in_error_state."""
-        return self.getData(ATTR_IS_IN_ERROR_STATE) is not None
-
-    @property
-    def is_in_error_state(self):
-        """Return current is_in_error_state."""
-        return self.getValue(ATTR_IS_IN_ERROR_STATE)
-
-
-    @property   # ATTR_IS_IN_INSTALLER_STATE
-    def support_is_in_installer_state(self):
-        """Return True if the device supports is_in_installer_state."""
-        return self.getData(ATTR_IS_IN_INSTALLER_STATE) is not None
-
-    @property
-    def is_in_installer_state(self):
-        """Return current is_in_installer_state."""
-        return self.getValue(ATTR_IS_IN_INSTALLER_STATE)
-
-
-    @property   # ATTR_IS_IN_WARNING_STATE
-    def support_is_in_warning_state(self):
-        """Return True if the device supports is_in_warning_state."""
-        return self.getData(ATTR_IS_IN_WARNING_STATE) is not None
-
-    @property
-    def is_in_warning_state(self):
-        """Return current is_in_warning_state."""
-        return self.getValue(ATTR_IS_IN_WARNING_STATE)
-
-    @property   # ATTR_ERROR_CODE
-    def support_error_code(self):
-        """Return True if the device supports error code."""
-        return self.getData(ATTR_ERROR_CODE) is not None
-
-    @property
-    def error_code(self):
-        """Return current error code."""
-        return self.getValue(ATTR_ERROR_CODE)
-
-    @property
-    def support_wifi_strength(self):
-        """Return True if the device supports wifi connection strength."""
-        return self.getData(ATTR_WIFI_STRENGTH) is not None
-
-    @property
-    def wifi_strength(self):
-        """Return current wifi connection strength."""
-        return self.getValue(ATTR_WIFI_STRENGTH) if self.support_wifi_strength else None
-
-    @property
-    def support_wifi_ssid(self):
-        """Return True if the device supports wifi connection ssid."""
-        return self.getData(ATTR_WIFI_SSID) is not None
-
-    @property
-    def wifi_ssid(self):
-        """Return current wifi connection ssid."""
-        return self.getValue(ATTR_WIFI_SSID) if self.support_wifi_ssid else None
-
-    @property
-    def support_local_ssid(self):
-        """Return True if the device supports internal ssid."""
-        return self.getData(ATTR_LOCAL_SSID) is not None
-
-    @property
-    def local_ssid(self):
-        """Return current internal ssid."""
-        return self.getValue(ATTR_LOCAL_SSID) if self.support_local_ssid else None
-
-    @property
-    def support_mac_address(self):
-        """Return True if the device reports its mac address."""
-        return self.getData(ATTR_MAC_ADDRESS) is not None
-
-    @property
-    def mac_address(self):
-        """Return device mac address."""
-        return self.getValue(ATTR_MAC_ADDRESS) if self.support_mac_address else None
-
-    @property
-    def support_serial_number(self):
-        """Return True if the device reports its serial number."""
-        return self.getData(ATTR_SERIAL_NUMBER) is not None
-
-    @property
-    def serial_number(self):
-        """Return device serial number."""
-        return self.getValue(ATTR_SERIAL_NUMBER) if self.support_serial_number else None
-
-    @property   # ATTR_TANK_HEATUP_MODE
-    def support_heatupMode(self):
-        """Return True if the device supports heatupMode."""
-        return self.getData(ATTR_TANK_HEATUP_MODE) is not None
-
-    @property
-    def heatupMode(self):
-        """Return current heatupMode."""
-        return self.getValue(ATTR_TANK_HEATUP_MODE)
-
-    @property   # ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE
-    def support_tank_is_holiday_mode_active(self):
-        """Return True if the device supports tank_is_holiday_mode_active."""
-        return self.getData(ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE) is not None
-
-    @property
-    def tank_is_holiday_mode_active(self):
-        """Return current tank_is_holiday_mode_active."""
-        return self.getValue(ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE)
-
-
-    @property   # ATTR_TANK_IS_IN_EMERGENCY_STATE
-    def support_tank_is_in_emergency_state(self):
-        """Return True if the device supports tank_is_in_emergency_state."""
-        return self.getData(ATTR_TANK_IS_IN_EMERGENCY_STATE) is not None
-
-    @property
-    def tank_is_in_emergency_state(self):
-        """Return current tank_is_in_emergency_state."""
-        return self.getValue(ATTR_TANK_IS_IN_EMERGENCY_STATE)
-
-
-    @property   # ATTR_TANK_IS_IN_ERROR_STATE
-    def support_tank_is_in_error_state(self):
-        """Return True if the device supports tank_is_in_error_state."""
-        return self.getData(ATTR_TANK_IS_IN_ERROR_STATE) is not None
-
-    @property
-    def tank_is_in_error_state(self):
-        """Return current tank_is_in_error_state."""
-        return self.getValue(ATTR_TANK_IS_IN_ERROR_STATE)
-
-
-    @property   # ATTR_TANK_IS_IN_INSTALLER_STATE
-    def support_tank_is_in_installer_state(self):
-        """Return True if the device supports tank_is_in_installer_state."""
-        return self.getData(ATTR_TANK_IS_IN_INSTALLER_STATE) is not None
-
-    @property
-    def tank_is_in_installer_state(self):
-        """Return current tank_is_in_installer_state."""
-        return self.getValue(ATTR_TANK_IS_IN_INSTALLER_STATE)
-
-
-    @property   # ATTR_TANK_IS_IN_WARNING_STATE
-    def support_tank_is_in_warning_state(self):
-        """Return True if the device supports tank_is_in_warning_state."""
-        return self.getData(ATTR_TANK_IS_IN_WARNING_STATE) is not None
-
-    @property
-    def tank_is_in_warning_state(self):
-        """Return current tank_is_in_warning_state."""
-        return self.getValue(ATTR_TANK_IS_IN_WARNING_STATE)
-
-
-    @property   # ATTR_TANK_IS_POWERFUL_MODE_ACTIVE
-    def support_tank_is_powerful_mode_active(self):
-        """Return True if the device supports flag: is_powerful_mode_active"""
-        return self.getData(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE) is not None
-
-    @property
-    def tank_is_powerful_mode_active(self):
-        """Return current flag: is_powerful_mode_active"""
-        return self.getValue(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE)
-
-    @property   # ATTR_TANK_ERROR_CODE
-    def support_tank_error_code(self):
-        """Return True if the device supports tank error code."""
-        return self.getData(ATTR_TANK_ERROR_CODE) is not None
-
-    @property
-    def tank_error_code(self):
-        """Return current tank error code."""
-        return self.getValue(ATTR_TANK_ERROR_CODE)
-
 
     async def set(self, settings):
         """Set settings on Daikin device."""

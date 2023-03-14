@@ -86,6 +86,7 @@ class DaikinApi:
             res = await self.hass.async_add_executor_job(func)
         except Exception as e:
             _LOGGER.error("REQUEST FAILED: %s", e)
+            return str(e)
         _LOGGER.debug("BEARER RESPONSE CODE: %s", res.status_code)
 
         if res.status_code == 200:
@@ -473,17 +474,11 @@ class DaikinApi:
         res = {}
         for dev_data in self.json_data or []:
             device = Appliance(dev_data, self)
-            #DAMIANO
-            #_LOGGER.warning("DAMIANO daikin_api.py - deviceobj '%s'", str(dev_data))
-            #DAMIANO
             gateway_model = device.get_value("gateway", "modelInfo")
             device_model = device.desc["deviceModel"]
             _LOGGER.info("Found device '%s' with gateway model '%s'", device_model, gateway_model)
             # Only process Altherma models for this integration
-            if gateway_model is None:
-                #_LOGGER.warning("Device '%s' is filtered out", model_info)
-                gateway_model = device.get_value("0", "modelInfo") # for BigFoot2020
-            elif device_model == "Altherma":
+            if device_model == "Altherma":
                 res[dev_data["id"]] = device
             else:
                 _LOGGER.info("Device '%s' with gateway model '%s' is filtered out because it is not an Altherma model", device_model, gateway_model)

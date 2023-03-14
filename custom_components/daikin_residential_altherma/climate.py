@@ -13,12 +13,12 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_OFF,
     PRESET_AWAY,
     PRESET_COMFORT,
-    PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
-    #SUPPORT_TARGET_TEMPERATURE_RANGE,
     SUPPORT_PRESET_MODE,
+    DEFAULT_MAX_TEMP,
+    DEFAULT_MIN_TEMP,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
 import homeassistant.helpers.config_validation as cv
@@ -34,6 +34,11 @@ from .const import (
     ATTR_ON_OFF_TANK,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
+    ATTR_CONTROL_MODE,
+    ATTR_OPERATION_MODE,
+    ATTR_TARGET_ROOM_TEMPERATURE,
+    ATTR_TARGET_LEAVINGWATER_OFFSET,
+    ATTR_TARGET_LEAVINGWATER_TEMPERATURE,
 )
 
 _LOGGER = logging.getLogger(__name__)
@@ -43,7 +48,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 )
 
 
-PRESET_MODES = {PRESET_BOOST, PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
+PRESET_MODES = {PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
 
 HA_HVAC_TO_DAIKIN = {
     HVAC_MODE_COOL: "cooling",
@@ -55,6 +60,7 @@ HA_HVAC_TO_DAIKIN = {
 HA_ATTR_TO_DAIKIN = {
     ATTR_PRESET_MODE: "en_hol",
     ATTR_HVAC_MODE: "mode",
+    ATTR_LEAVINGWATER_OFFSET: "c",
     ATTR_LEAVINGWATER_TEMPERATURE: "c",
     ATTR_OUTSIDE_TEMPERATURE: "otemp",
     ATTR_ROOM_TEMPERATURE: "stemp",
@@ -75,8 +81,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         async_add_entities([DaikinClimate(device)], update_before_add=True)
-    # daikin_api = hass.data[DAIKIN_DOMAIN].get(entry.entry_id)
-    # async_add_entities([DaikinClimate(daikin_api)], update_before_add=True)
 
 
 class DaikinClimate(ClimateEntity):
@@ -84,20 +88,26 @@ class DaikinClimate(ClimateEntity):
 
     def __init__(self, device):
         """Initialize the climate device."""
-        _LOGGER.info("DAMIANO Initializing CLIMATE...")
+        _LOGGER.info("Initializing Daiking Altherma...")
         self._device = device
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
         }
 
-        # At the moment we have a separate room temperature we
-        # can control that
-        if self._device.support_room_temperature:
+        # Check whether we can control the target temperature
+        controlMode = device.getValue(ATTR_CONTROL_MODE)
+        tempSettable = False
+        if controlMode == "roomTemperature":
+            tempSettable = device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["settable"]
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            if device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                tempSettable = device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["settable"]
+            if device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                tempSettable = device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["settable"]
+        if tempSettable:
             self._supported_features = SUPPORT_TARGET_TEMPERATURE
-        elif self._device.support_leaving_water_offset:
-            self._supported_features = SUPPORT_TARGET_TEMPERATURE
-        else:
-            self._supported_features = 0
+
+        _LOGGER.info("Support features %s for controlMode %s", self._supported_features, controlMode)
 
         self._supported_preset_modes = [PRESET_NONE]
         self._current_preset_mode = PRESET_NONE
@@ -106,7 +116,7 @@ class DaikinClimate(ClimateEntity):
             if support_preset:
                 self._supported_preset_modes.append(mode)
                 self._supported_features |= SUPPORT_PRESET_MODE
-            _LOGGER.info("DAMIANO support_preset_mode {}: {}".format(mode,support_preset))
+            _LOGGER.info("Support_preset_mode {}: {}".format(mode,support_preset))
 
     async def _set(self, settings):
         """Set device settings using API."""
@@ -129,12 +139,20 @@ class DaikinClimate(ClimateEntity):
             # temperature
             elif attr == ATTR_TEMPERATURE:
                 try:
-                    if self._device.support_room_temperature:
+                    availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+                    operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+                    if operationMode not in availableOperationModes:
+                        return None
+
+                    # Check which controlMode is used to control the device
+                    controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+                    if controlMode == "roomTemperature":
                           values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value))
-                    if self._device.support_leaving_water_offset:
-                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_OFFSET]] = str(int(value))
-                    else:
-                          values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
+                    if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+                        if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                            values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_OFFSET]] = str(int(value))
+                        if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                            values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
                 except ValueError:
                     _LOGGER.error("Invalid temperature %s", value)
 
@@ -171,41 +189,100 @@ class DaikinClimate(ClimateEntity):
     @property
     def current_temperature(self):
         """Return the current temperature."""
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+        currentTemp = None
         # At the moment the device supports a separate
         # room temperature do return that
-        if self._device.support_room_temperature:
-            return self._device.room_temperature
-        if self._device.support_leaving_water_offset:
-            return self._device.leaving_water_offset
-        else:
-            return self._device.leaving_water_temperature
+        if controlMode == "roomTemperature":
+            currentTemp = self._device.getValue(ATTR_ROOM_TEMPERATURE)
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            currentTemp = self._device.getValue(ATTR_LEAVINGWATER_TEMPERATURE)
+        _LOGGER.debug("Current temperature: %s", currentTemp)
+        return currentTemp
 
     @property
     def max_temp(self):
         """Return the maximum temperature we are allowed to set."""
-        return self._device.max_temp
+        availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+        operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in availableOperationModes:
+            return DEFAULT_MAX_TEMP
+
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+        maxTemp = DEFAULT_MAX_TEMP
+        if controlMode == "roomTemperature":
+            maxTemp = float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["maxValue"])
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                maxTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["maxValue"])
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                maxTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["maxValue"])
+        _LOGGER.debug("Max temperature: %s", maxTemp)
+        return maxTemp
 
     @property
     def min_temp(self):
         """Return the minimum temperature we are allowed to set."""
-        return self._device.min_temp
+        availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+        operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in availableOperationModes:
+            return DEFAULT_MIN_TEMP
+
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+        minTemp = DEFAULT_MIN_TEMP
+        if controlMode == "roomTemperature":
+            minTemp = float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["minValue"])
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                minTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["minValue"])
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                minTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["minValue"])
+        _LOGGER.debug("Min temperature: %s", minTemp)
+        return minTemp
 
     @property
     def target_temperature(self):
         """Return the temperature we try to reach."""
-        if self._device.support_room_temperature:
-            return self._device.target_temperature
-
-        if self._device.support_leaving_water_offset:
-            return self._device.leaving_water_offset
-
-        else:
+        availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+        operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in availableOperationModes:
             return None
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+        targetTemp = None
+        if controlMode == "roomTemperature":
+            targetTemp = float(self._device.getValue(ATTR_TARGET_ROOM_TEMPERATURE))
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                targetTemp = float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                targetTemp = float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE))
+        _LOGGER.debug("Target temperature: %s", targetTemp)
+        return targetTemp
 
     @property
     def target_temperature_step(self):
-        """Return the supported step of target temperature."""
-        return self._device.target_temperature_step
+        """Return current target temperature step."""
+        availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
+        operationMode = self._device.getValue(ATTR_OPERATION_MODE)
+        if operationMode not in availableOperationModes:
+            return None
+
+        # Check which controlMode is used to control the device
+        controlMode = self._device.getValue(ATTR_CONTROL_MODE)
+        tempStep = None
+        if controlMode == "roomTemperature":
+            tempStep = float(self._device.getData(ATTR_TARGET_ROOM_TEMPERATURE)["stepValue"])
+        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
+                tempStep = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["stepValue"])
+            if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
+                tempStep = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["stepValue"])
+        _LOGGER.debug("Step temperature: %s", tempStep)
+        return tempStep
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
@@ -266,16 +343,6 @@ class DaikinClimate(ClimateEntity):
     async def async_turn_off(self):
         """Turn device CLIMATE off."""
         await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_OFF)
-
-    # async def async_turn_tank_on(self):
-    #     """Turn device TANK on."""
-    #     print("DAMIANO {} to on".format(self._device))
-    #     await self._device.setValue(ATTR_ON_OFF_TANK, ATTR_STATE_ON)
-
-    # async def async_turn_tank_off(self):
-    #     """Turn device TANK off."""
-    #     print("DAMIANO {} to off".format(self._device))
-    #     await self._device.setValue(ATTR_ON_OFF_TANK, ATTR_STATE_OFF)
 
     @property
     def device_info(self):
