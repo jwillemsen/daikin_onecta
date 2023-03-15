@@ -1,7 +1,7 @@
 {
   "domain": "daikin_residential_altherma",
   "name": "Daikin Residential Controller for Altherma",
-  "version": "2.6.0",
+  "version": "2.5.1",
   "documentation": "https://github.com/speleolontra/daikin_residential_altherma",
   "dependencies": [],
   "codeowners": [
