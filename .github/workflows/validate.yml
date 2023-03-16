@@ -3,7 +3,8 @@ name: HACS Validate
 on:
   pull_request:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: '0 1 * * SUN'
+  workflow_dispatch:
 
 jobs:
   validate:
