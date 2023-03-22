@@ -98,8 +98,8 @@ class DaikinResidentialDevice:
 
         for mp in self.desc["managementPoints"]:
             # # Damiano deccommentato
-            #print('AAAA: [{}] [{}]'.format(mp['embeddedId'], mp))
-            #_LOGGER.warning('AAAA: [{}] [{}]'.format(mp['embeddedId'], mp))
+            #print('AAAA: [{}] [{}]'.format(mp['managementPointType'], mp))
+            #_LOGGER.debug('AAAA: [{}] [{}]'.format(mp['managementPointType'], mp))
 
             dataPoints = {}
             for key in mp.keys():
@@ -107,6 +107,7 @@ class DaikinResidentialDevice:
                 if mp[key] is None:
                     continue
                 if type(mp[key]) != dict:
+                    dataPoints[key] = mp[key]
                     continue
                 if type(mp[key]["value"]) != dict or (
                     len(mp[key]["value"]) == 1 and "enabled" in mp[key]["value"]
@@ -123,7 +124,7 @@ class DaikinResidentialDevice:
                         mp[key]["value"], {}
                     )
 
-            self.managementPoints[mp["embeddedId"]] = dataPoints
+            self.managementPoints[mp["managementPointType"]] = dataPoints
 
         # Damiano decommentati
         #print('MPS FOUND: [{}]'.format(self.managementPoints))
@@ -185,7 +186,7 @@ class DaikinResidentialDevice:
         # DAMIANO heatupMode
         if dataPoint == "heatupMode" and dataPointPath == "":
             # return data from one managementPoint and dataPoint
-            return self.managementPoints[managementPoint][dataPoint]            
+            return self.managementPoints[managementPoint][dataPoint]
 
         if managementPoint not in self.managementPoints:
             #print("DAMIANO MNGP device.py managementPoint = %s",managementPoint)
@@ -383,6 +384,14 @@ class DaikinResidentialDevice:
             dataPoint,
             format(dataPointDef),
         )
+
+        embeddedId = self.managementPoints[managementPoint]['embeddedId']
+        _LOGGER.debug(
+            "Management point `%s` has embeddedId '%s'",
+            managementPoint,
+            embeddedId,
+        )
+
         try:
             self._validateData(dataPoint + dataPointPath, dataPointDef, value)
         except Exception as error:
@@ -393,7 +402,7 @@ class DaikinResidentialDevice:
             "/v1/gateway-devices/"
             + self.getId()
             + "/management-points/"
-            + managementPoint
+            + embeddedId
             + "/characteristics/"
             + dataPoint
         )
