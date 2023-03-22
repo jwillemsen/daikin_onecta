@@ -26,7 +26,7 @@ DAIKIN_DEVICES = "daikin_devices"
 DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
 # MANAGEMENT POINTS
-MP_CLIMATE = "climateControl"
+MP_CLIMATE = "climateControlMainZone"
 MP_GATEWAY = "gateway"
 MP_DOMESTIC_HWT = "domesticHotWaterTank"
 MP_INDOOR_UNIT = "indoorUnitHydro"

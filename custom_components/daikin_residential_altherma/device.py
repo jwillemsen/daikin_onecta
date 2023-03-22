@@ -98,8 +98,8 @@ class DaikinResidentialDevice:
 
         for mp in self.desc["managementPoints"]:
             # # Damiano deccommentato
-            #print('AAAA: [{}] [{}]'.format(mp['managementPointType'], mp))
-            #_LOGGER.warning('AAAA: [{}] [{}]'.format(mp['managementPointType'], mp))
+            #print('AAAA: [{}] [{}]'.format(mp['embeddedId'], mp))
+            #_LOGGER.warning('AAAA: [{}] [{}]'.format(mp['embeddedId'], mp))
 
             dataPoints = {}
             for key in mp.keys():
@@ -123,7 +123,7 @@ class DaikinResidentialDevice:
                         mp[key]["value"], {}
                     )
 
-            self.managementPoints[mp["managementPointType"]] = dataPoints
+            self.managementPoints[mp["embeddedId"]] = dataPoints
 
         # Damiano decommentati
         #print('MPS FOUND: [{}]'.format(self.managementPoints))
@@ -185,7 +185,7 @@ class DaikinResidentialDevice:
         # DAMIANO heatupMode
         if dataPoint == "heatupMode" and dataPointPath == "":
             # return data from one managementPoint and dataPoint
-            return self.managementPoints[managementPoint][dataPoint]
+            return self.managementPoints[managementPoint][dataPoint]            
 
         if managementPoint not in self.managementPoints:
             #print("DAMIANO MNGP device.py managementPoint = %s",managementPoint)
