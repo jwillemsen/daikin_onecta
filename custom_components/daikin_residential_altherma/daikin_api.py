@@ -7,6 +7,7 @@ import os
 import re
 import requests
 import time
+import asyncio
 import json
 from oic.oic import Client
 from urllib import parse
@@ -55,6 +56,15 @@ class DaikinApi:
         self.openIdClient = Client(client_id=self.openIdClientId, config=configuration)
         self.openIdStore = {}
 
+        # The Daikin cloud returns old settings if queried with a GET
+        # immediately after a PATCH request. Se we use this attribute
+        # to skip the first GET if a PATCH request has just been executed.
+        self._just_updated = False
+
+        # The following lock is used to serialize http requests to Daikin cloud
+        # to prevent receiving old settings while a PATCH is ongoing.
+        self._cloud_lock = asyncio.Lock()
+
         _LOGGER.info("Daikin Residential API initialized.")
 
     async def doBearerRequest(self, resourceUrl, options=None, refreshed=False):
@@ -71,23 +81,28 @@ class DaikinApi:
             "Content-Type": "application/json",
         }
 
-        _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
-        _LOGGER.debug("BEARER REQUEST HEADERS: %s", headers)
-        if options is not None and "method" in options and options["method"] == "PATCH":
-            _LOGGER.debug("BEARER REQUEST JSON: %s", options["json"])
-            func = functools.partial(
-                requests.patch, resourceUrl, headers=headers, data=options["json"]
-            )
-            # res = requests.patch(resourceUrl, headers=headers, data=options["json"])
-        else:
-            func = functools.partial(requests.get, resourceUrl, headers=headers)
-            # res = requests.get(resourceUrl, headers=headers)
-        try:
-            res = await self.hass.async_add_executor_job(func)
-        except Exception as e:
-            _LOGGER.error("REQUEST FAILED: %s", e)
-            return str(e)
-        _LOGGER.debug("BEARER RESPONSE CODE: %s", res.status_code)
+        async with self._cloud_lock:
+            _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
+            _LOGGER.debug("BEARER REQUEST HEADERS: %s", headers)
+            if (
+                options is not None
+                and "method" in options
+                and options["method"] == "PATCH"
+            ):
+                _LOGGER.debug("BEARER REQUEST JSON: %s", options["json"])
+                func = functools.partial(
+                    requests.patch, resourceUrl, headers=headers, data=options["json"]
+                )
+                # res = requests.patch(resourceUrl, headers=headers, data=options["json"])
+            else:
+                func = functools.partial(requests.get, resourceUrl, headers=headers)
+                # res = requests.get(resourceUrl, headers=headers)
+            try:
+                res = await self.hass.async_add_executor_job(func)
+            except Exception as e:
+                _LOGGER.error("REQUEST FAILED: %s", e)
+                return str(e)
+            _LOGGER.debug("BEARER RESPONSE CODE: %s", res.status_code)
 
         if res.status_code == 200:
             try:
@@ -95,6 +110,7 @@ class DaikinApi:
             except Exception:
                 return res.text
         elif res.status_code == 204:
+            self._just_updated = True
             return True
 
         if not refreshed and res.status_code == 401:
@@ -487,6 +503,11 @@ class DaikinApi:
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_update(self, **kwargs):
         """Pull the latest data from Daikin."""
+        if self._just_updated:
+            self._just_updated = False
+            _LOGGER.debug("API UPDATE skipped (just updated from UI)")
+            return False
+
         _LOGGER.debug("API UPDATE")
 
         self.json_data = await self.getCloudDeviceDetails()
