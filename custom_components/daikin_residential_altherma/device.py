@@ -211,7 +211,7 @@ class DaikinResidentialDevice:
 
     def get_value(self, managementPoint=None, dataPoint=None, dataPointPath=""):
         """Get the current value of a data object."""
-        _LOGGER.info("Get the current value of: {}-{}-{}".format(managementPoint,dataPoint,dataPointPath))
+        _LOGGER.info("Device '{}' get the current value of: '{}-{}-{}'".format(self.name,managementPoint,dataPoint,dataPointPath))
         data = self.get_data(managementPoint, dataPoint, dataPointPath)
         if data is None:
             return None

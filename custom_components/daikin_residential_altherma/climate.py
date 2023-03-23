@@ -198,7 +198,7 @@ class DaikinClimate(ClimateEntity):
             currentTemp = self._device.getValue(ATTR_ROOM_TEMPERATURE)
         if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
             currentTemp = self._device.getValue(ATTR_LEAVINGWATER_TEMPERATURE)
-        _LOGGER.debug("Current temperature: %s", currentTemp)
+        _LOGGER.debug("Device '%s' current temperature '%s'", self._device.name, currentTemp)
         return currentTemp
 
     @property
@@ -219,7 +219,7 @@ class DaikinClimate(ClimateEntity):
                 maxTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["maxValue"])
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 maxTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["maxValue"])
-        _LOGGER.debug("Max temperature: %s", maxTemp)
+        _LOGGER.debug("Device '%s' max temperature '%s'", self._device.name, maxTemp)
         return maxTemp
 
     @property
@@ -240,7 +240,7 @@ class DaikinClimate(ClimateEntity):
                 minTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["minValue"])
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 minTemp = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["minValue"])
-        _LOGGER.debug("Min temperature: %s", minTemp)
+        _LOGGER.debug("Device '%s' min temperature '%s'", self._device.name, minTemp)
         return minTemp
 
     @property
@@ -260,7 +260,7 @@ class DaikinClimate(ClimateEntity):
                 targetTemp = float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_OFFSET))
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 targetTemp = float(self._device.getValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE))
-        _LOGGER.debug("Target temperature: %s", targetTemp)
+        _LOGGER.debug("Device '%s' target temperature '%s'", self._device.name, targetTemp)
         return targetTemp
 
     @property
@@ -281,7 +281,7 @@ class DaikinClimate(ClimateEntity):
                 tempStep = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET)["stepValue"])
             if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
                 tempStep = float(self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE)["stepValue"])
-        _LOGGER.debug("Step temperature: %s", tempStep)
+        _LOGGER.debug("Device '%s' step temperature '%s'", self._device.name, tempStep)
         return tempStep
 
     async def async_set_temperature(self, **kwargs):
