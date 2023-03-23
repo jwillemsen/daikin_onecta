@@ -215,13 +215,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
 
         return None
 
-    @property
-    def support_energy_consumption(self):
-        """Return True if the device supports energy consumption monitoring."""
-        #DAMIANO secondo me è un baco
-        return self.getData(ATTR_OUTSIDE_TEMPERATURE) is not None
-
-    def energy_consumption(self, mode, period):
+    def energy_consumption(self, attribute, mode, period):
         #DAMIANO
         #def energy_consumption_domestic(self, mode, period):
         """Return the last hour heat power consumption of a given mode in kWh."""
@@ -231,20 +225,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             #damiano
             #for v in self.getData(ATTR_ENERGY_CONSUMPTION)[mode][period]
             # passo anche mode e period
-            for v in self.getDataEC(ATTR_ENERGY_CONSUMPTION,mode,period)
-        ]
-        start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
-        return sum(energy_data[start_index:])
-
-    def energy_consumption_tank(self, mode, period):
-        """Return the last hour heat tank power consumption of a given mode in kWh."""
-        energy_data = [
-            0 if v is None else v
-
-            #damiano
-            #for v in self.getData(ATTR_ENERGY_CONSUMPTION)[mode][period]
-            # passo anche mode e period
-            for v in self.getDataEC(ATTR_ENERGY_CONSUMPTION_TANK,mode,period)
+            for v in self.getDataEC(attribute,mode,period)
         ]
         start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
         return sum(energy_data[start_index:])
