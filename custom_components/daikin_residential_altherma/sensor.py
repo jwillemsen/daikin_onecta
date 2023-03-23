@@ -40,6 +40,7 @@ from .const import (
     ATTR_IS_IN_INSTALLER_STATE,
     ATTR_IS_IN_WARNING_STATE,
     ATTR_ERROR_CODE,
+    ATTR_ENERGY_CONSUMPTION,
     #TANK
     ATTR_TANK_OPERATION_MODE,
     ATTR_TANK_HEATUP_MODE,
@@ -50,6 +51,7 @@ from .const import (
     ATTR_TANK_IS_IN_WARNING_STATE,
     ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
     ATTR_TANK_ERROR_CODE,
+    ATTR_ENERGY_CONSUMPTION_TANK,
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
@@ -86,210 +88,209 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
         if device.getData(ATTR_LEAVINGWATER_OFFSET) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
+            _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports leavingwater offset")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_LEAVINGWATER_OFFSET)
 
         if device.getData(ATTR_ROOM_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_ROOM_TEMPERATURE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports room_temperature")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_ROOM_TEMPERATURE)
 
         if device.getData(ATTR_TANK_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_TEMPERATURE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank_temperature")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_TEMPERATURE)
 
         if device.getData(ATTR_OUTSIDE_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_OUTSIDE_TEMPERATURE,"")
+            _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports outside_temperature")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_OUTSIDE_TEMPERATURE)
 
-        if device.support_energy_consumption:
-            for period in SENSOR_PERIODS:
-                if device.supports_cooling:
-                    sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY,"", period)
-                    _LOGGER.debug("append sensor = %s", sensor)
-                    sensors.append(sensor)
-                else:
-                    _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports_cooling")
-
-                sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY,"", period)
+        for period in SENSOR_PERIODS:
+            if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "cooling", period) is not None:
+                sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY,"", period)
+                _LOGGER.debug("append sensor = %s", sensor)
                 sensors.append(sensor)
+            else:
+                _LOGGER.info("Device '%s' NOT supports %s cooling energy consumption", device.name, period)
 
-                # When we don't have a tank temperature we also don't have
-                # tank energy values
-                if device.getData(ATTR_TANK_TEMPERATURE) is not None:
-                    sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
-                    _LOGGER.debug("append sensor = %s", sensor)
-                    sensors.append(sensor)
-                else:
-                    _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support_tank_temperature")
-        else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports energy_consumption")
+            if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "heating", period) is not None:
+                sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY,"", period)
+                _LOGGER.debug("append sensor = %s", sensor)
+                sensors.append(sensor)
+            else:
+                _LOGGER.info("Device '%s' NOT supports %s heating energy consumption", device.name, period)
+
+            if device.getDataEC(ATTR_ENERGY_CONSUMPTION_TANK, "heating", period) is not None:
+                sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
+                _LOGGER.debug("append sensor = %s", sensor)
+                sensors.append(sensor)
+            else:
+                _LOGGER.info("Device NOT supports %s tank energy consumption", period)
 
         if device.getData(ATTR_OPERATION_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_OPERATION_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support setpoint_mode", sensor)
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_OPERATION_MODE)
 
         if device.getData(ATTR_SETPOINT_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_SETPOINT_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support setpoint_mode", sensor)
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_SETPOINT_MODE)
 
         if device.getData(ATTR_TANK_SETPOINT_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_SETPOINT_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support tank setpoint_mode", sensor)
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_SETPOINT_MODE)
 
         if device.getData(ATTR_CONTROL_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_CONTROL_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT support control_mode", sensor)
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_CONTROL_MODE)
 
         if device.getData(ATTR_IS_HOLIDAY_MODE_ACTIVE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_IS_HOLIDAY_MODE_ACTIVE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_holiday_mode_active")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_HOLIDAY_MODE_ACTIVE)
 
         if device.getData(ATTR_IS_IN_EMERGENCY_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_IS_IN_EMERGENCY_STATE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_emergency_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_EMERGENCY_STATE)
 
         if device.getData(ATTR_IS_IN_ERROR_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_IS_IN_ERROR_STATE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_error_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_ERROR_STATE)
 
         if device.getData(ATTR_IS_IN_INSTALLER_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_IS_IN_INSTALLER_STATE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_installer_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_INSTALLER_STATE)
 
         if device.getData(ATTR_IS_IN_WARNING_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_IS_IN_WARNING_STATE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports is_in_warning_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_WARNING_STATE)
 
         if device.getData(ATTR_ERROR_CODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_ERROR_CODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports error code")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_ERROR_CODE)
 
         if device.getData(ATTR_WIFI_STRENGTH) is not None:
-            _LOGGER.debug("device %s supports wifi signal strength", device.name)
+            _LOGGER.debug("Device '%s' supports '%s'", device.name, ATTR_WIFI_STRENGTH)
             sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
             sensors.append(sensor)
         if device.getData(ATTR_WIFI_SSID) is not None:
-            _LOGGER.debug("device %s supports wifi ssid", device.name)
+            _LOGGER.debug("Device '%s' supports '%s'", device.name, ATTR_WIFI_SSID)
             sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
             sensors.append(sensor)
         if device.getData(ATTR_LOCAL_SSID) is not None:
-            _LOGGER.debug("device %s supports local ssid", device.name)
+            _LOGGER.debug("Device '%s' supports '%s'", device.name, ATTR_LOCAL_SSID)
             sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
             sensors.append(sensor)
         if device.getData(ATTR_MAC_ADDRESS) is not None:
-            _LOGGER.debug("device %s supports mac address", device.name)
+            _LOGGER.debug("Device '%s' supports '%s'", device.name, ATTR_MAC_ADDRESS)
             sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
             sensors.append(sensor)
         if device.getData(ATTR_SERIAL_NUMBER) is not None:
-            _LOGGER.debug("device %s supports serial number", device.name)
+            _LOGGER.debug("Device '%s' supports '%s'", device.name, ATTR_SERIAL_NUMBER)
             sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
             sensors.append(sensor)
 
-        #heatup
         if device.getData(ATTR_TANK_HEATUP_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_HEATUP_MODE,"")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports support heatupMode")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_HEATUP_MODE)
 
         if device.getData(ATTR_TANK_OPERATION_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_OPERATION_MODE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports support tank operationMode")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_OPERATION_MODE)
 
-        # TANK
-        # TODO: ripartire da qui
         if device.getData(ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank is_holiday_mode_active")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE)
 
         if device.getData(ATTR_TANK_IS_IN_EMERGENCY_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_EMERGENCY_STATE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank is_in_emergency_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_EMERGENCY_STATE)
 
         if device.getData(ATTR_TANK_IS_IN_ERROR_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_ERROR_STATE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank is_in_error_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_ERROR_STATE)
 
         if device.getData(ATTR_TANK_IS_IN_INSTALLER_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_INSTALLER_STATE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank is_in_installer_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_INSTALLER_STATE)
 
         if device.getData(ATTR_TANK_IS_IN_WARNING_STATE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_WARNING_STATE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank is_in_warning_state")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_WARNING_STATE)
 
         if device.getData(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank is_powerful_mode_active")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE)
 
         if device.getData(ATTR_TANK_ERROR_CODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"TANK")
             _LOGGER.debug("append sensor = %s", sensor)
             sensors.append(sensor)
         else:
-            _LOGGER.info("DAIKIN RESIDENTIAL ALTHERMA: device NOT supports tank error code")
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_ERROR_CODE)
 
     async_add_entities(sensors)
-
 
 class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
@@ -466,14 +467,14 @@ class DaikinEnergySensor(DaikinSensor):
     def state(self):
         """Return the state of the sensor."""
         if self._device_attribute == ATTR_COOL_ENERGY:
-            return round(self._device.energy_consumption("cooling", self._period), 3)
+            return round(self._device.energy_consumption(ATTR_ENERGY_CONSUMPTION, "cooling", self._period), 3)
 
         if self._device_attribute == ATTR_HEAT_ENERGY:
-            return round(self._device.energy_consumption("heating", self._period), 3)
+            return round(self._device.energy_consumption(ATTR_ENERGY_CONSUMPTION, "heating", self._period), 3)
 
         # DAMIANO
         if self._device_attribute == ATTR_HEAT_TANK_ENERGY:
-            return round(self._device.energy_consumption_tank("heating", self._period), 3)
+            return round(self._device.energy_consumption(ATTR_ENERGY_CONSUMPTION_TANK, "heating", self._period), 3)
         return None
 
     @property
