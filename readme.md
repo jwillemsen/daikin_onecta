@@ -1,4 +1,4 @@
-# Daikin Residential for Altherma 3
+# Daikin Residential for Altherma 3 Heat Pump
 
 Home Assistant Integration for Daikin Altherma 3 Heat Pump. This integration can coexist with the daiking_residential integration.
 
