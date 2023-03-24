@@ -1,6 +1,6 @@
-# Daikin Residential for Altherma 3
+# Daikin Residential for Altherma 3 Heat Pump
 
-This work is inspired from Rospogrigio [daikin_residential](https://github.com/rospogrigio/daikin_residential) integration and modified to support Daikin Altherma 3 Heat Pump. This integration can coexist with the daiking_residential integration.
+Home Assistant Integration for Daikin Altherma 3 Heat Pump. This integration can coexist with the daiking_residential integration.
 
 This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
 
@@ -12,11 +12,11 @@ Make sure to restart home Assistant, then go to `Using config flow` chapter.
 
 # Manual Installation
 
-Copy the `daikin_residential_altherma` folder and all of its contents into your Home Assistant's `custom_components` folder. This is often located inside of your `/config` folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the `custom_components` folder might be located at `/usr/share/hassio/homeassistant`. It is possible that your `custom_components` folder does not exist. If that is the case, create the folder in the proper location, and then copy the `daikin_residential_altherma` folder and all of its contents inside the newly created "custom_components" folder. Then you have to restart Home Assistant for the component to be loaded properly.
+Copy the `daikin_residential_altherma` folder and all of its contents into your Home Assistant's `custom_components` folder. This is often located inside of your `/config` folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the `custom_components` folder might be located at `/usr/share/hassio/homeassistant`. It is possible that your `custom_components` folder does not exist. If that is the case, create the folder in the proper location, and then copy the `daikin_residential_altherma` folder and all of its contents inside the newly created `custom_components` folder. Then you have to restart Home Assistant for the component to be loaded properly.
 
 # Using config flow
 
-Start by going to Configuration - Integration and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select Daikin Residential Controller in the drop-down menu.
+Start by going to Configuration - Integration and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Residential Controller for Altherma` in the drop-down menu.
 
 Follow the instructions, you just have to type the email and password used in the Daikin Residential App. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
 
