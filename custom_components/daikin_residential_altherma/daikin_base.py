@@ -157,7 +157,7 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         modes = [HVAC_MODE_OFF]
         for mode in self.getValidValues(ATTR_OPERATION_MODE):
             ha_mode = DAIKIN_HVAC_TO_HA[mode]
-            if ha_mode not in modes
+            if ha_mode not in modes:
                 modes.append(ha_mode)
         return modes
 
