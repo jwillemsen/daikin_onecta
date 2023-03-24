@@ -28,6 +28,7 @@ from .const import (
     ATTR_TANK_SETPOINT_MODE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
+    MP_DOMESTIC_HWT
 )
 
 HA_TANK_MODE_TO_DAIKIN = {
@@ -60,11 +61,11 @@ async def async_setup_entry(hass, entry, async_add_entities):
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         device_model = device.desc["deviceModel"]
         """ When the device has a tank temperature we add a water heater """
-        if device.getData(ATTR_TANK_TEMPERATURE) is not None:
-            _LOGGER.info("'%s' has a tank temperature, adding Water Heater", device_model)
+        if device.get_data(MP_DOMESTIC_HWT) is not None:
+            _LOGGER.info("'%s' has a tank management point, adding Water Heater", device_model)
             async_add_entities([DaikinWaterTank(device)], update_before_add=True)
         else:
-            _LOGGER.info("'%s' has not a tank temperature, ignoring")
+            _LOGGER.info("'%s' has not a tank management point, ignoring", self._device.name)
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
