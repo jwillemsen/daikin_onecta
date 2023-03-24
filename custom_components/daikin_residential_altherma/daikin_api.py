@@ -493,7 +493,7 @@ class DaikinApi:
             gateway_model = device.get_value("gateway", "modelInfo")
             device_model = device.desc["deviceModel"]
             _LOGGER.info("Found device '%s' with gateway model '%s'", device_model, gateway_model)
-            # Only process use specific models for this integration
+            # Only process specific models for this integration
             if device_model in ("Altherma", "NDJ"):
                 res[dev_data["id"]] = device
             else:
