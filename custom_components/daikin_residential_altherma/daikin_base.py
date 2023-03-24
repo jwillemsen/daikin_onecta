@@ -58,6 +58,8 @@ HA_PRESET_TO_DAIKIN = {
 DAIKIN_HVAC_TO_HA = {
     "cooling": HVAC_MODE_COOL,
     "heating": HVAC_MODE_HEAT,
+    "heatingDay": HVAC_MODE_HEAT,
+    "heatingNight": HVAC_MODE_HEAT,
     "auto": HVAC_MODE_HEAT_COOL,
     "off": HVAC_MODE_OFF,
 }
