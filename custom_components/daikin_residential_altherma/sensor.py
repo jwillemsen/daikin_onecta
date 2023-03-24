@@ -83,8 +83,11 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
-        sensors.append(sensor)
+        if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
+            sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
+            sensors.append(sensor)
+        else:
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_LEAVINGWATER_TEMPERATURE)
 
         if device.getData(ATTR_LEAVINGWATER_OFFSET) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_OFFSET,"")
