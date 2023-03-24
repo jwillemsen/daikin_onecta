@@ -58,6 +58,8 @@ HA_PRESET_TO_DAIKIN = {
 DAIKIN_HVAC_TO_HA = {
     "cooling": HVAC_MODE_COOL,
     "heating": HVAC_MODE_HEAT,
+    "heatingDay": HVAC_MODE_HEAT,
+    "heatingNight": HVAC_MODE_HEAT,
     "auto": HVAC_MODE_HEAT_COOL,
     "off": HVAC_MODE_OFF,
 }
@@ -154,7 +156,9 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         """Return the list of available HVAC modes."""
         modes = [HVAC_MODE_OFF]
         for mode in self.getValidValues(ATTR_OPERATION_MODE):
-            modes.append(DAIKIN_HVAC_TO_HA[mode])
+            ha_mode = DAIKIN_HVAC_TO_HA[mode]
+            if ha_mode not in modes:
+                modes.append(ha_mode)
         return modes
 
     async def async_set_hvac_mode(self, hvac_mode):
