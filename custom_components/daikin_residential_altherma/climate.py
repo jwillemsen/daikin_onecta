@@ -93,6 +93,7 @@ class DaikinClimate(ClimateEntity):
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
         }
+        self._supported_features = 0
 
         # Check whether we can control the target temperature
         controlMode = device.getValue(ATTR_CONTROL_MODE)
