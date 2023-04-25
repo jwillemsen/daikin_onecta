@@ -65,7 +65,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
             _LOGGER.info("'%s' has a tank management point, adding Water Heater", device_model)
             async_add_entities([DaikinWaterTank(device)], update_before_add=True)
         else:
-            _LOGGER.info("'%s' has not a tank management point, ignoring", self._device.name)
+            _LOGGER.info("'%s' has not a tank management point, ignoring", device.name)
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
