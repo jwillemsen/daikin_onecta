@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Configure Daikin Residential Controller AC",
-        "description": "Enter the [%key:common::config_flow::data::email] and [%key:common::config_flow::data::password%] you use to login to Daikin Cloud, then press Submit.",
+        "description": "Enter the email and password you use to login to Daikin Cloud, then press Submit.",
         "data": {
           "email": "[%key:common::config_flow::data::email]",
           "password": "[%key:common::config_flow::data::password%]"
