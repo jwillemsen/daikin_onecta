@@ -1,6 +1,6 @@
 # Daikin Residential for Altherma 3 Heat Pump
 
-Home Assistant Integration for Daikin Altherma 3 Heat Pump. This integration can coexist with the daiking_residential integration.
+Home Assistant Integration for Daikin Altherma 3 Heat Pump. This integration can coexist with the [daiking_residential integration](https://github.com/rospogrigio/daikin_residential).
 
 This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
 
