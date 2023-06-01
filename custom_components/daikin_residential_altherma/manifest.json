@@ -11,7 +11,7 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/speleolontra/daikin_residential_altherma/issues",
   "requirements": [
-     "oic==1.4.0"
+     "oic==1.6.0"
   ],
   "version": "2.7.2"
 }
