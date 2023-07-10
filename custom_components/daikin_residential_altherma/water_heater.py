@@ -137,8 +137,11 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     @property
     def current_temperature(self):
-        """Return tank temperature."""
-        return float(self._device.getValue(ATTR_TANK_TEMPERATURE))
+        if self._device.getData(ATTR_TANK_TEMPERATURE) is not None:
+            """Return tank temperature."""
+            return float(self._device.getValue(ATTR_TANK_TEMPERATURE))
+        else:
+            return None
 
     @property
     def target_temperature(self):
