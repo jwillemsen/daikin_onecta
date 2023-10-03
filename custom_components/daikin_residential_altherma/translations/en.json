@@ -17,12 +17,18 @@
         "step": {
             "user": {
                 "data": {
-		  "email": "Email address",
-		  "password": "Password"
+                    "email": "Email address",
+                    "password": "Password"
                 },
-	        "description": "Enter the email address and password you use to login to Daikin Cloud, then press Submit.",
+                "description": "Enter the email address and password you use to login to Daikin Cloud, then press Submit.",
                 "title": "Configure Daikin Residential Controller AC"
             }
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Retrieve new access TokenSet by logging in again to Daikin Cloud."
         }
     }
 }
