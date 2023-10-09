@@ -1,3 +1,5 @@
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+
 # Daikin Residential for Altherma 3 Heat Pump
 
 Home Assistant Integration for Daikin Altherma 3 Heat Pump. This integration can coexist with the [daiking_residential integration](https://github.com/rospogrigio/daikin_residential).
@@ -6,9 +8,7 @@ This integration is maintained by [@speleolontra](https://github.com/speleolontr
 
 # Installation using HACS:
 
-Open `HACS` section then `Integrations` and click on three points menu at top right. Click on `custom repositories` and add `https://github.com/speleolontra/daikin_residential_altherma` as integration category.
-This will copy the `daikin_residential_altherma` folder in the `custom_components` folder of Home Assistant.
-Make sure to restart home Assistant, then go to `Using config flow` chapter.
+Install with [HACS](https://hacs.xyz): Search for "Daikin Residential for Altherma 3" in the default repository,
 
 # Manual Installation
 
