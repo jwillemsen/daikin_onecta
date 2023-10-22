@@ -2,7 +2,9 @@
 
 # Daikin Residential for Altherma 3 Heat Pump
 
-Home Assistant Integration for Daikin Altherma 3 Heat Pump. This integration can coexist with the [daiking_residential integration](https://github.com/rospogrigio/daikin_residential).
+Home Assistant Integration for Daikin Altherma 3 Heat Pump (natively for models BRP069A78 but users have good experience also for BRP069A62 and BRP069A61 despite they have not been tested).
+
+This integration can coexist with the [daiking_residential integration](https://github.com/rospogrigio/daikin_residential).
 
 This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
 
