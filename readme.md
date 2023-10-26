@@ -28,8 +28,8 @@ Just add the following lines to your `configuration.yaml` file specifying the em
 
 ```
 daikin_residential_altherma:
-  email: [your_email]
-  password: [your_pwd]
+  email: 'your_email'
+  password: 'your_pwd'
 ```
 
 # Setting the log level
