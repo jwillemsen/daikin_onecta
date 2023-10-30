@@ -414,9 +414,31 @@ class DaikinResidentialDevice:
             setBody["path"] = dataPointPath
         setOptions = {"method": "PATCH", "json": json.dumps(setBody)}
 
-        _LOGGER.debug("Path: " + setPath + " , options: %s", setOptions)
+        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
 
         res = await self.api.doBearerRequest(setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
         if res is True:
             self.get_data(managementPoint, dataPoint, dataPointPath)["value"] = value
+
+    async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
+        setPath = (
+            "/v1/gateway-devices/"
+            + id
+            + "/management-points/"
+            + embeddedId
+            + "/characteristics/"
+            + dataPoint
+        )
+        setBody = {"value": value}
+        if dataPointPath != "":
+            setBody["path"] = dataPointPath
+        setOptions = {"method": "PATCH", "json": json.dumps(setBody)}
+
+        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
+
+        res = await self.api.doBearerRequest(setPath, setOptions)
+        _LOGGER.debug("RES IS {}".format(res))
+#        if res is True:
+# JWI TODO
+#            self.get_data(managementPoint, dataPoint, dataPointPath)["value"] = value
