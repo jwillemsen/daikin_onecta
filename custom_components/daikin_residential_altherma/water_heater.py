@@ -31,22 +31,6 @@ from .const import (
     MP_DOMESTIC_HWT
 )
 
-HA_TANK_MODE_TO_DAIKIN = {
-    STATE_PERFORMANCE: ATTR_TANK_STATE_PERFOMANCE,
-    STATE_HEAT_PUMP: ATTR_TANK_STATE_HEAT_PUMP,
-    STATE_OFF: ATTR_TANK_STATE_OFF,
-}
-
-HA_TANK_ATTR_TO_DAIKIN = {
-    ATTR_TANK_MODE: ATTR_TANK_MODE_SET,
-    ATTR_TANK_TARGET_TEMPERATURE: ATTR_TANK_TARGET_TEMPERATURE,
-}
-
-DAIKIN_TANK_TO_HA = {
-    ATTR_TANK_STATE_PERFOMANCE: STATE_PERFORMANCE,
-    ATTR_TANK_STATE_HEAT_PUMP: STATE_HEAT_PUMP,
-    ATTR_TANK_STATE_OFF: STATE_OFF,
-}
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Old way of setting up the Daikin HVAC platform.
@@ -76,9 +60,6 @@ class DaikinWaterTank(WaterHeaterEntity):
         """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         self._device = device
-        self._list = {
-            ATTR_TANK_MODE: list(HA_TANK_MODE_TO_DAIKIN),
-        }
         if self.supported_features & SUPPORT_TARGET_TEMPERATURE:
             _LOGGER.debug("Tank temperature is settable")
 
@@ -226,7 +207,6 @@ class DaikinWaterTank(WaterHeaterEntity):
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
-
         await self.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
 
     async def async_update(self):
