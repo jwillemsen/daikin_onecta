@@ -93,6 +93,7 @@ class DaikinResidentialDevice:
     def setJsonData(self, desc):
         """Set a device description and parse/traverse data structure."""
         self.desc = desc
+        self.daikin_data = desc
         # re-map some data for more easy access
         self.managementPoints = {}
         dataPoints = {}
