@@ -255,7 +255,11 @@ class DaikinWaterTank(WaterHeaterEntity):
     @property
     def operation_list(self):
         """Return the list of available operation modes."""
-        states = [STATE_OFF, STATE_HEAT_PUMP, STATE_PERFORMANCE]
+        states = [STATE_OFF, STATE_HEAT_PUMP]
+        hwtd = self.hotwatertank_data
+        if hwtd["powerfulMode"]["settable"] == True:
+            states += [STATE_PERFORMANCE]
+        _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
         return states
 
     async def async_set_operation_mode(self, operation_mode):
