@@ -23,6 +23,7 @@ class DaikinResidentialDevice:
         self.setJsonData(jsonData)
         self.name = self.getName()
         self._available = True
+        self.daikin_data = jsonData
 
         _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)", self.name, self.getId())
 
@@ -132,6 +133,8 @@ class DaikinResidentialDevice:
         #_LOGGER.warning('MPS FOUND: [{}]'.format(self.managementPoints))
         #_LOGGER.warning('MPS FOUND: [{}]'.format(self.managementPoints.keys()))
 
+    def daikin_data(self):
+        return self.daikin_data
 
     def getId(self):
         """Get Daikin Device UUID."""

@@ -55,17 +55,18 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     config. But even in that case it would have been ignored.
     """
 
-
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin water tank entities."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         device_model = device.desc["deviceModel"]
-        """ When the device has a tank temperature we add a water heater """
-        if device.get_data(MP_DOMESTIC_HWT) is not None:
-            _LOGGER.info("'%s' has a tank management point, adding Water Heater", device_model)
-            async_add_entities([DaikinWaterTank(device)], update_before_add=True)
-        else:
-            _LOGGER.info("'%s' has not a tank management point, ignoring", device.name)
+        """ When the device has a domesticHotWaterTank we add a water heater """
+        if device.daikin_data["managementPoints"] is not None:
+            for management_point in device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type == "domesticHotWaterTank":
+                    async_add_entities([DaikinWaterTank(device)], update_before_add=True)
+                else:
+                    _LOGGER.info("'%s' has not a tank management point, ignoring as water heater", management_point_type)
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
@@ -77,13 +78,6 @@ class DaikinWaterTank(WaterHeaterEntity):
         self._list = {
             ATTR_TANK_MODE: list(HA_TANK_MODE_TO_DAIKIN),
         }
-        self._supported_features = SUPPORT_OPERATION_MODE
-
-        # Only when we have a fixed setpointMode we can control the target
-        # temperature of the tank
-        if self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["settable"]:
-            self._supported_features |= SUPPORT_TARGET_TEMPERATURE
-            _LOGGER.debug("Tank temperature is settable")
 
     async def _set(self, settings):
         """Set device settings using API."""
@@ -110,14 +104,41 @@ class DaikinWaterTank(WaterHeaterEntity):
             await self._device.set(values)
 
     @property
+    def hotwatertank_data(self):
+        # Find the management point for the hot water tank
+        for management_point in self._device.daikin_data["managementPoints"]:
+            management_point_type = management_point["managementPointType"]
+            if  management_point_type == "domesticHotWaterTank":
+                return management_point
+        return None
+
+    @property
+    def domestic_hotwater_temperature(self):
+        # Find the json dictionary for controlling the hot water temperature
+        temp_control = self.hotwatertank_data["temperatureControl"]["value"]
+        if temp_control:
+            heating_mode = temp_control["operationModes"]["heating"]
+            if heating_mode is not None:
+                return heating_mode["setpoints"]["domesticHotWaterTemperature"]
+        return None
+
+    @property
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
 
     @property
     def supported_features(self):
+        sf = SUPPORT_OPERATION_MODE
+        # Only when we have a fixed setpointMode we can control the target
+        # temperature of the tank
+        dht = self.domestic_hotwater_temperature
+        if dht:
+            if dht["settable"] == True:
+                sf |= SUPPORT_TARGET_TEMPERATURE
+                _LOGGER.debug("Tank temperature is settable")
         """Return the list of supported features."""
-        return self._supported_features
+        return sf
 
     @property
     def name(self):
@@ -137,11 +158,12 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     @property
     def current_temperature(self):
-        if self._device.getData(ATTR_TANK_TEMPERATURE) is not None:
+        ret = None
+        dht = self.domestic_hotwater_temperature
+        if dht is not None:
             """Return tank temperature."""
-            return float(self._device.getValue(ATTR_TANK_TEMPERATURE))
-        else:
-            return None
+            ret =  float(domestic_hotwater_temperature["value"])
+        return ret
 
     @property
     def target_temperature(self):
@@ -150,21 +172,30 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     @property
     def extra_state_attributes(self):
-        """Return the optional device state attributes."""
-        data = {"target_temp_step": float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["stepValue"])}
+        data = {}
+        dht = self.domestic_hotwater_temperature
+        if dht is not None:
+            """Return the optional device state attributes."""
+            data = {"target_temp_step": float(dht["stepValue"])}
         return data
 
     @property
     def min_temp(self):
-        """Return the supported step of target temperature."""
-        stepVal = float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["minValue"])
-        return stepVal
+        """Return the supported minimum value target temperature."""
+        ret = None
+        dht = self.domestic_hotwater_temperature
+        if dht is not None:
+            ret = float(dht["minValue"])
+        return ret
 
     @property
     def max_temp(self):
-        """Return the supported step of target temperature."""
-        stepVal = float(self._device.getData(ATTR_TANK_TARGET_TEMPERATURE)["maxValue"])
-        return stepVal
+        """Return the supported maximum value of target temperature."""
+        ret = None
+        dht = self.domestic_hotwater_temperature
+        if dht is not None:
+            ret = float(self.domestic_hotwater_temperature["maxValue"])
+        return ret
 
     async def async_set_tank_temperature(self, value):
         """Set new target temperature."""
