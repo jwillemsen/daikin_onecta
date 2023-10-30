@@ -278,7 +278,7 @@ class DaikinResidentialDevice:
         """Validates a value that should be sent to the Daikin Device."""
 
         if "value" not in descr:  # and not 'settable' in descr:
-            raise Exception("Value can not be set without dataPointPath")
+            raise Exception("value can not be set without dataPointPath, received " + str(descr))
 
         if "settable" not in descr or not descr["settable"]:
             raise Exception("Data point " + dataPoint + " is not writable")

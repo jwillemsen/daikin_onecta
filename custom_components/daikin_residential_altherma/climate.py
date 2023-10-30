@@ -111,7 +111,6 @@ class DaikinClimate(ClimateEntity):
         _LOGGER.info("Support features %s for controlMode %s", self._supported_features, controlMode)
 
         self._supported_preset_modes = [PRESET_NONE]
-        self._current_preset_mode = PRESET_NONE
         for mode in PRESET_MODES:
             support_preset = self._device.support_preset_mode(mode)
             if support_preset:
@@ -314,11 +313,10 @@ class DaikinClimate(ClimateEntity):
     @property
     def preset_mode(self):
         """Return the preset_mode."""
-        self._current_preset_mode = PRESET_NONE
         for mode in self._supported_preset_modes:
             if self._device.preset_mode_status(mode) == ATTR_STATE_ON:
-                self._current_preset_mode = mode
-        return self._current_preset_mode
+                return mode
+        return PRESET_NONE
 
     async def async_set_preset_mode(self, preset_mode):
         """Set preset mode."""

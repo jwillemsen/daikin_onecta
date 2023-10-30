@@ -22,6 +22,7 @@ from .const import(
     ATTR_ENERGY_CONSUMPTION,
     ATTR_ENERGY_CONSUMPTION_TANK,
     SENSOR_PERIOD_WEEKLY,
+    MP_CLIMATE,
 )
 
 from homeassistant.components.climate.const import (
@@ -52,7 +53,6 @@ HA_PRESET_TO_DAIKIN = {
     PRESET_COMFORT: "comfortMode",
     PRESET_ECO: "econoMode",
     PRESET_TANK_ONOFF: "onOffMode",
-    #PRESET_SETPOINT_MODE: "setpointMode" DAMIANO
 }
 
 DAIKIN_HVAC_TO_HA = {
@@ -127,8 +127,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         data = self.getData(param)
         if data is None:
             return None
-        if param == 'holidayMode':
-            return data['/enabled']
         return data["value"]
 
     def getValidValues(self, param):
@@ -173,16 +171,21 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
     def support_preset_mode(self, mode):
         """Return True if the device supports preset mode."""
         mode = HA_PRESET_TO_DAIKIN[mode]
-        return self.getData(mode) is not None
+        mode_data = self.get_data(MP_CLIMATE, mode)
+        return mode_data is not None
 
     def preset_mode_status(self, mode):
         """Return the preset mode status."""
         mode = HA_PRESET_TO_DAIKIN[mode]
-        if self.getData(mode) is None:
+        mode_data = self.get_data(MP_CLIMATE, mode)
+        if mode_data is None:
             return False
-        status = self.getValue(mode)
-        #print("    DAMIANO Mode {}: {}".format(mode,status))
-        return self.getValue(mode)
+        # With the Altherma the preset mode holidayMode contains enabled/startDate/endDate
+        # so handle that we van have a dictionary here with a enabled
+        if type(mode_data) == dict:
+            if mode_data["/enabled"] == True:
+                return ATTR_STATE_ON
+        return mode_data
 
     async def set_preset_mode_status(self, mode, status):
         """Set the preset mode status."""
