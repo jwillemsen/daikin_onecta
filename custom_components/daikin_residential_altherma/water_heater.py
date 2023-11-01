@@ -226,10 +226,11 @@ class DaikinWaterTank(WaterHeaterEntity):
         state = STATE_OFF
         hwtd = self.hotwatertank_data
         if hwtd["onOffMode"]["value"] == "on":
-            if hwtd["powerfulMode"]["value"] == "on":
-                state = STATE_PERFORMANCE
-            else:
-                state = STATE_HEAT_PUMP
+            state = STATE_HEAT_PUMP
+            pwf = hwtd.get("powerfulMode")
+            if pwf is not None:
+                if pwf["value"] == "on":
+                    state = STATE_PERFORMANCE
         _LOGGER.debug("Device '%s' hot water tank current mode %s", self._device.name, state)
         return state
 
@@ -238,8 +239,10 @@ class DaikinWaterTank(WaterHeaterEntity):
         """Return the list of available operation modes."""
         states = [STATE_OFF, STATE_HEAT_PUMP]
         hwtd = self.hotwatertank_data
-        if hwtd["powerfulMode"]["settable"] == True:
-            states += [STATE_PERFORMANCE]
+        pwf = hwtd.get("powerfulMode")
+        if pwf is not None:
+            if pwf["settable"] == True:
+                states += [STATE_PERFORMANCE]
         _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
         return states
 
