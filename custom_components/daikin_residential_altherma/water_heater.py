@@ -28,9 +28,14 @@ from .const import (
     ATTR_TANK_SETPOINT_MODE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
-    MP_DOMESTIC_HWT
+    MP_DOMESTIC_HWT,
+    SENSOR_PERIODS,
+    ATTR_HEAT_TANK_ENERGY,
 )
 
+from .sensor import (
+    DaikinSensor,
+)
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Old way of setting up the Daikin HVAC platform.
@@ -49,7 +54,17 @@ async def async_setup_entry(hass, entry, async_add_entities):
             for management_point in device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if  management_point_type in supported_management_point_types:
-                    async_add_entities([DaikinWaterTank(device)], update_before_add=True)
+                    wtdevice = DaikinWaterTank(device)
+                    async_add_entities([wtdevice], update_before_add=True)
+                    if wtdevice.supports_energy_consumption:
+                        _LOGGER.debug("Tank supports energy consumption")
+                        sensors = []
+                        for period in SENSOR_PERIODS:
+                            sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
+                            sensors.append(sensor)
+                        async_add_entities(sensors)
+                    else:
+                        _LOGGER.debug("Altherma tank doesn't supports tank energy consumption")
                 else:
                     _LOGGER.info("'%s' has not a tank management point, ignoring as water heater", management_point_type)
 
@@ -62,7 +77,6 @@ class DaikinWaterTank(WaterHeaterEntity):
         self._device = device
         if self.supported_features & SUPPORT_TARGET_TEMPERATURE:
             _LOGGER.debug("Tank temperature is settable")
-
     async def _set(self, settings):
         raise NotImplementedError
 
@@ -114,6 +128,22 @@ class DaikinWaterTank(WaterHeaterEntity):
                 sf |= SUPPORT_TARGET_TEMPERATURE
         """Return the list of supported features."""
         return sf
+
+    @property
+    def supports_energy_consumption(self):
+        # Check if we have energy consumption data under
+        # [consumptionData][value][electrical][heating]
+        hwtd = self.hotwatertank_data
+        cd = hwtd.get("consumptionData")
+        if cd is not None:
+            cdv = cd.get("value")
+            if cdv is not None:
+                cdve = cdv.get("electrical")
+                if cdve is not None:
+                    cdveh = cdve.get("heating")
+                    if cdveh is not None:
+                        return True
+        return False
 
     @property
     def name(self):
@@ -196,7 +226,6 @@ class DaikinWaterTank(WaterHeaterEntity):
             dht = self.domestic_hotwater_temperature
             if dht is not None:
                 dht["value"] = value
-
 
     async def async_set_tank_state(self, tank_state):
         """Set new tank state."""

@@ -126,12 +126,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             else:
                 _LOGGER.info("Device '%s' NOT supports %s heating energy consumption", device.name, period)
 
-            if device.getDataEC(ATTR_ENERGY_CONSUMPTION_TANK, "heating", period) is not None:
-                sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
-                sensors.append(sensor)
-            else:
-                _LOGGER.info("Device NOT supports %s tank energy consumption", period)
-
         if device.getData(ATTR_OPERATION_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_OPERATION_MODE,"")
             sensors.append(sensor)
