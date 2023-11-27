@@ -134,9 +134,16 @@ class DaikinWaterTank(WaterHeaterEntity):
     @property
     def current_temperature(self):
         """Return tank temperature."""
+        ret + None
         hwtd = self.hotwatertank_data
-        ret =  float(hwtd["sensoryData"]["value"]["tankTemperature"]["value"])
-        _LOGGER.debug("Device '%s' hot water tank current_temperature '%s'", self._device.name, ret)
+        # Some Altherma versions don't provide a current temperature, there is no sensoryData
+        sensoryData = hwtd.get("sensoryData")
+        if sensoryData is not None:
+            ret =  float(sensoryData["value"]["tankTemperature"]["value"])
+            _LOGGER.debug("Device '%s' hot water tank current_temperature '%s'", self._device.name, ret)
+        else:
+            _LOGGER.debug("Device '%s' doesn't provide a current temperature", self._device.name)
+
         return ret
 
     @property
