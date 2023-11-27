@@ -363,29 +363,6 @@ class DaikinSensor(SensorEntity):
 
     @property
     def entity_category(self):
-        """
-        Return the entity_category the sensor.
-        CONFIG:Set to config for an entity which allows changing the configuration
-         of a device, for example a switch entity making it possible to turn the
-         background illumination of a switch on and off.
-
-        DIAGNOSTIC: Set to diagnostic for an entity exposing some configuration
-         parameter or diagnostics of a device but does not allow changing it,
-
-        SYSTEM: Set to system for an entity which is not useful for the user
-         to interact with. """
-
-        configList = [
-            ATTR_SETPOINT_MODE,
-            ATTR_OPERATION_MODE,
-            ATTR_TANK_SETPOINT_MODE,
-            ATTR_TANK_OPERATION_MODE,
-            ATTR_CONTROL_MODE,
-            ATTR_IS_HOLIDAY_MODE_ACTIVE,
-            ATTR_TANK_HEATUP_MODE,
-            ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
-            ATTR_TANK_IS_POWERFUL_MODE_ACTIVE
-            ]
         diagnosticList =[
             ATTR_IS_IN_EMERGENCY_STATE,
             ATTR_IS_IN_ERROR_STATE,
@@ -404,13 +381,8 @@ class DaikinSensor(SensorEntity):
             ATTR_SERIAL_NUMBER,
             ]
         try:
-            if self._device_attribute in configList:
-                self._entity_category = EntityCategory.CONFIG
-                return self._entity_category
-            elif self._device_attribute in diagnosticList:
-                self._entity_category = EntityCategory.DIAGNOSTIC
-                return self._entity_category
-
+            if self._device_attribute in diagnosticList:
+                return EntityCategory.DIAGNOSTIC
             else:
                 return None
         except Exception as e:
