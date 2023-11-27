@@ -205,11 +205,11 @@ class DaikinWaterTank(WaterHeaterEntity):
         if tank_state == STATE_OFF:
             result &= await self._device.set_path(self._device.getId(), self.managementpoint_type, "onOffMode", "", "off")
         if tank_state == STATE_PERFORMANCE:
-            if current_operation == STATE_OFF:
+            if self.current_operation == STATE_OFF:
                 result &= await self._device.set_path(self._device.getId(), self.managementpoint_type, "onOffMode", "", "on")
             result &=  await self._device.set_path(self._device.getId(), self.managementpoint_type, "powerfulMode", "", "on")
         if tank_state == STATE_HEAT_PUMP:
-            if current_operation == STATE_OFF:
+            if self.current_operation == STATE_OFF:
                 result &= await self._device.set_path(self._device.getId(), self.managementpoint_type, "onOffMode", "", "on")
             result &=  await self._device.set_path(self._device.getId(), self.managementpoint_type, "powerfulMode", "", "off")
         if result is False:
