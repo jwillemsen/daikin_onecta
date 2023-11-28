@@ -440,6 +440,8 @@ class DaikinResidentialDevice:
 
         res = await self.api.doBearerRequest(setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
+
+        return res
 #        if res is True:
 # JWI TODO
 #            self.get_data(managementPoint, dataPoint, dataPointPath)["value"] = value

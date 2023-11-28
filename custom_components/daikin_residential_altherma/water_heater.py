@@ -198,22 +198,24 @@ class DaikinWaterTank(WaterHeaterEntity):
                 dht["value"] = value
 
 
-    async def async_set_tank_state(self, tank_state):
+    async def async_set_tank_state(self, new_tank_state):
         """Set new tank state."""
         result = True
-        _LOGGER.debug("Set tank state: %s", tank_state)
-        if tank_state == STATE_OFF:
+        _LOGGER.debug("Set tank state: %s", new_tank_state)
+        if new_tank_state == STATE_OFF:
             result &= await self._device.set_path(self._device.getId(), self.managementpoint_type, "onOffMode", "", "off")
-        if tank_state == STATE_PERFORMANCE:
+        if new_tank_state == STATE_PERFORMANCE:
             if self.current_operation == STATE_OFF:
                 result &= await self._device.set_path(self._device.getId(), self.managementpoint_type, "onOffMode", "", "on")
-            result &=  await self._device.set_path(self._device.getId(), self.managementpoint_type, "powerfulMode", "", "on")
-        if tank_state == STATE_HEAT_PUMP:
+            if STATE_PERFORMANCE in self.operation_list:
+                result &=  await self._device.set_path(self._device.getId(), self.managementpoint_type, "powerfulMode", "", "on")
+        if new_tank_state == STATE_HEAT_PUMP:
             if self.current_operation == STATE_OFF:
                 result &= await self._device.set_path(self._device.getId(), self.managementpoint_type, "onOffMode", "", "on")
-            result &=  await self._device.set_path(self._device.getId(), self.managementpoint_type, "powerfulMode", "", "off")
+            if STATE_PERFORMANCE in self.operation_list:
+                result &=  await self._device.set_path(self._device.getId(), self.managementpoint_type, "powerfulMode", "", "off")
         if result is False:
-            _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, tank_state)
+            _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, new_tank_state)
         return result
 
     async def async_set_temperature(self, **kwargs):
