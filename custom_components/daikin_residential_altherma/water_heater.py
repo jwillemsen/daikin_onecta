@@ -193,22 +193,44 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     async def async_set_tank_state(self, new_tank_state):
         """Set new tank state."""
-        result = True
         _LOGGER.debug("Set tank state: %s", new_tank_state)
+        result = True
+
+        # First determine the new settings for onOffMode/powerfulMode, we need these to set them to Daikin
+        # and update our local cached version when succeeded
+        onOffMode = ""
+        powerfulMode = ""
         if new_tank_state == STATE_OFF:
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
+            onOffMode = "off"
         if new_tank_state == STATE_PERFORMANCE:
+            powerfulMode = "on"
             if self.current_operation == STATE_OFF:
-                result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
-            if STATE_PERFORMANCE in self.operation_list:
-                result &=  await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", "on")
+                onOffMode = "on"
         if new_tank_state == STATE_HEAT_PUMP:
+            if self.current_operation == STATE_PERFORMANCE:
+                powerfulMode = "off"
             if self.current_operation == STATE_OFF:
-                result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
-            if STATE_PERFORMANCE in self.operation_list:
-                result &=  await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", "off")
+                onOffMode = "on"
+
+        # Only set the on/off to Daikin when we need to change it
+        if onOffMode != "":
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
+        # Only set powerfulMode when it is set and supported by the device
+        if (powerfulMode != "") and (STATE_PERFORMANCE in self.operation_list):
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", powerfulMode)
+
         if result is False:
             _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, new_tank_state)
+        else:
+            # Update local cached version
+            hwtd = self.hotwatertank_data
+            if onOffMode != "":
+                hwtd["onOffMode"]["value"] = onOffMode
+            if powerfulMode != "":
+                pwf = hwtd.get("powerfulMode")
+                if pwf is not None:
+                    pwf["value"] = powerfulMode
+
         return result
 
     async def async_set_temperature(self, **kwargs):
