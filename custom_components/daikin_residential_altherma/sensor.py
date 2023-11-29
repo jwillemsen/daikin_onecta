@@ -83,6 +83,25 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
+        if device.daikin_data["managementPoints"] is not None:
+            for management_point in device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                cd = management_point.get("consumptionData")
+                if cd is not None:
+                    _LOGGER.info("Device '%s' provides consumptionData", device.name)
+                    cdv = cd.get("value")
+                    if cdv is not None:
+                        cdve = cdv.get("electrical")
+                        _LOGGER.info("Device '%s' provides electrical", device.name)
+                        if cdve is not None:
+                            for mode in cdve:
+                                _LOGGER.info("Device '%s' provides mode %s %s", device.name, management_point_type, mode)
+                                cdvem = cdve[mode]
+                                periods = {'d', 'w', 'm'}
+                                for period in periods:
+                                    if cdvem.get(period):
+                                        _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
+
         if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
             sensors.append(sensor)
