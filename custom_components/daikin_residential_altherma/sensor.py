@@ -82,6 +82,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     sensors = []
     prog = 0
 
+    #sensor.altherma_daily_heat_energy_consumption, altherma_daily_heat_tank_energy_consumption
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         if device.daikin_data["managementPoints"] is not None:
             for management_point in device.daikin_data["managementPoints"]:
@@ -101,6 +102,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                 #for period in periods:
                                 #    if cdvem.get(period):
                                   _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
+                                  periodName = SENSOR_PERIODS[period]
+                                  sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+                                  _LOGGER.info("Proposing sensor %s", sensor)
+
 
         if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
