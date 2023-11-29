@@ -96,11 +96,11 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                         if cdve is not None:
                             for mode in cdve:
                                 _LOGGER.info("Device '%s' provides mode %s %s", device.name, management_point_type, mode)
-                                cdvem = cdve[mode]
-                                periods = {'d', 'w', 'm'}
-                                for period in periods:
-                                    if cdvem.get(period):
-                                        _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
+                                for period in cdve[mode]:
+                                #periods = {'d', 'w', 'm'}
+                                #for period in periods:
+                                #    if cdvem.get(period):
+                                  _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
 
         if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
