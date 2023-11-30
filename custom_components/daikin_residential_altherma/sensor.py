@@ -102,9 +102,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                 #for period in periods:
                                 #    if cdvem.get(period):
                                   _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
-                                  periodName = SENSOR_PERIODS[period]
-                                  sensor = f"{device.name} {management_point_type} {mode} {periodName}"
-                                  _LOGGER.info("Proposing sensor %s", sensor)
+                                  #periodName = SENSOR_PERIODS[period]
+                                  #sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+                                  #_LOGGER.info("Proposing sensor %s", sensor)
 
 
         if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
