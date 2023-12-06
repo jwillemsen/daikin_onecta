@@ -7,6 +7,8 @@ from homeassistant.const import (
     CONF_NAME,
     CONF_TYPE,
     CONF_UNIT_OF_MEASUREMENT,
+    DEVICE_CLASS_ENERGY,
+    ENERGY_KILO_WATT_HOUR,
 )
 
 from homeassistant.components.sensor import (
@@ -64,6 +66,7 @@ from .const import (
     ATTR_LOCAL_SSID,
     ATTR_MAC_ADDRESS,
     ATTR_SERIAL_NUMBER,
+    SENSOR_PERIOD_WEEKLY,
 )
 
 import logging
@@ -87,24 +90,37 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         if device.daikin_data["managementPoints"] is not None:
             for management_point in device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
+                embedded_id = management_point["embeddedId"]
                 cd = management_point.get("consumptionData")
                 if cd is not None:
                     _LOGGER.info("Device '%s' provides consumptionData", device.name)
+                    # Retrieve the available operationModes, we can only provide consumption data for
+                    # supported operation modes
+                    operation_modes = management_point["operationMode"]["values"]
                     cdv = cd.get("value")
                     if cdv is not None:
                         cdve = cdv.get("electrical")
                         _LOGGER.info("Device '%s' provides electrical", device.name)
                         if cdve is not None:
                             for mode in cdve:
-                                _LOGGER.info("Device '%s' provides mode %s %s", device.name, management_point_type, mode)
-                                for period in cdve[mode]:
-                                #periods = {'d', 'w', 'm'}
-                                #for period in periods:
-                                #    if cdvem.get(period):
-                                  _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
-                                  #periodName = SENSOR_PERIODS[period]
-                                  #sensor = f"{device.name} {management_point_type} {mode} {periodName}"
-                                  #_LOGGER.info("Proposing sensor %s", sensor)
+                                # Only handle consumptionData for an operation mode supported by this device
+                                if mode in operation_modes:
+                                    _LOGGER.info("Device '%s' provides mode %s %s", device.name, management_point_type, mode)
+                                    icon = "mdi:fire"
+                                    if mode == "cooling":
+                                        icon = "mdi:snowflake"
+                                    for period in cdve[mode]:
+                                    #periods = {'d', 'w', 'm'}
+                                    #for period in periods:
+                                    #    if cdvem.get(period):
+                                        _LOGGER.info("Device '%s:%s' provides mode %s %s supports period %s", device.name, embedded_id, management_point_type, mode, period)
+                                        periodName = SENSOR_PERIODS[period]
+                                        sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+                                        _LOGGER.info("Proposing sensor %s", sensor)
+                                        sensorv = DaikinEnergySensor (device, embedded_id, management_point_type, mode,  period, icon)
+                                        sensors.append(sensorv)
+                                else:
+                                    _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
 
 
         if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
@@ -137,24 +153,24 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_OUTSIDE_TEMPERATURE)
 
-        for period in SENSOR_PERIODS:
-            if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "cooling", period) is not None:
-                sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY,"", period)
-                sensors.append(sensor)
-            else:
-                _LOGGER.info("Device '%s' NOT supports %s cooling energy consumption", device.name, period)
-
-            if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "heating", period) is not None:
-                sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY,"", period)
-                sensors.append(sensor)
-            else:
-                _LOGGER.info("Device '%s' NOT supports %s heating energy consumption", device.name, period)
-
-            if device.getDataEC(ATTR_ENERGY_CONSUMPTION_TANK, "heating", period) is not None:
-                sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
-                sensors.append(sensor)
-            else:
-                _LOGGER.info("Device NOT supports %s tank energy consumption", period)
+        # for period in SENSOR_PERIODS:
+        #     if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "cooling", period) is not None:
+        #         sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY,"", period)
+        #         sensors.append(sensor)
+        #     else:
+        #         _LOGGER.info("Device '%s' NOT supports %s cooling energy consumption", device.name, period)
+        #
+        #     if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "heating", period) is not None:
+        #         sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY,"", period)
+        #         sensors.append(sensor)
+        #     else:
+        #         _LOGGER.info("Device '%s' NOT supports %s heating energy consumption", device.name, period)
+        #
+        #     # if device.getDataEC(ATTR_ENERGY_CONSUMPTION_TANK, "heating", period) is not None:
+        #     #     sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
+        #     #     sensors.append(sensor)
+        #     # else:
+        #     #     _LOGGER.info("Device NOT supports %s tank energy consumption", period)
 
         if device.getData(ATTR_OPERATION_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_OPERATION_MODE,"")
@@ -444,24 +460,91 @@ class DaikinClimateSensor(DaikinSensor):
 
 class DaikinEnergySensor(DaikinSensor):
     """Representation of a power/energy consumption sensor."""
+#                                    sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+
+    def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
+        self._device = device
+        self._icon = icon
+        self._sensor = SENSOR_TYPE_ENERGY
+        self._embedded_id = embedded_id
+        self._management_point_type = management_point_type
+        self._operation_mode = operation_mode
+        self._period = period
+        self._attr_entity_category = None
+        periodName = SENSOR_PERIODS[period]
+        self._name = f"{device.name} {management_point_type.capitalize()} {operation_mode.capitalize()} {periodName} Energy Consumption"
+        _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property
     def state(self):
         """Return the state of the sensor."""
-        if self._device_attribute == ATTR_COOL_ENERGY:
-            return round(self._device.energy_consumption(ATTR_ENERGY_CONSUMPTION, "cooling", self._period), 3)
+        energy_value = None
+        for management_point in self._device.daikin_data["managementPoints"]:
+            if self._embedded_id == management_point["embeddedId"]:
+                management_point_type = management_point["managementPointType"]
+                cd = management_point.get("consumptionData")
+                if cd is not None:
+                    _LOGGER.info("Device '%s' provides consumptionData", self._device.name)
+                    # Retrieve the available operationModes, we can only provide consumption data for
+                    # supported operation modes
+                    cdv = cd.get("value")
+                    if cdv is not None:
+                        cdve = cdv.get("electrical")
+                        _LOGGER.info("Device '%s' provides electrical", self._device.name)
+                        if cdve is not None:
+                            for mode in cdve:
+                                # Only handle consumptionData for an operation mode supported by this device
+                                if mode == self._operation_mode:
+                                    _LOGGER.info("Device '%s' has energy value for mode %s %s", self._device.name, management_point_type, mode)
+                                    energy_values = [
+                                        0 if v is None else v
+                                        for v in cdve[mode].get(self._period)
+                                    ]
+                                    start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
+                                    #_LOGGER.info("%s", energy_values)
+                                    #_LOGGER.info("%s", sum(energy_values[start_index:]))
+                                    #value =
+                                    energy_value = round(sum(energy_values[start_index:]), 3)
 
-        if self._device_attribute == ATTR_HEAT_ENERGY:
-            return round(self._device.energy_consumption(ATTR_ENERGY_CONSUMPTION, "heating", self._period), 3)
+                                    #periods = {'d', 'w', 'm'}
+                                    #for period in periods:
+                                    #    if cdvem.get(period):
+                                #     _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
+                                #     periodName = SENSOR_PERIODS[period]
+                                #     sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+                                #     _LOGGER.info("Proposing sensor %s", sensor)
+                                # else:
+                                #     _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
 
-        # DAMIANO
-        if self._device_attribute == ATTR_HEAT_TANK_ENERGY:
-            return round(self._device.energy_consumption(ATTR_ENERGY_CONSUMPTION_TANK, "heating", self._period), 3)
-        return None
+        return energy_value
+
+    @property
+    def unique_id(self):
+        """Return a unique ID."""
+        return f"{self._device.getId()}_{self._management_point_type}_{self._operation_mode}_{self._period}"
+
+    @property
+    def device_class(self):
+        """Return the class of this device."""
+        return DEVICE_CLASS_ENERGY
+
+    @property
+    def icon(self):
+        """Return the icon of this device."""
+        return self._icon
+
+    @property
+    def unit_of_measurement(self):
+        """Return the unit of measurement."""
+        return ENERGY_KILO_WATT_HOUR
 
     @property
     def state_class(self):
         return STATE_CLASS_TOTAL_INCREASING
+
+    @property
+    def entity_category(self):
+        return None
 
 class DaikinGatewaySensor(DaikinSensor):
     """Representation of a WiFi Sensor."""
