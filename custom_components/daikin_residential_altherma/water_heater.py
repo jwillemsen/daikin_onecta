@@ -255,7 +255,7 @@ class DaikinWaterTank(WaterHeaterEntity):
             if pwf is not None:
                 if pwf["value"] == "on":
                     state = STATE_PERFORMANCE
-        _LOGGER.debug("Device '%s' hot water tank current mode %s", self._device.name, state)
+        _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
         return state
 
     @property
