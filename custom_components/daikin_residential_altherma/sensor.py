@@ -202,7 +202,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
             sensors.append(sensor)
         else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_WIFI_STRENGTH)
+            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_WIFI_SSID)
 
         if device.getData(ATTR_LOCAL_SSID) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
