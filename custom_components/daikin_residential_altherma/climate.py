@@ -116,12 +116,13 @@ class DaikinClimate(ClimateEntity):
     # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
     def __init__(self, device, setpoint):
         """Initialize the climate device."""
-        _LOGGER.info("Initializing Daiking Altherma for controlling %s...", setpoint)
+        _LOGGER.info("Initializing Daiking Climate for controlling %s...", setpoint)
         self._device = device
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
         }
         self._supported_features = 0
+        self._setpoint = setpoint
 
         # Check whether we can control the target temperature
         controlMode = device.getValue(ATTR_CONTROL_MODE)
@@ -202,13 +203,13 @@ class DaikinClimate(ClimateEntity):
     def name(self):
         """Return the name of the thermostat, if any."""
         #print("DAMIANO name = %s",self._device.name)
-        return self._device.name
+        return f"{self._device.name}_{self._setpoint}"
 
     @property
     def unique_id(self):
         """Return a unique ID."""
         devID = self._device.getId()
-        return f"{devID}"
+        return f"{devID}_{self._setpoint}"
 
     @property
     def temperature_unit(self):
