@@ -21,6 +21,7 @@ class DaikinResidentialDevice:
         """Initialize a new Daikin Residential Device."""
         self.api = apiInstance
         self.setJsonData(jsonData)
+        # get name from climateControl
         self.name = self.getName()
         self._available = True
         self.daikin_data = jsonData
