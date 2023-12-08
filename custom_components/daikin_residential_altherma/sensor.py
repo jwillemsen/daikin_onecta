@@ -153,25 +153,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_OUTSIDE_TEMPERATURE)
 
-        # for period in SENSOR_PERIODS:
-        #     if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "cooling", period) is not None:
-        #         sensor = DaikinSensor.factory(device, ATTR_COOL_ENERGY,"", period)
-        #         sensors.append(sensor)
-        #     else:
-        #         _LOGGER.info("Device '%s' NOT supports %s cooling energy consumption", device.name, period)
-        #
-        #     if device.getDataEC(ATTR_ENERGY_CONSUMPTION, "heating", period) is not None:
-        #         sensor = DaikinSensor.factory(device, ATTR_HEAT_ENERGY,"", period)
-        #         sensors.append(sensor)
-        #     else:
-        #         _LOGGER.info("Device '%s' NOT supports %s heating energy consumption", device.name, period)
-        #
-        #     # if device.getDataEC(ATTR_ENERGY_CONSUMPTION_TANK, "heating", period) is not None:
-        #     #     sensor = DaikinSensor.factory(device, ATTR_HEAT_TANK_ENERGY,"", period)
-        #     #     sensors.append(sensor)
-        #     # else:
-        #     #     _LOGGER.info("Device NOT supports %s tank energy consumption", period)
-
         if device.getData(ATTR_OPERATION_MODE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_OPERATION_MODE,"")
             sensors.append(sensor)
@@ -322,7 +303,7 @@ class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
 
     @staticmethod
-    def factory(device: Appliance, monitored_state: str, type, period=""):
+    def factory(device: Appliance, monitored_state: str, type):
         """Initialize any DaikinSensor."""
         try:
             cls = {
@@ -332,28 +313,23 @@ class DaikinSensor(SensorEntity):
                 SENSOR_TYPE_INFO: DaikinInfoSensor,
                 SENSOR_TYPE_GATEWAY_DIAGNOSTIC: DaikinGatewaySensor,
             }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
-            return cls(device, monitored_state,type, period)
+            return cls(device, monitored_state,type)
         except Exception as error:
             # print("error: " + error)
             _LOGGER.error("%s", format(error))
             return
 
-    def __init__(self, device: Appliance, monitored_state: str, type,  period="") -> None:
+    def __init__(self, device: Appliance, monitored_state: str, type) -> None:
         """Initialize the sensor."""
         self._device = device
         self._sensor = SENSOR_TYPES[monitored_state]
-        self._period = period
-        if period != "":
-            periodName = SENSOR_PERIODS[period]
-            self._name = f"{device.name} {periodName} {self._sensor[CONF_NAME]}"
-        else:
-            if type == '':
-                # Name for Heat Pump Flags
-                self._name = f"{device.name} {self._sensor[CONF_NAME]}"
-            elif type == 'TANK':
-                # Name for Hot Water Tank Flags
-                #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
-                self._name = f"{device.name} {self._sensor[CONF_NAME]}"
+        if type == '':
+            # Name for Heat Pump Flags
+            self._name = f"{device.name} {self._sensor[CONF_NAME]}"
+        elif type == 'TANK':
+            # Name for Hot Water Tank Flags
+            #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
+            self._name = f"{device.name} {self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
         _LOGGER.info("Device '%s' supports sensor '%s'", device.name, self._name)
 
@@ -366,8 +342,6 @@ class DaikinSensor(SensorEntity):
     def unique_id(self):
         """Return a unique ID."""
         devID = self._device.getId()
-        if self._period != "":
-            return f"{devID}_{self._device_attribute}_{self._period}"
         return f"{devID}_{self._device_attribute}"
 
     @property
