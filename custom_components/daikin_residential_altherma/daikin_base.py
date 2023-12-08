@@ -19,7 +19,6 @@ from .const import(
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
     ATTR_OPERATION_MODE,
-    SENSOR_PERIOD_WEEKLY,
 )
 
 from homeassistant.components.climate.const import (

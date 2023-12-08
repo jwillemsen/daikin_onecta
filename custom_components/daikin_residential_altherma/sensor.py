@@ -228,20 +228,7 @@ class DaikinEnergySensor(DaikinSensor):
                                         for v in cdve[mode].get(self._period)
                                     ]
                                     start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
-                                    #_LOGGER.info("%s", energy_values)
-                                    #_LOGGER.info("%s", sum(energy_values[start_index:]))
-                                    #value =
                                     energy_value = round(sum(energy_values[start_index:]), 3)
-
-                                    #periods = {'d', 'w', 'm'}
-                                    #for period in periods:
-                                    #    if cdvem.get(period):
-                                #     _LOGGER.info("Device '%s' provides mode %s %s supports period %s", device.name, management_point_type, mode, period)
-                                #     periodName = SENSOR_PERIODS[period]
-                                #     sensor = f"{device.name} {management_point_type} {mode} {periodName}"
-                                #     _LOGGER.info("Proposing sensor %s", sensor)
-                                # else:
-                                #     _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
 
         return energy_value
 
