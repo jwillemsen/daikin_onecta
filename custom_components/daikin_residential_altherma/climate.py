@@ -11,6 +11,8 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_HEAT,
     HVAC_MODE_HEAT_COOL,
     HVAC_MODE_OFF,
+    HVAC_MODE_DRY,
+    HVAC_MODE_FAN_ONLY,
     PRESET_AWAY,
     PRESET_COMFORT,
     PRESET_ECO,
@@ -51,6 +53,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 PRESET_MODES = {PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
 
 HA_HVAC_TO_DAIKIN = {
+    HVAC_MODE_FAN_ONLY: "fanOnly",
+    HVAC_MODE_DRY: "dry",
     HVAC_MODE_COOL: "cooling",
     HVAC_MODE_HEAT: "heating",
     HVAC_MODE_HEAT_COOL: "auto",
@@ -80,19 +84,39 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
+        modes = []
         device_model = device.desc["deviceModel"]
-        if device_model in ("Altherma", "NDJ"):
-            _LOGGER.info("Climate: found altherma device '%s''", device_model)
-            async_add_entities([DaikinClimate(device)], update_before_add=True)
-        else:
-            _LOGGER.info("Climate: ignoring device '%s''", device_model)
+        supported_management_point_types = {'climateControl'}
+        if device.daikin_data["managementPoints"] is not None:
+            for management_point in device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    # Check if we have a temperaturControl
+                    temperatureControl = management_point.get("temperatureControl")
+                    if temperatureControl is not None:
+                        for operationmode in temperatureControl["value"]["operationModes"]:
+                            #for modes in operationmode["setpoints"]:
+                            for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
+                                _LOGGER.info("FOUND %s", c)
+                                modes.append(c)
+        # Remove duplicates
+        modes = list(dict.fromkeys(modes))
+        _LOGGER.info("Climate: Device %s has modes %s", device_model, modes)
+        for mode in modes:
+            async_add_entities([DaikinClimate(device, mode)], update_before_add=True)
+#        if device_model in ("Altherma", "NDJ"):
+#            _LOGGER.info("Climate: found altherma device '%s''", device_model)
+#            async_add_entities([DaikinClimate(device)], update_before_add=True)
+#        else:
+#            _LOGGER.info("Climate: ignoring device '%s''", device_model)
 
 class DaikinClimate(ClimateEntity):
     """Representation of a Daikin HVAC."""
 
-    def __init__(self, device):
+    # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
+    def __init__(self, device, setpoint):
         """Initialize the climate device."""
-        _LOGGER.info("Initializing Daiking Altherma...")
+        _LOGGER.info("Initializing Daiking Altherma for controlling %s...", setpoint)
         self._device = device
         self._list = {
             ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),

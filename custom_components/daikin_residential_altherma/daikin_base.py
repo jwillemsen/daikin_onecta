@@ -27,6 +27,8 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_HEAT,
     HVAC_MODE_HEAT_COOL,
     HVAC_MODE_OFF,
+    HVAC_MODE_FAN_ONLY,
+    HVAC_MODE_DRY,
     PRESET_AWAY,
     PRESET_COMFORT,
     PRESET_BOOST,
@@ -53,6 +55,8 @@ HA_PRESET_TO_DAIKIN = {
 }
 
 DAIKIN_HVAC_TO_HA = {
+    "fanOnly": HVAC_MODE_FAN_ONLY,
+    "dry": HVAC_MODE_DRY,
     "cooling": HVAC_MODE_COOL,
     "heating": HVAC_MODE_HEAT,
     "heatingDay": HVAC_MODE_HEAT,
