@@ -227,6 +227,14 @@ VALUE_SENSOR_MAPPING = {
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
     },
+    "macAddress": {
+        CONF_NAME: "Mac Address",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+    },
 }
 
 SENSOR_TYPES = {

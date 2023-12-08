@@ -89,14 +89,14 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 management_point_type = management_point["managementPointType"]
                 embedded_id = management_point["embeddedId"]
 
-                # For all values that are ready onlye and provide a "value" we provide a sensor
+                # For all values provide a "value" we provide a sensor
                 for value in management_point:
                     vv = management_point.get(value)
                     _LOGGER.info("value: %s %s %s", value, type(value), type(vv))
                     if type(vv) == dict:
                         value_value = vv.get("value")
                         settable = vv.get("settable")
-                        if value_value is not None and settable == False and type(value_value) != dict:
+                        if value_value is not None and type(value_value) != dict:
                             _LOGGER.info("v %s enabled %s with value %s", value, settable, value_value)
                             sensor = DaikinValueSensor(device, embedded_id, management_point_type, value)
                             sensors.append(sensor)
