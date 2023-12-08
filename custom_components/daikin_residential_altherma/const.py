@@ -134,8 +134,6 @@ SWITCH_DEFAULT_ICON = "hass:air-filter"
 SENSOR_TYPE_TEMPERATURE = "temperature"
 SENSOR_TYPE_POWER = "power"
 SENSOR_TYPE_ENERGY = "energy"
-SENSOR_TYPE_INFO = None
-SENSOR_TYPE_GATEWAY_DIAGNOSTIC = "gateway_diagnostic"
 SENSOR_PERIOD_DAILY = "d"
 SENSOR_PERIOD_WEEKLY = "w"
 SENSOR_PERIOD_YEARLY = "m"
@@ -283,6 +281,51 @@ VALUE_SENSOR_MAPPING = {
     },
     "ledEnabled": {
         CONF_NAME: "Led Enabled",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "iconId": {
+        CONF_NAME: "icon Id",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "firmwareVersion": {
+        CONF_NAME: "firmware Version",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "eepromVersion": {
+        CONF_NAME: "eeprom Version",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "softwareVersion": {
+        CONF_NAME: "software Version",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "isFirmwareUpdateSupported": {
+        CONF_NAME: "is Firmware Update Supported",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,

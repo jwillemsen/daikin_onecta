@@ -25,20 +25,8 @@ from .daikin_base import Appliance
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
-    ATTR_LEAVINGWATER_TEMPERATURE,
-    ATTR_LEAVINGWATER_OFFSET,
-    ATTR_OUTSIDE_TEMPERATURE,
-    ATTR_ROOM_TEMPERATURE,
-    ATTR_TANK_TEMPERATURE,
-    ATTR_SETPOINT_MODE,
-    ATTR_OPERATION_MODE,
-    ATTR_CONTROL_MODE,
-    #TANK
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_POWER,
-    SENSOR_TYPE_TEMPERATURE,
-    SENSOR_TYPE_INFO,
-    SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
     SENSOR_PERIODS,
     SENSOR_TYPES,
     SENSOR_PERIOD_WEEKLY,
@@ -144,13 +132,7 @@ class DaikinSensor(SensorEntity):
         """Initialize the sensor."""
         self._device = device
         self._sensor = SENSOR_TYPES[monitored_state]
-        if type == '':
-            # Name for Heat Pump Flags
-            self._name = f"{self._sensor[CONF_NAME]}"
-        elif type == 'TANK':
-            # Name for Hot Water Tank Flags
-            #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
-            self._name = f"{device.name} {self._sensor[CONF_NAME]}"
+        self._name = f"{self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
         _LOGGER.info("Device '%s' supports sensor '%s'", device.name, self._name)
 
@@ -206,7 +188,6 @@ class DaikinSensor(SensorEntity):
 
 class DaikinEnergySensor(DaikinSensor):
     """Representation of a power/energy consumption sensor."""
-#                                    sensor = f"{device.name} {management_point_type} {mode} {periodName}"
 
     def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
         self._device = device
