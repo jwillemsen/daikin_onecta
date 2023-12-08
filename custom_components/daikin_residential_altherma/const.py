@@ -16,6 +16,11 @@ from homeassistant.const import (
     SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
 )
 
+from homeassistant.components.sensor import (
+    CONF_STATE_CLASS,
+    STATE_CLASS_MEASUREMENT,
+)
+
 DOMAIN = "daikin_residential_altherma"
 
 CONF_TOKENSET = CONF_TOKEN + "set"
@@ -173,6 +178,57 @@ SENSOR_PERIODS = {
     SENSOR_PERIOD_YEARLY: "Yearly",
 }
 
+ENABLED_DEFAULT = "Enabled"
+STATE_CLASS = "STATE"
+
+# This maps the NAME as listed in the Daikin JSON data to:
+# - NAME: Postfix for the sensor name
+# - DEVICE_CLASS: home assistant device class, see https://developers.home-assistant.io/docs/core/entity/sensor/#available-device-classes
+# - UNIT_OF_MEASUREMENT:
+# - ICON: Icon to be used
+VALUE_SENSOR_MAPPING = {
+    "serialNumber": {
+        CONF_NAME: "Serial Number",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:numeric",
+        ENABLED_DEFAULT: True,
+    },
+    "wifiConnectionSSID": {
+        CONF_NAME: "WiFi SSID",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:access-point-network",
+        ENABLED_DEFAULT: True,
+    },
+    "wifiConnectionStrength": {
+        CONF_NAME: "WiFi Strength",
+        CONF_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
+        CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+        CONF_UNIT_OF_MEASUREMENT: SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
+        CONF_ICON: "mdi:wifi",
+        ENABLED_DEFAULT: True,
+    },
+    "ssid": {
+        CONF_NAME: "Internal SSID",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:access-point-network",
+        ENABLED_DEFAULT: True,
+    },
+    "isHolidayModeActive": {
+        CONF_NAME: "is Holiday Mode Active",
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+    },
+}
+
 SENSOR_TYPES = {
     ATTR_LEAVINGWATER_TEMPERATURE: {
         CONF_NAME: "Leaving Water Temperature",
@@ -207,7 +263,7 @@ SENSOR_TYPES = {
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
     },
     ATTR_TANK_TARGET_TEMPERATURE: {
-        CONF_NAME: "Tank Target tempeature",
+        CONF_NAME: "Tank Target temperature",
         CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
         CONF_ICON: "mdi:bathtub-outline",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,

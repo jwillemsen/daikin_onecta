@@ -494,10 +494,10 @@ class DaikinApi:
             device_model = device.desc["deviceModel"]
             _LOGGER.info("Found device '%s' with gateway model '%s'", device_model, gateway_model)
             # Only process specific models for this integration
-            if device_model in ("Altherma", "NDJ"):
-                res[dev_data["id"]] = device
-            else:
-                _LOGGER.info("Device '%s' with gateway model '%s' is filtered out because it is not a supported model", device_model, gateway_model)
+#            if device_model in ("Altherma", "NDJ"):
+            res[dev_data["id"]] = device
+#            else:
+#                _LOGGER.info("Device '%s' with gateway model '%s' is filtered out because it is not a supported model", device_model, gateway_model)
         return res
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)

@@ -13,6 +13,7 @@ from homeassistant.const import (
 
 from homeassistant.components.sensor import (
     SensorEntity,
+    CONF_STATE_CLASS,
     STATE_CLASS_MEASUREMENT,
     STATE_CLASS_TOTAL_INCREASING,
 )
@@ -62,6 +63,8 @@ from .const import (
     ATTR_MAC_ADDRESS,
     ATTR_SERIAL_NUMBER,
     SENSOR_PERIOD_WEEKLY,
+    VALUE_SENSOR_MAPPING,
+    ENABLED_DEFAULT,
 )
 
 import logging
@@ -74,7 +77,6 @@ async def async_setup(hass, async_add_entities):
     config. But even in that case it would have been ignored.
     """
 
-
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     sensors = []
@@ -86,6 +88,8 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             for management_point in device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 embedded_id = management_point["embeddedId"]
+
+                # For all values that are ready onlye and provide a "value" we provide a sensor
                 for value in management_point:
                     vv = management_point.get(value)
                     _LOGGER.info("value: %s %s %s", value, type(value), type(vv))
@@ -94,6 +98,8 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                         settable = vv.get("settable")
                         if value_value is not None and settable == False and type(value_value) != dict:
                             _LOGGER.info("v %s enabled %s with value %s", value, settable, value_value)
+                            sensor = DaikinValueSensor(device, embedded_id, management_point_type, value)
+                            sensors.append(sensor)
 
                 cd = management_point.get("consumptionData")
                 if cd is not None:
@@ -126,7 +132,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                 else:
                                     _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
 
-
         if device.getData(ATTR_LEAVINGWATER_TEMPERATURE) is not None:
             sensor = DaikinSensor.factory(device, ATTR_LEAVINGWATER_TEMPERATURE,"")
             sensors.append(sensor)
@@ -157,150 +162,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         else:
             _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_OUTSIDE_TEMPERATURE)
 
-        if device.getData(ATTR_OPERATION_MODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_OPERATION_MODE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_OPERATION_MODE)
-
-        if device.getData(ATTR_SETPOINT_MODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_SETPOINT_MODE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_SETPOINT_MODE)
-
-        if device.getData(ATTR_TANK_SETPOINT_MODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_SETPOINT_MODE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_SETPOINT_MODE)
-
-        if device.getData(ATTR_CONTROL_MODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_CONTROL_MODE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_CONTROL_MODE)
-
-        if device.getData(ATTR_IS_HOLIDAY_MODE_ACTIVE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_IS_HOLIDAY_MODE_ACTIVE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_HOLIDAY_MODE_ACTIVE)
-
-        if device.getData(ATTR_IS_IN_EMERGENCY_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_IS_IN_EMERGENCY_STATE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_EMERGENCY_STATE)
-
-        if device.getData(ATTR_IS_IN_ERROR_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_IS_IN_ERROR_STATE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_ERROR_STATE)
-
-        if device.getData(ATTR_IS_IN_INSTALLER_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_IS_IN_INSTALLER_STATE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_INSTALLER_STATE)
-
-        if device.getData(ATTR_IS_IN_WARNING_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_IS_IN_WARNING_STATE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_IS_IN_WARNING_STATE)
-
-        if device.getData(ATTR_ERROR_CODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_ERROR_CODE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_ERROR_CODE)
-
-        if device.getData(ATTR_WIFI_STRENGTH) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_WIFI_STRENGTH, "")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_WIFI_STRENGTH)
-
-        if device.getData(ATTR_WIFI_SSID) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_WIFI_SSID, "")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_WIFI_STRENGTH)
-
-        if device.getData(ATTR_LOCAL_SSID) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_LOCAL_SSID, "")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_LOCAL_SSID)
-
-        if device.getData(ATTR_MAC_ADDRESS) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_MAC_ADDRESS, "")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_MAC_ADDRESS)
-
-        if device.getData(ATTR_SERIAL_NUMBER) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_SERIAL_NUMBER, "")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_SERIAL_NUMBER)
-
-        if device.getData(ATTR_TANK_HEATUP_MODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_HEATUP_MODE,"")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_HEATUP_MODE)
-
-        if device.getData(ATTR_TANK_OPERATION_MODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_OPERATION_MODE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_OPERATION_MODE)
-
-        if device.getData(ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE)
-
-        if device.getData(ATTR_TANK_IS_IN_EMERGENCY_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_EMERGENCY_STATE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_EMERGENCY_STATE)
-
-        if device.getData(ATTR_TANK_IS_IN_ERROR_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_ERROR_STATE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_ERROR_STATE)
-
-        if device.getData(ATTR_TANK_IS_IN_INSTALLER_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_INSTALLER_STATE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_INSTALLER_STATE)
-
-        if device.getData(ATTR_TANK_IS_IN_WARNING_STATE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_IN_WARNING_STATE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_IN_WARNING_STATE)
-
-        if device.getData(ATTR_TANK_IS_POWERFUL_MODE_ACTIVE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_IS_POWERFUL_MODE_ACTIVE)
-
-        if device.getData(ATTR_TANK_ERROR_CODE) is not None:
-            sensor = DaikinSensor.factory(device, ATTR_TANK_ERROR_CODE,"TANK")
-            sensors.append(sensor)
-        else:
-            _LOGGER.info("Device '%s' NOT supports '%s'", device.name, ATTR_TANK_ERROR_CODE)
-
     async_add_entities(sensors)
 
 class DaikinSensor(SensorEntity):
@@ -329,7 +190,7 @@ class DaikinSensor(SensorEntity):
         self._sensor = SENSOR_TYPES[monitored_state]
         if type == '':
             # Name for Heat Pump Flags
-            self._name = f"{device.name} {self._sensor[CONF_NAME]}"
+            self._name = f"{self._sensor[CONF_NAME]}"
         elif type == 'TANK':
             # Name for Hot Water Tank Flags
             #self._name = f"{device.name} TANK {self._sensor[CONF_NAME]}"
@@ -450,7 +311,7 @@ class DaikinEnergySensor(DaikinSensor):
         self._period = period
         self._attr_entity_category = None
         periodName = SENSOR_PERIODS[period]
-        self._name = f"{device.name} {management_point_type.capitalize()} {operation_mode.capitalize()} {periodName} Energy Consumption"
+        self._name = f"{management_point_type.capitalize()} {operation_mode.capitalize()} {periodName} Energy Consumption"
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property
@@ -523,6 +384,86 @@ class DaikinEnergySensor(DaikinSensor):
     @property
     def entity_category(self):
         return None
+
+class DaikinValueSensor(DaikinSensor):
+
+    def __init__(self, device: Appliance, embedded_id, management_point_type, value) -> None:
+        self._device = device
+        self._icon = ""
+        self._embedded_id = embedded_id
+        self._management_point_type = management_point_type
+        self._value = value
+        self._attr_entity_category = None
+        self._name_postfix = value.capitalize()
+        self._unit_of_measurement = ""
+        self._state_class = None
+        self._device_class = None
+        self._entity_registry_enabled_default = True
+        sensor_settings = VALUE_SENSOR_MAPPING.get(value)
+        if sensor_settings is None:
+            _LOGGER.info("No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING", value);
+        else:
+            self._icon = sensor_settings[CONF_ICON]
+            self._device_class = sensor_settings[CONF_DEVICE_CLASS]
+            self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
+            self._name_postfix = sensor_settings[CONF_NAME]
+            self._entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+            self._state_class = sensor_settings[CONF_STATE_CLASS]
+        self._name = f"{management_point_type.capitalize()} {self._name_postfix}"
+        _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
+
+    @property
+    def state(self):
+        """Return the state of the sensor."""
+        result = None
+        for management_point in self._device.daikin_data["managementPoints"]:
+            if self._embedded_id == management_point["embeddedId"]:
+                management_point_type = management_point["managementPointType"]
+                cd = management_point.get(self._value)
+                if cd is not None:
+                    _LOGGER.info("Device '%s' provides value", self._device.name)
+                    # Retrieve the available operationModes, we can only provide consumption data for
+                    # supported operation modes
+                    result = cd.get("value")
+        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
+        return result
+
+    @property
+    def unique_id(self):
+        """Return a unique ID."""
+        return f"{self._device.getId()}_{self._management_point_type}_{self._value}"
+
+    @property
+    def device_class(self):
+        """Return the class of this device."""
+        return self._device_class
+
+    @property
+    def icon(self):
+        """Return the icon of this device."""
+        return self._icon
+
+    @property
+    def unit_of_measurement(self):
+        """Return the unit of measurement."""
+        return self._unit_of_measurement
+
+    @property
+    def state_class(self):
+        return self._state_class
+
+    @property
+    def entity_category(self):
+        return None
+
+    @property
+    def entity_registry_enabled_default(self):
+        return self._entity_registry_enabled_default
+
+    @property
+    def available(self):
+        """Return the availability of the underlying device."""
+        return self._device.available
 
 class DaikinGatewaySensor(DaikinSensor):
     """Representation of a WiFi Sensor."""

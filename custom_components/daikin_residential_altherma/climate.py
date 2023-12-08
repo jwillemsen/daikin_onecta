@@ -80,8 +80,12 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        async_add_entities([DaikinClimate(device)], update_before_add=True)
-
+        device_model = device.desc["deviceModel"]
+        if device_model in ("Altherma", "NDJ"):
+            _LOGGER.info("Climate: found altherma device '%s''", device_model)
+            async_add_entities([DaikinClimate(device)], update_before_add=True)
+        else:
+            _LOGGER.info("Climate: ignoring device '%s''", device_model)
 
 class DaikinClimate(ClimateEntity):
     """Representation of a Daikin HVAC."""
