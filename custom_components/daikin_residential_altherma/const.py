@@ -79,29 +79,10 @@ ATTR_COOL_ENERGY = "cool_energy"
 ATTR_HEAT_ENERGY = "heat_energy"
 ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
 ATTR_SETPOINT_MODE = "setpointMode"
-ATTR_TANK_SETPOINT_MODE = "@TanksetpointMode"
 ATTR_CONTROL_MODE = "controlMode"
 
 ATTR_TANK_TARGET_TEMPERATURE = "targetTemperature"
-ATTR_TANK_OPERATION_MODE = "@TankoperationMode"
 
-ATTR_IS_HOLIDAY_MODE_ACTIVE = "isHolidayModeActive"
-ATTR_IS_IN_EMERGENCY_STATE = "isInEmergencyState"
-ATTR_IS_IN_ERROR_STATE = "isInErrorState"
-ATTR_IS_IN_INSTALLER_STATE = "isInInstallerState"
-ATTR_IS_IN_WARNING_STATE = "isInWarningState"
-ATTR_ERROR_CODE = "errorCode"
-
-ATTR_TANK_HEATUP_MODE = "heatupMode"
-ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE = "@TankisHolidayModeActive"
-ATTR_TANK_IS_IN_EMERGENCY_STATE = "@TankisInEmergencyState"
-ATTR_TANK_IS_IN_ERROR_STATE = "@TankisInErrorState"
-ATTR_TANK_IS_IN_INSTALLER_STATE = "@TankisInInstallerState"
-ATTR_TANK_IS_IN_WARNING_STATE = "@TankisInWarningState"
-ATTR_TANK_IS_POWERFUL_MODE_ACTIVE = "isPowerfulModeActive"
-ATTR_TANK_ERROR_CODE = "@TankErrorCode"
-
-ATTR_WIFI_STRENGTH = "wifi_strength"
 ATTR_WIFI_SSID = "wifi_ssid"
 ATTR_LOCAL_SSID = "local_ssid"
 ATTR_MAC_ADDRESS = "mac_address"
@@ -131,27 +112,9 @@ DAIKIN_CMD_SETS = {
         "/operationModes/%operationMode%/setpoints/roomTemperature"],
     ATTR_SETPOINT_MODE: [MP_CLIMATE, "setpointMode", ""],
     ATTR_CONTROL_MODE: [MP_CLIMATE, DP_CONTROL_MODE, ""],
-    ATTR_TANK_SETPOINT_MODE: [MP_DOMESTIC_HWT, "@TanksetpointMode", ""],
-    # FLAG HEAT PUMP
-    ATTR_IS_HOLIDAY_MODE_ACTIVE: [MP_CLIMATE, "isHolidayModeActive", ""],
-    ATTR_IS_IN_EMERGENCY_STATE: [MP_CLIMATE, "isInEmergencyState", ""],
-    ATTR_IS_IN_ERROR_STATE: [MP_CLIMATE, "isInErrorState", ""],
-    ATTR_IS_IN_INSTALLER_STATE: [MP_CLIMATE, "isInInstallerState", ""],
-    ATTR_IS_IN_WARNING_STATE: [MP_CLIMATE, "isInWarningState", ""],
-    ATTR_ERROR_CODE: [MP_CLIMATE, "errorCode", ""],
     #  FLAG HOT WATER TANK
-    ATTR_TANK_HEATUP_MODE: [MP_DOMESTIC_HWT, "heatupMode", ""],
-    ATTR_TANK_OPERATION_MODE: [MP_DOMESTIC_HWT, "@TankoperationMode", ""],
-    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: [MP_DOMESTIC_HWT, "@TankisHolidayModeActive", ""],
-    ATTR_TANK_IS_IN_EMERGENCY_STATE: [MP_DOMESTIC_HWT, "@TankisInEmergencyState", ""],
-    ATTR_TANK_IS_IN_ERROR_STATE: [MP_DOMESTIC_HWT, "@TankisInErrorState", ""],
-    ATTR_TANK_IS_IN_INSTALLER_STATE: [MP_DOMESTIC_HWT, "@TankisInInstallerState", ""],
-    ATTR_TANK_IS_IN_WARNING_STATE: [MP_DOMESTIC_HWT, "@TankisInWarningState", ""],
-    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: [MP_DOMESTIC_HWT, "isPowerfulModeActive", ""],
-    ATTR_TANK_ERROR_CODE: [MP_DOMESTIC_HWT, "errorCode", ""],
     ATTR_TANK_TARGET_TEMPERATURE: [MP_DOMESTIC_HWT, DP_TANK_TEMPERATURECONTROL, "/operationModes/heating/setpoints/domesticHotWaterTemperature"],
     #  Gateway settings
-    ATTR_WIFI_STRENGTH: [MP_GATEWAY, DP_WIFI_STRENGTH, ""],
     ATTR_WIFI_SSID: [MP_GATEWAY, DP_WIFI_SSID, ""],
     ATTR_LOCAL_SSID: [MP_GATEWAY, DP_LOCAL_SSID, ""],
     ATTR_MAC_ADDRESS: [MP_GATEWAY, DP_MAC_ADDRESS, ""],
@@ -402,139 +365,11 @@ SENSOR_TYPES = {
         CONF_ICON: "mdi:information-outline",
         CONF_UNIT_OF_MEASUREMENT: " ",
     },
-    ATTR_TANK_SETPOINT_MODE: {
-        CONF_NAME: "Info Tank Setpoint Mode",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
     ATTR_CONTROL_MODE: {
         CONF_NAME: "Info Control Mode",
         CONF_TYPE: None,
         CONF_ICON: "mdi:information-outline",
         CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_IS_HOLIDAY_MODE_ACTIVE: {
-        CONF_NAME: "Info is Holiday Mode Active",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_IS_IN_EMERGENCY_STATE: {
-        CONF_NAME: "Info is In Emergency State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_IS_IN_ERROR_STATE: {
-        CONF_NAME: "Info is In Error State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_IS_IN_INSTALLER_STATE: {
-        CONF_NAME: "Info is In Installer State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_IS_IN_WARNING_STATE: {
-        CONF_NAME: "Info is In Warning State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_ERROR_CODE: {
-        CONF_NAME: "Info Error Code",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_HEATUP_MODE:{
-        CONF_NAME: "Info Tank heatupMode",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_OPERATION_MODE:{
-        CONF_NAME: "Tank operationMode",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE: {
-        CONF_NAME: "Info Tank is Holiday Mode Active",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_IS_IN_EMERGENCY_STATE: {
-        CONF_NAME: "Info Tank is In Emergency State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_IS_IN_ERROR_STATE: {
-        CONF_NAME: "Info Tank is In Error State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_IS_IN_INSTALLER_STATE: {
-        CONF_NAME: "Info Tank is In Installer State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_IS_IN_WARNING_STATE: {
-        CONF_NAME: "Info Tank is In Warning State",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE: {
-        CONF_NAME: "Info Tank is Powerful Mode Active",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-        ATTR_TANK_ERROR_CODE: {
-        CONF_NAME: "Info Tank Error Code",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_WIFI_STRENGTH: {
-        CONF_NAME: "WiFi Strength",
-        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
-        CONF_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
-        CONF_UNIT_OF_MEASUREMENT: SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
-    },
-    ATTR_WIFI_SSID: {
-        CONF_NAME: "WiFi SSID",
-        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
-        CONF_ICON: "mdi:access-point-network",
-        CONF_DEVICE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-    },
-    ATTR_LOCAL_SSID: {
-        CONF_NAME: "Internal SSID",
-        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
-        CONF_DEVICE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-    },
-    ATTR_MAC_ADDRESS: {
-        CONF_NAME: "Mac Address",
-        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
-        CONF_DEVICE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-    },
-    ATTR_SERIAL_NUMBER: {
-        CONF_NAME: "Serial Number",
-        CONF_TYPE: SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
-        CONF_ICON: "mdi:numeric",
-        CONF_DEVICE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
     },
 }
 

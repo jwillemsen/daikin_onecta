@@ -32,24 +32,8 @@ from .const import (
     ATTR_TANK_TEMPERATURE,
     ATTR_SETPOINT_MODE,
     ATTR_OPERATION_MODE,
-    ATTR_TANK_SETPOINT_MODE,
     ATTR_CONTROL_MODE,
-    ATTR_IS_HOLIDAY_MODE_ACTIVE,
-    ATTR_IS_IN_EMERGENCY_STATE,
-    ATTR_IS_IN_ERROR_STATE,
-    ATTR_IS_IN_INSTALLER_STATE,
-    ATTR_IS_IN_WARNING_STATE,
-    ATTR_ERROR_CODE,
     #TANK
-    ATTR_TANK_OPERATION_MODE,
-    ATTR_TANK_HEATUP_MODE,
-    ATTR_TANK_IS_HOLIDAY_MODE_ACTIVE,
-    ATTR_TANK_IS_IN_EMERGENCY_STATE,
-    ATTR_TANK_IS_IN_ERROR_STATE,
-    ATTR_TANK_IS_IN_INSTALLER_STATE,
-    ATTR_TANK_IS_IN_WARNING_STATE,
-    ATTR_TANK_IS_POWERFUL_MODE_ACTIVE,
-    ATTR_TANK_ERROR_CODE,
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_POWER,
     SENSOR_TYPE_TEMPERATURE,
@@ -57,11 +41,6 @@ from .const import (
     SENSOR_TYPE_GATEWAY_DIAGNOSTIC,
     SENSOR_PERIODS,
     SENSOR_TYPES,
-    ATTR_WIFI_STRENGTH,
-    ATTR_WIFI_SSID,
-    ATTR_LOCAL_SSID,
-    ATTR_MAC_ADDRESS,
-    ATTR_SERIAL_NUMBER,
     SENSOR_PERIOD_WEEKLY,
     VALUE_SENSOR_MAPPING,
     ENABLED_DEFAULT,
@@ -219,32 +198,7 @@ class DaikinSensor(SensorEntity):
 
     @property
     def entity_category(self):
-        diagnosticList =[
-            ATTR_IS_IN_EMERGENCY_STATE,
-            ATTR_IS_IN_ERROR_STATE,
-            ATTR_IS_IN_INSTALLER_STATE,
-            ATTR_IS_IN_WARNING_STATE,
-            ATTR_ERROR_CODE,
-            ATTR_TANK_IS_IN_EMERGENCY_STATE,
-            ATTR_TANK_IS_IN_ERROR_STATE,
-            ATTR_TANK_IS_IN_INSTALLER_STATE,
-            ATTR_TANK_IS_IN_WARNING_STATE,
-            ATTR_TANK_ERROR_CODE,
-            ATTR_WIFI_STRENGTH,
-            ATTR_WIFI_SSID,
-            ATTR_LOCAL_SSID,
-            ATTR_MAC_ADDRESS,
-            ATTR_SERIAL_NUMBER,
-            ]
-        try:
-            if self._device_attribute in diagnosticList:
-                return EntityCategory.DIAGNOSTIC
-            else:
-                return None
-        except Exception as e:
-            _LOGGER.info("entity_category not supported by this Home Assistant. /n \
-                    Try to update")
-            return None
+        return None
 
     async def async_update(self):
         """Retrieve latest state."""
