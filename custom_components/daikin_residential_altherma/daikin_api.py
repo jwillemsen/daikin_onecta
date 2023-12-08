@@ -34,8 +34,8 @@ class DaikinApi:
     """Daikin Residential API."""
 
     def __init__(self, hass, entry):
-        """Initialize a new Daikin Residential API."""
-        _LOGGER.debug("Initialing Daikin Residential API...")
+        """Initialize a new Daikin Residential Altherma API."""
+        _LOGGER.debug("Initialing Daikin Residential Altherma API...")
         self.hass = hass
         self._config_entry = entry
         self.tokenSet = None
@@ -65,7 +65,7 @@ class DaikinApi:
         # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
 
-        _LOGGER.info("Daikin Residential API initialized.")
+        _LOGGER.info("Daikin Residential Altherma API initialized.")
 
     async def doBearerRequest(self, resourceUrl, options=None, refreshed=False):
         if self.tokenSet is None:
