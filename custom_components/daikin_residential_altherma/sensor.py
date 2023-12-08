@@ -65,6 +65,7 @@ from .const import (
     SENSOR_PERIOD_WEEKLY,
     VALUE_SENSOR_MAPPING,
     ENABLED_DEFAULT,
+    ENTITY_CATEGORY,
 )
 
 import logging
@@ -353,6 +354,7 @@ class DaikinValueSensor(DaikinSensor):
         self._state_class = None
         self._device_class = None
         self._entity_registry_enabled_default = True
+        self._entity_category = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info("No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING", value);
@@ -363,6 +365,7 @@ class DaikinValueSensor(DaikinSensor):
             self._name_postfix = sensor_settings[CONF_NAME]
             self._entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
+            self._entity_category = sensor_settings[ENTITY_CATEGORY]
         self._name = f"{management_point_type.capitalize()} {self._name_postfix}"
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
@@ -408,7 +411,7 @@ class DaikinValueSensor(DaikinSensor):
 
     @property
     def entity_category(self):
-        return None
+        return self._entity_category
 
     @property
     def entity_registry_enabled_default(self):

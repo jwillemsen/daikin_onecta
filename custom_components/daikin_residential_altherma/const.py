@@ -21,6 +21,10 @@ from homeassistant.components.sensor import (
     STATE_CLASS_MEASUREMENT,
 )
 
+from homeassistant.helpers.entity import (
+    EntityCategory
+)
+
 DOMAIN = "daikin_residential_altherma"
 
 CONF_TOKENSET = CONF_TOKEN + "set"
@@ -180,6 +184,7 @@ SENSOR_PERIODS = {
 
 ENABLED_DEFAULT = "Enabled"
 STATE_CLASS = "STATE"
+ENTITY_CATEGORY = "ENTITY_CATEGORY"
 
 # This maps the NAME as listed in the Daikin JSON data to:
 # - NAME: Postfix for the sensor name
@@ -194,6 +199,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:numeric",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "wifiConnectionSSID": {
         CONF_NAME: "WiFi SSID",
@@ -202,6 +208,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:access-point-network",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "wifiConnectionStrength": {
         CONF_NAME: "WiFi Strength",
@@ -210,6 +217,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
         CONF_ICON: "mdi:wifi",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "ssid": {
         CONF_NAME: "Internal SSID",
@@ -218,6 +226,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:access-point-network",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isHolidayModeActive": {
         CONF_NAME: "is Holiday Mode Active",
@@ -226,6 +235,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInErrorState": {
         CONF_NAME: "is Error State Active",
@@ -234,6 +244,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInWarningState": {
         CONF_NAME: "is Warning State Active",
@@ -242,6 +253,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInInstallerState": {
         CONF_NAME: "is In Installer State",
@@ -250,6 +262,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInEmergencyState": {
         CONF_NAME: "is In Emergency State",
@@ -258,6 +271,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isPowerfulModeActive": {
         CONF_NAME: "is Powerful Mode Active",
@@ -266,6 +280,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "macAddress": {
         CONF_NAME: "Mac Address",
@@ -274,6 +289,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "roomTemperature": {
         CONF_NAME: "Room Temperature",
@@ -282,6 +298,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
     },
     "outdoorTemperature": {
         CONF_NAME: "Outdoor Temperature",
@@ -290,6 +307,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
     },
     "leavingWaterTemperature": {
         CONF_NAME: "Leaving Water Temperature",
@@ -298,6 +316,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
     },
     "tankTemperature": {
         CONF_NAME: "Tank Temperature",
@@ -306,6 +325,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
         CONF_ICON: "mdi:bathtub-outline",
         ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
     },
 }
 
