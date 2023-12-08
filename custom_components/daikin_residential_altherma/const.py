@@ -66,8 +66,6 @@ ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
 ATTR_LEAVINGWATER_OFFSET = "leavingWaterOffset"
 ATTR_TANK_TEMPERATURE = "tankTemperature"
-ATTR_ENERGY_CONSUMPTION = "energy_consumption"
-ATTR_ENERGY_CONSUMPTION_TANK = "energy_consumption_tank"
 ATTR_COOL_ENERGY = "cool_energy"
 ATTR_HEAT_ENERGY = "heat_energy"
 ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
@@ -122,8 +120,6 @@ DAIKIN_CMD_SETS = {
         MP_CLIMATE,
         DP_TEMPERATURE,
         "/operationModes/%operationMode%/setpoints/roomTemperature"],
-    ATTR_ENERGY_CONSUMPTION: [MP_CLIMATE, DP_CONSUMPTION, "/electrical"],
-    ATTR_ENERGY_CONSUMPTION_TANK: [MP_DOMESTIC_HWT, DP_CONSUMPTION, "/electrical"],
     ATTR_SETPOINT_MODE: [MP_CLIMATE, "setpointMode", ""],
     ATTR_CONTROL_MODE: [MP_CLIMATE, DP_CONTROL_MODE, ""],
     ATTR_TANK_SETPOINT_MODE: [MP_DOMESTIC_HWT, "@TanksetpointMode", ""],

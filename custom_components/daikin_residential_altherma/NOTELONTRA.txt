@@ -2,13 +2,13 @@
  * * * * * * INSERIMENTO DI UN NUOVO SENSORE  * * * * * *
 
 
-1) const.py: Aggiungere una costante ATTR battezzandone il 
+1) const.py: Aggiungere una costante ATTR battezzandone il
 	nuovo nome, es:
 
 	ATTR_TANK_TEMPERATURE = "tankTemperature"
 
 
-2) const.py: Aggiungere il CMD_SET con il percorso MP,DP e 
+2) const.py: Aggiungere il CMD_SET con il percorso MP,DP e
 	Value:
 
 	DAIKIN_CMD_SETS = {

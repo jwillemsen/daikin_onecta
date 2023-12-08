@@ -19,8 +19,6 @@ from .const import(
     ATTR_ON_OFF_CLIMATE,
     ATTR_ON_OFF_TANK,
     ATTR_OPERATION_MODE,
-    ATTR_ENERGY_CONSUMPTION,
-    ATTR_ENERGY_CONSUMPTION_TANK,
     SENSOR_PERIOD_WEEKLY,
 )
 
@@ -218,21 +216,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
                 return await self.setValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE, int(value))
 
         return None
-
-    def energy_consumption(self, attribute, mode, period):
-        #DAMIANO
-        #def energy_consumption_domestic(self, mode, period):
-        """Return the last hour heat power consumption of a given mode in kWh."""
-        energy_data = [
-            0 if v is None else v
-
-            #damiano
-            #for v in self.getData(ATTR_ENERGY_CONSUMPTION)[mode][period]
-            # passo anche mode e period
-            for v in self.getDataEC(attribute,mode,period)
-        ]
-        start_index = 7 if period == SENSOR_PERIOD_WEEKLY else 12
-        return sum(energy_data[start_index:])
 
     async def set(self, settings):
         """Set settings on Daikin device."""
