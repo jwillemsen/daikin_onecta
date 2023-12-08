@@ -23,7 +23,6 @@ from .const import (
     MP_DOMESTIC_HWT
 )
 
-
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Old way of setting up the Daikin HVAC platform.
 

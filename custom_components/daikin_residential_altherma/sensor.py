@@ -86,6 +86,15 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             for management_point in device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 embedded_id = management_point["embeddedId"]
+                for value in management_point:
+                    vv = management_point.get(value)
+                    _LOGGER.info("value: %s %s %s", value, type(value), type(vv))
+                    if type(vv) == dict:
+                        value_value = vv.get("value")
+                        settable = vv.get("settable")
+                        if value_value is not None and settable == False and type(value_value) != dict:
+                            _LOGGER.info("v %s enabled %s with value %s", value, settable, value_value)
+
                 cd = management_point.get("consumptionData")
                 if cd is not None:
                     _LOGGER.info("Device '%s' provides consumptionData", device.name)

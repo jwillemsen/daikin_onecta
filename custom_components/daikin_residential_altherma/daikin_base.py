@@ -109,17 +109,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         except:
             return None
 
-    def getDataEC(self, param, mode, period):
-        """Get the current data of a data object."""
-        if param == "energy_consumption":
-            cmd_set = self.getCommandSet(param)
-            return self.get_data(cmd_set[0], cmd_set[1], r"{}/{}/{}".format(cmd_set[2],mode,period))
-        if param == "energy_consumption_tank":
-            cmd_set = self.getCommandSet(param)
-            return self.get_data(cmd_set[0], cmd_set[1], r"{}/{}/{}".format(cmd_set[2],mode,period))
-        return None
-
-
     def getValue(self, param):
         """Get the current value of a data object."""
         data = self.getData(param)
