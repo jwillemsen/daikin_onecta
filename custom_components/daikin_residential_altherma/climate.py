@@ -22,6 +22,7 @@ from homeassistant.components.climate.const import (
     SUPPORT_PRESET_MODE,
     SUPPORT_FAN_MODE,
     SUPPORT_SWING_MODE,
+    FAN_AUTO,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
 import homeassistant.helpers.config_validation as cv
@@ -42,6 +43,7 @@ from .const import (
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_TARGET_LEAVINGWATER_OFFSET,
     ATTR_TARGET_LEAVINGWATER_TEMPERATURE,
+    FAN_QUIET,
 )
 
 import re
@@ -95,6 +97,16 @@ HA_PRESET_TO_DAIKIN = {
     PRESET_ECO: "econoMode",
 }
 
+DAIKIN_FAN_TO_HA = {
+    "auto": FAN_AUTO,
+    "quiet": FAN_QUIET
+}
+
+HA_FAN_TO_DAIKIN = {
+    DAIKIN_FAN_TO_HA["auto"]: "auto",
+    DAIKIN_FAN_TO_HA["quiet"]: "quiet",
+}
+
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Old way of setting up the Daikin HVAC platform.
 
@@ -113,17 +125,17 @@ async def async_setup_entry(hass, entry, async_add_entities):
             for management_point in device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if  management_point_type in supported_management_point_types:
-                    # Check if we have a temperaturControl
+                    # Check if we have a temperatureControl
                     temperatureControl = management_point.get("temperatureControl")
                     if temperatureControl is not None:
                         for operationmode in temperatureControl["value"]["operationModes"]:
                             #for modes in operationmode["setpoints"]:
                             for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
-                                _LOGGER.info("FOUND %s", c)
+                                _LOGGER.info("Found temperature mode %s", c)
                                 modes.append(c)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
-        _LOGGER.info("Climate: Device %s has modes %s", device_model, modes)
+        _LOGGER.info("Climate: Device %s has modes %s %s", device_model, modes)
         for mode in modes:
             async_add_entities([DaikinClimate(device, mode)], update_before_add=True)
 
@@ -170,13 +182,31 @@ class DaikinClimate(ClimateEntity):
             for management_point in self._device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if  management_point_type in supported_management_point_types:
-                    # Check if we have a temperaturControl
+                    # Check if we have a temperatureControl
                     temperatureControl = management_point.get("temperatureControl")
                     _LOGGER.info("Climate: Device temperatureControl %s", temperatureControl)
                     if temperatureControl is not None:
                         operationMode = management_point.get("operationMode").get("value")
                         setpoint = temperatureControl["value"]["operationModes"][operationMode]["setpoints"].get(self._setpoint)
                         _LOGGER.info("Climate: %s operation mode %s has setpoint %s", self._setpoint, operationMode, setpoint)
+        return setpoint
+
+
+    # Return the dictionary fanControl for the current operationMode
+    def fanControl(self):
+        fancontrol = None
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    # Check if we have a temperatureControl
+                    temperatureControl = management_point.get("fanControl")
+                    _LOGGER.info("Climate: Device fanControl %s", temperatureControl)
+                    if temperatureControl is not None:
+                        operationMode = management_point.get("operationMode").get("value")
+                        fancontrol = temperatureControl["value"]["operationModes"][operationMode].get(self._setpoint)
+                        _LOGGER.info("Climate: %s operation mode %s has fanControl %s", self._setpoint, operationMode, setpoint)
         return setpoint
 
     def sensoryData(self):
@@ -354,8 +384,34 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def fan_modes(self):
-        """List of available fan modes."""
-        return []
+        fan_modes = []
+        fanspeed = None
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    # Check if we have a fanControl
+                    fanControl = management_point.get("fanControl")
+                    if fanControl is not None:
+                        operationmode = management_point["operationMode"]["value"]
+                        fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
+                        _LOGGER.info("Found fanspeed %s", fanspeed)
+                        for c in fanspeed["currentMode"]["values"]:
+                            _LOGGER.info("Found fan mode %s", c)
+                            if c in DAIKIN_FAN_TO_HA:
+                                fan_modes.append(DAIKIN_FAN_TO_HA[c])
+                            else:
+                                fsm = fanspeed.get("modes")
+                                if fsm is not None:
+                                    _LOGGER.info("Found fixed %s", fsm)
+                                    fixedModes = fsm[c]
+                                    minVal = int(fixedModes["minValue"])
+                                    maxVal = int(fixedModes["maxValue"])
+                                    for val in range(minVal, maxVal + 1):
+                                        fan_modes.append(str(val))
+
+        return fan_modes
 
     async def async_set_fan_mode(self, fan_mode):
         """Set new fan mode."""
@@ -405,7 +461,10 @@ class DaikinClimate(ClimateEntity):
             daikin_mode = HA_PRESET_TO_DAIKIN[mode]
             preset = cc.get(daikin_mode)
             if preset is not None and preset.get("value") is not None:
+                _LOGGER.info("Device support %s %s", daikin_mode, mode)
                 supported_preset_modes.append(mode)
+            else:
+                _LOGGER.info("Device doesn't support %s %s", daikin_mode, mode)
 
         _LOGGER.info("Support_preset_modes {}: {}".format(mode,supported_preset_modes))
 

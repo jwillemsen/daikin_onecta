@@ -5,7 +5,6 @@ import logging
 from .device import DaikinResidentialDevice
 
 from .const import(
-    PRESET_BOOST,
     PRESET_TANK_ONOFF,
     PRESET_SETPOINT_MODE,
     ATTR_OUTSIDE_TEMPERATURE,
@@ -103,22 +102,10 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
             return data['/enabled']
         return data["value"]
 
-    def getValidValues(self, param):
-        """Get the valid values of a data object."""
-        data = self.getData(param)
-        if data is None:
-            return None
-        return data["values"]
-
     async def setValue(self, param, value):
         """Set the current value of a data object."""
         cmd_set = self.getCommandSet(param)
         return await self.set_data(cmd_set[0], cmd_set[1], cmd_set[2], value)
-
-    def support_preset_mode(self, mode):
-        """Return True if the device supports preset mode."""
-        mode = HA_PRESET_TO_DAIKIN[mode]
-        return self.getData(mode) is not None
 
     def preset_mode_status(self, mode):
         """Return the preset mode status."""
@@ -135,34 +122,6 @@ class Appliance(DaikinResidentialDevice):  # pylint: disable=too-many-public-met
         if self.getData(mode) is None:
             return
         return await self.setValue(mode, status)
-
-    @property
-    def supports_cooling(self):
-        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-        if "cooling" in availableOperationModes:
-            return True
-        else:
-            return False
-
-    async def async_set_temperature(self, value):
-        """Set new target temperature."""
-        availableOperationModes = self.getValidValues(ATTR_OPERATION_MODE)
-        operationMode = self.getValue(ATTR_OPERATION_MODE)
-        if operationMode not in availableOperationModes:
-            return None
-
-        # Check which controlMode is used to control the device
-        controlMode = self.getValue(ATTR_CONTROL_MODE)
-
-        if controlMode == "roomTemperature":
-            return await self.setValue(ATTR_TARGET_ROOM_TEMPERATURE, value)
-        if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
-            if self.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
-                return await self.setValue(ATTR_TARGET_LEAVINGWATER_OFFSET, int(value))
-            if self.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
-                return await self.setValue(ATTR_TARGET_LEAVINGWATER_TEMPERATURE, int(value))
-
-        return None
 
     async def set(self, settings):
         """Set settings on Daikin device."""
