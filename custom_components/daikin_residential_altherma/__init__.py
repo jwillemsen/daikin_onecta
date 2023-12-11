@@ -30,7 +30,6 @@ MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
 
 COMPONENT_TYPES = ["climate", "sensor", "water_heater"]
 
-
 CONFIG_SCHEMA = vol.Schema(
     vol.All(
         {
@@ -41,7 +40,6 @@ CONFIG_SCHEMA = vol.Schema(
     ),
     extra=vol.ALLOW_EXTRA,
 )
-
 
 async def async_setup(hass, config):
     """Setup the Daikin Residential component."""

@@ -4,7 +4,6 @@ import logging
 
 from .device import DaikinResidentialDevice
 
-
 _LOGGER = logging.getLogger(__name__)
 
 class Appliance(DaikinResidentialDevice):

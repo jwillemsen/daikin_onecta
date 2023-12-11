@@ -29,7 +29,6 @@ API_KEY2 = "3_QebFXhxEWDc8JhJdBWmvUd1e0AaWJCISbqe4QIHrk_KzNVJFJ4xsJ2UZbl8OIIFY"
 
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
 
-
 class DaikinApi:
     """Daikin Residential API."""
 
