@@ -43,6 +43,8 @@ from .const import (
     ATTR_TARGET_LEAVINGWATER_TEMPERATURE,
 )
 
+import re
+
 _LOGGER = logging.getLogger(__name__)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
@@ -185,6 +187,21 @@ class DaikinClimate(ClimateEntity):
                         _LOGGER.info("Climate: %s operation mode %s has setpoint %s", self._setpoint, operationMode, setpoint)
         return setpoint
 
+    def sensoryData(self):
+        sensoryData = None
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    # Check if we have a temperaturControl
+                    sensoryData = management_point.get("sensoryData")
+                    _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
+                    if sensoryData is not None:
+                        sensoryData = sensor = sensoryData.get("value").get(self._setpoint)
+                        _LOGGER.info("Climate: %s operation mode %s has sensoryData %s", self._setpoint, sensoryData)
+        return sensoryData
+
     @property
     def available(self):
         """Return the availability of the underlying device."""
@@ -201,9 +218,11 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def name(self):
+        myname = self._setpoint[0].upper() + self._setpoint[1:]
+        readable = re.findall('[A-Z][^A-Z]*', myname)
         """Return the name of the thermostat, if any."""
         #print("DAMIANO name = %s",self._device.name)
-        return f"{self._device.name}_{self._setpoint}"
+        return f"{self._device.name} {' '.join(readable)}"
 
     @property
     def unique_id(self):
@@ -219,9 +238,14 @@ class DaikinClimate(ClimateEntity):
     @property
     def current_temperature(self):
         currentTemp = None
+        sensoryData = self.sensoryData()
         setpointdict = self.setpoint()
-        if setpointdict is not None:
-            currentTemp = setpointdict["value"]
+        # Check if there is a sensoryData which is for the same setpoint, if so, return that
+        if sensoryData is not None:
+            currentTemp = sensoryData["value"]
+        else:
+            if setpointdict is not None:
+                currentTemp = setpointdict["value"]
         _LOGGER.debug("Device '%s' current temperature '%s'", self._device.name, currentTemp)
         return currentTemp
 
