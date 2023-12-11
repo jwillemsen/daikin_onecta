@@ -20,8 +20,8 @@ from homeassistant.components.climate.const import (
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
     SUPPORT_PRESET_MODE,
-    DEFAULT_MAX_TEMP,
-    DEFAULT_MIN_TEMP,
+    SUPPORT_FAN_MODE,
+    SUPPORT_SWING_MODE,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
 import homeassistant.helpers.config_validation as cv
@@ -208,11 +208,15 @@ class DaikinClimate(ClimateEntity):
     def supported_features(self):
         supported_features = 0
         setpointdict = self.setpoint()
+        cc = self.climateControl()
         if setpointdict is not None and setpointdict["settable"] == True:
             supported_features = SUPPORT_TARGET_TEMPERATURE
         if len(self.preset_modes) > 1:
             supported_features |= SUPPORT_PRESET_MODE
+        if cc.get("fanControl") is not None:
+            supported_features |= SUPPORT_FAN_MODE
         _LOGGER.info("Support features %s", supported_features)
+        # todo add support for swing mode
         return supported_features
 
     @property
@@ -342,6 +346,34 @@ class DaikinClimate(ClimateEntity):
             if self.hvac_mode == HVAC_MODE_OFF:
                 await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_ON)
             return await self._device.setValue(ATTR_OPERATION_MODE, hvac_mode)
+
+    @property
+    def fan_mode(self):
+        """Return the fan setting."""
+        return None
+
+    @property
+    def fan_modes(self):
+        """List of available fan modes."""
+        return []
+
+    async def async_set_fan_mode(self, fan_mode):
+        """Set new fan mode."""
+        #await self._device.async_set_fan_mode(fan_mode)
+
+    @property
+    def swing_mode(self):
+        """Return the swing setting."""
+        return None
+
+    @property
+    def swing_modes(self):
+        """List of available swing modes."""
+        return []
+
+    async def async_set_swing_mode(self, swing_mode):
+        """Set new swing mode."""
+        #await self._device.async_set_swing_mode(swing_mode)
 
     @property
     def preset_mode(self):
