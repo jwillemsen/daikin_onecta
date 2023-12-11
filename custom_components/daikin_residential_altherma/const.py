@@ -154,7 +154,6 @@ ENTITY_CATEGORY = "ENTITY_CATEGORY"
 # - ICON: Icon to be used
 VALUE_SENSOR_MAPPING = {
     "serialNumber": {
-        CONF_NAME: "Serial Number",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -163,7 +162,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "wifiConnectionSSID": {
-        CONF_NAME: "WiFi SSID",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -172,7 +170,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "wifiConnectionStrength": {
-        CONF_NAME: "WiFi Strength",
         CONF_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
         CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
@@ -181,7 +178,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "ssid": {
-        CONF_NAME: "Internal SSID",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -190,7 +186,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isHolidayModeActive": {
-        CONF_NAME: "is Holiday Mode Active",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -199,7 +194,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInErrorState": {
-        CONF_NAME: "is Error State Active",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -208,7 +202,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInWarningState": {
-        CONF_NAME: "is Warning State Active",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -217,7 +210,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInInstallerState": {
-        CONF_NAME: "is In Installer State",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -226,7 +218,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInEmergencyState": {
-        CONF_NAME: "is In Emergency State",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -235,7 +226,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isPowerfulModeActive": {
-        CONF_NAME: "is Powerful Mode Active",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -244,7 +234,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isCoolHeatMaster": {
-        CONF_NAME: "is Cool Heat Master",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -253,7 +242,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInModeConflict": {
-        CONF_NAME: "is In Mode Conflict",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -262,7 +250,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInCautionState": {
-        CONF_NAME: "is In Caution State",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -271,7 +258,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isLockFunctionEnabled": {
-        CONF_NAME: "is Lock Function Enabled",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -280,7 +266,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "ledEnabled": {
-        CONF_NAME: "Led Enabled",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -289,7 +274,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "iconId": {
-        CONF_NAME: "icon Id",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -298,7 +282,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "firmwareVersion": {
-        CONF_NAME: "firmware Version",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -307,7 +290,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "eepromVersion": {
-        CONF_NAME: "eeprom Version",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -316,7 +298,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "softwareVersion": {
-        CONF_NAME: "software Version",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -325,7 +306,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isFirmwareUpdateSupported": {
-        CONF_NAME: "is Firmware Update Supported",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -334,7 +314,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "daylightSavingTimeEnabled": {
-        CONF_NAME: "Daylight Saving Time Enabled",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -343,7 +322,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "macAddress": {
-        CONF_NAME: "Mac Address",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
@@ -352,7 +330,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "roomTemperature": {
-        CONF_NAME: "Room Temperature",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
@@ -361,7 +338,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
     },
     "outdoorTemperature": {
-        CONF_NAME: "Outdoor Temperature",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
@@ -370,7 +346,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
     },
     "leavingWaterTemperature": {
-        CONF_NAME: "Leaving Water Temperature",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
@@ -379,7 +354,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
     },
     "tankTemperature": {
-        CONF_NAME: "Tank Temperature",
         CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,

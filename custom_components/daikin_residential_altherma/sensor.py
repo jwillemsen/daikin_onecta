@@ -38,6 +38,8 @@ from .const import (
 import logging
 _LOGGER = logging.getLogger(__name__)
 
+import re
+
 async def async_setup(hass, async_add_entities):
     """Old way of setting up the Daikin sensors.
 
@@ -272,7 +274,6 @@ class DaikinValueSensor(DaikinSensor):
         self._sub_type = sub_type
         self._value = value
         self._attr_entity_category = None
-        self._name_postfix = value
         self._unit_of_measurement = ""
         self._state_class = None
         self._device_class = None
@@ -285,12 +286,13 @@ class DaikinValueSensor(DaikinSensor):
             self._icon = sensor_settings[CONF_ICON]
             self._device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._name_postfix = sensor_settings[CONF_NAME]
             self._entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._entity_category = sensor_settings[ENTITY_CATEGORY]
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._name = f"{mpt} {self._name_postfix}"
+        myname = value[0].upper() + value[1:]
+        readable = re.findall('[A-Z][^A-Z]*', myname)
+        self._name = f"{mpt} {' '.join(readable)}"
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property
