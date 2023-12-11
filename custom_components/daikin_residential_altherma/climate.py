@@ -6,7 +6,7 @@ import voluptuous as vol
 from homeassistant.components.climate import PLATFORM_SCHEMA, ClimateEntity
 from homeassistant.components.climate.const import (
     ATTR_HVAC_MODE,
-    ATTR_PRESET_MODE, # DAMIANO lasciare
+    ATTR_PRESET_MODE,
     HVAC_MODE_COOL,
     HVAC_MODE_HEAT,
     HVAC_MODE_HEAT_COOL,
@@ -34,11 +34,8 @@ from .const import (
     ATTR_OUTSIDE_TEMPERATURE,
     ATTR_ROOM_TEMPERATURE,
     ATTR_LEAVINGWATER_OFFSET,
-    ATTR_ON_OFF_CLIMATE,
-    ATTR_ON_OFF_TANK,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
-    ATTR_CONTROL_MODE,
     ATTR_OPERATION_MODE,
     ATTR_TARGET_ROOM_TEMPERATURE,
     ATTR_TARGET_LEAVINGWATER_OFFSET,
@@ -57,7 +54,8 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
 PRESET_MODES = {
     PRESET_COMFORT,
     PRESET_ECO,
-    PRESET_AWAY
+    PRESET_AWAY,
+    PRESET_BOOST
 }
 
 HA_HVAC_TO_DAIKIN = {
@@ -119,7 +117,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         modes = []
-        device_model = device.desc["deviceModel"]
+        device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {'climateControl'}
         if device.daikin_data["managementPoints"] is not None:
             for management_point in device.daikin_data["managementPoints"]:

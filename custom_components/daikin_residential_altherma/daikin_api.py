@@ -41,7 +41,6 @@ class DaikinApi:
         self.tokenSet = None
 
         if entry is not None:
-            #print("DAMIANO %s", entry.data[CONF_TOKENSET])
             self.tokenSet = entry.data[CONF_TOKENSET].copy()
 
         configuration = {
@@ -505,8 +504,6 @@ class DaikinApi:
 
         self.json_data = await self.getCloudDeviceDetails()
         for dev_data in self.json_data or []:
-            #print("DAMIANO dev_data %s", dev_data)
-            #print("DAMIANO 'self.hass.data[DOMAIN][DAIKIN_DEVICES]' %s", self.hass.data[DOMAIN][DAIKIN_DEVICES])
 
             if dev_data["id"] in self.hass.data[DOMAIN][DAIKIN_DEVICES]:
                 self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(

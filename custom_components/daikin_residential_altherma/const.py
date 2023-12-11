@@ -34,37 +34,6 @@ DAIKIN_API = "daikin_api"
 DAIKIN_DEVICES = "daikin_devices"
 DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
-# MANAGEMENT POINTS
-MP_CLIMATE = "climateControl"
-MP_GATEWAY = "gateway"
-MP_DOMESTIC_HWT = "domesticHotWaterTank"
-MP_INDOOR_UNIT = "indoorUnitHydro"
-MP_OUDOOR_UNIT = "outdoorUnit"
-MP_USER_INTERFACE = "userInterface"
-
-# DATA POINTS
-DP_ON_OFF_MODE = "onOffMode"
-DP_TANK_POWERFUL_MODE = "powerfulMode"
-DP_TANK_TEMPERATURECONTROL = "temperatureControl"
-
-DP_ON_OFF_CLIMATE = "onOffMode"
-DP_ON_OFF_TANK = "onOffMode"
-DP_OPERATION_MODE = "operationMode"
-DP_SENSORS = "sensoryData"
-DP_TEMPERATURE = "temperatureControl"
-DP_CONSUMPTION = "consumptionData"
-DP_CONTROL_MODE = "controlMode"
-DP_WIFI_STRENGTH = "wifiConnectionStrength"
-DP_WIFI_SSID = "wifiConnectionSSID"
-DP_LOCAL_SSID = "ssid"
-DP_MAC_ADDRESS = "macAddress"
-DP_SERIAL_NUMBER = "serialNumber"
-
-# DAMIANO HEAT PUMP ALTHERMA
-
-#ATTR_ON_OFF = "on_off"
-ATTR_ON_OFF_CLIMATE = "on_off_climate"
-ATTR_ON_OFF_TANK = "on_off_tank"
 ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
 ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
@@ -74,17 +43,6 @@ ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
 ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
 ATTR_ROOM_TEMPERATURE = "roomTemperature"
 ATTR_LEAVINGWATER_OFFSET = "leavingWaterOffset"
-ATTR_TANK_TEMPERATURE = "tankTemperature"
-ATTR_COOL_ENERGY = "cool_energy"
-ATTR_HEAT_ENERGY = "heat_energy"
-ATTR_HEAT_TANK_ENERGY = "heat_tank_energy"
-ATTR_SETPOINT_MODE = "setpointMode"
-ATTR_CONTROL_MODE = "controlMode"
-
-ATTR_TANK_TARGET_TEMPERATURE = "targetTemperature"
-
-ATTR_WIFI_SSID = "wifi_ssid"
-ATTR_LOCAL_SSID = "local_ssid"
 
 ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
@@ -324,91 +282,4 @@ VALUE_SENSOR_MAPPING = {
     },
 }
 
-SENSOR_TYPES = {
-    ATTR_LEAVINGWATER_TEMPERATURE: {
-        CONF_NAME: "Leaving Water Temperature",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },
-    ATTR_OUTSIDE_TEMPERATURE: {
-        CONF_NAME: "Outside Temperature",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },
-    ATTR_ROOM_TEMPERATURE: {
-        CONF_NAME: "Room Temperature",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },
-    ATTR_LEAVINGWATER_OFFSET: {
-        CONF_NAME: "Leaving Water Offset",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_ICON: "mdi:cursor-pointer",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },
-    ATTR_TANK_TEMPERATURE: {
-        CONF_NAME: "Tank Temperature",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_ICON: "mdi:bathtub-outline",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },
-    ATTR_TANK_TARGET_TEMPERATURE: {
-        CONF_NAME: "Tank Target temperature",
-        CONF_TYPE: SENSOR_TYPE_TEMPERATURE,
-        CONF_ICON: "mdi:bathtub-outline",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
-        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
-    },
-    ATTR_COOL_ENERGY: {
-        CONF_NAME: "Cool Energy Consumption",
-        CONF_TYPE: SENSOR_TYPE_ENERGY,
-        CONF_ICON: "mdi:snowflake",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
-        CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
-    },
-    ATTR_HEAT_ENERGY: {
-        CONF_NAME: "Heat Energy Consumption",
-        CONF_TYPE: SENSOR_TYPE_ENERGY,
-        CONF_ICON: "mdi:fire",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
-        CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
-    },
-    ATTR_HEAT_TANK_ENERGY: {
-        CONF_NAME: "Heat Tank Energy Consumption",
-        CONF_TYPE: SENSOR_TYPE_ENERGY,
-        CONF_ICON: "mdi:bathtub-outline",
-        CONF_DEVICE_CLASS: DEVICE_CLASS_ENERGY,
-        CONF_UNIT_OF_MEASUREMENT: ENERGY_KILO_WATT_HOUR,
-    },
-    ATTR_OPERATION_MODE: {
-        CONF_NAME: "Operation Mode",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_SETPOINT_MODE: {
-        CONF_NAME: "Info Setpoint Mode",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-    ATTR_CONTROL_MODE: {
-        CONF_NAME: "Info Control Mode",
-        CONF_TYPE: None,
-        CONF_ICON: "mdi:information-outline",
-        CONF_UNIT_OF_MEASUREMENT: " ",
-    },
-}
-
-CONF_UUID = "uuid"
-
-KEY_MAC = "mac"
-KEY_IP = "ip"
-
 TIMEOUT = 60
-

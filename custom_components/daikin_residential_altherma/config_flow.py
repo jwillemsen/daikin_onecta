@@ -38,8 +38,6 @@ class FlowHandler(config_entries.ConfigFlow):
         if self._async_current_entries():
             return self.async_abort(reason="already_configured")
 
-        # DAMIANO
-        #await self.async_set_unique_id("DaikinResidentialController")
         await self.async_set_unique_id("DaikinResidentialAltherma")
         return self.async_create_entry(
             title="Daikin",

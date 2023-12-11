@@ -16,10 +16,8 @@ from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
-    ATTR_TANK_TARGET_TEMPERATURE,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
-    MP_DOMESTIC_HWT
 )
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
@@ -32,7 +30,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin water tank entities."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        device_model = device.desc["deviceModel"]
+        device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {'domesticHotWaterTank', 'domesticHotWaterFlowThrough'}
         """ When the device has a domesticHotWaterTank we add a water heater """
         if device.daikin_data["managementPoints"] is not None:

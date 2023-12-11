@@ -28,7 +28,6 @@ from .const import (
     SENSOR_TYPE_ENERGY,
     SENSOR_TYPE_POWER,
     SENSOR_PERIODS,
-    SENSOR_TYPES,
     SENSOR_PERIOD_WEEKLY,
     VALUE_SENSOR_MAPPING,
     ENABLED_DEFAULT,
@@ -116,25 +115,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 class DaikinSensor(SensorEntity):
     """Representation of a Sensor."""
 
-    @staticmethod
-    def factory(device: Appliance, monitored_state: str, type):
-        """Initialize any DaikinSensor."""
-        try:
-            cls = {
-                SENSOR_TYPE_POWER: DaikinEnergySensor,
-                SENSOR_TYPE_ENERGY: DaikinEnergySensor,
-            }[SENSOR_TYPES[monitored_state][CONF_TYPE]]
-            return cls(device, monitored_state,type)
-        except Exception as error:
-            # print("error: " + error)
-            _LOGGER.error("%s", format(error))
-            return
-
     def __init__(self, device: Appliance, monitored_state: str, type) -> None:
         """Initialize the sensor."""
         self._device = device
-        self._sensor = SENSOR_TYPES[monitored_state]
-        self._name = f"{self._sensor[CONF_NAME]}"
+        #self._name = f"{self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
         _LOGGER.info("Device '%s' supports sensor '%s'", device.name, self._name)
 
@@ -162,18 +146,17 @@ class DaikinSensor(SensorEntity):
     @property
     def device_class(self):
         """Return the class of this device."""
-        return self._sensor.get(CONF_DEVICE_CLASS)
+        return None
 
     @property
     def icon(self):
         """Return the icon of this device."""
-        return self._sensor.get(CONF_ICON)
+        return None
 
     @property
     def unit_of_measurement(self):
         """Return the unit of measurement."""
-        uom = self._sensor[CONF_UNIT_OF_MEASUREMENT]
-        return uom
+        return None
 
     @property
     def device_info(self):
@@ -194,7 +177,7 @@ class DaikinEnergySensor(DaikinSensor):
     def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
         self._device = device
         self._icon = icon
-        self._sensor = SENSOR_TYPE_ENERGY
+        #self._sensor = SENSOR_TYPE_ENERGY
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
         self._operation_mode = operation_mode
