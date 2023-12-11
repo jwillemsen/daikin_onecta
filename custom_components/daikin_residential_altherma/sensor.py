@@ -98,9 +98,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                     if mode == "cooling":
                                         icon = "mdi:snowflake"
                                     for period in cdve[mode]:
-                                    #periods = {'d', 'w', 'm'}
-                                    #for period in periods:
-                                    #    if cdvem.get(period):
                                         _LOGGER.info("Device '%s:%s' provides mode %s %s supports period %s", device.name, embedded_id, management_point_type, mode, period)
                                         periodName = SENSOR_PERIODS[period]
                                         sensor = f"{device.name} {management_point_type} {mode} {periodName}"
@@ -118,7 +115,6 @@ class DaikinSensor(SensorEntity):
     def __init__(self, device: Appliance, monitored_state: str, type) -> None:
         """Initialize the sensor."""
         self._device = device
-        #self._name = f"{self._sensor[CONF_NAME]}"
         self._device_attribute = monitored_state
         _LOGGER.info("Device '%s' supports sensor '%s'", device.name, self._name)
 
