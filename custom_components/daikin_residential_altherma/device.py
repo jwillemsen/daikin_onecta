@@ -32,15 +32,27 @@ class DaikinResidentialDevice:
     def available(self) -> bool:
         """Return True if entity is available."""
         try:
-            return self.desc["isCloudConnectionUp"]["value"]
+            return self.daikin_data["isCloudConnectionUp"]["value"]
         except Exception:
             return False
 
     def device_info(self):
         """Return a device description for device registry."""
-        mac_add = self.get_value("gateway", "macAddress")
-        model = self.get_value("gateway", "modelInfo")
-        sw_vers = self.get_value("gateway", "firmwareVersion")
+        mac_add = ""
+        model = ""
+        sw_vers = ""
+        name = ""
+        supported_management_point_types = {'gateway'}
+        if self.daikin_data["managementPoints"] is not None:
+            for management_point in self.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    mac_add = management_point["macAddress"]["value"]
+                    model = management_point["modelInfo"]["value"]
+                    sw_vers = management_point["firmwareVersion"]["value"]
+                if management_point_type == "climateControl":
+                    name = management_point["name"]["value"]
+
         return {
             "identifiers": {
                 # Serial numbers are unique identifiers within a specific domain
@@ -51,7 +63,7 @@ class DaikinResidentialDevice:
             },
             "manufacturer": "Daikin",
             "model": model,
-            "name": self.get_value("climateControl", "name"),
+            "name": name,
             "sw_version": sw_vers.replace("_", "."),
         }
 
@@ -221,13 +233,6 @@ class DaikinResidentialDevice:
         if data is None:
             return None
         return data["value"]
-
-    def get_valid_values(self, managementPoint=None, dataPoint=None, dataPointPath=""):
-        """Get a list of the accepted values of a data object."""
-        data = self.get_data(managementPoint, dataPoint, dataPointPath)
-        if data is None:
-            return None
-        return data["values"]
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def updateData(self):

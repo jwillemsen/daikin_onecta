@@ -187,7 +187,6 @@ class DaikinWaterTank(WaterHeaterEntity):
             if dht is not None:
                 dht["value"] = value
 
-
     async def async_set_tank_state(self, new_tank_state):
         """Set new tank state."""
         _LOGGER.debug("Set tank state: %s", new_tank_state)

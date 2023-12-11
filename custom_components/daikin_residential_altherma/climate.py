@@ -370,12 +370,35 @@ class DaikinClimate(ClimateEntity):
 
     async def async_set_hvac_mode(self, hvac_mode):
         """Set HVAC mode."""
+        result = True
+
+        # First determine the new settings for onOffMode/operationMode, we need these to set them to Daikin
+        # and update our local cached version when succeeded
+        onOffMode = ""
+        operationMode = ""
         if hvac_mode == HVAC_MODE_OFF:
-            return await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_OFF)
+            onOffMode = "off"
         else:
             if self.hvac_mode == HVAC_MODE_OFF:
-                await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_ON)
-            return await self._device.setValue(ATTR_OPERATION_MODE, hvac_mode)
+                onOffMode = "on"
+            operationMode = HA_HVAC_TO_DAIKIN[hvac_mode]
+
+        # Only set the on/off to Daikin when we need to change it
+        if onOffMode != "":
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
+        if operationMode != "":
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "operationMode", "", operationMode)
+
+        if result is False:
+            _LOGGER.warning("Device '%s' problem setting hvac mode %s", self._device.name, hvac_mode)
+        else:
+            # Update local cached version
+            cc = self.climateControl()
+            cc["onOffMode"]["value"] == onOffMode
+            cc["operationMode"]["value"] == operationMode
+
+        return result
+
 
     @property
     def fan_mode(self):
@@ -447,10 +470,11 @@ class DaikinClimate(ClimateEntity):
     async def async_set_preset_mode(self, preset_mode):
         """Set preset mode."""
         curr_mode = self.preset_mode
+        daikin_mode = HA_PRESET_TO_DAIKIN[curr_mode]
         if curr_mode != PRESET_NONE:
-            await self._device.set_preset_mode_status(curr_mode, ATTR_STATE_OFF)
+            await self._device.set_path(self._device.getId(), self.embedded_id, daikin_mode, "", "off")
         if preset_mode != PRESET_NONE:
-            await self._device.set_preset_mode_status(preset_mode, ATTR_STATE_ON)
+            await self._device.set_path(self._device.getId(), self.embedded_id, daikin_mode, "", "on")
 
     @property
     def preset_modes(self):

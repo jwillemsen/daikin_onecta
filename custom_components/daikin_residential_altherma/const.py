@@ -85,50 +85,9 @@ ATTR_TANK_TARGET_TEMPERATURE = "targetTemperature"
 
 ATTR_WIFI_SSID = "wifi_ssid"
 ATTR_LOCAL_SSID = "local_ssid"
-ATTR_MAC_ADDRESS = "mac_address"
-ATTR_SERIAL_NUMBER = "serial_number"
-
-DAIKIN_CMD_SETS = {
-    #ATTR_ON_OFF: [MP_CLIMATE, DP_ON_OFF, "onOffMode"],
-    ATTR_ON_OFF_CLIMATE: [MP_CLIMATE, DP_ON_OFF_CLIMATE, ""],
-    ATTR_ON_OFF_TANK: [MP_DOMESTIC_HWT, DP_ON_OFF_TANK, ""],
-    ATTR_PRESET_MODE: [MP_CLIMATE, "", ""],
-    ATTR_OPERATION_MODE: [MP_CLIMATE, DP_OPERATION_MODE, ""],
-    ATTR_OUTSIDE_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/outdoorTemperature"],
-    ATTR_ROOM_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/roomTemperature"],
-    ATTR_LEAVINGWATER_TEMPERATURE: [MP_CLIMATE, DP_SENSORS, "/leavingWaterTemperature"],
-    ATTR_TANK_TEMPERATURE: [MP_DOMESTIC_HWT, DP_SENSORS, "/tankTemperature"],
-    ATTR_TARGET_LEAVINGWATER_OFFSET: [
-        MP_CLIMATE,
-        DP_TEMPERATURE,
-        "/operationModes/%operationMode%/setpoints/leavingWaterOffset"],
-    ATTR_TARGET_LEAVINGWATER_TEMPERATURE: [
-        MP_CLIMATE,
-        DP_TEMPERATURE,
-        "/operationModes/%operationMode%/setpoints/leavingWaterTemperature"],
-    ATTR_TARGET_ROOM_TEMPERATURE: [
-        MP_CLIMATE,
-        DP_TEMPERATURE,
-        "/operationModes/%operationMode%/setpoints/roomTemperature"],
-    ATTR_SETPOINT_MODE: [MP_CLIMATE, "setpointMode", ""],
-    ATTR_CONTROL_MODE: [MP_CLIMATE, DP_CONTROL_MODE, ""],
-    #  FLAG HOT WATER TANK
-    ATTR_TANK_TARGET_TEMPERATURE: [MP_DOMESTIC_HWT, DP_TANK_TEMPERATURECONTROL, "/operationModes/heating/setpoints/domesticHotWaterTemperature"],
-    #  Gateway settings
-    ATTR_WIFI_SSID: [MP_GATEWAY, DP_WIFI_SSID, ""],
-    ATTR_LOCAL_SSID: [MP_GATEWAY, DP_LOCAL_SSID, ""],
-    ATTR_MAC_ADDRESS: [MP_GATEWAY, DP_MAC_ADDRESS, ""],
-    ATTR_SERIAL_NUMBER: [MP_GATEWAY, DP_SERIAL_NUMBER, ""],
-}
 
 ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
-
-PRESET_TANK_ONOFF= "Tank"
-PRESET_SETPOINT_MODE = "setpointMode"
-#DAIKIN_SWITCHES = [PRESET_BOOST,PRESET_TANK_ONOFF] #PRESET_SETPOINT_MODE
-#DAIKIN_SWITCHES_ICONS ={PRESET_BOOST:'mdi:bike-fast',PRESET_TANK_ONOFF: 'mdi:bathtub-outline',PRESET_SETPOINT_MODE:'mdi:thermometer-lines'}
-SWITCH_DEFAULT_ICON = "hass:air-filter"
 
 SENSOR_TYPE_TEMPERATURE = "temperature"
 SENSOR_TYPE_POWER = "power"
