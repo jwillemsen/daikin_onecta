@@ -199,7 +199,8 @@ class DaikinEnergySensor(DaikinSensor):
         self._period = period
         self._attr_entity_category = None
         periodName = SENSOR_PERIODS[period]
-        self._name = f"{management_point_type.capitalize()} {operation_mode.capitalize()} {periodName} Energy Consumption"
+        mpt = management_point_type[0].upper() + management_point_type[1:]
+        self._name = f"{mpt} {operation_mode.capitalize()} {periodName} Energy Consumption"
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property
@@ -288,7 +289,8 @@ class DaikinValueSensor(DaikinSensor):
             self._entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._entity_category = sensor_settings[ENTITY_CATEGORY]
-        self._name = f"{management_point_type.capitalize()} {self._name_postfix}"
+        mpt = management_point_type[0].upper() + management_point_type[1:]
+        self._name = f"{mpt} {self._name_postfix}"
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property

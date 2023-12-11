@@ -220,8 +220,6 @@ class DaikinClimate(ClimateEntity):
     def name(self):
         myname = self._setpoint[0].upper() + self._setpoint[1:]
         readable = re.findall('[A-Z][^A-Z]*', myname)
-        """Return the name of the thermostat, if any."""
-        #print("DAMIANO name = %s",self._device.name)
         return f"{self._device.name} {' '.join(readable)}"
 
     @property
