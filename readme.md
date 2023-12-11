@@ -1,12 +1,14 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
-# Daikin Residential for Altherma 3 Heat Pump
+# Daikin Residential including for Altherma 3 Heat Pump
 
-Home Assistant Integration for Daikin Altherma 3 Heat Pump (natively for models BRP069A78 but users have good experience also for BRP069A62 and BRP069A61 despite they have not been tested).
+Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat Pump.
 
 This integration can coexist with the [daiking_residential integration](https://github.com/rospogrigio/daikin_residential).
 
 This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
+
+*WARNING* With V3 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
 
 # Installation using HACS:
 
@@ -53,7 +55,3 @@ logger:
 # Thanks to:
 
 This code is based on [@rospogrigio](https://github.com/rospogrigio) work that in turn is based on [@Apollon77](https://github.com/Apollon77) work, in finding a way to retrieve the token set, and to send the HTTP commands over the cloud. This integration would not exist without their precious job, my job was to try and debug Rospogrigio's code to adapt at JSON from Altherma 3 controlled by Daikin Residential App.
-
-# Next steps
-
-- Simplify integration by grouping all sensors in their management point, there is a lot of code duplication and special handling for the Altherma water tank in the current code which we want to simplify
