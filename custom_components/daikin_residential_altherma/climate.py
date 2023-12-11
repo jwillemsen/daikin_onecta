@@ -218,9 +218,18 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def name(self):
+        device_name = self._device.name
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    namepoint = management_point.get("name")
+                    if namepoint is not None:
+                        device_name = namepoint["value"]
         myname = self._setpoint[0].upper() + self._setpoint[1:]
         readable = re.findall('[A-Z][^A-Z]*', myname)
-        return f"{self._device.name} {' '.join(readable)}"
+        return f"{device_name} {' '.join(readable)}"
 
     @property
     def unique_id(self):
