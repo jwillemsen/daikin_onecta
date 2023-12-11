@@ -15,6 +15,7 @@ from homeassistant.components.climate.const import (
     HVAC_MODE_FAN_ONLY,
     PRESET_AWAY,
     PRESET_COMFORT,
+    PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
     SUPPORT_TARGET_TEMPERATURE,
@@ -51,8 +52,11 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {vol.Required(CONF_HOST): cv.string, vol.Optional(CONF_NAME): cv.string}
 )
 
-
-PRESET_MODES = {PRESET_COMFORT, PRESET_ECO, PRESET_AWAY}
+PRESET_MODES = {
+    PRESET_COMFORT,
+    PRESET_ECO,
+    PRESET_AWAY
+}
 
 HA_HVAC_TO_DAIKIN = {
     HVAC_MODE_FAN_ONLY: "fanOnly",
@@ -72,8 +76,24 @@ HA_ATTR_TO_DAIKIN = {
     ATTR_ROOM_TEMPERATURE: "stemp",
 }
 
-DAIKIN_ATTR_ADVANCED = "adv"
+DAIKIN_HVAC_TO_HA = {
+    "fanOnly": HVAC_MODE_FAN_ONLY,
+    "dry": HVAC_MODE_DRY,
+    "cooling": HVAC_MODE_COOL,
+    "heating": HVAC_MODE_HEAT,
+    "heatingDay": HVAC_MODE_HEAT,
+    "heatingNight": HVAC_MODE_HEAT,
+    "auto": HVAC_MODE_HEAT_COOL,
+    "off": HVAC_MODE_OFF,
+}
 
+HA_PRESET_TO_DAIKIN = {
+    PRESET_AWAY: "holidayMode",
+    PRESET_NONE: "off",
+    PRESET_BOOST: "powerfulMode",
+    PRESET_COMFORT: "comfortMode",
+    PRESET_ECO: "econoMode",
+}
 
 async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
     """Old way of setting up the Daikin HVAC platform.
@@ -120,56 +140,28 @@ class DaikinClimate(ClimateEntity):
         }
         self._setpoint = setpoint
 
-
-        # self._supported_preset_modes = [PRESET_NONE]
-        # self._current_preset_mode = PRESET_NONE
-        # for mode in PRESET_MODES:
-        #     support_preset = self._device.support_preset_mode(mode)
-        #     if support_preset:
-        #         self._supported_preset_modes.append(mode)
-        #         self._supported_features |= SUPPORT_PRESET_MODE
-        #     _LOGGER.info("Support_preset_mode {}: {}".format(mode,support_preset))
-
     async def _set(self, settings):
-        """Set device settings using API."""
-        values = {}
+        raise NotImplementedError
 
-        for attr in [ATTR_TEMPERATURE, ATTR_HVAC_MODE]:
-            value = settings.get(attr)
-            if value is None:
-                continue
+    def climateControl(self):
+        cc = None
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    cc = management_point
+        return cc
 
-            daikin_attr = HA_ATTR_TO_DAIKIN.get(attr)
-            if daikin_attr is not None:
-                if attr == ATTR_HVAC_MODE:
-                    values[daikin_attr] = HA_HVAC_TO_DAIKIN[value]
-                elif value in self._list[attr]:
-                    values[daikin_attr] = value.lower()
-                else:
-                    _LOGGER.error("Invalid value %s for %s", attr, value)
-
-            # temperature
-            elif attr == ATTR_TEMPERATURE:
-                try:
-                    availableOperationModes = self._device.getValidValues(ATTR_OPERATION_MODE)
-                    operationMode = self._device.getValue(ATTR_OPERATION_MODE)
-                    if operationMode not in availableOperationModes:
-                        return None
-
-                    # Check which controlMode is used to control the device
-                    controlMode = self._device.getValue(ATTR_CONTROL_MODE)
-                    if controlMode == "roomTemperature":
-                          values[HA_ATTR_TO_DAIKIN[ATTR_ROOM_TEMPERATURE]] = str(int(value))
-                    if controlMode in ("leavingWaterTemperature", "externalRoomTemperature"):
-                        if self._device.getData(ATTR_TARGET_LEAVINGWATER_OFFSET) is not None:
-                            values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_OFFSET]] = str(int(value))
-                        if self._device.getData(ATTR_TARGET_LEAVINGWATER_TEMPERATURE) is not None:
-                            values[HA_ATTR_TO_DAIKIN[ATTR_LEAVINGWATER_TEMPERATURE]] = str(int(value))
-                except ValueError:
-                    _LOGGER.error("Invalid temperature %s", value)
-
-        if values:
-            await self._device.set(values)
+    def operationMode(self):
+        operationMode = None
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    operationMode = management_point.get("operationMode")
+        return operationMode
 
     def setpoint(self):
         setpoint = None
@@ -213,8 +205,11 @@ class DaikinClimate(ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None and setpointdict["settable"] == True:
             supported_features = SUPPORT_TARGET_TEMPERATURE
+        if len(self.preset_modes) > 1:
+            supported_features |= SUPPORT_PRESET_MODE
         _LOGGER.info("Support features %s", supported_features)
         return supported_features
+
 
     @property
     def name(self):
@@ -306,26 +301,47 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def hvac_mode(self):
-        """Return current operation ie. heat, cool, idle."""
-        return self._device.hvac_mode
+        """Return current HVAC mode."""
+        mode = HVAC_MODE_OFF
+        operationmode = self.operationMode()
+        cc = self.climateControl()
+        if cc["onOffMode"]["value"] != "off":
+            mode = operationmode["value"]
+        return DAIKIN_HVAC_TO_HA.get(mode, HVAC_MODE_HEAT_COOL)
 
     @property
     def hvac_modes(self):
-        """Return the list of available operation modes."""
-        return self._device.hvac_modes
+        """Return the list of available HVAC modes."""
+        modes = [HVAC_MODE_OFF]
+        operationmode = self.operationMode()
+        if operationmode is not None:
+            for mode in operationmode["values"]:
+                ha_mode = DAIKIN_HVAC_TO_HA[mode]
+                if ha_mode not in modes:
+                    modes.append(ha_mode)
+        return modes
 
     async def async_set_hvac_mode(self, hvac_mode):
         """Set HVAC mode."""
-        await self._device.async_set_hvac_mode(HA_HVAC_TO_DAIKIN[hvac_mode])
+        if hvac_mode == HVAC_MODE_OFF:
+            return await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_OFF)
+        else:
+            if self.hvac_mode == HVAC_MODE_OFF:
+                await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_ON)
+            return await self._device.setValue(ATTR_OPERATION_MODE, hvac_mode)
 
     @property
     def preset_mode(self):
-        """Return the preset_mode."""
-        self._current_preset_mode = PRESET_NONE
-        for mode in self._supported_preset_modes:
-            if self._device.preset_mode_status(mode) == ATTR_STATE_ON:
-                self._current_preset_mode = mode
-        return self._current_preset_mode
+        cc = self.climateControl()
+        current_preset_mode = PRESET_NONE
+        for mode in self.preset_modes:
+            daikin_mode = HA_PRESET_TO_DAIKIN[mode]
+            preset = cc.get(daikin_mode)
+            if preset is not None:
+                preset_value = preset.get("value")
+                if preset_value is not None and preset_value == "on":
+                    current_preset_mode = mode
+        return current_preset_mode
 
     async def async_set_preset_mode(self, preset_mode):
         """Set preset mode."""
@@ -337,8 +353,18 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def preset_modes(self):
-        """List of available preset modes."""
-        return self._supported_preset_modes
+        supported_preset_modes = [PRESET_NONE]
+        cc = self.climateControl()
+        # self._current_preset_mode = PRESET_NONE
+        for mode in PRESET_MODES:
+            daikin_mode = HA_PRESET_TO_DAIKIN[mode]
+            preset = cc.get(daikin_mode)
+            if preset is not None and preset.get("value") is not None:
+                supported_preset_modes.append(mode)
+
+        _LOGGER.info("Support_preset_modes {}: {}".format(mode,supported_preset_modes))
+
+        return supported_preset_modes
 
     async def async_update(self):
         """Retrieve latest state."""
