@@ -195,6 +195,11 @@ class DaikinClimate(ClimateEntity):
         return sensoryData
 
     @property
+    def embedded_id(self):
+        cc = self.climateControl()
+        return cc["embeddedId"]
+
+    @property
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
@@ -209,7 +214,6 @@ class DaikinClimate(ClimateEntity):
             supported_features |= SUPPORT_PRESET_MODE
         _LOGGER.info("Support features %s", supported_features)
         return supported_features
-
 
     @property
     def name(self):
@@ -288,16 +292,25 @@ class DaikinClimate(ClimateEntity):
         return stepValue
 
     async def async_set_temperature(self, **kwargs):
-        """Set new target temperature."""
-        # The service climate.set_temperature can set the hvac_mode too, see
-        # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
-        # se we first set the hvac_mode, if provided, then the temperature.
-        if ATTR_HVAC_MODE in kwargs:
-            await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
-
-        await self._device.async_set_temperature(kwargs[ATTR_TEMPERATURE])
-        # ADDED for instant update
-        await self._device.api.async_update()
+        # """Set new target temperature."""
+        # # The service climate.set_temperature can set the hvac_mode too, see
+        # # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
+        # # se we first set the hvac_mode, if provided, then the temperature.
+        # if ATTR_HVAC_MODE in kwargs:
+        #     await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
+        #
+        # await self._device.async_set_temperature(kwargs[ATTR_TEMPERATURE])
+        # # ADDED for instant update
+        # await self._device.api.async_update()
+        operationmode = self.operationMode()
+        omv = operationmode["value"]
+        value = kwargs[ATTR_TEMPERATURE]
+        res = await self._device.set_path(self._device.getId(), self.embedded_id, "temperatureControl", f"/operationModes/{omv}/setpoints/{self._setpoint}", int(value))
+        # When updating the value to the daikin cloud worked update our local cached version
+        if res:
+            setpointdict = self.setpoint()
+            if setpointdict is not None:
+                setpointdict["value"] = int(value)
 
     @property
     def hvac_mode(self):
@@ -372,11 +385,11 @@ class DaikinClimate(ClimateEntity):
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
-        await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_ON)
+        await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
 
     async def async_turn_off(self):
         """Turn device CLIMATE off."""
-        await self._device.setValue(ATTR_ON_OFF_CLIMATE, ATTR_STATE_OFF)
+        await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
 
     @property
     def device_info(self):
