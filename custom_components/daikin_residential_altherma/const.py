@@ -67,7 +67,6 @@ STATE_CLASS = "STATE"
 ENTITY_CATEGORY = "ENTITY_CATEGORY"
 
 # This maps the NAME as listed in the Daikin JSON data to:
-# - NAME: Postfix for the sensor name
 # - DEVICE_CLASS: home assistant device class, see https://developers.home-assistant.io/docs/core/entity/sensor/#available-device-classes
 # - UNIT_OF_MEASUREMENT:
 # - ICON: Icon to be used
