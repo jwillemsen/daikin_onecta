@@ -145,9 +145,6 @@ class DaikinClimate(ClimateEntity):
         """Initialize the climate device."""
         _LOGGER.info("Initializing Daiking Climate for controlling %s...", setpoint)
         self._device = device
-        self._list = {
-            ATTR_HVAC_MODE: list(HA_HVAC_TO_DAIKIN),
-        }
         self._setpoint = setpoint
 
     async def _set(self, settings):
