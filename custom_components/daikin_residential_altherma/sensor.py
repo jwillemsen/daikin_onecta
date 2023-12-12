@@ -173,7 +173,6 @@ class DaikinEnergySensor(DaikinSensor):
     def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
         self._device = device
         self._icon = icon
-        #self._sensor = SENSOR_TYPE_ENERGY
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
         self._operation_mode = operation_mode
