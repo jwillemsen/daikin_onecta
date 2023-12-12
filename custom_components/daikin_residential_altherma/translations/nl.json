@@ -13,7 +13,7 @@
                 "title": "Daikin Residential Controller AC instellen"
             }
         }
-    }
+    },
     "services": {
         "reload": {
             "name": "Reload",
