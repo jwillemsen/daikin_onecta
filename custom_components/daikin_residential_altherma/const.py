@@ -280,6 +280,22 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
     },
+    "heatExchangerTemperature": {
+        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+        CONF_ICON: "",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "suctionTemperature": {
+        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+        CONF_ICON: "",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
 }
 
 TIMEOUT = 60
