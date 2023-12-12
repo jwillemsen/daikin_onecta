@@ -70,6 +70,7 @@ ENTITY_CATEGORY = "ENTITY_CATEGORY"
 # - DEVICE_CLASS: home assistant device class, see https://developers.home-assistant.io/docs/core/entity/sensor/#available-device-classes
 # - UNIT_OF_MEASUREMENT:
 # - ICON: Icon to be used
+# - ENABLED_DEFAULT: Is the sensor enabled by default or not
 VALUE_SENSOR_MAPPING = {
     "serialNumber": {
         CONF_DEVICE_CLASS: None,
