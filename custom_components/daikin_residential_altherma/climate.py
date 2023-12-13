@@ -23,6 +23,10 @@ from homeassistant.components.climate.const import (
     SUPPORT_FAN_MODE,
     SUPPORT_SWING_MODE,
     FAN_AUTO,
+    SWING_OFF,
+    SWING_BOTH,
+    SWING_VERTICAL,
+    SWING_HORIZONTAL,
 )
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
 import homeassistant.helpers.config_validation as cv
@@ -241,9 +245,9 @@ class DaikinClimate(ClimateEntity):
         fanControl = cc.get("fanControl")
         if fanControl is not None:
             operationmode = cc["operationMode"]["value"]
-            if fanControl["value"]["operationModes"][operationmode]["fanSpeed"] is not None:
+            if fanControl["value"]["operationModes"][operationmode].get("fanSpeed") is not None:
                 supported_features |= SUPPORT_FAN_MODE
-            if fanControl["value"]["operationModes"][operationmode]["fanDirection"] is not None:
+            if fanControl["value"]["operationModes"][operationmode].get("fanDirection") is not None:
                 supported_features |= SUPPORT_SWING_MODE
         _LOGGER.info("Support features %s", supported_features)
         return supported_features
@@ -460,13 +464,39 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def swing_mode(self):
+        # swingMode = SWING_OFF
+        # hMode = self.getValue(ATTR_HSWING_MODE)
+        # vMode = self.getValue(ATTR_VSWING_MODE)
+        # if hMode != ATTR_SWING_STOP:
+        #     swingMode = SWING_HORIZONTAL
+        # if vMode != ATTR_SWING_STOP:
+        #     if hMode != ATTR_SWING_STOP:
+        #         swingMode = SWING_BOTH
+        #     else:
+        #         swingMode = SWING_VERTICAL
+        # return swingMode
         """Return the swing setting."""
         return None
 
     @property
     def swing_modes(self):
-        """List of available swing modes."""
-        return []
+        swingModes = [SWING_OFF]
+        cc = self.climateControl()
+        fanControl = cc.get("fanControl")
+        if fanControl is not None:
+            operationmode = cc["operationMode"]["value"]
+            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
+            if fanDirection is not None:
+                horizontal = fanDirection.get("horizontal")
+                vertical = fanDirection.get("vertical")
+                if horizontal is not None:
+                    swingModes.append(SWING_HORIZONTAL)
+                if vertical is not None:
+                    swingModes.append(SWING_VERTICAL)
+                    if horizontal is not None:
+                        swingModes.append(SWING_BOTH)
+        _LOGGER.info("Support swing modes %s", swingModes)
+        return swingModes
 
     async def async_set_swing_mode(self, swing_mode):
         """Set new swing mode."""
