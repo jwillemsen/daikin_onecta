@@ -383,7 +383,6 @@ class DaikinClimate(ClimateEntity):
 
         return result
 
-
     @property
     def fan_mode(self):
         fan_mode = None
@@ -548,8 +547,30 @@ class DaikinClimate(ClimateEntity):
         return current_preset_mode
 
     async def async_set_preset_mode(self, preset_mode):
-        """Set preset mode."""
-        #await
+        result = True
+        new_daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
+        cc = self.climateControl()
+        preset = cc.get(new_daikin_mode)
+
+        if self.preset_mode != PRESET_NONE:
+            current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, current_mode, "", "off")
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting %s to off", self._device.name, current_mode)
+            else:
+                cc[current_mode]["value"] = "off"
+
+        if preset_mode != PRESET_NONE:
+            if self.hvac_mode == HVAC_MODE_OFF and preset_mode != PRESET_AWAY:
+                result &= await self.async_turn_on()
+
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, new_daikin_mode, "", "on")
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting %s to on", self._device.name, new_daikin_mode)
+            else:
+                cc[new_daikin_mode]["value"] = "on"
+
+        return result
 
     @property
     def preset_modes(self):
@@ -576,19 +597,21 @@ class DaikinClimate(ClimateEntity):
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
         cc = self.climateControl()
-        result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
+        result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
         if result is False:
           _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
         else:
            cc["onOffMode"]["value"] == "on"
+        return result
 
     async def async_turn_off(self):
         cc = self.climateControl()
-        result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
+        result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
         if result is False:
           _LOGGER.warning("Device '%s' problem setting onOffMode to off", self._device.name)
         else:
            cc["onOffMode"]["value"] == "off"
+        return result
 
     @property
     def device_info(self):
