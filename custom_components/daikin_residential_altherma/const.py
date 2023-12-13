@@ -60,7 +60,7 @@ SENSOR_PERIODS = {
 }
 
 FAN_FIXED = "fixed"
-FAN_QUIET = "silent"
+FAN_QUIET = "quiet"
 
 ENABLED_DEFAULT = "Enabled"
 STATE_CLASS = "STATE"

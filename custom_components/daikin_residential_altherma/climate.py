@@ -435,14 +435,31 @@ class DaikinClimate(ClimateEntity):
 
     async def async_set_fan_mode(self, fan_mode):
         """Set the preset mode status."""
-        # if mode in HA_FAN_TO_DAIKIN.keys():
-        #     return await self.setValue(ATTR_FAN_MODE, HA_FAN_TO_DAIKIN[mode])
-        # if mode.isnumeric():
-        #     mode = int(mode)
-        # await self.setValue(ATTR_FAN_MODE, "fixed")
-        # return await self.setValue(ATTR_FAN_SPEED, mode)
-        """Set new fan mode."""
-        #await self._device.async_set_fan_mode(fan_mode)
+        cc = self.climateControl()
+        fanControl = cc.get("fanControl")
+        operationmode = cc["operationMode"]["value"]
+        if fan_mode in HA_FAN_TO_DAIKIN.keys():
+            res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanSpeed/currentMode", fan_mode)
+            if res is False:
+                _LOGGER.warning("Device '%s' problem setting fan_mode to %s", self._device.name, fan_mode)
+            else:
+                fanControl["value"]["operationModes"][operationmode]["fanSpeed"]["currentMode"]["value"] = fan_mode
+
+        else:
+            if fan_mode.isnumeric():
+                mode = int(fan_mode)
+                res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanSpeed/currentMode", "fixed")
+                if res is False:
+                    _LOGGER.warning("Device '%s' problem setting fan_mode to fixed", self._device.name)
+                else:
+                    fanControl["value"]["operationModes"][operationmode]["fanSpeed"]["currentMode"]["fixed"] = fan_mode
+                res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanSpeed/modes/fixed", mode)
+                if res is False:
+                    _LOGGER.warning("Device '%s' problem setting fan_mode fixed to %s", self._device.name, mode)
+                else:
+                    fanControl["value"]["operationModes"][operationmode]["fanSpeed"]["modes"]["fixed"]["value"] = int(fan_mode)
+
+        return res
 
     @property
     def swing_mode(self):
@@ -491,8 +508,31 @@ class DaikinClimate(ClimateEntity):
         return swingModes
 
     async def async_set_swing_mode(self, swing_mode):
-        """Set new swing mode."""
-        #await self._device.async_set_swing_mode(swing_mode)
+        cc = self.climateControl()
+        fanControl = cc.get("fanControl")
+        operationmode = cc["operationMode"]["value"]
+        new_hMode = (
+            "swing"
+            if swing_mode == SWING_HORIZONTAL or swing_mode == SWING_BOTH
+            else "stop"
+        )
+        res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
+        if res is False:
+            _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_hMode)
+        else:
+            fanControl["value"]["operationModes"][operationmode]["fanDirection"]["horizontal"]["currentMode"]["value"] = new_hMode
+        new_vMode = (
+            "swing"
+            if swing_mode == SWING_VERTICAL or swing_mode == SWING_BOTH
+            else "stop"
+        )
+        res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/vertical/currentMode", new_vMode)
+        if res is False:
+            _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_vMode)
+        else:
+            fanControl["value"]["operationModes"][operationmode]["fanDirection"]["vertical"]["currentMode"]["value"] = new_vMode
+
+        return res
 
     @property
     def preset_mode(self):
