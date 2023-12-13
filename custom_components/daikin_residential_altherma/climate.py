@@ -397,8 +397,26 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def fan_mode(self):
-        """Return the fan setting."""
-        return None
+        fan_mode = None
+        supported_management_point_types = {'climateControl'}
+        if self._device.daikin_data["managementPoints"] is not None:
+            for management_point in self._device.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if  management_point_type in supported_management_point_types:
+                    # Check if we have a fanControl
+                    fanControl = management_point.get("fanControl")
+                    if fanControl is not None:
+                        operationmode = management_point["operationMode"]["value"]
+                        fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
+                        mode = fanspeed["currentMode"]["value"]
+                        if mode in DAIKIN_FAN_TO_HA:
+                            fan_mode = DAIKIN_FAN_TO_HA[mode]
+                        else:
+                            fsm = fanspeed.get("modes")
+                            if fsm is not None:
+                                fixedModes = fsm[mode]
+                                fan_mode = fixedModes["value"]
+        return fan_mode
 
     @property
     def fan_modes(self):
