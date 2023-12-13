@@ -377,8 +377,8 @@ class DaikinClimate(ClimateEntity):
 
         # First determine the new settings for onOffMode/operationMode, we need these to set them to Daikin
         # and update our local cached version when succeeded
-        onOffMode = ""
-        operationMode = ""
+        onOffMode = None
+        operationMode = None
         if hvac_mode == HVAC_MODE_OFF:
             onOffMode = "off"
         else:
@@ -386,19 +386,22 @@ class DaikinClimate(ClimateEntity):
                 onOffMode = "on"
             operationMode = HA_HVAC_TO_DAIKIN[hvac_mode]
 
-        # Only set the on/off to Daikin when we need to change it
-        if onOffMode != "":
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
-        if operationMode != "":
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "operationMode", "", operationMode)
+        cc = self.climateControl()
 
-        if result is False:
-            _LOGGER.warning("Device '%s' problem setting hvac mode %s", self._device.name, hvac_mode)
-        else:
-            # Update local cached version
-            cc = self.climateControl()
-            cc["onOffMode"]["value"] == onOffMode
-            cc["operationMode"]["value"] == operationMode
+        # Only set the on/off to Daikin when we need to change it
+        if onOffMode is not None:
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting onOffMode to %s", self._device.name, onOffMode)
+            else:
+                cc["onOffMode"]["value"] == onOffMode
+
+        if operationMode is not None:
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "operationMode", "", operationMode)
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting operationMode to %s", self._device.name, operationMode)
+            else:
+                cc["operationMode"]["value"] == operationMode
 
         return result
 
@@ -422,8 +425,10 @@ class DaikinClimate(ClimateEntity):
                         else:
                             fsm = fanspeed.get("modes")
                             if fsm is not None:
+                                _LOGGER.info("FSM %s", fsm)
                                 fixedModes = fsm[mode]
-                                fan_mode = fixedModes["value"]
+                                fan_mode = str(fixedModes["value"])
+
         return fan_mode
 
     @property
