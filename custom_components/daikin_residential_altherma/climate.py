@@ -561,7 +561,7 @@ class DaikinClimate(ClimateEntity):
                 cc[current_mode]["value"] = "off"
 
         if preset_mode != PRESET_NONE:
-            if self.hvac_mode == HVAC_MODE_OFF and preset_mode != PRESET_AWAY:
+            if self.hvac_mode == HVAC_MODE_OFF and preset_mode == PRESET_BOOST:
                 result &= await self.async_turn_on()
 
             result &= await self._device.set_path(self._device.getId(), self.embedded_id, new_daikin_mode, "", "on")
