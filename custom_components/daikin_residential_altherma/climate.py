@@ -426,7 +426,8 @@ class DaikinClimate(ClimateEntity):
                                     fixedModes = fsm[c]
                                     minVal = int(fixedModes["minValue"])
                                     maxVal = int(fixedModes["maxValue"])
-                                    for val in range(minVal, maxVal + 1):
+                                    stepValue = int(fixedModes["stepValue"])
+                                    for val in range(minVal, maxVal + 1, stepValue):
                                         fan_modes.append(str(val))
 
         return fan_modes
