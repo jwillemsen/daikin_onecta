@@ -8,7 +8,8 @@ This integration can coexist with the [daiking_residential integration](https://
 
 This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
 
-*WARNING* With V3 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
+> [!IMPORTANT] 
+> With V3 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
 
 # Installation using HACS:
 
