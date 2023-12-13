@@ -238,10 +238,14 @@ class DaikinClimate(ClimateEntity):
             supported_features = SUPPORT_TARGET_TEMPERATURE
         if len(self.preset_modes) > 1:
             supported_features |= SUPPORT_PRESET_MODE
-        if cc.get("fanControl") is not None:
-            supported_features |= SUPPORT_FAN_MODE
+        fanControl = cc.get("fanControl")
+        if fanControl is not None:
+            operationmode = cc["operationMode"]["value"]
+            if fanControl["value"]["operationModes"][operationmode]["fanSpeed"] is not None:
+                supported_features |= SUPPORT_FAN_MODE
+            if fanControl["value"]["operationModes"][operationmode]["fanDirection"] is not None:
+                supported_features |= SUPPORT_SWING_MODE
         _LOGGER.info("Support features %s", supported_features)
-        # todo add support for swing mode
         return supported_features
 
     @property
