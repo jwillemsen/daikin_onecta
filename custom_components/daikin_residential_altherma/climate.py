@@ -464,19 +464,29 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def swing_mode(self):
-        # swingMode = SWING_OFF
-        # hMode = self.getValue(ATTR_HSWING_MODE)
-        # vMode = self.getValue(ATTR_VSWING_MODE)
-        # if hMode != ATTR_SWING_STOP:
-        #     swingMode = SWING_HORIZONTAL
-        # if vMode != ATTR_SWING_STOP:
-        #     if hMode != ATTR_SWING_STOP:
-        #         swingMode = SWING_BOTH
-        #     else:
-        #         swingMode = SWING_VERTICAL
-        # return swingMode
-        """Return the swing setting."""
-        return None
+        swingMode = SWING_OFF
+        cc = self.climateControl()
+        fanControl = cc.get("fanControl")
+        h = SWING_OFF
+        v = SWING_OFF
+        if fanControl is not None:
+            operationmode = cc["operationMode"]["value"]
+            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
+            if fanDirection is not None:
+                horizontal = fanDirection.get("horizontal")
+                vertical = fanDirection.get("vertical")
+                if horizontal is not None:
+                    h = horizontal["currentMode"]["value"]
+                if vertical is not None:
+                    v = vertical["currentMode"]["value"]
+        if h != "stop":
+            swingMode = SWING_HORIZONTAL
+        if v != "stop":
+            if h != "stop":
+                swingMode = SWING_BOTH
+            else:
+                swingMode = SWING_VERTICAL
+        return swingMode
 
     @property
     def swing_modes(self):
