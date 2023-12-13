@@ -65,7 +65,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     if type(vv) == dict:
                         value_value = vv.get("value")
                         if value_value is not None and type(value_value) != dict:
-                            _LOGGER.info("v %s with value %s", value, value_value)
                             sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, None, value)
                             sensors.append(sensor2)
 
