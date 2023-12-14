@@ -523,7 +523,7 @@ class DaikinClimate(ClimateEntity):
                 if horizontal is not None:
                     new_hMode = (
                         "swing"
-                        if swing_mode == SWING_HORIZONTAL or swing_mode == SWING_BOTH
+                        if swing_mode in (SWING_HORIZONTAL, SWING_BOTH)
                         else "stop"
                     )
                     res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
@@ -534,7 +534,7 @@ class DaikinClimate(ClimateEntity):
                 if vertical is not None:
                     new_vMode = (
                         "swing"
-                        if swing_mode == SWING_VERTICAL or swing_mode == SWING_BOTH
+                        if swing_mode in (SWING_VERTICAL, SWING_BOTH)
                         else "stop"
                     )
                     res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/vertical/currentMode", new_vMode)
