@@ -108,65 +108,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     async_add_entities(sensors)
 
-class DaikinSensor(SensorEntity):
-    """Representation of a Sensor."""
-
-    def __init__(self, device: Appliance, monitored_state: str, type) -> None:
-        """Initialize the sensor."""
-        self._device = device
-        self._device_attribute = monitored_state
-        _LOGGER.info("Device '%s' supports sensor '%s'", device.name, self._name)
-
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
-
-    @property
-    def unique_id(self):
-        """Return a unique ID."""
-        devID = self._device.getId()
-        return f"{devID}_{self._device_attribute}"
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        raise NotImplementedError
-
-    @property
-    def device_class(self):
-        """Return the class of this device."""
-        return None
-
-    @property
-    def icon(self):
-        """Return the icon of this device."""
-        return None
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return None
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()
-
-    @property
-    def entity_category(self):
-        return None
-
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()
-
-class DaikinEnergySensor(DaikinSensor):
+class DaikinEnergySensor(SensorEntity):
     """Representation of a power/energy consumption sensor."""
 
     def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
@@ -223,6 +165,10 @@ class DaikinEnergySensor(DaikinSensor):
         return DEVICE_CLASS_ENERGY
 
     @property
+    def entity_category(self):
+        return None
+
+    @property
     def icon(self):
         """Return the icon of this device."""
         return self._icon
@@ -237,10 +183,25 @@ class DaikinEnergySensor(DaikinSensor):
         return STATE_CLASS_TOTAL_INCREASING
 
     @property
-    def entity_category(self):
-        return None
+    def available(self):
+        """Return the availability of the underlying device."""
+        return self._device.available
 
-class DaikinValueSensor(DaikinSensor):
+    @property
+    def name(self):
+        """Return the name of the sensor."""
+        return self._name
+
+    @property
+    def device_info(self):
+        """Return a device description for device registry."""
+        return self._device.device_info()
+
+    async def async_update(self):
+        """Retrieve latest state."""
+        await self._device.api.async_update()
+
+class DaikinValueSensor(SensorEntity):
 
     def __init__(self, device: Appliance, embedded_id, management_point_type, sub_type, value) -> None:
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", management_point_type, sub_type, value);
