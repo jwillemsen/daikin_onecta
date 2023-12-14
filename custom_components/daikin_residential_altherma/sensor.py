@@ -113,20 +113,20 @@ class DaikinEnergySensor(SensorEntity):
 
     def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
         self._device = device
-        self._icon = icon
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
         self._operation_mode = operation_mode
         self._period = period
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._name = f"{mpt} {operation_mode.capitalize()} {periodName} Energy Consumption"
+        self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Energy Consumption"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
         self._attr_unit_of_measurement = ENERGY_KILO_WATT_HOUR
         self._attr_state_class = STATE_CLASS_TOTAL_INCREASING
         self._attr_device_class = DEVICE_CLASS_ENERGY
-        _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
+        self._attr_icon = icon
+        _LOGGER.info("Device '%s' '%s' supports sensor '%s'", self._embedded_id, device.name, self._attr_name)
 
     @property
     def state(self):
@@ -159,19 +159,9 @@ class DaikinEnergySensor(SensorEntity):
         return energy_value
 
     @property
-    def icon(self):
-        """Return the icon of this device."""
-        return self._icon
-
-    @property
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
 
     @property
     def device_info(self):
@@ -187,33 +177,26 @@ class DaikinValueSensor(SensorEntity):
     def __init__(self, device: Appliance, embedded_id, management_point_type, sub_type, value) -> None:
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", management_point_type, sub_type, value);
         self._device = device
-        self._icon = ""
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
         self._sub_type = sub_type
         self._value = value
-        self._attr_entity_category = None
-        self._unit_of_measurement = ""
-        self._state_class = None
-        self._device_class = None
-        self._entity_registry_enabled_default = True
-        self._entity_category = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info("No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING", value);
         else:
-            self._icon = sensor_settings[CONF_ICON]
-            self._device_class = sensor_settings[CONF_DEVICE_CLASS]
-            self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-            self._state_class = sensor_settings[CONF_STATE_CLASS]
-            self._entity_category = sensor_settings[ENTITY_CATEGORY]
+            self._attr_icon = sensor_settings[CONF_ICON]
+            self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
+            self._attr_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
+            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+            self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
+            self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall('[A-Z][^A-Z]*', myname)
-        self._name = f"{mpt} {' '.join(readable)}"
+        self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
+        _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._attr_name)
 
     @property
     def state(self):
@@ -232,41 +215,9 @@ class DaikinValueSensor(SensorEntity):
         return result
 
     @property
-    def device_class(self):
-        """Return the class of this device."""
-        return self._device_class
-
-    @property
-    def icon(self):
-        """Return the icon of this device."""
-        return self._icon
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return self._unit_of_measurement
-
-    @property
-    def state_class(self):
-        return self._state_class
-
-    @property
-    def entity_category(self):
-        return self._entity_category
-
-    @property
-    def entity_registry_enabled_default(self):
-        return self._entity_registry_enabled_default
-
-    @property
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
-
-    @property
-    def name(self):
-        """Return the name of the sensor."""
-        return self._name
 
     @property
     def device_info(self):
