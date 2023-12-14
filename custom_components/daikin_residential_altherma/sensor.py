@@ -118,10 +118,14 @@ class DaikinEnergySensor(SensorEntity):
         self._management_point_type = management_point_type
         self._operation_mode = operation_mode
         self._period = period
-        self._attr_entity_category = None
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         self._name = f"{mpt} {operation_mode.capitalize()} {periodName} Energy Consumption"
+        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._operation_mode}_{self._period}"
+        self._attr_entity_category = None
+        self._attr_unit_of_measurement = ENERGY_KILO_WATT_HOUR
+        self._attr_state_class = STATE_CLASS_TOTAL_INCREASING
+        self._attr_device_class = DEVICE_CLASS_ENERGY
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property
@@ -155,32 +159,9 @@ class DaikinEnergySensor(SensorEntity):
         return energy_value
 
     @property
-    def unique_id(self):
-        """Return a unique ID."""
-        return f"{self._device.getId()}_{self._management_point_type}_{self._operation_mode}_{self._period}"
-
-    @property
-    def device_class(self):
-        """Return the class of this device."""
-        return DEVICE_CLASS_ENERGY
-
-    @property
-    def entity_category(self):
-        return None
-
-    @property
     def icon(self):
         """Return the icon of this device."""
         return self._icon
-
-    @property
-    def unit_of_measurement(self):
-        """Return the unit of measurement."""
-        return ENERGY_KILO_WATT_HOUR
-
-    @property
-    def state_class(self):
-        return STATE_CLASS_TOTAL_INCREASING
 
     @property
     def available(self):
@@ -231,6 +212,7 @@ class DaikinValueSensor(SensorEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall('[A-Z][^A-Z]*', myname)
         self._name = f"{mpt} {' '.join(readable)}"
+        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
         _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._name)
 
     @property
@@ -248,11 +230,6 @@ class DaikinValueSensor(SensorEntity):
                     result = cd.get("value")
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
         return result
-
-    @property
-    def unique_id(self):
-        """Return a unique ID."""
-        return f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
 
     @property
     def device_class(self):
