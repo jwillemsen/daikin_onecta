@@ -126,6 +126,7 @@ class DaikinEnergySensor(SensorEntity):
         self._attr_state_class = STATE_CLASS_TOTAL_INCREASING
         self._attr_device_class = DEVICE_CLASS_ENERGY
         self._attr_icon = icon
+        self._attr_has_entity_name = True
         _LOGGER.info("Device '%s' '%s' supports sensor '%s'", self._embedded_id, device.name, self._attr_name)
 
     @property
@@ -181,6 +182,7 @@ class DaikinValueSensor(SensorEntity):
         self._management_point_type = management_point_type
         self._sub_type = sub_type
         self._value = value
+        self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info("No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING", value);
