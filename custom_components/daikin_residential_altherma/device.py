@@ -19,9 +19,15 @@ class DaikinResidentialDevice:
         self.api = apiInstance
         self.setJsonData(jsonData)
         # get name from climateControl
-        self.name = self.getName()
         self._available = True
         self.daikin_data = jsonData
+        self.name = self.daikin_data["deviceModel"]
+
+        if self.daikin_data["managementPoints"] is not None:
+            for management_point in self.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if management_point_type == "climateControl":
+                    self.name = management_point["name"]["value"]
 
         _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)", self.name, self.getId())
 
@@ -76,8 +82,12 @@ class DaikinResidentialDevice:
         return self.daikin_data["id"]
 
     def getName(self):
-        """Get Daikin Device UUID."""
-        return self.daikin_data["deviceModel"]
+        if self.daikin_data["managementPoints"] is not None:
+            for management_point in self.daikin_data["managementPoints"]:
+                management_point_type = management_point["managementPointType"]
+                if management_point_type == "climateControl":
+                    self.name = management_point["name"]["value"]
+        return self.name
 
     def getDescription(self):
         """Get the original Daikin Device Description."""
@@ -93,7 +103,7 @@ class DaikinResidentialDevice:
         return
         # TODO: Enhance self method to also allow to get some partial data
         # like only one managementPoint or such; needs checking how to request
-        _LOGGER.info("DEV UPDATE " + self.name)
+        _LOGGER.info("DEV UPDATE %s", self.getName())
         desc = await self.api.doBearerRequest("/v1/gateway-devices/" + self.getId())
         self.setJsonData(desc)
 

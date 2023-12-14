@@ -100,7 +100,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                         _LOGGER.info("Device '%s:%s' provides mode %s %s supports period %s", device.name, embedded_id, management_point_type, mode, period)
                                         periodName = SENSOR_PERIODS[period]
                                         sensor = f"{device.name} {management_point_type} {mode} {periodName}"
-                                        _LOGGER.info("Proposing sensor %s", sensor)
+                                        _LOGGER.info("Proposing sensor '%s'", sensor)
                                         sensorv = DaikinEnergySensor (device, embedded_id, management_point_type, mode,  period, icon)
                                         sensors.append(sensorv)
                                 else:
@@ -124,7 +124,7 @@ class DaikinEnergySensor(SensorEntity):
         self._attr_entity_category = None
         self._attr_icon = icon
         self._attr_has_entity_name = True
-        _LOGGER.info("Device '%s' '%s' supports sensor '%s'", self._embedded_id, device.name, self._attr_name)
+        _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
     @property
     def state(self):
@@ -210,7 +210,7 @@ class DaikinValueSensor(SensorEntity):
         readable = re.findall('[A-Z][^A-Z]*', myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        _LOGGER.info("Device '%s'  %s supports sensor '%s'", self._embedded_id, device.name, self._attr_name)
+        _LOGGER.info("Device '%s:%s supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
     @property
     def state(self):

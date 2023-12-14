@@ -593,10 +593,10 @@ class DaikinClimate(ClimateEntity):
             daikin_mode = HA_PRESET_TO_DAIKIN[mode]
             preset = cc.get(daikin_mode)
             if preset is not None and preset.get("value") is not None:
-                _LOGGER.info("Device support %s %s", daikin_mode, mode)
+                _LOGGER.info("Device '%s' support %s %s", self._device.name, daikin_mode, mode)
                 supported_preset_modes.append(mode)
             else:
-                _LOGGER.info("Device doesn't support %s %s", daikin_mode, mode)
+                _LOGGER.info("Device '%s' doesn't support %s %s", self._device.name, daikin_mode, mode)
 
         _LOGGER.info("Support_preset_modes {}: {}".format(mode,supported_preset_modes))
 
