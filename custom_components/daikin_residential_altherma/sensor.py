@@ -122,7 +122,6 @@ class DaikinEnergySensor(SensorEntity):
         self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Energy Consumption"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
-        self._attr_unit_of_measurement = ENERGY_KILO_WATT_HOUR
         self._attr_state_class = STATE_CLASS_TOTAL_INCREASING
         self._attr_device_class = DEVICE_CLASS_ENERGY
         self._attr_icon = icon
@@ -169,6 +168,10 @@ class DaikinEnergySensor(SensorEntity):
         """Return a device description for device registry."""
         return self._device.device_info()
 
+    @property
+    def unit_of_measurement(self):
+        return ENERGY_KILO_WATT_HOUR
+
     async def async_update(self):
         """Retrieve latest state."""
         await self._device.api.async_update()
@@ -182,6 +185,7 @@ class DaikinValueSensor(SensorEntity):
         self._management_point_type = management_point_type
         self._sub_type = sub_type
         self._value = value
+        self._unit_of_measurement = None
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
@@ -189,7 +193,7 @@ class DaikinValueSensor(SensorEntity):
         else:
             self._attr_icon = sensor_settings[CONF_ICON]
             self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
-            self._attr_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
+            self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
@@ -220,6 +224,10 @@ class DaikinValueSensor(SensorEntity):
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
+
+    @property
+    def unit_of_measurement(self):
+        return self._unit_of_measurement
 
     @property
     def device_info(self):
