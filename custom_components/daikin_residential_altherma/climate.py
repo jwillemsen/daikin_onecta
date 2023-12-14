@@ -498,9 +498,13 @@ class DaikinClimate(ClimateEntity):
                 horizontal = fanDirection.get("horizontal")
                 vertical = fanDirection.get("vertical")
                 if horizontal is not None:
-                    swingModes.append(SWING_HORIZONTAL)
+                    for mode in horizontal["currentMode"]["values"]:
+                        if mode == "swing":
+                            swingModes.append(SWING_HORIZONTAL)
                 if vertical is not None:
-                    swingModes.append(SWING_VERTICAL)
+                    for mode in vertical["currentMode"]["values"]:
+                        if mode == "swing":
+                            swingModes.append(SWING_VERTICAL)
                     if horizontal is not None:
                         swingModes.append(SWING_BOTH)
         _LOGGER.info("Support swing modes %s", swingModes)
@@ -510,26 +514,34 @@ class DaikinClimate(ClimateEntity):
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
         operationmode = cc["operationMode"]["value"]
-        new_hMode = (
-            "swing"
-            if swing_mode == SWING_HORIZONTAL or swing_mode == SWING_BOTH
-            else "stop"
-        )
-        res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
-        if res is False:
-            _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_hMode)
-        else:
-            fanControl["value"]["operationModes"][operationmode]["fanDirection"]["horizontal"]["currentMode"]["value"] = new_hMode
-        new_vMode = (
-            "swing"
-            if swing_mode == SWING_VERTICAL or swing_mode == SWING_BOTH
-            else "stop"
-        )
-        res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/vertical/currentMode", new_vMode)
-        if res is False:
-            _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_vMode)
-        else:
-            fanControl["value"]["operationModes"][operationmode]["fanDirection"]["vertical"]["currentMode"]["value"] = new_vMode
+        if fanControl is not None:
+            operationmode = cc["operationMode"]["value"]
+            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
+            if fanDirection is not None:
+                horizontal = fanDirection.get("horizontal")
+                vertical = fanDirection.get("vertical")
+                if horizontal is not None:
+                    new_hMode = (
+                        "swing"
+                        if swing_mode == SWING_HORIZONTAL or swing_mode == SWING_BOTH
+                        else "stop"
+                    )
+                    res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
+                    if res is False:
+                        _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_hMode)
+                    else:
+                        fanControl["value"]["operationModes"][operationmode]["fanDirection"]["horizontal"]["currentMode"]["value"] = new_hMode
+                if vertical is not None:
+                    new_vMode = (
+                        "swing"
+                        if swing_mode == SWING_VERTICAL or swing_mode == SWING_BOTH
+                        else "stop"
+                    )
+                    res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/vertical/currentMode", new_vMode)
+                    if res is False:
+                        _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_vMode)
+                    else:
+                        fanControl["value"]["operationModes"][operationmode]["fanDirection"]["vertical"]["currentMode"]["value"] = new_vMode
 
         return res
 
