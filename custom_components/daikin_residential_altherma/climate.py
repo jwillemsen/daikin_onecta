@@ -174,13 +174,11 @@ class DaikinClimate(ClimateEntity):
         cc = self.climateControl()
         # Check if we have a temperatureControl
         temperatureControl = cc.get("temperatureControl")
-        _LOGGER.info("Climate: Device temperatureControl %s", temperatureControl)
         if temperatureControl is not None:
             operationMode = cc.get("operationMode").get("value")
             setpoint = temperatureControl["value"]["operationModes"][operationMode]["setpoints"].get(self._setpoint)
             _LOGGER.info("Climate: %s operation mode %s has setpoint %s", self._setpoint, operationMode, setpoint)
         return setpoint
-
 
     # Return the dictionary fanControl for the current operationMode
     def fanControl(self):
@@ -240,7 +238,9 @@ class DaikinClimate(ClimateEntity):
                 supported_features |= SUPPORT_FAN_MODE
             if fanControl["value"]["operationModes"][operationmode].get("fanDirection") is not None:
                 supported_features |= SUPPORT_SWING_MODE
-        _LOGGER.info("Support features %s", supported_features)
+
+        _LOGGER.info("Devices '%s' supports features %s", self._device.name, supported_features)
+
         return supported_features
 
     @property
@@ -593,12 +593,9 @@ class DaikinClimate(ClimateEntity):
             daikin_mode = HA_PRESET_TO_DAIKIN[mode]
             preset = cc.get(daikin_mode)
             if preset is not None and preset.get("value") is not None:
-                _LOGGER.info("Device '%s' support %s %s", self._device.name, daikin_mode, mode)
                 supported_preset_modes.append(mode)
-            else:
-                _LOGGER.info("Device '%s' doesn't support %s %s", self._device.name, daikin_mode, mode)
 
-        _LOGGER.info("Support_preset_modes {}: {}".format(mode,supported_preset_modes))
+        _LOGGER.info("Devices '%s' supports pre preset_modes %s", self._device.name, format(supported_preset_modes))
 
         return supported_preset_modes
 

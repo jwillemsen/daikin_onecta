@@ -61,7 +61,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 # For all values provide a "value" we provide a sensor
                 for value in management_point:
                     vv = management_point.get(value)
-                    _LOGGER.info("value: %s %s %s", value, type(value), type(vv))
                     if type(vv) == dict:
                         value_value = vv.get("value")
                         if value_value is not None and type(value_value) != dict:
