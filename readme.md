@@ -6,7 +6,7 @@ Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat P
 
 This integration can coexist with the [daiking_residential](https://github.com/rospogrigio/daikin_residential) integration.
 
-This integration is maintained by [@speleolontra](https://github.com/speleolontra) and [@jwillemsen](https://github.com/jwillemsen).
+This integration is maintained by [@jwillemsen](https://github.com/jwillemsen).
 
 > [!IMPORTANT] 
 > Starting with v3.0.0 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
