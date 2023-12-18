@@ -58,19 +58,18 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                         values = vv.get("values", [])
                         if value_value is not None and settable == True and "on" in values and "off" in values:
                             _LOGGER.info("Device '%s' provides switch on/off '%s'", device.name, value)
-                            sensor2 = DaikinSwitch(device, embedded_id, management_point_type, None, value)
+                            sensor2 = DaikinSwitch(device, embedded_id, management_point_type, value)
                             sensors.append(sensor2)
 
     async_add_entities(sensors)
 
 class DaikinSwitch(ToggleEntity):
 
-    def __init__(self, device: Appliance, embedded_id, management_point_type, sub_type, value) -> None:
-        _LOGGER.info("DaikinSwitch '%s' '%s' '%s'", management_point_type, sub_type, value);
+    def __init__(self, device: Appliance, embedded_id, management_point_type, value) -> None:
+        _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value);
         self._device = device
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
-        self._sub_type = sub_type
         self._value = value
         self._unit_of_measurement = None
         self._device_class = None
@@ -90,18 +89,8 @@ class DaikinSwitch(ToggleEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall('[A-Z][^A-Z]*', myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
         _LOGGER.info("Device '%s:%s supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
-
-    def climateControl(self):
-        cc = None
-        supported_management_point_types = {'climateControl'}
-        if self._device.daikin_data["managementPoints"] is not None:
-            for management_point in self._device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if  management_point_type in supported_management_point_types:
-                    cc = management_point
-        return cc
 
     @property
     def available(self):
@@ -115,12 +104,11 @@ class DaikinSwitch(ToggleEntity):
         for management_point in self._device.daikin_data["managementPoints"]:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
-                if self._sub_type is not None:
-                    management_point = management_point.get(self._sub_type).get("value")
-                cd = management_point.get(self._value)
-                if cd is not None:
-                    _LOGGER.info("Device '%s' provides value %s", self._device.name, self._value)
-                    result = cd.get("value")
+                if self._management_point_type == management_point_type:
+                  cd = management_point.get(self._value)
+                  if cd is not None:
+                      _LOGGER.info("Device '%s' provides value %s", self._device.name, self._value)
+                      result = cd.get("value")
         _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result == "on"
 
@@ -136,20 +124,26 @@ class DaikinSwitch(ToggleEntity):
 
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
-        cc = self.climateControl()
         result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
         if result is False:
           _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
         else:
-           cc[self._value]["value"] == "on"
+          for management_point in self._device.daikin_data["managementPoints"]:
+              if self._embedded_id == management_point["embeddedId"]:
+                  management_point_type = management_point["managementPointType"]
+                  if self._management_point_type == management_point_type:
+                    management_point[self._value]["value"] == "on"
         return result
 
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
-        cc = self.climateControl()
         result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "off")
         if result is False:
           _LOGGER.warning("Device '%s' problem setting '%s' to off", self._device.name, self._value)
         else:
-           cc[self._value]["value"] == "off"
+          for management_point in self._device.daikin_data["managementPoints"]:
+              if self._embedded_id == management_point["embeddedId"]:
+                  management_point_type = management_point["managementPointType"]
+                  if self._management_point_type == management_point_type:
+                    management_point[self._value]["value"] == "off"
         return result
