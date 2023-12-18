@@ -55,4 +55,4 @@ logger:
 
 # Thanks to:
 
-This code is based on [@rospogrigio](https://github.com/rospogrigio) work that in turn is based on [@Apollon77](https://github.com/Apollon77) work, in finding a way to retrieve the token set, and to send the HTTP commands over the cloud. This integration would not exist without their precious job, my job was to try and debug Rospogrigio's code to adapt at JSON from Altherma 3 controlled by Daikin Residential App.
+This code is based on [@rospogrigio](https://github.com/rospogrigio) and [@speleolontra](https://github.com/speleolontra) work that in turn is based on [@Apollon77](https://github.com/Apollon77) work.
