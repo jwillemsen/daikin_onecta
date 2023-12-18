@@ -2,7 +2,6 @@
   "domain": "daikin_residential_altherma",
   "name": "Daikin Residential Controller including Altherma",
   "codeowners": [
-    "@speleolontra",
     "@jwillemsen"
   ],
   "config_flow": true,
