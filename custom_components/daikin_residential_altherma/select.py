@@ -122,3 +122,7 @@ class DaikinDemandSelect(SelectEntity):
                           opt.append(mode)
       return opt
 
+    @property
+    def device_info(self):
+        """Return a device description for device registry."""
+        return self._device.device_info()
