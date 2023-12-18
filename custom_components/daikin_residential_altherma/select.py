@@ -47,11 +47,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
                     _LOGGER.info("Device '%s' provides demandControl", device.name)
                     sensor2 = DaikinDemandSelect(device, embedded_id, management_point_type, "demandControl")
                     sensors.append(sensor2)
-                    # if type(vv) == dict:
-                    #     value_value = vv.get("value")
-                    #     settable = vv.get("settable", False)
-                    #     values = vv.get("values", [])
-                    #     if value_value is not None and settable == True and "on" in values and "off" in values:
 
     async_add_entities(sensors)
 
