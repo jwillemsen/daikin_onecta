@@ -29,19 +29,17 @@ API_KEY2 = "3_QebFXhxEWDc8JhJdBWmvUd1e0AaWJCISbqe4QIHrk_KzNVJFJ4xsJ2UZbl8OIIFY"
 
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
 
-
 class DaikinApi:
     """Daikin Residential API."""
 
     def __init__(self, hass, entry):
-        """Initialize a new Daikin Residential API."""
-        _LOGGER.debug("Initialing Daikin Residential API...")
+        """Initialize a new Daikin Residential Altherma API."""
+        _LOGGER.debug("Initialing Daikin Residential Altherma API...")
         self.hass = hass
         self._config_entry = entry
         self.tokenSet = None
 
         if entry is not None:
-            #print("DAMIANO %s", entry.data[CONF_TOKENSET])
             self.tokenSet = entry.data[CONF_TOKENSET].copy()
 
         configuration = {
@@ -65,7 +63,7 @@ class DaikinApi:
         # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
 
-        _LOGGER.info("Daikin Residential API initialized.")
+        _LOGGER.info("Daikin Residential Altherma API initialized.")
 
     async def doBearerRequest(self, resourceUrl, options=None, refreshed=False):
         if self.tokenSet is None:
@@ -490,14 +488,7 @@ class DaikinApi:
         res = {}
         for dev_data in self.json_data or []:
             device = Appliance(dev_data, self)
-            gateway_model = device.get_value("gateway", "modelInfo")
-            device_model = device.desc["deviceModel"]
-            _LOGGER.info("Found device '%s' with gateway model '%s'", device_model, gateway_model)
-            # Only process specific models for this integration
-            if device_model in ("Altherma", "NDJ"):
-                res[dev_data["id"]] = device
-            else:
-                _LOGGER.info("Device '%s' with gateway model '%s' is filtered out because it is not a supported model", device_model, gateway_model)
+            res[dev_data["id"]] = device
         return res
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
@@ -512,8 +503,6 @@ class DaikinApi:
 
         self.json_data = await self.getCloudDeviceDetails()
         for dev_data in self.json_data or []:
-            #print("DAMIANO dev_data %s", dev_data)
-            #print("DAMIANO 'self.hass.data[DOMAIN][DAIKIN_DEVICES]' %s", self.hass.data[DOMAIN][DAIKIN_DEVICES])
 
             if dev_data["id"] in self.hass.data[DOMAIN][DAIKIN_DEVICES]:
                 self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(

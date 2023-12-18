@@ -1,6 +1,6 @@
 {
   "domain": "daikin_residential_altherma",
-  "name": "Daikin Residential Controller for Altherma",
+  "name": "Daikin Residential Controller including Altherma",
   "codeowners": [
     "@speleolontra",
     "@jwillemsen"
@@ -13,5 +13,5 @@
   "requirements": [
      "oic==1.6.0"
   ],
-  "version": "2.8.2"
+  "version": "3.0.0"
 }

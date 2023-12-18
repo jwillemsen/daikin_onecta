@@ -6,12 +6,18 @@
         "step": {
             "user": {
                 "data": {
-                    "host": "Host",
+                    "email": "Email adres",
                     "password": "Wachtwoord"
                 },
-                "description": "Voer het IP-adres van uw Daikin AC in.",
-                "title": "Daikin AC instellen"
+                "description": "Voer het email adres en wachtwoord in voor het inloggen bij Daikin.",
+                "title": "Daikin Residential Controller AC instellen"
             }
+        }
+    },
+    "services": {
+        "reload": {
+            "name": "Reload",
+            "description": "Ophalen van nieuwe tokens bij Daikin."
         }
     }
 }
