@@ -9,9 +9,11 @@ This integration is maintained by [@jwillemsen](https://github.com/jwillemsen).
 > [!IMPORTANT] 
 > Starting with v3.0.0 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
 
+<!---
 # Installation using HACS:
 
 Install with [HACS](https://hacs.xyz): Search for "Daikin Residential for Altherma 3" in the default repository,
+-->
 
 # Manual Installation
 
