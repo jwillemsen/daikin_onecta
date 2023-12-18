@@ -1,6 +1,6 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 
-# Daikin Residential including for Altherma 3 Heat Pump
+# Daikin Residential including Altherma 3 Heat Pump
 
 Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat Pump.
 
