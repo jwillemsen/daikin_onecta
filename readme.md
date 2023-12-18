@@ -55,4 +55,4 @@ logger:
 
 # Thanks to:
 
-This code is based on [@rospogrigio](https://github.com/rospogrigio) and [@speleolontra](https://github.com/speleolontra) work that in turn is based on [@Apollon77](https://github.com/Apollon77) work.
+This code is based on [@rospogrigio](https://github.com/rospogrigio) and [@speleolontra](https://github.com/speleolontra) work which is based on [@Apollon77](https://github.com/Apollon77) work.
