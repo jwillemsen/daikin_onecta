@@ -24,8 +24,6 @@ SERVICE_PULL_DEVICES = "pull_devices"
 SIGNAL_DELETE_ENTITY = "daikin_delete"
 SIGNAL_UPDATE_ENTITY = "daikin_update"
 
-TOKENSET_FILE = "tokenset.json"
-
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
 
 COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
