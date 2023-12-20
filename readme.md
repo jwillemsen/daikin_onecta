@@ -35,6 +35,21 @@ daikin_residential_altherma:
   password: 'your_pwd'
 ```
 
+# Known Issues and troubleshooting
+
+- I am getting the following error when adding the integration: **Failed to retrieve Access Token: ('Login failed: %s', Exception('Unknown Login error: Login Failed Captcha Required'))**
+
+**Solution:** when you have logged in to Daikin services, you have probably used the "Login with Google account" or other service. Try registering on Daikin platform, or register another account and share the devices with that account, then use that second account to configure this Integration.
+
+- I am getting the following error when adding the integration: **Failed to retrieve Access Token: ('Failed to retrieve access token: %s', IATError('Issued in the future'))**
+
+**Solution:** probably your system time is too out of sync with the token issuer's one. Make sure your system datetime is up-to-date, and in general it is advised to connect to an NTP server to keep your datetime synced.
+
+- I am having other general network problems that don't allow me to get or update the connection token
+
+**Solution:** make sure you don't have issues connecting to the address `daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com` or similar. In general, check if you have any web filtering or adblocking system that might interfere with these connections: try to disable them, and if it starts working then try whitelisting this address or similar. Check if you have ipv6 enabled, some users report problems when using ipv6, try to disable ipv6.
+
+
 # Setting the log level
 
 If you'd like to see more granular logs, to investigate the communication or for other debugging purposes, you can set the log level in the Home Assistant config. The following lines can be added to set the overall log level for the component:
