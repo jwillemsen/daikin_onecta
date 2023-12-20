@@ -1,4 +1,7 @@
+[![](https://img.shields.io/github/release/jwillemsen/daikin_residential_altherma/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_residential_altherma/releases)
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
+[![](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
+
 
 # Daikin Residential including Altherma 3 Heat Pump
 
@@ -6,7 +9,7 @@ Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat P
 
 This integration is maintained by [@jwillemsen](https://github.com/jwillemsen).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > Starting with v3.0.0 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
 
 <!---
