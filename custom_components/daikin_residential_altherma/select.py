@@ -91,10 +91,30 @@ class DaikinDemandSelect(SelectEntity):
         return res
 
     async def async_select_option(self, option: str) -> None:
-        """Change the selected option."""
-        #await self.device.set_charge_mode(option)
-        #self.async_schedule_update_ha_state()
-        # TODO
+        mode = None
+        for management_point in self._device.daikin_data["managementPoints"]:
+            if self._embedded_id == management_point["embeddedId"]:
+                management_point_type = management_point["managementPointType"]
+                if self._management_point_type == management_point_type:
+                    vv = management_point[self._value]
+                    mode = vv["value"]["currentMode"]
+        new_currentmode = "fixed"
+        if option in ("auto", "off"):
+            new_currentmode = option
+        res = await self._device.set_path(self._device.getId(), self._embedded_id, "demandControl", f"/currentMode", new_currentmode)
+        if res is False:
+            _LOGGER.warning("Device '%s' problem setting demand control to %s", self._device.name, option)
+        else:
+            mode["value"] = new_currentmode
+
+        if new_currentmode == "fixed":
+            res = await self._device.set_path(self._device.getId(), self._embedded_id, "demandControl", f"/modes/fixed", int(option))
+            if res is False:
+                _LOGGER.warning("Device '%s' problem setting demand control to fixed value %s", self._device.name, option)
+            else:
+                vv["value"]["modes"]["fixed"]["value"] = option
+
+        return res
 
     @property
     def options(self):
