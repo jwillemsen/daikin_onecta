@@ -2,36 +2,23 @@
     "config": {
         "abort": {
             "already_configured": "L'appareil est d\u00e9j\u00e0 configur\u00e9",
-            "cannot_connect": "\u00c9chec de connexion \u00e0 Daikin Cloud",
-            "init_failed": "\u00c9chec de l'initialisation de l'API Daikin.",
-            "token_retrieval_failed": "\u00c9chec de la r\u00e9cup\u00e9ration des jetons d'acc\u00e8s."
+            "cannot_connect": "\u00c9chec de connexion"
         },
         "error": {
-            "cannot_connect": "\u00c9chec de la connexion",
             "device_fail": "Erreur inattendue",
-            "device_timeout": "\u00c9chec de la connexion",
+            "device_timeout": "Echec de la connexion",
             "forbidden": "Authentification invalide"
-            "invalid_auth": "Authentification invalide",
-            "unknown": "Erreur inattendue"
         },
         "step": {
             "user": {
                 "data": {
-                    "email": "Adresse Email",
-                    "password": "Mot de Passe"
+                    "host": "Nom d'h\u00f4te ou adresse IP",
+                    "key": "Cl\u00e9 d'authentification (utilis\u00e9e uniquement par les appareils BRP072C/Zena)",
+                    "password": "Mot de passe de l'appareil (utilis\u00e9 uniquement par les appareils SKYFi)"
                 },
-                "description": "Saisissez l'adresse Email et le mot de passe utilis\u00e9s pour vous connecter \u00e0 Daikin Cloud, puis appuyez sur Soumettre.",
-                "title": "Configurer le contr\u00f4leur Daikin AC"
+                "description": "Saisissez l'adresse IP de votre Daikin AC. \n\n Notez que Cl\u00e9 d'API et Mot de passe sont utilis\u00e9s respectivement par les p\u00e9riph\u00e9riques BRP072Cxx et SKYFi.",
+                "title": "Configurer Daikin AC"
             }
-        }
-    }
-}
-{
-
-    "services": {
-        "reload": {
-            "name": "Recharger",
-            "description": "R\u00e9cup\u00e9rer le nouveau jeu de jetons d'acc\u00e8s en se reconnectant \u00e0 Daikin Cloud."
         }
     }
 }
