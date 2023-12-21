@@ -477,13 +477,20 @@ class DaikinClimate(ClimateEntity):
                     h = horizontal["currentMode"]["value"]
                 if vertical is not None:
                     v = vertical["currentMode"]["value"]
-        if h != "stop":
+        if h == "swing":
             swingMode = SWING_HORIZONTAL
-        if v != "stop":
-            if h != "stop":
+            if v == "swing":
                 swingMode = SWING_BOTH
             else:
                 swingMode = SWING_VERTICAL
+        if v == "floorHeatingAirflow":
+            swingMode = "floorHeatingAirflow"
+        if v == "windNice":
+            if h == "swing":
+                swingMode = "Comfort Airflow and Horizontal"
+            else:
+                swingMode = "Comfort Airflow"
+
         return swingMode
 
     @property
@@ -501,12 +508,18 @@ class DaikinClimate(ClimateEntity):
                     for mode in horizontal["currentMode"]["values"]:
                         if mode == "swing":
                             swingModes.append(SWING_HORIZONTAL)
+                        if mode == "floorHeatingAirflow":
+                            swingModes.append(mode)
                 if vertical is not None:
                     for mode in vertical["currentMode"]["values"]:
                         if mode == "swing":
                             swingModes.append(SWING_VERTICAL)
-                    if horizontal is not None:
-                        swingModes.append(SWING_BOTH)
+                            if horizontal is not None:
+                                swingModes.append(SWING_BOTH)
+                        if mode == "windNice":
+                            swingModes.append("Comfort Airflow")
+                            if horizontal is not None:
+                                swingModes.append("Comfort Airflow and Horizontal")
         _LOGGER.info("Support swing modes %s", swingModes)
         return swingModes
 
@@ -521,22 +534,22 @@ class DaikinClimate(ClimateEntity):
                 horizontal = fanDirection.get("horizontal")
                 vertical = fanDirection.get("vertical")
                 if horizontal is not None:
-                    new_hMode = (
-                        "swing"
-                        if swing_mode in (SWING_HORIZONTAL, SWING_BOTH)
-                        else "stop"
-                    )
+                    new_hMode = "stop"
+                    if swing_mode in (SWING_HORIZONTAL, SWING_BOTH, "Comfort Airflow and Horizontal"):
+                        new_hMode = "swing"
                     res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
                     if res is False:
                         _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_hMode)
                     else:
                         fanControl["value"]["operationModes"][operationmode]["fanDirection"]["horizontal"]["currentMode"]["value"] = new_hMode
                 if vertical is not None:
-                    new_vMode = (
-                        "swing"
-                        if swing_mode in (SWING_VERTICAL, SWING_BOTH)
-                        else "stop"
-                    )
+                    new_vMode = "stop"
+                    if swing_mode in (SWING_VERTICAL, SWING_BOTH):
+                        new_vMode = "swing"
+                    if swing_mode in ("floorHeatingAirflow"):
+                        new_vMode = "floorHeatingAirflow"
+                    if swing_mode in ("Comfort Airflow", "Comfort Airflow and Horizontal"):
+                        new_vMode = "windNice"
                     res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/vertical/currentMode", new_vMode)
                     if res is False:
                         _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_vMode)
