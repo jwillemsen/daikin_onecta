@@ -204,12 +204,12 @@ class DaikinClimate(ClimateEntity):
             for management_point in self._device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if  management_point_type in supported_management_point_types:
-                    # Check if we have a temperaturControl
+                    # Check if we have a sensoryData
                     sensoryData = management_point.get("sensoryData")
                     _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
                     if sensoryData is not None:
                         sensoryData = sensor = sensoryData.get("value").get(self._setpoint)
-                        _LOGGER.info("Climate: %s operation mode %s has sensoryData %s", self._setpoint, sensoryData)
+                        _LOGGER.info("Climate: %s has sensoryData %s", self._setpoint, sensoryData)
         return sensoryData
 
     @property
