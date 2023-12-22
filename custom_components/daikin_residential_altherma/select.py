@@ -36,7 +36,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        managementPoints = device.daikin_data("managementPoints", [])
+        managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             embedded_id = management_point["embeddedId"]
