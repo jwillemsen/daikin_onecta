@@ -23,7 +23,7 @@ class DaikinResidentialDevice:
         self.daikin_data = jsonData
         self.name = self.daikin_data["deviceModel"]
 
-        if self.daikin_data["managementPoints"] is not None:
+        if self.daikin_data.get("managementPoints") is not None:
             for management_point in self.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if management_point_type == "climateControl":
