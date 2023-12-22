@@ -76,7 +76,7 @@ class DaikinDemandSelect(SelectEntity):
     def current_option(self):
         """Return the state of the sensor."""
         res = None
-        managementPoints = self.daikin_data.get("managementPoints", [])
+        managementPoints =  self._device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
