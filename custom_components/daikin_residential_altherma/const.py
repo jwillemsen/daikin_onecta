@@ -14,6 +14,7 @@ from homeassistant.const import (
     TEMP_CELSIUS,
     PERCENTAGE,
     SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
+    REVOLUTIONS_PER_MINUTE,
 )
 
 from homeassistant.components.sensor import (
@@ -296,6 +297,14 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
     },
+    "deltaD": {
+        CONF_DEVICE_CLASS: DEVICE_CLASS_TEMPERATURE,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: TEMP_CELSIUS,
+        CONF_ICON: "",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
     "streamerMode": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
@@ -317,6 +326,14 @@ VALUE_SENSOR_MAPPING = {
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:leaf",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "fanMotorRotationSpeed": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+        CONF_UNIT_OF_MEASUREMENT: REVOLUTIONS_PER_MINUTE,
+        CONF_ICON: "mdi:fan",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
     },
