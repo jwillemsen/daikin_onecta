@@ -33,13 +33,13 @@ async def async_setup_entry(hass, entry, async_add_entities):
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {'domesticHotWaterTank', 'domesticHotWaterFlowThrough'}
         """ When the device has a domesticHotWaterTank we add a water heater """
-        if device.daikin_data["managementPoints"] is not None:
-            for management_point in device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if  management_point_type in supported_management_point_types:
-                    async_add_entities([DaikinWaterTank(device)], update_before_add=True)
-                else:
-                    _LOGGER.info("'%s' has not a tank management point, ignoring as water heater", management_point_type)
+        managementPoints = device.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            if  management_point_type in supported_management_point_types:
+                async_add_entities([DaikinWaterTank(device)], update_before_add=True)
+            else:
+                _LOGGER.info("'%s' has not a tank management point, ignoring as water heater", management_point_type)
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""

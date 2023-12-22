@@ -44,22 +44,22 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
     #sensor.altherma_daily_heat_energy_consumption, altherma_daily_heat_tank_energy_consumption
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        if device.daikin_data["managementPoints"] is not None:
-            for management_point in device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                embedded_id = management_point["embeddedId"]
+        managementPoints = device.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            embedded_id = management_point["embeddedId"]
 
-                # For all values provide a "value" we provide a sensor
-                for value in management_point:
-                    vv = management_point.get(value)
-                    if type(vv) == dict:
-                        value_value = vv.get("value")
-                        settable = vv.get("settable", False)
-                        values = vv.get("values", [])
-                        if value_value is not None and settable == True and "on" in values and "off" in values:
-                            _LOGGER.info("Device '%s' provides switch on/off '%s'", device.name, value)
-                            sensor2 = DaikinSwitch(device, embedded_id, management_point_type, value)
-                            sensors.append(sensor2)
+            # For all values provide a "value" we provide a sensor
+            for value in management_point:
+                vv = management_point.get(value)
+                if type(vv) == dict:
+                    value_value = vv.get("value")
+                    settable = vv.get("settable", False)
+                    values = vv.get("values", [])
+                    if value_value is not None and settable == True and "on" in values and "off" in values:
+                        _LOGGER.info("Device '%s' provides switch on/off '%s'", device.name, value)
+                        sensor2 = DaikinSwitch(device, embedded_id, management_point_type, value)
+                        sensors.append(sensor2)
 
     async_add_entities(sensors)
 
@@ -90,7 +90,7 @@ class DaikinSwitch(ToggleEntity):
         readable = re.findall('[A-Z][^A-Z]*', myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
-        _LOGGER.info("Device '%s:%s supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
+        _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
     @property
     def available(self):
@@ -101,14 +101,15 @@ class DaikinSwitch(ToggleEntity):
     def is_on(self):
         """Return the state of the switch."""
         result = None
-        for management_point in self._device.daikin_data["managementPoints"]:
+        managementPoints = self._device.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._management_point_type == management_point_type:
-                  cd = management_point.get(self._value)
-                  if cd is not None:
-                      _LOGGER.info("Device '%s' provides value %s", self._device.name, self._value)
-                      result = cd.get("value")
+                cd = management_point.get(self._value)
+                if cd is not None:
+                    _LOGGER.info("Device '%s' provides value %s", self._device.name, self._value)
+                    result = cd.get("value")
         _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result == "on"
 

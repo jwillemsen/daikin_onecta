@@ -123,18 +123,18 @@ async def async_setup_entry(hass, entry, async_add_entities):
         modes = []
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {'climateControl'}
-        if device.daikin_data["managementPoints"] is not None:
-            for management_point in device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if  management_point_type in supported_management_point_types:
-                    # Check if we have a temperatureControl
-                    temperatureControl = management_point.get("temperatureControl")
-                    if temperatureControl is not None:
-                        for operationmode in temperatureControl["value"]["operationModes"]:
-                            #for modes in operationmode["setpoints"]:
-                            for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
-                                _LOGGER.info("Found temperature mode %s", c)
-                                modes.append(c)
+        managementPoints = device.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            if  management_point_type in supported_management_point_types:
+                # Check if we have a temperatureControl
+                temperatureControl = management_point.get("temperatureControl")
+                if temperatureControl is not None:
+                    for operationmode in temperatureControl["value"]["operationModes"]:
+                        #for modes in operationmode["setpoints"]:
+                        for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
+                            _LOGGER.info("Found temperature mode %s", c)
+                            modes.append(c)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device %s has modes %s %s", device_model, modes)

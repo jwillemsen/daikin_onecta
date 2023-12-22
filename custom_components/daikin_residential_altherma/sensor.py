@@ -51,59 +51,58 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     sensors = []
     prog = 0
 
-    #sensor.altherma_daily_heat_energy_consumption, altherma_daily_heat_tank_energy_consumption
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        if device.daikin_data["managementPoints"] is not None:
-            for management_point in device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                embedded_id = management_point["embeddedId"]
+        managementPoints = device.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            embedded_id = management_point["embeddedId"]
 
-                # For all values provide a "value" we provide a sensor
-                for value in management_point:
-                    vv = management_point.get(value)
-                    if type(vv) == dict:
-                        value_value = vv.get("value")
-                        if value_value is not None and type(value_value) != dict:
-                            sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, None, value)
-                            sensors.append(sensor2)
+            # For all values provide a "value" we provide a sensor
+            for value in management_point:
+                vv = management_point.get(value)
+                if type(vv) == dict:
+                    value_value = vv.get("value")
+                    if value_value is not None and type(value_value) != dict:
+                        sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, None, value)
+                        sensors.append(sensor2)
 
-                sd = management_point.get("sensoryData")
-                if sd is not None:
-                    sensoryData = sd.get("value")
-                    _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensoryData)
-                    if sensoryData is not None:
-                        for sensor in sensoryData:
-                            _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
-                            sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, "sensoryData", sensor)
-                            sensors.append(sensor2)
+            sd = management_point.get("sensoryData")
+            if sd is not None:
+                sensoryData = sd.get("value")
+                _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensoryData)
+                if sensoryData is not None:
+                    for sensor in sensoryData:
+                        _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
+                        sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, "sensoryData", sensor)
+                        sensors.append(sensor2)
 
-                cd = management_point.get("consumptionData")
-                if cd is not None:
-                    _LOGGER.info("Device '%s' provides consumptionData", device.name)
-                    # Retrieve the available operationModes, we can only provide consumption data for
-                    # supported operation modes
-                    operation_modes = management_point["operationMode"]["values"]
-                    cdv = cd.get("value")
-                    if cdv is not None:
-                        cdve = cdv.get("electrical")
-                        _LOGGER.info("Device '%s' provides electrical", device.name)
-                        if cdve is not None:
-                            for mode in cdve:
-                                # Only handle consumptionData for an operation mode supported by this device
-                                if mode in operation_modes:
-                                    _LOGGER.info("Device '%s' provides mode %s %s", device.name, management_point_type, mode)
-                                    icon = "mdi:fire"
-                                    if mode == "cooling":
-                                        icon = "mdi:snowflake"
-                                    for period in cdve[mode]:
-                                        _LOGGER.info("Device '%s:%s' provides mode %s %s supports period %s", device.name, embedded_id, management_point_type, mode, period)
-                                        periodName = SENSOR_PERIODS[period]
-                                        sensor = f"{device.name} {management_point_type} {mode} {periodName}"
-                                        _LOGGER.info("Proposing sensor '%s'", sensor)
-                                        sensorv = DaikinEnergySensor (device, embedded_id, management_point_type, mode,  period, icon)
-                                        sensors.append(sensorv)
-                                else:
-                                    _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
+            cd = management_point.get("consumptionData")
+            if cd is not None:
+                _LOGGER.info("Device '%s' provides consumptionData", device.name)
+                # Retrieve the available operationModes, we can only provide consumption data for
+                # supported operation modes
+                operation_modes = management_point["operationMode"]["values"]
+                cdv = cd.get("value")
+                if cdv is not None:
+                    cdve = cdv.get("electrical")
+                    _LOGGER.info("Device '%s' provides electrical", device.name)
+                    if cdve is not None:
+                        for mode in cdve:
+                            # Only handle consumptionData for an operation mode supported by this device
+                            if mode in operation_modes:
+                                _LOGGER.info("Device '%s' provides mode %s %s", device.name, management_point_type, mode)
+                                icon = "mdi:fire"
+                                if mode == "cooling":
+                                    icon = "mdi:snowflake"
+                                for period in cdve[mode]:
+                                    _LOGGER.info("Device '%s:%s' provides mode %s %s supports period %s", device.name, embedded_id, management_point_type, mode, period)
+                                    periodName = SENSOR_PERIODS[period]
+                                    sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+                                    _LOGGER.info("Proposing sensor '%s'", sensor)
+                                    sensorv = DaikinEnergySensor (device, embedded_id, management_point_type, mode,  period, icon)
+                                    sensors.append(sensorv)
+                            else:
+                                _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
 
     async_add_entities(sensors)
 
@@ -209,13 +208,14 @@ class DaikinValueSensor(SensorEntity):
         readable = re.findall('[A-Z][^A-Z]*', myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        _LOGGER.info("Device '%s:%s supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
+        _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
     @property
     def state(self):
         """Return the state of the sensor."""
         result = None
-        for management_point in self._device.daikin_data["managementPoints"]:
+        managementPoints = self._device.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._sub_type is not None:

@@ -36,17 +36,17 @@ async def async_setup_entry(hass, entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        if device.daikin_data["managementPoints"] is not None:
-            for management_point in device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                embedded_id = management_point["embeddedId"]
+        managementPoints = self.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            embedded_id = management_point["embeddedId"]
 
-                # When we have a demandControl we provide a select sensor
-                demand = management_point.get("demandControl")
-                if demand is not None:
-                    _LOGGER.info("Device '%s' provides demandControl", device.name)
-                    sensor2 = DaikinDemandSelect(device, embedded_id, management_point_type, "demandControl")
-                    sensors.append(sensor2)
+            # When we have a demandControl we provide a select sensor
+            demand = management_point.get("demandControl")
+            if demand is not None:
+                _LOGGER.info("Device '%s' provides demandControl", device.name)
+                sensor2 = DaikinDemandSelect(device, embedded_id, management_point_type, "demandControl")
+                sensors.append(sensor2)
 
     async_add_entities(sensors)
 
@@ -65,7 +65,7 @@ class DaikinDemandSelect(SelectEntity):
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
-        _LOGGER.info("Device '%s:%s supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
+        _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
     @property
     def available(self):
@@ -76,7 +76,8 @@ class DaikinDemandSelect(SelectEntity):
     def current_option(self):
         """Return the state of the sensor."""
         res = None
-        for management_point in self._device.daikin_data["managementPoints"]:
+        managementPoints = self.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._management_point_type == management_point_type:
@@ -92,27 +93,29 @@ class DaikinDemandSelect(SelectEntity):
 
     async def async_select_option(self, option: str) -> None:
         mode = None
-        for management_point in self._device.daikin_data["managementPoints"]:
-            if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
-                if self._management_point_type == management_point_type:
-                    vv = management_point[self._value]
-                    mode = vv["value"]["currentMode"]
-        new_currentmode = "fixed"
-        if option in ("auto", "off"):
-            new_currentmode = option
-        res = await self._device.set_path(self._device.getId(), self._embedded_id, "demandControl", f"/currentMode", new_currentmode)
-        if res is False:
-            _LOGGER.warning("Device '%s' problem setting demand control to %s", self._device.name, option)
-        else:
-            mode["value"] = new_currentmode
-
-        if new_currentmode == "fixed":
-            res = await self._device.set_path(self._device.getId(), self._embedded_id, "demandControl", f"/modes/fixed", int(option))
+        managementPoints = self.daikin_data.get("managementPoints")
+        if managementPoints is not None:
+            for management_point in managementPoints:
+                if self._embedded_id == management_point["embeddedId"]:
+                    management_point_type = management_point["managementPointType"]
+                    if self._management_point_type == management_point_type:
+                        vv = management_point[self._value]
+                        mode = vv["value"]["currentMode"]
+            new_currentmode = "fixed"
+            if option in ("auto", "off"):
+                new_currentmode = option
+            res = await self._device.set_path(self._device.getId(), self._embedded_id, "demandControl", f"/currentMode", new_currentmode)
             if res is False:
-                _LOGGER.warning("Device '%s' problem setting demand control to fixed value %s", self._device.name, option)
+                _LOGGER.warning("Device '%s' problem setting demand control to %s", self._device.name, option)
             else:
-                vv["value"]["modes"]["fixed"]["value"] = option
+                mode["value"] = new_currentmode
+
+            if new_currentmode == "fixed":
+                res = await self._device.set_path(self._device.getId(), self._embedded_id, "demandControl", f"/modes/fixed", int(option))
+                if res is False:
+                    _LOGGER.warning("Device '%s' problem setting demand control to fixed value %s", self._device.name, option)
+                else:
+                    vv["value"]["modes"]["fixed"]["value"] = option
 
         return res
 

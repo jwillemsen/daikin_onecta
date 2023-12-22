@@ -23,11 +23,11 @@ class DaikinResidentialDevice:
         self.daikin_data = jsonData
         self.name = self.daikin_data["deviceModel"]
 
-        if self.daikin_data.get("managementPoints") is not None:
-            for management_point in self.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if management_point_type == "climateControl":
-                    self.name = management_point["name"]["value"]
+        managementPoints = self.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            if management_point_type == "climateControl":
+                self.name = management_point["name"]["value"]
 
         _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)", self.name, self.getId())
 
@@ -46,15 +46,15 @@ class DaikinResidentialDevice:
         sw_vers = ""
         name = ""
         supported_management_point_types = {'gateway'}
-        if self.daikin_data["managementPoints"] is not None:
-            for management_point in self.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if  management_point_type in supported_management_point_types:
-                    mac_add = management_point["macAddress"]["value"]
-                    model = management_point["modelInfo"]["value"]
-                    sw_vers = management_point["firmwareVersion"]["value"]
-                if management_point_type == "climateControl":
-                    name = management_point["name"]["value"]
+        managementPoints = self.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            if  management_point_type in supported_management_point_types:
+                mac_add = management_point["macAddress"]["value"]
+                model = management_point["modelInfo"]["value"]
+                sw_vers = management_point["firmwareVersion"]["value"]
+            if management_point_type == "climateControl":
+                name = management_point["name"]["value"]
 
         return {
             "identifiers": {
@@ -82,11 +82,11 @@ class DaikinResidentialDevice:
         return self.daikin_data["id"]
 
     def getName(self):
-        if self.daikin_data["managementPoints"] is not None:
-            for management_point in self.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if management_point_type == "climateControl":
-                    self.name = management_point["name"]["value"]
+        managementPoints = self.daikin_data.get("managementPoints", [])
+        for management_point in managementPoints:
+            management_point_type = management_point["managementPointType"]
+            if management_point_type == "climateControl":
+                self.name = management_point["name"]["value"]
         return self.name
 
     def getDescription(self):
