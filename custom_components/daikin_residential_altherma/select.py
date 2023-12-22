@@ -36,7 +36,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
     prog = 0
 
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        managementPoints = self.daikin_data.get("managementPoints", [])
+        managementPoints = device.daikin_data("managementPoints", [])
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             embedded_id = management_point["embeddedId"]
@@ -93,7 +93,7 @@ class DaikinDemandSelect(SelectEntity):
 
     async def async_select_option(self, option: str) -> None:
         mode = None
-        managementPoints = self.daikin_data.get("managementPoints")
+        managementPoints = self._device.daikin_data.get("managementPoints")
         if managementPoints is not None:
             for management_point in managementPoints:
                 if self._embedded_id == management_point["embeddedId"]:
