@@ -176,7 +176,10 @@ class DaikinClimate(ClimateEntity):
         temperatureControl = cc.get("temperatureControl")
         if temperatureControl is not None:
             operationMode = cc.get("operationMode").get("value")
-            setpoint = temperatureControl["value"]["operationModes"][operationMode]["setpoints"].get(self._setpoint)
+            # For not all operationModes there is a temperatureControl setpoint available
+            oo = temperatureControl["value"]["operationModes"].get(operationMode)
+            if oo is not None:
+                setpoint = oo["setpoints"].get(self._setpoint)
             _LOGGER.info("Climate: %s operation mode %s has setpoint %s", self._setpoint, operationMode, setpoint)
         return setpoint
 
@@ -208,7 +211,7 @@ class DaikinClimate(ClimateEntity):
                     sensoryData = management_point.get("sensoryData")
                     _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
                     if sensoryData is not None:
-                        sensoryData = sensor = sensoryData.get("value").get(self._setpoint)
+                        sensoryData = sensoryData.get("value").get(self._setpoint)
                         _LOGGER.info("Climate: %s has sensoryData %s", self._setpoint, sensoryData)
         return sensoryData
 
