@@ -527,6 +527,7 @@ class DaikinClimate(ClimateEntity):
         return swingModes
 
     async def async_set_swing_mode(self, swing_mode):
+        res = True
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
         operationmode = cc["operationMode"]["value"]
@@ -540,7 +541,7 @@ class DaikinClimate(ClimateEntity):
                     new_hMode = "stop"
                     if swing_mode in (SWING_HORIZONTAL, SWING_BOTH, "Comfort Airflow and Horizontal"):
                         new_hMode = "swing"
-                    res = await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
+                    res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode", new_hMode)
                     if res is False:
                         _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_hMode)
                     else:
