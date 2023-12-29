@@ -3,12 +3,12 @@ import logging
 _LOGGER = logging.getLogger(__name__)
 
 from homeassistant.components.water_heater import (
-    SUPPORT_TARGET_TEMPERATURE,
     SUPPORT_OPERATION_MODE,
     STATE_PERFORMANCE,
     STATE_HEAT_PUMP,
     STATE_OFF,
     WaterHeaterEntity,
+    WaterHeaterEntityFeature,
 )
 
 from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
@@ -48,7 +48,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         self._device = device
-        if self.supported_features & SUPPORT_TARGET_TEMPERATURE:
+        if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
             _LOGGER.debug("Tank temperature is settable")
 
     async def _set(self, settings):
@@ -99,7 +99,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         dht = self.domestic_hotwater_temperature
         if dht:
             if dht["settable"] == True:
-                sf |= SUPPORT_TARGET_TEMPERATURE
+                sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
         """Return the list of supported features."""
         return sf
 

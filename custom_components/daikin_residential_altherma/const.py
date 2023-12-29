@@ -19,7 +19,7 @@ from homeassistant.const import (
 
 from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
-    STATE_CLASS_MEASUREMENT,
+    SensorStateClass,
 )
 
 from homeassistant.helpers.entity import (
@@ -91,7 +91,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "wifiConnectionStrength": {
         CONF_DEVICE_CLASS: DEVICE_CLASS_SIGNAL_STRENGTH,
-        CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
         CONF_ICON: "mdi:wifi",
         ENABLED_DEFAULT: True,
@@ -331,7 +331,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "fanMotorRotationSpeed": {
         CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: STATE_CLASS_MEASUREMENT,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: REVOLUTIONS_PER_MINUTE,
         CONF_ICON: "mdi:fan",
         ENABLED_DEFAULT: True,

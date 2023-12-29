@@ -14,8 +14,7 @@ from homeassistant.const import (
 from homeassistant.components.sensor import (
     SensorEntity,
     CONF_STATE_CLASS,
-    STATE_CLASS_MEASUREMENT,
-    STATE_CLASS_TOTAL_INCREASING,
+    SensorStateClass,
 )
 
 from homeassistant.helpers.entity import EntityCategory
@@ -170,7 +169,7 @@ class DaikinEnergySensor(SensorEntity):
 
     @property
     def state_class(self):
-        return STATE_CLASS_TOTAL_INCREASING
+        return SensorStateClass.TOTAL_INCREASING
 
     @property
     def device_class(self):

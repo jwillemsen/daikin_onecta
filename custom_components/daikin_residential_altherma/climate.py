@@ -7,21 +7,13 @@ from homeassistant.components.climate import PLATFORM_SCHEMA, ClimateEntity
 from homeassistant.components.climate.const import (
     ATTR_HVAC_MODE,
     ATTR_PRESET_MODE,
-    HVAC_MODE_COOL,
-    HVAC_MODE_HEAT,
-    HVAC_MODE_HEAT_COOL,
-    HVAC_MODE_OFF,
-    HVAC_MODE_DRY,
-    HVAC_MODE_FAN_ONLY,
+    HVACMode,
     PRESET_AWAY,
     PRESET_COMFORT,
     PRESET_BOOST,
     PRESET_ECO,
     PRESET_NONE,
-    SUPPORT_TARGET_TEMPERATURE,
-    SUPPORT_PRESET_MODE,
-    SUPPORT_FAN_MODE,
-    SUPPORT_SWING_MODE,
+    ClimateEntityFeature,
     FAN_AUTO,
     SWING_OFF,
     SWING_BOTH,
@@ -63,12 +55,12 @@ PRESET_MODES = {
 }
 
 HA_HVAC_TO_DAIKIN = {
-    HVAC_MODE_FAN_ONLY: "fanOnly",
-    HVAC_MODE_DRY: "dry",
-    HVAC_MODE_COOL: "cooling",
-    HVAC_MODE_HEAT: "heating",
-    HVAC_MODE_HEAT_COOL: "auto",
-    HVAC_MODE_OFF: "off",
+    HVACMode.FAN_ONLY: "fanOnly",
+    HVACMode.DRY: "dry",
+    HVACMode.COOL: "cooling",
+    HVACMode.HEAT: "heating",
+    HVACMode.HEAT_COOL: "auto",
+    HVACMode.OFF: "off",
 }
 
 HA_ATTR_TO_DAIKIN = {
@@ -81,14 +73,14 @@ HA_ATTR_TO_DAIKIN = {
 }
 
 DAIKIN_HVAC_TO_HA = {
-    "fanOnly": HVAC_MODE_FAN_ONLY,
-    "dry": HVAC_MODE_DRY,
-    "cooling": HVAC_MODE_COOL,
-    "heating": HVAC_MODE_HEAT,
-    "heatingDay": HVAC_MODE_HEAT,
-    "heatingNight": HVAC_MODE_HEAT,
-    "auto": HVAC_MODE_HEAT_COOL,
-    "off": HVAC_MODE_OFF,
+    "fanOnly": HVACMode.FAN_ONLY,
+    "dry": HVACMode.DRY,
+    "cooling": HVACMode.COOL,
+    "heating": HVACMode.HEAT,
+    "heatingDay": HVACMode.HEAT,
+    "heatingNight": HVACMode.HEAT,
+    "auto": HVACMode.HEAT_COOL,
+    "off": HVACMode.OFF,
 }
 
 HA_PRESET_TO_DAIKIN = {
@@ -231,16 +223,16 @@ class DaikinClimate(ClimateEntity):
         setpointdict = self.setpoint()
         cc = self.climateControl()
         if setpointdict is not None and setpointdict["settable"] == True:
-            supported_features = SUPPORT_TARGET_TEMPERATURE
+            supported_features = ClimateEntityFeature.TARGET_TEMPERATURE
         if len(self.preset_modes) > 1:
-            supported_features |= SUPPORT_PRESET_MODE
+            supported_features |= ClimateEntityFeature.PRESET_MODE
         fanControl = cc.get("fanControl")
         if fanControl is not None:
             operationmode = cc["operationMode"]["value"]
             if fanControl["value"]["operationModes"][operationmode].get("fanSpeed") is not None:
-                supported_features |= SUPPORT_FAN_MODE
+                supported_features |= ClimateEntityFeature.FAN_MODE
             if fanControl["value"]["operationModes"][operationmode].get("fanDirection") is not None:
-                supported_features |= SUPPORT_SWING_MODE
+                supported_features |= ClimateEntityFeature.SWING_MODE
 
         _LOGGER.info("Devices '%s' supports features %s", self._device.name, supported_features)
 
@@ -333,17 +325,17 @@ class DaikinClimate(ClimateEntity):
     @property
     def hvac_mode(self):
         """Return current HVAC mode."""
-        mode = HVAC_MODE_OFF
+        mode = HVACMode.OFF
         operationmode = self.operationMode()
         cc = self.climateControl()
         if cc["onOffMode"]["value"] != "off":
             mode = operationmode["value"]
-        return DAIKIN_HVAC_TO_HA.get(mode, HVAC_MODE_HEAT_COOL)
+        return DAIKIN_HVAC_TO_HA.get(mode, HVACMode.HEAT_COOL)
 
     @property
     def hvac_modes(self):
         """Return the list of available HVAC modes."""
-        modes = [HVAC_MODE_OFF]
+        modes = [HVACMode.OFF]
         operationmode = self.operationMode()
         if operationmode is not None:
             for mode in operationmode["values"]:
@@ -360,10 +352,10 @@ class DaikinClimate(ClimateEntity):
         # and update our local cached version when succeeded
         onOffMode = None
         operationMode = None
-        if hvac_mode == HVAC_MODE_OFF:
+        if hvac_mode == HVACMode.OFF:
             onOffMode = "off"
         else:
-            if self.hvac_mode == HVAC_MODE_OFF:
+            if self.hvac_mode == HVACMode.OFF:
                 onOffMode = "on"
             operationMode = HA_HVAC_TO_DAIKIN[hvac_mode]
 
@@ -590,7 +582,7 @@ class DaikinClimate(ClimateEntity):
                 cc[current_mode]["value"] = "off"
 
         if preset_mode != PRESET_NONE:
-            if self.hvac_mode == HVAC_MODE_OFF and preset_mode == PRESET_BOOST:
+            if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
                 result &= await self.async_turn_on()
 
             result &= await self._device.set_path(self._device.getId(), self.embedded_id, new_daikin_mode, "", "on")
