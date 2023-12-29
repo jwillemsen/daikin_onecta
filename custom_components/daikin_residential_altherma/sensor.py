@@ -176,10 +176,6 @@ class DaikinEnergySensor(SensorEntity):
     def device_class(self):
         return DEVICE_CLASS_ENERGY
 
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()
-
 class DaikinValueSensor(SensorEntity):
 
     def __init__(self, device: Appliance, embedded_id, management_point_type, sub_type, value) -> None:
@@ -248,7 +244,3 @@ class DaikinValueSensor(SensorEntity):
     def device_info(self):
         """Return a device description for device registry."""
         return self._device.device_info()
-
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()

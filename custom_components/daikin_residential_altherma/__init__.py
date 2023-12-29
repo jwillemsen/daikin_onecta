@@ -16,6 +16,9 @@ _LOGGER = logging.getLogger(__name__)
 
 ENTRY_IS_SETUP = "daikin_entry_is_setup"
 
+MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=15)
+SCAN_INTERVAL = datetime.timedelta(seconds=30)
+
 PARALLEL_UPDATES = 0
 
 SERVICE_FORCE_UPDATE = "force_update"
@@ -23,8 +26,6 @@ SERVICE_PULL_DEVICES = "pull_devices"
 
 SIGNAL_DELETE_ENTITY = "daikin_delete"
 SIGNAL_UPDATE_ENTITY = "daikin_update"
-
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
 
 COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
 

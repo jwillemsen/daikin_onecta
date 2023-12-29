@@ -144,7 +144,3 @@ class DaikinDemandSelect(SelectEntity):
     def device_info(self):
         """Return a device description for device registry."""
         return self._device.device_info()
-
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()

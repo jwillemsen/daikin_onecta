@@ -27,7 +27,7 @@ DAIKIN_ISSUER = "https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_SLI9qJpc7
 API_KEY = "3_xRB3jaQ62bVjqXU1omaEsPDVYC0Twi1zfq1zHPu_5HFT0zWkDvZJS97Yw1loJnTm"
 API_KEY2 = "3_QebFXhxEWDc8JhJdBWmvUd1e0AaWJCISbqe4QIHrk_KzNVJFJ4xsJ2UZbl8OIIFY"
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
+MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=15)
 
 class DaikinApi:
     """Daikin Residential API."""

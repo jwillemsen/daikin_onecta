@@ -7,8 +7,6 @@ from homeassistant.util import Throttle
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
 from .const import DOMAIN
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=2)
-
 _LOGGER = logging.getLogger(__name__)
 
 class DaikinResidentialDevice:
@@ -96,16 +94,6 @@ class DaikinResidentialDevice:
     def getLastUpdated(self):
         """Get the timestamp when data were last updated."""
         return self.daikin_data["lastUpdateReceived"]
-
-    @Throttle(MIN_TIME_BETWEEN_UPDATES)
-    async def updateData(self):
-        """Update the data of self device from the cloud."""
-        return
-        # TODO: Enhance self method to also allow to get some partial data
-        # like only one managementPoint or such; needs checking how to request
-        _LOGGER.info("DEV UPDATE %s", self.getName())
-        desc = await self.api.doBearerRequest("/v1/gateway-devices/" + self.getId())
-        self.setJsonData(desc)
 
     async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = (

@@ -234,10 +234,6 @@ class DaikinWaterTank(WaterHeaterEntity):
         # se we first set the hvac_mode, if provided, then the temperature.
         await self.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
 
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()
-
     @property
     def current_operation(self):
         """Return current operation ie. heat, cool, idle."""

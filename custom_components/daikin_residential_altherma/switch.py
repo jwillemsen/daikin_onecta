@@ -118,10 +118,6 @@ class DaikinSwitch(ToggleEntity):
         """Return a device description for device registry."""
         return self._device.device_info()
 
-    async def async_update(self):
-        """Retrieve latest state."""
-        await self._device.api.async_update()
-
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
         result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
