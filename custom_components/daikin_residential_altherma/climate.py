@@ -367,14 +367,14 @@ class DaikinClimate(ClimateEntity):
             if result is False:
                 _LOGGER.warning("Device '%s' problem setting onOffMode to %s", self._device.name, onOffMode)
             else:
-                cc["onOffMode"]["value"] == onOffMode
+                cc["onOffMode"]["value"] = onOffMode
 
         if operationMode is not None:
             result &= await self._device.set_path(self._device.getId(), self.embedded_id, "operationMode", "", operationMode)
             if result is False:
                 _LOGGER.warning("Device '%s' problem setting operationMode to %s", self._device.name, operationMode)
             else:
-                cc["operationMode"]["value"] == operationMode
+                cc["operationMode"]["value"] = operationMode
 
         return result
 
@@ -620,7 +620,7 @@ class DaikinClimate(ClimateEntity):
         if result is False:
           _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
         else:
-           cc["onOffMode"]["value"] == "on"
+           cc["onOffMode"]["value"] = "on"
         return result
 
     async def async_turn_off(self):
@@ -629,7 +629,7 @@ class DaikinClimate(ClimateEntity):
         if result is False:
           _LOGGER.warning("Device '%s' problem setting onOffMode to off", self._device.name)
         else:
-           cc["onOffMode"]["value"] == "off"
+           cc["onOffMode"]["value"] = "off"
         return result
 
     @property
