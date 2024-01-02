@@ -12,5 +12,5 @@
   "requirements": [
      "oic==1.6.0"
   ],
-  "version": "3.2.12"
+  "version": "3.2.13"
 }
