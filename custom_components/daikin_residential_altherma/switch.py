@@ -128,7 +128,7 @@ class DaikinSwitch(ToggleEntity):
               if self._embedded_id == management_point["embeddedId"]:
                   management_point_type = management_point["managementPointType"]
                   if self._management_point_type == management_point_type:
-                    management_point[self._value]["value"] == "on"
+                    management_point[self._value]["value"] = "on"
         return result
 
     async def async_turn_off(self, **kwargs):
@@ -141,5 +141,5 @@ class DaikinSwitch(ToggleEntity):
               if self._embedded_id == management_point["embeddedId"]:
                   management_point_type = management_point["managementPointType"]
                   if self._management_point_type == management_point_type:
-                    management_point[self._value]["value"] == "off"
+                    management_point[self._value]["value"] = "off"
         return result
