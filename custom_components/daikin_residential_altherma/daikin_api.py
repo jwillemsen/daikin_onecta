@@ -91,22 +91,21 @@ class DaikinApi:
                 func = functools.partial(
                     requests.patch, resourceUrl, headers=headers, data=options["json"]
                 )
-                # res = requests.patch(resourceUrl, headers=headers, data=options["json"])
             else:
                 func = functools.partial(requests.get, resourceUrl, headers=headers)
-                # res = requests.get(resourceUrl, headers=headers)
             try:
                 res = await self.hass.async_add_executor_job(func)
             except Exception as e:
                 _LOGGER.error("REQUEST FAILED: %s", e)
-                return str(e)
+                return []
             _LOGGER.debug("BEARER RESPONSE CODE: %s", res.status_code)
 
         if res.status_code == 200:
             try:
                 return res.json()
             except Exception:
-                return res.text
+                _LOGGER.error("RETRIEVE JSON FAILED: %s", res.text)
+                return False
         elif res.status_code == 204:
             self._just_updated = True
             return True
