@@ -15,7 +15,6 @@ class DaikinResidentialDevice:
     def __init__(self, jsonData, apiInstance):
         """Initialize a new Daikin Residential Device."""
         self.api = apiInstance
-        self.setJsonData(jsonData)
         # get name from climateControl
         self._available = True
         self.daikin_data = jsonData
@@ -68,9 +67,21 @@ class DaikinResidentialDevice:
             "sw_version": sw_vers.replace("_", "."),
         }
 
+    "Helper to merge the json, prevents invalid reads when other threads are reading the daikin_data"
+    def merge_json(self, a: dict, b: dict, path=[]):
+        for key in b:
+            if key in a:
+                if isinstance(a[key], dict) and isinstance(b[key], dict):
+                    self.merge_json(a[key], b[key], path + [str(key)])
+                elif a[key] != b[key]:
+                    raise Exception('Conflict at ' + '.'.join(path + [str(key)]))
+            else:
+                a[key] = b[key]
+        return a
+
     def setJsonData(self, desc):
         """Set a device description and parse/traverse data structure."""
-        self.daikin_data = desc
+        self.merge_json(self.daikin_data, desc)
 
     def daikin_data(self):
         return self.daikin_data
