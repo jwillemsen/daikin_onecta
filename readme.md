@@ -10,7 +10,7 @@
 Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat Pump.
 
 > [!IMPORTANT]
-> Starting with v3.0.0 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these.
+> Starting with v3.0.0 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these. When you remove the other Daikin integrations from your HA installation the history from those will be lost.
 
 <!---
 # Installation using HACS:
