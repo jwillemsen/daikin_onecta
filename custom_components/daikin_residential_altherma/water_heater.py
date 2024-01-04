@@ -3,7 +3,6 @@ import logging
 _LOGGER = logging.getLogger(__name__)
 
 from homeassistant.components.water_heater import (
-    SUPPORT_OPERATION_MODE,
     STATE_PERFORMANCE,
     STATE_HEAT_PUMP,
     STATE_OFF,
@@ -11,7 +10,10 @@ from homeassistant.components.water_heater import (
     WaterHeaterEntityFeature,
 )
 
-from homeassistant.const import ATTR_TEMPERATURE, TEMP_CELSIUS
+from homeassistant.const import (
+    ATTR_TEMPERATURE,
+    UnitOfTemperature
+)
 
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
@@ -93,7 +95,7 @@ class DaikinWaterTank(WaterHeaterEntity):
 
     @property
     def supported_features(self):
-        sf = SUPPORT_OPERATION_MODE
+        sf = WaterHeaterEntityFeature.OPERATION_MODE
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
         dht = self.domestic_hotwater_temperature
@@ -117,7 +119,7 @@ class DaikinWaterTank(WaterHeaterEntity):
     @property
     def temperature_unit(self):
         """Return the unit of measurement which this thermostat uses."""
-        return TEMP_CELSIUS
+        return UnitOfTemperature.CELSIUS
 
     @property
     def current_temperature(self):

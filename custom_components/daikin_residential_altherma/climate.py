@@ -20,7 +20,13 @@ from homeassistant.components.climate.const import (
     SWING_VERTICAL,
     SWING_HORIZONTAL,
 )
-from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, TEMP_CELSIUS
+from homeassistant.const import (
+    ATTR_TEMPERATURE,
+    CONF_HOST,
+    CONF_NAME,
+    UnitOfTemperature,
+)
+
 import homeassistant.helpers.config_validation as cv
 
 from .const import (
@@ -258,7 +264,7 @@ class DaikinClimate(ClimateEntity):
     @property
     def temperature_unit(self):
         """Return the unit of measurement which this thermostat uses."""
-        return TEMP_CELSIUS
+        return UnitOfTemperature.CELSIUS
 
     @property
     def current_temperature(self):

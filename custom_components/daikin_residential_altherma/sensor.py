@@ -7,14 +7,14 @@ from homeassistant.const import (
     CONF_NAME,
     CONF_TYPE,
     CONF_UNIT_OF_MEASUREMENT,
-    DEVICE_CLASS_ENERGY,
-    ENERGY_KILO_WATT_HOUR,
+    UnitOfEnergy,
 )
 
 from homeassistant.components.sensor import (
     SensorEntity,
     CONF_STATE_CLASS,
     SensorStateClass,
+    SensorDeviceClass,
 )
 
 from homeassistant.helpers.entity import EntityCategory
@@ -165,7 +165,7 @@ class DaikinEnergySensor(SensorEntity):
 
     @property
     def unit_of_measurement(self):
-        return ENERGY_KILO_WATT_HOUR
+        return UnitOfEnergy.KILO_WATT_HOUR
 
     @property
     def state_class(self):
@@ -173,7 +173,7 @@ class DaikinEnergySensor(SensorEntity):
 
     @property
     def device_class(self):
-        return DEVICE_CLASS_ENERGY
+        return SensorDeviceClass.ENERGY
 
 class DaikinValueSensor(SensorEntity):
 
