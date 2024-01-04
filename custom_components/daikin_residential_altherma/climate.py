@@ -321,12 +321,12 @@ class DaikinClimate(ClimateEntity):
         operationmode = self.operationMode()
         omv = operationmode["value"]
         value = kwargs[ATTR_TEMPERATURE]
-        res = await self._device.set_path(self._device.getId(), self.embedded_id, "temperatureControl", f"/operationModes/{omv}/setpoints/{self._setpoint}", int(value))
+        res = await self._device.set_path(self._device.getId(), self.embedded_id, "temperatureControl", f"/operationModes/{omv}/setpoints/{self._setpoint}", value)
         # When updating the value to the daikin cloud worked update our local cached version
         if res:
             setpointdict = self.setpoint()
             if setpointdict is not None:
-                setpointdict["value"] = int(value)
+                setpointdict["value"] = value
 
     @property
     def hvac_mode(self):
