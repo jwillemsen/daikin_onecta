@@ -554,7 +554,7 @@ class DaikinClimate(ClimateEntity):
                         new_vMode = "windNice"
                     res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanDirection/vertical/currentMode", new_vMode)
                     if res is False:
-                        _LOGGER.warning("Device '%s' problem setting horizontal swing mode to %s", self._device.name, new_vMode)
+                        _LOGGER.warning("Device '%s' problem setting vertical swing mode to %s", self._device.name, new_vMode)
                     else:
                         fanControl["value"]["operationModes"][operationmode]["fanDirection"]["vertical"]["currentMode"]["value"] = new_vMode
 
