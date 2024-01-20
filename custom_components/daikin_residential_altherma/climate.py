@@ -480,10 +480,10 @@ class DaikinClimate(ClimateEntity):
                     v = vertical["currentMode"]["value"]
         if h == "swing":
             swingMode = SWING_HORIZONTAL
-            if v == "swing":
-                swingMode = SWING_BOTH
-            else:
-                swingMode = SWING_VERTICAL
+        if v == "swing":
+            swingMode = SWING_VERTICAL
+        if v == "swing" and h == "swing":
+            swingMode = SWING_BOTH
         if v == "floorHeatingAirflow":
             swingMode = "floorHeatingAirflow"
         if v == "windNice":
@@ -491,6 +491,8 @@ class DaikinClimate(ClimateEntity):
                 swingMode = "Comfort Airflow and Horizontal"
             else:
                 swingMode = "Comfort Airflow"
+
+        _LOGGER.info("Device '%s' has swing mode '%s', determined from h:%s v:%s", self._device.name, swingMode, h, v)
 
         return swingMode
 
@@ -521,7 +523,7 @@ class DaikinClimate(ClimateEntity):
                             swingModes.append("Comfort Airflow")
                             if horizontal is not None:
                                 swingModes.append("Comfort Airflow and Horizontal")
-        _LOGGER.info("Support swing modes %s", swingModes)
+        _LOGGER.info("Device '%s' support swing modes %s", self._device.name, swingModes)
         return swingModes
 
     async def async_set_swing_mode(self, swing_mode):
