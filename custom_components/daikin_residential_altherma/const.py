@@ -302,6 +302,14 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
     },
+    "dryKeepSetting": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:water-percent",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
     "streamerMode": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
