@@ -179,7 +179,13 @@ class DaikinWaterTank(WaterHeaterEntity):
         """Set new target temperature."""
         _LOGGER.debug("Device '%s' set tank temperature: %s", self._device.name, value)
         if self.current_operation == STATE_OFF:
+            _LOGGER.debug("Device '%s' set tank temperature ignored because device is off", self._device.name)
             return None
+        dht = self.domestic_hotwater_temperature
+        if dht is not None:
+            if dht["settable"] == False:
+                _LOGGER.debug("Device '%s' set tank temperature ignored because tank temperature can't be set", self._device.name)
+                return None
         res = await self._device.set_path(self._device.getId(), self.embedded_id, "temperatureControl", "/operationModes/heating/setpoints/domesticHotWaterTemperature", int(value))
         # When updating the value to the daikin cloud worked update our local cached version
         if res:
