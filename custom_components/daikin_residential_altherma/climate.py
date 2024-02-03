@@ -225,7 +225,7 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def supported_features(self):
-         _enable_turn_on_off_backwards_compatibility = False  # Remove after HA 2025.1
+        _enable_turn_on_off_backwards_compatibility = False  # Remove after HA 2025.1
         supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
         setpointdict = self.setpoint()
         cc = self.climateControl()
