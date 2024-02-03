@@ -225,11 +225,12 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def supported_features(self):
-        supported_features = 0
+         _enable_turn_on_off_backwards_compatibility = False  # Remove after HA 2025.1
+        supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
         setpointdict = self.setpoint()
         cc = self.climateControl()
         if setpointdict is not None and setpointdict["settable"] == True:
-            supported_features = ClimateEntityFeature.TARGET_TEMPERATURE
+            supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
         if len(self.preset_modes) > 1:
             supported_features |= ClimateEntityFeature.PRESET_MODE
         fanControl = cc.get("fanControl")
