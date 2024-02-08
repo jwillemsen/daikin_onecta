@@ -307,7 +307,7 @@ class DaikinApi:
             resp = await self.hass.async_add_executor_job(func)
             body = resp.text
             # _LOGGER.debug('BODY: %s', body)
-            regex = "(\d+-\d-\d+)"
+            regex = '(\\d+-\\d-\\d+)'
             ms = re.search(regex, body)
             version = ms[0]
             _LOGGER.debug("VERSION: %s", version)
