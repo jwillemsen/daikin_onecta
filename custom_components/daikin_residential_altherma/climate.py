@@ -141,6 +141,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 class DaikinClimate(ClimateEntity):
     """Representation of a Daikin HVAC."""
+    _enable_turn_on_off_backwards_compatibility = False # Remove with HA 2025.1
 
     # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
     def __init__(self, device, setpoint):
@@ -225,8 +226,7 @@ class DaikinClimate(ClimateEntity):
 
     @property
     def supported_features(self):
-        _enable_turn_on_off_backwards_compatibility = False  # Remove after HA 2025.1
-        supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
+        supported_features = (ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON)
         setpointdict = self.setpoint()
         cc = self.climateControl()
         if setpointdict is not None and setpointdict["settable"] == True:
