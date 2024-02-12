@@ -43,7 +43,6 @@ class FlowHandler(
 
         return await super().async_oauth_create_entry(data)
 
-
     async def async_step_user(self, user_input: dict | None = None) -> FlowResult:
         """Handle a flow start."""
         await self.async_set_unique_id(DOMAIN)
@@ -66,7 +65,6 @@ class FlowHandler(
         """Dialog that informs the user that reauth is required."""
         if user_input is None:
             return self.async_show_form(step_id="reauth_confirm")
-
 
     @property
     def logger(self) -> logging.Logger:

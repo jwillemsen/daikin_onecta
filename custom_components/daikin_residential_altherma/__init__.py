@@ -7,6 +7,7 @@ import voluptuous as vol
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, SERVICE_RELOAD
 from homeassistant.helpers.typing import HomeAssistantType
+from homeassistant.helpers import config_entry_oauth2_flow
 
 from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES, CONF_TOKENSET
 
@@ -77,8 +78,13 @@ async def async_setup(hass, config):
 
 async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
     """Establish connection with Daikin."""
+    implementation = (
+        await config_entry_oauth2_flow.async_get_config_entry_implementation(
+            hass, entry
+        )
+    )
 
-    daikin_api = DaikinApi(hass, entry)
+    daikin_api = DaikinApi(hass, entry, implementation)
     await daikin_api.getCloudDeviceDetails()
 
     devices = await daikin_api.getCloudDevices()

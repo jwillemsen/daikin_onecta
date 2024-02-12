@@ -14,6 +14,8 @@ from urllib import parse
 
 from homeassistant.util import Throttle
 from homeassistant.const import CONF_EMAIL, CONF_PASSWORD
+from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant import config_entries, core
 
 from .const import DOMAIN, DAIKIN_DEVICES, CONF_TOKENSET
 
@@ -32,15 +34,24 @@ MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=15)
 class DaikinApi:
     """Daikin Residential API."""
 
-    def __init__(self, hass, entry):
+    def __init__(self,
+                hass: core.HomeAssistant,
+                entry: config_entries.ConfigEntry,
+                implementation: config_entry_oauth2_flow.AbstractOAuth2Implementation,):
         """Initialize a new Daikin Residential Altherma API."""
         _LOGGER.debug("Initialing Daikin Residential Altherma API...")
         self.hass = hass
         self._config_entry = entry
-        self.tokenSet = None
+        self.session = config_entry_oauth2_flow.OAuth2Session(
+            hass, entry, implementation
+        )
 
-        if entry is not None:
-            self.tokenSet = entry.data[CONF_TOKENSET].copy()
+        self.tokenSet = []
+
+#        if entry is not None:
+#            self.tokenSet = entry.data[CONF_TOKENSET].copy()
+
+        #self.tokenSet["access_token"] = self.session.token
 
         configuration = {
             "issuer": DAIKIN_ISSUER,
@@ -70,18 +81,19 @@ class DaikinApi:
             raise Exception("Missing TokenSet. Please repeat Authentication process.")
 
         if not resourceUrl.startswith("http"):
-            resourceUrl = "https://api.prod.unicloud.edc.dknadmin.be" + resourceUrl
+            resourceUrl = "https://api.onecta.daikineurope.com" + resourceUrl
 
         headers = {
             "user-agent": "Daikin/1.6.1.4681 CFNetwork/1209 Darwin/20.2.0",
             "x-api-key": "xw6gvOtBHq5b1pyceadRp6rujSNSZdjx2AqT03iC",
-            "Authorization": "Bearer " + self.tokenSet["access_token"],
+            "Authorization": "Bearer " + self.session.token["access_token"],
             "Content-Type": "application/json",
         }
 
         async with self._cloud_lock:
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
             _LOGGER.debug("BEARER REQUEST HEADERS: %s", headers)
+            _LOGGER.debug("TOKEN: %s", self.session.token["access_token"])
             if (
                 options is not None
                 and "method" in options
