@@ -31,7 +31,6 @@ class FlowHandler(
         """Extra data that needs to be appended to the authorize url."""
         return {
             "scope": "openid onecta:basic.integration",
-            "redirect_uri": "onectaintegration://callback/",
         }
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
