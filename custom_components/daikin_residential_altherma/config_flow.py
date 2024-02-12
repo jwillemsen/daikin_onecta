@@ -29,8 +29,8 @@ class FlowHandler(
     def extra_authorize_data(self) -> dict[str, str]:
         """Extra data that needs to be appended to the authorize url."""
         return {
-            "scope": "openid,onecta:basic.integration",
-            "redirect_uri": "daikinunified://login",
+            "scope": "openid%20onecta:basic.integration",
+            "redirect_uri": "daikinunified://login", # onectaintegration://callback
         }
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
