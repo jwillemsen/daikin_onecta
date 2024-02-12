@@ -30,13 +30,13 @@ class DaikinCloudController():
         self.name = "OK"
         configuration = {
             'issuer': 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_SLI9qJpc7',
-            'authorization_endpoint': 'https://daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com/oauth2/authorize',
+            'authorization_endpoint': 'https://idp.onecta.daikineurope.com/v1/oidc/authorize',
             'userinfo_endpoint': 'userinfo_endpoint',
-            'token_endpoint': 'https://daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com/oauth2/token',
+            'token_endpoint': 'https://idp.onecta.daikineurope.com/v1/oidc/token',
             'token_endpoint_auth_methods_supported': ['none']
         }
 
-        self.openIdClientId = '7rk39602f0ds8lk0h076vvijnb'
+        self.openIdClientId = 'emU20GdJDiiUxI_HnFGz69dD'
         self.openIdClient = Client(client_id = self.openIdClientId, config=configuration)
         self.openIdClient.provider_config(configuration['issuer'])
         self.openIdStore = {}
@@ -86,7 +86,7 @@ class DaikinCloudController():
 
     async def refreshAccessToken(self):
         """Attempt to refresh the Access Token."""
-        url = 'https://cognito-idp.eu-west-1.amazonaws.com'
+        url = 'https://idp.onecta.daikineurope.com/v1/oidc/token'
 
         headers = {
             'Content-Type': 'application/x-amz-json-1.1',
@@ -149,10 +149,10 @@ class DaikinCloudController():
         state = base64.urlsafe_b64encode(os.urandom(32)).decode('utf-8').replace('=','')
         print("STATE: {}".format(state))
         args = {
-            'authorization_endpoint': 'https://daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com/oauth2/authorize',
+            'authorization_endpoint': 'https://idp.onecta.daikineurope.com/v1/oidc/authorize',
             'userinfo_endpoint': 'userinfo_endpoint',
             'response_type': ['code'],
-            'scopes': 'email,openid,profile',
+            'scopes': 'email,openid,profile,',
         }
 
         self.openIdClient.redirect_uris = ['daikinunified://login']
@@ -172,8 +172,8 @@ class DaikinCloudController():
         state = self.state
 
         args = {
-            'authorization_endpoint': 'https://daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com/oauth2/authorize',
-            'token_endpoint': 'https://daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com/oauth2/token',
+            'authorization_endpoint': 'https://idp.onecta.daikineurope.com/v1/oidc/authorize',
+            'token_endpoint': 'https://idp.onecta.daikineurope.com/v1/oidc/token',
             'token_endpoint_auth_methods_supported': ['none'],
             # 'userinfo_endpoint': 'userinfo_endpoint',
             'response_type': ['code'],
@@ -461,6 +461,7 @@ async def main():
     user = sys.argv[1] if len(sys.argv) >= 2 else "nousr"
     pwd = sys.argv[2] if len(sys.argv) >= 3 else "nopwd"
     print ("PARAMS: " + user + " " + pwd)
+    logging.getLogger('oci').setLevel(logging.DEBUG)
     controller = DaikinCloudController()
     tokenSet = await controller.retrieveAccessToken(user, pwd)
     devices = await controller.getCloudDevices()
