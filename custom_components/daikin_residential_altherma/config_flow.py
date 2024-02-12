@@ -21,6 +21,7 @@ class FlowHandler(
 ):
     """Handle a config flow."""
     """See https://developers.home-assistant.io/docs/core/platform/application_credentials/ """
+    """ https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started """
     VERSION = 1
     DOMAIN = DOMAIN
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
@@ -29,8 +30,8 @@ class FlowHandler(
     def extra_authorize_data(self) -> dict[str, str]:
         """Extra data that needs to be appended to the authorize url."""
         return {
-            "scope": "openid%20onecta:basic.integration",
-            "redirect_uri": "daikinunified://login", # onectaintegration://callback
+            "scope": "openid onecta:basic.integration",
+            "redirect_uri": "onectaintegration://callback/",
         }
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
