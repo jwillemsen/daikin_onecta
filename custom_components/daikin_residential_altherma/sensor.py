@@ -77,7 +77,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
             cd = management_point.get("consumptionData")
             if cd is not None:
-                _LOGGER.info("Device '%s' provides consumptionData", device.name)
                 # Retrieve the available operationModes, we can only provide consumption data for
                 # supported operation modes
                 operation_modes = management_point["operationMode"]["values"]
@@ -132,7 +131,6 @@ class DaikinEnergySensor(SensorEntity):
                 management_point_type = management_point["managementPointType"]
                 cd = management_point.get("consumptionData")
                 if cd is not None:
-                    _LOGGER.info("Device '%s' provides consumptionData", self._device.name)
                     # Retrieve the available operationModes, we can only provide consumption data for
                     # supported operation modes
                     cdv = cd.get("value")

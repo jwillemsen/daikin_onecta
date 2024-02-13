@@ -51,7 +51,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         self._device = device
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
-            _LOGGER.debug("Tank temperature is settable")
+            _LOGGER.debug("Device '%'s: tank temperature is settable", device.name)
 
     async def _set(self, settings):
         raise NotImplementedError
