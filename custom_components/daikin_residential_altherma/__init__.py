@@ -3,19 +3,19 @@ import asyncio
 import datetime
 import logging
 import voluptuous as vol
+from aiohttp import ClientError
 
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
-from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, SERVICE_RELOAD
+from homeassistant.const import SERVICE_RELOAD
 from homeassistant.helpers.typing import HomeAssistantType
 from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.exceptions import ConfigEntryNotReady
 
-from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES, CONF_TOKENSET
+from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES
 
 from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
-
-ENTRY_IS_SETUP = "daikin_entry_is_setup"
 
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=15)
 SCAN_INTERVAL = datetime.timedelta(seconds=30)
@@ -30,17 +30,6 @@ SIGNAL_UPDATE_ENTITY = "daikin_update"
 
 COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
 
-CONFIG_SCHEMA = vol.Schema(
-    vol.All(
-        {
-            DOMAIN: vol.Schema(
-                {vol.Required(CONF_EMAIL): str, vol.Required(CONF_PASSWORD): str}
-            )
-        }
-    ),
-    extra=vol.ALLOW_EXTRA,
-)
-
 async def async_setup(hass, config):
     """Setup the Daikin Residential component."""
 
@@ -50,8 +39,6 @@ async def async_setup(hass, config):
         try:
             daikin_api = hass.data[DOMAIN][DAIKIN_API]
             data = daikin_api._config_entry.data.copy()
-            await daikin_api.retrieveAccessToken(data[CONF_EMAIL], data[CONF_PASSWORD])
-            data[CONF_TOKENSET] = daikin_api.tokenSet
             hass.config_entries.async_update_entry(
                 entry=daikin_api._config_entry, data=data
             )
@@ -85,6 +72,12 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
     )
 
     daikin_api = DaikinApi(hass, entry, implementation)
+
+    try:
+        await daikin_api.async_get_access_token()
+    except ClientError as err:
+        raise ConfigEntryNotReady from err
+
     await daikin_api.getCloudDeviceDetails()
 
     devices = await daikin_api.getCloudDevices()

@@ -5,14 +5,12 @@ from collections.abc import Mapping
 from typing import Any
 
 from homeassistant import config_entries
-from homeassistant.const import CONF_ACCESS_TOKEN, CONF_TOKEN
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.data_entry_flow import FlowResult
 
 from .daikin_api import DaikinApi
 from .const import DOMAIN
 
-CONF_USER_ID = "user_id"
 _LOGGER = logging.getLogger(__name__)
 
 class FlowHandler(
@@ -31,6 +29,8 @@ class FlowHandler(
         """Extra data that needs to be appended to the authorize url."""
         return {
             "scope": "openid onecta:basic.integration",
+            "client_id": "emU20GdJDiiUxI_HnFGz69dD",
+            "client_secret": "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA",
         }
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
