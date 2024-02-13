@@ -31,13 +31,6 @@ DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
 ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
-ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
-ATTR_TARGET_LEAVINGWATER_OFFSET = "target_leavingwater_offset"
-ATTR_TARGET_LEAVINGWATER_TEMPERATURE = "target_leavingwater_temperature"
-ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
-ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
-ATTR_ROOM_TEMPERATURE = "roomTemperature"
-ATTR_LEAVINGWATER_OFFSET = "leavingWaterOffset"
 
 ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
@@ -54,7 +47,6 @@ SENSOR_PERIODS = {
     SENSOR_PERIOD_YEARLY: "Yearly",
 }
 
-FAN_FIXED = "fixed"
 FAN_QUIET = "quiet"
 
 ENABLED_DEFAULT = "Enabled"

@@ -18,7 +18,7 @@ from .daikin_api import DaikinApi
 _LOGGER = logging.getLogger(__name__)
 
 MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=15)
-SCAN_INTERVAL = datetime.timedelta(seconds=30)
+SCAN_INTERVAL = datetime.timedelta(minutes=5)
 
 PARALLEL_UPDATES = 0
 

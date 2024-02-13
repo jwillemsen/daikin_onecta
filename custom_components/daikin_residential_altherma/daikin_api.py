@@ -68,7 +68,6 @@ class DaikinApi:
 
         async with self._cloud_lock:
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
-            _LOGGER.debug("BEARER REQUEST HEADERS: %s", headers)
             if (
                 options is not None
                 and "method" in options
