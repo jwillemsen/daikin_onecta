@@ -217,7 +217,6 @@ class DaikinValueSensor(SensorEntity):
                     management_point = management_point.get(self._sub_type).get("value")
                 cd = management_point.get(self._value)
                 if cd is not None:
-                    _LOGGER.info("Device '%s' provides value %s", self._device.name, self._value)
                     result = cd.get("value")
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
         return result
