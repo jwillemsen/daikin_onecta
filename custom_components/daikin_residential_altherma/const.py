@@ -63,7 +63,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:toggle-switch-variant",
+        CONF_ICON: "mdi:alphabetical",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
     },
