@@ -59,6 +59,46 @@ ENTITY_CATEGORY = "ENTITY_CATEGORY"
 # - ICON: Icon to be used
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 VALUE_SENSOR_MAPPING = {
+    "controlMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:toggle-switch-variant",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "onOffMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:toggle-switch-variant",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "operationMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "setpointMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "heatupMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
     "serialNumber": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
