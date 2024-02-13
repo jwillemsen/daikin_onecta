@@ -10,9 +10,11 @@ import time
 import asyncio
 import json
 
+from typing import Any
 from homeassistant.util import Throttle
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant import config_entries, core
+from homeassistant.components.application_credentials import AuthImplementation
 
 from .const import DOMAIN, DAIKIN_DEVICES
 
@@ -135,3 +137,19 @@ class DaikinApi:
                 self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(
                     dev_data
                 )
+
+class DaikinImplementation(AuthImplementation):
+    """Daikin implementation of LocalOAuth2Implementation.
+
+    We need this class because we have to add client_secret
+    to the authorization request.
+    """
+
+    @property
+    def extra_authorize_data(self) -> dict[str, Any]:
+        """Extra data that needs to be appended to the authorize url."""
+        return {
+            "client_id": "emU20GdJDiiUxI_HnFGz69dD",
+            "client_secret": "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA",
+        }
+

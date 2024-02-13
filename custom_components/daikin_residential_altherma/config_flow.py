@@ -29,8 +29,6 @@ class FlowHandler(
         """Extra data that needs to be appended to the authorize url."""
         return {
             "scope": "openid onecta:basic.integration",
-            "client_id": "emU20GdJDiiUxI_HnFGz69dD",
-            "client_secret": "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA",
         }
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
