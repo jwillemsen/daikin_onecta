@@ -146,7 +146,7 @@ class DaikinEnergySensor(SensorEntity):
                                     ]
                                     start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
                                     energy_value = round(sum(energy_values[start_index:]), 3)
-                                    _LOGGER.info("Device '%s' has energy value '%s' for mode %s %s", self._device.name, energy_value, management_point_type, mode)
+                                    _LOGGER.info("Device '%s' has energy value '%s' for mode %s %s period %s", self._device.name, energy_value, management_point_type, mode, self._period)
 
         return energy_value
 
