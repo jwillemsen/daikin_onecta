@@ -24,34 +24,9 @@ Copy the `daikin_residential_altherma` folder and all of its contents into your 
 
 # Using config flow
 
-Start by going to Configuration - Integration and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Residential Controller for Altherma` in the drop-down menu.
+Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Residential Controller including Altherma 3` in the drop-down menu.
 
-Follow the instructions, you just have to type the email and password used in the Daikin Residential App. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
-
-# YAML config files
-
-Just add the following lines to your `configuration.yaml` file specifying the email and password used in the Daikin Residential App, and the Daikin devices connected to your cloud account will be created. After making changes to your `configuration.yaml` file you need to restart home assistant.
-
-```
-daikin_residential_altherma:
-  email: 'your_email'
-  password: 'your_pwd'
-```
-
-# Known Issues and troubleshooting
-
-- I am getting the following error when adding the integration: **Failed to retrieve Access Token: ('Login failed: %s', Exception('Unknown Login error: Login Failed Captcha Required'))**
-
-**Solution:** when you have logged in to Daikin services, you have probably used the "Login with Google account" or other service. Try registering on Daikin platform, or register another account and share the devices with that account, then use that second account to configure this Integration.
-
-- I am getting the following error when adding the integration: **Failed to retrieve Access Token: ('Failed to retrieve access token: %s', IATError('Issued in the future'))**
-
-**Solution:** probably your system time is too out of sync with the token issuer's one. Make sure your system datetime is up-to-date, and in general it is advised to connect to an NTP server to keep your datetime synced.
-
-- I am having other general network problems that don't allow me to get or update the connection token
-
-**Solution:** make sure you don't have issues connecting to the address `daikin-unicloud-prod.auth.eu-west-1.amazoncognito.com` or similar. In general, check if you have any web filtering or adblocking system that might interfere with these connections: try to disable them, and if it starts working then try whitelisting this address or similar. Check if you have ipv6 enabled, some users report problems when using ipv6, try to disable ipv6.
-
+Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
 
 # Setting the log level
 
