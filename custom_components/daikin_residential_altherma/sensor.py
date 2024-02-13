@@ -101,7 +101,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                     sensorv = DaikinEnergySensor (device, embedded_id, management_point_type, mode,  period, icon)
                                     sensors.append(sensorv)
                             else:
-                                _LOGGER.info("Ignoring consumption data %s, not a supported operation_mode", mode)
+                                _LOGGER.info("Ignoring consumption data '%s', not a supported operation_mode", mode)
 
     async_add_entities(sensors)
 
@@ -138,18 +138,17 @@ class DaikinEnergySensor(SensorEntity):
                     cdv = cd.get("value")
                     if cdv is not None:
                         cdve = cdv.get("electrical")
-                        _LOGGER.info("Device '%s' provides electrical", self._device.name)
                         if cdve is not None:
                             for mode in cdve:
                                 # Only handle consumptionData for an operation mode supported by this device
                                 if mode == self._operation_mode:
-                                    _LOGGER.info("Device '%s' has energy value for mode %s %s", self._device.name, management_point_type, mode)
                                     energy_values = [
                                         0 if v is None else v
                                         for v in cdve[mode].get(self._period)
                                     ]
                                     start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
                                     energy_value = round(sum(energy_values[start_index:]), 3)
+                                    _LOGGER.info("Device '%s' has energy value '%s' for mode %s %s", self._device.name, energy_value, management_point_type, mode)
 
         return energy_value
 
