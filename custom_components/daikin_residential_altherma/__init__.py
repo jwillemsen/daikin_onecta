@@ -78,8 +78,6 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
     except ClientError as err:
         raise ConfigEntryNotReady from err
 
-    await daikin_api.getCloudDeviceDetails()
-
     devices = await daikin_api.getCloudDevices()
     hass.data[DOMAIN] = {DAIKIN_API: daikin_api, DAIKIN_DEVICES: devices}
 
@@ -88,7 +86,6 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
             hass.config_entries.async_forward_entry_setup(entry, component)
         )
     return True
-
 
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""

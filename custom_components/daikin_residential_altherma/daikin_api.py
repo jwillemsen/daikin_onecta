@@ -103,10 +103,6 @@ class DaikinApi:
 
         raise Exception("Communication failed! Status: " + str(res.status_code))
 
-    async def getApiInfo(self):
-        """Get Daikin API Info."""
-        return await self.doBearerRequest("/v1/info")
-
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
         json_puredata = await self.doBearerRequest("/v1/gateway-devices")
