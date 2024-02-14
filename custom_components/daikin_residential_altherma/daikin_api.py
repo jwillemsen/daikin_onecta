@@ -20,7 +20,7 @@ from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(minutes=5)
+MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(minutes=10)
 
 class DaikinApi:
     """Daikin Residential API."""
