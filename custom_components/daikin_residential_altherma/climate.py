@@ -197,6 +197,10 @@ class DaikinClimate(ClimateEntity):
         return sensoryData
 
     @property
+    def translation_key(self) -> str:
+        return "daikin"
+
+    @property
     def embedded_id(self):
         cc = self.climateControl()
         return cc["embeddedId"]

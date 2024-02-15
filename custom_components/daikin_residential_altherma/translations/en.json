@@ -30,5 +30,23 @@
             "name": "Reload",
             "description": "Retrieve new access TokenSet by logging in again to Daikin Cloud."
         }
+    },
+    "entity": {
+        "climate": {
+            "daikin": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "Quiet",
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5"
+                        }
+                    }
+                }
+            }
+        }
     }
 }
