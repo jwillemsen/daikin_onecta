@@ -10,6 +10,7 @@ from homeassistant.const import (
     PERCENTAGE,
     SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
     REVOLUTIONS_PER_MINUTE,
+    CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
 )
 
 from homeassistant.components.sensor import (
@@ -442,6 +443,38 @@ VALUE_SENSOR_MAPPING = {
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "roomHumidity": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.HUMIDITY,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: PERCENTAGE,
+        CONF_ICON: "mdi:water-percent",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "pm1Concentration": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.PM1,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_ICON: "",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "pm25Concentration": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.PM25,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_ICON: "",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "pm10Concentration": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.PM10,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_ICON: "",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
     },
 }
 
