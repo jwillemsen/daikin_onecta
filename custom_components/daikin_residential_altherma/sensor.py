@@ -115,7 +115,7 @@ class DaikinEnergySensor(SensorEntity):
         self._period = period
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Energy Consumption"
+        self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Electrical Consumption"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
         self._attr_icon = icon
