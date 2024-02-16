@@ -53,8 +53,8 @@ class DaikinApi:
         await self.session.async_ensure_token_valid()
         return self.session.token["access_token"]
 
-    async def doBearerRequest(self, resourceUrl, options=None, refreshed=False):
-        token = self.session.token["access_token"]
+    async def doBearerRequest(self, resourceUrl, options=None):
+        token = await self.async_get_access_token()
         if token is None:
             raise Exception("Missing TokenSet. Please repeat Authentication process.")
 
@@ -95,11 +95,6 @@ class DaikinApi:
         elif res.status_code == 204:
             self._just_updated = True
             return True
-
-        if not refreshed and res.status_code == 401:
-            _LOGGER.debug("TOKEN EXPIRED: will refresh it (%s)", res.status_code)
-            await self.async_get_access_token()
-            return await self.doBearerRequest(resourceUrl, options, True)
 
         raise Exception("Communication failed! Status: " + str(res.status_code))
 
