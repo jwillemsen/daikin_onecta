@@ -41,7 +41,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
             if  management_point_type in supported_management_point_types:
                 async_add_entities([DaikinWaterTank(device)], update_before_add=True)
             else:
-                _LOGGER.info("'%s' has not a tank management point, ignoring as water heater", management_point_type)
+                _LOGGER.info("Device '%s' '%s' is not a tank management point, ignoring as water heater", device.name, management_point_type)
 
 class DaikinWaterTank(WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
@@ -51,7 +51,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         self._device = device
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
-            _LOGGER.debug("Tank temperature is settable")
+            _LOGGER.debug("Device '%'s: tank temperature is settable", device.name)
 
     async def _set(self, settings):
         raise NotImplementedError

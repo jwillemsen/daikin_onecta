@@ -32,16 +32,9 @@ import homeassistant.helpers.config_validation as cv
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
-    ATTR_LEAVINGWATER_TEMPERATURE,
-    ATTR_OUTSIDE_TEMPERATURE,
-    ATTR_ROOM_TEMPERATURE,
-    ATTR_LEAVINGWATER_OFFSET,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
     ATTR_OPERATION_MODE,
-    ATTR_TARGET_ROOM_TEMPERATURE,
-    ATTR_TARGET_LEAVINGWATER_OFFSET,
-    ATTR_TARGET_LEAVINGWATER_TEMPERATURE,
     FAN_QUIET,
 )
 
@@ -67,15 +60,6 @@ HA_HVAC_TO_DAIKIN = {
     HVACMode.HEAT: "heating",
     HVACMode.HEAT_COOL: "auto",
     HVACMode.OFF: "off",
-}
-
-HA_ATTR_TO_DAIKIN = {
-    ATTR_PRESET_MODE: "en_hol",
-    ATTR_HVAC_MODE: "mode",
-    ATTR_LEAVINGWATER_OFFSET: "c",
-    ATTR_LEAVINGWATER_TEMPERATURE: "c",
-    ATTR_OUTSIDE_TEMPERATURE: "otemp",
-    ATTR_ROOM_TEMPERATURE: "stemp",
 }
 
 DAIKIN_HVAC_TO_HA = {
@@ -114,7 +98,6 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
     config. But even in that case it would have been ignored.
     """
 
-
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
@@ -131,7 +114,6 @@ async def async_setup_entry(hass, entry, async_add_entities):
                     for operationmode in temperatureControl["value"]["operationModes"]:
                         #for modes in operationmode["setpoints"]:
                         for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
-                            _LOGGER.info("Found temperature mode %s", c)
                             modes.append(c)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
@@ -146,7 +128,7 @@ class DaikinClimate(ClimateEntity):
     # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
     def __init__(self, device, setpoint):
         """Initialize the climate device."""
-        _LOGGER.info("Initializing Daiking Climate for controlling %s...", setpoint)
+        _LOGGER.info("Device '%s' initializing Daiking Climate for controlling %s...", device.name, setpoint)
         self._device = device
         self._setpoint = setpoint
 
@@ -179,7 +161,7 @@ class DaikinClimate(ClimateEntity):
             oo = temperatureControl["value"]["operationModes"].get(operationMode)
             if oo is not None:
                 setpoint = oo["setpoints"].get(self._setpoint)
-            _LOGGER.info("Climate: %s operation mode %s has setpoint %s", self._setpoint, operationMode, setpoint)
+            _LOGGER.info("Device '%s': %s operation mode %s has setpoint %s", self._device.name, self._setpoint, operationMode, setpoint)
         return setpoint
 
     # Return the dictionary fanControl for the current operationMode
@@ -196,7 +178,7 @@ class DaikinClimate(ClimateEntity):
                     if temperatureControl is not None:
                         operationMode = management_point.get("operationMode").get("value")
                         fancontrol = temperatureControl["value"]["operationModes"][operationMode].get(self._setpoint)
-                        _LOGGER.info("Climate: %s operation mode %s has fanControl %s", self._setpoint, operationMode, setpoint)
+                        _LOGGER.info("Device '%s': %s operation mode %s has fanControl %s", self._device.name, self._setpoint, operationMode, setpoint)
         return setpoint
 
     def sensoryData(self):
@@ -211,8 +193,12 @@ class DaikinClimate(ClimateEntity):
                     _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
                     if sensoryData is not None:
                         sensoryData = sensoryData.get("value").get(self._setpoint)
-                        _LOGGER.info("Climate: %s has sensoryData %s", self._setpoint, sensoryData)
+                        _LOGGER.info("Device '%s': %s has sensoryData %s", self._device.name, self._setpoint, sensoryData)
         return sensoryData
+
+    @property
+    def translation_key(self) -> str:
+        return "daikin"
 
     @property
     def embedded_id(self):
@@ -241,7 +227,7 @@ class DaikinClimate(ClimateEntity):
             if fanControl["value"]["operationModes"][operationmode].get("fanDirection") is not None:
                 supported_features |= ClimateEntityFeature.SWING_MODE
 
-        _LOGGER.info("Devices '%s' supports features %s", self._device.name, supported_features)
+        _LOGGER.info("Device '%s' supports features %s", self._device.name, supported_features)
 
         return supported_features
 
@@ -278,7 +264,7 @@ class DaikinClimate(ClimateEntity):
         else:
             if setpointdict is not None:
                 currentTemp = setpointdict["value"]
-        _LOGGER.debug("Device '%s' current temperature '%s'", self._device.name, currentTemp)
+        _LOGGER.debug("Device '%s' current temperature '%s' for setpoint '%s'", self._device.name, currentTemp, self._setpoint)
         return currentTemp
 
     @property
@@ -287,7 +273,7 @@ class DaikinClimate(ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None:
             maxTemp = setpointdict["maxValue"]
-        _LOGGER.debug("Device '%s' max temperature '%s'", self._device.name, maxTemp)
+        _LOGGER.debug("Device '%s' max temperature '%s' for setpoint '%s'", self._device.name, maxTemp, self._setpoint)
         return maxTemp
 
     @property
@@ -296,7 +282,7 @@ class DaikinClimate(ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None:
             minValue = setpointdict["minValue"]
-        _LOGGER.debug("Device '%s' max temperature '%s'", self._device.name, minValue)
+        _LOGGER.debug("Device '%s' min temperature '%s' for setpoint '%s'", self._device.name, minValue, self._setpoint)
         return minValue
 
     @property
@@ -305,7 +291,7 @@ class DaikinClimate(ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None:
             value = setpointdict["value"]
-        _LOGGER.debug("Device '%s' target temperature '%s'", self._device.name, value)
+        _LOGGER.debug("Device '%s' target temperature '%s' for setpoint '%s'", self._device.name, value, self._setpoint)
         return value
 
     @property
@@ -314,7 +300,7 @@ class DaikinClimate(ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None:
             stepValue = setpointdict["stepValue"]
-        _LOGGER.debug("Device '%s' step value '%s'", self._device.name, stepValue)
+        _LOGGER.debug("Device '%s' step value '%s' for setpoint '%s'", self._device.name, stepValue, self._setpoint)
         return stepValue
 
     async def async_set_temperature(self, **kwargs):
@@ -418,13 +404,13 @@ class DaikinClimate(ClimateEntity):
             fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
             _LOGGER.info("Found fanspeed %s", fanspeed)
             for c in fanspeed["currentMode"]["values"]:
-                _LOGGER.info("Found fan mode %s", c)
+                _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
                 if c in DAIKIN_FAN_TO_HA:
                     fan_modes.append(DAIKIN_FAN_TO_HA[c])
                 else:
                     fsm = fanspeed.get("modes")
                     if fsm is not None:
-                        _LOGGER.info("Found fixed %s", fsm)
+                        _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
                         fixedModes = fsm[c]
                         minVal = int(fixedModes["minValue"])
                         maxVal = int(fixedModes["maxValue"])
@@ -618,7 +604,7 @@ class DaikinClimate(ClimateEntity):
             if preset is not None and preset.get("value") is not None:
                 supported_preset_modes.append(mode)
 
-        _LOGGER.info("Devices '%s' supports pre preset_modes %s", self._device.name, format(supported_preset_modes))
+        _LOGGER.info("Device '%s' supports pre preset_modes %s", self._device.name, format(supported_preset_modes))
 
         return supported_preset_modes
 

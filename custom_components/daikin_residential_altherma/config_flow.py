@@ -1,79 +1,72 @@
 """Config flow for the Daikin platform."""
 import logging
 
-import voluptuous as vol
+from collections.abc import Mapping
+from typing import Any
 
 from homeassistant import config_entries
-from homeassistant.const import CONF_EMAIL, CONF_PASSWORD
+from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.data_entry_flow import FlowResult
 
 from .daikin_api import DaikinApi
-from .const import DOMAIN, CONF_TOKENSET
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-
-@config_entries.HANDLERS.register(DOMAIN)
-class FlowHandler(config_entries.ConfigFlow):
+class FlowHandler(
+    config_entry_oauth2_flow.AbstractOAuth2FlowHandler,
+    domain=DOMAIN,
+):
     """Handle a config flow."""
-
+    """See https://developers.home-assistant.io/docs/core/platform/application_credentials/ """
+    """ https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started """
     VERSION = 1
+    DOMAIN = DOMAIN
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
-    def __init__(self):
-        """Initialize the Daikin config flow."""
-        self.host = None
+    @property
+    def extra_authorize_data(self) -> dict[str, str]:
+        """Extra data that needs to be appended to the authorize url."""
+        return {
+            "scope": "openid onecta:basic.integration",
+            "client_id": "emU20GdJDiiUxI_HnFGz69dD",
+            "client_secret": "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA",
+        }
+
+    async def async_oauth_create_entry(self, data: dict) -> FlowResult:
+        """Create an oauth config entry or update existing entry for reauth."""
+        existing_entry = await self.async_set_unique_id(DOMAIN)
+        if existing_entry:
+            self.hass.config_entries.async_update_entry(existing_entry, data=data)
+            await self.hass.config_entries.async_reload(existing_entry.entry_id)
+            return self.async_abort(reason="reauth_successful")
+
+        return await super().async_oauth_create_entry(data)
+
+    async def async_step_user(self, user_input: dict | None = None) -> FlowResult:
+        """Handle a flow start."""
+        await self.async_set_unique_id(DOMAIN)
+
+        if (
+            self.source != config_entries.SOURCE_REAUTH
+            and self._async_current_entries()
+        ):
+            return self.async_abort(reason="single_instance_allowed")
+
+        return await super().async_step_user(user_input)
+
+    async def async_step_reauth(self, entry_data: Mapping[str, Any]) -> FlowResult:
+        """Perform reauth upon an API authentication error."""
+        return await self.async_step_reauth_confirm()
+
+    async def async_step_reauth_confirm(
+        self, user_input: dict | None = None
+    ) -> FlowResult:
+        """Dialog that informs the user that reauth is required."""
+        if user_input is None:
+            return self.async_show_form(step_id="reauth_confirm")
 
     @property
-    def schema(self):
-        """Return current schema."""
-        return vol.Schema(
-            {vol.Required(CONF_EMAIL): str, vol.Required(CONF_PASSWORD): str}
-        )
-
-    async def _create_entry(self, email, password, tokenSet):
-        """Register new entry."""
-        # if not self.unique_id:
-        #    await self.async_set_unique_id(password)
-        # self._abort_if_unique_id_configured()
-        if self._async_current_entries():
-            return self.async_abort(reason="already_configured")
-
-        await self.async_set_unique_id("DaikinResidentialAltherma")
-        return self.async_create_entry(
-            title="Daikin",
-            data={CONF_EMAIL: email, CONF_PASSWORD: password, CONF_TOKENSET: tokenSet},
-        )
-
-    async def _attempt_connection(self, email, password):
-        """Create device."""
-        try:
-            daikin_api = DaikinApi(self.hass, None)
-        except Exception as e:
-            _LOGGER.error("Failed to initialize DaikinApi: %s", e)
-            return self.async_abort(reason="init_failed")
-        try:
-            await daikin_api.retrieveAccessToken(email, password)
-        except Exception as e:
-            _LOGGER.error("Failed to retrieve Access Token: %s", e)
-            return self.async_abort(reason="token_retrieval_failed")
-        try:
-            await daikin_api.getApiInfo()
-        except Exception as e:
-            _LOGGER.error("Failed to connect to DaikinApi: %s", e)
-            return self.async_abort(reason="cannot_connect")
-
-        return await self._create_entry(email, password, daikin_api.tokenSet)
-
-    async def async_step_user(self, user_input=None):
-        """User initiated config flow."""
-        if user_input is None:
-            return self.async_show_form(step_id="user", data_schema=self.schema)
-        return await self._attempt_connection(
-            user_input.get(CONF_EMAIL), user_input.get(CONF_PASSWORD)
-        )
-
-    async def async_step_import(self, user_input):
-        """Import a config entry from YAML."""
-        return await self._attempt_connection(
-            user_input.get(CONF_EMAIL), user_input.get(CONF_PASSWORD)
-        )
+    def logger(self) -> logging.Logger:
+        """Return logger."""
+        return logging.getLogger(__name__)

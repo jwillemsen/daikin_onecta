@@ -8,14 +8,12 @@ from homeassistant.helpers.device_registry import DeviceEntry
 
 from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES
 
-
 async def async_get_config_entry_diagnostics(
     hass: HomeAssistant, entry: ConfigEntry
 ) -> dict[str, Any]:
     """Return diagnostics for a config entry."""
     data = {}
     daikin_api = hass.data[DOMAIN][DAIKIN_API]
-    data["tokenset"] = {**entry.data}
     data["json_data"] = daikin_api.json_data
     return data
 

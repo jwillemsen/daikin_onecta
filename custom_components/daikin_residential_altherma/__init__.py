@@ -3,21 +3,22 @@ import asyncio
 import datetime
 import logging
 import voluptuous as vol
+from aiohttp import ClientError
 
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
-from homeassistant.const import CONF_EMAIL, CONF_PASSWORD, SERVICE_RELOAD
+from homeassistant.const import SERVICE_RELOAD
 from homeassistant.helpers.typing import HomeAssistantType
+from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.exceptions import ConfigEntryNotReady
 
-from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES, CONF_TOKENSET
+from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES
 
 from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
 
-ENTRY_IS_SETUP = "daikin_entry_is_setup"
-
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(seconds=15)
-SCAN_INTERVAL = datetime.timedelta(seconds=30)
+MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(minutes=10)
+SCAN_INTERVAL = datetime.timedelta(minutes=10)
 
 PARALLEL_UPDATES = 0
 
@@ -29,17 +30,6 @@ SIGNAL_UPDATE_ENTITY = "daikin_update"
 
 COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
 
-CONFIG_SCHEMA = vol.Schema(
-    vol.All(
-        {
-            DOMAIN: vol.Schema(
-                {vol.Required(CONF_EMAIL): str, vol.Required(CONF_PASSWORD): str}
-            )
-        }
-    ),
-    extra=vol.ALLOW_EXTRA,
-)
-
 async def async_setup(hass, config):
     """Setup the Daikin Residential component."""
 
@@ -49,8 +39,6 @@ async def async_setup(hass, config):
         try:
             daikin_api = hass.data[DOMAIN][DAIKIN_API]
             data = daikin_api._config_entry.data.copy()
-            await daikin_api.retrieveAccessToken(data[CONF_EMAIL], data[CONF_PASSWORD])
-            data[CONF_TOKENSET] = daikin_api.tokenSet
             hass.config_entries.async_update_entry(
                 entry=daikin_api._config_entry, data=data
             )
@@ -77,9 +65,18 @@ async def async_setup(hass, config):
 
 async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
     """Establish connection with Daikin."""
+    implementation = (
+        await config_entry_oauth2_flow.async_get_config_entry_implementation(
+            hass, entry
+        )
+    )
 
-    daikin_api = DaikinApi(hass, entry)
-    await daikin_api.getCloudDeviceDetails()
+    daikin_api = DaikinApi(hass, entry, implementation)
+
+    try:
+        await daikin_api.async_get_access_token()
+    except ClientError as err:
+        raise ConfigEntryNotReady from err
 
     devices = await daikin_api.getCloudDevices()
     hass.data[DOMAIN] = {DAIKIN_API: daikin_api, DAIKIN_DEVICES: devices}
@@ -89,7 +86,6 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
             hass.config_entries.async_forward_entry_setup(entry, component)
         )
     return True
-
 
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""

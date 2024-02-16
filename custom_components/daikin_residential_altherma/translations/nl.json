@@ -19,5 +19,23 @@
             "name": "Reload",
             "description": "Ophalen van nieuwe tokens bij Daikin."
         }
+    },
+    "entity": {
+        "climate": {
+            "daikin": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "Stil",
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5"
+                        }
+                    }
+                }
+            }
+        }
     }
 }

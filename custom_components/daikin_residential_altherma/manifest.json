@@ -5,12 +5,10 @@
     "@jwillemsen"
   ],
   "config_flow": true,
-  "dependencies": [],
+  "dependencies": ["application_credentials"],
   "documentation": "https://github.com/jwillemsen/daikin_residential_altherma",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/jwillemsen/daikin_residential_altherma/issues",
-  "requirements": [
-     "oic>=1.6.0"
-  ],
-  "version": "3.4.1"
+  "requirements": [],
+  "version": "4.0.0"
 }

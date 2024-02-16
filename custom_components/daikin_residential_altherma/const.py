@@ -2,7 +2,6 @@
 
 from homeassistant.const import (
     CONF_DEVICE_CLASS,
-    CONF_TOKEN,
     CONF_ICON,
     CONF_NAME,
     CONF_TYPE,
@@ -11,6 +10,7 @@ from homeassistant.const import (
     PERCENTAGE,
     SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
     REVOLUTIONS_PER_MINUTE,
+    CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
 )
 
 from homeassistant.components.sensor import (
@@ -25,8 +25,6 @@ from homeassistant.helpers.entity import (
 
 DOMAIN = "daikin_residential_altherma"
 
-CONF_TOKENSET = CONF_TOKEN + "set"
-
 DAIKIN_DATA = "daikin_data"
 DAIKIN_API = "daikin_api"
 DAIKIN_DEVICES = "daikin_devices"
@@ -34,13 +32,6 @@ DAIKIN_DISCOVERY_NEW = "daikin_discovery_new_{}"
 
 ATTR_PRESET_MODE = "preset_mode"
 ATTR_OPERATION_MODE = "operation_mode"
-ATTR_TARGET_ROOM_TEMPERATURE = "target_room_temperature"
-ATTR_TARGET_LEAVINGWATER_OFFSET = "target_leavingwater_offset"
-ATTR_TARGET_LEAVINGWATER_TEMPERATURE = "target_leavingwater_temperature"
-ATTR_LEAVINGWATER_TEMPERATURE = "leavingWaterTemperature"
-ATTR_OUTSIDE_TEMPERATURE = "outdoorTemperature"
-ATTR_ROOM_TEMPERATURE = "roomTemperature"
-ATTR_LEAVINGWATER_OFFSET = "leavingWaterOffset"
 
 ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
@@ -57,7 +48,6 @@ SENSOR_PERIODS = {
     SENSOR_PERIOD_YEARLY: "Yearly",
 }
 
-FAN_FIXED = "fixed"
 FAN_QUIET = "quiet"
 
 ENABLED_DEFAULT = "Enabled"
@@ -70,6 +60,46 @@ ENTITY_CATEGORY = "ENTITY_CATEGORY"
 # - ICON: Icon to be used
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 VALUE_SENSOR_MAPPING = {
+    "controlMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "onOffMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:toggle-switch-variant",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "operationMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "setpointMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "heatupMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
     "serialNumber": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
@@ -413,6 +443,38 @@ VALUE_SENSOR_MAPPING = {
         CONF_ICON: "mdi:information-outline",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+    },
+    "roomHumidity": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.HUMIDITY,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: PERCENTAGE,
+        CONF_ICON: "mdi:water-percent",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "pm1Concentration": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.PM1,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_ICON: "mdi:blur",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "pm25Concentration": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.PM25,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_ICON: "mdi:blur",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
+    "pm10Concentration": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.PM10,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_ICON: "mdi:blur",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
     },
 }
 
