@@ -28,6 +28,8 @@ Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRAT
 
 Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
 
+The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`.
+
 # Setting the log level
 
 If you'd like to see more granular logs, to investigate the communication or for other debugging purposes, you can set the log level in the Home Assistant config. The following lines can be added to set the overall log level for the component:
