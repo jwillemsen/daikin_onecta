@@ -439,7 +439,7 @@ class DaikinClimate(ClimateEntity):
                 if res is False:
                     _LOGGER.warning("Device '%s' problem setting fan_mode to fixed", self._device.name)
                 else:
-                    fanControl["value"]["operationModes"][operationmode]["fanSpeed"]["currentMode"]["fixed"] = fan_mode
+                    fanControl["value"]["operationModes"][operationmode]["fanSpeed"]["currentMode"]["value"] = "fixed"
                 res &= await self._device.set_path(self._device.getId(), self.embedded_id, "fanControl", f"/operationModes/{operationmode}/fanSpeed/modes/fixed", mode)
                 if res is False:
                     _LOGGER.warning("Device '%s' problem setting fan_mode fixed to %s", self._device.name, mode)
