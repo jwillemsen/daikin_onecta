@@ -84,7 +84,13 @@ class DaikinApi:
             except Exception as e:
                 _LOGGER.error("REQUEST FAILED: %s", e)
                 return []
-            _LOGGER.debug("BEARER RESPONSE CODE: %s", res.status_code)
+
+            limit_minute = res.headers.get('X-RateLimit-Limit-minute', 0)
+            limit_day = res.headers.get('X-RateLimit-Limit-day', 0)
+            limit_remaining_minutes = res.headers.get('X-RateLimit-Remaining-minute', 0)
+            limit_remaining_day = res.headers.get('X-RateLimit-Remaining-day', 0)
+
+            _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: remaining minute %s day %s MAX: minute %s day %s ", res.status_code, limit_remaining_minutes, limit_remaining_day, limit_minute, limit_day)
 
         if res.status_code == 200:
             try:
