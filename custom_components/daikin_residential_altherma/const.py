@@ -84,6 +84,14 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
     },
+    "airPurificationMode": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:alphabetical",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+    },
     "setpointMode": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
