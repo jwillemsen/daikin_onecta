@@ -10,6 +10,9 @@
 Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat Pump.
 
 > [!IMPORTANT]
+> Starting with v4.0.0 the cloud API has changed to the Daikin provided official API. In order to use this new API you need to create an account on the Daikin Developer Portal at https://developer.cloud.daikineurope.com/login.
+
+> [!IMPORTANT]
 > Starting with v3.0.0 the internal IDs of all entities have changed, please check your automations and energy dashboard whether you need to update these. When you remove the other Daikin integrations from your HA installation the history from those will be lost.
 
 <!---
