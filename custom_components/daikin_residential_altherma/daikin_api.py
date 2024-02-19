@@ -50,7 +50,12 @@ class DaikinApi:
 
     async def async_get_access_token(self) -> str:
         """Return a valid access token."""
+        token_valid = self.session.valid_token
+        if not token_valid:
+            _LOGGER.debug("Token before renew: %s", self.session.token["access_token"])
         await self.session.async_ensure_token_valid()
+        if not token_valid:
+            _LOGGER.debug("Token after renew: %s", self.session.token["access_token"])
         return self.session.token["access_token"]
 
     async def doBearerRequest(self, resourceUrl, options=None):
