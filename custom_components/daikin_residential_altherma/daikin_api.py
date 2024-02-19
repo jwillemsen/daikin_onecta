@@ -56,7 +56,7 @@ class DaikinApi:
     async def doBearerRequest(self, resourceUrl, options=None):
         token = await self.async_get_access_token()
         if token is None:
-            raise Exception("Missing TokenSet. Please repeat Authentication process.")
+            raise Exception("Missing token. Please repeat Authentication process.")
 
         if not resourceUrl.startswith("http"):
             resourceUrl = "https://api.onecta.daikineurope.com" + resourceUrl
