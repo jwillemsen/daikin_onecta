@@ -52,7 +52,9 @@ class DaikinApi:
         """Return a valid access token."""
         token_valid = self.session.valid_token
         if not token_valid:
-            _LOGGER.debug("Token before renew: %s", self.session.token["access_token"])
+            _LOGGER.debug("Token not valid before renew %s %s", self.session.token["expires_at"], self.session.token["access_token"])
+        else:
+            _LOGGER.debug("Token still valid until %s %s", self.session.token["expires_at"], self.session.token["access_token"])
         await self.session.async_ensure_token_valid()
         if not token_valid:
             _LOGGER.debug("Token after renew: %s", self.session.token["access_token"])
