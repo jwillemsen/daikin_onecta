@@ -1,6 +1,5 @@
 """Platform for the Daikin AC."""
 import base64
-import datetime
 import functools
 import logging
 import os
@@ -18,9 +17,11 @@ from .const import DOMAIN, DAIKIN_DEVICES
 
 from .daikin_base import Appliance
 
+from datetime import datetime, timedelta
+
 _LOGGER = logging.getLogger(__name__)
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(minutes=10)
+MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=10)
 
 class DaikinApi:
     """Daikin Residential API."""
@@ -39,8 +40,9 @@ class DaikinApi:
 
         # The Daikin cloud returns old settings if queried with a GET
         # immediately after a PATCH request. Se we use this attribute
-        # to skip the first GET if a PATCH request has just been executed.
-        self._just_updated = False
+        # to check when we had the last patch command, if it is less then
+        # 10 seconds ago we skip the get
+        self._last_patch_call = datetime.min
 
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.
@@ -106,7 +108,7 @@ class DaikinApi:
                 _LOGGER.error("RETRIEVE JSON FAILED: %s", res.text)
                 return False
         elif res.status_code == 204:
-            self._just_updated = True
+            self._last_patch_call = datetime.now()
             return True
 
         raise Exception("Communication failed! Status: " + str(res.status_code))
@@ -128,9 +130,8 @@ class DaikinApi:
 
     @Throttle(MIN_TIME_BETWEEN_UPDATES)
     async def async_update(self, **kwargs):
-        """Pull the latest data from Daikin."""
-        if self._just_updated:
-            self._just_updated = False
+        """Pull the latest data from Daikin only when the last patch call is more than 30 seconds ago."""
+        if (datetime.now() - self._last_patch_call).total_seconds() < 30:
             _LOGGER.debug("API UPDATE skipped (just updated from UI)")
             return False
 
