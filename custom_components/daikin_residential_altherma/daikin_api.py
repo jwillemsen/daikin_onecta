@@ -61,19 +61,19 @@ class DaikinApi:
         return self.session.token["access_token"]
 
     async def doBearerRequest(self, resourceUrl, options=None):
-        token = await self.async_get_access_token()
-        if token is None:
-            raise Exception("Missing token. Please repeat Authentication process.")
-
-        if not resourceUrl.startswith("http"):
-            resourceUrl = "https://api.onecta.daikineurope.com" + resourceUrl
-
-        headers = {
-            "Authorization": "Bearer " + token,
-            "Content-Type": "application/json",
-        }
-
         async with self._cloud_lock:
+            token = await self.async_get_access_token()
+            if token is None:
+                raise Exception("Missing token. Please repeat Authentication process.")
+
+            if not resourceUrl.startswith("http"):
+                resourceUrl = "https://api.onecta.daikineurope.com" + resourceUrl
+
+            headers = {
+                "Authorization": "Bearer " + token,
+                "Content-Type": "application/json",
+            }
+
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
             if (
                 options is not None
