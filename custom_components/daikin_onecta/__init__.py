@@ -31,7 +31,7 @@ SIGNAL_UPDATE_ENTITY = "daikin_update"
 COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
 
 async def async_setup(hass, config):
-    """Setup the Daikin Residential component."""
+    """Setup the Daikin Onecta component."""
 
     async def _handle_reload(service):
         """Handle reload service call."""

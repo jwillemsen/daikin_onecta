@@ -22,7 +22,7 @@
                     "password": "Password"
                 },
                 "description": "Non \u00e8 necessario introdurre parametri di configurazione in questo menu.\n\nAssicurati solo di aver ottenuto il tuo file tokenset.json usando la procedura con il MITM proxy, e di averlo salvato nella tua directory di configurazione, poi premi Submit per procedere.",
-                "title": "Configura Daikin Residential for Altherma 3"
+                "title": "Configura Daikin Onecta"
             }
         }
     }

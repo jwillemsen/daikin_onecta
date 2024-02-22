@@ -24,14 +24,14 @@ _LOGGER = logging.getLogger(__name__)
 MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=10)
 
 class DaikinApi:
-    """Daikin Residential API."""
+    """Daikin Onecta API."""
 
     def __init__(self,
                 hass: core.HomeAssistant,
                 entry: config_entries.ConfigEntry,
                 implementation: config_entry_oauth2_flow.AbstractOAuth2Implementation,):
-        """Initialize a new Daikin Residential Altherma API."""
-        _LOGGER.debug("Initialing Daikin Residential Altherma API...")
+        """Initialize a new Daikin Onecta API."""
+        _LOGGER.debug("Initialing Daikin Onecta API...")
         self.hass = hass
         self._config_entry = entry
         self.session = config_entry_oauth2_flow.OAuth2Session(
@@ -48,7 +48,7 @@ class DaikinApi:
         # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
 
-        _LOGGER.info("Daikin Residential Altherma API initialized.")
+        _LOGGER.info("Daikin Onecta API initialized.")
 
     async def async_get_access_token(self) -> str:
         """Return a valid access token."""
@@ -112,7 +112,7 @@ class DaikinApi:
         return json_puredata
 
     async def getCloudDevices(self):
-        """Get array of DaikinResidentialDevice objects and get their data."""
+        """Get array of DaikinOnectaDevice objects and get their data."""
         self.json_data = await self.getCloudDeviceDetails()
 
         res = {}

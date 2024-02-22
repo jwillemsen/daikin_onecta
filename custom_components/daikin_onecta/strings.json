@@ -2,7 +2,7 @@
   "config": {
     "step": {
       "user": {
-        "title": "Configure Daikin Residential Controller AC",
+        "title": "Configure Daikin Onecta",
         "description": "Enter the email and password you use to login to Daikin Cloud, then press Submit.",
         "data": {
           "email": "[%key:common::config_flow::data::email]",

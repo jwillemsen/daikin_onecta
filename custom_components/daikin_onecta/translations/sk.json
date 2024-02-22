@@ -21,7 +21,7 @@
                     "password": "Heslo"
                 },
                 "description": "Zadajte e-mailovú adresu a heslo, ktoré používate na prihlásenie do Daikin Cloud, a potom stlačte Odoslať.",
-                "title": "Konfigurácia Daikin Residential Controller AC"
+                "title": "Konfigurácia Daikin Onecta"
             }
         }
     },

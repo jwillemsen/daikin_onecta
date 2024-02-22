@@ -9,11 +9,11 @@ from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-class DaikinResidentialDevice:
-    """Class to represent and control one Daikin Residential Device."""
+class DaikinOnectaDevice:
+    """Class to represent and control one Daikin Onecta Device."""
 
     def __init__(self, jsonData, apiInstance):
-        """Initialize a new Daikin Residential Device."""
+        """Initialize a new Daikin Onecta Device."""
         self.api = apiInstance
         # get name from climateControl
         self._available = True
@@ -26,7 +26,7 @@ class DaikinResidentialDevice:
             if management_point_type == "climateControl":
                 self.name = management_point["name"]["value"]
 
-        _LOGGER.info("Initialized Daikin Residential Device '%s' (id %s)", self.name, self.getId())
+        _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.getId())
 
     @property
     def available(self) -> bool:
