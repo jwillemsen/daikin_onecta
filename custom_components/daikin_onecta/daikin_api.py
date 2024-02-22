@@ -44,6 +44,9 @@ class DaikinApi:
         # 10 seconds ago we skip the get
         self._last_patch_call = datetime.min
 
+        # Store the limits as member so that we can add these to the diagnostics
+        self.rate_limits = {'minute': 0, 'day': 0, 'remaining_minutes': 0, 'remaining_day': 0}
+
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
@@ -87,12 +90,12 @@ class DaikinApi:
                 _LOGGER.error("REQUEST FAILED: %s", e)
                 return []
 
-            limit_minute = res.headers.get('X-RateLimit-Limit-minute', 0)
-            limit_day = res.headers.get('X-RateLimit-Limit-day', 0)
-            limit_remaining_minutes = res.headers.get('X-RateLimit-Remaining-minute', 0)
-            limit_remaining_day = res.headers.get('X-RateLimit-Remaining-day', 0)
+            self.rate_limits['minute'] = res.headers.get('X-RateLimit-Limit-minute', 0)
+            self.rate_limits['day'] = res.headers.get('X-RateLimit-Limit-day', 0)
+            self.rate_limits['remaining_minutes'] = res.headers.get('X-RateLimit-Remaining-minute', 0)
+            self.rate_limits['remaining_day'] = res.headers.get('X-RateLimit-Remaining-day', 0)
 
-            _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: remaining minute %s day %s MAX: minute %s day %s ", res.status_code, limit_remaining_minutes, limit_remaining_day, limit_minute, limit_day)
+            _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
 
         if res.status_code == 200:
             try:
