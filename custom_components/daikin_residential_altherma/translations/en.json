@@ -21,7 +21,7 @@
                     "password": "Password"
                 },
                 "description": "Enter the email address and password you use to login to Daikin Cloud, then press Submit.",
-                "title": "Configure Daikin Residential Controller AC"
+                "title": "Configure Daikin Onecta"
             }
         }
     },

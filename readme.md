@@ -1,13 +1,13 @@
-[![](https://img.shields.io/github/release/jwillemsen/daikin_residential_altherma/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_residential_altherma/releases)
+[![](https://img.shields.io/github/release/jwillemsen/daikin_onecta/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_onecta/releases)
 <!---
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 -->
 [![](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
 
 
-# Daikin Residential including Altherma 3 Heat Pump
+# Daikin Onecta
 
-Home Assistant Integration for Daikin devices including Daikin Altherma 3 Heat Pump.
+Home Assistant Integration for Daikin devices using the Daikin Onecta API.
 
 > [!IMPORTANT]
 > Starting with v4.0.0 the cloud API has changed to the Daikin provided official API. In order to use this new API you need to create an account on the Daikin Developer Portal at https://developer.cloud.daikineurope.com/login.
@@ -23,11 +23,11 @@ Install with [HACS](https://hacs.xyz): Search for "Daikin Residential for Alther
 
 # Manual Installation
 
-Copy the `daikin_residential_altherma` folder and all of its contents into your Home Assistant's `custom_components` folder. This is often located inside of your `/config` folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the `custom_components` folder might be located at `/usr/share/hassio/homeassistant`. It is possible that your `custom_components` folder does not exist. If that is the case, create the folder in the proper location, and then copy the `daikin_residential_altherma` folder and all of its contents inside the newly created `custom_components` folder. Then you have to restart Home Assistant for the component to be loaded properly.
+Copy the `daikin_onecta` folder and all of its contents into your Home Assistant's `custom_components` folder. This is often located inside of your `/config` folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the `custom_components` folder might be located at `/usr/share/hassio/homeassistant`. It is possible that your `custom_components` folder does not exist. If that is the case, create the folder in the proper location, and then copy the `daikin_onecta` folder and all of its contents inside the newly created `custom_components` folder. Then you have to restart Home Assistant for the component to be loaded properly.
 
 # Using config flow
 
-Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Residential Controller including Altherma 3` in the drop-down menu.
+Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Onecta` in the drop-down menu.
 
 Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
 
@@ -40,7 +40,7 @@ If you'd like to see more granular logs, to investigate the communication or for
 ```
 logger:
   logs:
-    custom_components.daikin_residential_altherma: debug
+    custom_components.daikin_onecta: debug
 ```
 
 If you only want to change log level on a per module basis, you can do that as well, for example if you only want debug logs for the climate:
@@ -48,7 +48,7 @@ If you only want to change log level on a per module basis, you can do that as w
 ```
 logger:
   logs:
-    custom_components.daikin_residential_altherma.climate: debug
+    custom_components.daikin_onecta.climate: debug
 ```
 
 # Thanks to:

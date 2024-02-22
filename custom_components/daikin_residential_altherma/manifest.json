@@ -1,14 +1,14 @@
 {
-  "domain": "daikin_residential_altherma",
-  "name": "Daikin Residential Controller including Altherma",
+  "domain": "daikin_onecta",
+  "name": "Daikin Onecta",
   "codeowners": [
     "@jwillemsen"
   ],
   "config_flow": true,
   "dependencies": ["application_credentials"],
-  "documentation": "https://github.com/jwillemsen/daikin_residential_altherma",
+  "documentation": "https://github.com/jwillemsen/daikin_onecta",
   "iot_class": "cloud_polling",
-  "issue_tracker": "https://github.com/jwillemsen/daikin_residential_altherma/issues",
+  "issue_tracker": "https://github.com/jwillemsen/daikin_onecta/issues",
   "requirements": [],
   "version": "4.0.0"
 }

@@ -1,4 +1,4 @@
-"""Constants for Daikin Residential Controller."""
+"""Constants for Daikin Oncecta."""
 
 from homeassistant.const import (
     CONF_DEVICE_CLASS,
@@ -23,7 +23,7 @@ from homeassistant.helpers.entity import (
     EntityCategory
 )
 
-DOMAIN = "daikin_residential_altherma"
+DOMAIN = "daikin_onecta"
 
 DAIKIN_DATA = "daikin_data"
 DAIKIN_API = "daikin_api"
