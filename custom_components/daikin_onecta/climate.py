@@ -608,11 +608,6 @@ class DaikinClimate(ClimateEntity):
 
         return supported_preset_modes
 
-    async def async_update(self):
-        """Retrieve latest state."""
-        _LOGGER.debug("Device '%s' climate async_update", self._device.name)
-        await self._device.api.async_update()
-
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
         cc = self.climateControl()
