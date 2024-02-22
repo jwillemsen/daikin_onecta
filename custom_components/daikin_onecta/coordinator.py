@@ -8,9 +8,6 @@ import logging
 from homeassistant.exceptions import ConfigEntryAuthFailed
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import (
-    CONF_SCAN_INTERVAL,
-)
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
@@ -33,7 +30,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(seconds=self.scan_interval),
+            update_interval=timedelta(seconds=15),
         )
 
     async def _async_update_data(self):

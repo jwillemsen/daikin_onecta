@@ -19,9 +19,6 @@ from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(minutes=10)
-SCAN_INTERVAL = datetime.timedelta(minutes=10)
-
 PARALLEL_UPDATES = 0
 
 SERVICE_FORCE_UPDATE = "force_update"

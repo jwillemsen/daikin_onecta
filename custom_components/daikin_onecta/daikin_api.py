@@ -21,8 +21,6 @@ from datetime import datetime, timedelta
 
 _LOGGER = logging.getLogger(__name__)
 
-MIN_TIME_BETWEEN_UPDATES = timedelta(minutes=10)
-
 class DaikinApi:
     """Daikin Onecta API."""
 
@@ -134,8 +132,6 @@ class DaikinApi:
 
         self.json_data = await self.getCloudDeviceDetails()
         for dev_data in self.json_data or []:
-
             if dev_data["id"] in self.hass.data[DOMAIN][DAIKIN_DEVICES]:
-                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(
-                    dev_data
-                )
+                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(dev_data)
+        return self.hass.data[DOMAIN][DAIKIN_DEVICES]
