@@ -18,7 +18,7 @@ Home Assistant Integration for Daikin devices using the Daikin Onecta API.
 <!---
 # Installation using HACS:
 
-Install with [HACS](https://hacs.xyz): Search for "Daikin Residential for Altherma 3" in the default repository,
+Install with [HACS](https://hacs.xyz): Search for "Daikin Onecta" in the default repository,
 -->
 
 # Manual Installation
