@@ -7,10 +7,51 @@ from typing import Any
 from homeassistant import config_entries
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.data_entry_flow import FlowResult
+from homeassistant.core import callback
+from homeassistant.config_entries import ConfigEntry
 
 from .const import DOMAIN
 
+from datetime import timedelta
+SCAN_INTERVAL = timedelta(seconds=60)
+
 _LOGGER = logging.getLogger(__name__)
+
+class OptionsFlowHandler(config_entries.OptionsFlow):
+    """Config flow options handler for myenergi."""
+
+    def __init__(self, config_entry):
+        """Initialize HACS options flow."""
+        self.config_entry = config_entry
+        self.options = dict(config_entry.options)
+
+    async def async_step_init(self, user_input=None):  # pylint: disable=unused-argument
+        """Manage the options."""
+        return await self.async_step_user()
+
+    async def async_step_user(self, user_input=None):
+        """Handle a flow initialized by the user."""
+        if user_input is not None:
+            self.options.update(user_input)
+            return await self._update_options()
+
+        scan_interval = self.config_entry.options.get(
+            "scan_interval", SCAN_INTERVAL.total_seconds()
+        )
+        return self.async_show_form(
+            step_id="user",
+            data_schema=vol.Schema(
+                {
+                    vol.Optional("scan_interval", default=10): int,
+                }
+            ),
+        )
+
+    async def _update_options(self):
+        """Update config entry options."""
+        return self.async_create_entry(
+            title=self.config_entry.data.get("Hub "), data=self.options
+        )
 
 class FlowHandler(
     config_entry_oauth2_flow.AbstractOAuth2FlowHandler,
@@ -70,3 +111,10 @@ class FlowHandler(
     def logger(self) -> logging.Logger:
         """Return logger."""
         return logging.getLogger(__name__)
+
+    @staticmethod
+    @callback
+    def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlowHandler:
+        """Options callback for AccuWeather."""
+        return OptionsFlowHandler(config_entry)
+

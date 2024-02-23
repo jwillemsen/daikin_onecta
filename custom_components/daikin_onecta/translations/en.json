@@ -1,4 +1,13 @@
 {
+    "options": {
+        "step": {
+        "user": {
+            "data": {
+            "scan_interval": "Update interval (seconds)"
+            }
+        }
+        }
+    },
     "config": {
         "abort": {
             "already_configured": "The integration is already configured.",
