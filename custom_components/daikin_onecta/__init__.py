@@ -94,7 +94,6 @@ async def async_setup_entry(hass: HomeAssistantType, config_entry: ConfigEntry):
             hass.config_entries.async_forward_entry_setup(config_entry, component)
         )
 
-
     return True
 
 async def async_unload_entry(hass, config_entry):

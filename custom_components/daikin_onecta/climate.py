@@ -137,7 +137,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
     def __init__(self, device, setpoint, coordinator):
         """Initialize the climate device."""
-        _LOGGER.info("Device '%s' initializing Daiking Climate for controlling %s...", device.name, setpoint)
+        _LOGGER.info("Device '%s' initializing Daikin Climate for controlling %s...", device.name, setpoint)
         super().__init__(coordinator)
         self._device = device
         self._setpoint = setpoint
