@@ -198,6 +198,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             dht = self.domestic_hotwater_temperature
             if dht is not None:
                 self._attr_target_temperature = value
+                self.async_write_ha_state()
 
     async def async_set_tank_state(self, new_tank_state):
         """Set new tank state."""
