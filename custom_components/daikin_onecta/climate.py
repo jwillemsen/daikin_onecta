@@ -123,7 +123,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for mode in modes:
             async_add_entities([DaikinClimate(device, mode, coordinator)], update_before_add=False)
 
-class DaikinClimate(CoordinatorEntity, ClimateEntity):
+class DaikinClimate(ClimateEntity):
     """Representation of a Daikin HVAC."""
     _enable_turn_on_off_backwards_compatibility = False # Remove with HA 2025.1
 
@@ -131,17 +131,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def __init__(self, device, setpoint, coordinator):
         """Initialize the climate device."""
         _LOGGER.info("Device '%s' initializing Daikin Climate for controlling %s...", device.name, setpoint)
-        super().__init__(coordinator)
         self._device = device
         self._setpoint = setpoint
 
     async def _set(self, settings):
         raise NotImplementedError
-
-    @callback
-    def _handle_coordinator_update(self) -> None:
-        _LOGGER.info("Device '%s' _handle_coordinator_update", self._device.name)
-        super()._handle_coordinator_update()
 
     def climateControl(self):
         cc = None
