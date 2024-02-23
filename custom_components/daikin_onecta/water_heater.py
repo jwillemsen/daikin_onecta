@@ -15,15 +15,24 @@ from homeassistant.const import (
     UnitOfTemperature
 )
 
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+)
+
+from homeassistant.core import callback
+
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
     ATTR_STATE_OFF,
     ATTR_STATE_ON,
+    COORDINATOR,
 )
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin water tank entities."""
+    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {'domesticHotWaterTank', 'domesticHotWaterFlowThrough'}
@@ -32,19 +41,43 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             if  management_point_type in supported_management_point_types:
-                async_add_entities([DaikinWaterTank(device)], update_before_add=True)
+                async_add_entities([DaikinWaterTank(device, coordinator)])
             else:
                 _LOGGER.info("Device '%s' '%s' is not a tank management point, ignoring as water heater", device.name, management_point_type)
 
-class DaikinWaterTank(WaterHeaterEntity):
+class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
 
-    def __init__(self, device):
+    def __init__(self, device, coordinator):
         """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
+        super().__init__(coordinator)
         self._device = device
+        self._attr_name = self._device.name
+        self._attr_supported_features = self.get_supported_features()
+        self._attr_current_temperature = self.get_current_temperature()
+        self._attr_temperature_unit = UnitOfTemperature.CELSIUS
+        self._attr_target_temperature = self.get_target_temperature()
+        self._attr_min_temp = self.get_min_temp()
+        self._attr_max_temp = self.get_max_temp()
+        self._attr_operation_list = self.get_operation_list()
+        self._attr_current_operation = self.get_current_operation()
+        self._attr_available = self._device.available
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
             _LOGGER.debug("Device '%'s: tank temperature is settable", device.name)
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self._attr_name = self._device.name
+        self._attr_supported_features = self.get_supported_features()
+        self._attr_current_temperature = self.get_current_temperature()
+        self._attr_target_temperature = self.get_target_temperature()
+        self._attr_min_temp = self.get_min_temp()
+        self._attr_max_temp = self.get_max_temp()
+        self._attr_operation_list = self.get_operation_list()
+        self._attr_current_operation = self.get_current_operation()
+        self._attr_available = self._device.available
+        self.async_write_ha_state()
 
     async def _set(self, settings):
         raise NotImplementedError
@@ -81,13 +114,7 @@ class DaikinWaterTank(WaterHeaterEntity):
                 return heating_mode["setpoints"]["domesticHotWaterTemperature"]
         return None
 
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
-
-    @property
-    def supported_features(self):
+    def get_supported_features(self):
         sf = WaterHeaterEntityFeature.OPERATION_MODE
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
@@ -99,23 +126,12 @@ class DaikinWaterTank(WaterHeaterEntity):
         return sf
 
     @property
-    def name(self):
-        """Return the name of the thermostat, if any."""
-        return self._device.name
-
-    @property
     def unique_id(self):
         """Return a unique ID."""
         devID = self._device.getId()
         return f"{devID}"
 
-    @property
-    def temperature_unit(self):
-        """Return the unit of measurement which this thermostat uses."""
-        return UnitOfTemperature.CELSIUS
-
-    @property
-    def current_temperature(self):
+    def get_current_temperature(self):
         """Return tank temperature."""
         ret = None
         hwtd = self.hotwatertank_data
@@ -129,8 +145,7 @@ class DaikinWaterTank(WaterHeaterEntity):
 
         return ret
 
-    @property
-    def target_temperature(self):
+    def get_target_temperature(self):
         """Return the temperature we try to reach."""
         ret = None
         dht = self.domestic_hotwater_temperature
@@ -148,8 +163,7 @@ class DaikinWaterTank(WaterHeaterEntity):
             data = {"target_temp_step": float(dht["stepValue"])}
         return data
 
-    @property
-    def min_temp(self):
+    def get_min_temp(self):
         """Return the supported minimum value target temperature."""
         ret = None
         dht = self.domestic_hotwater_temperature
@@ -158,8 +172,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         _LOGGER.debug("Device '%s' hot water tank minimum_temperature '%s'", self._device.name, ret)
         return ret
 
-    @property
-    def max_temp(self):
+    def get_max_temp(self):
         """Return the supported maximum value of target temperature."""
         ret = None
         dht = self.domestic_hotwater_temperature
@@ -184,7 +197,8 @@ class DaikinWaterTank(WaterHeaterEntity):
         if res:
             dht = self.domestic_hotwater_temperature
             if dht is not None:
-                dht["value"] = value
+                self._attr_target_temperature = value
+                self.async_write_ha_state()
 
     async def async_set_tank_state(self, new_tank_state):
         """Set new tank state."""
@@ -235,8 +249,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         # se we first set the hvac_mode, if provided, then the temperature.
         await self.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
 
-    @property
-    def current_operation(self):
+    def get_current_operation(self):
         """Return current operation ie. heat, cool, idle."""
         state = STATE_OFF
         hwtd = self.hotwatertank_data
@@ -249,8 +262,7 @@ class DaikinWaterTank(WaterHeaterEntity):
         _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
         return state
 
-    @property
-    def operation_list(self):
+    def get_operation_list(self):
         """Return the list of available operation modes."""
         states = [STATE_OFF, STATE_HEAT_PUMP]
         hwtd = self.hotwatertank_data
