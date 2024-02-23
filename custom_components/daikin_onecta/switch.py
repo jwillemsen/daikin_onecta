@@ -33,9 +33,6 @@ import re
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     sensors = []
-    prog = 0
-
-    #sensor.altherma_daily_heat_energy_consumption, altherma_daily_heat_tank_energy_consumption
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
