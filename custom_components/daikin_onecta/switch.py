@@ -55,6 +55,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     value_value = vv.get("value")
                     settable = vv.get("settable", False)
                     values = vv.get("values", [])
+                    # When the following check changes also update this in sensor.py
                     if value_value is not None and settable == True and "on" in values and "off" in values:
                         _LOGGER.info("Device '%s' provides switch on/off '%s'", device.name, value)
                         sensor2 = DaikinSwitch(device, coordinator, embedded_id, management_point_type, value)
