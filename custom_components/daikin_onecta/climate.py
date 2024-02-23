@@ -29,6 +29,13 @@ from homeassistant.const import (
 
 import homeassistant.helpers.config_validation as cv
 
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+)
+
+from homeassistant.core import callback
+
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
@@ -36,6 +43,7 @@ from .const import (
     ATTR_STATE_ON,
     ATTR_OPERATION_MODE,
     FAN_QUIET,
+    COORDINATOR,
 )
 
 import re
@@ -100,6 +108,7 @@ async def async_setup_platform(hass, config, async_add_entities, discovery_info=
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
+    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         modes = []
         device_model = device.daikin_data["deviceModel"]
@@ -119,21 +128,27 @@ async def async_setup_entry(hass, entry, async_add_entities):
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device %s has modes %s", device_model, modes)
         for mode in modes:
-            async_add_entities([DaikinClimate(device, mode)], update_before_add=True)
+            async_add_entities([DaikinClimate(device, mode, coordinator)], update_before_add=False)
 
-class DaikinClimate(ClimateEntity):
+class DaikinClimate(CoordinatorEntity, ClimateEntity):
     """Representation of a Daikin HVAC."""
     _enable_turn_on_off_backwards_compatibility = False # Remove with HA 2025.1
 
     # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint):
+    def __init__(self, device, setpoint, coordinator):
         """Initialize the climate device."""
         _LOGGER.info("Device '%s' initializing Daiking Climate for controlling %s...", device.name, setpoint)
+        super().__init__(coordinator)
         self._device = device
         self._setpoint = setpoint
 
     async def _set(self, settings):
         raise NotImplementedError
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        _LOGGER.info("Device '%s' _handle_coordinator_update", self._device.name)
+        super()._handle_coordinator_update()
 
     def climateControl(self):
         cc = None
