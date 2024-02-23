@@ -55,10 +55,8 @@ async def async_setup(hass, async_add_entities):
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
-    sensors = []
-    prog = 0
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
-
+    sensors = []
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
@@ -70,7 +68,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 vv = management_point.get(value)
                 if type(vv) == dict:
                     value_value = vv.get("value")
-                    if value_value is not None and type(value_value) != dict:
+                    settable = vv.get("settable", False)
+                    values = vv.get("values", [])
+                    if value_value is not None and settable == True and "on" in values and "off" in values:
+                        # Don't create when it is settable and values on/off, thati is a switch
+                        pass
+                    elif value_value is not None and type(value_value) != dict:
                         sensor2 = DaikinValueSensor(device, coordinator, embedded_id, management_point_type, None, value)
                         sensors.append(sensor2)
 
