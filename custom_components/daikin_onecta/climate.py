@@ -141,6 +141,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_min_temp = self.get_min_temp()
         self._attr_target_temperature_step = self.get_target_temperature_step()
         self._attr_target_temperature = self.get_target_temperature()
+        self._attr_hvac_modes = self.get_hvac_modes()
+        self._attr_swing_modes = self.get_swing_modes()
+        self._attr_preset_modes = self.get_preset_modes()
+        self._attr_fan_modes = self.get_fan_modes()
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -150,6 +154,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_min_temp = self.get_min_temp()
         self._attr_target_temperature_step = self.get_target_temperature_step()
         self._attr_target_temperature = self.get_target_temperature()
+        self._attr_hvac_modes = self.get_hvac_modes()
+        self._attr_preset_modes = self.get_preset_modes()
+        self._attr_fan_modes = self.get_fan_modes()
         self.async_write_ha_state()
 
     async def _set(self, settings):
@@ -236,7 +243,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climateControl()
         if setpointdict is not None and setpointdict["settable"] == True:
             supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
-        if len(self.preset_modes) > 1:
+        if len(self.get_preset_modes()) > 1:
             supported_features |= ClimateEntityFeature.PRESET_MODE
         fanControl = cc.get("fanControl")
         if fanControl is not None:
@@ -335,8 +342,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             mode = operationmode["value"]
         return DAIKIN_HVAC_TO_HA.get(mode, HVACMode.HEAT_COOL)
 
-    @property
-    def hvac_modes(self):
+    def get_hvac_modes(self):
         """Return the list of available HVAC modes."""
         modes = [HVACMode.OFF]
         operationmode = self.operationMode()
@@ -402,7 +408,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         return fan_mode
 
-    @property
     def get_fan_modes(self):
         fan_modes = []
         fanspeed = None
@@ -496,8 +501,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         return swingMode
 
-    @property
-    def swing_modes(self):
+    def get_swing_modes(self):
         swingModes = [SWING_OFF]
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
@@ -603,8 +607,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         return result
 
-    @property
-    def preset_modes(self):
+    def get_preset_modes(self):
         supported_preset_modes = [PRESET_NONE]
         cc = self.climateControl()
         # self._current_preset_mode = PRESET_NONE
