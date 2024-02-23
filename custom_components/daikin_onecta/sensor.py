@@ -19,6 +19,13 @@ from homeassistant.components.sensor import (
 
 from homeassistant.helpers.entity import EntityCategory
 
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+)
+
+from homeassistant.core import callback
+
 from .daikin_base import Appliance
 
 from .const import (
@@ -31,6 +38,7 @@ from .const import (
     VALUE_SENSOR_MAPPING,
     ENABLED_DEFAULT,
     ENTITY_CATEGORY,
+    COORDINATOR,
 )
 
 import logging
@@ -47,9 +55,8 @@ async def async_setup(hass, async_add_entities):
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
+    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     sensors = []
-    prog = 0
-
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
@@ -61,8 +68,13 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 vv = management_point.get(value)
                 if type(vv) == dict:
                     value_value = vv.get("value")
-                    if value_value is not None and type(value_value) != dict:
-                        sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, None, value)
+                    settable = vv.get("settable", False)
+                    values = vv.get("values", [])
+                    if value_value is not None and settable == True and "on" in values and "off" in values:
+                        # Don't create when it is settable and values on/off, thati is a switch
+                        pass
+                    elif value_value is not None and type(value_value) != dict:
+                        sensor2 = DaikinValueSensor(device, coordinator, embedded_id, management_point_type, None, value)
                         sensors.append(sensor2)
 
             sd = management_point.get("sensoryData")
@@ -72,7 +84,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 if sensoryData is not None:
                     for sensor in sensoryData:
                         _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
-                        sensor2 = DaikinValueSensor(device, embedded_id, management_point_type, "sensoryData", sensor)
+                        sensor2 = DaikinValueSensor(device, coordinator, embedded_id, management_point_type, "sensoryData", sensor)
                         sensors.append(sensor2)
 
             cd = management_point.get("consumptionData")
@@ -97,17 +109,18 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                     periodName = SENSOR_PERIODS[period]
                                     sensor = f"{device.name} {management_point_type} {mode} {periodName}"
                                     _LOGGER.info("Proposing sensor '%s'", sensor)
-                                    sensorv = DaikinEnergySensor (device, embedded_id, management_point_type, mode,  period, icon)
+                                    sensorv = DaikinEnergySensor (device, coordinator, embedded_id, management_point_type, mode,  period, icon)
                                     sensors.append(sensorv)
                             else:
                                 _LOGGER.info("Ignoring consumption data '%s', not a supported operation_mode", mode)
 
     async_add_entities(sensors)
 
-class DaikinEnergySensor(SensorEntity):
+class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     """Representation of a power/energy consumption sensor."""
 
-    def __init__(self, device: Appliance, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
+    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, operation_mode,  period, icon) -> None:
+        super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
@@ -120,11 +133,20 @@ class DaikinEnergySensor(SensorEntity):
         self._attr_entity_category = None
         self._attr_icon = icon
         self._attr_has_entity_name = True
+        self._state = self.sensor_value()
         _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
     @property
     def state(self):
         """Return the state of the sensor."""
+        return self._state
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self._state = self.sensor_value()
+        self.async_write_ha_state()
+
+    def sensor_value(self):
         energy_value = None
         for management_point in self._device.daikin_data["managementPoints"]:
             if self._embedded_id == management_point["embeddedId"]:
@@ -172,10 +194,11 @@ class DaikinEnergySensor(SensorEntity):
     def device_class(self):
         return SensorDeviceClass.ENERGY
 
-class DaikinValueSensor(SensorEntity):
+class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
-    def __init__(self, device: Appliance, embedded_id, management_point_type, sub_type, value) -> None:
+    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, sub_type, value) -> None:
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", management_point_type, sub_type, value);
+        super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
@@ -200,12 +223,16 @@ class DaikinValueSensor(SensorEntity):
         readable = re.findall('[A-Z][^A-Z]*', myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
+        self._state = self.sensor_value()
         _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
 
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        result = None
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self._state = self.sensor_value()
+        self.async_write_ha_state()
+
+    def sensor_value(self):
+        res = None
         managementPoints = self._device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
@@ -214,9 +241,14 @@ class DaikinValueSensor(SensorEntity):
                     management_point = management_point.get(self._sub_type).get("value")
                 cd = management_point.get(self._value)
                 if cd is not None:
-                    result = cd.get("value")
-        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
-        return result
+                    res = cd.get("value")
+        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
+        return res
+
+    @property
+    def state(self):
+        """Return the state of the sensor."""
+        return self._state
 
     @property
     def available(self):

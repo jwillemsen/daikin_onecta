@@ -24,6 +24,7 @@ from homeassistant.helpers.entity import (
 )
 
 DOMAIN = "daikin_onecta"
+COORDINATOR = "coordinator"
 
 DAIKIN_DATA = "daikin_data"
 DAIKIN_API = "daikin_api"

@@ -29,6 +29,13 @@ from homeassistant.const import (
 
 import homeassistant.helpers.config_validation as cv
 
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+)
+
+from homeassistant.core import callback
+
 from .const import (
     DOMAIN as DAIKIN_DOMAIN,
     DAIKIN_DEVICES,
@@ -36,6 +43,7 @@ from .const import (
     ATTR_STATE_ON,
     ATTR_OPERATION_MODE,
     FAN_QUIET,
+    COORDINATOR,
 )
 
 import re
@@ -91,15 +99,9 @@ HA_FAN_TO_DAIKIN = {
     DAIKIN_FAN_TO_HA["quiet"]: "quiet",
 }
 
-async def async_setup_platform(hass, config, async_add_entities, discovery_info=None):
-    """Old way of setting up the Daikin HVAC platform.
-
-    Can only be called when a user accidentally mentions the platform in their
-    config. But even in that case it would have been ignored.
-    """
-
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
+    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         modes = []
         device_model = device.daikin_data["deviceModel"]
@@ -119,16 +121,16 @@ async def async_setup_entry(hass, entry, async_add_entities):
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device %s has modes %s", device_model, modes)
         for mode in modes:
-            async_add_entities([DaikinClimate(device, mode)], update_before_add=True)
+            async_add_entities([DaikinClimate(device, mode, coordinator)], update_before_add=False)
 
 class DaikinClimate(ClimateEntity):
     """Representation of a Daikin HVAC."""
     _enable_turn_on_off_backwards_compatibility = False # Remove with HA 2025.1
 
     # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint):
+    def __init__(self, device, setpoint, coordinator):
         """Initialize the climate device."""
-        _LOGGER.info("Device '%s' initializing Daiking Climate for controlling %s...", device.name, setpoint)
+        _LOGGER.info("Device '%s' initializing Daikin Climate for controlling %s...", device.name, setpoint)
         self._device = device
         self._setpoint = setpoint
 
@@ -607,11 +609,6 @@ class DaikinClimate(ClimateEntity):
         _LOGGER.info("Device '%s' supports pre preset_modes %s", self._device.name, format(supported_preset_modes))
 
         return supported_preset_modes
-
-    async def async_update(self):
-        """Retrieve latest state."""
-        _LOGGER.debug("Device '%s' climate async_update", self._device.name)
-        await self._device.api.async_update()
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""

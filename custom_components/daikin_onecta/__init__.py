@@ -11,14 +11,13 @@ from homeassistant.helpers.typing import HomeAssistantType
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.exceptions import ConfigEntryNotReady
 
-from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES
+from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES, COORDINATOR
 
 from .daikin_api import DaikinApi
 
-_LOGGER = logging.getLogger(__name__)
+from .coordinator import OnectaDataUpdateCoordinator
 
-MIN_TIME_BETWEEN_UPDATES = datetime.timedelta(minutes=10)
-SCAN_INTERVAL = datetime.timedelta(minutes=10)
+_LOGGER = logging.getLogger(__name__)
 
 PARALLEL_UPDATES = 0
 
@@ -62,29 +61,39 @@ async def async_setup(hass, config):
 
     return True
 
-
-async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry):
+async def async_setup_entry(hass: HomeAssistantType, config_entry: ConfigEntry):
     """Establish connection with Daikin."""
     implementation = (
         await config_entry_oauth2_flow.async_get_config_entry_implementation(
-            hass, entry
+            hass, config_entry
         )
     )
 
-    daikin_api = DaikinApi(hass, entry, implementation)
+    hass.data.update({DOMAIN: {}})
+    hass.data[DOMAIN][DAIKIN_DEVICES] = {}
+    daikin_api = DaikinApi(hass, config_entry, implementation)
+    hass.data[DOMAIN][DAIKIN_API] = daikin_api
 
     try:
         await daikin_api.async_get_access_token()
     except ClientError as err:
         raise ConfigEntryNotReady from err
 
-    devices = await daikin_api.getCloudDevices()
-    hass.data[DOMAIN] = {DAIKIN_API: daikin_api, DAIKIN_DEVICES: devices}
+    coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
+    hass.data[DOMAIN][COORDINATOR] = coordinator
+
+    try:
+        await coordinator.async_config_entry_first_refresh()
+    except Exception as ex:
+        raise ConfigEntryNotReady(f"Config Not Ready: {ex}")
+
+#     = {DAIKIN_API: daikin_api, DAIKIN_DEVICES: daikin_api., COORDINATOR: coordinator}
 
     for component in COMPONENT_TYPES:
         hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(entry, component)
+            hass.config_entries.async_forward_entry_setup(config_entry, component)
         )
+
     return True
 
 async def async_unload_entry(hass, config_entry):

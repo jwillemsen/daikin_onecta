@@ -8,7 +8,6 @@ from homeassistant import config_entries
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.data_entry_flow import FlowResult
 
-from .daikin_api import DaikinApi
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
