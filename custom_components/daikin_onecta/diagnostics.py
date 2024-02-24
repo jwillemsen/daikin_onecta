@@ -16,6 +16,7 @@ async def async_get_config_entry_diagnostics(
     daikin_api = hass.data[DOMAIN][DAIKIN_API]
     data["json_data"] = daikin_api.json_data
     data["rate_limits"] = daikin_api.rate_limits
+    data["options"] = entry.options
     return data
 
 
@@ -30,4 +31,5 @@ async def async_get_device_diagnostics(
     data["device"] = device
     data["device_json_data"] = daikin_device.getDescription()
     data["rate_limits"] = daikin_api.rate_limits
+    data["options"] = entry.options
     return data
