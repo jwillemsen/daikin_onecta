@@ -19,9 +19,13 @@ from homeassistant.helpers import (
     entity_platform,
     config_entry_oauth2_flow
 )
-
+from homeassistant.helpers.selector import (
+    NumberSelector,
+    NumberSelectorConfig,
+    TimeSelector,
+    TimeSelectorConfig,
+)
 from datetime import timedelta
-SCAN_INTERVAL = timedelta(seconds=60)
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -45,11 +49,11 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): cv.positive_int,
-                    vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): cv.positive_int,
-                    vol.Required("high_scan_start", default=self.options.get("high_scan_start", "07:00:00"),): cv.string,
-                    vol.Required("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): cv.string,
-                    vol.Required("scan_ignore", default=self.options.get("scan_ignore",30),): cv.positive_int,
+                    vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): NumberSelector(NumberSelectorConfig(min=5, max=100, step=1),),
+                    vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): NumberSelector(NumberSelectorConfig(min=10, max=100, step=1),),
+                    vol.Required("high_scan_start", default=self.options.get("high_scan_start", "07:00:00"),): TimeSelector(),
+                    vol.Required("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): TimeSelector(),
+                    vol.Required("scan_ignore", default=self.options.get("scan_ignore",30),): NumberSelector(NumberSelectorConfig(min=20, max=100, step=1),),
                 }
             ),
             errors=errors,
