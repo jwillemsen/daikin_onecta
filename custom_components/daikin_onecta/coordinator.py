@@ -25,7 +25,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
 
         """Initialize."""
-        self.scan_interval = config_entry.options.get("high_scan_interval", 10)
+        self.options = config_entry.options
+        self.scan_interval = self.options.get("high_scan_interval", 10)
 
         super().__init__(
             hass,
@@ -53,5 +54,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             else:
                 device = Appliance(dev_data, daikin_api)
                 devices[dev_data["id"]] = device
+
+        hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
+        ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
 
         _LOGGER.debug("Daikin coordinator finished _async_update_data.")

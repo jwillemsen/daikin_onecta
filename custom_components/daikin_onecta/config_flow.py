@@ -25,7 +25,7 @@ from homeassistant.helpers.selector import (
     TimeSelector,
     TimeSelectorConfig,
 )
-from datetime import timedelta
+from datetime import timedelta, datetime
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -41,16 +41,21 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         self, user_input: dict[str, str] | None = None
     ) -> FlowResult:
         """Handle a flow initialized by the user."""
+        errors = {}
         if user_input is not None:
+            hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
+            ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
+            if hs < ls:
+                errors["hs_before_ls"] = "hs_before_ls"
+
             return self.async_create_entry(title="", data=user_input)
 
-        errors = {}
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): NumberSelector(NumberSelectorConfig(min=5, max=100, step=1),),
-                    vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): NumberSelector(NumberSelectorConfig(min=10, max=100, step=1),),
+                    vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): NumberSelector(NumberSelectorConfig(min=5, max=60, step=1),),
+                    vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): NumberSelector(NumberSelectorConfig(min=10, max=60, step=1),),
                     vol.Required("high_scan_start", default=self.options.get("high_scan_start", "07:00:00"),): TimeSelector(),
                     vol.Required("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): TimeSelector(),
                     vol.Required("scan_ignore", default=self.options.get("scan_ignore",30),): NumberSelector(NumberSelectorConfig(min=20, max=100, step=1),),
