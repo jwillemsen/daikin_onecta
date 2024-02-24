@@ -48,7 +48,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                     vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): cv.positive_int,
                     vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): cv.positive_int,
                     vol.Required("high_scan_start", default=self.options.get("high_scan_start", "07:00:00"),): cv.string,
-                    vol.Optional("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): cv.string,
+                    vol.Required("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): cv.string,
                     vol.Required("scan_ignore", default=self.options.get("scan_ignore",30),): cv.positive_int,
                 }
             ),

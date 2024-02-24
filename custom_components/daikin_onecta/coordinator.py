@@ -36,6 +36,10 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
         _LOGGER.info("Daikin coordinator initialized with %s seconds interval.", self.scan_interval)
 
+    def update_interval(self, interval):
+        self.scan_interval = interval
+        self.update_interval=timedelta(minutes=self.scan_interval)
+        _LOGGER.info("Daikin coordinator changing interval to %s seconds", self.scan_interval)
 
     async def _async_update_data(self):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")

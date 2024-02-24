@@ -8,7 +8,9 @@
                     "high_scan_start": "High frequency period start time",
                     "low_scan_start": "High frequency period start time",
                     "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
-                }
+                },
+                "description": "Configure Daikin Onecta Cloud polling",
+                "title": "Daikin Onecta"
             }
         }
     },
