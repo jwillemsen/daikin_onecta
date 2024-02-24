@@ -25,16 +25,16 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
 
         """Initialize."""
-        self.scan_interval: int = (10 * 60)
+        self.scan_interval = config_entry.options.get("high_scan_interval", 10)
 
         super().__init__(
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(seconds=self.scan_interval)
+            update_interval=timedelta(minutes=self.scan_interval)
         )
 
-        _LOGGER.info("Daikin coordinator initialized.")
+        _LOGGER.info("Daikin coordinator initialized with %s seconds interval.", self.scan_interval)
 
 
     async def _async_update_data(self):

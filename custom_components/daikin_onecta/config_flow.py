@@ -5,14 +5,20 @@ from collections.abc import Mapping
 from typing import Any
 
 from homeassistant import config_entries
-from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.core import callback
 from homeassistant.config_entries import ConfigEntry
 
 from .const import DOMAIN
+import datetime
 
 import voluptuous as vol
+from homeassistant.helpers import (
+    config_validation as cv,
+    device_registry as dr,
+    entity_platform,
+    config_entry_oauth2_flow
+)
 
 from datetime import timedelta
 SCAN_INTERVAL = timedelta(seconds=60)
@@ -32,18 +38,18 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
     ) -> FlowResult:
         """Handle a flow initialized by the user."""
         if user_input is not None:
-            self.options.update(user_input)
-            return await self._update_options()
+            return self.async_create_entry(title="", data=user_input)
 
         errors = {}
-        scan_interval = self.config_entry.options.get(
-            "scan_interval", SCAN_INTERVAL.total_seconds()
-        )
         return self.async_show_form(
             step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Required("scan_interval"): str,
+                    vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): cv.positive_int,
+                    vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): cv.positive_int,
+                    vol.Required("high_scan_start", default=self.options.get("high_scan_start", "07:00:00"),): cv.string,
+                    vol.Optional("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): cv.string,
+                    vol.Required("scan_ignore", default=self.options.get("scan_ignore",30),): cv.positive_int,
                 }
             ),
             errors=errors,
