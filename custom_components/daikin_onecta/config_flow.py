@@ -12,6 +12,8 @@ from homeassistant.config_entries import ConfigEntry
 
 from .const import DOMAIN
 
+import voluptuous as vol
+
 from datetime import timedelta
 SCAN_INTERVAL = timedelta(seconds=60)
 
@@ -25,26 +27,26 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         self.config_entry = config_entry
         self.options = dict(config_entry.options)
 
-    async def async_step_init(self, user_input=None):  # pylint: disable=unused-argument
-        """Manage the options."""
-        return await self.async_step_user()
-
-    async def async_step_user(self, user_input=None):
+    async def async_step_init(
+        self, user_input: dict[str, str] | None = None
+    ) -> FlowResult:
         """Handle a flow initialized by the user."""
         if user_input is not None:
             self.options.update(user_input)
             return await self._update_options()
 
+        errors = {}
         scan_interval = self.config_entry.options.get(
             "scan_interval", SCAN_INTERVAL.total_seconds()
         )
         return self.async_show_form(
-            step_id="user",
+            step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Optional("scan_interval", default=10): int,
+                    vol.Required("scan_interval"): str,
                 }
             ),
+            errors=errors,
         )
 
     async def _update_options(self):
