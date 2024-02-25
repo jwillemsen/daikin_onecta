@@ -1,34 +1,34 @@
 {
-    "config": {
-        "abort": {
-            "already_configured": "Integrácia je už nakonfigurovaná.",
-            "cannot_connect": "Nepodarilo sa pripojiť k Daikin Cloud.",
-            "init_failed": "Nepodarilo sa inicializovať rozhranie Daikin API.",
-            "token_retrieval_failed": "Nepodarilo sa načítať sadu prístupových tokenov."
-        },
-        "error": {
-            "cannot_connect": "Nepodarilo sa pripojiť",
-            "device_fail": "Neočakávaná chyba",
-            "device_timeout": "Nepodarilo sa pripojiť",
-            "forbidden": "Neplatné overenie",
-            "invalid_auth": "Neplatné overenie",
-            "unknown": "Neočakávaná chyba"
-        },
-        "step": {
-            "user": {
-                "data": {
-                    "email": "Email adresa",
-                    "password": "Heslo"
-                },
-                "description": "Zadajte e-mailovú adresu a heslo, ktoré používate na prihlásenie do Daikin Cloud, a potom stlačte Odoslať.",
-                "title": "Konfigurácia Daikin Onecta"
-            }
-        }
+  "config": {
+    "abort": {
+      "already_configured": "Integrácia je už nakonfigurovaná.",
+      "cannot_connect": "Nepodarilo sa pripojiť k Daikin Cloud.",
+      "init_failed": "Nepodarilo sa inicializovať rozhranie Daikin API.",
+      "token_retrieval_failed": "Nepodarilo sa načítať sadu prístupových tokenov."
     },
-    "services": {
-        "reload": {
-            "name": "Znovu načítať",
-            "description": "Získajte nový prístupový TokenSet opätovným prihlásením do Daikin Cloud."
-        }
+    "error": {
+      "cannot_connect": "Nepodarilo sa pripojiť",
+      "device_fail": "Neočakávaná chyba",
+      "device_timeout": "Nepodarilo sa pripojiť",
+      "forbidden": "Neplatné overenie",
+      "invalid_auth": "Neplatné overenie",
+      "unknown": "Neočakávaná chyba"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "Email adresa",
+          "password": "Heslo"
+        },
+        "description": "Zadajte e-mailovú adresu a heslo, ktoré používate na prihlásenie do Daikin Cloud, a potom stlačte Odoslať.",
+        "title": "Konfigurácia Daikin Onecta"
+      }
     }
+  },
+  "services": {
+    "reload": {
+      "name": "Znovu načítať",
+      "description": "Získajte nový prístupový TokenSet opätovným prihlásením do Daikin Cloud."
+    }
+  }
 }

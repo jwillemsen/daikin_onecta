@@ -1,41 +1,41 @@
 {
-    "config": {
-        "abort": {
-            "already_configured": "Apparaat is al geconfigureerd"
+  "config": {
+    "abort": {
+      "already_configured": "Apparaat is al geconfigureerd"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "Email adres",
+          "password": "Wachtwoord"
         },
-        "step": {
-            "user": {
-                "data": {
-                    "email": "Email adres",
-                    "password": "Wachtwoord"
-                },
-                "description": "Voer het email adres en wachtwoord in voor het inloggen bij Daikin.",
-                "title": "Daikin Onecta instellen"
-            }
-        }
-    },
-    "services": {
-        "reload": {
-            "name": "Reload",
-            "description": "Ophalen van nieuwe tokens bij Daikin."
-        }
-    },
-    "entity": {
-        "climate": {
-            "daikin": {
-                "state_attributes": {
-                    "fan_mode": {
-                        "state": {
-                            "quiet": "Stil",
-                            "1": "1",
-                            "2": "2",
-                            "3": "3",
-                            "4": "4",
-                            "5": "5"
-                        }
-                    }
-                }
-            }
-        }
+        "description": "Voer het email adres en wachtwoord in voor het inloggen bij Daikin.",
+        "title": "Daikin Onecta instellen"
+      }
     }
+  },
+  "services": {
+    "reload": {
+      "name": "Reload",
+      "description": "Ophalen van nieuwe tokens bij Daikin."
+    }
+  },
+  "entity": {
+    "climate": {
+      "daikin": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Stil",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          }
+        }
+      }
+    }
+  }
 }

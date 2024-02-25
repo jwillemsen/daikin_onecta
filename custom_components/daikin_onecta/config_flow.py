@@ -1,33 +1,29 @@
 """Config flow for the Daikin platform."""
+import datetime
 import logging
-
 from collections.abc import Mapping
+from datetime import datetime
+from datetime import timedelta
 from typing import Any
 
+import voluptuous as vol
 from homeassistant import config_entries
-from homeassistant.data_entry_flow import FlowResult
-from homeassistant.core import callback
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import callback
+from homeassistant.data_entry_flow import FlowResult
+from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers import config_validation as cv
+from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers import entity_platform
+from homeassistant.helpers.selector import NumberSelector
+from homeassistant.helpers.selector import NumberSelectorConfig
+from homeassistant.helpers.selector import TimeSelector
+from homeassistant.helpers.selector import TimeSelectorConfig
 
 from .const import DOMAIN
-import datetime
-
-import voluptuous as vol
-from homeassistant.helpers import (
-    config_validation as cv,
-    device_registry as dr,
-    entity_platform,
-    config_entry_oauth2_flow
-)
-from homeassistant.helpers.selector import (
-    NumberSelector,
-    NumberSelectorConfig,
-    TimeSelector,
-    TimeSelectorConfig,
-)
-from datetime import timedelta, datetime
 
 _LOGGER = logging.getLogger(__name__)
+
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
     """Config flow options handler for myenergi."""
@@ -49,11 +45,32 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             step_id="init",
             data_schema=vol.Schema(
                 {
-                    vol.Required("high_scan_interval", default=self.options.get("high_scan_interval",10),): NumberSelector(NumberSelectorConfig(min=5, max=60, step=1),),
-                    vol.Required("low_scan_interval", default=self.options.get("low_scan_interval",30),): NumberSelector(NumberSelectorConfig(min=10, max=60, step=1),),
-                    vol.Required("high_scan_start", default=self.options.get("high_scan_start", "07:00:00"),): TimeSelector(),
-                    vol.Required("low_scan_start", default=self.options.get("low_scan_start", "22:00:00"),): TimeSelector(),
-                    vol.Required("scan_ignore", default=self.options.get("scan_ignore",30),): NumberSelector(NumberSelectorConfig(min=20, max=100, step=1),),
+                    vol.Required(
+                        "high_scan_interval",
+                        default=self.options.get("high_scan_interval", 10),
+                    ): NumberSelector(
+                        NumberSelectorConfig(min=5, max=60, step=1),
+                    ),
+                    vol.Required(
+                        "low_scan_interval",
+                        default=self.options.get("low_scan_interval", 30),
+                    ): NumberSelector(
+                        NumberSelectorConfig(min=10, max=60, step=1),
+                    ),
+                    vol.Required(
+                        "high_scan_start",
+                        default=self.options.get("high_scan_start", "07:00:00"),
+                    ): TimeSelector(),
+                    vol.Required(
+                        "low_scan_start",
+                        default=self.options.get("low_scan_start", "22:00:00"),
+                    ): TimeSelector(),
+                    vol.Required(
+                        "scan_ignore",
+                        default=self.options.get("scan_ignore", 30),
+                    ): NumberSelector(
+                        NumberSelectorConfig(min=20, max=100, step=1),
+                    ),
                 }
             ),
             errors=errors,
@@ -65,11 +82,13 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             title=self.config_entry.data.get("Hub "), data=self.options
         )
 
+
 class FlowHandler(
     config_entry_oauth2_flow.AbstractOAuth2FlowHandler,
     domain=DOMAIN,
 ):
     """Handle a config flow."""
+
     """See https://developers.home-assistant.io/docs/core/platform/application_credentials/ """
     """ https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started """
     VERSION = 1
@@ -82,7 +101,7 @@ class FlowHandler(
         return {
             "scope": "openid onecta:basic.integration",
             "client_id": "emU20GdJDiiUxI_HnFGz69dD",
-            "client_secret": "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA"
+            "client_secret": "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA",
         }
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
@@ -129,4 +148,3 @@ class FlowHandler(
     def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlowHandler:
         """Options callback for AccuWeather."""
         return OptionsFlowHandler(config_entry)
-

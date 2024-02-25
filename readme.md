@@ -1,9 +1,10 @@
 [![](https://img.shields.io/github/release/jwillemsen/daikin_onecta/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_onecta/releases)
+
 <!---
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
 -->
-[![](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
 
+[![](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
 
 # Daikin Onecta
 
@@ -31,7 +32,7 @@ Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRAT
 
 Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
 
-The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`. You *must* create a Daikin Developer account to obtain the id/secret.
+The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`. You _must_ create a Daikin Developer account to obtain the id/secret.
 
 # Setting the log level
 

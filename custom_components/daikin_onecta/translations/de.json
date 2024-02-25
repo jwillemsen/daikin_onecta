@@ -1,40 +1,40 @@
 {
-    "config": {
-        "abort": {
-            "already_configured": "Ger\u00e4t ist bereits konfiguriert"
-        },
-        "error": {
-            "device_timeout": "Verbindung fehlgeschlagen",
-            "unknown": "Unerwarteter Fehler"
-        },
-        "step": {
-            "user": {
-                "data": {
-                    "host": "Host",
-                    "key": "Authentifizierungsschl\u00fcssel (wird nur von BRP072C / Zena-Ger\u00e4ten verwendet)",
-                    "password": "Passwort"
-                },
-                "description": "Gib die IP-Adresse deiner Daikin AC ein.",
-                "title": "Daikin AC konfigurieren"
-            }
-        }
+  "config": {
+    "abort": {
+      "already_configured": "Ger\u00e4t ist bereits konfiguriert"
     },
-    "entity": {
-        "climate": {
-            "daikin": {
-                "state_attributes": {
-                    "fan_mode": {
-                        "state": {
-                            "quiet": "Leise",
-                            "1": "1",
-                            "2": "2",
-                            "3": "3",
-                            "4": "4",
-                            "5": "5"
-                        }
-                    }
-                }
-            }
-        }
+    "error": {
+      "device_timeout": "Verbindung fehlgeschlagen",
+      "unknown": "Unerwarteter Fehler"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "host": "Host",
+          "key": "Authentifizierungsschl\u00fcssel (wird nur von BRP072C / Zena-Ger\u00e4ten verwendet)",
+          "password": "Passwort"
+        },
+        "description": "Gib die IP-Adresse deiner Daikin AC ein.",
+        "title": "Daikin AC konfigurieren"
+      }
     }
+  },
+  "entity": {
+    "climate": {
+      "daikin": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Leise",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          }
+        }
+      }
+    }
+  }
 }

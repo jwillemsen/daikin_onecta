@@ -1,10 +1,10 @@
 """Pydaikin base appliance, represent a Daikin device."""
-
 import logging
 
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
+
 
 class Appliance(DaikinOnectaDevice):
     """Daikin main appliance class."""
@@ -21,4 +21,3 @@ class Appliance(DaikinOnectaDevice):
     async def set(self, settings):
         """Set settings on Daikin device."""
         raise NotImplementedError
-

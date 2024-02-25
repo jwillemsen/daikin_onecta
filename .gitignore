@@ -27,4 +27,3 @@ custom_components/yandex_station/**
 deps/**
 custom_components/daikin_residential_altherma/.vscode/**
 custom_components/daikin_residential_altherma/__pycache__/**
-

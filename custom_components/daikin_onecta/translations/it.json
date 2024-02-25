@@ -1,29 +1,29 @@
 {
-    "config": {
-        "abort": {
-            "already_configured": "L'integrazione \u00e8 gi\u00e0 configurata.",
-            "cannot_connect": "Impossibile connettersi",
-            "missing_config": "File tokenset.json non trovato nella directory di configurazione."
+  "config": {
+    "abort": {
+      "already_configured": "L'integrazione \u00e8 gi\u00e0 configurata.",
+      "cannot_connect": "Impossibile connettersi",
+      "missing_config": "File tokenset.json non trovato nella directory di configurazione."
+    },
+    "error": {
+      "cannot_connect": "Impossibile connettersi",
+      "device_fail": "Errore imprevisto",
+      "device_timeout": "Impossibile connettersi",
+      "forbidden": "Autenticazione non valida",
+      "invalid_auth": "Autenticazione non valida",
+      "unknown": "Errore imprevisto"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "api_key": "Chiave API",
+          "host": "Host",
+          "key": "Chiave API",
+          "password": "Password"
         },
-        "error": {
-            "cannot_connect": "Impossibile connettersi",
-            "device_fail": "Errore imprevisto",
-            "device_timeout": "Impossibile connettersi",
-            "forbidden": "Autenticazione non valida",
-            "invalid_auth": "Autenticazione non valida",
-            "unknown": "Errore imprevisto"
-        },
-        "step": {
-            "user": {
-                "data": {
-                    "api_key": "Chiave API",
-                    "host": "Host",
-                    "key": "Chiave API",
-                    "password": "Password"
-                },
-                "description": "Non \u00e8 necessario introdurre parametri di configurazione in questo menu.\n\nAssicurati solo di aver ottenuto il tuo file tokenset.json usando la procedura con il MITM proxy, e di averlo salvato nella tua directory di configurazione, poi premi Submit per procedere.",
-                "title": "Configura Daikin Onecta"
-            }
-        }
+        "description": "Non \u00e8 necessario introdurre parametri di configurazione in questo menu.\n\nAssicurati solo di aver ottenuto il tuo file tokenset.json usando la procedura con il MITM proxy, e di averlo salvato nella tua directory di configurazione, poi premi Submit per procedere.",
+        "title": "Configura Daikin Onecta"
+      }
     }
+  }
 }

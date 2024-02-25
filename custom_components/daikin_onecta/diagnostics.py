@@ -1,12 +1,16 @@
 """Diagnostics support for Daikin Diagnostics."""
 from __future__ import annotations
+
 from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceEntry
 
-from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES
+from .const import DAIKIN_API
+from .const import DAIKIN_DEVICES
+from .const import DOMAIN
+
 
 async def async_get_config_entry_diagnostics(
     hass: HomeAssistant, entry: ConfigEntry

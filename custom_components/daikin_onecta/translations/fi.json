@@ -1,11 +1,11 @@
 {
-    "config": {
-        "step": {
-            "user": {
-                "data": {
-                    "host": "Palvelin"
-                }
-            }
+  "config": {
+    "step": {
+      "user": {
+        "data": {
+          "host": "Palvelin"
         }
+      }
     }
+  }
 }
