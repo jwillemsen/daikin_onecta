@@ -128,11 +128,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_min_temp = self.get_min_temp()
         self._attr_target_temperature_step = self.get_target_temperature_step()
         self._attr_target_temperature = self.get_target_temperature()
-        self._attr_hvac_mode = self.get_hvac_mode()
         self._attr_hvac_modes = self.get_hvac_modes()
         self._attr_swing_modes = self.get_swing_modes()
         self._attr_preset_modes = self.get_preset_modes()
         self._attr_fan_modes = self.get_fan_modes()
+        self._attr_hvac_mode = self.get_hvac_mode()
+        self._attr_swing_mode = self.get_swing_mode()
+        self._attr_preset_mode = self.get_preset_mode()
+        self._attr_fan_mode = self.get_fan_mode()
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -142,10 +145,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_min_temp = self.get_min_temp()
         self._attr_target_temperature_step = self.get_target_temperature_step()
         self._attr_target_temperature = self.get_target_temperature()
-        self._attr_hvac_mode = self.get_hvac_mode()
         self._attr_hvac_modes = self.get_hvac_modes()
+        self._attr_swing_modes = self.get_swing_modes()
         self._attr_preset_modes = self.get_preset_modes()
         self._attr_fan_modes = self.get_fan_modes()
+        self._attr_hvac_mode = self.get_hvac_mode()
+        self._attr_swing_mode = self.get_swing_mode()
+        self._attr_preset_mode = self.get_preset_mode()
+        self._attr_fan_mode = self.get_fan_mode()
         self.async_write_ha_state()
 
     async def _set(self, settings):
@@ -416,6 +423,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 onOffMode = "on"
             operationMode = HA_HVAC_TO_DAIKIN[hvac_mode]
 
+        cc = self.climateControl()
+
         # Only set the on/off to Daikin when we need to change it
         if onOffMode is not None:
             result &= await self._device.set_path(
@@ -427,6 +436,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     onOffMode,
                 )
+             else:
+                cc["onOffMode"]["value"] = onOffMode
 
         if operationMode is not None:
             result &= await self._device.set_path(
@@ -442,15 +453,31 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     operationMode,
                 )
+            else:
+                cc["operationMode"]["value"] = operationMode
 
         if result is True:
             self._attr_hvac_mode = hvac_mode
+            # When switching hvac mode it could be that we can set min/max/target/etc
+            # which we couldn't set with a previous hvac mode
+            self._attr_supported_features = self.get_supported_features()
+            self._attr_current_temperature = self.get_current_temperature()
+            self._attr_max_temp = self.get_max_temp()
+            self._attr_min_temp = self.get_min_temp()
+            self._attr_target_temperature_step = self.get_target_temperature_step()
+            self._attr_target_temperature = self.get_target_temperature()
+            self._attr_swing_modes = self.get_swing_modes()
+            self._attr_preset_modes = self.get_preset_modes()
+            self._attr_fan_modes = self.get_fan_modes()
+            self._attr_swing_mode = self.get_swing_mode()
+            self._attr_preset_mode = self.get_preset_mode()
+            self._attr_fan_mode = self.get_fan_mode()
+
             self.async_write_ha_state()
 
         return result
 
-    @property
-    def fan_mode(self):
+    def get_fan_mode(self):
         fan_mode = None
         cc = self.climateControl()
         # Check if we have a fanControl
@@ -502,7 +529,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     async def async_set_fan_mode(self, fan_mode):
         """Set the preset mode status."""
         cc = self.climateControl()
-        fanControl = cc.get("fanControl")
         operationmode = cc["operationMode"]["value"]
         if fan_mode in HA_FAN_TO_DAIKIN.keys():
             res = await self._device.set_path(
@@ -518,10 +544,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     fan_mode,
                 )
-            else:
-                fanControl["value"]["operationModes"][operationmode]["fanSpeed"][
-                    "currentMode"
-                ]["value"] = fan_mode
 
         else:
             if fan_mode.isnumeric():
@@ -538,10 +560,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         "Device '%s' problem setting fan_mode to fixed",
                         self._device.name,
                     )
-                else:
-                    fanControl["value"]["operationModes"][operationmode]["fanSpeed"][
-                        "currentMode"
-                    ]["value"] = "fixed"
+
                 res &= await self._device.set_path(
                     self._device.getId(),
                     self.embedded_id,
@@ -555,15 +574,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         self._device.name,
                         mode,
                     )
-                else:
-                    fanControl["value"]["operationModes"][operationmode]["fanSpeed"][
-                        "modes"
-                    ]["fixed"]["value"] = int(fan_mode)
+
+        if res is True:
+            self._attr_fan_mode = fan_mode
+            self.async_write_ha_state()
 
         return res
 
-    @property
-    def swing_mode(self):
+    def get_swing_mode(self):
         swingMode = SWING_OFF
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
@@ -678,10 +696,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             self._device.name,
                             new_hMode,
                         )
-                    else:
-                        fanControl["value"]["operationModes"][operationmode][
-                            "fanDirection"
-                        ]["horizontal"]["currentMode"]["value"] = new_hMode
+
                 if vertical is not None:
                     new_vMode = "stop"
                     if swing_mode in (SWING_VERTICAL, SWING_BOTH):
@@ -709,15 +724,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             self._device.name,
                             new_vMode,
                         )
-                    else:
-                        fanControl["value"]["operationModes"][operationmode][
-                            "fanDirection"
-                        ]["vertical"]["currentMode"]["value"] = new_vMode
+
+        if res is True:
+            self._attr_swing_mode = swing_mode
+            self.async_write_ha_state()
 
         return res
 
-    @property
-    def preset_mode(self):
+    def get_preset_mode(self):
         cc = self.climateControl()
         current_preset_mode = PRESET_NONE
         for mode in self.preset_modes:
@@ -732,7 +746,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     async def async_set_preset_mode(self, preset_mode):
         result = True
         new_daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
-        cc = self.climateControl()
 
         if self.preset_mode != PRESET_NONE:
             current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
@@ -745,8 +758,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     current_mode,
                 )
-            else:
-                cc[current_mode]["value"] = "off"
 
         if preset_mode != PRESET_NONE:
             if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
@@ -761,8 +772,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     new_daikin_mode,
                 )
-            else:
-                cc[new_daikin_mode]["value"] = "on"
+
+        if result is True:
+            self._attr_preset_mode = preset_mode
+            self.async_write_ha_state()
 
         return result
 
@@ -799,7 +812,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return result
 
     async def async_turn_off(self):
-        cc = self.climateControl()
         result = await self._device.set_path(
             self._device.getId(), self.embedded_id, "onOffMode", "", "off"
         )
@@ -808,7 +820,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 "Device '%s' problem setting onOffMode to off", self._device.name
             )
         else:
-            cc["onOffMode"]["value"] = "off"
+            self._attr_hvac_mode = HVACMode.OFF
+            self.async_write_ha_state()
+
         return result
 
     @property
