@@ -125,7 +125,7 @@ class DaikinApi:
 
     async def get_daikin_data(self):
         """Pull the latest data from Daikin only when the last patch call is more than 30 seconds ago."""
-        if (datetime.now() - self._last_patch_call).total_seconds() < 30:
+        if (datetime.now() - self._last_patch_call).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
             _LOGGER.debug("API UPDATE skipped (just updated from UI)")
             return False
 
