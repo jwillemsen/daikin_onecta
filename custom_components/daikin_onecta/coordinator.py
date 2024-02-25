@@ -30,7 +30,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         )
 
         _LOGGER.info(
-            "Daikin coordinator initialized with %s seconds interval.",
+            "Daikin coordinator initialized with %s interval.",
             self.update_interval,
         )
 

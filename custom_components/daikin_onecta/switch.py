@@ -156,7 +156,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             )
         else:
             self._switch_state = "on"
-        self.async_write_ha_state()
+            self.async_write_ha_state()
         return result
 
     async def async_turn_off(self, **kwargs):
@@ -172,5 +172,5 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             )
         else:
             self._switch_state = "off"
-        self.async_write_ha_state()
+            self.async_write_ha_state()
         return result
