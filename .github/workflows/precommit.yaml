@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pre-commit:
+  precommit:
     runs-on: "ubuntu-latest"
     name: Pre-commit
     steps:
