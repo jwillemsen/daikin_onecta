@@ -1,6 +1,6 @@
 """Support for Daikin AC sensors."""
 import logging
-from unicodedata import name
+import re
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
@@ -8,8 +8,6 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.components.sensor import SensorStateClass
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_NAME
-from homeassistant.const import CONF_TYPE
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
@@ -24,14 +22,10 @@ from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
-from .const import SENSOR_TYPE_ENERGY
-from .const import SENSOR_TYPE_POWER
 from .const import VALUE_SENSOR_MAPPING
 from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
-
-import re
 
 
 async def async_setup(hass, async_add_entities):
@@ -322,7 +316,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         managementPoints = self._device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
                 if self._sub_type is not None:
                     management_point = management_point.get(self._sub_type).get("value")
                 cd = management_point.get(self._value)

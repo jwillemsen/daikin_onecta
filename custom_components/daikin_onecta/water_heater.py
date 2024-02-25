@@ -1,39 +1,27 @@
 """Support for the Daikin BRP069A62."""
 import logging
 
-_LOGGER = logging.getLogger(__name__)
-
-from homeassistant.components.water_heater import (
-    STATE_PERFORMANCE,
-    STATE_HEAT_PUMP,
-    STATE_OFF,
-    WaterHeaterEntity,
-    WaterHeaterEntityFeature,
-)
-
-from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
-
-from homeassistant.helpers.update_coordinator import (
-    CoordinatorEntity,
-    DataUpdateCoordinator,
-)
-
+from homeassistant.components.water_heater import STATE_HEAT_PUMP
+from homeassistant.components.water_heater import STATE_OFF
+from homeassistant.components.water_heater import STATE_PERFORMANCE
+from homeassistant.components.water_heater import WaterHeaterEntity
+from homeassistant.components.water_heater import WaterHeaterEntityFeature
+from homeassistant.const import ATTR_TEMPERATURE
+from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import (
-    DOMAIN as DAIKIN_DOMAIN,
-    DAIKIN_DEVICES,
-    ATTR_STATE_OFF,
-    ATTR_STATE_ON,
-    COORDINATOR,
-)
+from .const import COORDINATOR
+from .const import DAIKIN_DEVICES
+from .const import DOMAIN as DAIKIN_DOMAIN
+
+_LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin water tank entities."""
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {
             "domesticHotWaterTank",
             "domesticHotWaterFlowThrough",
@@ -133,7 +121,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         # temperature of the tank
         dht = self.domestic_hotwater_temperature
         if dht:
-            if dht["settable"] == True:
+            if dht["settable"] is True:
                 sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
         """Return the list of supported features."""
         return sf
@@ -221,7 +209,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             return None
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            if dht["settable"] == False:
+            if dht["settable"] is False:
                 _LOGGER.debug(
                     "Device '%s' set tank temperature ignored because tank temperature can't be set",
                     self._device.name,
@@ -317,7 +305,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         hwtd = self.hotwatertank_data
         pwf = hwtd.get("powerfulMode")
         if pwf is not None:
-            if pwf["settable"] == True:
+            if pwf["settable"] is True:
                 states += [STATE_PERFORMANCE]
         _LOGGER.debug(
             "Device '%s' hot water tank supports modes %s", self._device.name, states

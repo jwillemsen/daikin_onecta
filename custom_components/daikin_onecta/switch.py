@@ -1,21 +1,17 @@
 """Support for Daikin AirBase zones."""
 import logging
+import re
 
 from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
 )
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_NAME
-from homeassistant.const import CONF_TYPE
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from .const import ATTR_STATE_OFF
-from .const import ATTR_STATE_ON
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
@@ -25,8 +21,6 @@ from .const import VALUE_SENSOR_MAPPING
 from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
-
-import re
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
@@ -49,7 +43,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     # When the following check changes also update this in sensor.py
                     if (
                         value_value is not None
-                        and settable == True
+                        and settable is True
                         and "on" in values
                         and "off" in values
                     ):

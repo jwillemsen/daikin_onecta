@@ -3,7 +3,6 @@ import asyncio
 import datetime
 import logging
 from datetime import date
-from datetime import datetime
 from datetime import timedelta
 
 import voluptuous as vol
