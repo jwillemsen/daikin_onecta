@@ -8,6 +8,9 @@
           "email": "[%key:common::config_flow::data::email]",
           "password": "[%key:common::config_flow::data::password%]"
         }
+      },
+      "init": {
+        "title": "Daikin Onecta"
       }
     },
     "abort": {

@@ -25,17 +25,16 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
 
         """Initialize."""
-        self.scan_interval: int = (10 * 60)
+        self.options = config_entry.options
 
         super().__init__(
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval=timedelta(seconds=self.scan_interval)
+            update_interval = self.determine_update_interval()
         )
 
-        _LOGGER.info("Daikin coordinator initialized.")
-
+        _LOGGER.info("Daikin coordinator initialized with %s seconds interval.", self.update_interval)
 
     async def _async_update_data(self):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
@@ -55,4 +54,29 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                 device = Appliance(dev_data, daikin_api)
                 devices[dev_data["id"]] = device
 
+        hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
+        ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
+
         _LOGGER.debug("Daikin coordinator finished _async_update_data.")
+
+    def update_settings(self, config_entry: ConfigEntry):
+        _LOGGER.debug("Daikin coordinator updating settings.")
+        self.options = config_entry.options
+        self.update_interval = self.determine_update_interval()
+        _LOGGER.info("Daikin coordinator changed interval to %s", self.update_interval)
+
+    def determine_update_interval(self):
+        # Default of low scan minutes interval
+        scan_interval = self.options.get("low_scan_interval", 30)
+        hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
+        ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
+        if self.in_between(datetime.now().time(), hs, ls):
+            scan_interval = self.options.get("high_scan_interval", 10)
+
+        return timedelta(minutes=scan_interval)
+
+    def in_between(self, now, start, end):
+        if start <= end:
+            return start <= now < end
+        else:
+            return start <= now or now < end

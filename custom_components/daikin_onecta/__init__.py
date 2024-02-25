@@ -4,6 +4,7 @@ import datetime
 import logging
 import voluptuous as vol
 from aiohttp import ClientError
+from datetime import date, datetime, timedelta
 
 from homeassistant.config_entries import SOURCE_IMPORT, ConfigEntry
 from homeassistant.const import SERVICE_RELOAD
@@ -87,7 +88,7 @@ async def async_setup_entry(hass: HomeAssistantType, config_entry: ConfigEntry):
     except Exception as ex:
         raise ConfigEntryNotReady(f"Config Not Ready: {ex}")
 
-#     = {DAIKIN_API: daikin_api, DAIKIN_DEVICES: daikin_api., COORDINATOR: coordinator}
+    config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
     for component in COMPONENT_TYPES:
         hass.async_create_task(
@@ -114,3 +115,8 @@ async def async_unload_entry(hass, config_entry):
 async def daikin_api_setup(hass, host, key, uuid, password):
     """Create a Daikin instance only once."""
     return
+
+async def update_listener(hass, config_entry):
+    """Handle options update."""
+    coordinator = hass.data[DOMAIN][COORDINATOR]
+    coordinator.update_settings(config_entry)
