@@ -43,11 +43,6 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Handle a flow initialized by the user."""
         errors = {}
         if user_input is not None:
-            hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
-            ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
-            if hs < ls:
-                errors["hs_before_ls"] = "hs_before_ls"
-
             return self.async_create_entry(title="", data=user_input)
 
         return self.async_show_form(
