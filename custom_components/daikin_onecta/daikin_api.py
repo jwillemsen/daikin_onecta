@@ -111,6 +111,8 @@ class DaikinApi:
             except Exception:
                 _LOGGER.error("RETRIEVE JSON FAILED: %s", res.text)
                 return False
+        elif res.status_code == 429:
+            raise Exception("Rate limit: Remaining minute " + str(self.rate_limits["remaining_minutes"]) + " day " + str(self.rate_limits["remaining_day"]))
         elif res.status_code == 204:
             self._last_patch_call = datetime.now()
             return True
