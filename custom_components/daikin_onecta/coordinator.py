@@ -26,16 +26,15 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
         """Initialize."""
         self.options = config_entry.options
-        self.scan_interval = self.options.get("high_scan_interval", 10)
 
         super().__init__(
             hass,
             _LOGGER,
             name=DOMAIN,
-            update_interval = timedelta(minutes=self.scan_interval)
+            update_interval = self.determine_update_interval()
         )
 
-        _LOGGER.info("Daikin coordinator initialized with %s seconds interval.", self.scan_interval)
+        _LOGGER.info("Daikin coordinator initialized with %s seconds interval.", self.update_interval)
 
     async def _async_update_data(self):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
@@ -59,3 +58,14 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
 
         _LOGGER.debug("Daikin coordinator finished _async_update_data.")
+
+    def update_settings(self, config_entry: ConfigEntry):
+        _LOGGER.debug("Daikin coordinator updating settings.")
+        self.options = config_entry.options
+        self.update_interval = self.determine_update_interval()
+        _LOGGER.info("Daikin coordinator changed interval to %s", self.update_interval)
+
+    def determine_update_interval(self):
+        val = self.options.get("high_scan_interval", 10)
+        return timedelta(minutes=val)
+

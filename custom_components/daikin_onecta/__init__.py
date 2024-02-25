@@ -119,7 +119,4 @@ async def daikin_api_setup(hass, host, key, uuid, password):
 async def update_listener(hass, config_entry):
     """Handle options update."""
     coordinator = hass.data[DOMAIN][COORDINATOR]
-    val = config_entry.options.get("high_scan_interval", 10)
-    scan_interval = timedelta(minutes=val)
-    _LOGGER.info("Daikin coordinator changing interval to %s", scan_interval)
-    coordinator.update_interval = scan_interval
+    coordinator.update_settings(config_entry)
