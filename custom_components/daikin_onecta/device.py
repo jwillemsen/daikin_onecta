@@ -1,9 +1,7 @@
-import datetime
 import json
 import logging
 
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
-from homeassistant.util import Throttle
 
 from .const import DOMAIN
 

@@ -7,10 +7,7 @@ from datetime import timedelta
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
-from homeassistant.helpers.update_coordinator import UpdateFailed
-from homeassistant.util import dt as dt_util
 
 from .const import DAIKIN_API
 from .const import DAIKIN_DEVICES
@@ -54,10 +51,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                 device = Appliance(dev_data, daikin_api)
                 devices[dev_data["id"]] = device
 
-        hs = datetime.strptime(self.options["high_scan_start"], "%H:%M:%S").time()
-        ls = datetime.strptime(self.options["low_scan_start"], "%H:%M:%S").time()
+        self.update_interval = self.determine_update_interval()
 
-        _LOGGER.debug("Daikin coordinator finished _async_update_data.")
+        _LOGGER.debug(
+            "Daikin coordinator finished _async_update_data, interval %s.",
+            self.update_interval,
+        )
 
     def update_settings(self, config_entry: ConfigEntry):
         _LOGGER.debug("Daikin coordinator updating settings.")

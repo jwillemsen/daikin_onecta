@@ -6,8 +6,6 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.components.climate import ClimateEntity
 from homeassistant.components.climate import PLATFORM_SCHEMA
-from homeassistant.components.climate.const import ATTR_HVAC_MODE
-from homeassistant.components.climate.const import ATTR_PRESET_MODE
 from homeassistant.components.climate.const import ClimateEntityFeature
 from homeassistant.components.climate.const import FAN_AUTO
 from homeassistant.components.climate.const import HVACMode
@@ -26,11 +24,7 @@ from homeassistant.const import CONF_NAME
 from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from .const import ATTR_OPERATION_MODE
-from .const import ATTR_STATE_OFF
-from .const import ATTR_STATE_ON
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
@@ -114,7 +108,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     _enable_turn_on_off_backwards_compatibility = False  # Remove with HA 2025.1
 
-    # Setpoint is the setpoint string under temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
+    # Setpoint is the setpoint string under
+    # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
     def __init__(self, device, setpoint, coordinator):
         """Initialize the climate device."""
         super().__init__(coordinator)
@@ -164,7 +159,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return cc
 
     def operationMode(self):
-        operationMode = None
         cc = self.climateControl()
         return cc.get("operationMode")
 
@@ -211,9 +205,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             self._device.name,
                             self._setpoint,
                             operationMode,
-                            setpoint,
+                            fancontrol,
                         )
-        return setpoint
+        return fancontrol
 
     def sensoryData(self):
         sensoryData = None
@@ -255,7 +249,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         )
         setpointdict = self.setpoint()
         cc = self.climateControl()
-        if setpointdict is not None and setpointdict["settable"] == True:
+        if setpointdict is not None and setpointdict["settable"] is True:
             supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
         if len(self.get_preset_modes()) > 1:
             supported_features |= ClimateEntityFeature.PRESET_MODE
@@ -740,7 +734,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         result = True
         new_daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
         cc = self.climateControl()
-        preset = cc.get(new_daikin_mode)
 
         if self.preset_mode != PRESET_NONE:
             current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]

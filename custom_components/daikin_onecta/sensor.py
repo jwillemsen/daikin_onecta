@@ -11,9 +11,7 @@ from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
-from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
@@ -49,19 +47,19 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             # For all values provide a "value" we provide a sensor
             for value in management_point:
                 vv = management_point.get(value)
-                if type(vv) == dict:
+                if isinstance(vv, dict):
                     value_value = vv.get("value")
                     settable = vv.get("settable", False)
                     values = vv.get("values", [])
                     if (
                         value_value is not None
-                        and settable == True
+                        and settable is True
                         and "on" in values
                         and "off" in values
                     ):
-                        # Don't create when it is settable and values on/off, thati is a switch
+                        # Don't create when it is settable and values on/off, that is a switch
                         pass
-                    elif value_value is not None and type(value_value) != dict:
+                    elif value_value is not None and not isinstance(value_value, dict):
                         sensor2 = DaikinValueSensor(
                             device,
                             coordinator,

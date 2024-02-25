@@ -1,20 +1,13 @@
 """Platform for the Daikin AC."""
 import asyncio
-import base64
 import functools
-import json
 import logging
-import os
-import re
-import time
 from datetime import datetime
-from datetime import timedelta
 
 import requests
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.util import Throttle
 
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN

@@ -36,7 +36,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             # For all values provide a "value" we provide a sensor
             for value in management_point:
                 vv = management_point.get(value)
-                if type(vv) == dict:
+                if isinstance(vv, dict):
                     value_value = vv.get("value")
                     settable = vv.get("settable", False)
                     values = vv.get("values", [])

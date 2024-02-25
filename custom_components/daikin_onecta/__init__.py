@@ -1,11 +1,7 @@
 """Platform for the Daikin AC."""
 import asyncio
-import datetime
 import logging
-from datetime import date
-from datetime import timedelta
 
-import voluptuous as vol
 from aiohttp import ClientError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.config_entries import SOURCE_IMPORT

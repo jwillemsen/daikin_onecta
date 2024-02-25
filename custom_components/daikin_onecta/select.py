@@ -1,28 +1,13 @@
 import logging
+import re
 
 from homeassistant.components.select import SelectEntity
-from homeassistant.components.sensor import (
-    CONF_STATE_CLASS,
-)
-from homeassistant.const import CONF_DEVICE_CLASS
-from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_NAME
-from homeassistant.const import CONF_TYPE
-from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
-from homeassistant.helpers import entity_platform
 
-from .const import ATTR_STATE_OFF
-from .const import ATTR_STATE_ON
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import ENTITY_CATEGORY
-from .const import VALUE_SENSOR_MAPPING
 from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
-
-import re
 
 
 async def async_setup_entry(hass, entry, async_add_entities):
@@ -113,7 +98,7 @@ class DaikinDemandSelect(SelectEntity):
                 self._device.getId(),
                 self._embedded_id,
                 "demandControl",
-                f"/currentMode",
+                "/currentMode",
                 new_currentmode,
             )
             if res is False:
@@ -130,7 +115,7 @@ class DaikinDemandSelect(SelectEntity):
                     self._device.getId(),
                     self._embedded_id,
                     "demandControl",
-                    f"/modes/fixed",
+                    "/modes/fixed",
                     int(option),
                 )
                 if res is False:
