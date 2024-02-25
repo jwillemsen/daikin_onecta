@@ -1,4 +1,5 @@
 """Pydaikin base appliance, represent a Daikin device."""
+
 import logging
 
 from .device import DaikinOnectaDevice

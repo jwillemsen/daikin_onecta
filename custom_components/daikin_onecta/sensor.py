@@ -1,4 +1,5 @@
 """Support for Daikin AC sensors."""
+
 import logging
 import re
 

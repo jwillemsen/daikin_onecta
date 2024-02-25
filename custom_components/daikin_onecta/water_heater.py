@@ -1,4 +1,5 @@
 """Support for the Daikin BRP069A62."""
+
 import logging
 
 from homeassistant.components.water_heater import STATE_HEAT_PUMP

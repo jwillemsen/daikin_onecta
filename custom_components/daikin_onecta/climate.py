@@ -1,4 +1,5 @@
 """Support for the Daikin HVAC."""
+
 import logging
 import re
 
