@@ -1,0 +1,29 @@
+name: Validate with pre-commit
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "0 1 * * SUN"
+  workflow_dispatch:
+
+jobs:
+  precommit:
+    runs-on: "ubuntu-latest"
+    name: Pre-commit
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Upgrade pip
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt pip
+          pip --version
+
+      - name: Install Python modules
+        run: |
+          pip install --constraint=.github/workflows/constraints.txt pre-commit black flake8 reorder-python-imports
+
+      - name: Run pre-commit on all files
+        run: |
+          pre-commit run --all-files --show-diff-on-failure --color=always

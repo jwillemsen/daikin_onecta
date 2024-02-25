@@ -1,33 +1,31 @@
 """Platform for the Daikin AC."""
-import base64
+
+import asyncio
 import functools
 import logging
-import os
-import re
+from datetime import datetime
+
 import requests
-import time
-import asyncio
-import json
-
-from homeassistant.util import Throttle
+from homeassistant import config_entries
+from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant import config_entries, core
 
-from .const import DOMAIN, DAIKIN_DEVICES
-
+from .const import DAIKIN_DEVICES
+from .const import DOMAIN
 from .daikin_base import Appliance
 
-from datetime import datetime, timedelta
-
 _LOGGER = logging.getLogger(__name__)
+
 
 class DaikinApi:
     """Daikin Onecta API."""
 
-    def __init__(self,
-                hass: core.HomeAssistant,
-                entry: config_entries.ConfigEntry,
-                implementation: config_entry_oauth2_flow.AbstractOAuth2Implementation,):
+    def __init__(
+        self,
+        hass: core.HomeAssistant,
+        entry: config_entries.ConfigEntry,
+        implementation: config_entry_oauth2_flow.AbstractOAuth2Implementation,
+    ):
         """Initialize a new Daikin Onecta API."""
         _LOGGER.debug("Initialing Daikin Onecta API...")
         self.hass = hass
@@ -43,7 +41,12 @@ class DaikinApi:
         self._last_patch_call = datetime.min
 
         # Store the limits as member so that we can add these to the diagnostics
-        self.rate_limits = {'minute': 0, 'day': 0, 'remaining_minutes': 0, 'remaining_day': 0}
+        self.rate_limits = {
+            "minute": 0,
+            "day": 0,
+            "remaining_minutes": 0,
+            "remaining_day": 0,
+        }
 
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.
@@ -89,12 +92,18 @@ class DaikinApi:
                 _LOGGER.error("REQUEST FAILED: %s", e)
                 return []
 
-            self.rate_limits['minute'] = res.headers.get('X-RateLimit-Limit-minute', 0)
-            self.rate_limits['day'] = res.headers.get('X-RateLimit-Limit-day', 0)
-            self.rate_limits['remaining_minutes'] = res.headers.get('X-RateLimit-Remaining-minute', 0)
-            self.rate_limits['remaining_day'] = res.headers.get('X-RateLimit-Remaining-day', 0)
+            self.rate_limits["minute"] = res.headers.get("X-RateLimit-Limit-minute", 0)
+            self.rate_limits["day"] = res.headers.get("X-RateLimit-Limit-day", 0)
+            self.rate_limits["remaining_minutes"] = res.headers.get(
+                "X-RateLimit-Remaining-minute", 0
+            )
+            self.rate_limits["remaining_day"] = res.headers.get(
+                "X-RateLimit-Remaining-day", 0
+            )
 
-            _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
+            _LOGGER.debug(
+                "BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits
+            )
 
         if res.status_code == 200:
             try:
@@ -125,7 +134,9 @@ class DaikinApi:
 
     async def get_daikin_data(self):
         """Pull the latest data from Daikin only when the last patch call is more than 30 seconds ago."""
-        if (datetime.now() - self._last_patch_call).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
+        if (
+            datetime.now() - self._last_patch_call
+        ).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
             _LOGGER.debug("API UPDATE skipped (just updated from UI)")
             return False
 
@@ -134,5 +145,7 @@ class DaikinApi:
         self.json_data = await self.getCloudDeviceDetails()
         for dev_data in self.json_data or []:
             if dev_data["id"] in self.hass.data[DOMAIN][DAIKIN_DEVICES]:
-                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(dev_data)
+                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(
+                    dev_data
+                )
         return self.hass.data[DOMAIN][DAIKIN_DEVICES]

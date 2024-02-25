@@ -4,7 +4,7 @@ on:
   push:
   pull_request:
   schedule:
-    - cron: '0 1 * * SUN'
+    - cron: "0 1 * * SUN"
   workflow_dispatch:
 
 jobs:
@@ -13,4 +13,3 @@ jobs:
     steps:
       - uses: "actions/checkout@v4"
       - uses: home-assistant/actions/hassfest@master
-

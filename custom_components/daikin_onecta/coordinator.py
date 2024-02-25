@@ -1,40 +1,38 @@
 """Coordinator for Daikin Onecta integration."""
+
 from __future__ import annotations
 
-from datetime import datetime, timedelta
-
 import logging
-
-from .daikin_base import Appliance
-
-from homeassistant.exceptions import ConfigEntryAuthFailed
+from datetime import datetime
+from datetime import timedelta
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
-from homeassistant.util import dt as dt_util
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from .const import DOMAIN, DAIKIN_API, DAIKIN_DEVICES
+from .const import DAIKIN_API
+from .const import DAIKIN_DEVICES
+from .const import DOMAIN
+from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
+
 
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     """Class to manage fetching data from the API."""
 
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
-
         """Initialize."""
         self.options = config_entry.options
 
         super().__init__(
-            hass,
-            _LOGGER,
-            name=DOMAIN,
-            update_interval = self.determine_update_interval()
+            hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval()
         )
 
-        _LOGGER.info("Daikin coordinator initialized with %s seconds interval.", self.update_interval)
+        _LOGGER.info(
+            "Daikin coordinator initialized with %s seconds interval.",
+            self.update_interval,
+        )
 
     async def _async_update_data(self):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
@@ -54,10 +52,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                 device = Appliance(dev_data, daikin_api)
                 devices[dev_data["id"]] = device
 
-        hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
-        ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
+        self.update_interval = self.determine_update_interval()
 
-        _LOGGER.debug("Daikin coordinator finished _async_update_data.")
+        _LOGGER.debug(
+            "Daikin coordinator finished _async_update_data, interval %s.",
+            self.update_interval,
+        )
 
     def update_settings(self, config_entry: ConfigEntry):
         _LOGGER.debug("Daikin coordinator updating settings.")
@@ -68,8 +68,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def determine_update_interval(self):
         # Default of low scan minutes interval
         scan_interval = self.options.get("low_scan_interval", 30)
-        hs = datetime.strptime(self.options["high_scan_start"], '%H:%M:%S').time()
-        ls = datetime.strptime(self.options["low_scan_start"], '%H:%M:%S').time()
+        hs = datetime.strptime(self.options["high_scan_start"], "%H:%M:%S").time()
+        ls = datetime.strptime(self.options["low_scan_start"], "%H:%M:%S").time()
         if self.in_between(datetime.now().time(), hs, ls):
             scan_interval = self.options.get("high_scan_interval", 10)
 

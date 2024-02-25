@@ -1,42 +1,28 @@
 """Support for Daikin AirBase zones."""
-from homeassistant.helpers.entity import ToggleEntity
 
-from .daikin_base import Appliance
-
-from homeassistant.const import (
-    CONF_DEVICE_CLASS,
-    CONF_ICON,
-    CONF_NAME,
-    CONF_TYPE,
-    CONF_UNIT_OF_MEASUREMENT,
-)
-
-from homeassistant.helpers.update_coordinator import (
-    CoordinatorEntity,
-    DataUpdateCoordinator,
-)
-
-from .const import (
-    DOMAIN as DAIKIN_DOMAIN,
-    DAIKIN_DEVICES,
-    ATTR_STATE_OFF,
-    ATTR_STATE_ON,
-    VALUE_SENSOR_MAPPING,
-    ENABLED_DEFAULT,
-    ENTITY_CATEGORY,
-    COORDINATOR,
-)
-
-from homeassistant.core import callback
+import logging
+import re
 
 from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
 )
+from homeassistant.const import CONF_DEVICE_CLASS
+from homeassistant.const import CONF_ICON
+from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
+from homeassistant.core import callback
+from homeassistant.helpers.entity import ToggleEntity
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-import logging
+from .const import COORDINATOR
+from .const import DAIKIN_DEVICES
+from .const import DOMAIN as DAIKIN_DOMAIN
+from .const import ENABLED_DEFAULT
+from .const import ENTITY_CATEGORY
+from .const import VALUE_SENSOR_MAPPING
+from .daikin_base import Appliance
+
 _LOGGER = logging.getLogger(__name__)
 
-import re
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin switches based on config_entry."""
@@ -51,22 +37,40 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             # For all values provide a "value" we provide a sensor
             for value in management_point:
                 vv = management_point.get(value)
-                if type(vv) == dict:
+                if isinstance(vv, dict):
                     value_value = vv.get("value")
                     settable = vv.get("settable", False)
                     values = vv.get("values", [])
                     # When the following check changes also update this in sensor.py
-                    if value_value is not None and settable == True and "on" in values and "off" in values:
-                        _LOGGER.info("Device '%s' provides switch on/off '%s'", device.name, value)
-                        sensor2 = DaikinSwitch(device, coordinator, embedded_id, management_point_type, value)
+                    if (
+                        value_value is not None
+                        and settable is True
+                        and "on" in values
+                        and "off" in values
+                    ):
+                        _LOGGER.info(
+                            "Device '%s' provides switch on/off '%s'",
+                            device.name,
+                            value,
+                        )
+                        sensor2 = DaikinSwitch(
+                            device,
+                            coordinator,
+                            embedded_id,
+                            management_point_type,
+                            value,
+                        )
                         sensors.append(sensor2)
 
     async_add_entities(sensors)
 
+
 class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
-    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, value) -> None:
-        _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value);
+    def __init__(
+        self, device: Appliance, coordinator, embedded_id, management_point_type, value
+    ) -> None:
+        _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
@@ -78,21 +82,33 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
-            _LOGGER.info("No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING", value);
+            _LOGGER.info(
+                "No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING",
+                value,
+            )
         else:
             self._attr_icon = sensor_settings[CONF_ICON]
             self._device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+            self._attr_entity_registry_enabled_default = sensor_settings[
+                ENABLED_DEFAULT
+            ]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
-        readable = re.findall('[A-Z][^A-Z]*', myname)
+        readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
+        self._attr_unique_id = (
+            f"{self._device.getId()}_{self._management_point_type}_{self._value}"
+        )
         self._switch_state = self.sensor_value()
-        _LOGGER.info("Device '%s:%s' supports sensor '%s'", device.name, self._embedded_id, self._attr_name)
+        _LOGGER.info(
+            "Device '%s:%s' supports sensor '%s'",
+            device.name,
+            self._embedded_id,
+            self._attr_name,
+        )
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -119,7 +135,9 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                     cd = management_point.get(self._value)
                     if cd is not None:
                         result = cd.get("value")
-        _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
+        _LOGGER.debug(
+            "Device '%s' switch '%s' value '%s'", self._device.name, self._value, result
+        )
         return result
 
     @property
@@ -129,9 +147,13 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
-        result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
+        result = await self._device.set_path(
+            self._device.getId(), self._embedded_id, self._value, "", "on"
+        )
         if result is False:
-            _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
+            _LOGGER.warning(
+                "Device '%s' problem setting '%s' to on", self._device.name, self._value
+            )
         else:
             self._switch_state = "on"
         self.async_write_ha_state()
@@ -139,9 +161,15 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
-        result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "off")
+        result = await self._device.set_path(
+            self._device.getId(), self._embedded_id, self._value, "", "off"
+        )
         if result is False:
-          _LOGGER.warning("Device '%s' problem setting '%s' to off", self._device.name, self._value)
+            _LOGGER.warning(
+                "Device '%s' problem setting '%s' to off",
+                self._device.name,
+                self._value,
+            )
         else:
             self._switch_state = "off"
         self.async_write_ha_state()

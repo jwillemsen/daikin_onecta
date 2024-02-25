@@ -1,9 +1,7 @@
 {
   "domain": "daikin_onecta",
   "name": "Daikin Onecta",
-  "codeowners": [
-    "@jwillemsen"
-  ],
+  "codeowners": ["@jwillemsen"],
   "config_flow": true,
   "dependencies": ["application_credentials"],
   "documentation": "https://github.com/jwillemsen/daikin_onecta",

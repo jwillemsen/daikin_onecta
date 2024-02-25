@@ -1,13 +1,12 @@
-import datetime
-import logging
 import json
-
-from homeassistant.util import Throttle
+import logging
 
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
+
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
+
 
 class DaikinOnectaDevice:
     """Class to represent and control one Daikin Onecta Device."""
@@ -26,7 +25,9 @@ class DaikinOnectaDevice:
             if management_point_type == "climateControl":
                 self.name = management_point["name"]["value"]
 
-        _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.getId())
+        _LOGGER.info(
+            "Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.getId()
+        )
 
     @property
     def available(self) -> bool:
@@ -42,11 +43,11 @@ class DaikinOnectaDevice:
         model = ""
         sw_vers = ""
         name = ""
-        supported_management_point_types = {'gateway'}
+        supported_management_point_types = {"gateway"}
         managementPoints = self.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
-            if  management_point_type in supported_management_point_types:
+            if management_point_type in supported_management_point_types:
                 mac_add = management_point["macAddress"]["value"]
                 model = management_point["modelInfo"]["value"]
                 sw_vers = management_point["firmwareVersion"]["value"]
@@ -58,9 +59,7 @@ class DaikinOnectaDevice:
                 # Serial numbers are unique identifiers within a specific domain
                 (DOMAIN, self.getId())
             },
-            "connections": {
-                (CONNECTION_NETWORK_MAC, mac_add)
-            },
+            "connections": {(CONNECTION_NETWORK_MAC, mac_add)},
             "manufacturer": "Daikin",
             "model": model,
             "name": name,
@@ -68,6 +67,7 @@ class DaikinOnectaDevice:
         }
 
     "Helper to merge the json, prevents invalid reads when other threads are reading the daikin_data"
+
     def merge_json(self, a: dict, b: dict, path=[]):
         for key in b:
             if key in a:

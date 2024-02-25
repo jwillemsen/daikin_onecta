@@ -1,10 +1,9 @@
 ---
 name: Issue report
 about: Create an issue to help us improve
-title: '[Issue]: '
-labels: ''
-assignees: ''
-
+title: "[Issue]: "
+labels: ""
+assignees: ""
 ---
 
 <!-- When reporting an issue *always* attach the device diagnostics (see Settings/Device&Services/Daikin Onecta/Download diagnostics). Remove all tokens from the device diagnostics and log files before attaching it to this issue. Also attach the debug log, see https://github.com/jwillemsen/daikin_onecta#setting-the-log-level for how to enable debug logging.

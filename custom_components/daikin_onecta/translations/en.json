@@ -1,67 +1,67 @@
 {
-    "options": {
-        "step": {
-            "init": {
-                "data": {
-                    "high_scan_interval": "High frequency period update interval (minutes)",
-                    "low_scan_interval": "Low frequency period update interval (minutes)",
-                    "high_scan_start": "High frequency period start time",
-                    "low_scan_start": "Low frequency period start time",
-                    "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
-                },
-                "description": "Configure Daikin Onecta Cloud polling",
-                "title": "Daikin Onecta"
-            }
-        }
-    },
-    "config": {
-        "abort": {
-            "already_configured": "The integration is already configured.",
-            "cannot_connect": "Failed to connect to Daikin Cloud.",
-            "init_failed": "Failed to initialize Daikin API.",
-            "token_retrieval_failed": "Failed to retrieve access token set."
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "High frequency period update interval (minutes)",
+          "low_scan_interval": "Low frequency period update interval (minutes)",
+          "high_scan_start": "High frequency period start time",
+          "low_scan_start": "Low frequency period start time",
+          "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
         },
-        "error": {
-            "cannot_connect": "Failed to connect",
-            "device_fail": "Unexpected error",
-            "device_timeout": "Failed to connect",
-            "forbidden": "Invalid authentication",
-            "invalid_auth": "Invalid authentication",
-            "unknown": "Unexpected error"
-        },
-        "step": {
-            "user": {
-                "data": {
-                    "email": "Email address",
-                    "password": "Password"
-                },
-                "description": "Enter the email address and password you use to login to Daikin Cloud, then press Submit.",
-                "title": "Configure Daikin Onecta"
-            }
-        }
-    },
-    "services": {
-        "reload": {
-            "name": "Reload",
-            "description": "Retrieve new access TokenSet by logging in again to Daikin Cloud."
-        }
-    },
-    "entity": {
-        "climate": {
-            "daikin": {
-                "state_attributes": {
-                    "fan_mode": {
-                        "state": {
-                            "quiet": "Quiet",
-                            "1": "1",
-                            "2": "2",
-                            "3": "3",
-                            "4": "4",
-                            "5": "5"
-                        }
-                    }
-                }
-            }
-        }
+        "description": "Configure Daikin Onecta Cloud polling",
+        "title": "Daikin Onecta"
+      }
     }
+  },
+  "config": {
+    "abort": {
+      "already_configured": "The integration is already configured.",
+      "cannot_connect": "Failed to connect to Daikin Cloud.",
+      "init_failed": "Failed to initialize Daikin API.",
+      "token_retrieval_failed": "Failed to retrieve access token set."
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "device_fail": "Unexpected error",
+      "device_timeout": "Failed to connect",
+      "forbidden": "Invalid authentication",
+      "invalid_auth": "Invalid authentication",
+      "unknown": "Unexpected error"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "Email address",
+          "password": "Password"
+        },
+        "description": "Enter the email address and password you use to login to Daikin Cloud, then press Submit.",
+        "title": "Configure Daikin Onecta"
+      }
+    }
+  },
+  "services": {
+    "reload": {
+      "name": "Reload",
+      "description": "Retrieve new access TokenSet by logging in again to Daikin Cloud."
+    }
+  },
+  "entity": {
+    "climate": {
+      "daikin": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Quiet",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          }
+        }
+      }
+    }
+  }
 }

@@ -1,27 +1,17 @@
 """Constants for Daikin Oncecta."""
 
-from homeassistant.const import (
-    CONF_DEVICE_CLASS,
-    CONF_ICON,
-    CONF_NAME,
-    CONF_TYPE,
-    CONF_UNIT_OF_MEASUREMENT,
-    UnitOfTemperature,
-    PERCENTAGE,
-    SIGNAL_STRENGTH_DECIBELS_MILLIWATT,
-    REVOLUTIONS_PER_MINUTE,
-    CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
-)
-
-from homeassistant.components.sensor import (
-    CONF_STATE_CLASS,
-    SensorStateClass,
-    SensorDeviceClass,
-)
-
-from homeassistant.helpers.entity import (
-    EntityCategory
-)
+from homeassistant.components.sensor import CONF_STATE_CLASS
+from homeassistant.components.sensor import SensorDeviceClass
+from homeassistant.components.sensor import SensorStateClass
+from homeassistant.const import CONCENTRATION_MICROGRAMS_PER_CUBIC_METER
+from homeassistant.const import CONF_DEVICE_CLASS
+from homeassistant.const import CONF_ICON
+from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
+from homeassistant.const import PERCENTAGE
+from homeassistant.const import REVOLUTIONS_PER_MINUTE
+from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
+from homeassistant.const import UnitOfTemperature
+from homeassistant.helpers.entity import EntityCategory
 
 DOMAIN = "daikin_onecta"
 COORDINATOR = "coordinator"
@@ -56,7 +46,8 @@ STATE_CLASS = "STATE"
 ENTITY_CATEGORY = "ENTITY_CATEGORY"
 
 # This maps the NAME as listed in the Daikin JSON data to:
-# - DEVICE_CLASS: home assistant device class, see https://developers.home-assistant.io/docs/core/entity/sensor/#available-device-classes
+# - DEVICE_CLASS: home assistant device class, see
+#   https://developers.home-assistant.io/docs/core/entity/sensor/#available-device-classes
 # - UNIT_OF_MEASUREMENT:
 # - ICON: Icon to be used
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
@@ -382,14 +373,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
     },
     "ipAddress": {
-        CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-    },
-    "modelInfo": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
