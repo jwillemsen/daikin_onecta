@@ -24,5 +24,20 @@
       "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
       "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]"
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "High frequency period update interval (minutes)XX",
+          "low_scan_interval": "Low frequency period update interval (minutes)",
+          "high_scan_start": "High frequency period start time",
+          "low_scan_start": "Low frequency period start time",
+          "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
+        },
+        "description": "Configure Daikin Onecta Cloud polling",
+        "title": "Daikin Onecta"
+      }
+    }
   }
 }
