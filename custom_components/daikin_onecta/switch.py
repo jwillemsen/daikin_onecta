@@ -28,17 +28,18 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin switches based on config_entry."""
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     sensors = []
+    supported_management_point_types = {
+        "domesticHotWaterTank",
+        "domesticHotWaterFlowThrough",
+        "climateControl",
+        "climateControlMainZone",
+    }
+
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             embedded_id = management_point["embeddedId"]
-            supported_management_point_types = {
-                "domesticHotWaterTank",
-                "domesticHotWaterFlowThrough",
-                "climateControl",
-                "climateControlMainZone",
-            }
 
             # For all values provide a "value" we provide a sensor
             for value in management_point:

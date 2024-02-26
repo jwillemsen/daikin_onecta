@@ -39,6 +39,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     sensors = []
+    supported_management_point_types = {
+        "domesticHotWaterTank",
+        "domesticHotWaterFlowThrough",
+        "climateControl",
+        "climateControlMainZone",
+    }
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
@@ -59,6 +65,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                         and "off" in values
                     ):
                         # Don't create when it is settable and values on/off, that is a switch
+                        pass
+                    elif (
+                        value == "operationMode"
+                        and management_point_type in supported_management_point_types
+                    ):
+                        # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
                         pass
                     elif value_value is not None and not isinstance(value_value, dict):
                         sensor2 = DaikinValueSensor(
