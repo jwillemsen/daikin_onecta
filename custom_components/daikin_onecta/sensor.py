@@ -112,8 +112,8 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 cdv = cd.get("value")
                 if cdv is not None:
                     cdve = cdv.get("electrical")
-                    _LOGGER.info("Device '%s' provides electrical", device.name)
                     if cdve is not None:
+                        _LOGGER.info("Device '%s' provides electrical", device.name)
                         for mode in cdve:
                             # Only handle consumptionData for an operation mode supported by this device
                             if mode in operation_modes:
