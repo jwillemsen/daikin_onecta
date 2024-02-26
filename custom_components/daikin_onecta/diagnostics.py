@@ -22,6 +22,7 @@ async def async_get_config_entry_diagnostics(
     data["json_data"] = daikin_api.json_data
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = entry.options
+    data["oauth2_token_valid"] = daikin_api.session.valid_token
     return data
 
 
@@ -37,4 +38,5 @@ async def async_get_device_diagnostics(
     data["device_json_data"] = daikin_device.getDescription()
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = entry.options
+    data["oauth2_token_valid"] = daikin_api.session.valid_token
     return data
