@@ -2,11 +2,6 @@
 [![](https://img.shields.io/github/release/jwillemsen/daikin_onecta/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_onecta/releases)
 [![](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
 
-<!---
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-41BDF5.svg?style=for-the-badge)](https://github.com/hacs/integration)
--->
-
-
 # Daikin Onecta
 
 Home Assistant Integration for Daikin devices using the Daikin Onecta API.
