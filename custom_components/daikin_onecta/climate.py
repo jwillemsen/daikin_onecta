@@ -232,7 +232,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     if sensoryData is not None:
                         sensoryData = sensoryData.get("value").get(self._setpoint)
                         _LOGGER.info(
-                            "Device '%s': %s has sensoryData %s",
+                            "Device '%s': %s sensoryData %s",
                             self._device.name,
                             self._setpoint,
                             sensoryData,
@@ -311,10 +311,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if setpointdict is not None:
                 currentTemp = setpointdict["value"]
         _LOGGER.debug(
-            "Device '%s' current temperature '%s' for setpoint '%s'",
+            "Device '%s': %s current temperature '%s'",
             self._device.name,
-            currentTemp,
             self._setpoint,
+            currentTemp,
         )
         return currentTemp
 
@@ -324,10 +324,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if setpointdict is not None:
             maxTemp = setpointdict["maxValue"]
         _LOGGER.debug(
-            "Device '%s' max temperature '%s' for setpoint '%s'",
+            "Device '%s': %s max temperature '%s'",
             self._device.name,
-            maxTemp,
             self._setpoint,
+            maxTemp,
         )
         return maxTemp
 
@@ -337,10 +337,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if setpointdict is not None:
             minValue = setpointdict["minValue"]
         _LOGGER.debug(
-            "Device '%s' min temperature '%s' for setpoint '%s'",
+            "Device '%s': %s min temperature '%s'",
             self._device.name,
-            minValue,
             self._setpoint,
+            minValue,
         )
         return minValue
 
@@ -350,10 +350,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if setpointdict is not None:
             value = setpointdict["value"]
         _LOGGER.debug(
-            "Device '%s' target temperature '%s' for setpoint '%s'",
+            "Device '%s': %s target temperature '%s'",
             self._device.name,
-            value,
             self._setpoint,
+            value,
         )
         return value
 
@@ -363,10 +363,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if setpointdict is not None:
             stepValue = setpointdict["stepValue"]
         _LOGGER.debug(
-            "Device '%s' step value '%s' for setpoint '%s'",
+            "Device '%s': %s target temperature step '%s'",
             self._device.name,
-            stepValue,
             self._setpoint,
+            stepValue,
         )
         return stepValue
 
