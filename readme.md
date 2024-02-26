@@ -22,6 +22,10 @@ Install with [HACS](https://hacs.xyz): Search for "Daikin Onecta" in the default
 
 Copy the `daikin_onecta` folder and all of its contents into your Home Assistant's `custom_components` folder. This is often located inside of your `/config` folder. If you are running Hass.io, use SAMBA to copy the folder over. If you are running Home Assistant Supervised, the `custom_components` folder might be located at `/usr/share/hassio/homeassistant`. It is possible that your `custom_components` folder does not exist. If that is the case, create the folder in the proper location, and then copy the `daikin_onecta` folder and all of its contents inside the newly created `custom_components` folder. Then you have to restart Home Assistant for the component to be loaded properly.
 
+# Prerequisites
+
+Visit https://developer.cloud.daikineurope.com and sign up for a developer account. Enter the email of your login for the Onecta App from Daikin.
+
 # Using config flow
 
 Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Onecta` in the drop-down menu.
