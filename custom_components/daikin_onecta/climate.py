@@ -241,7 +241,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     @property
     def translation_key(self) -> str:
-        return "daikin"
+        return "daikin_onecta"
 
     @property
     def embedded_id(self):

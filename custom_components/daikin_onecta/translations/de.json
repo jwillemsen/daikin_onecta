@@ -21,7 +21,7 @@
   },
   "entity": {
     "climate": {
-      "daikin": {
+      "daikin_onecta": {
         "state_attributes": {
           "fan_mode": {
             "state": {
