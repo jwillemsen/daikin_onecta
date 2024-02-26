@@ -44,12 +44,13 @@ This integration supports the following configuration settings to reduce the amo
 
 # Setting the log level
 
-If you'd like to see more granular logs, to investigate the communication or for other debugging purposes, you can set the log level in the Home Assistant config. The following lines can be added to set the overall log level for the component:
+If you'd like to see more granular logs, to investigate the communication or for other debugging purposes, you can set the log level in the Home Assistant config. The following lines can be added to set the overall log level for the component and the oauth2 helper which this integration uses:
 
 ```
 logger:
   logs:
     custom_components.daikin_onecta: debug
+    homeassistant.helpers.config_entry_oauth2_flow: debug
 ```
 
 If you only want to change log level on a per module basis, you can do that as well, for example if you only want debug logs for the climate:
