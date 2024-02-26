@@ -582,12 +582,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return res
 
     def get_swing_mode(self):
-        swingMode = SWING_OFF
+        swingMode = None
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
         h = SWING_OFF
         v = SWING_OFF
         if fanControl is not None:
+            swingMode = SWING_OFF
             operationmode = cc["operationMode"]["value"]
             fanDirection = fanControl["value"]["operationModes"][operationmode].get(
                 "fanDirection"
@@ -627,10 +628,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return swingMode
 
     def get_swing_modes(self):
-        swingModes = [SWING_OFF]
+        swingModes = []
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
         if fanControl is not None:
+            swingModes = [SWING_OFF]
             operationmode = cc["operationMode"]["value"]
             fanDirection = fanControl["value"]["operationModes"][operationmode].get(
                 "fanDirection"
