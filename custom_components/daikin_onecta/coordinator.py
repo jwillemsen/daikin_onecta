@@ -39,9 +39,14 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
         daikin_api = self.hass.data[DOMAIN][DAIKIN_API]
         devices = self.hass.data[DOMAIN][DAIKIN_DEVICES]
+        scan_ignore = self.options.get("scan_ignore", 30)
 
-        if (datetime.now() - daikin_api._last_patch_call).total_seconds() < 30:
-            _LOGGER.debug("API UPDATE skipped (just updated from UI)")
+        if (datetime.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore:
+            self.update_interval = timedelta(seconds=scan_ignore)
+            _LOGGER.debug(
+                "API UPDATE skipped (just updated from UI), will retry in %s",
+                self.update_interval,
+            )
             return
 
         daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
@@ -68,8 +73,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def determine_update_interval(self):
         # Default of low scan minutes interval
         scan_interval = self.options.get("low_scan_interval", 30)
-        hs = datetime.strptime(self.options["high_scan_start"], "%H:%M:%S").time()
-        ls = datetime.strptime(self.options["low_scan_start"], "%H:%M:%S").time()
+        hs = datetime.strptime(
+            self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S"
+        ).time()
+        ls = datetime.strptime(
+            self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S"
+        ).time()
         if self.in_between(datetime.now().time(), hs, ls):
             scan_interval = self.options.get("high_scan_interval", 10)
 

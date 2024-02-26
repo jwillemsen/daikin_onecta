@@ -33,6 +33,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             embedded_id = management_point["embeddedId"]
+            supported_management_point_types = {
+                "domesticHotWaterTank",
+                "domesticHotWaterFlowThrough",
+                "climateControl",
+                "climateControlMainZone",
+            }
 
             # For all values provide a "value" we provide a sensor
             for value in management_point:
@@ -48,19 +54,34 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                         and "on" in values
                         and "off" in values
                     ):
-                        _LOGGER.info(
-                            "Device '%s' provides switch on/off '%s'",
-                            device.name,
-                            value,
-                        )
-                        sensor2 = DaikinSwitch(
-                            device,
-                            coordinator,
-                            embedded_id,
-                            management_point_type,
-                            value,
-                        )
-                        sensors.append(sensor2)
+                        if (
+                            value == "onOffMode"
+                            and management_point_type
+                            in supported_management_point_types
+                        ):
+                            # On/off is handled by the HWT and ClimateControl directly, so don't create a separate switch
+                            pass
+                        elif (
+                            value == "powerfulMode"
+                            and management_point_type
+                            in supported_management_point_types
+                        ):
+                            # Powerful is handled by the HWT and ClimateControl directly, so don't create a separate switch
+                            pass
+                        else:
+                            _LOGGER.info(
+                                "Device '%s' provides switch on/off '%s'",
+                                device.name,
+                                value,
+                            )
+                            sensor2 = DaikinSwitch(
+                                device,
+                                coordinator,
+                                embedded_id,
+                                management_point_type,
+                                value,
+                            )
+                            sensors.append(sensor2)
 
     async_add_entities(sensors)
 

@@ -436,7 +436,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     onOffMode,
                 )
-             else:
+            else:
                 cc["onOffMode"]["value"] = onOffMode
 
         if operationMode is not None:
@@ -809,6 +809,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
         else:
             cc["onOffMode"]["value"] = "on"
+            self._attr_hvac_mode = self.get_hvac_mode()
+            self.async_write_ha_state()
         return result
 
     async def async_turn_off(self):
