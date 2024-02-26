@@ -13,4 +13,4 @@ When you have an issue about missing or incorrect data compared to the Onecta ap
 Sharing, selling, or distribution access and refresh tokens is strictly prohibited according to the Daikin developer terms of use. Sharing them could case serious issues for you as user!
 -->
 
-Version: <!-- In case of a release the vesion number else the github branch and git commit has -->
+Version: <!-- In case of a release the version number else the github branch and git commit has -->
