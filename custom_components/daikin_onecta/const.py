@@ -467,6 +467,3 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
     },
 }
-
-
-TIMEOUT = 60
