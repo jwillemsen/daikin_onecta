@@ -276,7 +276,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "roomTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
@@ -284,7 +284,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "outdoorTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
@@ -292,7 +292,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "leavingWaterTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
@@ -300,7 +300,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "tankTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "mdi:bathtub-outline",
         ENABLED_DEFAULT: True,
@@ -308,7 +308,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "heatExchangerTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
@@ -316,7 +316,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "suctionTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
@@ -324,7 +324,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "deltaD": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfTemperature.CELSIUS,
         CONF_ICON: "",
         ENABLED_DEFAULT: True,
@@ -436,7 +436,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "roomHumidity": {
         CONF_DEVICE_CLASS: SensorDeviceClass.HUMIDITY,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: PERCENTAGE,
         CONF_ICON: "mdi:water-percent",
         ENABLED_DEFAULT: True,
@@ -444,7 +444,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "pm1Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM1,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
         CONF_ICON: "mdi:blur",
         ENABLED_DEFAULT: True,
@@ -452,7 +452,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "pm25Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM25,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
         CONF_ICON: "mdi:blur",
         ENABLED_DEFAULT: True,
@@ -460,7 +460,7 @@ VALUE_SENSOR_MAPPING = {
     },
     "pm10Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM10,
-        CONF_STATE_CLASS: None,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
         CONF_ICON: "mdi:blur",
         ENABLED_DEFAULT: True,
