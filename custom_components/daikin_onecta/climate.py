@@ -244,7 +244,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return self._device.available
 
     def get_supported_features(self):
-        supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
+        supported_features = 0
+        if hasattr(ClimateEntityFeature, "TURN_OFF"):
+            supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
         setpointdict = self.setpoint()
         cc = self.climateControl()
         if setpointdict is not None and setpointdict["settable"] is True:
