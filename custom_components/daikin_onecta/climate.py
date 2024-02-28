@@ -93,7 +93,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
                             modes.append(c)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
-        _LOGGER.info("Climate: Device %s has modes %s", device_model, modes)
+        _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)
         for mode in modes:
             async_add_entities([DaikinClimate(device, mode, coordinator)], update_before_add=False)
 
