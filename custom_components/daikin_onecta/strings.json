@@ -1,28 +1,24 @@
 {
   "config": {
     "step": {
-      "user": {
-        "title": "Configure Daikin Onecta",
-        "description": "Enter the email and password you use to login to Daikin Cloud, then press Submit.",
-        "data": {
-          "email": "[%key:common::config_flow::data::email]",
-          "password": "[%key:common::config_flow::data::password%]"
-        }
-      },
-      "init": {
-        "title": "Daikin Onecta"
+      "pick_implementation": {
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       }
     },
     "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured]",
-      "init_failed": "[%key:common::config_flow::abort::init_failed]",
-      "token_retrieval_failed": "[%key:common::config_flow::abort::token_retrieval_failed]",
-      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]"
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]"
     },
-    "error": {
-      "unknown": "[%key:common::config_flow::error::unknown%]",
-      "invalid_auth": "[%key:common::config_flow::error::invalid_auth%]",
-      "cannot_connect": "[%key:common::config_flow::error::cannot_connect%]"
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "options": {
