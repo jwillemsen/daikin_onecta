@@ -9,7 +9,7 @@ from homeassistant.config_entries import SOURCE_IMPORT
 from homeassistant.const import SERVICE_RELOAD
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers.typing import HomeAssistantType
+from homeassistant.core import HomeAssistant
 
 from .const import COORDINATOR
 from .const import DAIKIN_API
@@ -64,7 +64,7 @@ async def async_setup(hass, config):
     return True
 
 
-async def async_setup_entry(hass: HomeAssistantType, config_entry: ConfigEntry):
+async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Establish connection with Daikin."""
     implementation = (
         await config_entry_oauth2_flow.async_get_config_entry_implementation(
