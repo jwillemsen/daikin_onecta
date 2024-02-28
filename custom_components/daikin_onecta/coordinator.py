@@ -25,9 +25,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Initialize."""
         self.options = config_entry.options
 
-        super().__init__(
-            hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval()
-        )
+        super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval())
 
         _LOGGER.info(
             "Daikin coordinator initialized with %s interval.",
@@ -73,12 +71,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def determine_update_interval(self):
         # Default of low scan minutes interval
         scan_interval = self.options.get("low_scan_interval", 30)
-        hs = datetime.strptime(
-            self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S"
-        ).time()
-        ls = datetime.strptime(
-            self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S"
-        ).time()
+        hs = datetime.strptime(self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S").time()
+        ls = datetime.strptime(self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S").time()
         if self.in_between(datetime.now().time(), hs, ls):
             scan_interval = self.options.get("high_scan_interval", 10)
 

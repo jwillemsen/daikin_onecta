@@ -30,9 +30,7 @@ class DaikinApi:
         _LOGGER.debug("Initialing Daikin Onecta API...")
         self.hass = hass
         self._config_entry = entry
-        self.session = config_entry_oauth2_flow.OAuth2Session(
-            hass, entry, implementation
-        )
+        self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
 
         # The Daikin cloud returns old settings if queried with a GET
         # immediately after a PATCH request. Se we use this attribute
@@ -75,15 +73,9 @@ class DaikinApi:
             }
 
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
-            if (
-                options is not None
-                and "method" in options
-                and options["method"] == "PATCH"
-            ):
+            if options is not None and "method" in options and options["method"] == "PATCH":
                 _LOGGER.debug("BEARER REQUEST JSON: %s", options["json"])
-                func = functools.partial(
-                    requests.patch, resourceUrl, headers=headers, data=options["json"]
-                )
+                func = functools.partial(requests.patch, resourceUrl, headers=headers, data=options["json"])
             else:
                 func = functools.partial(requests.get, resourceUrl, headers=headers)
             try:
@@ -94,16 +86,10 @@ class DaikinApi:
 
             self.rate_limits["minute"] = res.headers.get("X-RateLimit-Limit-minute", 0)
             self.rate_limits["day"] = res.headers.get("X-RateLimit-Limit-day", 0)
-            self.rate_limits["remaining_minutes"] = res.headers.get(
-                "X-RateLimit-Remaining-minute", 0
-            )
-            self.rate_limits["remaining_day"] = res.headers.get(
-                "X-RateLimit-Remaining-day", 0
-            )
+            self.rate_limits["remaining_minutes"] = res.headers.get("X-RateLimit-Remaining-minute", 0)
+            self.rate_limits["remaining_day"] = res.headers.get("X-RateLimit-Remaining-day", 0)
 
-            _LOGGER.debug(
-                "BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits
-            )
+            _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
 
         if res.status_code == 200:
             try:
@@ -113,10 +99,7 @@ class DaikinApi:
                 return False
         elif res.status_code == 429:
             raise Exception(
-                "Rate limit: Remaining minute "
-                + str(self.rate_limits["remaining_minutes"])
-                + " day "
-                + str(self.rate_limits["remaining_day"])
+                "Rate limit: Remaining minute " + str(self.rate_limits["remaining_minutes"]) + " day " + str(self.rate_limits["remaining_day"])
             )
         elif res.status_code == 204:
             self._last_patch_call = datetime.now()
@@ -141,9 +124,7 @@ class DaikinApi:
 
     async def get_daikin_data(self):
         """Pull the latest data from Daikin only when the last patch call is more than 30 seconds ago."""
-        if (
-            datetime.now() - self._last_patch_call
-        ).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
+        if (datetime.now() - self._last_patch_call).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
             _LOGGER.debug("API UPDATE skipped (just updated from UI)")
             return False
 
@@ -152,7 +133,5 @@ class DaikinApi:
         self.json_data = await self.getCloudDeviceDetails()
         for dev_data in self.json_data or []:
             if dev_data["id"] in self.hass.data[DOMAIN][DAIKIN_DEVICES]:
-                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(
-                    dev_data
-                )
+                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(dev_data)
         return self.hass.data[DOMAIN][DAIKIN_DEVICES]

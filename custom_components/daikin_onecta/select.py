@@ -23,9 +23,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
             demand = management_point.get("demandControl")
             if demand is not None:
                 _LOGGER.info("Device '%s' provides demandControl", device.name)
-                sensor2 = DaikinDemandSelect(
-                    device, embedded_id, management_point_type, "demandControl"
-                )
+                sensor2 = DaikinDemandSelect(device, embedded_id, management_point_type, "demandControl")
                 sensors.append(sensor2)
 
     async_add_entities(sensors)
@@ -34,9 +32,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 class DaikinDemandSelect(SelectEntity):
     """Daikin DemandControl Select class."""
 
-    def __init__(
-        self, device: Appliance, embedded_id, management_point_type, value
-    ) -> None:
+    def __init__(self, device: Appliance, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinDemandSelect '%s' '%s'", management_point_type, value)
         self._device = device
         self._embedded_id = embedded_id
@@ -46,9 +42,7 @@ class DaikinDemandSelect(SelectEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = (
-            f"{self._device.getId()}_{self._management_point_type}_{self._value}"
-        )
+        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -144,9 +138,7 @@ class DaikinDemandSelect(SelectEntity):
                             fixedValues = vv["value"]["modes"]["fixed"]
                             minVal = int(fixedValues["minValue"])
                             maxVal = int(fixedValues["maxValue"])
-                            for val in range(
-                                minVal, maxVal + 1, fixedValues["stepValue"]
-                            ):
+                            for val in range(minVal, maxVal + 1, fixedValues["stepValue"]):
                                 opt.append(str(val))
                         else:
                             opt.append(mode)

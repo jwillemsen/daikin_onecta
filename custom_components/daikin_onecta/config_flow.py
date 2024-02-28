@@ -27,9 +27,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         self.config_entry = config_entry
         self.options = dict(config_entry.options)
 
-    async def async_step_init(
-        self, user_input: dict[str, str] | None = None
-    ) -> FlowResult:
+    async def async_step_init(self, user_input: dict[str, str] | None = None) -> FlowResult:
         """Handle a flow initialized by the user."""
         errors = {}
         if user_input is not None:
@@ -72,9 +70,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
     async def _update_options(self):
         """Update config entry options."""
-        return self.async_create_entry(
-            title=self.config_entry.data.get("Hub "), data=self.options
-        )
+        return self.async_create_entry(title=self.config_entry.data.get("Hub "), data=self.options)
 
 
 class FlowHandler(
@@ -112,10 +108,7 @@ class FlowHandler(
         """Handle a flow start."""
         await self.async_set_unique_id(DOMAIN)
 
-        if (
-            self.source != config_entries.SOURCE_REAUTH
-            and self._async_current_entries()
-        ):
+        if self.source != config_entries.SOURCE_REAUTH and self._async_current_entries():
             return self.async_abort(reason="single_instance_allowed")
 
         return await super().async_step_user(user_input)
@@ -124,9 +117,7 @@ class FlowHandler(
         """Perform reauth upon an API authentication error."""
         return await self.async_step_reauth_confirm()
 
-    async def async_step_reauth_confirm(
-        self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    async def async_step_reauth_confirm(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         """Dialog that informs the user that reauth is required."""
         if user_input is None:
             return self.async_show_form(step_id="reauth_confirm")

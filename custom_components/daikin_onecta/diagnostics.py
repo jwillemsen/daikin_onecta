@@ -13,9 +13,7 @@ from .const import DAIKIN_DEVICES
 from .const import DOMAIN
 
 
-async def async_get_config_entry_diagnostics(
-    hass: HomeAssistant, entry: ConfigEntry
-) -> dict[str, Any]:
+async def async_get_config_entry_diagnostics(hass: HomeAssistant, entry: ConfigEntry) -> dict[str, Any]:
     """Return diagnostics for a config entry."""
     data = {}
     daikin_api = hass.data[DOMAIN][DAIKIN_API]
@@ -26,9 +24,7 @@ async def async_get_config_entry_diagnostics(
     return data
 
 
-async def async_get_device_diagnostics(
-    hass: HomeAssistant, entry: ConfigEntry, device: DeviceEntry
-) -> dict[str, Any]:
+async def async_get_device_diagnostics(hass: HomeAssistant, entry: ConfigEntry, device: DeviceEntry) -> dict[str, Any]:
     """Return diagnostics for a device entry."""
     data = {}
     dev_id = next(iter(device.identifiers))[1]

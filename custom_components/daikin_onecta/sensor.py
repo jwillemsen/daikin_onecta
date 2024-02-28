@@ -58,18 +58,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     value_value = vv.get("value")
                     settable = vv.get("settable", False)
                     values = vv.get("values", [])
-                    if (
-                        value_value is not None
-                        and settable is True
-                        and "on" in values
-                        and "off" in values
-                    ):
+                    if value_value is not None and settable is True and "on" in values and "off" in values:
                         # Don't create when it is settable and values on/off, that is a switch
                         pass
-                    elif (
-                        value == "operationMode"
-                        and management_point_type in supported_management_point_types
-                    ):
+                    elif value == "operationMode" and management_point_type in supported_management_point_types:
                         # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
                         pass
                     elif value_value is not None and not isinstance(value_value, dict):
@@ -86,14 +78,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             sd = management_point.get("sensoryData")
             if sd is not None:
                 sensoryData = sd.get("value")
-                _LOGGER.info(
-                    "Device '%s' provides sensoryData '%s'", device.name, sensoryData
-                )
+                _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensoryData)
                 if sensoryData is not None:
                     for sensor in sensoryData:
-                        _LOGGER.info(
-                            "Device '%s' provides sensor '%s'", device.name, sensor
-                        )
+                        _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
                         sensor2 = DaikinValueSensor(
                             device,
                             coordinator,
@@ -178,9 +166,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._period = period
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_name = (
-            f"{mpt} {operation_mode.capitalize()} {periodName} Electrical Consumption"
-        )
+        self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Electrical Consumption"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_electrical_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
         self._attr_icon = icon
@@ -219,18 +205,9 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                             for mode in cdve:
                                 # Only handle consumptionData for an operation mode supported by this device
                                 if mode == self._operation_mode:
-                                    energy_values = [
-                                        0 if v is None else v
-                                        for v in cdve[mode].get(self._period)
-                                    ]
-                                    start_index = (
-                                        7
-                                        if self._period == SENSOR_PERIOD_WEEKLY
-                                        else 12
-                                    )
-                                    energy_value = round(
-                                        sum(energy_values[start_index:]), 3
-                                    )
+                                    energy_values = [0 if v is None else v for v in cdve[mode].get(self._period)]
+                                    start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
+                                    energy_value = round(sum(energy_values[start_index:]), 3)
                                     _LOGGER.info(
                                         "Device '%s' has energy value '%s' for mode %s %s period %s",
                                         self._device.name,
@@ -276,9 +253,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         sub_type,
         value,
     ) -> None:
-        _LOGGER.info(
-            "DaikinValueSensor '%s' '%s' '%s'", management_point_type, sub_type, value
-        )
+        _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", management_point_type, sub_type, value)
         super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
@@ -299,9 +274,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             self._attr_icon = sensor_settings[CONF_ICON]
             self._device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._attr_entity_registry_enabled_default = sensor_settings[
-                ENABLED_DEFAULT
-            ]
+            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
         mpt = management_point_type[0].upper() + management_point_type[1:]
@@ -332,9 +305,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
                 cd = management_point.get(self._value)
                 if cd is not None:
                     res = cd.get("value")
-        _LOGGER.debug(
-            "Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res
-        )
+        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
         return res
 
     @property

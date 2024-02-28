@@ -147,9 +147,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 ret,
             )
         else:
-            _LOGGER.debug(
-                "Device '%s' doesn't provide a current temperature", self._device.name
-            )
+            _LOGGER.debug("Device '%s' doesn't provide a current temperature", self._device.name)
 
         return ret
 
@@ -159,9 +157,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         dht = self.domestic_hotwater_temperature
         if dht is not None:
             ret = float(dht["value"])
-        _LOGGER.debug(
-            "Device '%s' hot water tank target_temperature '%s'", self._device.name, ret
-        )
+        _LOGGER.debug("Device '%s' hot water tank target_temperature '%s'", self._device.name, ret)
         return ret
 
     @property
@@ -245,9 +241,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             if pwf is not None:
                 if pwf["value"] == "on":
                     state = STATE_PERFORMANCE
-        _LOGGER.debug(
-            "Device '%s' hot water tank current mode '%s'", self._device.name, state
-        )
+        _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
         return state
 
     def get_operation_list(self):
@@ -258,9 +252,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         if pwf is not None:
             if pwf["settable"] is True:
                 states += [STATE_PERFORMANCE]
-        _LOGGER.debug(
-            "Device '%s' hot water tank supports modes %s", self._device.name, states
-        )
+        _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
         return states
 
     async def async_set_operation_mode(self, operation_mode):
@@ -286,19 +278,13 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if onOffMode != "":
-            result &= await self._device.set_path(
-                self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode
-            )
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
         # Only set powerfulMode when it is set and supported by the device
         if (powerfulMode != "") and (STATE_PERFORMANCE in self.operation_list):
-            result &= await self._device.set_path(
-                self._device.getId(), self.embedded_id, "powerfulMode", "", powerfulMode
-            )
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", powerfulMode)
 
         if result is False:
-            _LOGGER.warning(
-                "Device '%s' invalid tank state: %s", self._device.name, operation_mode
-            )
+            _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
         else:
             # Update local cached version
             self._attr_current_operation = operation_mode
