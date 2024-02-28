@@ -32,7 +32,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 
 
 class DaikinDemandSelect(SelectEntity):
-    """myenergi Sensor class."""
+    """Daikin DemandControl Select class."""
 
     def __init__(
         self, device: Appliance, embedded_id, management_point_type, value
