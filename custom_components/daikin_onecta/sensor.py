@@ -285,7 +285,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        self._state = self.sensor_value()
+        self._attr_native_value = self.sensor_value()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
@@ -295,7 +295,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._state = self.sensor_value()
+        self._attr_native_value = self.sensor_value()
         self.async_write_ha_state()
 
     def sensor_value(self):
@@ -310,11 +310,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
                     res = cd.get("value")
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
         return res
-
-    @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
 
     @property
     def available(self):
