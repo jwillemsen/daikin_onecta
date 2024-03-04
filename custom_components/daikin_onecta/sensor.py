@@ -22,6 +22,7 @@ from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
+from .const import CONF_NATIVE_UNIT_OF_MEASUREMENT
 from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
@@ -261,9 +262,10 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._sub_type = sub_type
         self._value = value
         self._unit_of_measurement = None
-        self._device_class = None
-        self._state_class = None
+        self._attr_device_class = None
+        self._attr_state_class = None
         self._attr_has_entity_name = True
+        self._attr_native_unit_of_measurement = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info(
@@ -272,17 +274,18 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             )
         else:
             self._attr_icon = sensor_settings[CONF_ICON]
-            self._device_class = sensor_settings[CONF_DEVICE_CLASS]
+            self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-            self._state_class = sensor_settings[CONF_STATE_CLASS]
+            self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+            self._attr_native_unit_of_measurement = sensor_settings[CONF_NATIVE_UNIT_OF_MEASUREMENT]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        self._state = self.sensor_value()
+        self._attr_native_value = self.sensor_value()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
@@ -292,7 +295,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._state = self.sensor_value()
+        self._attr_native_value = self.sensor_value()
         self.async_write_ha_state()
 
     def sensor_value(self):
@@ -309,11 +312,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         return res
 
     @property
-    def state(self):
-        """Return the state of the sensor."""
-        return self._state
-
-    @property
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
@@ -321,14 +319,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     @property
     def unit_of_measurement(self):
         return self._unit_of_measurement
-
-    @property
-    def state_class(self):
-        return self._state_class
-
-    @property
-    def device_class(self):
-        return self._device_class
 
     @property
     def device_info(self):
