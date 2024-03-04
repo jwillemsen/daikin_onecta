@@ -22,6 +22,7 @@ from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
+from .const import CONF_NATIVE_UNIT_OF_MEASUREMENT
 from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
@@ -264,6 +265,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._device_class = None
         self._state_class = None
         self._attr_has_entity_name = True
+        self._attr_native_unit_of_measurement = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info(
@@ -277,6 +279,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+            self._attr_native_unit_of_measurement = sensor_settings[CONF_NATIVE_UNIT_OF_MEASUREMENT]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
