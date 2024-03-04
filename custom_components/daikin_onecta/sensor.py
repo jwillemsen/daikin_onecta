@@ -262,8 +262,8 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._sub_type = sub_type
         self._value = value
         self._unit_of_measurement = None
-        self._device_class = None
-        self._state_class = None
+        self._attr_device_class = None
+        self._attr_state_class = None
         self._attr_has_entity_name = True
         self._attr_native_unit_of_measurement = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
@@ -274,10 +274,10 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             )
         else:
             self._attr_icon = sensor_settings[CONF_ICON]
-            self._device_class = sensor_settings[CONF_DEVICE_CLASS]
+            self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-            self._state_class = sensor_settings[CONF_STATE_CLASS]
+            self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
             self._attr_native_unit_of_measurement = sensor_settings[CONF_NATIVE_UNIT_OF_MEASUREMENT]
         mpt = management_point_type[0].upper() + management_point_type[1:]
@@ -319,14 +319,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     @property
     def unit_of_measurement(self):
         return self._unit_of_measurement
-
-    @property
-    def state_class(self):
-        return self._state_class
-
-    @property
-    def device_class(self):
-        return self._device_class
 
     @property
     def device_info(self):
