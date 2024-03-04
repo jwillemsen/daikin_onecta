@@ -227,6 +227,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         """Return a device description for device registry."""
         return self._device.device_info()
 
+
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
     def __init__(
