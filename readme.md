@@ -30,7 +30,7 @@ Visit https://developer.cloud.daikineurope.com and sign up for a developer accou
 
 Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Onecta` in the drop-down menu.
 
-Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created.
+Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created. See https://www.home-assistant.io/integrations/application_credentials for more information about application credentials within Home Assistant.
 
 The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`. You _must_ create a Daikin Developer account to obtain the id/secret.
 
