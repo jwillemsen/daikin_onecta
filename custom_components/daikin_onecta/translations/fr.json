@@ -3,13 +3,13 @@
     "step": {
       "init": {
         "data": {
-          "high_scan_interval": "High frequency period update interval (minutes)",
-          "low_scan_interval": "Low frequency period update interval (minutes)",
-          "high_scan_start": "High frequency period start time",
-          "low_scan_start": "Low frequency period start time",
-          "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
+          "high_scan_interval": "Intervalle de mise à jour de haute fréquence (minutes)",
+          "low_scan_interval": "Intervalle de mise à jour de basse fréquence (minutes)",
+          "high_scan_start": "Heure de démarrage de la période de haute fréquence",
+          "low_scan_start": "Heure de démarrage de la période de basse fréquence",
+          "scan_ignore": "Nombre de secondes pendant lesquelles une actualisation des données est ignorée après une requête"
         },
-        "description": "Configure Daikin Onecta Cloud polling",
+        "description": "Configuration des requêtes du Cloud Daikin Onecta",
         "title": "Daikin Onecta"
       }
     }
