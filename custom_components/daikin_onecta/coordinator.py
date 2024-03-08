@@ -25,7 +25,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Initialize."""
         self.options = config_entry.options
 
-        super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval())
+        super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval(hass))
 
         _LOGGER.info(
             "Daikin coordinator initialized with %s interval.",
@@ -55,7 +55,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                 device = Appliance(dev_data, daikin_api)
                 devices[dev_data["id"]] = device
 
-        self.update_interval = self.determine_update_interval()
+        self.update_interval = self.determine_update_interval(self.hass)
 
         _LOGGER.debug(
             "Daikin coordinator finished _async_update_data, interval %s.",
@@ -68,13 +68,19 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         self.update_interval = self.determine_update_interval()
         _LOGGER.info("Daikin coordinator changed interval to %s", self.update_interval)
 
-    def determine_update_interval(self):
+    def determine_update_interval(self, hass: HomeAssistant):
         # Default of low scan minutes interval
         scan_interval = self.options.get("low_scan_interval", 30)
         hs = datetime.strptime(self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S").time()
         ls = datetime.strptime(self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S").time()
         if self.in_between(datetime.now().time(), hs, ls):
             scan_interval = self.options.get("high_scan_interval", 10)
+
+        # When we hit our daily rate limit we skip the next update because any call which results
+        # again in just a rate limit error back is counted as call for the limit of next day
+        daikin_api = hass.data[DOMAIN][DAIKIN_API]
+        if daikin_api.rate_limits["remaining_day"] == 0:
+            scan_interval *= 2
 
         return timedelta(minutes=scan_interval)
 
