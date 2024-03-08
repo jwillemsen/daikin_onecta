@@ -70,19 +70,19 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
     def determine_update_interval(self, hass: HomeAssistant):
         # Default of low scan minutes interval
-        scan_interval = self.options.get("low_scan_interval", 30)
+        scan_interval = self.options.get("low_scan_interval", 30) * 60
         hs = datetime.strptime(self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S").time()
         ls = datetime.strptime(self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S").time()
         if self.in_between(datetime.now().time(), hs, ls):
-            scan_interval = self.options.get("high_scan_interval", 10)
+            scan_interval = self.options.get("high_scan_interval", 10) * 60
 
-        # When we hit our daily rate limit we skip the next update because any call which results
-        # again in just a rate limit error back is counted as call for the limit of next day
+        # When we hit our daily rate limit we check the retry_after which is the amount of seconds
+        # we have to wait before we can make a call again
         daikin_api = hass.data[DOMAIN][DAIKIN_API]
         if daikin_api.rate_limits["remaining_day"] == 0:
-            scan_interval *= 2
+            scan_interval = max(daikin_api.rate_limits["retry_after"] + 60, scan_interval)
 
-        return timedelta(minutes=scan_interval)
+        return timedelta(seconds=scan_interval)
 
     def in_between(self, now, start, end):
         if start <= end:

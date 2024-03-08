@@ -40,12 +40,7 @@ class DaikinApi:
         self._last_patch_call = datetime.min
 
         # Store the limits as member so that we can add these to the diagnostics
-        self.rate_limits = {
-            "minute": 0,
-            "day": 0,
-            "remaining_minutes": 0,
-            "remaining_day": 0,
-        }
+        self.rate_limits = {"minute": 0, "day": 0, "remaining_minutes": 0, "remaining_day": 0, "retry_after": 0, "ratelimit_reset": 0}
 
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.
@@ -89,6 +84,9 @@ class DaikinApi:
             self.rate_limits["day"] = int(res.headers.get("X-RateLimit-Limit-day", 0))
             self.rate_limits["remaining_minutes"] = int(res.headers.get("X-RateLimit-Remaining-minute", 0))
             self.rate_limits["remaining_day"] = int(res.headers.get("X-RateLimit-Remaining-day", 0))
+            self.rate_limits["remaining_minutes"] = int(res.headers.get("X-RateLimit-Remaining-minute", 0))
+            self.rate_limits["retry_after"] = int(res.headers.get("retry-after", 0))
+            self.rate_limits["ratelimit_reset"] = int(res.headers.get("ratelimit-reset", 0))
 
             if self.rate_limits["remaining_minutes"] > 0:
                 ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
