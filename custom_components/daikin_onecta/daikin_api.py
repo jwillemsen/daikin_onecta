@@ -9,6 +9,7 @@ import requests
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers import issue_registry as ir
 
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN
@@ -84,10 +85,16 @@ class DaikinApi:
                 _LOGGER.error("REQUEST FAILED: %s", e)
                 return []
 
-            self.rate_limits["minute"] = res.headers.get("X-RateLimit-Limit-minute", 0)
-            self.rate_limits["day"] = res.headers.get("X-RateLimit-Limit-day", 0)
-            self.rate_limits["remaining_minutes"] = res.headers.get("X-RateLimit-Remaining-minute", 0)
-            self.rate_limits["remaining_day"] = res.headers.get("X-RateLimit-Remaining-day", 0)
+            self.rate_limits["minute"] = int(res.headers.get("X-RateLimit-Limit-minute", 0))
+            self.rate_limits["day"] = int(res.headers.get("X-RateLimit-Limit-day", 0))
+            self.rate_limits["remaining_minutes"] = int(res.headers.get("X-RateLimit-Remaining-minute", 0))
+            self.rate_limits["remaining_day"] = int(res.headers.get("X-RateLimit-Remaining-day", 0))
+
+            if self.rate_limits["remaining_minutes"] > 0:
+                ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
+
+            if self.rate_limits["remaining_day"] > 0:
+                ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
             _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
 
@@ -98,9 +105,33 @@ class DaikinApi:
                 _LOGGER.error("RETRIEVE JSON FAILED: %s", res.text)
                 return False
         elif res.status_code == 429:
-            raise Exception(
-                "Rate limit: Remaining minute " + str(self.rate_limits["remaining_minutes"]) + " day " + str(self.rate_limits["remaining_day"])
-            )
+            if self.rate_limits["remaining_minutes"] == 0:
+                ir.async_create_issue(
+                    self.hass,
+                    DOMAIN,
+                    "minute_rate_limit",
+                    is_fixable=False,
+                    is_persistent=True,
+                    severity=ir.IssueSeverity.ERROR,
+                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/rate_limitation",
+                    translation_key="minute_rate_limit",
+                )
+
+            if self.rate_limits["remaining_day"] == 0:
+                ir.async_create_issue(
+                    self.hass,
+                    DOMAIN,
+                    "day_rate_limit",
+                    is_fixable=False,
+                    is_persistent=True,
+                    severity=ir.IssueSeverity.ERROR,
+                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/rate_limitation",
+                    translation_key="day_rate_limit",
+                )
+            if options is not None and "method" in options and options["method"] == "PATCH":
+                return False
+            else:
+                return []
         elif res.status_code == 204:
             self._last_patch_call = datetime.now()
             return True
