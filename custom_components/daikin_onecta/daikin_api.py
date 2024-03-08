@@ -122,7 +122,6 @@ class DaikinApi:
                     self.hass,
                     DOMAIN,
                     "day_rate_limit",
-                    breaks_in_ha_version="2022.9.0",
                     is_fixable=False,
                     is_persistent=True,
                     severity=ir.IssueSeverity.ERROR,
