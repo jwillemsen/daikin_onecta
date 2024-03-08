@@ -420,21 +420,24 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 cc["onOffMode"]["value"] = onOffMode
 
         if operationMode is not None:
-            result &= await self._device.set_path(
-                self._device.getId(),
-                self.embedded_id,
-                "operationMode",
-                "",
-                operationMode,
-            )
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting operationMode to %s",
-                    self._device.name,
+            # Only set the operationMode when it has changed, also prevents setting it when
+            # it is readOnly
+            if operationMode != cc["operationMode"]["value"]:
+                result &= await self._device.set_path(
+                    self._device.getId(),
+                    self.embedded_id,
+                    "operationMode",
+                    "",
                     operationMode,
                 )
-            else:
-                cc["operationMode"]["value"] = operationMode
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting operationMode to %s",
+                        self._device.name,
+                        operationMode,
+                    )
+                else:
+                    cc["operationMode"]["value"] = operationMode
 
         if result is True:
             self._attr_hvac_mode = hvac_mode
