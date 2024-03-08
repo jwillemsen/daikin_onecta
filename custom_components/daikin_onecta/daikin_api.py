@@ -40,14 +40,7 @@ class DaikinApi:
         self._last_patch_call = datetime.min
 
         # Store the limits as member so that we can add these to the diagnostics
-        self.rate_limits = {
-            "minute": 0,
-            "day": 0,
-            "remaining_minutes": 0,
-            "remaining_day": 0,
-            "retry_after": 0,
-            "ratelimit_reset": 0
-        }
+        self.rate_limits = {"minute": 0, "day": 0, "remaining_minutes": 0, "remaining_day": 0, "retry_after": 0, "ratelimit_reset": 0}
 
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.
