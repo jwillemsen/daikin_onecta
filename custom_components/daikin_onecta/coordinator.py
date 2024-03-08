@@ -76,8 +76,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         if self.in_between(datetime.now().time(), hs, ls):
             scan_interval = self.options.get("high_scan_interval", 10) * 60
 
-        # When we hit our daily rate limit we skip the next update because any call which results
-        # again in just a rate limit error back is counted as call for the limit of next day
+        # When we hit our daily rate limit we check the retry_after which is the amount of seconds
+        # we have to wait before we can make a call again
         daikin_api = hass.data[DOMAIN][DAIKIN_API]
         if daikin_api.rate_limits["remaining_day"] == 0:
             scan_interval = max(daikin_api.rate_limits["retry_after"] + 60, scan_interval)
