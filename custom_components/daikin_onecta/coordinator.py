@@ -65,7 +65,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def update_settings(self, config_entry: ConfigEntry):
         _LOGGER.debug("Daikin coordinator updating settings.")
         self.options = config_entry.options
-        self.update_interval = self.determine_update_interval()
+        self.update_interval = self.determine_update_interval(self.hass)
         _LOGGER.info("Daikin coordinator changed interval to %s", self.update_interval)
 
     def determine_update_interval(self, hass: HomeAssistant):
