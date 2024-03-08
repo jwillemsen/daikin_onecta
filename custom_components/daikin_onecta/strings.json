@@ -35,5 +35,15 @@
         "title": "Daikin Onecta"
       }
     }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "The daily rate limit has been reached",
+      "description": "You have reached your daily rate limit to the Daikin Cloud, check your polling frequency in the Daikin Onecta configuration."
+    },
+    "minute_rate_limit": {
+      "title": "The minute rate limit has been reached",
+      "description": "You have reached your minute rate limit to the Daikin Cloud, don't make so many calls to your Daikin devices in one minute."
+    }
   }
 }
