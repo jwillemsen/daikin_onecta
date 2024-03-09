@@ -1,7 +1,6 @@
 """Support for the Daikin HVAC."""
 
 import logging
-import re
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -78,22 +77,19 @@ async def async_setup_entry(hass, entry, async_add_entities):
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         modes = []
-        device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {"climateControl"}
-        managementPoints = device.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
+        management_points = device.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
                 # Check if we have a temperatureControl
-                temperatureControl = management_point.get("temperatureControl")
-                if temperatureControl is not None:
-                    for operationmode in temperatureControl["value"]["operationModes"]:
-                        # for modes in operationmode["setpoints"]:
-                        for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
+                temperature_control = management_point.get("temperatureControl")
+                if temperature_control is not None:
+                    for operation_mode in temperature_control["value"]["operationModes"]:
+                        for c in temperature_control["value"]["operationModes"][operation_mode]["setpoints"]:
                             modes.append(c)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
-        _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)
         for mode in modes:
             async_add_entities([DaikinClimate(device, mode, coordinator)], update_before_add=False)
 
@@ -108,11 +104,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def __init__(self, device, setpoint, coordinator):
         """Initialize the climate device."""
         super().__init__(coordinator)
-        _LOGGER.info(
-            "Device '%s' initializing Daikin Climate for controlling %s...",
-            device.name,
-            setpoint,
-        )
         self._device = device
         self._setpoint = setpoint
         self._attr_supported_features = self.get_supported_features()
@@ -152,7 +143,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     async def _set(self, settings):
         raise NotImplementedError
 
-    def climateControl(self):
+    def climate_control(self):
         cc = None
         supported_management_point_types = {"climateControl"}
         if self._device.daikin_data["managementPoints"] is not None:
@@ -162,72 +153,51 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     cc = management_point
         return cc
 
-    def operationMode(self):
-        cc = self.climateControl()
+    def operation_mode(self):
+        cc = self.climate_control()
         return cc.get("operationMode")
 
     def setpoint(self):
-        setpoint = None
-        cc = self.climateControl()
+        set_point = None
+        cc = self.climate_control()
         # Check if we have a temperatureControl
-        temperatureControl = cc.get("temperatureControl")
-        if temperatureControl is not None:
-            operationMode = cc.get("operationMode").get("value")
+        temperature_control = cc.get("temperatureControl")
+        if temperature_control is not None:
+            operation_mode = cc.get("operationMode").get("value")
             # For not all operationModes there is a temperatureControl setpoint available
-            oo = temperatureControl["value"]["operationModes"].get(operationMode)
+            oo = temperature_control["value"]["operationModes"].get(operation_mode)
             if oo is not None:
-                setpoint = oo["setpoints"].get(self._setpoint)
-            _LOGGER.info(
-                "Device '%s': %s operation mode %s has setpoint %s",
-                self._device.name,
-                self._setpoint,
-                operationMode,
-                setpoint,
-            )
-        return setpoint
+                set_point = oo["setpoints"].get(self._setpoint)
+        return set_point
 
     # Return the dictionary fanControl for the current operationMode
-    def fanControl(self):
-        fancontrol = None
+    def fan_control(self):
+        fan_control = None
         supported_management_point_types = {"climateControl"}
         if self._device.daikin_data["managementPoints"] is not None:
             for management_point in self._device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if management_point_type in supported_management_point_types:
                     # Check if we have a temperatureControl
-                    temperatureControl = management_point.get("fanControl")
-                    _LOGGER.info("Climate: Device fanControl %s", temperatureControl)
-                    if temperatureControl is not None:
-                        operationMode = management_point.get("operationMode").get("value")
-                        fancontrol = temperatureControl["value"]["operationModes"][operationMode].get(self._setpoint)
-                        _LOGGER.info(
-                            "Device '%s': %s operation mode %s has fanControl %s",
-                            self._device.name,
-                            self._setpoint,
-                            operationMode,
-                            fancontrol,
-                        )
-        return fancontrol
+                    temperature_control = management_point.get("fanControl")
+                    if temperature_control is not None:
+                        operation_mode = management_point.get("operationMode").get("value")
+                        fan_control = temperature_control["value"]["operationModes"][operation_mode].get(self._setpoint)
+        return fan_control
 
-    def sensoryData(self):
-        sensoryData = None
+    def sensory_data(self):
+        sensory_data = None
         supported_management_point_types = {"climateControl"}
         if self._device.daikin_data["managementPoints"] is not None:
             for management_point in self._device.daikin_data["managementPoints"]:
                 management_point_type = management_point["managementPointType"]
                 if management_point_type in supported_management_point_types:
                     # Check if we have a sensoryData
-                    sensoryData = management_point.get("sensoryData")
-                    _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
-                    if sensoryData is not None:
-                        sensoryData = sensoryData.get("value").get(self._setpoint)
-                        _LOGGER.info(
-                            "Device '%s': %s sensoryData %s",
-                            self._device.name,
-                            self._setpoint,
-                            sensoryData,
-                        )
-        return sensoryData
+                    sensory_data = management_point.get("sensoryData")
+                    if sensory_data is not None:
+                        sensory_data = sensory_data.get("value").get(self._setpoint)
+
+        return sensory_data
 
     @property
     def translation_key(self) -> str:
@@ -235,7 +205,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     @property
     def embedded_id(self):
-        cc = self.climateControl()
+        cc = self.climate_control()
         return cc["embeddedId"]
 
     @property
@@ -247,115 +217,76 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         supported_features = 0
         if hasattr(ClimateEntityFeature, "TURN_OFF"):
             supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
-        setpointdict = self.setpoint()
-        cc = self.climateControl()
-        if setpointdict is not None and setpointdict["settable"] is True:
+        setpoint_dict = self.setpoint()
+        cc = self.climate_control()
+        if setpoint_dict is not None and setpoint_dict["settable"] is True:
             supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
         if len(self.get_preset_modes()) > 1:
             supported_features |= ClimateEntityFeature.PRESET_MODE
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            if fanControl["value"]["operationModes"][operationmode].get("fanSpeed") is not None:
+        fan_control = cc.get("fanControl")
+        if fan_control is not None:
+            operation_mode = cc["operationMode"]["value"]
+            if fan_control["value"]["operationModes"][operation_mode].get("fanSpeed") is not None:
                 supported_features |= ClimateEntityFeature.FAN_MODE
-            if fanControl["value"]["operationModes"][operationmode].get("fanDirection") is not None:
+            if fan_control["value"]["operationModes"][operation_mode].get("fanDirection") is not None:
                 supported_features |= ClimateEntityFeature.SWING_MODE
-
-        _LOGGER.info("Device '%s' supports features %s", self._device.name, supported_features)
 
         return supported_features
 
     @property
     def name(self):
-        device_name = self._device.name
-        cc = self.climateControl()
-        namepoint = cc.get("name")
-        if namepoint is not None:
-            device_name = namepoint["value"]
-        myname = self._setpoint[0].upper() + self._setpoint[1:]
-        readable = re.findall("[A-Z][^A-Z]*", myname)
-        return f"{device_name} {' '.join(readable)}"
+        return self._device.name
 
     @property
     def unique_id(self):
         """Return a unique ID."""
-        devID = self._device.getId()
-        return f"{devID}_{self._setpoint}"
+        return f"{self._device.getId()}_{self._setpoint}"
 
     def get_current_temperature(self):
-        currentTemp = None
-        sensoryData = self.sensoryData()
-        setpointdict = self.setpoint()
+        current_temp = None
+        sensory_data = self.sensory_data()
+        setpoint_dict = self.setpoint()
         # Check if there is a sensoryData which is for the same setpoint, if so, return that
-        if sensoryData is not None:
-            currentTemp = sensoryData["value"]
+        if sensory_data is not None:
+            current_temp = sensory_data["value"]
         else:
-            if setpointdict is not None:
-                currentTemp = setpointdict["value"]
-        _LOGGER.info(
-            "Device '%s': %s current temperature '%s'",
-            self._device.name,
-            self._setpoint,
-            currentTemp,
-        )
-        return currentTemp
+            if setpoint_dict is not None:
+                current_temp = setpoint_dict["value"]
+
+        return current_temp
 
     def get_max_temp(self):
-        maxTemp = None
-        setpointdict = self.setpoint()
-        if setpointdict is not None:
-            maxTemp = setpointdict["maxValue"]
-        _LOGGER.info(
-            "Device '%s': %s max temperature '%s'",
-            self._device.name,
-            self._setpoint,
-            maxTemp,
-        )
-        return maxTemp
+        max_temp = None
+        setpoint_dict = self.setpoint()
+        if setpoint_dict is not None:
+            max_temp = setpoint_dict["maxValue"]
+        return max_temp
 
     def get_min_temp(self):
-        minValue = None
-        setpointdict = self.setpoint()
-        if setpointdict is not None:
-            minValue = setpointdict["minValue"]
-        _LOGGER.info(
-            "Device '%s': %s min temperature '%s'",
-            self._device.name,
-            self._setpoint,
-            minValue,
-        )
-        return minValue
+        min_value = None
+        setpoint_dict = self.setpoint()
+        if setpoint_dict is not None:
+            min_value = setpoint_dict["minValue"]
+        return min_value
 
     def get_target_temperature(self):
         value = None
-        setpointdict = self.setpoint()
-        if setpointdict is not None:
-            value = setpointdict["value"]
-        _LOGGER.info(
-            "Device '%s': %s target temperature '%s'",
-            self._device.name,
-            self._setpoint,
-            value,
-        )
+        setpoint_dict = self.setpoint()
+        if setpoint_dict is not None:
+            value = setpoint_dict["value"]
         return value
 
     def get_target_temperature_step(self):
-        stepValue = None
-        setpointdict = self.setpoint()
-        if setpointdict is not None:
-            stepValue = setpointdict["stepValue"]
-        _LOGGER.info(
-            "Device '%s': %s target temperature step '%s'",
-            self._device.name,
-            self._setpoint,
-            stepValue,
-        )
-        return stepValue
+        step_value = None
+        setpoint_dict = self.setpoint()
+        if setpoint_dict is not None:
+            step_value = setpoint_dict["stepValue"]
+        return step_value
 
     async def async_set_temperature(self, **kwargs):
         # """Set new target temperature."""
-        operationmode = self.operationMode()
-        omv = operationmode["value"]
+        operation_mode = self.operation_mode()
+        omv = operation_mode["value"]
         value = kwargs[ATTR_TEMPERATURE]
         res = await self._device.set_path(
             self._device.getId(),
@@ -366,26 +297,26 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         )
         # When updating the value to the daikin cloud worked update our local cached version
         if res:
-            setpointdict = self.setpoint()
-            if setpointdict is not None:
+            setpoint_dict = self.setpoint()
+            if setpoint_dict is not None:
                 self._attr_target_temperature = value
                 self.async_write_ha_state()
 
     def get_hvac_mode(self):
         """Return current HVAC mode."""
         mode = HVACMode.OFF
-        operationmode = self.operationMode()
-        cc = self.climateControl()
+        operation_mode = self.operation_mode()
+        cc = self.climate_control()
         if cc["onOffMode"]["value"] != "off":
-            mode = operationmode["value"]
+            mode = operation_mode["value"]
         return DAIKIN_HVAC_TO_HA.get(mode, HVACMode.HEAT_COOL)
 
     def get_hvac_modes(self):
         """Return the list of available HVAC modes."""
         modes = [HVACMode.OFF]
-        operationmode = self.operationMode()
-        if operationmode is not None:
-            for mode in operationmode["values"]:
+        operation_mode = self.operation_mode()
+        if operation_mode is not None:
+            for mode in operation_mode["values"]:
                 ha_mode = DAIKIN_HVAC_TO_HA[mode]
                 if ha_mode not in modes:
                     modes.append(ha_mode)
@@ -396,48 +327,48 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         result = True
 
         # First determine the new settings for onOffMode/operationMode
-        onOffMode = None
-        operationMode = None
+        on_off_mode = None
+        operation_mode = None
         if hvac_mode == HVACMode.OFF:
-            onOffMode = "off"
+            on_off_mode = "off"
         else:
             if self.hvac_mode == HVACMode.OFF:
-                onOffMode = "on"
-            operationMode = HA_HVAC_TO_DAIKIN[hvac_mode]
+                on_off_mode = "on"
+            operation_mode = HA_HVAC_TO_DAIKIN[hvac_mode]
 
-        cc = self.climateControl()
+        cc = self.climate_control()
 
         # Only set the on/off to Daikin when we need to change it
-        if onOffMode is not None:
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
+        if on_off_mode is not None:
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", on_off_mode)
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting onOffMode to %s",
                     self._device.name,
-                    onOffMode,
+                    on_off_mode,
                 )
             else:
-                cc["onOffMode"]["value"] = onOffMode
+                cc["onOffMode"]["value"] = on_off_mode
 
-        if operationMode is not None:
+        if operation_mode is not None:
             # Only set the operationMode when it has changed, also prevents setting it when
             # it is readOnly
-            if operationMode != cc["operationMode"]["value"]:
+            if operation_mode != cc["operationMode"]["value"]:
                 result &= await self._device.set_path(
                     self._device.getId(),
                     self.embedded_id,
                     "operationMode",
                     "",
-                    operationMode,
+                    operation_mode,
                 )
                 if result is False:
                     _LOGGER.warning(
                         "Device '%s' problem setting operationMode to %s",
                         self._device.name,
-                        operationMode,
+                        operation_mode,
                     )
                 else:
-                    cc["operationMode"]["value"] = operationMode
+                    cc["operationMode"]["value"] = operation_mode
 
         if result is True:
             self._attr_hvac_mode = hvac_mode
@@ -462,61 +393,56 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     def get_fan_mode(self):
         fan_mode = None
-        cc = self.climateControl()
+        cc = self.climate_control()
         # Check if we have a fanControl
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
-            mode = fanspeed["currentMode"]["value"]
+        fan_control = cc.get("fanControl")
+        if fan_control is not None:
+            operation_mode = cc["operationMode"]["value"]
+            fan_speed = fan_control["value"]["operationModes"][operation_mode]["fanSpeed"]
+            mode = fan_speed["currentMode"]["value"]
             if mode in DAIKIN_FAN_TO_HA:
                 fan_mode = DAIKIN_FAN_TO_HA[mode]
             else:
-                fsm = fanspeed.get("modes")
+                fsm = fan_speed.get("modes")
                 if fsm is not None:
-                    _LOGGER.info("FSM %s", fsm)
-                    fixedModes = fsm[mode]
-                    fan_mode = str(fixedModes["value"])
+                    fan_mode = str(fsm[mode]["value"])
 
         return fan_mode
 
     def get_fan_modes(self):
         fan_modes = []
-        fanspeed = None
-        cc = self.climateControl()
+        cc = self.climate_control()
         # Check if we have a fanControl
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
-            _LOGGER.info("Found fanspeed %s", fanspeed)
-            for c in fanspeed["currentMode"]["values"]:
-                _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
+        fan_control = cc.get("fanControl")
+        if fan_control is not None:
+            operation_mode = cc["operationMode"]["value"]
+            fan_speed = fan_control["value"]["operationModes"][operation_mode]["fanSpeed"]
+            for c in fan_speed["currentMode"]["values"]:
                 if c in DAIKIN_FAN_TO_HA:
                     fan_modes.append(DAIKIN_FAN_TO_HA[c])
                 else:
-                    fsm = fanspeed.get("modes")
+                    fsm = fan_speed.get("modes")
                     if fsm is not None:
-                        _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
-                        fixedModes = fsm[c]
-                        minVal = int(fixedModes["minValue"])
-                        maxVal = int(fixedModes["maxValue"])
-                        stepValue = int(fixedModes["stepValue"])
-                        for val in range(minVal, maxVal + 1, stepValue):
+                        fixed_modes = fsm[c]
+                        min_val = int(fixed_modes["minValue"])
+                        max_val = int(fixed_modes["maxValue"])
+                        step_value = int(fixed_modes["stepValue"])
+                        for val in range(min_val, max_val + 1, step_value):
                             fan_modes.append(str(val))
 
         return fan_modes
 
     async def async_set_fan_mode(self, fan_mode):
         """Set the preset mode status."""
-        cc = self.climateControl()
-        operationmode = cc["operationMode"]["value"]
+        cc = self.climate_control()
+        operation_mode = cc["operationMode"]["value"]
+        res = False
         if fan_mode in HA_FAN_TO_DAIKIN.keys():
             res = await self._device.set_path(
                 self._device.getId(),
                 self.embedded_id,
                 "fanControl",
-                f"/operationModes/{operationmode}/fanSpeed/currentMode",
+                f"/operationModes/{operation_mode}/fanSpeed/currentMode",
                 fan_mode,
             )
             if res is False:
@@ -533,7 +459,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.getId(),
                     self.embedded_id,
                     "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/currentMode",
+                    f"/operationModes/{operation_mode}/fanSpeed/currentMode",
                     "fixed",
                 )
                 if res is False:
@@ -546,7 +472,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.getId(),
                     self.embedded_id,
                     "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
+                    f"/operationModes/{operation_mode}/fanSpeed/modes/fixed",
                     mode,
                 )
                 if res is False:
@@ -563,141 +489,131 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return res
 
     def get_swing_mode(self):
-        swingMode = None
-        cc = self.climateControl()
-        fanControl = cc.get("fanControl")
+        swing_mode = None
+        cc = self.climate_control()
+        fan_control = cc.get("fanControl")
         h = SWING_OFF
         v = SWING_OFF
-        if fanControl is not None:
-            swingMode = SWING_OFF
-            operationmode = cc["operationMode"]["value"]
-            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
-            if fanDirection is not None:
-                horizontal = fanDirection.get("horizontal")
-                vertical = fanDirection.get("vertical")
+        if fan_control is not None:
+            swing_mode = SWING_OFF
+            operation_mode = cc["operationMode"]["value"]
+            fan_direction = fan_control["value"]["operationModes"][operation_mode].get("fanDirection")
+            if fan_direction is not None:
+                horizontal = fan_direction.get("horizontal")
+                vertical = fan_direction.get("vertical")
                 if horizontal is not None:
                     h = horizontal["currentMode"]["value"]
                 if vertical is not None:
                     v = vertical["currentMode"]["value"]
         if h == "swing":
-            swingMode = SWING_HORIZONTAL
+            swing_mode = SWING_HORIZONTAL
         if v == "swing":
-            swingMode = SWING_VERTICAL
+            swing_mode = SWING_VERTICAL
         if v == "swing" and h == "swing":
-            swingMode = SWING_BOTH
+            swing_mode = SWING_BOTH
         if v == "floorHeatingAirflow":
             if h == "swing":
-                swingMode = "floorHeatingAirflow and Horizontal"
+                swing_mode = "floorHeatingAirflow and Horizontal"
             else:
-                swingMode = "floorHeatingAirflow"
+                swing_mode = "floorHeatingAirflow"
         if v == "windNice":
             if h == "swing":
-                swingMode = "Comfort Airflow and Horizontal"
+                swing_mode = "Comfort Airflow and Horizontal"
             else:
-                swingMode = "Comfort Airflow"
+                swing_mode = "Comfort Airflow"
 
-        _LOGGER.info(
-            "Device '%s' has swing mode '%s', determined from h:%s v:%s",
-            self._device.name,
-            swingMode,
-            h,
-            v,
-        )
-
-        return swingMode
+        return swing_mode
 
     def get_swing_modes(self):
-        swingModes = []
-        cc = self.climateControl()
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            swingModes = [SWING_OFF]
-            operationmode = cc["operationMode"]["value"]
-            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
-            if fanDirection is not None:
-                horizontal = fanDirection.get("horizontal")
-                vertical = fanDirection.get("vertical")
+        swing_modes = []
+        cc = self.climate_control()
+        fan_control = cc.get("fanControl")
+        if fan_control is not None:
+            swing_modes = [SWING_OFF]
+            operation_mode = cc["operationMode"]["value"]
+            fan_direction = fan_control["value"]["operationModes"][operation_mode].get("fanDirection")
+            if fan_direction is not None:
+                horizontal = fan_direction.get("horizontal")
+                vertical = fan_direction.get("vertical")
                 if horizontal is not None:
                     for mode in horizontal["currentMode"]["values"]:
                         if mode == "swing":
-                            swingModes.append(SWING_HORIZONTAL)
+                            swing_modes.append(SWING_HORIZONTAL)
                 if vertical is not None:
                     for mode in vertical["currentMode"]["values"]:
                         if mode == "swing":
-                            swingModes.append(SWING_VERTICAL)
+                            swing_modes.append(SWING_VERTICAL)
                             if horizontal is not None:
-                                swingModes.append(SWING_BOTH)
+                                swing_modes.append(SWING_BOTH)
                         if mode == "floorHeatingAirflow":
-                            swingModes.append(mode)
+                            swing_modes.append(mode)
                             if horizontal is not None:
-                                swingModes.append("floorHeatingAirflow and Horizontal")
+                                swing_modes.append("floorHeatingAirflow and Horizontal")
                         if mode == "windNice":
-                            swingModes.append("Comfort Airflow")
+                            swing_modes.append("Comfort Airflow")
                             if horizontal is not None:
-                                swingModes.append("Comfort Airflow and Horizontal")
-        _LOGGER.info("Device '%s' support swing modes %s", self._device.name, swingModes)
-        return swingModes
+                                swing_modes.append("Comfort Airflow and Horizontal")
+        return swing_modes
 
     async def async_set_swing_mode(self, swing_mode):
         res = True
-        cc = self.climateControl()
-        fanControl = cc.get("fanControl")
-        operationmode = cc["operationMode"]["value"]
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
-            if fanDirection is not None:
-                horizontal = fanDirection.get("horizontal")
-                vertical = fanDirection.get("vertical")
+        cc = self.climate_control()
+        fan_control = cc.get("fanControl")
+        if fan_control is not None:
+            operation_mode = cc["operationMode"]["value"]
+            fan_direction = fan_control["value"]["operationModes"][operation_mode].get("fanDirection")
+            if fan_direction is not None:
+                horizontal = fan_direction.get("horizontal")
+                vertical = fan_direction.get("vertical")
                 if horizontal is not None:
-                    new_hMode = "stop"
+                    new_h_mode = "stop"
                     if swing_mode in (
                         SWING_HORIZONTAL,
                         SWING_BOTH,
                         "Comfort Airflow and Horizontal",
                         "floorHeatingAirflow and Horizontal",
                     ):
-                        new_hMode = "swing"
+                        new_h_mode = "swing"
                     res &= await self._device.set_path(
                         self._device.getId(),
                         self.embedded_id,
                         "fanControl",
-                        f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode",
-                        new_hMode,
+                        f"/operationModes/{operation_mode}/fanDirection/horizontal/currentMode",
+                        new_h_mode,
                     )
                     if res is False:
                         _LOGGER.warning(
                             "Device '%s' problem setting horizontal swing mode to %s",
                             self._device.name,
-                            new_hMode,
+                            new_h_mode,
                         )
 
                 if vertical is not None:
-                    new_vMode = "stop"
+                    new_v_mode = "stop"
                     if swing_mode in (SWING_VERTICAL, SWING_BOTH):
-                        new_vMode = "swing"
+                        new_v_mode = "swing"
                     if swing_mode in (
                         "floorHeatingAirflow",
                         "floorHeatingAirflow and Horizontal",
                     ):
-                        new_vMode = "floorHeatingAirflow"
+                        new_v_mode = "floorHeatingAirflow"
                     if swing_mode in (
                         "Comfort Airflow",
                         "Comfort Airflow and Horizontal",
                     ):
-                        new_vMode = "windNice"
+                        new_v_mode = "windNice"
                     res &= await self._device.set_path(
                         self._device.getId(),
                         self.embedded_id,
                         "fanControl",
-                        f"/operationModes/{operationmode}/fanDirection/vertical/currentMode",
-                        new_vMode,
+                        f"/operationModes/{operation_mode}/fanDirection/vertical/currentMode",
+                        new_v_mode,
                     )
                     if res is False:
                         _LOGGER.warning(
                             "Device '%s' problem setting vertical swing mode to %s",
                             self._device.name,
-                            new_vMode,
+                            new_v_mode,
                         )
 
         if res is True:
@@ -707,7 +623,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return res
 
     def get_preset_mode(self):
-        cc = self.climateControl()
+        cc = self.climate_control()
         current_preset_mode = PRESET_NONE
         for mode in self.preset_modes:
             daikin_mode = HA_PRESET_TO_DAIKIN[mode]
@@ -752,7 +668,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     def get_preset_modes(self):
         supported_preset_modes = [PRESET_NONE]
-        cc = self.climateControl()
+        cc = self.climate_control()
         # self._current_preset_mode = PRESET_NONE
         for mode in PRESET_MODES:
             daikin_mode = HA_PRESET_TO_DAIKIN[mode]
@@ -760,17 +676,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if preset is not None and preset.get("value") is not None:
                 supported_preset_modes.append(mode)
 
-        _LOGGER.info(
-            "Device '%s' supports pre preset_modes %s",
-            self._device.name,
-            format(supported_preset_modes),
-        )
-
         return supported_preset_modes
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
-        cc = self.climateControl()
+        cc = self.climate_control()
         result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
         if result is False:
             _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
