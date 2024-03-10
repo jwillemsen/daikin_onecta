@@ -580,7 +580,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     fan_mode,
                 )
 
-
         if res is True:
             self._attr_fan_mode = fan_mode
             self.async_write_ha_state()
