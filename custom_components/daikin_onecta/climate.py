@@ -398,6 +398,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_set_hvac_mode(self, hvac_mode):
         """Set HVAC mode."""
+        _LOGGER.debug(
+            "Device '%s' request to set hvac_mode to %s",
+            self._device.name,
+            hvac_mode,
+        )
+
         result = True
 
         # First determine the new settings for onOffMode/operationMode
@@ -513,7 +519,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return fan_modes
 
     async def async_set_fan_mode(self, fan_mode):
-        """Set the preset mode status."""
+        """Set the fan mode"""
+        _LOGGER.debug(
+            "Device '%s' request to set fan_mode to %s",
+            self._device.name,
+            fan_mode,
+        )
+
+        res = True
         cc = self.climateControl()
         operationmode = cc["operationMode"]["value"]
         if fan_mode in HA_FAN_TO_DAIKIN.keys():
@@ -644,6 +657,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return swingModes
 
     async def async_set_swing_mode(self, swing_mode):
+        _LOGGER.debug(
+            "Device '%s' request to set swing_mode to %s",
+            self._device.name,
+            swing_mode,
+        )
         res = True
         cc = self.climateControl()
         fanControl = cc.get("fanControl")
