@@ -526,7 +526,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             fan_mode,
         )
 
-        res = True
+        res = False
         cc = self.climateControl()
         operationmode = cc["operationMode"]["value"]
         if fan_mode in HA_FAN_TO_DAIKIN.keys():
@@ -573,6 +573,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         self._device.name,
                         mode,
                     )
+            else:
+                _LOGGER.warning(
+                    "Device '%s' received invalid fan_mode %s",
+                    self._device.name,
+                    fan_mode,
+                )
+
 
         if res is True:
             self._attr_fan_mode = fan_mode
