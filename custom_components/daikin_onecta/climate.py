@@ -7,6 +7,7 @@ import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.components.climate import ClimateEntity
 from homeassistant.components.climate import PLATFORM_SCHEMA
+from homeassistant.components.climate.const import ATTR_HVAC_MODE
 from homeassistant.components.climate.const import ClimateEntityFeature
 from homeassistant.components.climate.const import FAN_AUTO
 from homeassistant.components.climate.const import HVACMode
@@ -354,22 +355,26 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_set_temperature(self, **kwargs):
         # """Set new target temperature."""
-        operationmode = self.operationMode()
-        omv = operationmode["value"]
-        value = kwargs[ATTR_TEMPERATURE]
-        res = await self._device.set_path(
-            self._device.getId(),
-            self.embedded_id,
-            "temperatureControl",
-            f"/operationModes/{omv}/setpoints/{self._setpoint}",
-            value,
-        )
-        # When updating the value to the daikin cloud worked update our local cached version
-        if res:
-            setpointdict = self.setpoint()
-            if setpointdict is not None:
-                self._attr_target_temperature = value
-                self.async_write_ha_state()
+        if ATTR_HVAC_MODE in kwargs:
+            await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
+
+        if ATTR_TEMPERATURE in kwargs:
+            operationmode = self.operationMode()
+            omv = operationmode["value"]
+            value = kwargs[ATTR_TEMPERATURE]
+            res = await self._device.set_path(
+                self._device.getId(),
+                self.embedded_id,
+                "temperatureControl",
+                f"/operationModes/{omv}/setpoints/{self._setpoint}",
+                value,
+            )
+            # When updating the value to the daikin cloud worked update our local cached version
+            if res:
+                setpointdict = self.setpoint()
+                if setpointdict is not None:
+                    self._attr_target_temperature = value
+                    self.async_write_ha_state()
 
     def get_hvac_mode(self):
         """Return current HVAC mode."""
