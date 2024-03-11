@@ -3,6 +3,7 @@ from homeassistant.core import HomeAssistant
 from .const import OAUTH2_AUTHORIZE
 from .const import OAUTH2_TOKEN
 
+
 async def async_get_authorization_server(hass: HomeAssistant) -> AuthorizationServer:
     """Return authorization server."""
     return AuthorizationServer(
