@@ -372,7 +372,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
+        CONF_ICON: "mdi:ip-network",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
