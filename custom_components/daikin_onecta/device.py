@@ -19,8 +19,8 @@ class DaikinOnectaDevice:
         self.daikin_data = jsonData
         self.name = self.daikin_data["deviceModel"]
 
-        managementPoints = self.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
+        management_points = self.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type == "climateControl":
                 self.name = management_point["name"]["value"]
@@ -42,8 +42,8 @@ class DaikinOnectaDevice:
         sw_vers = ""
         name = ""
         supported_management_point_types = {"gateway"}
-        managementPoints = self.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
+        management_points = self.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
                 mac_add = management_point["macAddress"]["value"]

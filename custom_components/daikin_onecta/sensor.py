@@ -46,8 +46,8 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         "climateControlMainZone",
     }
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
-        managementPoints = device.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
+        management_points = device.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             embedded_id = management_point["embeddedId"]
 
@@ -77,10 +77,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
             sd = management_point.get("sensoryData")
             if sd is not None:
-                sensoryData = sd.get("value")
-                _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensoryData)
-                if sensoryData is not None:
-                    for sensor in sensoryData:
+                sensory_data = sd.get("value")
+                _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensory_data)
+                if sensory_data is not None:
+                    for sensor in sensory_data:
                         _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
                         sensor2 = DaikinValueSensor(
                             device,

@@ -652,63 +652,63 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         )
         res = True
         cc = self.climate_control()
-        fanControl = cc.get("fanControl")
-        operationmode = cc["operationMode"]["value"]
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
-            if fanDirection is not None:
-                horizontal = fanDirection.get("horizontal")
-                vertical = fanDirection.get("vertical")
+        fan_control = cc.get("fanControl")
+        operation_mode = cc["operationMode"]["value"]
+        if fan_control is not None:
+            operation_mode = cc["operationMode"]["value"]
+            fan_direction = fan_control["value"]["operationModes"][operation_mode].get("fanDirection")
+            if fan_direction is not None:
+                horizontal = fan_direction.get("horizontal")
+                vertical = fan_direction.get("vertical")
                 if horizontal is not None:
-                    new_hMode = "stop"
+                    new_h_mode = "stop"
                     if swing_mode in (
                         SWING_HORIZONTAL,
                         SWING_BOTH,
                         "Comfort Airflow and Horizontal",
                         "floorHeatingAirflow and Horizontal",
                     ):
-                        new_hMode = "swing"
+                        new_h_mode = "swing"
                     res &= await self._device.set_path(
                         self._device.getId(),
                         self.embedded_id,
                         "fanControl",
-                        f"/operationModes/{operationmode}/fanDirection/horizontal/currentMode",
-                        new_hMode,
+                        f"/operationModes/{operation_mode}/fanDirection/horizontal/currentMode",
+                        new_h_mode,
                     )
                     if res is False:
                         _LOGGER.warning(
                             "Device '%s' problem setting horizontal swing mode to %s",
                             self._device.name,
-                            new_hMode,
+                            new_h_mode,
                         )
 
                 if vertical is not None:
-                    new_vMode = "stop"
+                    new_v_mode = "stop"
                     if swing_mode in (SWING_VERTICAL, SWING_BOTH):
-                        new_vMode = "swing"
+                        new_v_mode = "swing"
                     if swing_mode in (
                         "floorHeatingAirflow",
                         "floorHeatingAirflow and Horizontal",
                     ):
-                        new_vMode = "floorHeatingAirflow"
+                        new_v_mode = "floorHeatingAirflow"
                     if swing_mode in (
                         "Comfort Airflow",
                         "Comfort Airflow and Horizontal",
                     ):
-                        new_vMode = "windNice"
+                        new_v_mode = "windNice"
                     res &= await self._device.set_path(
                         self._device.getId(),
                         self.embedded_id,
                         "fanControl",
-                        f"/operationModes/{operationmode}/fanDirection/vertical/currentMode",
-                        new_vMode,
+                        f"/operationModes/{operation_mode}/fanDirection/vertical/currentMode",
+                        new_v_mode,
                     )
                     if res is False:
                         _LOGGER.warning(
                             "Device '%s' problem setting vertical swing mode to %s",
                             self._device.name,
-                            new_vMode,
+                            new_v_mode,
                         )
 
         if res is True:
