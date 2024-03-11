@@ -62,13 +62,15 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                 device.name,
                                 value,
                             )
-                            sensors.append(DaikinSwitch(
-                                device,
-                                coordinator,
-                                embedded_id,
-                                management_point_type,
-                                value,
-                            ))
+                            sensors.append(
+                                DaikinSwitch(
+                                    device,
+                                    coordinator,
+                                    embedded_id,
+                                    management_point_type,
+                                    value,
+                                )
+                            )
 
     async_add_entities(sensors)
 
