@@ -32,7 +32,7 @@ async def setup_credentials(hass: HomeAssistant) -> None:
         ClientCredential(CLIENT_ID, CLIENT_SECRET),
     )
 
-
+@pytest.mark.asyncio decorator
 async def test_full_flow(
     hass: HomeAssistant,
     hass_client_no_auth,
