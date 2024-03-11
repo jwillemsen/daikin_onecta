@@ -30,7 +30,6 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
-from .const import FAN_QUIET
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -64,13 +63,6 @@ HA_PRESET_TO_DAIKIN = {
     PRESET_BOOST: "powerfulMode",
     PRESET_COMFORT: "comfortMode",
     PRESET_ECO: "econoMode",
-}
-
-DAIKIN_FAN_TO_HA = {"auto": FAN_AUTO, "quiet": FAN_QUIET}
-
-HA_FAN_TO_DAIKIN = {
-    DAIKIN_FAN_TO_HA["auto"]: "auto",
-    DAIKIN_FAN_TO_HA["quiet"]: "quiet",
 }
 
 
@@ -476,36 +468,33 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         # Check if we have a fanControl
         fanControl = cc.get("fanControl")
         if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
-            mode = fanspeed["currentMode"]["value"]
-            if mode in DAIKIN_FAN_TO_HA:
-                fan_mode = DAIKIN_FAN_TO_HA[mode]
-            else:
-                fsm = fanspeed.get("modes")
+            operation_mode = cc["operationMode"]["value"]
+            fan_speed = fanControl["value"]["operationModes"][operation_mode]["fanSpeed"]
+            mode = fan_speed["currentMode"]["value"]
+            if mode == "fixed":
+                fsm = fan_speed.get("modes")
                 if fsm is not None:
                     _LOGGER.info("FSM %s", fsm)
                     fixedModes = fsm[mode]
                     fan_mode = str(fixedModes["value"])
+            else:
+                fan_mode = mode
 
         return fan_mode
 
     def get_fan_modes(self):
         fan_modes = []
-        fanspeed = None
         cc = self.climate_control()
         # Check if we have a fanControl
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            fanspeed = fanControl["value"]["operationModes"][operationmode]["fanSpeed"]
-            _LOGGER.info("Found fanspeed %s", fanspeed)
-            for c in fanspeed["currentMode"]["values"]:
+        fan_control = cc.get("fanControl")
+        if fan_control is not None:
+            operation_mode = cc["operationMode"]["value"]
+            fan_speed = fan_control["value"]["operationModes"][operation_mode]["fanSpeed"]
+            _LOGGER.info("Found fanspeed %s", fan_speed)
+            for c in fan_speed["currentMode"]["values"]:
                 _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
-                if c in DAIKIN_FAN_TO_HA:
-                    fan_modes.append(DAIKIN_FAN_TO_HA[c])
-                else:
-                    fsm = fanspeed.get("modes")
+                if c == "fixed":
+                    fsm = fan_speed.get("modes")
                     if fsm is not None:
                         _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
                         fixedModes = fsm[c]
@@ -514,6 +503,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         stepValue = int(fixedModes["stepValue"])
                         for val in range(minVal, maxVal + 1, stepValue):
                             fan_modes.append(str(val))
+                else:
+                    fan_modes.append(c)
 
         return fan_modes
 
@@ -528,7 +519,35 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         res = False
         cc = self.climate_control()
         operationmode = cc["operationMode"]["value"]
-        if fan_mode in HA_FAN_TO_DAIKIN.keys():
+        if fan_mode.isnumeric():
+            res = await self._device.set_path(
+                self._device.getId(),
+                self.embedded_id,
+                "fanControl",
+                f"/operationModes/{operationmode}/fanSpeed/currentMode",
+                "fixed",
+            )
+            if res is False:
+                _LOGGER.warning(
+                    "Device '%s' problem setting fan_mode to fixed",
+                    self._device.name,
+                )
+
+            new_fixed_mode = int(fan_mode)
+            res &= await self._device.set_path(
+                self._device.getId(),
+                self.embedded_id,
+                "fanControl",
+                f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
+                new_fixed_mode,
+            )
+            if res is False:
+                _LOGGER.warning(
+                    "Device '%s' problem setting fan_mode fixed to %s",
+                    self._device.name,
+                    new_fixed_mode,
+                )
+        else:
             res = await self._device.set_path(
                 self._device.getId(),
                 self.embedded_id,
@@ -539,42 +558,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if res is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting fan_mode to %s",
-                    self._device.name,
-                    fan_mode,
-                )
-
-        else:
-            if fan_mode.isnumeric():
-                mode = int(fan_mode)
-                res = await self._device.set_path(
-                    self._device.getId(),
-                    self.embedded_id,
-                    "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/currentMode",
-                    "fixed",
-                )
-                if res is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting fan_mode to fixed",
-                        self._device.name,
-                    )
-
-                res &= await self._device.set_path(
-                    self._device.getId(),
-                    self.embedded_id,
-                    "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
-                    mode,
-                )
-                if res is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting fan_mode fixed to %s",
-                        self._device.name,
-                        mode,
-                    )
-            else:
-                _LOGGER.warning(
-                    "Device '%s' received invalid fan_mode %s",
                     self._device.name,
                     fan_mode,
                 )
