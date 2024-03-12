@@ -5,3 +5,4 @@ pytest-asyncio
 pytest-tornasync
 pytest-trio
 pytest-twisted
+aiohttp_cors
