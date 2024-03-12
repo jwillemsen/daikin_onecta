@@ -41,6 +41,10 @@ async def test_full_flow(
     setup_credentials,
 ) -> None:
     """Check full flow."""
+    assert await setup.async_setup_component(hass, "daikin_onecta", {})
+
+    await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
+
     result = await hass.config_entries.flow.async_init("daikin_onecta", context={"source": config_entries.SOURCE_USER})
     state = config_entry_oauth2_flow._encode_jwt(
         hass,
