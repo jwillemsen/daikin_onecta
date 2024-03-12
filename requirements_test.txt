@@ -7,3 +7,4 @@ pytest-trio
 pytest-twisted
 aiohttp_cors
 twisted
+service_identity
