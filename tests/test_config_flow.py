@@ -43,7 +43,7 @@ async def test_full_flow(
     setup_credentials,
 ) -> None:
     """Check full flow."""
-    # assert await async_setup_component(hass, "daikin_onecta", {})
+    assert await async_setup_component(hass, "daikin_onecta", {})
     #
     # await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
     #
