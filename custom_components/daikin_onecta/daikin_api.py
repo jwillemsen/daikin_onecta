@@ -142,16 +142,6 @@ class DaikinApi:
         json_puredata = await self.doBearerRequest("/v1/gateway-devices")
         return json_puredata
 
-    async def getCloudDevices(self):
-        """Get array of DaikinOnectaDevice objects and get their data."""
-        self.json_data = await self.getCloudDeviceDetails()
-
-        res = {}
-        for dev_data in self.json_data or []:
-            device = Appliance(dev_data, self)
-            res[dev_data["id"]] = device
-        return res
-
     async def get_daikin_data(self):
         """Pull the latest data from Daikin only when the last patch call is more than 30 seconds ago."""
         if (datetime.now() - self._last_patch_call).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
