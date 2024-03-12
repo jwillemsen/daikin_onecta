@@ -262,26 +262,26 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # First determine the new settings for onOffMode/powerfulMode, we need these to set them to Daikin
         # and update our local cached version when succeeded
-        onOffMode = ""
-        powerfulMode = ""
+        on_off_mode = ""
+        powerful_mode = ""
         if operation_mode == STATE_OFF:
-            onOffMode = "off"
+            on_off_mode = "off"
         if operation_mode == STATE_PERFORMANCE:
-            powerfulMode = "on"
+            powerful_mode = "on"
             if self.current_operation == STATE_OFF:
-                onOffMode = "on"
+                on_off_mode = "on"
         if operation_mode == STATE_HEAT_PUMP:
             if self.current_operation == STATE_PERFORMANCE:
-                powerfulMode = "off"
+                powerful_mode = "off"
             if self.current_operation == STATE_OFF:
-                onOffMode = "on"
+                on_off_mode = "on"
 
         # Only set the on/off to Daikin when we need to change it
-        if onOffMode != "":
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", onOffMode)
+        if on_off_mode != "":
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", on_off_mode)
         # Only set powerfulMode when it is set and supported by the device
-        if (powerfulMode != "") and (STATE_PERFORMANCE in self.operation_list):
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", powerfulMode)
+        if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", powerful_mode)
 
         if result is False:
             _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
