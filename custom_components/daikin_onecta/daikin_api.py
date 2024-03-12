@@ -64,6 +64,7 @@ class DaikinApi:
                 resourceUrl = "https://api.onecta.daikineurope.com" + resourceUrl
 
             headers = {
+                "Accept-Encoding": "gzip",
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
             }
