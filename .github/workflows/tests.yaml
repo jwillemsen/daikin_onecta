@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: Check out code from GitHub
         uses: "actions/checkout@v4"
-      - name: Setup Python ${{ env.DEFAULT_PYTHON }}
+      - name: Setup Python
         uses: "actions/setup-python@v5"
         with:
-          python-version: ${{ env.DEFAULT_PYTHON }}
+          python-version: '3.10'
       - name: Install requirements
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
