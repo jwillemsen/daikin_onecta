@@ -32,6 +32,7 @@ async def setup_credentials(hass: HomeAssistant) -> None:
         ClientCredential(CLIENT_ID, CLIENT_SECRET),
     )
 
+
 async def test_full_flow(
     hass: HomeAssistant,
     hass_client_no_auth,
@@ -40,9 +41,7 @@ async def test_full_flow(
     setup_credentials,
 ) -> None:
     """Check full flow."""
-    result = await hass.config_entries.flow.async_init(
-        "daikin_onecta", context={"source": config_entries.SOURCE_USER}
-    )
+    result = await hass.config_entries.flow.async_init("daikin_onecta", context={"source": config_entries.SOURCE_USER})
     state = config_entry_oauth2_flow._encode_jwt(
         hass,
         {
@@ -52,9 +51,7 @@ async def test_full_flow(
     )
 
     assert result["url"] == (
-        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}"
-        "&redirect_uri=https://example.com/auth/external/callback"
-        f"&state={state}"
+        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}" "&redirect_uri=https://example.com/auth/external/callback" f"&state={state}"
     )
 
     client = await hass_client_no_auth()
@@ -72,9 +69,7 @@ async def test_full_flow(
         },
     )
 
-    with patch(
-        "homeassistant.components.daikin_onecta.async_setup_entry", return_value=True
-    ) as mock_setup:
+    with patch("homeassistant.components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
         await hass.config_entries.flow.async_configure(result["flow_id"])
 
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1
