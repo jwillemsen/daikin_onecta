@@ -785,9 +785,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         result = True
         if cc["onOffMode"]["value"] == "off":
-            result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
             if result is False:
-                _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
+                _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
             else:
                 cc["onOffMode"]["value"] = "on"
                 self._attr_hvac_mode = HVACMode.ON
@@ -802,13 +802,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_turn_off(self):
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
+        cc = self.climate_control()
         result = True
         if cc["onOffMode"]["value"] == "on":
-            result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
+            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
             if result is False:
-                _LOGGER.warning("Device '%s' problem setting onOffMode to off", self._device.name)
+                _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
             else:
-                cc["onOffMode"]["value"] = "off
+                cc["onOffMode"]["value"] = "off"
                 self._attr_hvac_mode = HVACMode.OFF
                 self.async_write_ha_state()
         else:
