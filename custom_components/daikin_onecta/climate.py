@@ -781,14 +781,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
-        cc = self.climate_control()
         result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
         if result is False:
             _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
         else:
-            cc["onOffMode"]["value"] = "on"
-            self._attr_hvac_mode = self.get_hvac_mode()
+            self._attr_hvac_mode = HVACMode.ON
             self.async_write_ha_state()
+
         return result
 
     async def async_turn_off(self):
