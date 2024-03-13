@@ -781,22 +781,41 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
-        result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
-        if result is False:
-            _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
+        _LOGGER.debug("Device '%s' request to turn on", self._device.name)
+        cc = self.climate_control()
+        result = True
+        if cc["onOffMode"]["value"] == "off":
+            result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting onOffMode to on", self._device.name)
+            else:
+                cc["onOffMode"]["value"] = "on"
+                self._attr_hvac_mode = HVACMode.ON
+                self.async_write_ha_state()
         else:
-            self._attr_hvac_mode = HVACMode.ON
-            self.async_write_ha_state()
+            _LOGGER.debug(
+                "Device '%s' request to turn on ignored because device is already on",
+                self._device.name,
+            )
 
         return result
 
     async def async_turn_off(self):
-        result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
-        if result is False:
-            _LOGGER.warning("Device '%s' problem setting onOffMode to off", self._device.name)
+        _LOGGER.debug("Device '%s' request to turn off", self._device.name)
+        result = True
+        if cc["onOffMode"]["value"] == "on":
+            result = await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting onOffMode to off", self._device.name)
+            else:
+                cc["onOffMode"]["value"] = "off
+                self._attr_hvac_mode = HVACMode.OFF
+                self.async_write_ha_state()
         else:
-            self._attr_hvac_mode = HVACMode.OFF
-            self.async_write_ha_state()
+            _LOGGER.debug(
+                "Device '%s' request to turn off ignored because device is already off",
+                self._device.name,
+            )
 
         return result
 
