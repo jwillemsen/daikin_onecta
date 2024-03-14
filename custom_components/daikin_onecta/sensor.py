@@ -13,8 +13,11 @@ from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import EntityCategory
 
 from .const import COORDINATOR
+from .const import DAIKIN_API
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
@@ -38,6 +41,7 @@ async def async_setup(hass, async_add_entities):
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+    daikin_api = hass.data[DAIKIN_DOMAIN][DAIKIN_API]
     sensors = []
     supported_management_point_types = {
         "domesticHotWaterTank",
@@ -46,6 +50,10 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         "climateControlMainZone",
     }
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
+        # For each rate limit we provide a sensor
+        for name in daikin_api.rate_limits.keys():
+            sensors.append(DaikinLimitSensor(hass, device, coordinator, name))
+
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
@@ -65,15 +73,16 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                         # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
                         pass
                     elif value_value is not None and not isinstance(value_value, dict):
-                        sensor2 = DaikinValueSensor(
-                            device,
-                            coordinator,
-                            embedded_id,
-                            management_point_type,
-                            None,
-                            value,
+                        sensors.append(
+                            DaikinValueSensor(
+                                device,
+                                coordinator,
+                                embedded_id,
+                                management_point_type,
+                                None,
+                                value,
+                            )
                         )
-                        sensors.append(sensor2)
 
             sd = management_point.get("sensoryData")
             if sd is not None:
@@ -82,15 +91,16 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 if sensory_data is not None:
                     for sensor in sensory_data:
                         _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
-                        sensor2 = DaikinValueSensor(
-                            device,
-                            coordinator,
-                            embedded_id,
-                            management_point_type,
-                            "sensoryData",
-                            sensor,
+                        sensors.append(
+                            DaikinValueSensor(
+                                device,
+                                coordinator,
+                                embedded_id,
+                                management_point_type,
+                                "sensoryData",
+                                sensor,
+                            )
                         )
-                        sensors.append(sensor2)
 
             cd = management_point.get("consumptionData")
             if cd is not None:
@@ -126,16 +136,17 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                     periodName = SENSOR_PERIODS[period]
                                     sensor = f"{device.name} {management_point_type} {mode} {periodName}"
                                     _LOGGER.info("Proposing sensor '%s'", sensor)
-                                    sensorv = DaikinEnergySensor(
-                                        device,
-                                        coordinator,
-                                        embedded_id,
-                                        management_point_type,
-                                        mode,
-                                        period,
-                                        icon,
+                                    sensors.append(
+                                        DaikinEnergySensor(
+                                            device,
+                                            coordinator,
+                                            embedded_id,
+                                            management_point_type,
+                                            mode,
+                                            period,
+                                            icon,
+                                        )
                                     )
-                                    sensors.append(sensorv)
                             else:
                                 _LOGGER.info(
                                     "Ignoring consumption data '%s', not a supported operation_mode",
@@ -293,6 +304,52 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
                     res = cd.get("value")
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
         return res
+
+    @property
+    def available(self):
+        """Return the availability of the underlying device."""
+        return self._device.available
+
+    @property
+    def device_info(self):
+        """Return a device description for device registry."""
+        return self._device.device_info()
+
+
+class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
+
+    def __init__(
+        self,
+        hass: HomeAssistant,
+        device: Appliance,
+        coordinator,
+        limit_key,
+    ) -> None:
+        _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
+        super().__init__(coordinator)
+        self._hass = hass
+        self._device = device
+        self._limit_key = limit_key
+        self._attr_has_entity_name = True
+        self._attr_icon = "mdi:information-outline"
+        self._attr_entity_category = EntityCategory.DIAGNOSTIC
+        self._attr_name = f"RateLimit {self._limit_key}"
+        self._attr_unique_id = f"{self._device.getId()}_limitsensor_{self._limit_key}"
+        self._attr_native_value = self.sensor_value()
+        _LOGGER.info(
+            "Device '%s:%s' supports sensor '%s'",
+            device.name,
+            self._attr_name,
+        )
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self._attr_native_value = self.sensor_value()
+        self.async_write_ha_state()
+
+    def sensor_value(self):
+        daikin_api = self._hass.data[DAIKIN_DOMAIN][DAIKIN_API]
+        return daikin_api.rate_limits[self._limit_key]
 
     @property
     def available(self):
