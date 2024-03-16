@@ -85,7 +85,6 @@ class DaikinApi:
             self.rate_limits["day"] = int(res.headers.get("X-RateLimit-Limit-day", 0))
             self.rate_limits["remaining_minutes"] = int(res.headers.get("X-RateLimit-Remaining-minute", 0))
             self.rate_limits["remaining_day"] = int(res.headers.get("X-RateLimit-Remaining-day", 0))
-            self.rate_limits["remaining_minutes"] = int(res.headers.get("X-RateLimit-Remaining-minute", 0))
             self.rate_limits["retry_after"] = int(res.headers.get("retry-after", 0))
             self.rate_limits["ratelimit_reset"] = int(res.headers.get("ratelimit-reset", 0))
 

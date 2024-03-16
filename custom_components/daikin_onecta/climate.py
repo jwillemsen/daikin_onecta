@@ -277,11 +277,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def get_current_temperature(self):
         current_temp = None
         sensory_data = self.sensory_data()
-        setpointdict = self.setpoint()
         # Check if there is a sensoryData which is for the same setpoint, if so, return that
         if sensory_data is not None:
             current_temp = sensory_data["value"]
         else:
+            setpointdict = self.setpoint()
             if setpointdict is not None:
                 current_temp = setpointdict["value"]
         _LOGGER.info(
