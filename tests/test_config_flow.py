@@ -80,7 +80,7 @@ async def test_full_flow(
         },
     )
 
-    with patch("homeassistant.custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
+    with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
         await hass.config_entries.flow.async_configure(result["flow_id"])
 
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1
