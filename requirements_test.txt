@@ -1,10 +1,10 @@
 -r requirements_dev.txt
 pytest-homeassistant-custom-component
 anyio
-pytest-asyncio
 pytest-tornasync
 pytest-trio
 pytest-twisted
 aiohttp_cors
 twisted
 service_identity
+pytest-asyncio
