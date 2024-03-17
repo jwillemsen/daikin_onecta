@@ -64,7 +64,6 @@ async def test_full_flow(
         f"&client_secret={CLIENT_SECRET}"
     )
 
-
     client = await hass_client_no_auth()
     resp = await client.get(f"/auth/external/callback?code=abcd&state={state}")
     assert resp.status == 200

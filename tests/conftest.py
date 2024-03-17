@@ -1,4 +1,5 @@
 """Global fixtures for myenergi integration."""
+
 from typing import Any
 from unittest.mock import patch
 
@@ -8,9 +9,7 @@ pytest_plugins = "pytest_homeassistant_custom_component"
 
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
-def auto_enable_custom_integrations(
-    hass: Any, enable_custom_integrations: Any  # noqa: F811
-) -> None:
+def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:  # noqa: F811
     """Enable custom integrations defined in the test dir."""
 
 
