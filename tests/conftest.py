@@ -10,9 +10,8 @@ pytest_plugins = "pytest_homeassistant_custom_component"
 
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
-def auto_enable_custom_integrations(
-    hass: Any, enable_custom_integrations: Any  # noqa: F811
-) -> None:
+
+def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:  # noqa: F811
     """Enable custom integrations defined in the test dir."""
 
 
@@ -26,7 +25,6 @@ def skip_notifications_fixture():
         "homeassistant.components.persistent_notification.async_dismiss"
     ):
         yield
-
 
 # This fixture, when used, will result in calls to async_get_data to return None. To have the call
 # return a value, we would add the `return_value=<VALUE_TO_RETURN>` parameter to the patch call.
