@@ -1,4 +1,5 @@
 """Support for the Daikin BRP069A62."""
+
 import logging
 
 from homeassistant.components.water_heater import STATE_HEAT_PUMP
@@ -31,7 +32,13 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
-                async_add_entities([DaikinWaterTank(device, coordinator, management_point["embeddedId"])])
+                async_add_entities(
+                    [
+                        DaikinWaterTank(
+                            device, coordinator, management_point["embeddedId"]
+                        )
+                    ]
+                )
             else:
                 _LOGGER.info(
                     "Device '%s' '%s' is not a tank management point, ignoring as water heater",
@@ -130,7 +137,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 ret,
             )
         else:
-            _LOGGER.debug("Device '%s' doesn't provide a current temperature", self._device.name)
+            _LOGGER.debug(
+                "Device '%s' doesn't provide a current temperature", self._device.name
+            )
 
         return ret
 
@@ -140,7 +149,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         dht = self.domestic_hotwater_temperature
         if dht is not None:
             ret = float(dht["value"])
-        _LOGGER.debug("Device '%s' hot water tank target_temperature '%s'", self._device.name, ret)
+        _LOGGER.debug(
+            "Device '%s' hot water tank target_temperature '%s'", self._device.name, ret
+        )
         return ret
 
     @property
@@ -224,7 +235,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             if pwf is not None:
                 if pwf["value"] == "on":
                     state = STATE_PERFORMANCE
-        _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
+        _LOGGER.debug(
+            "Device '%s' hot water tank current mode '%s'", self._device.name, state
+        )
         return state
 
     def get_operation_list(self):
@@ -235,7 +248,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         if pwf is not None:
             if pwf["settable"] is True:
                 states += [STATE_PERFORMANCE]
-        _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
+        _LOGGER.debug(
+            "Device '%s' hot water tank supports modes %s", self._device.name, states
+        )
         return states
 
     async def async_set_operation_mode(self, operation_mode):
@@ -261,13 +276,23 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
-            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.set_path(
+                self._device.getId(), self._embedded_id, "onOffMode", "", on_off_mode
+            )
         # Only set powerfulMode when it is set and supported by the device
         if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
-            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "powerfulMode", "", powerful_mode)
+            result &= await self._device.set_path(
+                self._device.getId(),
+                self._embedded_id,
+                "powerfulMode",
+                "",
+                powerful_mode,
+            )
 
         if result is False:
-            _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
+            _LOGGER.warning(
+                "Device '%s' invalid tank state: %s", self._device.name, operation_mode
+            )
         else:
             # Update local cached version
             self._attr_current_operation = operation_mode

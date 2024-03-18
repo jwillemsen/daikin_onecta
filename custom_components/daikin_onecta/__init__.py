@@ -1,4 +1,5 @@
 """Platform for the Daikin AC."""
+
 import asyncio
 import logging
 
@@ -39,25 +40,37 @@ async def async_setup(hass, config):
         try:
             daikin_api = hass.data[DOMAIN][DAIKIN_API]
             data = daikin_api._config_entry.data.copy()
-            hass.config_entries.async_update_entry(entry=daikin_api._config_entry, data=data)
+            hass.config_entries.async_update_entry(
+                entry=daikin_api._config_entry, data=data
+            )
         except Exception as e:
             _LOGGER.error("Failed to reload integration: %s", e)
 
-    hass.helpers.service.async_register_admin_service(DOMAIN, SERVICE_RELOAD, _handle_reload)
+    hass.helpers.service.async_register_admin_service(
+        DOMAIN, SERVICE_RELOAD, _handle_reload
+    )
 
     if DOMAIN not in config:
         return True
 
     conf = config.get(DOMAIN)
     if conf is not None:
-        hass.async_create_task(hass.config_entries.flow.async_init(DOMAIN, context={"source": SOURCE_IMPORT}, data=conf))
+        hass.async_create_task(
+            hass.config_entries.flow.async_init(
+                DOMAIN, context={"source": SOURCE_IMPORT}, data=conf
+            )
+        )
 
     return True
 
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Establish connection with Daikin."""
-    implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(hass, config_entry)
+    implementation = (
+        await config_entry_oauth2_flow.async_get_config_entry_implementation(
+            hass, config_entry
+        )
+    )
 
     hass.data.update({DOMAIN: {}})
     hass.data[DOMAIN][DAIKIN_DEVICES] = {}
@@ -80,7 +93,9 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
     for component in COMPONENT_TYPES:
-        hass.async_create_task(hass.config_entries.async_forward_entry_setup(config_entry, component))
+        hass.async_create_task(
+            hass.config_entries.async_forward_entry_setup(config_entry, component)
+        )
 
     return True
 
@@ -88,7 +103,12 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
     _LOGGER.debug("Unloading integration...")
-    await asyncio.gather(*(hass.config_entries.async_forward_entry_unload(config_entry, component) for component in COMPONENT_TYPES))
+    await asyncio.gather(
+        *(
+            hass.config_entries.async_forward_entry_unload(config_entry, component)
+            for component in COMPONENT_TYPES
+        )
+    )
     hass.data[DOMAIN].clear()
     if not hass.data[DOMAIN]:
         hass.data.pop(DOMAIN)

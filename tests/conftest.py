@@ -100,12 +100,16 @@ async def snapshot_platform_entities(
 
         await hass.async_block_till_done()
     # with selected_platforms([platform]):
-    entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
+    entity_entries = er.async_entries_for_config_entry(
+        entity_registry, config_entry.entry_id
+    )
 
     assert entity_entries
     for entity_entry in entity_entries:
         assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
-        assert hass.states.get(entity_entry.entity_id) == snapshot(name=f"{entity_entry.entity_id}-state")
+        assert hass.states.get(entity_entry.entity_id) == snapshot(
+            name=f"{entity_entry.entity_id}-state"
+        )
 
 
 @contextmanager

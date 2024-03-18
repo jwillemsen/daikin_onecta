@@ -14,12 +14,9 @@ repos:
         language: system
         types: [python]
         require_serial: true
-  - repo: https://github.com/pre-commit/mirrors-prettier
-    rev: v3.1.0
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.14
     hooks:
-      - id: prettier
-  - repo: https://github.com/asottile/reorder_python_imports
-    rev: v3.12.0
-    hooks:
-      - id: reorder-python-imports
-        name: Reorder Python imports
+      - id: ruff
+        args: [--fix]
+      - id: ruff-format

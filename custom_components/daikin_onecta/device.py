@@ -25,7 +25,9 @@ class DaikinOnectaDevice:
             if management_point_type == "climateControl":
                 self.name = management_point["name"]["value"]
 
-        _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.getId())
+        _LOGGER.info(
+            "Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.getId()
+        )
 
     @property
     def available(self) -> bool:
@@ -89,7 +91,14 @@ class DaikinOnectaDevice:
         return self.daikin_data["id"]
 
     async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
+        setPath = (
+            "/v1/gateway-devices/"
+            + id
+            + "/management-points/"
+            + embeddedId
+            + "/characteristics/"
+            + dataPoint
+        )
         setBody = {"value": value}
         if dataPointPath != "":
             setBody["path"] = dataPointPath

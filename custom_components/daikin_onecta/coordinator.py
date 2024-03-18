@@ -1,4 +1,5 @@
 """Coordinator for Daikin Onecta integration."""
+
 from __future__ import annotations
 
 import logging
@@ -24,7 +25,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Initialize."""
         self.options = config_entry.options
 
-        super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval(hass))
+        super().__init__(
+            hass,
+            _LOGGER,
+            name=DOMAIN,
+            update_interval=self.determine_update_interval(hass),
+        )
 
         _LOGGER.info(
             "Daikin coordinator initialized with %s interval.",
@@ -70,8 +76,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def determine_update_interval(self, hass: HomeAssistant):
         # Default of low scan minutes interval
         scan_interval = self.options.get("low_scan_interval", 30) * 60
-        hs = datetime.strptime(self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S").time()
-        ls = datetime.strptime(self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S").time()
+        hs = datetime.strptime(
+            self.options.get("high_scan_start", "07:00:00"), "%H:%M:%S"
+        ).time()
+        ls = datetime.strptime(
+            self.options.get("low_scan_start", "22:00:00"), "%H:%M:%S"
+        ).time()
         if self.in_between(datetime.now().time(), hs, ls):
             scan_interval = self.options.get("high_scan_interval", 10) * 60
 
@@ -79,7 +89,9 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         # we have to wait before we can make a call again
         daikin_api = hass.data[DOMAIN][DAIKIN_API]
         if daikin_api.rate_limits["remaining_day"] == 0:
-            scan_interval = max(daikin_api.rate_limits["retry_after"] + 60, scan_interval)
+            scan_interval = max(
+                daikin_api.rate_limits["retry_after"] + 60, scan_interval
+            )
 
         return timedelta(seconds=scan_interval)
 

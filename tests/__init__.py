@@ -1,4 +1,5 @@
 """Tests for daikin_onecta integration."""
+
 # TODO:
 # - Test rate limits
 # - Test various sensors, provide test json for various devices
