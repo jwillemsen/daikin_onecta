@@ -88,10 +88,6 @@ class DaikinOnectaDevice:
         """Get Daikin Device UUID."""
         return self.daikin_data["id"]
 
-    def getDescription(self):
-        """Get the original Daikin Device Description."""
-        return self.daikin_data
-
     async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
         setBody = {"value": value}
