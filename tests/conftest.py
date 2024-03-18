@@ -12,6 +12,9 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
 from . import load_fixture_json
+from _pytest.assertion import truncate
+truncate.DEFAULT_MAX_LINES = 9999
+truncate.DEFAULT_MAX_CHARS = 9999
 
 pytest_plugins = "pytest_homeassistant_custom_component"
 
