@@ -105,4 +105,3 @@ async def update_listener(hass, config_entry):
     """Handle options update."""
     coordinator = hass.data[DOMAIN][COORDINATOR]
     coordinator.update_settings(config_entry)
-

@@ -21,48 +21,6 @@ def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) 
     """Enable custom integrations defined in the test dir."""
 
 
-# This fixture is used to prevent HomeAssistant from attempting to create and dismiss persistent
-# notifications. These calls would fail without this fixture since the persistent_notification
-# integration is never loaded during a test.
-@pytest.fixture(name="skip_notifications", autouse=True)
-def skip_notifications_fixture():
-    """Skip notification calls."""
-    with patch("homeassistant.components.persistent_notification.async_create"), patch(
-        "homeassistant.components.persistent_notification.async_dismiss"
-    ):
-        yield
-
-
-# This fixture, when used, will result in calls to async_get_data to return None. To have the call
-# return a value, we would add the `return_value=<VALUE_TO_RETURN>` parameter to the patch call.
-@pytest.fixture(name="bypass_get_data")
-def bypass_get_data_fixture():
-    # """Mock data from client.fetch_data()"""
-    # with patch(
-    #     "pymyenergi.client.MyenergiClient.fetch_data",
-    #     return_value=load_fixture_json("client"),
-    # ), patch(
-    #     "pymyenergi.zappi.Zappi.fetch_history_data",
-    #     return_value=load_fixture_json("history_zappi"),
-    # ), patch(
-    #     "pymyenergi.eddi.Eddi.fetch_history_data",
-    #     return_value=load_fixture_json("history_eddi"),
-    # ):
-    yield
-
-
-# In this fixture, we are forcing calls to async_get_data to raise an Exception. This is useful
-# for exception handling.
-@pytest.fixture(name="error_on_get_data")
-def error_get_data_fixture():
-    """Simulate error when retrieving data from API."""
-    with patch(
-        "pymyenergi.client.MyenergiClient.refresh",
-        side_effect=Exception,
-    ):
-        yield
-
-
 async def snapshot_platform_entities(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -133,14 +91,3 @@ def async_get_access_token() -> AsyncMock:
         return_value="aa",
     ):
         yield
-
-
-# @pytest.fixture(name="access_token")
-# def async_get_access_token() -> AsyncMock:
-#     """Restrict loaded platforms to list given."""
-#
-#     with patch(
-#         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
-#         return_value="aa",
-#     ):
-#         yield
