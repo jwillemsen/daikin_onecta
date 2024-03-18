@@ -179,29 +179,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
         return setpoint
 
-    # Return the dictionary fanControl for the current operationMode
-    def fan_control(self):
-        fancontrol = None
-        supported_management_point_types = {"climateControl"}
-        if self._device.daikin_data["managementPoints"] is not None:
-            for management_point in self._device.daikin_data["managementPoints"]:
-                management_point_type = management_point["managementPointType"]
-                if management_point_type in supported_management_point_types:
-                    # Check if we have a temperatureControl
-                    temperatureControl = management_point.get("fanControl")
-                    _LOGGER.info("Climate: Device fanControl %s", temperatureControl)
-                    if temperatureControl is not None:
-                        operationMode = management_point.get("operationMode").get("value")
-                        fancontrol = temperatureControl["value"]["operationModes"][operationMode].get(self._setpoint)
-                        _LOGGER.info(
-                            "Device '%s': %s operation mode %s has fanControl %s",
-                            self._device.name,
-                            self._setpoint,
-                            operationMode,
-                            fancontrol,
-                        )
-        return fancontrol
-
     def sensory_data(self):
         sensoryData = None
         supported_management_point_types = {"climateControl"}
