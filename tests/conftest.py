@@ -87,75 +87,6 @@ def timeout_error_get_data_fixture():
         yield
 
 
-@pytest.fixture
-def mock_zappi_set_charge_mode():
-    """Return a mocked Zappi object."""
-    with patch("pymyenergi.client.Zappi.set_charge_mode") as charge_mode:
-        yield charge_mode
-
-
-@pytest.fixture
-def mock_eddi_set_operating_mode():
-    """Return a mocked Eddi object."""
-    with patch("pymyenergi.client.Eddi.set_operating_mode") as op_mode:
-        yield op_mode
-
-
-@pytest.fixture
-def mock_zappi_start_boost():
-    """Return a mocked Zappi object."""
-    with patch("pymyenergi.client.Zappi.start_boost") as start_boost:
-        yield start_boost
-
-
-@pytest.fixture
-def mock_eddi_manual_boost():
-    """Return a mocked Eddi object."""
-    with patch("pymyenergi.client.Eddi.manual_boost") as manual_boost:
-        yield manual_boost
-
-
-@pytest.fixture
-def mock_zappi_start_smart_boost():
-    """Return a mocked Zappi object."""
-    with patch("pymyenergi.client.Zappi.start_smart_boost") as start_smart_boost:
-        yield start_smart_boost
-
-
-@pytest.fixture
-def mock_zappi_set_green():
-    """Return a mocked Zappi object."""
-    with patch("pymyenergi.client.Zappi.set_minimum_green_level") as green_lvl:
-        yield green_lvl
-
-
-@pytest.fixture
-def mock_eddi_heater():
-    """Return a mocked eddi object."""
-    with patch("pymyenergi.client.Eddi.set_heater_priority") as heater:
-        yield heater
-
-
-@pytest.fixture
-def mock_eddi_device():
-    """Return a mocked eddi object."""
-    with patch("pymyenergi.client.Eddi.set_priority") as device:
-        yield device
-
-
-@pytest.fixture
-def mock_zappi_stop_boost():
-    """Return a mocked Zappi object."""
-    with patch("pymyenergi.client.Zappi.stop_boost") as stop_boost:
-        yield stop_boost
-
-
-@pytest.fixture
-def mock_zappi_unlock():
-    """Return a mocked Zappi object."""
-    with patch("pymyenergi.client.Zappi.unlock") as unlock:
-        yield unlock
-
 async def snapshot_platform_entities(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -184,6 +115,9 @@ def selected_platforms(platforms: list[Platform]) -> AsyncMock:
     """Restrict loaded platforms to list given."""
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
+    ), patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="aa",
     ):
         yield
 
@@ -236,3 +170,14 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
 def onecta_auth() -> AsyncMock:
     """Restrict loaded platforms to list given."""
     yield
+
+
+@pytest.fixture(name="access_token")
+def async_get_access_token() -> AsyncMock:
+    """Restrict loaded platforms to list given."""
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="aa",
+    ):
+        yield

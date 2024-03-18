@@ -50,8 +50,8 @@ async def setup_mock_daikin_onecta_config_entry(
     client: Mock | None = None,
 ) -> ConfigEntry:
     client_data = "altherma"
-    if data is not None:
-        client_data = data.get("client_data", "client")
+    #if data is not None:
+    #    client_data = data.get("client_data", "client")
     """Add a mock sunspec config entry to hass."""
     config_entry = config_entry or create_mock_daikin_onecta_config_entry(hass, data)
     """Mock data from client.fetch_data()"""

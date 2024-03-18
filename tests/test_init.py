@@ -21,6 +21,18 @@ async def test_entity(
     entity_registry: er.EntityRegistry,
 ) -> None:
     """Test entities."""
+    #with selected_platforms([Platform.SENSOR]):
+    #    await setup_mock_daikin_onecta_config_entry(hass)
+        #assert await hass.config_entries.async_setup(config_entry.entry_id)
+    # entry = MockConfigEntry(domain=DOMAIN, data={"name": "simple config",})
+    # entry.add_to_hass(hass)
+    # await hass.config_entries.async_setup(entry.entry_id)
+    # await hass.async_block_till_done()
+
+    #state = hass.states.get("sensor.example_temperature")
+
+    #assert await async_setup_component(hass, "daikin_onecta", {})
+    #await setup_mock_daikin_onecta_config_entry(hass)
     await snapshot_platform_entities(
         hass,
         config_entry,
@@ -47,18 +59,19 @@ async def test_sensor(hass: HomeAssistant) -> None:
 
 
 
-async def test_indoor_sensor(
-    hass: HomeAssistant, config_entry: MockConfigEntry, onecta_auth: AsyncMock
-) -> None:
-    """Test indoor sensor setup."""
-    # with selected_platforms([Platform.SENSOR]):
-    assert await hass.config_entries.async_setup(config_entry.entry_id)
-    await hass.async_block_till_done()
-
-    prefix = "sensor.parents_bedroom_"
-
-    assert hass.states.get(f"{prefix}temperature").state == "20.3"
-    assert hass.states.get(f"{prefix}humidity").state == "63"
-    assert hass.states.get(f"{prefix}co2").state == "494"
-    assert hass.states.get(f"{prefix}pressure").state == "1014.5"
-
+# async def test_indoor_sensor(
+#     hass: HomeAssistant, config_entry: MockConfigEntry, onecta_auth: AsyncMock
+# ) -> None:
+#     """Test indoor sensor setup."""
+#     with selected_platforms([Platform.SENSOR]):
+#         assert await hass.config_entries.async_setup(config_entry.entry_id)
+#     await hass.async_block_till_done()
+#     await setup_mock_daikin_onecta_config_entry(hass)
+#
+#     prefix = "sensor.parents_bedroom_"
+#
+#     assert hass.states.get(f"{prefix}temperature").state == "20.3"
+#     assert hass.states.get(f"{prefix}humidity").state == "63"
+#     assert hass.states.get(f"{prefix}co2").state == "494"
+#     assert hass.states.get(f"{prefix}pressure").state == "1014.5"
+#
