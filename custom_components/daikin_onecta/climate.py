@@ -422,22 +422,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     cc["operationMode"]["value"] = operation_mode
 
         if result is True:
-            self._attr_hvac_mode = hvac_mode
             # When switching hvac mode it could be that we can set min/max/target/etc
             # which we couldn't set with a previous hvac mode
-            self._attr_supported_features = self.get_supported_features()
-            self._attr_current_temperature = self.get_current_temperature()
-            self._attr_max_temp = self.get_max_temp()
-            self._attr_min_temp = self.get_min_temp()
-            self._attr_target_temperature_step = self.get_target_temperature_step()
-            self._attr_target_temperature = self.get_target_temperature()
-            self._attr_swing_modes = self.get_swing_modes()
-            self._attr_preset_modes = self.get_preset_modes()
-            self._attr_fan_modes = self.get_fan_modes()
-            self._attr_swing_mode = self.get_swing_mode()
-            self._attr_preset_mode = self.get_preset_mode()
-            self._attr_fan_mode = self.get_fan_mode()
-
+            self.update_state()
             self.async_write_ha_state()
 
         return result
