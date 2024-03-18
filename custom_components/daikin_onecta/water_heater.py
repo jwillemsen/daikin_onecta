@@ -56,21 +56,12 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
-        self._attr_name = self._device.name
-        self._attr_supported_features = self.get_supported_features()
-        self._attr_current_temperature = self.get_current_temperature()
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
-        self._attr_target_temperature = self.get_target_temperature()
-        self._attr_min_temp = self.get_min_temp()
-        self._attr_max_temp = self.get_max_temp()
-        self._attr_operation_list = self.get_operation_list()
-        self._attr_current_operation = self.get_current_operation()
-        self._attr_available = self._device.available
+        self.update_state()
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
             _LOGGER.debug("Device '%'s: tank temperature is settable", device.name)
 
-    @callback
-    def _handle_coordinator_update(self) -> None:
+    def update_state(self) -> None:
         self._attr_name = self._device.name
         self._attr_supported_features = self.get_supported_features()
         self._attr_current_temperature = self.get_current_temperature()
@@ -80,6 +71,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_operation_list = self.get_operation_list()
         self._attr_current_operation = self.get_current_operation()
         self._attr_available = self._device.available
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self.update_state()
         self.async_write_ha_state()
 
     @property

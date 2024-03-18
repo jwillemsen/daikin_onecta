@@ -95,7 +95,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for mode in modes:
             async_add_entities(
                 [DaikinClimate(device, mode, coordinator, embedded_id)],
-                update_before_add=True,
+                update_before_add=False,
             )
 
 
@@ -117,8 +117,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._device = device
         self._embedded_id = embedded_id
         self._setpoint = setpoint
-        self._attr_supported_features = self.get_supported_features()
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
+        self.update_state()
+
+    def update_state(self) -> None:
+        self._attr_supported_features = self.get_supported_features()
         self._attr_current_temperature = self.get_current_temperature()
         self._attr_max_temp = self.get_max_temp()
         self._attr_min_temp = self.get_min_temp()
@@ -135,20 +138,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._attr_supported_features = self.get_supported_features()
-        self._attr_current_temperature = self.get_current_temperature()
-        self._attr_max_temp = self.get_max_temp()
-        self._attr_min_temp = self.get_min_temp()
-        self._attr_target_temperature_step = self.get_target_temperature_step()
-        self._attr_target_temperature = self.get_target_temperature()
-        self._attr_hvac_modes = self.get_hvac_modes()
-        self._attr_swing_modes = self.get_swing_modes()
-        self._attr_preset_modes = self.get_preset_modes()
-        self._attr_fan_modes = self.get_fan_modes()
-        self._attr_hvac_mode = self.get_hvac_mode()
-        self._attr_swing_mode = self.get_swing_mode()
-        self._attr_preset_mode = self.get_preset_mode()
-        self._attr_fan_mode = self.get_fan_mode()
+        self.update_state()
         self.async_write_ha_state()
 
     def climate_control(self):
