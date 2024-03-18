@@ -95,7 +95,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for mode in modes:
             async_add_entities(
                 [DaikinClimate(device, mode, coordinator, embedded_id)],
-                update_before_add=False,
+                update_before_add=True,
             )
 
 
