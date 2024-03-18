@@ -1,5 +1,4 @@
 """Platform for the Daikin AC."""
-
 import asyncio
 import functools
 import logging
@@ -13,7 +12,6 @@ from homeassistant.helpers import issue_registry as ir
 
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN
-from .daikin_base import Appliance
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -40,7 +38,14 @@ class DaikinApi:
         self._last_patch_call = datetime.min
 
         # Store the limits as member so that we can add these to the diagnostics
-        self.rate_limits = {"minute": 0, "day": 0, "remaining_minutes": 0, "remaining_day": 0, "retry_after": 0, "ratelimit_reset": 0}
+        self.rate_limits = {
+            "minute": 0,
+            "day": 0,
+            "remaining_minutes": 0,
+            "remaining_day": 0,
+            "retry_after": 0,
+            "ratelimit_reset": 0,
+        }
 
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.

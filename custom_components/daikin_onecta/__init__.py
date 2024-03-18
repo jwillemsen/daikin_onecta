@@ -1,5 +1,4 @@
 """Platform for the Daikin AC."""
-
 import asyncio
 import logging
 
@@ -7,9 +6,9 @@ from aiohttp import ClientError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.config_entries import SOURCE_IMPORT
 from homeassistant.const import SERVICE_RELOAD
+from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.core import HomeAssistant
 
 from .const import COORDINATOR
 from .const import DAIKIN_API

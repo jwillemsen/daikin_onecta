@@ -88,22 +88,6 @@ class DaikinOnectaDevice:
         """Get Daikin Device UUID."""
         return self.daikin_data["id"]
 
-    def getName(self):
-        managementPoints = self.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type == "climateControl":
-                self.name = management_point["name"]["value"]
-        return self.name
-
-    def getDescription(self):
-        """Get the original Daikin Device Description."""
-        return self.daikin_data
-
-    def getLastUpdated(self):
-        """Get the timestamp when data were last updated."""
-        return self.daikin_data["lastUpdateReceived"]
-
     async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
         setBody = {"value": value}

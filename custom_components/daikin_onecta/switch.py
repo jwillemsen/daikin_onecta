@@ -1,5 +1,4 @@
 """Support for Daikin AirBase zones."""
-
 import logging
 import re
 
@@ -76,7 +75,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
 
 class DaikinSwitch(CoordinatorEntity, ToggleEntity):
-
     def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)

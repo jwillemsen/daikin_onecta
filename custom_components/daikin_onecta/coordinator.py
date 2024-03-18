@@ -1,5 +1,4 @@
 """Coordinator for Daikin Onecta integration."""
-
 from __future__ import annotations
 
 import logging
@@ -25,7 +24,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Initialize."""
         self.options = config_entry.options
 
-        super().__init__(hass, _LOGGER, name=DOMAIN, update_interval=self.determine_update_interval(hass))
+        super().__init__(
+            hass,
+            _LOGGER,
+            name=DOMAIN,
+            update_interval=self.determine_update_interval(hass),
+        )
 
         _LOGGER.info(
             "Daikin coordinator initialized with %s interval.",

@@ -1,5 +1,4 @@
 """Support for Daikin AC sensors."""
-
 import logging
 import re
 
@@ -12,9 +11,9 @@ from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import COORDINATOR
 from .const import DAIKIN_API
@@ -240,7 +239,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 
 
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
-
     def __init__(
         self,
         device: Appliance,
@@ -317,7 +315,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
 
 class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
-
     def __init__(
         self,
         hass: HomeAssistant,
@@ -338,7 +335,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = self.sensor_value()
         self._attr_state_class = SensorStateClass.TOTAL
         _LOGGER.info(
-            "Device '%s:%s' supports sensor '%s'",
+            "Device '%s' supports sensor '%s'",
             device.name,
             self._attr_name,
         )

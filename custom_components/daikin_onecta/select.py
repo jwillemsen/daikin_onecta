@@ -2,7 +2,10 @@ import logging
 import re
 
 from homeassistant.components.select import SelectEntity
+from homeassistant.core import callback
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .daikin_base import Appliance
@@ -12,6 +15,7 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
+    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
     sensors = []
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])
@@ -23,17 +27,17 @@ async def async_setup_entry(hass, entry, async_add_entities):
             demand = management_point.get("demandControl")
             if demand is not None:
                 _LOGGER.info("Device '%s' provides demandControl", device.name)
-                sensor2 = DaikinDemandSelect(device, embedded_id, management_point_type, "demandControl")
-                sensors.append(sensor2)
+                sensors.append(DaikinDemandSelect(device, coordinator, embedded_id, management_point_type, "demandControl"))
 
     async_add_entities(sensors)
 
 
-class DaikinDemandSelect(SelectEntity):
+class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
     """Daikin DemandControl Select class."""
 
-    def __init__(self, device: Appliance, embedded_id, management_point_type, value) -> None:
+    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinDemandSelect '%s' '%s'", management_point_type, value)
+        super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
@@ -44,6 +48,7 @@ class DaikinDemandSelect(SelectEntity):
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
+        self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
@@ -51,13 +56,21 @@ class DaikinDemandSelect(SelectEntity):
             self._attr_name,
         )
 
+    def update_state(self) -> None:
+        self._attr_options = self.get_options()
+        self._attr_current_option = self.get_current_option()
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self.update_state()
+        self.async_write_ha_state()
+
     @property
     def available(self):
         """Return the availability of the underlying device."""
         return self._device.available
 
-    @property
-    def current_option(self):
+    def get_current_option(self):
         """Return the state of the sensor."""
         res = None
         managementPoints = self._device.daikin_data.get("managementPoints", [])
@@ -123,8 +136,7 @@ class DaikinDemandSelect(SelectEntity):
 
         return res
 
-    @property
-    def options(self):
+    def get_options(self):
         opt = []
         for management_point in self._device.daikin_data["managementPoints"]:
             if self._embedded_id == management_point["embeddedId"]:
