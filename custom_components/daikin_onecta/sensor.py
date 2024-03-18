@@ -120,9 +120,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                     management_point_type,
                                     mode,
                                 )
-                                icon = "mdi:fire"
-                                if mode == "cooling":
-                                    icon = "mdi:snowflake"
                                 for period in cdve[mode]:
                                     _LOGGER.info(
                                         "Device '%s:%s' provides mode %s %s supports period %s",
@@ -135,17 +132,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                     periodName = SENSOR_PERIODS[period]
                                     sensor = f"{device.name} {management_point_type} {mode} {periodName}"
                                     _LOGGER.info("Proposing sensor '%s'", sensor)
-                                    sensors.append(
-                                        DaikinEnergySensor(
-                                            device,
-                                            coordinator,
-                                            embedded_id,
-                                            management_point_type,
-                                            mode,
-                                            period,
-                                            icon,
-                                        )
-                                    )
+                                    sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, mode, period))
                             else:
                                 _LOGGER.info(
                                     "Ignoring consumption data '%s', not a supported operation_mode",
@@ -166,7 +153,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         management_point_type,
         operation_mode,
         period,
-        icon,
     ) -> None:
         super().__init__(coordinator)
         self._device = device
@@ -179,7 +165,9 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Electrical Consumption"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_electrical_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
-        self._attr_icon = icon
+        self._attr_icon = "mdi:fire"
+        if operation_mode == "cooling":
+            self._attr_icon = "mdi:snowflake"
         self._attr_has_entity_name = True
         self._attr_device_class = SensorDeviceClass.ENERGY
         self._attr_state_class = SensorStateClass.TOTAL_INCREASING
