@@ -92,10 +92,6 @@ class DaikinOnectaDevice:
         """Get the original Daikin Device Description."""
         return self.daikin_data
 
-    def getLastUpdated(self):
-        """Get the timestamp when data were last updated."""
-        return self.daikin_data["lastUpdateReceived"]
-
     async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
         setBody = {"value": value}
