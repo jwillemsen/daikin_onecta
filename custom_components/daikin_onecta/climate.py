@@ -727,6 +727,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             format(supported_preset_modes),
         )
 
+        supported_preset_modes.sort()
         return supported_preset_modes
 
     async def async_turn_on(self):
