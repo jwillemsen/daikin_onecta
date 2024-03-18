@@ -99,6 +99,7 @@ async def snapshot_platform_entities(
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
+    # with selected_platforms([platform]):
     entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
 
     assert entity_entries
@@ -113,8 +114,8 @@ def selected_platforms(platforms: list[Platform]) -> AsyncMock:
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ), patch(
-        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
-        return_value="aa",
+        "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
+        return_value=load_fixture_json("altherma"),
     ):
         yield
 
@@ -178,3 +179,14 @@ def async_get_access_token() -> AsyncMock:
         return_value="aa",
     ):
         yield
+
+
+# @pytest.fixture(name="access_token")
+# def async_get_access_token() -> AsyncMock:
+#     """Restrict loaded platforms to list given."""
+#
+#     with patch(
+#         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+#         return_value="aa",
+#     ):
+#         yield

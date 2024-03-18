@@ -48,6 +48,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             return
 
         daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
+        print(daikin_api.json_data)
         for dev_data in daikin_api.json_data or []:
             if dev_data["id"] in devices:
                 devices[dev_data["id"]].setJsonData(dev_data)

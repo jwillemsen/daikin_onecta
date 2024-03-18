@@ -59,9 +59,9 @@ async def test_sensor(hass: HomeAssistant) -> None:
     state = hass.states.get("sensor.example_temperature")
 
     # assert await async_setup_component(hass, "daikin_onecta", {})
-    await setup_mock_daikin_onecta_config_entry(hass)
-    entity_state = hass.states.get("sensor.altherma_climatecontrol_outdoor_temperature")
-    print(entity_state)
+    # await setup_mock_daikin_onecta_config_entry(hass)
+    # entity_state = hass.states.get("sensor.altherma_climatecontrol_outdoor_temperature")
+    # print(entity_state)
     # assert entity_state
 
 

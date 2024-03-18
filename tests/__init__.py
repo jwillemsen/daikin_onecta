@@ -12,6 +12,7 @@ from typing import Any
 from unittest.mock import Mock
 from unittest.mock import patch
 
+import logging
 from custom_components.daikin_onecta import DOMAIN
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -50,15 +51,18 @@ async def setup_mock_daikin_onecta_config_entry(
     config_entry: ConfigEntry | None = None,
     client: Mock | None = None,
 ) -> ConfigEntry:
+    log = logging.getLogger()
+    log.setLevel(logging.DEBUG)
     client_data = "altherma"
     # if data is not None:
+    data = load_fixture_json("altherma")
     #    client_data = data.get("client_data", "client")
     """Add a mock sunspec config entry to hass."""
     config_entry = config_entry or create_mock_daikin_onecta_config_entry(hass, data)
     """Mock data from client.fetch_data()"""
     with patch(
         "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
-        return_value=load_fixture_json(client_data),
+        return_value=load_fixture_json("altherma"),
     ):
         await hass.config_entries.async_setup(config_entry.entry_id)
         await hass.async_block_till_done()
