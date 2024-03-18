@@ -78,7 +78,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
-                embedded_id = cc.get("embeddedId")
+                embedded_id = management_point.get("embeddedId")
                 # Check if we have a temperatureControl
                 temperatureControl = management_point.get("temperatureControl")
                 if temperatureControl is not None:
