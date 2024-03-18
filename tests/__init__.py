@@ -20,6 +20,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 TEST_CONFIG_ENTRY_ID = "77889900af"
 
+
 def load_fixture_json(name):
     with open(f"tests/fixtures/{name}.json") as json_file:
         data = json.load(json_file)
@@ -50,7 +51,7 @@ async def setup_mock_daikin_onecta_config_entry(
     client: Mock | None = None,
 ) -> ConfigEntry:
     client_data = "altherma"
-    #if data is not None:
+    # if data is not None:
     #    client_data = data.get("client_data", "client")
     """Add a mock sunspec config entry to hass."""
     config_entry = config_entry or create_mock_daikin_onecta_config_entry(hass, data)

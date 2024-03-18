@@ -1,4 +1,5 @@
 """Test daikin_onecta sensor."""
+
 from homeassistant.core import HomeAssistant
 from .conftest import selected_platforms, snapshot_platform_entities
 from homeassistant.const import Platform
@@ -13,6 +14,7 @@ from syrupy import SnapshotAssertion
 import homeassistant.helpers.entity_registry as er
 from unittest.mock import AsyncMock, patch
 
+
 async def test_entity(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -21,18 +23,18 @@ async def test_entity(
     entity_registry: er.EntityRegistry,
 ) -> None:
     """Test entities."""
-    #with selected_platforms([Platform.SENSOR]):
+    # with selected_platforms([Platform.SENSOR]):
     #    await setup_mock_daikin_onecta_config_entry(hass)
-        #assert await hass.config_entries.async_setup(config_entry.entry_id)
+    # assert await hass.config_entries.async_setup(config_entry.entry_id)
     # entry = MockConfigEntry(domain=DOMAIN, data={"name": "simple config",})
     # entry.add_to_hass(hass)
     # await hass.config_entries.async_setup(entry.entry_id)
     # await hass.async_block_till_done()
 
-    #state = hass.states.get("sensor.example_temperature")
+    # state = hass.states.get("sensor.example_temperature")
 
-    #assert await async_setup_component(hass, "daikin_onecta", {})
-    #await setup_mock_daikin_onecta_config_entry(hass)
+    # assert await async_setup_component(hass, "daikin_onecta", {})
+    # await setup_mock_daikin_onecta_config_entry(hass)
     await snapshot_platform_entities(
         hass,
         config_entry,
@@ -41,22 +43,29 @@ async def test_entity(
         snapshot,
     )
 
+
 async def test_sensor(hass: HomeAssistant) -> None:
     """Verify device information includes expected details."""
-    entry = MockConfigEntry(domain=DOMAIN, data={"name": "simple config",})
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={
+            "name": "simple config",
+        },
+    )
     entry.add_to_hass(hass)
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()
 
     state = hass.states.get("sensor.example_temperature")
 
-    #assert await async_setup_component(hass, "daikin_onecta", {})
+    # assert await async_setup_component(hass, "daikin_onecta", {})
     await setup_mock_daikin_onecta_config_entry(hass)
     entity_state = hass.states.get("sensor.altherma_climatecontrol_outdoor_temperature")
     print(entity_state)
-    #assert entity_state
-#    assert entity_state.state == "4429"
+    # assert entity_state
 
+
+#    assert entity_state.state == "4429"
 
 
 # async def test_indoor_sensor(

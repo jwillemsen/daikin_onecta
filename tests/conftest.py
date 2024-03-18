@@ -17,7 +17,6 @@ pytest_plugins = "pytest_homeassistant_custom_component"
 
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
-
 def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:  # noqa: F811
     """Enable custom integrations defined in the test dir."""
 
@@ -32,6 +31,7 @@ def skip_notifications_fixture():
         "homeassistant.components.persistent_notification.async_dismiss"
     ):
         yield
+
 
 # This fixture, when used, will result in calls to async_get_data to return None. To have the call
 # return a value, we would add the `return_value=<VALUE_TO_RETURN>` parameter to the patch call.
@@ -48,7 +48,7 @@ def bypass_get_data_fixture():
     #     "pymyenergi.eddi.Eddi.fetch_history_data",
     #     return_value=load_fixture_json("history_eddi"),
     # ):
-        yield
+    yield
 
 
 # In this fixture, we are forcing calls to async_get_data to raise an Exception. This is useful
@@ -99,16 +99,13 @@ async def snapshot_platform_entities(
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
-    entity_entries = er.async_entries_for_config_entry(
-        entity_registry, config_entry.entry_id
-    )
+    entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
 
     assert entity_entries
     for entity_entry in entity_entries:
         assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
-        assert hass.states.get(entity_entry.entity_id) == snapshot(
-            name=f"{entity_entry.entity_id}-state"
-        )
+        assert hass.states.get(entity_entry.entity_id) == snapshot(name=f"{entity_entry.entity_id}-state")
+
 
 @contextmanager
 def selected_platforms(platforms: list[Platform]) -> AsyncMock:
@@ -120,6 +117,7 @@ def selected_platforms(platforms: list[Platform]) -> AsyncMock:
         return_value="aa",
     ):
         yield
+
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
@@ -134,7 +132,7 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
                 "type": "Bearer",
                 "expires_in": 60,
                 "expires_at": 1000,
-                "scope": 1
+                "scope": 1,
             },
         },
         options={
@@ -163,7 +161,6 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
     mock_entry.add_to_hass(hass)
 
     return mock_entry
-
 
 
 @pytest.fixture(name="onecta_auth")
