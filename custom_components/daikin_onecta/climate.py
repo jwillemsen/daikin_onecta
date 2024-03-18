@@ -74,7 +74,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {"climateControl"}
         managementPoints = device.daikin_data.get("managementPoints", [])
-        embedded_id = ''
+        embedded_id = ""
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
