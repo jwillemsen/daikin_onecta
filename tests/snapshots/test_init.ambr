@@ -1502,7 +1502,7 @@
 # name: test_entity[select.linde_climatecontrol_demand_control-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Demand Control',
+      'friendly_name': 'Sanne ClimateControl Demand Control',
       'options': list([
         'off',
         'auto',
@@ -1715,7 +1715,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_control_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Control Mode',
+      'friendly_name': 'Sanne ClimateControl Control Mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -1761,7 +1761,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Daily Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -1809,7 +1809,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Weekly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -1857,7 +1857,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Yearly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -1902,7 +1902,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Error Code',
+      'friendly_name': 'Sanne ClimateControl Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -1948,7 +1948,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Daily Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -1996,7 +1996,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Weekly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -2044,7 +2044,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Yearly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -2089,7 +2089,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
+      'friendly_name': 'Sanne ClimateControl Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2132,7 +2132,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Holiday Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2175,7 +2175,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_is_in_emergency_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Emergency State',
+      'friendly_name': 'Sanne ClimateControl Is In Emergency State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2218,7 +2218,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Error State',
+      'friendly_name': 'Sanne ClimateControl Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2261,7 +2261,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Installer State',
+      'friendly_name': 'Sanne ClimateControl Is In Installer State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2304,7 +2304,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Warning State',
+      'friendly_name': 'Sanne ClimateControl Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2350,7 +2350,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Leaving Water Temperature',
+      'friendly_name': 'Sanne ClimateControl Leaving Water Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -2395,7 +2395,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Name',
+      'friendly_name': 'Sanne ClimateControl Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2441,7 +2441,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Outdoor Temperature',
+      'friendly_name': 'Sanne ClimateControl Outdoor Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -2489,7 +2489,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Room Temperature',
+      'friendly_name': 'Sanne ClimateControl Room Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -2534,7 +2534,7 @@
 # name: test_entity[sensor.altherma_climatecontrol_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Setpoint Mode',
+      'friendly_name': 'Sanne ClimateControl Setpoint Mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -2577,7 +2577,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Error Code',
+      'friendly_name': 'Sanne DomesticHotWaterTank Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2623,7 +2623,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde DomesticHotWaterTank Heating Daily Electrical Consumption',
+      'friendly_name': 'Sanne DomesticHotWaterTank Heating Daily Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -2671,7 +2671,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde DomesticHotWaterTank Heating Weekly Electrical Consumption',
+      'friendly_name': 'Sanne DomesticHotWaterTank Heating Weekly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -2719,7 +2719,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde DomesticHotWaterTank Heating Yearly Electrical Consumption',
+      'friendly_name': 'Sanne DomesticHotWaterTank Heating Yearly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -2807,7 +2807,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Icon Id',
+      'friendly_name': 'Sanne DomesticHotWaterTank Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2850,7 +2850,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Is Holiday Mode Active',
+      'friendly_name': 'Sanne DomesticHotWaterTank Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2893,7 +2893,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_is_in_emergency_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Is In Emergency State',
+      'friendly_name': 'Sanne DomesticHotWaterTank Is In Emergency State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2936,7 +2936,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Is In Error State',
+      'friendly_name': 'Sanne DomesticHotWaterTank Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -2979,7 +2979,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Is In Installer State',
+      'friendly_name': 'Sanne DomesticHotWaterTank Is In Installer State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3022,7 +3022,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Is In Warning State',
+      'friendly_name': 'Sanne DomesticHotWaterTank Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3065,7 +3065,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Is Powerful Mode Active',
+      'friendly_name': 'Sanne DomesticHotWaterTank Is Powerful Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3108,7 +3108,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Name',
+      'friendly_name': 'Sanne DomesticHotWaterTank Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3151,7 +3151,7 @@
 # name: test_entity[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde DomesticHotWaterTank Setpoint Mode',
+      'friendly_name': 'Sanne DomesticHotWaterTank Setpoint Mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -3197,7 +3197,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde DomesticHotWaterTank Tank Temperature',
+      'friendly_name': 'Sanne DomesticHotWaterTank Tank Temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -3242,7 +3242,7 @@
 # name: test_entity[sensor.altherma_gateway_firmware_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Firmware Version',
+      'friendly_name': 'Sanne Gateway Firmware Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3285,7 +3285,7 @@
 # name: test_entity[sensor.altherma_gateway_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Icon Id',
+      'friendly_name': 'Sanne Gateway Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3328,7 +3328,7 @@
 # name: test_entity[sensor.altherma_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Ip Address',
+      'friendly_name': 'Sanne Gateway Ip Address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -3414,7 +3414,7 @@
 # name: test_entity[sensor.altherma_gateway_mac_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
+      'friendly_name': 'Sanne Gateway Mac Address',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3457,7 +3457,7 @@
 # name: test_entity[sensor.altherma_gateway_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Model Info',
+      'friendly_name': 'Sanne Gateway Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3500,7 +3500,7 @@
 # name: test_entity[sensor.altherma_gateway_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Name',
+      'friendly_name': 'Sanne Gateway Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3543,7 +3543,7 @@
 # name: test_entity[sensor.altherma_gateway_serial_number-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Serial Number',
+      'friendly_name': 'Sanne Gateway Serial Number',
       'icon': 'mdi:numeric',
     }),
     'context': <ANY>,
@@ -3586,7 +3586,7 @@
 # name: test_entity[sensor.altherma_gateway_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Ssid',
+      'friendly_name': 'Sanne Gateway Ssid',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -3629,7 +3629,7 @@
 # name: test_entity[sensor.altherma_gateway_wifi_connection_s_s_i_d-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi Connection S S I D',
+      'friendly_name': 'Sanne Gateway Wifi Connection S S I D',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -3675,7 +3675,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi Connection Strength',
+      'friendly_name': 'Sanne Gateway Wifi Connection Strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -3720,7 +3720,7 @@
 # name: test_entity[sensor.altherma_indoorunithydro_eeprom_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnitHydro Eeprom Version',
+      'friendly_name': 'Sanne IndoorUnitHydro Eeprom Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3763,7 +3763,7 @@
 # name: test_entity[sensor.altherma_indoorunithydro_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnitHydro Icon Id',
+      'friendly_name': 'Sanne IndoorUnitHydro Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3806,7 +3806,7 @@
 # name: test_entity[sensor.altherma_indoorunithydro_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnitHydro Model Info',
+      'friendly_name': 'Sanne IndoorUnitHydro Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3849,7 +3849,7 @@
 # name: test_entity[sensor.altherma_indoorunithydro_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnitHydro Name',
+      'friendly_name': 'Sanne IndoorUnitHydro Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3892,7 +3892,7 @@
 # name: test_entity[sensor.altherma_indoorunithydro_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnitHydro Software Version',
+      'friendly_name': 'Sanne IndoorUnitHydro Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3935,7 +3935,7 @@
 # name: test_entity[sensor.altherma_outdoorunit_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Icon Id',
+      'friendly_name': 'Sanne OutdoorUnit Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -3978,7 +3978,7 @@
 # name: test_entity[sensor.altherma_outdoorunit_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Model Info',
+      'friendly_name': 'Sanne OutdoorUnit Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4021,7 +4021,7 @@
 # name: test_entity[sensor.altherma_outdoorunit_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Name',
+      'friendly_name': 'Sanne OutdoorUnit Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4064,7 +4064,7 @@
 # name: test_entity[sensor.altherma_outdoorunit_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Software Version',
+      'friendly_name': 'Sanne OutdoorUnit Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4109,7 +4109,7 @@
 # name: test_entity[sensor.altherma_ratelimit_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit day',
+      'friendly_name': 'Sanne RateLimit day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -4155,7 +4155,7 @@
 # name: test_entity[sensor.altherma_ratelimit_minute-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit minute',
+      'friendly_name': 'Sanne RateLimit minute',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -4201,7 +4201,7 @@
 # name: test_entity[sensor.altherma_ratelimit_ratelimit_reset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit ratelimit_reset',
+      'friendly_name': 'Sanne RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -4247,7 +4247,7 @@
 # name: test_entity[sensor.altherma_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_day',
+      'friendly_name': 'Sanne RateLimit remaining_day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -4293,7 +4293,7 @@
 # name: test_entity[sensor.altherma_ratelimit_remaining_minutes-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_minutes',
+      'friendly_name': 'Sanne RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -4339,7 +4339,7 @@
 # name: test_entity[sensor.altherma_ratelimit_retry_after-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit retry_after',
+      'friendly_name': 'Sanne RateLimit retry_after',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -4383,7 +4383,7 @@
 # name: test_entity[sensor.altherma_userinterface_date_time-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde UserInterface Date Time',
+      'friendly_name': 'Sanne UserInterface Date Time',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4426,7 +4426,7 @@
 # name: test_entity[sensor.altherma_userinterface_firmware_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde UserInterface Firmware Version',
+      'friendly_name': 'Sanne UserInterface Firmware Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4469,7 +4469,7 @@
 # name: test_entity[sensor.altherma_userinterface_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde UserInterface Icon Id',
+      'friendly_name': 'Sanne UserInterface Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4512,7 +4512,7 @@
 # name: test_entity[sensor.altherma_userinterface_micon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde UserInterface Micon Id',
+      'friendly_name': 'Sanne UserInterface Micon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4598,7 +4598,7 @@
 # name: test_entity[sensor.altherma_userinterface_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde UserInterface Name',
+      'friendly_name': 'Sanne UserInterface Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -4641,7 +4641,7 @@
 # name: test_entity[sensor.altherma_userinterface_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde UserInterface Software Version',
+      'friendly_name': 'Sanne UserInterface Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -16628,7 +16628,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Daily Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -16676,7 +16676,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Weekly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -16724,7 +16724,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Yearly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -16769,7 +16769,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Error Code',
+      'friendly_name': 'Sanne ClimateControl Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -16815,7 +16815,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Daily Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -16863,7 +16863,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Weekly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -16911,7 +16911,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Yearly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -16956,7 +16956,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
+      'friendly_name': 'Sanne ClimateControl Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -16999,7 +16999,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_cool_heat_master-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Cool Heat Master',
+      'friendly_name': 'Sanne ClimateControl Is Cool Heat Master',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17042,7 +17042,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Holiday Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17085,7 +17085,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Caution State',
+      'friendly_name': 'Sanne ClimateControl Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17128,7 +17128,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Error State',
+      'friendly_name': 'Sanne ClimateControl Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17171,7 +17171,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_in_mode_conflict-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Mode Conflict',
+      'friendly_name': 'Sanne ClimateControl Is In Mode Conflict',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17214,7 +17214,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Warning State',
+      'friendly_name': 'Sanne ClimateControl Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17257,7 +17257,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_lock_function_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Lock Function Enabled',
+      'friendly_name': 'Sanne ClimateControl Is Lock Function Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17300,7 +17300,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Powerful Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Powerful Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17343,7 +17343,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Name',
+      'friendly_name': 'Sanne ClimateControl Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17386,7 +17386,7 @@
 # name: test_entity[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
+      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
@@ -17431,7 +17431,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Outdoor Temperature',
+      'friendly_name': 'Sanne ClimateControl Outdoor Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -17479,7 +17479,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Room Temperature',
+      'friendly_name': 'Sanne ClimateControl Room Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -17524,7 +17524,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_daylight_saving_time_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Daylight Saving Time Enabled',
+      'friendly_name': 'Sanne Gateway Daylight Saving Time Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17567,7 +17567,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Error Code',
+      'friendly_name': 'Sanne Gateway Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17610,7 +17610,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_firmware_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Firmware Version',
+      'friendly_name': 'Sanne Gateway Firmware Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17739,7 +17739,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Is In Error State',
+      'friendly_name': 'Sanne Gateway Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17782,7 +17782,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_led_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Led Enabled',
+      'friendly_name': 'Sanne Gateway Led Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17825,7 +17825,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_mac_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
+      'friendly_name': 'Sanne Gateway Mac Address',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17868,7 +17868,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Model Info',
+      'friendly_name': 'Sanne Gateway Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17911,7 +17911,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_region_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Region Code',
+      'friendly_name': 'Sanne Gateway Region Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -17954,7 +17954,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_serial_number-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Serial Number',
+      'friendly_name': 'Sanne Gateway Serial Number',
       'icon': 'mdi:numeric',
     }),
     'context': <ANY>,
@@ -17997,7 +17997,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Ssid',
+      'friendly_name': 'Sanne Gateway Ssid',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -18040,7 +18040,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Time Zone',
+      'friendly_name': 'Sanne Gateway Time Zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18083,7 +18083,7 @@
 # name: test_entity[sensor.johnny_maaike_gateway_wifi_connection_s_s_i_d-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi Connection S S I D',
+      'friendly_name': 'Sanne Gateway Wifi Connection S S I D',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -18129,7 +18129,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi Connection Strength',
+      'friendly_name': 'Sanne Gateway Wifi Connection Strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -18174,7 +18174,7 @@
 # name: test_entity[sensor.johnny_maaike_indoorunit_dry_keep_setting-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Dry Keep Setting',
+      'friendly_name': 'Sanne IndoorUnit Dry Keep Setting',
       'icon': 'mdi:water-percent',
     }),
     'context': <ANY>,
@@ -18217,7 +18217,7 @@
 # name: test_entity[sensor.johnny_maaike_indoorunit_eeprom_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Eeprom Version',
+      'friendly_name': 'Sanne IndoorUnit Eeprom Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18260,7 +18260,7 @@
 # name: test_entity[sensor.johnny_maaike_indoorunit_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Software Version',
+      'friendly_name': 'Sanne IndoorUnit Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18303,7 +18303,7 @@
 # name: test_entity[sensor.johnny_maaike_outdoorunit_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Error Code',
+      'friendly_name': 'Sanne OutdoorUnit Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18346,7 +18346,7 @@
 # name: test_entity[sensor.johnny_maaike_outdoorunit_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Caution State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18389,7 +18389,7 @@
 # name: test_entity[sensor.johnny_maaike_outdoorunit_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Error State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18432,7 +18432,7 @@
 # name: test_entity[sensor.johnny_maaike_outdoorunit_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Warning State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -18477,7 +18477,7 @@
 # name: test_entity[sensor.johnny_maaike_ratelimit_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit day',
+      'friendly_name': 'Sanne RateLimit day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -18523,7 +18523,7 @@
 # name: test_entity[sensor.johnny_maaike_ratelimit_minute-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit minute',
+      'friendly_name': 'Sanne RateLimit minute',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -18569,7 +18569,7 @@
 # name: test_entity[sensor.johnny_maaike_ratelimit_ratelimit_reset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit ratelimit_reset',
+      'friendly_name': 'Sanne RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -18615,7 +18615,7 @@
 # name: test_entity[sensor.johnny_maaike_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_day',
+      'friendly_name': 'Sanne RateLimit remaining_day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -18661,7 +18661,7 @@
 # name: test_entity[sensor.johnny_maaike_ratelimit_remaining_minutes-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_minutes',
+      'friendly_name': 'Sanne RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -18707,7 +18707,7 @@
 # name: test_entity[sensor.johnny_maaike_ratelimit_retry_after-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit retry_after',
+      'friendly_name': 'Sanne RateLimit retry_after',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -20451,7 +20451,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Daily Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -20499,7 +20499,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Weekly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -20547,7 +20547,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Yearly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -20592,7 +20592,7 @@
 # name: test_entity[sensor.linde_climatecontrol_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Error Code',
+      'friendly_name': 'Sanne ClimateControl Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -20638,7 +20638,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Daily Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -20686,7 +20686,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Weekly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -20734,7 +20734,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Yearly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -20779,7 +20779,7 @@
 # name: test_entity[sensor.linde_climatecontrol_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
+      'friendly_name': 'Sanne ClimateControl Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -20822,7 +20822,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_cool_heat_master-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Cool Heat Master',
+      'friendly_name': 'Sanne ClimateControl Is Cool Heat Master',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -20865,7 +20865,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Holiday Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -20908,7 +20908,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Caution State',
+      'friendly_name': 'Sanne ClimateControl Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -20951,7 +20951,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Error State',
+      'friendly_name': 'Sanne ClimateControl Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -20994,7 +20994,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_in_mode_conflict-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Mode Conflict',
+      'friendly_name': 'Sanne ClimateControl Is In Mode Conflict',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21037,7 +21037,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Warning State',
+      'friendly_name': 'Sanne ClimateControl Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21080,7 +21080,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_lock_function_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Lock Function Enabled',
+      'friendly_name': 'Sanne ClimateControl Is Lock Function Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21123,7 +21123,7 @@
 # name: test_entity[sensor.linde_climatecontrol_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Powerful Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Powerful Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21166,7 +21166,7 @@
 # name: test_entity[sensor.linde_climatecontrol_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Name',
+      'friendly_name': 'Sanne ClimateControl Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21209,7 +21209,7 @@
 # name: test_entity[sensor.linde_climatecontrol_outdoor_silent_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
+      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
@@ -21254,7 +21254,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Outdoor Temperature',
+      'friendly_name': 'Sanne ClimateControl Outdoor Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -21302,7 +21302,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Room Temperature',
+      'friendly_name': 'Sanne ClimateControl Room Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -21347,7 +21347,7 @@
 # name: test_entity[sensor.linde_gateway_daylight_saving_time_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Daylight Saving Time Enabled',
+      'friendly_name': 'Sanne Gateway Daylight Saving Time Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21390,7 +21390,7 @@
 # name: test_entity[sensor.linde_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Error Code',
+      'friendly_name': 'Sanne Gateway Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21433,7 +21433,7 @@
 # name: test_entity[sensor.linde_gateway_firmware_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Firmware Version',
+      'friendly_name': 'Sanne Gateway Firmware Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21562,7 +21562,7 @@
 # name: test_entity[sensor.linde_gateway_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Is In Error State',
+      'friendly_name': 'Sanne Gateway Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21605,7 +21605,7 @@
 # name: test_entity[sensor.linde_gateway_led_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Led Enabled',
+      'friendly_name': 'Sanne Gateway Led Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21648,7 +21648,7 @@
 # name: test_entity[sensor.linde_gateway_mac_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
+      'friendly_name': 'Sanne Gateway Mac Address',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21691,7 +21691,7 @@
 # name: test_entity[sensor.linde_gateway_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Model Info',
+      'friendly_name': 'Sanne Gateway Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21734,7 +21734,7 @@
 # name: test_entity[sensor.linde_gateway_region_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Region Code',
+      'friendly_name': 'Sanne Gateway Region Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21777,7 +21777,7 @@
 # name: test_entity[sensor.linde_gateway_serial_number-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Serial Number',
+      'friendly_name': 'Sanne Gateway Serial Number',
       'icon': 'mdi:numeric',
     }),
     'context': <ANY>,
@@ -21820,7 +21820,7 @@
 # name: test_entity[sensor.linde_gateway_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Ssid',
+      'friendly_name': 'Sanne Gateway Ssid',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -21863,7 +21863,7 @@
 # name: test_entity[sensor.linde_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Time Zone',
+      'friendly_name': 'Sanne Gateway Time Zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21906,7 +21906,7 @@
 # name: test_entity[sensor.linde_gateway_wifi_connection_s_s_i_d-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi Connection S S I D',
+      'friendly_name': 'Sanne Gateway Wifi Connection S S I D',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -21952,7 +21952,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi Connection Strength',
+      'friendly_name': 'Sanne Gateway Wifi Connection Strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -21997,7 +21997,7 @@
 # name: test_entity[sensor.linde_indoorunit_dry_keep_setting-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Dry Keep Setting',
+      'friendly_name': 'Sanne IndoorUnit Dry Keep Setting',
       'icon': 'mdi:water-percent',
     }),
     'context': <ANY>,
@@ -22040,7 +22040,7 @@
 # name: test_entity[sensor.linde_indoorunit_eeprom_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Eeprom Version',
+      'friendly_name': 'Sanne IndoorUnit Eeprom Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -22083,7 +22083,7 @@
 # name: test_entity[sensor.linde_indoorunit_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Software Version',
+      'friendly_name': 'Sanne IndoorUnit Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -22126,7 +22126,7 @@
 # name: test_entity[sensor.linde_outdoorunit_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Error Code',
+      'friendly_name': 'Sanne OutdoorUnit Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -22169,7 +22169,7 @@
 # name: test_entity[sensor.linde_outdoorunit_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Caution State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -22212,7 +22212,7 @@
 # name: test_entity[sensor.linde_outdoorunit_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Error State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -22255,7 +22255,7 @@
 # name: test_entity[sensor.linde_outdoorunit_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Warning State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -22300,7 +22300,7 @@
 # name: test_entity[sensor.linde_ratelimit_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit day',
+      'friendly_name': 'Sanne RateLimit day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -22346,7 +22346,7 @@
 # name: test_entity[sensor.linde_ratelimit_minute-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit minute',
+      'friendly_name': 'Sanne RateLimit minute',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -22392,7 +22392,7 @@
 # name: test_entity[sensor.linde_ratelimit_ratelimit_reset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit ratelimit_reset',
+      'friendly_name': 'Sanne RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -22438,7 +22438,7 @@
 # name: test_entity[sensor.linde_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_day',
+      'friendly_name': 'Sanne RateLimit remaining_day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -22484,7 +22484,7 @@
 # name: test_entity[sensor.linde_ratelimit_remaining_minutes-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_minutes',
+      'friendly_name': 'Sanne RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -22530,7 +22530,7 @@
 # name: test_entity[sensor.linde_ratelimit_retry_after-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit retry_after',
+      'friendly_name': 'Sanne RateLimit retry_after',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -23835,7 +23835,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Daily Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -23883,7 +23883,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Weekly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -23931,7 +23931,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Yearly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -23976,7 +23976,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Error Code',
+      'friendly_name': 'Sanne ClimateControl Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24022,7 +24022,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Daily Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -24070,7 +24070,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Weekly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -24118,7 +24118,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Yearly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -24163,7 +24163,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
+      'friendly_name': 'Sanne ClimateControl Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24206,7 +24206,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_cool_heat_master-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Cool Heat Master',
+      'friendly_name': 'Sanne ClimateControl Is Cool Heat Master',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24249,7 +24249,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Holiday Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24292,7 +24292,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Caution State',
+      'friendly_name': 'Sanne ClimateControl Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24335,7 +24335,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Error State',
+      'friendly_name': 'Sanne ClimateControl Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24378,7 +24378,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_in_mode_conflict-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Mode Conflict',
+      'friendly_name': 'Sanne ClimateControl Is In Mode Conflict',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24421,7 +24421,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Warning State',
+      'friendly_name': 'Sanne ClimateControl Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24464,7 +24464,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_lock_function_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Lock Function Enabled',
+      'friendly_name': 'Sanne ClimateControl Is Lock Function Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24507,7 +24507,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Powerful Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Powerful Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24550,7 +24550,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Name',
+      'friendly_name': 'Sanne ClimateControl Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24593,7 +24593,7 @@
 # name: test_entity[sensor.sanne_climatecontrol_outdoor_silent_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
+      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
@@ -24638,7 +24638,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Outdoor Temperature',
+      'friendly_name': 'Sanne ClimateControl Outdoor Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -24686,7 +24686,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Room Temperature',
+      'friendly_name': 'Sanne ClimateControl Room Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -24731,7 +24731,7 @@
 # name: test_entity[sensor.sanne_gateway_daylight_saving_time_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Daylight Saving Time Enabled',
+      'friendly_name': 'Sanne Gateway Daylight Saving Time Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24774,7 +24774,7 @@
 # name: test_entity[sensor.sanne_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Error Code',
+      'friendly_name': 'Sanne Gateway Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24817,7 +24817,7 @@
 # name: test_entity[sensor.sanne_gateway_firmware_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Firmware Version',
+      'friendly_name': 'Sanne Gateway Firmware Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24946,7 +24946,7 @@
 # name: test_entity[sensor.sanne_gateway_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Is In Error State',
+      'friendly_name': 'Sanne Gateway Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -24989,7 +24989,7 @@
 # name: test_entity[sensor.sanne_gateway_led_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Led Enabled',
+      'friendly_name': 'Sanne Gateway Led Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25032,7 +25032,7 @@
 # name: test_entity[sensor.sanne_gateway_mac_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
+      'friendly_name': 'Sanne Gateway Mac Address',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25075,7 +25075,7 @@
 # name: test_entity[sensor.sanne_gateway_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Model Info',
+      'friendly_name': 'Sanne Gateway Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25118,7 +25118,7 @@
 # name: test_entity[sensor.sanne_gateway_region_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Region Code',
+      'friendly_name': 'Sanne Gateway Region Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25161,7 +25161,7 @@
 # name: test_entity[sensor.sanne_gateway_serial_number-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Serial Number',
+      'friendly_name': 'Sanne Gateway Serial Number',
       'icon': 'mdi:numeric',
     }),
     'context': <ANY>,
@@ -25204,7 +25204,7 @@
 # name: test_entity[sensor.sanne_gateway_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Ssid',
+      'friendly_name': 'Sanne Gateway Ssid',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -25247,7 +25247,7 @@
 # name: test_entity[sensor.sanne_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Time Zone',
+      'friendly_name': 'Sanne Gateway Time Zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25290,7 +25290,7 @@
 # name: test_entity[sensor.sanne_gateway_wifi_connection_s_s_i_d-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi Connection S S I D',
+      'friendly_name': 'Sanne Gateway Wifi Connection S S I D',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -25336,7 +25336,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi Connection Strength',
+      'friendly_name': 'Sanne Gateway Wifi Connection Strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -25381,7 +25381,7 @@
 # name: test_entity[sensor.sanne_indoorunit_dry_keep_setting-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Dry Keep Setting',
+      'friendly_name': 'Sanne IndoorUnit Dry Keep Setting',
       'icon': 'mdi:water-percent',
     }),
     'context': <ANY>,
@@ -25424,7 +25424,7 @@
 # name: test_entity[sensor.sanne_indoorunit_eeprom_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Eeprom Version',
+      'friendly_name': 'Sanne IndoorUnit Eeprom Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25467,7 +25467,7 @@
 # name: test_entity[sensor.sanne_indoorunit_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Software Version',
+      'friendly_name': 'Sanne IndoorUnit Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25510,7 +25510,7 @@
 # name: test_entity[sensor.sanne_outdoorunit_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Error Code',
+      'friendly_name': 'Sanne OutdoorUnit Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25553,7 +25553,7 @@
 # name: test_entity[sensor.sanne_outdoorunit_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Caution State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25596,7 +25596,7 @@
 # name: test_entity[sensor.sanne_outdoorunit_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Error State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25639,7 +25639,7 @@
 # name: test_entity[sensor.sanne_outdoorunit_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Warning State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -25684,7 +25684,7 @@
 # name: test_entity[sensor.sanne_ratelimit_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit day',
+      'friendly_name': 'Sanne RateLimit day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -25730,7 +25730,7 @@
 # name: test_entity[sensor.sanne_ratelimit_minute-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit minute',
+      'friendly_name': 'Sanne RateLimit minute',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -25776,7 +25776,7 @@
 # name: test_entity[sensor.sanne_ratelimit_ratelimit_reset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit ratelimit_reset',
+      'friendly_name': 'Sanne RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -25822,7 +25822,7 @@
 # name: test_entity[sensor.sanne_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_day',
+      'friendly_name': 'Sanne RateLimit remaining_day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -25868,7 +25868,7 @@
 # name: test_entity[sensor.sanne_ratelimit_remaining_minutes-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_minutes',
+      'friendly_name': 'Sanne RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -25914,7 +25914,7 @@
 # name: test_entity[sensor.sanne_ratelimit_retry_after-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit retry_after',
+      'friendly_name': 'Sanne RateLimit retry_after',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -28647,7 +28647,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Daily Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28695,7 +28695,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Weekly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28743,7 +28743,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Cooling Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Cooling Yearly Electrical Consumption',
       'icon': 'mdi:snowflake',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28788,7 +28788,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Error Code',
+      'friendly_name': 'Sanne ClimateControl Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -28834,7 +28834,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Daily Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Daily Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28882,7 +28882,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Weekly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Weekly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28930,7 +28930,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Linde ClimateControl Heating Yearly Electrical Consumption',
+      'friendly_name': 'Sanne ClimateControl Heating Yearly Electrical Consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28975,7 +28975,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_icon_id-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
+      'friendly_name': 'Sanne ClimateControl Icon Id',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29018,7 +29018,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_cool_heat_master-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Cool Heat Master',
+      'friendly_name': 'Sanne ClimateControl Is Cool Heat Master',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29061,7 +29061,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Holiday Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29104,7 +29104,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Caution State',
+      'friendly_name': 'Sanne ClimateControl Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29147,7 +29147,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Error State',
+      'friendly_name': 'Sanne ClimateControl Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29190,7 +29190,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_in_mode_conflict-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Mode Conflict',
+      'friendly_name': 'Sanne ClimateControl Is In Mode Conflict',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29233,7 +29233,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is In Warning State',
+      'friendly_name': 'Sanne ClimateControl Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29276,7 +29276,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_lock_function_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Lock Function Enabled',
+      'friendly_name': 'Sanne ClimateControl Is Lock Function Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29319,7 +29319,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Is Powerful Mode Active',
+      'friendly_name': 'Sanne ClimateControl Is Powerful Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29362,7 +29362,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_name-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Name',
+      'friendly_name': 'Sanne ClimateControl Name',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29405,7 +29405,7 @@
 # name: test_entity[sensor.werkkamer_climatecontrol_outdoor_silent_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
+      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
@@ -29450,7 +29450,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Outdoor Temperature',
+      'friendly_name': 'Sanne ClimateControl Outdoor Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -29498,7 +29498,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Linde ClimateControl Room Temperature',
+      'friendly_name': 'Sanne ClimateControl Room Temperature',
       'icon': '',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -29543,7 +29543,7 @@
 # name: test_entity[sensor.werkkamer_gateway_daylight_saving_time_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Daylight Saving Time Enabled',
+      'friendly_name': 'Sanne Gateway Daylight Saving Time Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29586,7 +29586,7 @@
 # name: test_entity[sensor.werkkamer_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Error Code',
+      'friendly_name': 'Sanne Gateway Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29629,7 +29629,7 @@
 # name: test_entity[sensor.werkkamer_gateway_firmware_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Firmware Version',
+      'friendly_name': 'Sanne Gateway Firmware Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29758,7 +29758,7 @@
 # name: test_entity[sensor.werkkamer_gateway_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Is In Error State',
+      'friendly_name': 'Sanne Gateway Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29801,7 +29801,7 @@
 # name: test_entity[sensor.werkkamer_gateway_led_enabled-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Led Enabled',
+      'friendly_name': 'Sanne Gateway Led Enabled',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29844,7 +29844,7 @@
 # name: test_entity[sensor.werkkamer_gateway_mac_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
+      'friendly_name': 'Sanne Gateway Mac Address',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29887,7 +29887,7 @@
 # name: test_entity[sensor.werkkamer_gateway_model_info-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Model Info',
+      'friendly_name': 'Sanne Gateway Model Info',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29930,7 +29930,7 @@
 # name: test_entity[sensor.werkkamer_gateway_region_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Region Code',
+      'friendly_name': 'Sanne Gateway Region Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29973,7 +29973,7 @@
 # name: test_entity[sensor.werkkamer_gateway_serial_number-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Serial Number',
+      'friendly_name': 'Sanne Gateway Serial Number',
       'icon': 'mdi:numeric',
     }),
     'context': <ANY>,
@@ -30016,7 +30016,7 @@
 # name: test_entity[sensor.werkkamer_gateway_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Ssid',
+      'friendly_name': 'Sanne Gateway Ssid',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -30059,7 +30059,7 @@
 # name: test_entity[sensor.werkkamer_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Time Zone',
+      'friendly_name': 'Sanne Gateway Time Zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30102,7 +30102,7 @@
 # name: test_entity[sensor.werkkamer_gateway_wifi_connection_s_s_i_d-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi Connection S S I D',
+      'friendly_name': 'Sanne Gateway Wifi Connection S S I D',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -30148,7 +30148,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi Connection Strength',
+      'friendly_name': 'Sanne Gateway Wifi Connection Strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -30193,7 +30193,7 @@
 # name: test_entity[sensor.werkkamer_indoorunit_dry_keep_setting-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Dry Keep Setting',
+      'friendly_name': 'Sanne IndoorUnit Dry Keep Setting',
       'icon': 'mdi:water-percent',
     }),
     'context': <ANY>,
@@ -30236,7 +30236,7 @@
 # name: test_entity[sensor.werkkamer_indoorunit_eeprom_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Eeprom Version',
+      'friendly_name': 'Sanne IndoorUnit Eeprom Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30279,7 +30279,7 @@
 # name: test_entity[sensor.werkkamer_indoorunit_software_version-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde IndoorUnit Software Version',
+      'friendly_name': 'Sanne IndoorUnit Software Version',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30322,7 +30322,7 @@
 # name: test_entity[sensor.werkkamer_outdoorunit_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Error Code',
+      'friendly_name': 'Sanne OutdoorUnit Error Code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30365,7 +30365,7 @@
 # name: test_entity[sensor.werkkamer_outdoorunit_is_in_caution_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Caution State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Caution State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30408,7 +30408,7 @@
 # name: test_entity[sensor.werkkamer_outdoorunit_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Error State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Error State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30451,7 +30451,7 @@
 # name: test_entity[sensor.werkkamer_outdoorunit_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde OutdoorUnit Is In Warning State',
+      'friendly_name': 'Sanne OutdoorUnit Is In Warning State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30496,7 +30496,7 @@
 # name: test_entity[sensor.werkkamer_ratelimit_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit day',
+      'friendly_name': 'Sanne RateLimit day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -30542,7 +30542,7 @@
 # name: test_entity[sensor.werkkamer_ratelimit_minute-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit minute',
+      'friendly_name': 'Sanne RateLimit minute',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -30588,7 +30588,7 @@
 # name: test_entity[sensor.werkkamer_ratelimit_ratelimit_reset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit ratelimit_reset',
+      'friendly_name': 'Sanne RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -30634,7 +30634,7 @@
 # name: test_entity[sensor.werkkamer_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_day',
+      'friendly_name': 'Sanne RateLimit remaining_day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -30680,7 +30680,7 @@
 # name: test_entity[sensor.werkkamer_ratelimit_remaining_minutes-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit remaining_minutes',
+      'friendly_name': 'Sanne RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -30726,7 +30726,7 @@
 # name: test_entity[sensor.werkkamer_ratelimit_retry_after-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde RateLimit retry_after',
+      'friendly_name': 'Sanne RateLimit retry_after',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.TOTAL: 'total'>,
     }),
@@ -32467,7 +32467,7 @@
 # name: test_entity[switch.johnny_maaike_climatecontrol_econo_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Econo Mode',
+      'friendly_name': 'Sanne ClimateControl Econo Mode',
       'icon': 'mdi:leaf',
     }),
     'context': <ANY>,
@@ -32510,7 +32510,7 @@
 # name: test_entity[switch.johnny_maaike_climatecontrol_streamer_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Streamer Mode',
+      'friendly_name': 'Sanne ClimateControl Streamer Mode',
       'icon': 'hass:air-filter',
     }),
     'context': <ANY>,
@@ -32639,7 +32639,7 @@
 # name: test_entity[switch.linde_climatecontrol_econo_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Econo Mode',
+      'friendly_name': 'Sanne ClimateControl Econo Mode',
       'icon': 'mdi:leaf',
     }),
     'context': <ANY>,
@@ -32682,7 +32682,7 @@
 # name: test_entity[switch.linde_climatecontrol_streamer_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Streamer Mode',
+      'friendly_name': 'Sanne ClimateControl Streamer Mode',
       'icon': 'hass:air-filter',
     }),
     'context': <ANY>,
@@ -32725,7 +32725,7 @@
 # name: test_entity[switch.sanne_climatecontrol_econo_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Econo Mode',
+      'friendly_name': 'Sanne ClimateControl Econo Mode',
       'icon': 'mdi:leaf',
     }),
     'context': <ANY>,
@@ -32768,7 +32768,7 @@
 # name: test_entity[switch.sanne_climatecontrol_streamer_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Streamer Mode',
+      'friendly_name': 'Sanne ClimateControl Streamer Mode',
       'icon': 'hass:air-filter',
     }),
     'context': <ANY>,
@@ -32811,7 +32811,7 @@
 # name: test_entity[switch.werkkamer_climatecontrol_econo_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Econo Mode',
+      'friendly_name': 'Sanne ClimateControl Econo Mode',
       'icon': 'mdi:leaf',
     }),
     'context': <ANY>,
@@ -32854,7 +32854,7 @@
 # name: test_entity[switch.werkkamer_climatecontrol_streamer_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Streamer Mode',
+      'friendly_name': 'Sanne ClimateControl Streamer Mode',
       'icon': 'hass:air-filter',
     }),
     'context': <ANY>,

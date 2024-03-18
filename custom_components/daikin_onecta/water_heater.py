@@ -32,7 +32,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
-                async_add_entities([DaikinWaterTank(device, coordinator)])
+                async_add_entities([DaikinWaterTank(device, coordinator, management_point["embeddedId"])])
             else:
                 _LOGGER.info(
                     "Device '%s' '%s' is not a tank management point, ignoring as water heater",
@@ -44,11 +44,12 @@ async def async_setup_entry(hass, entry, async_add_entities):
 class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
 
-    def __init__(self, device, coordinator):
+    def __init__(self, device, coordinator, embedded_id):
         """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         super().__init__(coordinator)
         self._device = device
+        self._embedded_id = embedded_id
         self._attr_name = self._device.name
         self._attr_supported_features = self.get_supported_features()
         self._attr_current_temperature = self.get_current_temperature()
@@ -77,20 +78,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     async def _set(self, settings):
         raise NotImplementedError
-
-    @property
-    def embedded_id(self):
-        # Find the embedded id for the hot water tank we have to use
-        supported_management_point_types = {
-            "domesticHotWaterTank",
-            "domesticHotWaterFlowThrough",
-        }
-
-        for management_point in self._device.daikin_data["managementPoints"]:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
-                return management_point["embeddedId"]
-        return None
 
     @property
     def hotwatertank_data(self):
@@ -214,7 +201,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 return None
         res = await self._device.set_path(
             self._device.getId(),
-            self.embedded_id,
+            self._embedded_id,
             "temperatureControl",
             "/operationModes/heating/setpoints/domesticHotWaterTemperature",
             int(value),
@@ -278,10 +265,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "onOffMode", "", on_off_mode)
         # Only set powerfulMode when it is set and supported by the device
         if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "powerfulMode", "", powerful_mode)
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "powerfulMode", "", powerful_mode)
 
         if result is False:
             _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
