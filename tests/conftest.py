@@ -29,11 +29,16 @@ async def snapshot_platform_entities(
     snapshot: SnapshotAssertion,
 ) -> None:
     """Snapshot entities and their states."""
-    with selected_platforms([platform]):
+    with patch(
+        "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
+    ), patch(
+        "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
+        return_value=load_fixture_json("altherma"),
+    ):
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
-    # with selected_platforms([platform]):
+
     entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
 
     assert entity_entries
