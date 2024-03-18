@@ -142,9 +142,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_fan_mode = self.get_fan_mode()
         self.async_write_ha_state()
 
-    async def _set(self, settings):
-        raise NotImplementedError
-
     def climate_control(self):
         cc = None
         supported_management_point_types = {"climateControl"}

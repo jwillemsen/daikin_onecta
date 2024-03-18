@@ -76,9 +76,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_available = self._device.available
         self.async_write_ha_state()
 
-    async def _set(self, settings):
-        raise NotImplementedError
-
     @property
     def hotwatertank_data(self):
         # Find the management point for the hot water tank
