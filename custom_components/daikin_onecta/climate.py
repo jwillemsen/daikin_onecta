@@ -74,9 +74,11 @@ async def async_setup_entry(hass, entry, async_add_entities):
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {"climateControl"}
         managementPoints = device.daikin_data.get("managementPoints", [])
+        embedded_id = ''
         for management_point in managementPoints:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
+                embedded_id = cc.get("embeddedId")
                 # Check if we have a temperatureControl
                 temperatureControl = management_point.get("temperatureControl")
                 if temperatureControl is not None:
@@ -88,7 +90,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)
         for mode in modes:
-            async_add_entities([DaikinClimate(device, mode, coordinator)], update_before_add=False)
+            async_add_entities([DaikinClimate(device, mode, coordinator, embedded_id)], update_before_add=False)
 
 
 class DaikinClimate(CoordinatorEntity, ClimateEntity):
@@ -98,7 +100,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     # Setpoint is the setpoint string under
     # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint, coordinator):
+    def __init__(self, device, setpoint, coordinator, embedded_id):
         """Initialize the climate device."""
         super().__init__(coordinator)
         _LOGGER.info(
@@ -107,6 +109,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             setpoint,
         )
         self._device = device
+        self._embedded_id = embedded_id
         self._setpoint = setpoint
         self._attr_supported_features = self.get_supported_features()
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
@@ -199,11 +202,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     @property
     def translation_key(self) -> str:
         return "daikin_onecta"
-
-    @property
-    def embedded_id(self):
-        cc = self.climate_control()
-        return cc["embeddedId"]
 
     @property
     def available(self):
@@ -329,7 +327,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             value = kwargs[ATTR_TEMPERATURE]
             res = await self._device.set_path(
                 self._device.getId(),
-                self.embedded_id,
+                self._embedded_id,
                 "temperatureControl",
                 f"/operationModes/{omv}/setpoints/{self._setpoint}",
                 value,
@@ -385,7 +383,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode is not None:
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "onOffMode", "", on_off_mode)
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting onOffMode to %s",
@@ -401,7 +399,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if operation_mode != cc["operationMode"]["value"]:
                 result &= await self._device.set_path(
                     self._device.getId(),
-                    self.embedded_id,
+                    self._embedded_id,
                     "operationMode",
                     "",
                     operation_mode,
@@ -496,7 +494,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if fan_mode.isnumeric():
             res = await self._device.set_path(
                 self._device.getId(),
-                self.embedded_id,
+                self._embedded_id,
                 "fanControl",
                 f"/operationModes/{operationmode}/fanSpeed/currentMode",
                 "fixed",
@@ -510,7 +508,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             new_fixed_mode = int(fan_mode)
             res &= await self._device.set_path(
                 self._device.getId(),
-                self.embedded_id,
+                self._embedded_id,
                 "fanControl",
                 f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
                 new_fixed_mode,
@@ -524,7 +522,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         else:
             res = await self._device.set_path(
                 self._device.getId(),
-                self.embedded_id,
+                self._embedded_id,
                 "fanControl",
                 f"/operationModes/{operationmode}/fanSpeed/currentMode",
                 fan_mode,
@@ -645,7 +643,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         new_h_mode = "swing"
                     res &= await self._device.set_path(
                         self._device.getId(),
-                        self.embedded_id,
+                        self._embedded_id,
                         "fanControl",
                         f"/operationModes/{operation_mode}/fanDirection/horizontal/currentMode",
                         new_h_mode,
@@ -673,7 +671,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         new_v_mode = "windNice"
                     res &= await self._device.set_path(
                         self._device.getId(),
-                        self.embedded_id,
+                        self._embedded_id,
                         "fanControl",
                         f"/operationModes/{operation_mode}/fanDirection/vertical/currentMode",
                         new_v_mode,
@@ -709,7 +707,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         if self.preset_mode != PRESET_NONE:
             current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, current_mode, "", "off")
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, current_mode, "", "off")
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting %s to off",
@@ -721,7 +719,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
                 result &= await self.async_turn_on()
 
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, new_daikin_mode, "", "on")
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, new_daikin_mode, "", "on")
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting %s to on",
@@ -759,7 +757,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         result = True
         if cc["onOffMode"]["value"] == "off":
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "on")
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "onOffMode", "", "on")
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
             else:
@@ -779,7 +777,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         result = True
         if cc["onOffMode"]["value"] == "on":
-            result &= await self._device.set_path(self._device.getId(), self.embedded_id, "onOffMode", "", "off")
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "onOffMode", "", "off")
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
             else:
