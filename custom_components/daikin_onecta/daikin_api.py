@@ -1,5 +1,4 @@
 """Platform for the Daikin AC."""
-
 import asyncio
 import functools
 import logging

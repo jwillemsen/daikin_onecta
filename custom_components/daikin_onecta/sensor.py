@@ -1,5 +1,4 @@
 """Support for Daikin AC sensors."""
-
 import logging
 import re
 
@@ -12,9 +11,9 @@ from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import COORDINATOR
 from .const import DAIKIN_API

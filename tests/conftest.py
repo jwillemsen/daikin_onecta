@@ -1,15 +1,15 @@
 # """Global fixtures for myenergi integration."""
+from contextlib import contextmanager
 from typing import Any
+from unittest.mock import AsyncMock
 from unittest.mock import patch
+
+import homeassistant.helpers.entity_registry as er
+import pytest
+from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
-from homeassistant.const import Platform
-import homeassistant.helpers.entity_registry as er
 from syrupy import SnapshotAssertion
-from unittest.mock import AsyncMock, patch
-from contextlib import contextmanager
-
-import pytest
 
 from . import load_fixture_json
 

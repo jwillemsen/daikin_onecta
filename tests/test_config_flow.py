@@ -1,23 +1,18 @@
 """Test the daikin_onecta config flow."""
-
 from unittest.mock import patch
 
 import pytest
-
 from homeassistant import config_entries
-from homeassistant.components.application_credentials import (
-    ClientCredential,
-    async_import_client_credential,
-)
-from custom_components.daikin_onecta.const import (
-    DOMAIN,
-    OAUTH2_AUTHORIZE,
-    OAUTH2_TOKEN,
-)
-from custom_components.daikin_onecta.device import DaikinOnectaDevice
+from homeassistant.components.application_credentials import async_import_client_credential
+from homeassistant.components.application_credentials import ClientCredential
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.setup import async_setup_component
+
+from custom_components.daikin_onecta.const import DOMAIN
+from custom_components.daikin_onecta.const import OAUTH2_AUTHORIZE
+from custom_components.daikin_onecta.const import OAUTH2_TOKEN
+from custom_components.daikin_onecta.device import DaikinOnectaDevice
 
 CLIENT_ID = "emU20GdJDiiUxI_HnFGz69dD"
 CLIENT_SECRET = "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA"

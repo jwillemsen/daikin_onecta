@@ -1,5 +1,6 @@
 from homeassistant.components.application_credentials import AuthorizationServer
 from homeassistant.core import HomeAssistant
+
 from .const import OAUTH2_AUTHORIZE
 from .const import OAUTH2_TOKEN
 
