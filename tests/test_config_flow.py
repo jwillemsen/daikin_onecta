@@ -42,13 +42,9 @@ async def test_full_flow(
     """Check full flow."""
     assert await async_setup_component(hass, "daikin_onecta", {})
 
-    await async_import_client_credential(
-        hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET)
-    )
+    await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
 
-    result = await hass.config_entries.flow.async_init(
-        "daikin_onecta", context={"source": config_entries.SOURCE_USER}
-    )
+    result = await hass.config_entries.flow.async_init("daikin_onecta", context={"source": config_entries.SOURCE_USER})
     state = config_entry_oauth2_flow._encode_jwt(
         hass,
         {
@@ -80,9 +76,7 @@ async def test_full_flow(
         },
     )
 
-    with patch(
-        "custom_components.daikin_onecta.async_setup_entry", return_value=True
-    ) as mock_setup:
+    with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
         await hass.config_entries.flow.async_configure(result["flow_id"])
 
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1

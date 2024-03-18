@@ -49,24 +49,11 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     settable = vv.get("settable", False)
                     values = vv.get("values", [])
                     # When the following check changes also update this in sensor.py
-                    if (
-                        value_value is not None
-                        and settable is True
-                        and "on" in values
-                        and "off" in values
-                    ):
-                        if (
-                            value == "onOffMode"
-                            and management_point_type
-                            in supported_management_point_types
-                        ):
+                    if value_value is not None and settable is True and "on" in values and "off" in values:
+                        if value == "onOffMode" and management_point_type in supported_management_point_types:
                             # On/off is handled by the HWT and ClimateControl directly, so don't create a separate switch
                             pass
-                        elif (
-                            value == "powerfulMode"
-                            and management_point_type
-                            in supported_management_point_types
-                        ):
+                        elif value == "powerfulMode" and management_point_type in supported_management_point_types:
                             # Powerful is handled by the HWT and ClimateControl directly, so don't create a separate switch
                             pass
                         else:
@@ -89,9 +76,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
 
 class DaikinSwitch(CoordinatorEntity, ToggleEntity):
-    def __init__(
-        self, device: Appliance, coordinator, embedded_id, management_point_type, value
-    ) -> None:
+    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -112,18 +97,14 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             self._attr_icon = sensor_settings[CONF_ICON]
             self._device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._attr_entity_registry_enabled_default = sensor_settings[
-                ENABLED_DEFAULT
-            ]
+            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = (
-            f"{self._device.getId()}_{self._management_point_type}_{self._value}"
-        )
+        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
         self._switch_state = self.sensor_value()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -157,9 +138,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                     cd = management_point.get(self._value)
                     if cd is not None:
                         result = cd.get("value")
-        _LOGGER.debug(
-            "Device '%s' switch '%s' value '%s'", self._device.name, self._value, result
-        )
+        _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result
 
     @property
@@ -169,13 +148,9 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
-        result = await self._device.set_path(
-            self._device.getId(), self._embedded_id, self._value, "", "on"
-        )
+        result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
         if result is False:
-            _LOGGER.warning(
-                "Device '%s' problem setting '%s' to on", self._device.name, self._value
-            )
+            _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
         else:
             self._switch_state = "on"
             self.async_write_ha_state()
@@ -183,9 +158,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
-        result = await self._device.set_path(
-            self._device.getId(), self._embedded_id, self._value, "", "off"
-        )
+        result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "off")
         if result is False:
             _LOGGER.warning(
                 "Device '%s' problem setting '%s' to off",
