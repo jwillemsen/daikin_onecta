@@ -1,5 +1,4 @@
 """Test daikin_onecta sensor."""
-
 from unittest.mock import AsyncMock
 
 import homeassistant.helpers.entity_registry as er

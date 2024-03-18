@@ -6,13 +6,13 @@ from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
 import pytest
+from _pytest.assertion import truncate
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
 from . import load_fixture_json
-from _pytest.assertion import truncate
 
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999

@@ -1,5 +1,4 @@
 """Constants for Daikin Oncecta."""
-
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorStateClass

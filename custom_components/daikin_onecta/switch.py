@@ -1,5 +1,4 @@
 """Support for Daikin AirBase zones."""
-
 import logging
 import re
 

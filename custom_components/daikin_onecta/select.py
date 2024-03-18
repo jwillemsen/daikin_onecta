@@ -2,13 +2,13 @@ import logging
 import re
 
 from homeassistant.components.select import SelectEntity
+from homeassistant.core import callback
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .daikin_base import Appliance
-from homeassistant.core import callback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 _LOGGER = logging.getLogger(__name__)
 
