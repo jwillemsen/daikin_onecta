@@ -321,7 +321,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_name = f"RateLimit {self._limit_key}"
         self._attr_unique_id = f"{self._device.getId()}_limitsensor_{self._limit_key}"
         self._attr_native_value = self.sensor_value()
-        self._attr_state_class = SensorStateClass.TOTAL
+        self._attr_state_class = SensorStateClass.MEASUREMENT
         _LOGGER.info(
             "Device '%s' supports sensor '%s'",
             device.name,

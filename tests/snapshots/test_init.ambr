@@ -388,9 +388,9 @@
       'min_temp': 18,
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'swing_modes': list([
         'off',
@@ -454,9 +454,9 @@
       'preset_mode': 'eco',
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'supported_features': <ClimateEntityFeature: 57>,
       'swing_mode': 'off',
@@ -829,9 +829,9 @@
       'min_temp': 18,
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'swing_modes': list([
         'off',
@@ -895,9 +895,9 @@
       'preset_mode': 'none',
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'supported_features': <ClimateEntityFeature: 57>,
       'swing_mode': 'off',
@@ -946,9 +946,9 @@
       'min_temp': 18,
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'swing_modes': list([
         'off',
@@ -1012,9 +1012,9 @@
       'preset_mode': 'none',
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'supported_features': <ClimateEntityFeature: 57>,
       'swing_mode': 'off',
@@ -1171,9 +1171,9 @@
       'min_temp': 18,
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'swing_modes': list([
         'off',
@@ -1237,9 +1237,9 @@
       'preset_mode': 'none',
       'preset_modes': list([
         'none',
+        'eco',
         'boost',
         'away',
-        'eco',
       ]),
       'supported_features': <ClimateEntityFeature: 57>,
       'swing_mode': 'off',
@@ -4080,7 +4080,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -4111,7 +4111,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_ratelimit_day',
@@ -4126,7 +4126,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -4157,7 +4157,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit minute',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_ratelimit_minute',
@@ -4172,7 +4172,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -4203,7 +4203,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_ratelimit_ratelimit_reset',
@@ -4218,7 +4218,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -4249,7 +4249,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_ratelimit_remaining_day',
@@ -4264,7 +4264,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -4295,7 +4295,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_ratelimit_remaining_minutes',
@@ -4310,7 +4310,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -4341,7 +4341,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit retry_after',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_ratelimit_retry_after',
@@ -18448,7 +18448,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -18479,7 +18479,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_ratelimit_day',
@@ -18494,7 +18494,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -18525,7 +18525,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit minute',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_ratelimit_minute',
@@ -18540,7 +18540,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -18571,7 +18571,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_ratelimit_ratelimit_reset',
@@ -18586,7 +18586,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -18617,7 +18617,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_ratelimit_remaining_day',
@@ -18632,7 +18632,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -18663,7 +18663,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_ratelimit_remaining_minutes',
@@ -18678,7 +18678,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -18709,7 +18709,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit retry_after',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_ratelimit_retry_after',
@@ -22271,7 +22271,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -22302,7 +22302,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_ratelimit_day',
@@ -22317,7 +22317,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -22348,7 +22348,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit minute',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_ratelimit_minute',
@@ -22363,7 +22363,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -22394,7 +22394,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_ratelimit_ratelimit_reset',
@@ -22409,7 +22409,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -22440,7 +22440,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_ratelimit_remaining_day',
@@ -22455,7 +22455,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -22486,7 +22486,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_ratelimit_remaining_minutes',
@@ -22501,7 +22501,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -22532,7 +22532,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit retry_after',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_ratelimit_retry_after',
@@ -25655,7 +25655,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -25686,7 +25686,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_ratelimit_day',
@@ -25701,7 +25701,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -25732,7 +25732,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit minute',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_ratelimit_minute',
@@ -25747,7 +25747,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -25778,7 +25778,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_ratelimit_ratelimit_reset',
@@ -25793,7 +25793,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -25824,7 +25824,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_ratelimit_remaining_day',
@@ -25839,7 +25839,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -25870,7 +25870,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_ratelimit_remaining_minutes',
@@ -25885,7 +25885,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -25916,7 +25916,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit retry_after',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_ratelimit_retry_after',
@@ -30467,7 +30467,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -30498,7 +30498,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_ratelimit_day',
@@ -30513,7 +30513,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -30544,7 +30544,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit minute',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_ratelimit_minute',
@@ -30559,7 +30559,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -30590,7 +30590,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit ratelimit_reset',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_ratelimit_ratelimit_reset',
@@ -30605,7 +30605,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -30636,7 +30636,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_day',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_ratelimit_remaining_day',
@@ -30651,7 +30651,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -30682,7 +30682,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit remaining_minutes',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_ratelimit_remaining_minutes',
@@ -30697,7 +30697,7 @@
     }),
     'area_id': None,
     'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'device_class': None,
@@ -30728,7 +30728,7 @@
     'attributes': ReadOnlyDict({
       'friendly_name': 'Linde RateLimit retry_after',
       'icon': 'mdi:information-outline',
-      'state_class': <SensorStateClass.TOTAL: 'total'>,
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_ratelimit_retry_after',
