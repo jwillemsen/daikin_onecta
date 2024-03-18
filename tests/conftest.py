@@ -63,30 +63,6 @@ def error_get_data_fixture():
         yield
 
 
-# In this fixture, we are forcing calls to async_get_data to raise an Exception. This is useful
-# for exception handling.
-@pytest.fixture(name="auth_error_on_get_data")
-def auth_error_get_data_fixture():
-    """Simulate authentication error when retrieving data from API."""
-    with patch(
-        "pymyenergi.client.MyenergiClient.refresh",
-        side_effect=WrongCredentials,
-    ):
-        yield
-
-
-# In this fixture, we are forcing calls to async_get_data to raise an Exception. This is useful
-# for exception handling.
-@pytest.fixture(name="timeout_error_on_get_data")
-def timeout_error_get_data_fixture():
-    """Simulate authentication error when retrieving data from API."""
-    with patch(
-        "pymyenergi.client.MyenergiClient.refresh",
-        side_effect=TimeoutException,
-    ):
-        yield
-
-
 async def snapshot_platform_entities(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,

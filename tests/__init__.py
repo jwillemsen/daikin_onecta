@@ -53,7 +53,7 @@ async def setup_mock_daikin_onecta_config_entry(
 ) -> ConfigEntry:
     log = logging.getLogger()
     log.setLevel(logging.DEBUG)
-    client_data = "altherma"
+    # client_data = "altherma"
     # if data is not None:
     data = load_fixture_json("altherma")
     #    client_data = data.get("client_data", "client")
