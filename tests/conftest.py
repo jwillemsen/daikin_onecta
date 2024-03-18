@@ -1,6 +1,13 @@
-"""Global fixtures for myenergi integration."""
+# """Global fixtures for myenergi integration."""
 from typing import Any
 from unittest.mock import patch
+from homeassistant.core import HomeAssistant
+from pytest_homeassistant_custom_component.common import MockConfigEntry
+from homeassistant.const import Platform
+import homeassistant.helpers.entity_registry as er
+from syrupy import SnapshotAssertion
+from unittest.mock import AsyncMock, patch
+from contextlib import contextmanager
 
 import pytest
 
@@ -148,3 +155,84 @@ def mock_zappi_unlock():
     """Return a mocked Zappi object."""
     with patch("pymyenergi.client.Zappi.unlock") as unlock:
         yield unlock
+
+async def snapshot_platform_entities(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    platform: Platform,
+    entity_registry: er.EntityRegistry,
+    snapshot: SnapshotAssertion,
+) -> None:
+    """Snapshot entities and their states."""
+    with selected_platforms([platform]):
+        assert await hass.config_entries.async_setup(config_entry.entry_id)
+
+        await hass.async_block_till_done()
+    entity_entries = er.async_entries_for_config_entry(
+        entity_registry, config_entry.entry_id
+    )
+
+    assert entity_entries
+    for entity_entry in entity_entries:
+        assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
+        assert hass.states.get(entity_entry.entity_id) == snapshot(
+            name=f"{entity_entry.entity_id}-state"
+        )
+
+@contextmanager
+def selected_platforms(platforms: list[Platform]) -> AsyncMock:
+    """Restrict loaded platforms to list given."""
+    with patch(
+        "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
+    ):
+        yield
+
+@pytest.fixture(name="config_entry")
+def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
+    """Mock a config entry."""
+    mock_entry = MockConfigEntry(
+        domain="daikin_onecta",
+        data={
+            "auth_implementation": "cloud",
+            "token": {
+                "refresh_token": "mock-refresh-token",
+                "access_token": "mock-access-token",
+                "type": "Bearer",
+                "expires_in": 60,
+                "expires_at": 1000,
+                "scope": 1
+            },
+        },
+        options={
+            "weather_areas": {
+                "Home avg": {
+                    "lat_ne": 32.2345678,
+                    "lon_ne": -117.1234567,
+                    "lat_sw": 32.1234567,
+                    "lon_sw": -117.2345678,
+                    "show_on_map": False,
+                    "area_name": "Home avg",
+                    "mode": "avg",
+                },
+                "Home max": {
+                    "lat_ne": 32.2345678,
+                    "lon_ne": -117.1234567,
+                    "lat_sw": 32.1234567,
+                    "lon_sw": -117.2345678,
+                    "show_on_map": True,
+                    "area_name": "Home max",
+                    "mode": "max",
+                },
+            }
+        },
+    )
+    mock_entry.add_to_hass(hass)
+
+    return mock_entry
+
+
+
+@pytest.fixture(name="onecta_auth")
+def onecta_auth() -> AsyncMock:
+    """Restrict loaded platforms to list given."""
+    yield

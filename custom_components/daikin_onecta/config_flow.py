@@ -20,7 +20,7 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
-    """Config flow options handler for myenergi."""
+    """Config flow options handler for daikin_onecta ."""
 
     def __init__(self, config_entry):
         """Initialize HACS options flow."""
