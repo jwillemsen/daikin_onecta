@@ -42,4 +42,3 @@ async def test_entity(
         entity_registry,
         snapshot,
     )
-
