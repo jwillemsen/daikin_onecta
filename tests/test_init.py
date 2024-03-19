@@ -5,6 +5,9 @@ from unittest.mock import patch
 import homeassistant.helpers.entity_registry as er
 import responses
 from homeassistant.components.climate.const import HVACMode
+from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
+from homeassistant.components.climate import SERVICE_TURN_ON
+from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
 from homeassistant.components.water_heater import DOMAIN as WATER_HEATER_DOMAIN
@@ -192,3 +195,35 @@ async def test_climate(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
     assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        # responses.patch(
+        #     DAIKIN_API_URL
+        #     + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/temperatureControl",
+        #     status=204,
+        # )
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/onOffMode",
+            status=204,
+        )
+        # responses.patch(
+        #     DAIKIN_API_URL
+        #     + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/powerfulMode",
+        #     status=204,
+        # )
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 1
+        assert responses.calls[0].request.body == '{"value": "on"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
