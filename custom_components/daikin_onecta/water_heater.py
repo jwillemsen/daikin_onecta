@@ -74,6 +74,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     @property
     def hotwatertank_data(self):
         # Find the management point for the hot water tank
+        hwd = None
         supported_management_point_types = {
             "domesticHotWaterTank",
             "domesticHotWaterFlowThrough",
@@ -82,18 +83,19 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         for management_point in self._device.daikin_data["managementPoints"]:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
-                return management_point
-        return None
+                hwd = management_point
+        return hwd
 
     @property
     def domestic_hotwater_temperature(self):
         # Find the json dictionary for controlling the hot water temperature
         temp_control = self.hotwatertank_data["temperatureControl"]["value"]
+        dht = None
         if temp_control:
             heating_mode = temp_control["operationModes"]["heating"]
             if heating_mode is not None:
-                return heating_mode["setpoints"]["domesticHotWaterTemperature"]
-        return None
+                dht = heating_mode["setpoints"]["domesticHotWaterTemperature"]
+        return dht
 
     def get_supported_features(self):
         sf = WaterHeaterEntityFeature.OPERATION_MODE
