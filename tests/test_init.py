@@ -152,3 +152,29 @@ async def test_altherma_boost(
         assert len(responses.calls) == 5
         assert responses.calls[4].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
+
+        # Turn the tank again off
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_OPERATION_MODE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_OPERATION_MODE: STATE_OFF},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 6
+        assert responses.calls[5].request.body == '{"value": "off"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
+
+        # Turn the tank again on
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_OPERATION_MODE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_OPERATION_MODE: STATE_HEAT_PUMP},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 7
+        assert responses.calls[6].request.body == '{"value": "on"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
