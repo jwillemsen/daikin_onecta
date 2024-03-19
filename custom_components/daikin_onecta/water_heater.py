@@ -31,7 +31,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
-                async_add_entities([DaikinWaterTank(device, coordinator, management_point["embeddedId"])])
+                async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point["embeddedId"])])
             else:
                 _LOGGER.info(
                     "Device '%s' '%s' is not a tank management point, ignoring as water heater",
@@ -43,7 +43,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
 
-    def __init__(self, device, coordinator, embedded_id):
+    def __init__(self, device, coordinator, management_point_type, embedded_id):
         """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
         super().__init__(coordinator)
@@ -51,6 +51,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._embedded_id = embedded_id
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.getId()}"
+        self._management_point_type = management_point_type
         self.update_state()
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
             _LOGGER.debug("Device '%'s: tank temperature is settable", device.name)
@@ -75,22 +76,16 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def hotwatertank_data(self):
         # Find the management point for the hot water tank
         hwd = None
-        supported_management_point_types = {
-            "domesticHotWaterTank",
-            "domesticHotWaterFlowThrough",
-        }
-
         for management_point in self._device.daikin_data["managementPoints"]:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
+            if management_point["managementPointType"] == self._management_point_type:
                 hwd = management_point
         return hwd
 
     @property
     def domestic_hotwater_temperature(self):
         # Find the json dictionary for controlling the hot water temperature
-        temp_control = self.hotwatertank_data["temperatureControl"]["value"]
         dht = None
+        temp_control = self.hotwatertank_data["temperatureControl"]["value"]
         if temp_control:
             heating_mode = temp_control["operationModes"]["heating"]
             if heating_mode is not None:
