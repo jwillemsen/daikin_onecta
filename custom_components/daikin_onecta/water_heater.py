@@ -50,6 +50,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._device = device
         self._embedded_id = embedded_id
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
+        self._attr_unique_id = f"{self._device.getId()}"
         self.update_state()
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
             _LOGGER.debug("Device '%'s: tank temperature is settable", device.name)
@@ -104,12 +105,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
         """Return the list of supported features."""
         return sf
-
-    @property
-    def unique_id(self):
-        """Return a unique ID."""
-        devID = self._device.getId()
-        return f"{devID}"
 
     def get_current_temperature(self):
         """Return tank temperature."""

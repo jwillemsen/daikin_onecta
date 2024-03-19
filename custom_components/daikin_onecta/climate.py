@@ -113,6 +113,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._embedded_id = embedded_id
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
+        self._attr_unique_id = f"{self._device.getId()}_{self._setpoint}"
         self.update_state()
 
     def update_state(self) -> None:
@@ -231,11 +232,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         myname = self._setpoint[0].upper() + self._setpoint[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         return f"{device_name} {' '.join(readable)}"
-
-    @property
-    def unique_id(self):
-        """Return a unique ID."""
-        return f"{self._device.getId()}_{self._setpoint}"
 
     def get_current_temperature(self):
         current_temp = None
