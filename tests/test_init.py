@@ -11,9 +11,9 @@ from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
 from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
 from homeassistant.components.climate import SERVICE_SET_SWING_MODE
-from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
+from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate.const import HVACMode
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
