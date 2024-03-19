@@ -91,6 +91,7 @@ async def test_altherma_boost(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 1
+        assert responses.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
 
         # Set the tank off, this should just work
@@ -102,9 +103,9 @@ async def test_altherma_boost(
         )
         await hass.async_block_till_done()
 
-        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
-
         assert len(responses.calls) == 2
+        assert responses.calls[1].request.body == '{"value": "off"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # Set the tank temperature to 54, because the tank is off no call should be done to Daikin
         await hass.services.async_call(
