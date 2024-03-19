@@ -4,13 +4,13 @@ from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
 import responses
-from homeassistant.components.climate import ATTR_HVAC_MODE
 from homeassistant.components.climate import ATTR_FAN_MODE
+from homeassistant.components.climate import ATTR_HVAC_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
+from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
-from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate.const import HVACMode
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
@@ -219,8 +219,7 @@ async def test_climate(
             status=204,
         )
         responses.patch(
-            DAIKIN_API_URL
-            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/fanControl",
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/fanControl",
             status=204,
         )
 
