@@ -9,6 +9,7 @@ from homeassistant.components.water_heater import ATTR_TEMPERATURE
 from homeassistant.components.water_heater import DOMAIN as WATER_HEATER_DOMAIN
 from homeassistant.components.water_heater import SERVICE_SET_OPERATION_MODE
 from homeassistant.components.water_heater import SERVICE_SET_TEMPERATURE
+from homeassistant.components.water_heater import STATE_HEAT_PUMP
 from homeassistant.components.water_heater import STATE_PERFORMANCE
 from homeassistant.const import ATTR_ENTITY_ID
 from homeassistant.const import Platform
@@ -80,6 +81,11 @@ async def test_altherma_boost(
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
             status=204,
         )
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/powerfulMode",
+            status=204,
+        )
 
         # Set the tank temperature to 58, this should just work
         await hass.services.async_call(
@@ -118,3 +124,31 @@ async def test_altherma_boost(
 
         assert len(responses.calls) == 2
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
+
+        # Set the tank to powerful mode, this should result in two calls, first turn the device
+        # on and second to set it to performance
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_OPERATION_MODE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_OPERATION_MODE: STATE_PERFORMANCE},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 4
+        assert responses.calls[2].request.body == '{"value": "on"}'
+        assert responses.calls[3].request.body == '{"value": "on"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
+
+        # Set the tank to regular on mode, this should only disable powerful mode
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_OPERATION_MODE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_OPERATION_MODE: STATE_HEAT_PUMP},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 5
+        assert responses.calls[4].request.body == '{"value": "off"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
