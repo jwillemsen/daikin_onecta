@@ -36,6 +36,8 @@ Follow the instructions, you have to login at Daikin and authorize the applicati
 
 The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`. You _must_ create a Daikin Developer account to obtain the id/secret.
 
+At this moment only https://my.home-assistant.io/redirect/oauth is supported as redirect_uri, see https://www.home-assistant.io/integrations/home_connect/ for some additional documentation about using My Home Assistant.
+
 This integration supports the following configuration settings to reduce the amount of polling to Daikin
 
 - High frequency period update interval (minutes)
