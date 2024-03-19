@@ -19,6 +19,7 @@ from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
 from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate.const import HVACMode
+from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
 from homeassistant.components.water_heater import DOMAIN as WATER_HEATER_DOMAIN
@@ -29,6 +30,7 @@ from homeassistant.components.water_heater import STATE_PERFORMANCE
 from homeassistant.const import ATTR_ENTITY_ID
 from homeassistant.const import Platform
 from homeassistant.const import STATE_OFF
+from homeassistant.const import STATE_ON
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
@@ -231,6 +233,10 @@ async def test_climate(
         )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/powerfulMode",
+            status=204,
+        )
+        responses.patch(
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/streamerMode",
             status=204,
         )
 
@@ -470,3 +476,32 @@ async def test_climate(
         assert responses.calls[19].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
+
+        # Test streamer mode switch
+        assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
+
+        # Set the streamer mode on
+        await hass.services.async_call(
+            SWITCH_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 21
+        assert responses.calls[20].request.body == '{"value": "on"}'
+        assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_ON
+
+        # Set the streamer mode off
+        await hass.services.async_call(
+            SWITCH_DOMAIN,
+            SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 22
+        assert responses.calls[21].request.body == '{"value": "off"}'
+        assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
