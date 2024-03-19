@@ -10,7 +10,7 @@ from syrupy import SnapshotAssertion
 from .conftest import snapshot_platform_entities
 
 
-async def test_entity(
+async def test_altherma(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
     onecta_auth: AsyncMock,
@@ -18,22 +18,14 @@ async def test_entity(
     entity_registry: er.EntityRegistry,
 ) -> None:
     """Test entities."""
-    # with selected_platforms([Platform.SENSOR]):
-    #    await setup_mock_daikin_onecta_config_entry(hass)
-    # assert await hass.config_entries.async_setup(config_entry.entry_id)
-    # entry = MockConfigEntry(domain=DOMAIN, data={"name": "simple config",})
-    # entry.add_to_hass(hass)
-    # await hass.config_entries.async_setup(entry.entry_id)
-    # await hass.async_block_till_done()
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
-    # state = hass.states.get("sensor.example_temperature")
-
-    # assert await async_setup_component(hass, "daikin_onecta", {})
-    # await setup_mock_daikin_onecta_config_entry(hass)
-    await snapshot_platform_entities(
-        hass,
-        config_entry,
-        Platform.SENSOR,
-        entity_registry,
-        snapshot,
-    )
+async def test_mc80z(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "mc80z")

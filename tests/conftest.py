@@ -1,5 +1,4 @@
 # """Global fixtures for myenergi integration."""
-from contextlib import contextmanager
 from typing import Any
 from unittest.mock import AsyncMock
 from unittest.mock import patch
@@ -17,8 +16,6 @@ from . import load_fixture_json
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
 
-pytest_plugins = "pytest_homeassistant_custom_component"
-
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
 def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:  # noqa: F811
@@ -31,13 +28,14 @@ async def snapshot_platform_entities(
     platform: Platform,
     entity_registry: er.EntityRegistry,
     snapshot: SnapshotAssertion,
+    fixture_device_json,
 ) -> None:
     """Snapshot entities and their states."""
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ), patch(
         "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
-        return_value=load_fixture_json("altherma"),
+        return_value=load_fixture_json(fixture_device_json),
     ):
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 
@@ -49,18 +47,6 @@ async def snapshot_platform_entities(
     for entity_entry in entity_entries:
         assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
         assert hass.states.get(entity_entry.entity_id) == snapshot(name=f"{entity_entry.entity_id}-state")
-
-
-@contextmanager
-def selected_platforms(platforms: list[Platform]) -> AsyncMock:
-    """Restrict loaded platforms to list given."""
-    with patch(
-        "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
-    ), patch(
-        "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
-        return_value=load_fixture_json("altherma"),
-    ):
-        yield
 
 
 @pytest.fixture(name="config_entry")
