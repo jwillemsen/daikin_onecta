@@ -228,6 +228,17 @@ async def test_climate(
         assert responses.calls[0].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
+        # Turn on the device another time, this shouldn't result in a call to Daikin
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 1
+
         # Turn off the device, it was in cool mode
         await hass.services.async_call(
             CLIMATE_DOMAIN,
@@ -240,3 +251,14 @@ async def test_climate(
         assert len(responses.calls) == 2
         assert responses.calls[1].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        # Turn off the device another time, this shouldn't result in a call to Daikin
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 2
