@@ -4,6 +4,7 @@ from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
 import responses
+from homeassistant.components.climate.const import HVACMode
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
 from homeassistant.components.water_heater import DOMAIN as WATER_HEATER_DOMAIN
@@ -45,7 +46,7 @@ async def test_mc80z(
 
 
 @responses.activate
-async def test_altherma_boost(
+async def test_water_heater(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
     onecta_auth: AsyncMock,
@@ -57,7 +58,6 @@ async def test_altherma_boost(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_boost")
 
     assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
-
     #    device_registry = dr.async_get(hass)
     #    device = device_registry.async_get_device(identifiers={("daikin_onecta", "altherma")})
     #    assert device is not None
@@ -178,3 +178,17 @@ async def test_altherma_boost(
         assert len(responses.calls) == 7
         assert responses.calls[6].request.body == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
+
+
+@responses.activate
+async def test_climate(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
+
+    assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
