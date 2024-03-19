@@ -89,6 +89,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
         return res
 
     async def async_select_option(self, option: str) -> None:
+        # TODO: Caching update needs to be reworked when Daikin provides this data again
         mode = None
         managementPoints = self._device.daikin_data.get("managementPoints")
         if managementPoints is not None:
