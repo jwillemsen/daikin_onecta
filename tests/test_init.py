@@ -75,7 +75,13 @@ async def test_altherma_boost(
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
             status=204,
         )
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
+            status=204,
+        )
 
+        # Set the tank temperature to 58, this should just work
         await hass.services.async_call(
             WATER_HEATER_DOMAIN,
             SERVICE_SET_TEMPERATURE,
@@ -85,13 +91,9 @@ async def test_altherma_boost(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 1
+        assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
 
-        responses.patch(
-            DAIKIN_API_URL
-            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
-            status=204,
-        )
-
+        # Set the tank off, this should just work
         await hass.services.async_call(
             WATER_HEATER_DOMAIN,
             SERVICE_SET_OPERATION_MODE,
@@ -103,3 +105,15 @@ async def test_altherma_boost(
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         assert len(responses.calls) == 2
+
+        # Set the tank temperature to 54, because the tank is off no call should be done to Daikin
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_TEMPERATURE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 54},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 2
+        assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
