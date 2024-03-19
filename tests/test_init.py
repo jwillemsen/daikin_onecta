@@ -5,10 +5,12 @@ from unittest.mock import patch
 import homeassistant.helpers.entity_registry as er
 import responses
 from homeassistant.components.climate import ATTR_HVAC_MODE
+from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
+from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate.const import HVACMode
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
@@ -216,6 +218,11 @@ async def test_climate(
             + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/operationMode",
             status=204,
         )
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/fanControl",
+            status=204,
+        )
 
         # Turn on the device, it was in cool mode
         await hass.services.async_call(
@@ -290,3 +297,69 @@ async def test_climate(
         assert len(responses.calls) == 4
         assert responses.calls[3].request.body == '{"value": "heating"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
+
+        # Turn off the device through the hvac mode
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.OFF},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 5
+        assert responses.calls[4].request.body == '{"value": "off"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        # Turn on the device, it was in heat mode
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 6
+        assert responses.calls[5].request.body == '{"value": "on"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
+
+        # Set the fan mode to 1, will first set the fanControl to fixed, after that the value to 1
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: 1},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 8
+        assert responses.calls[6].request.body == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert responses.calls[7].request.body == '{"value": 1, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "1"
+
+        # Set the fan mode to 2, should result in 1 call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: 2},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 9
+        assert responses.calls[8].request.body == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "2"
+
+        # Set the fan mode to auto, should result in 1 call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: "auto"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 10
+        assert responses.calls[9].request.body == '{"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "auto"

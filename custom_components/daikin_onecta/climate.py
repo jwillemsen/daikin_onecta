@@ -462,22 +462,25 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             fan_mode,
         )
 
-        res = False
+        res = True
         cc = self.climate_control()
         operationmode = cc["operationMode"]["value"]
         if fan_mode.isnumeric():
-            res = await self._device.set_path(
-                self._device.getId(),
-                self._embedded_id,
-                "fanControl",
-                f"/operationModes/{operationmode}/fanSpeed/currentMode",
-                "fixed",
-            )
-            if res is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting fan_mode to fixed",
-                    self._device.name,
+            if not self._attr_fan_mode.isnumeric():
+                # Only set the currentMode to fixed when we currently don't have set
+                # a numeric mode
+                res = await self._device.set_path(
+                    self._device.getId(),
+                    self._embedded_id,
+                    "fanControl",
+                    f"/operationModes/{operationmode}/fanSpeed/currentMode",
+                    "fixed",
                 )
+                if res is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting fan_mode to fixed",
+                        self._device.name,
+                    )
 
             new_fixed_mode = int(fan_mode)
             res &= await self._device.set_path(
