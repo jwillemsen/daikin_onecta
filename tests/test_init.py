@@ -6,9 +6,12 @@ import homeassistant.helpers.entity_registry as er
 import responses
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
+from homeassistant.components.climate import ATTR_SWING_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
 from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
+from homeassistant.components.climate import SERVICE_SET_SWING_MODE
+from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
 from homeassistant.components.climate.const import HVACMode
@@ -390,3 +393,17 @@ async def test_climate(
         assert responses.calls[12].request.body == '{"value": 20.0, "path": "/operationModes/cooling/setpoints/roomTemperature"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 20
+
+        # Set the swing mode to SWING_BOTH, should result in two calls
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_SWING_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: SWING_BOTH},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 15
+        assert responses.calls[13].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/horizontal/currentMode"}'
+        assert responses.calls[14].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == SWING_BOTH
