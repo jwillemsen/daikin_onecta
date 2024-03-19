@@ -36,6 +36,9 @@ async def snapshot_platform_entities(
     ), patch(
         "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
         return_value=load_fixture_json(fixture_device_json),
+    ), patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
     ):
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 

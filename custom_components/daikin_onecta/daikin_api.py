@@ -10,6 +10,7 @@ from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
 
+from .const import DAIKIN_API_URL
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN
 
@@ -66,7 +67,7 @@ class DaikinApi:
                 raise Exception("Missing token. Please repeat Authentication process.")
 
             if not resourceUrl.startswith("http"):
-                resourceUrl = "https://api.onecta.daikineurope.com" + resourceUrl
+                resourceUrl = DAIKIN_API_URL + resourceUrl
 
             headers = {
                 "Accept-Encoding": "gzip",
