@@ -156,11 +156,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                 self._switch_state = "on"
                 self.async_write_ha_state()
         else:
-            _LOGGER.debug(
-                "Device '%s' switch '%s' request to turn on ignored because is already on",
-                self._device.name,
-                self._value
-            )
+            _LOGGER.debug("Device '%s' switch '%s' request to turn on ignored because is already on", self._device.name, self._value)
 
         return result
 
@@ -179,10 +175,6 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                 self._switch_state = "off"
                 self.async_write_ha_state()
         else:
-            _LOGGER.debug(
-                "Device '%s' switch '%s' request to turn off ignored because is already off",
-                self._device.name,
-                self._value
-            )
+            _LOGGER.debug("Device '%s' switch '%s' request to turn off ignored because is already off", self._device.name, self._value)
 
         return result
