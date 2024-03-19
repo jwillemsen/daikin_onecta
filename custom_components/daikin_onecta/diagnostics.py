@@ -29,8 +29,7 @@ async def async_get_device_diagnostics(hass: HomeAssistant, entry: ConfigEntry, 
     dev_id = next(iter(device.identifiers))[1]
     daikin_api = hass.data[DOMAIN][DAIKIN_API]
     daikin_device = hass.data[DOMAIN][DAIKIN_DEVICES][dev_id]
-    data["device"] = device
-    data["device_json_data"] = daikin_device.daikin_data()
+    data["device_json_data"] = daikin_device.daikin_data
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = entry.options
     data["oauth2_token_valid"] = daikin_api.session.valid_token
