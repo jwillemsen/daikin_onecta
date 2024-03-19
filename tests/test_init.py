@@ -204,11 +204,11 @@ async def test_climate(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
     ):
-        # responses.patch(
-        #     DAIKIN_API_URL
-        #     + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/temperatureControl",
-        #     status=204,
-        # )
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/temperatureControl",
+            status=204,
+        )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/onOffMode",
             status=204,
@@ -362,3 +362,16 @@ async def test_climate(
         assert len(responses.calls) == 10
         assert responses.calls[9].request.body == '{"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "auto"
+
+        # Set the target temperature to 25
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_TEMPERATURE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_TEMPERATURE: 25},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 11
+        assert responses.calls[10].request.body == '{"value": 25.0, "path": "/operationModes/heating/setpoints/roomTemperature"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 25
