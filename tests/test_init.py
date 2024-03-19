@@ -493,6 +493,17 @@ async def test_climate(
         assert responses.calls[20].request.body == '{"value": "on"}'
         assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_ON
 
+        # Set the streamer mode on a second time shouldn't result in a call to daikin
+        await hass.services.async_call(
+            SWITCH_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 21
+
         # Set the streamer mode off
         await hass.services.async_call(
             SWITCH_DOMAIN,
@@ -505,3 +516,14 @@ async def test_climate(
         assert len(responses.calls) == 22
         assert responses.calls[21].request.body == '{"value": "off"}'
         assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
+
+        # Set the streamer mode off a second time shouldn't result in a call to daikin
+        await hass.services.async_call(
+            SWITCH_DOMAIN,
+            SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 22

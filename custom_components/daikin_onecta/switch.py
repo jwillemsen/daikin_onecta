@@ -147,24 +147,42 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
-        result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
-        if result is False:
-            _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
+        result = True
+        if not self.is_on:
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
+            if result is False:
+                _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
+            else:
+                self._switch_state = "on"
+                self.async_write_ha_state()
         else:
-            self._switch_state = "on"
-            self.async_write_ha_state()
+            _LOGGER.debug(
+                "Device '%s' switch '%s' request to turn on ignored because is already on",
+                self._device.name,
+                self._value
+            )
+
         return result
 
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
-        result = await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "off")
-        if result is False:
-            _LOGGER.warning(
-                "Device '%s' problem setting '%s' to off",
-                self._device.name,
-                self._value,
-            )
+        result = True
+        if self.is_on:
+            result &= await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "off")
+            if result is False:
+                _LOGGER.warning(
+                    "Device '%s' problem setting '%s' to off",
+                    self._device.name,
+                    self._value,
+                )
+            else:
+                self._switch_state = "off"
+                self.async_write_ha_state()
         else:
-            self._switch_state = "off"
-            self.async_write_ha_state()
+            _LOGGER.debug(
+                "Device '%s' switch '%s' request to turn off ignored because is already off",
+                self._device.name,
+                self._value
+            )
+
         return result
