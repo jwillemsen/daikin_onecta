@@ -441,3 +441,32 @@ async def test_climate(
         assert len(responses.calls) == 17
         assert responses.calls[16].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
+
+        # Turn off the device through the hvac mode
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.OFF},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 18
+        assert responses.calls[17].request.body == '{"value": "off"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        # Set the preset mode boost, this should result in two calls, power on the device
+        # and set the preset mode. The device was in cool mode, so check that here
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_PRESET_MODE: PRESET_BOOST},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 20
+        assert responses.calls[18].request.body == '{"value": "on"}'
+        assert responses.calls[19].request.body == '{"value": "on"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
