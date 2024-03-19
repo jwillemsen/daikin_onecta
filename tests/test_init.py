@@ -10,6 +10,7 @@ from homeassistant.components.climate import ATTR_PRESET_MODE
 from homeassistant.components.climate import ATTR_SWING_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
 from homeassistant.components.climate import PRESET_BOOST
+from homeassistant.components.climate import PRESET_NONE
 from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
 from homeassistant.components.climate import SERVICE_SET_PRESET_MODE
@@ -427,3 +428,16 @@ async def test_climate(
         assert len(responses.calls) == 16
         assert responses.calls[15].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
+
+        # Disable the preset mode boost again
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_PRESET_MODE: PRESET_NONE},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 17
+        assert responses.calls[16].request.body == '{"value": "off"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
