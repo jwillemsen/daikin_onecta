@@ -375,3 +375,18 @@ async def test_climate(
         assert len(responses.calls) == 11
         assert responses.calls[10].request.body == '{"value": 25.0, "path": "/operationModes/heating/setpoints/roomTemperature"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 25
+
+        # Set the hvac mode to cool and target temperature to 20 using one call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_TEMPERATURE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.COOL, ATTR_TEMPERATURE: 20},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 13
+        assert responses.calls[11].request.body == '{"value": "cooling"}'
+        assert responses.calls[12].request.body == '{"value": 20.0, "path": "/operationModes/cooling/setpoints/roomTemperature"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 20
