@@ -53,6 +53,17 @@ async def test_altherma(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
 
+async def test_climate_fixedfanmode(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_fixedfanmode")
+
+
 async def test_mc80z(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
