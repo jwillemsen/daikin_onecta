@@ -18,7 +18,7 @@ from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
-from .daikin_base import Appliance
+from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -75,7 +75,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
 
 class DaikinSwitch(CoordinatorEntity, ToggleEntity):
-    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, value) -> None:
+    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device

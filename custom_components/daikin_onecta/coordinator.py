@@ -12,7 +12,7 @@ from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 from .const import DAIKIN_API
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN
-from .daikin_base import Appliance
+from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -56,7 +56,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             if dev_data["id"] in devices:
                 devices[dev_data["id"]].setJsonData(dev_data)
             else:
-                device = Appliance(dev_data, daikin_api)
+                device = DaikinOnectaDevice(dev_data, daikin_api)
                 devices[dev_data["id"]] = device
 
         self.update_interval = self.determine_update_interval(self.hass)

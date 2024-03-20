@@ -24,7 +24,7 @@ from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
-from .daikin_base import Appliance
+from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -147,7 +147,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 
     def __init__(
         self,
-        device: Appliance,
+        device: DaikinOnectaDevice,
         coordinator,
         embedded_id,
         management_point_type,
@@ -229,7 +229,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     def __init__(
         self,
-        device: Appliance,
+        device: DaikinOnectaDevice,
         coordinator,
         embedded_id,
         management_point_type,
@@ -306,7 +306,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
     def __init__(
         self,
         hass: HomeAssistant,
-        device: Appliance,
+        device: DaikinOnectaDevice,
         coordinator,
         limit_key,
     ) -> None:

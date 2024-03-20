@@ -8,7 +8,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
-from .daikin_base import Appliance
+from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -35,7 +35,7 @@ async def async_setup_entry(hass, entry, async_add_entities):
 class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
     """Daikin DemandControl Select class."""
 
-    def __init__(self, device: Appliance, coordinator, embedded_id, management_point_type, value) -> None:
+    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinDemandSelect '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
