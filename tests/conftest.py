@@ -1,4 +1,7 @@
 # """Global fixtures for myenergi integration."""
+from __future__ import annotations
+
+import json
 from typing import Any
 from unittest.mock import AsyncMock
 from unittest.mock import patch
@@ -11,10 +14,14 @@ from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
-from . import load_fixture_json
-
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
+
+
+def load_fixture_json(name):
+    with open(f"tests/fixtures/{name}.json") as json_file:
+        data = json.load(json_file)
+        return data
 
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
