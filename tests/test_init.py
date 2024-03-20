@@ -2,8 +2,8 @@
 from unittest.mock import AsyncMock
 from unittest.mock import patch
 
-import homeassistant.helpers.entity_registry as er
 import homeassistant.helpers.device_registry as dr
+import homeassistant.helpers.entity_registry as er
 import responses
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
@@ -38,8 +38,8 @@ from syrupy import SnapshotAssertion
 
 from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
-from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
+from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
 
 async def test_altherma(
