@@ -163,7 +163,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} Electrical Consumption"
-        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_electrical_{self._operation_mode}_{self._period}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_electrical_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
         self._attr_icon = "mdi:fire"
         if operation_mode == "cooling":
@@ -259,7 +259,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -308,7 +308,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_icon = "mdi:information-outline"
         self._attr_entity_category = EntityCategory.DIAGNOSTIC
         self._attr_name = f"RateLimit {self._limit_key}"
-        self._attr_unique_id = f"{self._device.getId()}_limitsensor_{self._limit_key}"
+        self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
         self._attr_state_class = SensorStateClass.MEASUREMENT
         self.update_state()
         _LOGGER.info(

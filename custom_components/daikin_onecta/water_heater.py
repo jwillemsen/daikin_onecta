@@ -50,7 +50,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._device = device
         self._embedded_id = embedded_id
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
-        self._attr_unique_id = f"{self._device.getId()}"
+        self._attr_unique_id = f"{self._device.id}"
         self._management_point_type = management_point_type
         self.update_state()
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
@@ -184,7 +184,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 )
                 return None
         res = await self._device.set_path(
-            self._device.getId(),
+            self._device.id,
             self._embedded_id,
             "temperatureControl",
             "/operationModes/heating/setpoints/domesticHotWaterTemperature",
@@ -249,11 +249,11 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
-            result &= await self._device.set_path(self._device.getId(), self._embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.set_path(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
         # Only set powerfulMode when it is set and supported by the device
         if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
             result &= await self._device.set_path(
-                self._device.getId(),
+                self._device.id,
                 self._embedded_id,
                 "powerfulMode",
                 "",

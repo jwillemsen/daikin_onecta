@@ -46,7 +46,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
         self.update_state()
         _LOGGER.info(
@@ -100,7 +100,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
             if option in ("auto", "off"):
                 new_currentmode = option
             res = await self._device.set_path(
-                self._device.getId(),
+                self._device.id,
                 self._embedded_id,
                 "demandControl",
                 "/currentMode",
@@ -117,7 +117,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
 
             if new_currentmode == "fixed":
                 res = await self._device.set_path(
-                    self._device.getId(),
+                    self._device.id,
                     self._embedded_id,
                     "demandControl",
                     "/modes/fixed",

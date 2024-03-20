@@ -103,7 +103,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -144,7 +144,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         """Turn the zone on."""
         result = True
         if not self.is_on:
-            result &= await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "on")
+            result &= await self._device.set_path(self._device.id, self._embedded_id, self._value, "", "on")
             if result is False:
                 _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
             else:
@@ -159,7 +159,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         """Turn the zone off."""
         result = True
         if self.is_on:
-            result &= await self._device.set_path(self._device.getId(), self._embedded_id, self._value, "", "off")
+            result &= await self._device.set_path(self._device.id, self._embedded_id, self._value, "", "off")
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting '%s' to off",

@@ -17,6 +17,7 @@ class DaikinOnectaDevice:
         # get name from climateControl
         self._available = True
         self.daikin_data = jsonData
+        self.id = self.daikin_data["id"]
         self.name = self.daikin_data["deviceModel"]
 
         management_points = self.daikin_data.get("managementPoints", [])
@@ -25,7 +26,7 @@ class DaikinOnectaDevice:
             if management_point_type == "climateControl":
                 self.name = management_point["name"]["value"]
 
-        _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.getId())
+        _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id)
 
     @property
     def available(self) -> bool:
@@ -40,7 +41,6 @@ class DaikinOnectaDevice:
         mac_add = ""
         model = ""
         sw_vers = ""
-        name = ""
         supported_management_point_types = {"gateway"}
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -49,18 +49,16 @@ class DaikinOnectaDevice:
                 mac_add = management_point["macAddress"]["value"]
                 model = management_point["modelInfo"]["value"]
                 sw_vers = management_point["firmwareVersion"]["value"]
-            if management_point_type == "climateControl":
-                name = management_point["name"]["value"]
 
         return {
             "identifiers": {
                 # Serial numbers are unique identifiers within a specific domain
-                (DOMAIN, self.getId())
+                (DOMAIN, self.id)
             },
             "connections": {(CONNECTION_NETWORK_MAC, mac_add)},
             "manufacturer": "Daikin",
             "model": model,
-            "name": name,
+            "name": self.name,
             "sw_version": sw_vers.replace("_", "."),
         }
 
@@ -80,13 +78,6 @@ class DaikinOnectaDevice:
     def setJsonData(self, desc):
         """Set a device description and parse/traverse data structure."""
         self.merge_json(self.daikin_data, desc)
-
-    def daikin_data(self):
-        return self.daikin_data
-
-    def getId(self):
-        """Get Daikin Device UUID."""
-        return self.daikin_data["id"]
 
     async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
