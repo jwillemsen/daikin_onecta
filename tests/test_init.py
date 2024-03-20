@@ -76,6 +76,7 @@ async def test_climate_floorheatingairflow(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_floorheatingairflow")
 
+
 async def test_mc80z(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
