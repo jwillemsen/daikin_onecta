@@ -3,6 +3,7 @@ from unittest.mock import AsyncMock
 from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
+import homeassistant.helpers.device_registry as dr
 import responses
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
@@ -37,6 +38,8 @@ from syrupy import SnapshotAssertion
 
 from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
+from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
+from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 
 
 async def test_altherma(
@@ -73,15 +76,23 @@ async def test_water_heater(
     # Altherma with boost enabled
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_boost")
 
-    assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
-    #    device_registry = dr.async_get(hass)
-    #    device = device_registry.async_get_device(identifiers={("daikin_onecta", "altherma")})
-    #    assert device is not None
+    ce_diag = await async_get_config_entry_diagnostics(hass, config_entry)
+    device_registry = dr.async_get(hass)
+    device = device_registry.async_get_device(identifiers={("daikin_onecta", "1ece521b-5401-4a42-acce-6f76fba246aa")})
+    assert device is not None
+    device_diag = await async_get_device_diagnostics(hass, config_entry, device)
 
-    #    assert (
-    #    await get_diagnostics_for_device(hass, hass_client, config_entry, device)
-    #        == DEVICE_DIAGNOSTIC_DATA
-    #    )
+    assert ce_diag["json_data"] != ""
+    assert ce_diag["rate_limits"] != ""
+    assert ce_diag["options"] != ""
+    assert ce_diag["oauth2_token_valid"] != ""
+
+    assert device_diag["device_json_data"] != ""
+    assert device_diag["rate_limits"] != ""
+    assert device_diag["options"] != ""
+    assert device_diag["oauth2_token_valid"] != ""
+
+    assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
 
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
