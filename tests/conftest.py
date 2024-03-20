@@ -8,11 +8,14 @@ from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
 import pytest
+import responses
 from _pytest.assertion import truncate
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
+
+from custom_components.daikin_onecta.const import DAIKIN_API_URL
 
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
@@ -41,13 +44,12 @@ async def snapshot_platform_entities(
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ), patch(
-        "custom_components.daikin_onecta.DaikinApi.getCloudDeviceDetails",
-        return_value=load_fixture_json(fixture_device_json),
-    ), patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
     ):
-        assert await hass.config_entries.async_setup(config_entry.entry_id)
+        with responses.RequestsMock() as rsps:
+            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
+            assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
 
