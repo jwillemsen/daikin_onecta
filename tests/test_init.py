@@ -63,6 +63,8 @@ async def test_climate_fixedfanmode(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_fixedfanmode")
 
+    assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
+
 
 async def test_mc80z(
     hass: HomeAssistant,
