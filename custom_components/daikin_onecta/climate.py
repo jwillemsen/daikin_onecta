@@ -131,6 +131,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_swing_mode = self.get_swing_mode()
         self._attr_preset_mode = self.get_preset_mode()
         self._attr_fan_mode = self.get_fan_mode()
+        self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -769,8 +771,3 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
 
         return result
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()

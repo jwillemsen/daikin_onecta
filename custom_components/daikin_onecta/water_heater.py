@@ -66,6 +66,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_operation_list = self.get_operation_list()
         self._attr_current_operation = self.get_current_operation()
         self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -267,8 +268,3 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             self.async_write_ha_state()
 
         return result
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()

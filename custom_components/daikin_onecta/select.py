@@ -59,16 +59,13 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
     def update_state(self) -> None:
         self._attr_options = self.get_options()
         self._attr_current_option = self.get_current_option()
+        self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
 
     @callback
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
-
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
 
     def get_current_option(self):
         """Return the state of the sensor."""
@@ -156,8 +153,3 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
                         else:
                             opt.append(mode)
         return opt
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()

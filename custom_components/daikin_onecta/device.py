@@ -29,11 +29,11 @@ class DaikinOnectaDevice:
 
     @property
     def available(self) -> bool:
-        """Return True if entity is available."""
-        try:
-            return self.daikin_data["isCloudConnectionUp"]["value"]
-        except Exception:
-            return False
+        result = False
+        icu = self.daikin_data.get("isCloudConnectionUp")
+        if icu is not None:
+            result = icu["value"]
+        return result
 
     def device_info(self):
         """Return a device description for device registry."""

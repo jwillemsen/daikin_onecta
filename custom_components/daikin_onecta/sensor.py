@@ -172,7 +172,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_device_class = SensorDeviceClass.ENERGY
         self._attr_state_class = SensorStateClass.TOTAL_INCREASING
         self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
-        self._attr_native_value = self.sensor_value()
+        self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
@@ -180,9 +180,14 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
             self._attr_name,
         )
 
+    def update_state(self) -> None:
+        self._attr_native_value = self.sensor_value()
+        self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
+
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._attr_native_value = self.sensor_value()
+        self.update_state()
         self.async_write_ha_state()
 
     def sensor_value(self):
@@ -214,16 +219,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                                     )
 
         return energy_value
-
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()
 
 
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
@@ -265,7 +260,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        self._attr_native_value = self.sensor_value()
+        self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
@@ -273,9 +268,13 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             self._attr_name,
         )
 
+    def update_state(self) -> None:
+        self._attr_native_value = self.sensor_value()
+        self._attr_device_info = self._device.device_info()
+
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._attr_native_value = self.sensor_value()
+        self.update_state()
         self.async_write_ha_state()
 
     def sensor_value(self):
@@ -290,16 +289,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
                     res = cd.get("value")
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
         return res
-
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()
 
 
 class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
@@ -320,27 +309,27 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_entity_category = EntityCategory.DIAGNOSTIC
         self._attr_name = f"RateLimit {self._limit_key}"
         self._attr_unique_id = f"{self._device.getId()}_limitsensor_{self._limit_key}"
-        self._attr_native_value = self.sensor_value()
         self._attr_state_class = SensorStateClass.MEASUREMENT
+        self.update_state()
         _LOGGER.info(
             "Device '%s' supports sensor '%s'",
             device.name,
             self._attr_name,
         )
 
+    def update_state(self) -> None:
+        self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
+        self._attr_native_value = self.sensor_value()
+
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._attr_native_value = self.sensor_value()
+        self.update_state()
         self.async_write_ha_state()
 
     def sensor_value(self):
         daikin_api = self._hass.data[DAIKIN_DOMAIN][DAIKIN_API]
         return daikin_api.rate_limits[self._limit_key]
-
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
 
     @property
     def device_info(self):

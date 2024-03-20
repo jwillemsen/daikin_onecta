@@ -104,7 +104,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.getId()}_{self._management_point_type}_{self._value}"
-        self._switch_state = self.sensor_value()
+        self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
@@ -112,15 +112,15 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             self._attr_name,
         )
 
+    def update_state(self) -> None:
+        self._switch_state = self.sensor_value()
+        self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
+
     @callback
     def _handle_coordinator_update(self) -> None:
-        self._switch_state = self.sensor_value()
+        self.update_state()
         self.async_write_ha_state()
-
-    @property
-    def available(self):
-        """Return the availability of the underlying device."""
-        return self._device.available
 
     @property
     def is_on(self):
@@ -139,11 +139,6 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                         result = cd.get("value")
         _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()
 
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
