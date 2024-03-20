@@ -11,7 +11,6 @@ from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
 
 from .const import DAIKIN_API_URL
-from .const import DAIKIN_DEVICES
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
@@ -144,19 +143,4 @@ class DaikinApi:
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
-        json_puredata = await self.doBearerRequest("/v1/gateway-devices")
-        return json_puredata
-
-    async def get_daikin_data(self):
-        """Pull the latest data from Daikin only when the last patch call is more than 30 seconds ago."""
-        if (datetime.now() - self._last_patch_call).total_seconds() < self._config_entry.options.get("scan_ignore", 30):
-            _LOGGER.debug("API UPDATE skipped (just updated from UI)")
-            return False
-
-        _LOGGER.debug("API UPDATE")
-
-        self.json_data = await self.getCloudDeviceDetails()
-        for dev_data in self.json_data or []:
-            if dev_data["id"] in self.hass.data[DOMAIN][DAIKIN_DEVICES]:
-                self.hass.data[DOMAIN][DAIKIN_DEVICES][dev_data["id"]].setJsonData(dev_data)
-        return self.hass.data[DOMAIN][DAIKIN_DEVICES]
+        return await self.doBearerRequest("/v1/gateway-devices")
