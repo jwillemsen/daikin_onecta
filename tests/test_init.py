@@ -66,6 +66,16 @@ async def test_climate_fixedfanmode(
     assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
 
 
+async def test_climate_floorheatingairflow(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_floorheatingairflow")
+
 async def test_mc80z(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
