@@ -92,3 +92,15 @@ class DaikinOnectaDevice:
         _LOGGER.debug("RES IS {}".format(res))
 
         return res
+
+    async def post(self, id, embeddedId, dataPoint, value):
+        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
+        setBody = {"enabled":value, "startDate": '2024-03-20', "endDate": '2024-03-29'}
+        setOptions = {"method": "POST", "json": json.dumps(setBody)}
+
+        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
+
+        res = await self.api.doBearerRequest(setPath, setOptions)
+        _LOGGER.debug("RES IS {}".format(res))
+
+        return res

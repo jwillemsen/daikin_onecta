@@ -72,12 +72,16 @@ class DaikinApi:
                 "Accept-Encoding": "gzip",
                 "Authorization": "Bearer " + token,
                 "Content-Type": "application/json",
+                "accept": "*/*"
             }
 
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
             if options is not None and "method" in options and options["method"] == "PATCH":
-                _LOGGER.debug("BEARER REQUEST JSON: %s", options["json"])
+                _LOGGER.debug("BEARER PATCH JSON: %s", options["json"])
                 func = functools.partial(requests.patch, resourceUrl, headers=headers, data=options["json"])
+            elif options is not None and "method" in options and options["method"] == "POST":
+                _LOGGER.debug("BEARER POST JSON: %s", options["json"])
+                func = functools.partial(requests.post, resourceUrl, headers=headers, data=options["json"])
             else:
                 func = functools.partial(requests.get, resourceUrl, headers=headers)
             try:
