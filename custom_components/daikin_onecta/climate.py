@@ -732,7 +732,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 supported_preset_modes.append(mode)
 
         _LOGGER.info(
-            "Device '%s' supports pre preset_modes %s",
+            "Device '%s' supports preset_modes %s",
             self._device.name,
             format(supported_preset_modes),
         )
