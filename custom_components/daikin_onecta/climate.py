@@ -680,8 +680,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     # for example holidayMode value is a dict object with an enabled value
                     if isinstance(preset_value, dict):
                         enabled_value = preset_value.get("enabled")
-                        if enabled_value and enabled_value == True:
-                            current_presett_mode = mode
+                        if enabled_value and enabled_value:
+                            current_preset_mode = mode
                     if preset_value == "on":
                         current_preset_mode = mode
         return current_preset_mode
