@@ -68,6 +68,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     if value_value is not None and settable is True and "on" in values and "off" in values:
                         # Don't create when it is settable and values on/off, that is a switch
                         pass
+                    elif len(values) == 0 and value_value is not None and isinstance(value_value, bool):
+                        # We don't have mutiple values and the value is a bool, this is a binary sensor
+                        pass
                     elif value == "operationMode" and management_point_type in supported_management_point_types:
                         # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
                         pass

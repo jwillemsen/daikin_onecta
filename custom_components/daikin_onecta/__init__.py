@@ -25,7 +25,7 @@ SERVICE_PULL_DEVICES = "pull_devices"
 SIGNAL_DELETE_ENTITY = "daikin_delete"
 SIGNAL_UPDATE_ENTITY = "daikin_update"
 
-COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
+COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select", "binary_sensor"]
 
 
 async def async_setup(hass, config):
