@@ -4,7 +4,6 @@ import logging
 
 from aiohttp import ClientError
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.config_entries import SOURCE_IMPORT
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
@@ -72,7 +71,6 @@ async def async_unload_entry(hass, config_entry):
     if not hass.data[DOMAIN]:
         hass.data.pop(DOMAIN)
     return True
-
 
 
 async def update_listener(hass, config_entry):
