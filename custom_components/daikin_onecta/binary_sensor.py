@@ -8,7 +8,6 @@ from homeassistant.components.binary_sensor import (
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
