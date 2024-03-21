@@ -2,6 +2,9 @@
 import logging
 import re
 
+from homeassistant.components.binary_sensor import (
+    BinarySensorEntity,
+)
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
@@ -17,10 +20,6 @@ from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
 from .device import DaikinOnectaDevice
-
-from homeassistant.components.binary_sensor import (
-    BinarySensorEntity,
-)
 
 _LOGGER = logging.getLogger(__name__)
 
