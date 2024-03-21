@@ -33554,7 +33554,7 @@
     'name': None,
     'options': dict({
     }),
-    'original_device_class': <BinarySensorDeviceClass.UPDATE: 'update'>,
+    'original_device_class': None,
     'original_icon': 'mdi:information-outline',
     'original_name': 'Gateway Is Firmware Update Supported',
     'platform': 'daikin_onecta',
@@ -33567,7 +33567,6 @@
 # name: test_climate_fixedfanmode[binary_sensor.werkkamer_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'device_class': 'update',
       'friendly_name': 'Werkkamer Gateway Is Firmware Update Supported',
       'icon': 'mdi:information-outline',
     }),
@@ -74807,7 +74806,7 @@
     'name': None,
     'options': dict({
     }),
-    'original_device_class': <BinarySensorDeviceClass.UPDATE: 'update'>,
+    'original_device_class': None,
     'original_icon': 'mdi:information-outline',
     'original_name': 'Gateway Is Firmware Update Supported',
     'platform': 'daikin_onecta',
@@ -74820,7 +74819,6 @@
 # name: test_mc80z[binary_sensor.gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'device_class': 'update',
       'friendly_name': 'Gateway Is Firmware Update Supported',
       'icon': 'mdi:information-outline',
     }),
@@ -75374,7 +75372,7 @@
     'name': None,
     'options': dict({
     }),
-    'original_device_class': <BinarySensorDeviceClass.UPDATE: 'update'>,
+    'original_device_class': None,
     'original_icon': 'mdi:information-outline',
     'original_name': 'Gateway Is Firmware Update Supported',
     'platform': 'daikin_onecta',
@@ -75387,7 +75385,6 @@
 # name: test_mc80z[binary_sensor.vloerverwarming_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'device_class': 'update',
       'friendly_name': 'Vloerverwarming Gateway Is Firmware Update Supported',
       'icon': 'mdi:information-outline',
     }),
@@ -79744,7 +79741,7 @@
     'name': None,
     'options': dict({
     }),
-    'original_device_class': <BinarySensorDeviceClass.UPDATE: 'update'>,
+    'original_device_class': None,
     'original_icon': 'mdi:information-outline',
     'original_name': 'Gateway Is Firmware Update Supported',
     'platform': 'daikin_onecta',
@@ -79757,7 +79754,6 @@
 # name: test_water_heater[binary_sensor.altherma_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'device_class': 'update',
       'friendly_name': 'Altherma Gateway Is Firmware Update Supported',
       'icon': 'mdi:information-outline',
     }),

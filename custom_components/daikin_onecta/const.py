@@ -254,7 +254,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isFirmwareUpdateSupported": {
-        CONF_DEVICE_CLASS: BinarySensorDeviceClass.UPDATE,
+        CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
