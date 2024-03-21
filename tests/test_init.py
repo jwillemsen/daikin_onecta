@@ -588,3 +588,16 @@ async def test_climate(
         assert len(responses.calls) == 24
         assert responses.calls[23].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
+
+        # Set the device in preset mode none again
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_PRESET_MODE: PRESET_NONE},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 25
+        assert responses.calls[24].request.body == '{"value": "on"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
