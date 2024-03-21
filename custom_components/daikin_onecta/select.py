@@ -29,6 +29,12 @@ async def async_setup_entry(hass, entry, async_add_entities):
                 _LOGGER.info("Device '%s' provides demandControl", device.name)
                 sensors.append(DaikinDemandSelect(device, coordinator, embedded_id, management_point_type, "demandControl"))
 
+            # When we have a schedule we provide a select sensor
+            demand = management_point.get("schedule")
+            if demand is not None:
+                _LOGGER.info("Device '%s' provides schedule", device.name)
+                sensors.append(DaikinScheduleSelect(device, coordinator, embedded_id, management_point_type, "schedule"))
+
     async_add_entities(sensors)
 
 
@@ -152,4 +158,83 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
                                 opt.append(str(val))
                         else:
                             opt.append(mode)
+        return opt
+
+
+class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
+    """Daikin Schecule Select class."""
+
+    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+        _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
+        super().__init__(coordinator)
+        self._device = device
+        self._embedded_id = embedded_id
+        self._management_point_type = management_point_type
+        self._value = value
+        mpt = management_point_type[0].upper() + management_point_type[1:]
+        myname = value[0].upper() + value[1:]
+        readable = re.findall("[A-Z][^A-Z]*", myname)
+        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
+        self._attr_has_entity_name = True
+        self.update_state()
+        _LOGGER.info(
+            "Device '%s:%s' supports sensor '%s'",
+            device.name,
+            self._embedded_id,
+            self._attr_name,
+        )
+
+    def update_state(self) -> None:
+        self._attr_options = self.get_options()
+        self._attr_current_option = self.get_current_option()
+        self._attr_available = self._device.available
+        self._attr_device_info = self._device.device_info()
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        self.update_state()
+        self.async_write_ha_state()
+
+    def get_current_option(self):
+        """Return the state of the sensor."""
+        res = None
+        for management_point in self._device.daikin_data["managementPoints"]:
+            if self._embedded_id == management_point["embeddedId"]:
+                management_point_type = management_point["managementPointType"]
+                if self._management_point_type == management_point_type:
+                    scheduledict = management_point[self._value]
+                    if scheduledict is not None:
+                        currentMode = scheduledict["value"]["currentMode"]["value"]
+                        # When there is no schedule enabled we return none
+                        if not scheduledict["value"]["modes"][currentMode]["enabled"]["value"]:
+                            res = "none"
+                        else:
+                            currentSchedule = scheduledict["value"]["modes"][currentMode]["currentSchedule"]["value"]
+                            res = scheduledict["value"]["modes"][currentMode]["schedules"][currentSchedule]["name"]["value"]
+                            if not res:
+                                res = currentSchedule
+        return res
+
+    async def async_select_option(self, option: str) -> None:
+        return True
+
+    def get_options(self):
+        opt = []
+        for management_point in self._device.daikin_data["managementPoints"]:
+            if self._embedded_id == management_point["embeddedId"]:
+                management_point_type = management_point["managementPointType"]
+                if self._management_point_type == management_point_type:
+                    scheduledict = management_point[self._value]
+                    if scheduledict is not None:
+                        currentMode = scheduledict["value"]["currentMode"]["value"]
+                        for scheduleName in scheduledict["value"]["modes"][currentMode]["currentSchedule"]["values"]:
+                            readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"]["value"]
+                            # The schedule can maybe have an empty name set, use at that moment the internal ID
+                            if not readableName:
+                                readableName = scheduleName
+                            opt.append(readableName)
+
+        opt.append("none")
+
         return opt
