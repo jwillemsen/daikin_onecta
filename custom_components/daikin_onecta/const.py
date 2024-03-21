@@ -150,7 +150,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInWarningState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -166,7 +166,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInEmergencyState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -190,7 +190,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInModeConflict": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -198,7 +198,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInCautionState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -254,7 +254,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isFirmwareUpdateSupported": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.UPDATE,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
