@@ -10,6 +10,7 @@ from homeassistant.components.climate import ATTR_HVAC_MODE
 from homeassistant.components.climate import ATTR_PRESET_MODE
 from homeassistant.components.climate import ATTR_SWING_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
+from homeassistant.components.climate import PRESET_AWAY
 from homeassistant.components.climate import PRESET_BOOST
 from homeassistant.components.climate import PRESET_NONE
 from homeassistant.components.climate import SERVICE_SET_FAN_MODE
@@ -86,6 +87,18 @@ async def test_mc80z(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "mc80z")
+
+async def test_holidaymode(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "holidaymode")
+
+    assert hass.states.get("climate.room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
 
 @responses.activate
