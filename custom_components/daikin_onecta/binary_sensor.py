@@ -111,7 +111,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         )
 
     def update_state(self) -> None:
-        self._attr_native_value = self.sensor_value()
+        self._attr_is_on = self.sensor_value()
         self._attr_device_info = self._device.device_info()
 
     @callback
