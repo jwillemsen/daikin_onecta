@@ -5,7 +5,6 @@ import logging
 from aiohttp import ClientError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.config_entries import SOURCE_IMPORT
-from homeassistant.const import SERVICE_RELOAD
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
@@ -32,18 +31,6 @@ COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
 
 async def async_setup(hass, config):
     """Setup the Daikin Onecta component."""
-
-    async def _handle_reload(service):
-        """Handle reload service call."""
-        _LOGGER.info("Reloading integration: retrieving new TokenSet.")
-        try:
-            daikin_api = hass.data[DOMAIN][DAIKIN_API]
-            data = daikin_api._config_entry.data.copy()
-            hass.config_entries.async_update_entry(entry=daikin_api._config_entry, data=data)
-        except Exception as e:
-            _LOGGER.error("Failed to reload integration: %s", e)
-
-    hass.helpers.service.async_register_admin_service(DOMAIN, SERVICE_RELOAD, _handle_reload)
 
     if DOMAIN not in config:
         return True

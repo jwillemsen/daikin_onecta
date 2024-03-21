@@ -40,12 +40,6 @@
       }
     }
   },
-  "services": {
-    "reload": {
-      "name": "Reload",
-      "description": "Retrieve new access TokenSet by logging in again to Daikin Cloud."
-    }
-  },
   "entity": {
     "climate": {
       "daikin_onecta": {

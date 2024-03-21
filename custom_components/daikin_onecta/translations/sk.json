@@ -24,11 +24,5 @@
         "title": "Konfigurácia Daikin Onecta"
       }
     }
-  },
-  "services": {
-    "reload": {
-      "name": "Znovu načítať",
-      "description": "Získajte nový prístupový TokenSet opätovným prihlásením do Daikin Cloud."
-    }
   }
 }
