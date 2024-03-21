@@ -13,7 +13,6 @@ from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import COORDINATOR
-from .const import DAIKIN_API
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
@@ -35,14 +34,7 @@ async def async_setup(hass, async_add_entities):
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
-    daikin_api = hass.data[DAIKIN_DOMAIN][DAIKIN_API]
     sensors = []
-    supported_management_point_types = {
-        "domesticHotWaterTank",
-        "domesticHotWaterFlowThrough",
-        "climateControl",
-        "climateControlMainZone",
-    }
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -55,7 +47,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                 if isinstance(vv, dict):
                     value_value = vv.get("value")
                     values = vv.get("values")
-                    if values is None and value_value is not None and type(value_value) == bool:
+                    if values is None and value_value is not None and isinstance(value_value, bool):
                         # We don't have multiple values and we do have a value which is a boolean
                         sensors.append(
                             DaikinBinarySensor(
