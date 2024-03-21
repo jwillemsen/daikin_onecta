@@ -676,8 +676,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             preset = cc.get(daikin_mode)
             if preset is not None:
                 preset_value = preset.get("value")
-                if preset_value is not None and preset_value == "on":
-                    current_preset_mode = mode
+                if preset_value is not None:
+                    # for example holidayMode value is a dict object with an enabled value
+                    if isinstance(preset_value, dict):
+                        enabled_value = preset_value.get("enabled")
+                        if enabled_value and enabled_value == True:
+                            current_presett_mode = mode
+                    if preset_value == "on":
+                        current_preset_mode = mode
         return current_preset_mode
 
     async def async_set_preset_mode(self, preset_mode):
