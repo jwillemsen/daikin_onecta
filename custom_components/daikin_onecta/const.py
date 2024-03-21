@@ -11,6 +11,8 @@ from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
+from homeassistant.components.binary_sensor import BinarySensorDeviceClass
+
 
 DOMAIN = "daikin_onecta"
 COORDINATOR = "coordinator"
@@ -140,7 +142,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInErrorState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
