@@ -1,4 +1,4 @@
-"""Support for Daikin AC sensors."""
+"""Support for Daikin binary sensor sensors."""
 import logging
 import re
 
@@ -83,7 +83,6 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._attr_device_class = None
         self._attr_state_class = None
         self._attr_has_entity_name = True
-        self._attr_native_unit_of_measurement = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info(
@@ -96,7 +95,6 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-            self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
