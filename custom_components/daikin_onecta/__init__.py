@@ -31,14 +31,6 @@ COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select"]
 
 async def async_setup(hass, config):
     """Setup the Daikin Onecta component."""
-
-    if DOMAIN not in config:
-        return True
-
-    conf = config.get(DOMAIN)
-    if conf is not None:
-        hass.async_create_task(hass.config_entries.flow.async_init(DOMAIN, context={"source": SOURCE_IMPORT}, data=conf))
-
     return True
 
 
@@ -81,10 +73,6 @@ async def async_unload_entry(hass, config_entry):
         hass.data.pop(DOMAIN)
     return True
 
-
-async def daikin_api_setup(hass, host, key, uuid, password):
-    """Create a Daikin instance only once."""
-    return
 
 
 async def update_listener(hass, config_entry):
