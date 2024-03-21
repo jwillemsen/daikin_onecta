@@ -160,6 +160,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
                             opt.append(mode)
         return opt
 
+
 class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     """Daikin Schecule Select class."""
 
