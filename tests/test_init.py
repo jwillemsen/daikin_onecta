@@ -564,4 +564,3 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 22
-
