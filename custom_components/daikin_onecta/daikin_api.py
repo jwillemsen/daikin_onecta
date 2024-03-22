@@ -62,22 +62,22 @@ class DaikinApi:
     async def doBearerRequest(self, method, resourceUrl, options=None):
         async with self._cloud_lock:
             token = await self.async_get_access_token()
-            if token is None:
-                raise Exception("Missing token. Please repeat Authentication process.")
 
-            if not resourceUrl.startswith("http"):
-                resourceUrl = DAIKIN_API_URL + resourceUrl
-
+            resourceUrl = DAIKIN_API_URL + resourceUrl
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
             _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
+
             func = functools.partial(requests.request, url=resourceUrl, method=method, headers=headers, data=options)
             try:
                 res = await self.hass.async_add_executor_job(func)
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
-                return []
+                if method == "GET":
+                    return []
+                else:
+                    return False
 
             self.rate_limits["minute"] = int(res.headers.get("X-RateLimit-Limit-minute", 0))
             self.rate_limits["day"] = int(res.headers.get("X-RateLimit-Limit-day", 0))
