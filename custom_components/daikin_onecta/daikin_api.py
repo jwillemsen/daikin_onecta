@@ -124,10 +124,10 @@ class DaikinApi:
                     learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/rate_limitation",
                     translation_key="day_rate_limit",
                 )
-            if options is not None and "method" in options and options["method"] == "PATCH":
-                return False
-            else:
+            if method == "GET":
                 return []
+            else:
+                return False
         elif res.status_code == 204:
             self._last_patch_call = datetime.now()
             return True
