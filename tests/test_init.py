@@ -42,8 +42,11 @@ from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
+from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
+from custom_components.daikin_onecta.const import COORDINATOR
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
+from custom_components.daikin_onecta.const import DOMAIN as DAIKIN_DOMAIN
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
@@ -95,6 +98,20 @@ async def test_altherma_ratelimit(
             assert len(rsps.calls) == 1
             assert rsps.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
             assert hass.states.get("water_heater.altherma").attributes["temperature"] == temp
+
+        with responses.RequestsMock() as rsps:
+            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=429)
+
+            # Test that updating the data through with a 429 doesn't crash
+            coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+            await coordinator._async_update_data()
+
+        with responses.RequestsMock() as rsps:
+            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
+
+            # Test that updating the data through with a status 200 works
+            coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+            await coordinator._async_update_data()
 
 
 async def test_climate_fixedfanmode(
