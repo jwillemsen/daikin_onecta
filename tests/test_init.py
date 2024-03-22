@@ -59,7 +59,7 @@ async def test_altherma(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
 
-async def test_altherma(
+async def test_altherma_ratelimit(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
     onecta_auth: AsyncMock,
