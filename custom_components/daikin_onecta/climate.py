@@ -1,6 +1,8 @@
 """Support for the Daikin HVAC."""
 import logging
 import re
+from datetime import date
+from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -676,35 +678,62 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             preset = cc.get(daikin_mode)
             if preset is not None:
                 preset_value = preset.get("value")
-                if preset_value is not None and preset_value == "on":
-                    current_preset_mode = mode
+                if preset_value is not None:
+                    # for example holidayMode value is a dict object with an enabled value
+                    if isinstance(preset_value, dict):
+                        enabled_value = preset_value.get("enabled")
+                        if enabled_value and enabled_value:
+                            current_preset_mode = mode
+                    if preset_value == "on":
+                        current_preset_mode = mode
         return current_preset_mode
 
     async def async_set_preset_mode(self, preset_mode):
+        _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
         result = True
         new_daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
 
         if self.preset_mode != PRESET_NONE:
             current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
-            result &= await self._device.set_path(self._device.id, self._embedded_id, current_mode, "", "off")
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting %s to off",
-                    self._device.name,
-                    current_mode,
-                )
+            if self.preset_mode == PRESET_AWAY:
+                value = {"enabled": False}
+                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting %s to off",
+                        self._device.name,
+                        current_mode,
+                    )
+            else:
+                result &= await self._device.set_path(self._device.id, self._embedded_id, current_mode, "", "off")
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting %s to off",
+                        self._device.name,
+                        current_mode,
+                    )
 
         if preset_mode != PRESET_NONE:
             if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
                 result &= await self.async_turn_on()
 
-            result &= await self._device.set_path(self._device.id, self._embedded_id, new_daikin_mode, "", "on")
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting %s to on",
-                    self._device.name,
-                    new_daikin_mode,
-                )
+            if preset_mode == PRESET_AWAY:
+                value = {"enabled": True, "startDate": date.today().isoformat(), "endDate": (date.today() + timedelta(days=60)).isoformat()}
+                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting %s to on",
+                        self._device.name,
+                        new_daikin_mode,
+                    )
+            else:
+                result &= await self._device.set_path(self._device.id, self._embedded_id, new_daikin_mode, "", "on")
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting %s to on",
+                        self._device.name,
+                        new_daikin_mode,
+                    )
 
         if result is True:
             self._attr_preset_mode = preset_mode
@@ -723,7 +752,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 supported_preset_modes.append(mode)
 
         _LOGGER.info(
-            "Device '%s' supports pre preset_modes %s",
+            "Device '%s' supports preset_modes %s",
             self._device.name,
             format(supported_preset_modes),
         )

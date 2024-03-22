@@ -1,4 +1,6 @@
 """Test daikin_onecta sensor."""
+from datetime import date
+from datetime import timedelta
 from unittest.mock import AsyncMock
 from unittest.mock import patch
 
@@ -10,6 +12,7 @@ from homeassistant.components.climate import ATTR_HVAC_MODE
 from homeassistant.components.climate import ATTR_PRESET_MODE
 from homeassistant.components.climate import ATTR_SWING_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
+from homeassistant.components.climate import PRESET_AWAY
 from homeassistant.components.climate import PRESET_BOOST
 from homeassistant.components.climate import PRESET_NONE
 from homeassistant.components.climate import SERVICE_SET_FAN_MODE
@@ -86,6 +89,19 @@ async def test_mc80z(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "mc80z")
+
+
+async def test_holidaymode(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "holidaymode")
+
+    assert hass.states.get("climate.room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
 
 @responses.activate
@@ -274,6 +290,10 @@ async def test_climate(
         )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/streamerMode",
+            status=204,
+        )
+        responses.post(
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/holiday-mode",
             status=204,
         )
 
@@ -564,3 +584,36 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 22
+
+        # Set the device in away mode (away mode)
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_PRESET_MODE: PRESET_AWAY},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 24
+        assert (
+            responses.calls[23].request.body
+            == '{"enabled": true, "startDate": "'
+            + date.today().isoformat()
+            + '", "endDate": "'
+            + (date.today() + timedelta(days=60)).isoformat()
+            + '"}'
+        )
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
+
+        # Set the device in preset mode none again
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_PRESET_MODE: PRESET_NONE},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 25
+        assert responses.calls[24].request.body == '{"enabled": false}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
