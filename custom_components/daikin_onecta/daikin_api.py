@@ -68,7 +68,7 @@ class DaikinApi:
             if not resourceUrl.startswith("http"):
                 resourceUrl = DAIKIN_API_URL + resourceUrl
 
-            headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json", "accept": "*/*"}
+            headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
             if options is not None and "method" in options and options["method"] == "PATCH":
