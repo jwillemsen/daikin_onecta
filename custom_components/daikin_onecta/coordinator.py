@@ -46,20 +46,18 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         if (datetime.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore:
             self.update_interval = timedelta(seconds=scan_ignore)
             _LOGGER.debug(
-                "API UPDATE skipped (just updated from UI), will retry in %s",
-                self.update_interval,
+                "API UPDATE skipped (just updated from UI)",
             )
-            return
+        else:
+            daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
+            for dev_data in daikin_api.json_data or []:
+                if dev_data["id"] in devices:
+                    devices[dev_data["id"]].setJsonData(dev_data)
+                else:
+                    device = DaikinOnectaDevice(dev_data, daikin_api)
+                    devices[dev_data["id"]] = device
 
-        daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
-        for dev_data in daikin_api.json_data or []:
-            if dev_data["id"] in devices:
-                devices[dev_data["id"]].setJsonData(dev_data)
-            else:
-                device = DaikinOnectaDevice(dev_data, daikin_api)
-                devices[dev_data["id"]] = device
-
-        self.update_interval = self.determine_update_interval(self.hass)
+            self.update_interval = self.determine_update_interval(self.hass)
 
         _LOGGER.debug(
             "Daikin coordinator finished _async_update_data, interval %s.",
