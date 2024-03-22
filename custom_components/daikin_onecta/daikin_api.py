@@ -77,6 +77,9 @@ class DaikinApi:
             elif options is not None and "method" in options and options["method"] == "POST":
                 _LOGGER.debug("BEARER POST JSON: %s", options["json"])
                 func = functools.partial(requests.post, resourceUrl, headers=headers, data=options["json"])
+            elif options is not None and "method" in options and options["method"] == "PUT":
+                _LOGGER.debug("BEARER POST JSON: %s", options["json"])
+                func = functools.partial(requests.put, resourceUrl, headers=headers, data=options["json"])
             else:
                 func = functools.partial(requests.get, resourceUrl, headers=headers)
             try:

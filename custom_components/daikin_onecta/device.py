@@ -103,3 +103,14 @@ class DaikinOnectaDevice:
         _LOGGER.debug("RES IS {}".format(res))
 
         return res
+
+    async def put(self, id, embeddedId, dataPoint, value):
+        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
+        setOptions = {"method": "PUT", "json": json.dumps(value)}
+
+        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
+
+        res = await self.api.doBearerRequest(setPath, setOptions)
+        _LOGGER.debug("RES IS {}".format(res))
+
+        return res

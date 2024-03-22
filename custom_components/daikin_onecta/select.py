@@ -217,7 +217,33 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         return res
 
     async def async_select_option(self, option: str) -> None:
-        return True
+        _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
+        currentMode = ""
+        for management_point in self._device.daikin_data["managementPoints"]:
+            if self._embedded_id == management_point["embeddedId"]:
+                management_point_type = management_point["managementPointType"]
+                if self._management_point_type == management_point_type:
+                    scheduledict = management_point[self._value]
+                    if scheduledict is not None:
+                        currentMode = scheduledict["value"]["currentMode"]["value"]
+
+        scheduleid = option
+        if option == "none":
+            scheduleid = self._attr_current_option
+        value = {"scheduleId": scheduleid, "enable": option != "none"}
+        result = await self._device.put(self._device.id, self._embedded_id, f"schedule/{currentMode}/current", value)
+        if result is False:
+            _LOGGER.warning(
+                "Device '%s' problem selecting schedule %s",
+                self._device.name,
+                scheduleid,
+            )
+
+        if result is True:
+            self._attr_current_option = option
+            self.async_write_ha_state()
+
+        return result
 
     def get_options(self):
         opt = []

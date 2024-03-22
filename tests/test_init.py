@@ -31,6 +31,9 @@ from homeassistant.components.water_heater import SERVICE_SET_OPERATION_MODE
 from homeassistant.components.water_heater import SERVICE_SET_TEMPERATURE
 from homeassistant.components.water_heater import STATE_HEAT_PUMP
 from homeassistant.components.water_heater import STATE_PERFORMANCE
+from homeassistant.components.select import SERVICE_SELECT_OPTION
+from homeassistant.components.select import ATTR_OPTION
+from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
 from homeassistant.const import ATTR_ENTITY_ID
 from homeassistant.const import Platform
 from homeassistant.const import STATE_OFF
@@ -294,6 +297,10 @@ async def test_climate(
         )
         responses.post(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/holiday-mode",
+            status=204,
+        )
+        responses.put(
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/schedule/any/current",
             status=204,
         )
 
@@ -617,3 +624,29 @@ async def test_climate(
         assert len(responses.calls) == 25
         assert responses.calls[24].request.body == '{"enabled": false}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
+
+        # Set the device with schedule 0 enabled
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_schedule", ATTR_OPTION: "0"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 26
+        assert responses.calls[25].request.body == '{"scheduleId": "0", "enable": true}'
+        assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "0"
+
+        # Set the device with no schedule
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_schedule", ATTR_OPTION: "none"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 27
+        assert responses.calls[26].request.body == '{"scheduleId": "0", "enable": false}'
+        assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "none"
