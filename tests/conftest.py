@@ -44,8 +44,13 @@ async def snapshot_platform_entities(
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ), patch(
-        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
-        return_value="XXXXXX",
+        "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.valid_token",
+        False,
+    ), patch(
+        "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
+    ), patch(
+        "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
+        {"access_token": "AAAA"},
     ):
         with responses.RequestsMock() as rsps:
             rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
