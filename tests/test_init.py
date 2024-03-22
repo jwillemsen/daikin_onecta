@@ -59,6 +59,43 @@ async def test_altherma(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
 
+async def test_altherma(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        with responses.RequestsMock() as rsps:
+            rsps.patch(
+                DAIKIN_API_URL
+                + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
+                status=429,
+                headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"}
+            )
+
+            temp = hass.states.get("water_heater.altherma").attributes["temperature"]
+
+            # Set the tank temperature to 58, but this should fail because of a rate limit
+            await hass.services.async_call(
+                WATER_HEATER_DOMAIN,
+                SERVICE_SET_TEMPERATURE,
+                {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
+                blocking=True,
+            )
+            await hass.async_block_till_done()
+
+            assert len(rsps.calls) == 1
+            assert rsps.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
+            assert hass.states.get("water_heater.altherma").attributes["temperature"] == temp
+
 async def test_climate_fixedfanmode(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -145,6 +182,7 @@ async def test_water_heater(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
             status=204,
+            headers={"X-RateLimit-Limit-minute": "4", "X-RateLimit-Limit-day": "10"}
         )
         responses.patch(
             DAIKIN_API_URL
