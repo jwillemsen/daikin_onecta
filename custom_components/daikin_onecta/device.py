@@ -95,7 +95,7 @@ class DaikinOnectaDevice:
 
     async def post(self, id, embeddedId, dataPoint, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setBody = {"enabled": value, "startDate": "2024-03-20", "endDate": "2024-03-29"}
+        setBody = {"enabled": value, "startDate": "2024-03-22", "endDate": "2024-04-22"}
         setOptions = {"method": "POST", "json": json.dumps(setBody)}
 
         _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)

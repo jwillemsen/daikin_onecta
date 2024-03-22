@@ -289,6 +289,11 @@ async def test_climate(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/streamerMode",
             status=204,
         )
+        responses.post(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/holiday-mode",
+            status=204,
+        )
 
         # Turn on the device, it was in cool mode
         await hass.services.async_call(
@@ -588,7 +593,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 24
-        assert responses.calls[23].request.body == '{"value": "on"}'
+        assert responses.calls[23].request.body == '{"enabled": true, "startDate": "2024-03-22", "endDate": "2024-04-22"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
         # Set the device in preset mode none again
@@ -601,5 +606,5 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 25
-        assert responses.calls[24].request.body == '{"value": "on"}'
+        assert responses.calls[24].request.body == '{"enabled": false}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE

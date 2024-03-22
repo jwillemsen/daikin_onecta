@@ -687,18 +687,28 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return current_preset_mode
 
     async def async_set_preset_mode(self, preset_mode):
+        _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
         result = True
         new_daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
 
         if self.preset_mode != PRESET_NONE:
             current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
-            result &= await self._device.set_path(self._device.id, self._embedded_id, current_mode, "", "off")
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting %s to off",
-                    self._device.name,
-                    current_mode,
-                )
+            if self.preset_mode == PRESET_AWAY:
+                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", False)
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting %s to off",
+                        self._device.name,
+                        current_mode,
+                    )
+            else:
+                result &= await self._device.set_path(self._device.id, self._embedded_id, current_mode, "", "off")
+                if result is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting %s to off",
+                        self._device.name,
+                        current_mode,
+                    )
 
         if preset_mode != PRESET_NONE:
             if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
