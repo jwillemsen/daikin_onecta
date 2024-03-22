@@ -1,6 +1,8 @@
 """Support for the Daikin HVAC."""
 import logging
 import re
+from datetime import date
+from datetime import timedelta
 
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
@@ -28,9 +30,6 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
-
-from datetime import timedelta
-from datetime import date
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -719,7 +718,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 result &= await self.async_turn_on()
 
             if preset_mode == PRESET_AWAY:
-                value = {"enabled": True, "startDate": date.today().isoformat(), "endDate": (date.today() + timedelta(days=60)).isoformat() }
+                value = {"enabled": True, "startDate": date.today().isoformat(), "endDate": (date.today() + timedelta(days=60)).isoformat()}
                 result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
                 if result is False:
                     _LOGGER.warning(

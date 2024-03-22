@@ -1,4 +1,6 @@
 """Test daikin_onecta sensor."""
+from datetime import date
+from datetime import timedelta
 from unittest.mock import AsyncMock
 from unittest.mock import patch
 
@@ -41,9 +43,6 @@ from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
-
-from datetime import timedelta
-from datetime import date
 
 
 async def test_altherma(
@@ -90,6 +89,7 @@ async def test_mc80z(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "mc80z")
+
 
 async def test_holidaymode(
     hass: HomeAssistant,
@@ -293,8 +293,7 @@ async def test_climate(
             status=204,
         )
         responses.post(
-            DAIKIN_API_URL
-            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/holiday-mode",
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/holiday-mode",
             status=204,
         )
 
@@ -596,7 +595,14 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 24
-        assert responses.calls[23].request.body == '{"enabled": true, "startDate": "' + date.today().isoformat() + '", "endDate": "' + (date.today() + timedelta(days=60)).isoformat() + '"}'
+        assert (
+            responses.calls[23].request.body
+            == '{"enabled": true, "startDate": "'
+            + date.today().isoformat()
+            + '", "endDate": "'
+            + (date.today() + timedelta(days=60)).isoformat()
+            + '"}'
+        )
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
         # Set the device in preset mode none again
