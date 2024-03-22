@@ -34,7 +34,9 @@ Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRAT
 
 Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created. See https://www.home-assistant.io/integrations/application_credentials for more information about application credentials within Home Assistant.
 
-The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`. You _must_ create a Daikin Developer account to obtain the id/secret.
+The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. The `Name` is user defined, for example `Daikin`. You _must_ create a Daikin Developer account to obtain the id/secret. 
+
+When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
 
 At this moment only https://my.home-assistant.io/redirect/oauth is supported as redirect_uri, see https://www.home-assistant.io/integrations/home_connect/ for some additional documentation about using My Home Assistant.
 
