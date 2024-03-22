@@ -42,8 +42,11 @@ from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
+from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
+from custom_components.daikin_onecta.const import COORDINATOR
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
+from custom_components.daikin_onecta.const import DOMAIN as DAIKIN_DOMAIN
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
@@ -57,6 +60,58 @@ async def test_altherma(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
+
+
+async def test_altherma_ratelimit(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        with responses.RequestsMock() as rsps:
+            rsps.patch(
+                DAIKIN_API_URL
+                + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
+                status=429,
+                headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"},
+            )
+
+            temp = hass.states.get("water_heater.altherma").attributes["temperature"]
+
+            # Set the tank temperature to 58, but this should fail because of a rate limit
+            await hass.services.async_call(
+                WATER_HEATER_DOMAIN,
+                SERVICE_SET_TEMPERATURE,
+                {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
+                blocking=True,
+            )
+            await hass.async_block_till_done()
+
+            assert len(rsps.calls) == 1
+            assert rsps.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
+            assert hass.states.get("water_heater.altherma").attributes["temperature"] == temp
+
+        with responses.RequestsMock() as rsps:
+            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=429)
+
+            # Test that updating the data through with a 429 doesn't crash
+            coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+            await coordinator._async_update_data()
+
+        with responses.RequestsMock() as rsps:
+            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
+
+            # Test that updating the data through with a status 200 works
+            coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+            await coordinator._async_update_data()
 
 
 async def test_climate_fixedfanmode(
@@ -145,6 +200,7 @@ async def test_water_heater(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
             status=204,
+            headers={"X-RateLimit-Remaining-minute": "4", "X-RateLimit-Remaining-day": "10"},
         )
         responses.patch(
             DAIKIN_API_URL

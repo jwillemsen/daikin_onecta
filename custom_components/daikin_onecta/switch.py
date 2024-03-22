@@ -144,7 +144,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         """Turn the zone on."""
         result = True
         if not self.is_on:
-            result &= await self._device.set_path(self._device.id, self._embedded_id, self._value, "", "on")
+            result &= await self._device.patch(self._device.id, self._embedded_id, self._value, "", "on")
             if result is False:
                 _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
             else:
@@ -159,7 +159,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         """Turn the zone off."""
         result = True
         if self.is_on:
-            result &= await self._device.set_path(self._device.id, self._embedded_id, self._value, "", "off")
+            result &= await self._device.patch(self._device.id, self._embedded_id, self._value, "", "off")
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting '%s' to off",

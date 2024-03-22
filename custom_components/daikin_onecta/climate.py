@@ -316,7 +316,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             operationmode = self.operation_mode()
             omv = operationmode["value"]
             value = kwargs[ATTR_TEMPERATURE]
-            res = await self._device.set_path(
+            res = await self._device.patch(
                 self._device.id,
                 self._embedded_id,
                 "temperatureControl",
@@ -374,7 +374,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode is not None:
-            result &= await self._device.set_path(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting onOffMode to %s",
@@ -388,7 +388,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             # Only set the operationMode when it has changed, also prevents setting it when
             # it is readOnly
             if operation_mode != cc["operationMode"]["value"]:
-                result &= await self._device.set_path(
+                result &= await self._device.patch(
                     self._device.id,
                     self._embedded_id,
                     "operationMode",
@@ -473,7 +473,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if not self._attr_fan_mode.isnumeric():
                 # Only set the currentMode to fixed when we currently don't have set
                 # a numeric mode
-                res = await self._device.set_path(
+                res = await self._device.patch(
                     self._device.id,
                     self._embedded_id,
                     "fanControl",
@@ -487,7 +487,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     )
 
             new_fixed_mode = int(fan_mode)
-            res &= await self._device.set_path(
+            res &= await self._device.patch(
                 self._device.id,
                 self._embedded_id,
                 "fanControl",
@@ -501,7 +501,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     new_fixed_mode,
                 )
         else:
-            res = await self._device.set_path(
+            res = await self._device.patch(
                 self._device.id,
                 self._embedded_id,
                 "fanControl",
@@ -622,7 +622,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         "floorHeatingAirflow and Horizontal",
                     ):
                         new_h_mode = "swing"
-                    res &= await self._device.set_path(
+                    res &= await self._device.patch(
                         self._device.id,
                         self._embedded_id,
                         "fanControl",
@@ -650,7 +650,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         "Comfort Airflow and Horizontal",
                     ):
                         new_v_mode = "windNice"
-                    res &= await self._device.set_path(
+                    res &= await self._device.patch(
                         self._device.id,
                         self._embedded_id,
                         "fanControl",
@@ -705,7 +705,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         current_mode,
                     )
             else:
-                result &= await self._device.set_path(self._device.id, self._embedded_id, current_mode, "", "off")
+                result &= await self._device.patch(self._device.id, self._embedded_id, current_mode, "", "off")
                 if result is False:
                     _LOGGER.warning(
                         "Device '%s' problem setting %s to off",
@@ -727,7 +727,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         new_daikin_mode,
                     )
             else:
-                result &= await self._device.set_path(self._device.id, self._embedded_id, new_daikin_mode, "", "on")
+                result &= await self._device.patch(self._device.id, self._embedded_id, new_daikin_mode, "", "on")
                 if result is False:
                     _LOGGER.warning(
                         "Device '%s' problem setting %s to on",
@@ -766,7 +766,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         result = True
         if cc["onOffMode"]["value"] == "off":
-            result &= await self._device.set_path(self._device.id, self._embedded_id, "onOffMode", "", "on")
+            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "on")
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
             else:
@@ -786,7 +786,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         result = True
         if cc["onOffMode"]["value"] == "on":
-            result &= await self._device.set_path(self._device.id, self._embedded_id, "onOffMode", "", "off")
+            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "off")
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
             else:

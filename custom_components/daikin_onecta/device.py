@@ -79,38 +79,38 @@ class DaikinOnectaDevice:
         """Set a device description and parse/traverse data structure."""
         self.merge_json(self.daikin_data, desc)
 
-    async def set_path(self, id, embeddedId, dataPoint, dataPointPath, value):
+    async def patch(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
         setBody = {"value": value}
-        if dataPointPath != "":
+        if dataPointPath:
             setBody["path"] = dataPointPath
-        setOptions = {"method": "PATCH", "json": json.dumps(setBody)}
+        setOptions = json.dumps(setBody)
 
         _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
 
-        res = await self.api.doBearerRequest(setPath, setOptions)
+        res = await self.api.doBearerRequest("PATCH", setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
 
         return res
 
     async def post(self, id, embeddedId, dataPoint, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = {"method": "POST", "json": json.dumps(value)}
+        setOptions = json.dumps(value)
 
         _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
 
-        res = await self.api.doBearerRequest(setPath, setOptions)
+        res = await self.api.doBearerRequest("POST", setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
 
         return res
 
     async def put(self, id, embeddedId, dataPoint, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = {"method": "PUT", "json": json.dumps(value)}
+        setOptions = json.dumps(value)
 
         _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
 
-        res = await self.api.doBearerRequest(setPath, setOptions)
+        res = await self.api.doBearerRequest("PUT", setPath, setOptions)
         _LOGGER.debug("RES IS {}".format(res))
 
         return res

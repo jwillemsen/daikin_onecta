@@ -59,7 +59,7 @@ class DaikinApi:
             await self.session.async_ensure_token_valid()
         return self.session.token["access_token"]
 
-    async def doBearerRequest(self, resourceUrl, options=None):
+    async def doBearerRequest(self, method, resourceUrl, options=None):
         async with self._cloud_lock:
             token = await self.async_get_access_token()
             if token is None:
@@ -71,21 +71,12 @@ class DaikinApi:
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
             _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
-            if options is not None and "method" in options and options["method"] == "PATCH":
-                _LOGGER.debug("BEARER PATCH JSON: %s", options["json"])
-                func = functools.partial(requests.patch, resourceUrl, headers=headers, data=options["json"])
-            elif options is not None and "method" in options and options["method"] == "POST":
-                _LOGGER.debug("BEARER POST JSON: %s", options["json"])
-                func = functools.partial(requests.post, resourceUrl, headers=headers, data=options["json"])
-            elif options is not None and "method" in options and options["method"] == "PUT":
-                _LOGGER.debug("BEARER POST JSON: %s", options["json"])
-                func = functools.partial(requests.put, resourceUrl, headers=headers, data=options["json"])
-            else:
-                func = functools.partial(requests.get, resourceUrl, headers=headers)
+            _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
+            func = functools.partial(requests.request, url=resourceUrl, method=method, headers=headers, data=options)
             try:
                 res = await self.hass.async_add_executor_job(func)
             except Exception as e:
-                _LOGGER.error("REQUEST FAILED: %s", e)
+                _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
                 return []
 
             self.rate_limits["minute"] = int(res.headers.get("X-RateLimit-Limit-minute", 0))
@@ -103,7 +94,7 @@ class DaikinApi:
 
             _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
 
-        if res.status_code == 200:
+        if method == "GET" and res.status_code == 200:
             try:
                 return res.json()
             except Exception:
@@ -133,10 +124,10 @@ class DaikinApi:
                     learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/rate_limitation",
                     translation_key="day_rate_limit",
                 )
-            if options is not None and "method" in options and options["method"] == "PATCH":
-                return False
-            else:
+            if method == "GET":
                 return []
+            else:
+                return False
         elif res.status_code == 204:
             self._last_patch_call = datetime.now()
             return True
@@ -145,4 +136,4 @@ class DaikinApi:
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
-        return await self.doBearerRequest("/v1/gateway-devices")
+        return await self.doBearerRequest("GET", "/v1/gateway-devices")
