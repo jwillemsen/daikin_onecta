@@ -230,7 +230,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         scheduleid = option
         if option == "none":
             scheduleid = self._attr_current_option
-        value = {"scheduleId": scheduleid, "enable": option != "none"}
+        value = {"scheduleId": scheduleid, "enabled": option != "none"}
         result = await self._device.put(self._device.id, self._embedded_id, f"schedule/{currentMode}/current", value)
         if result is False:
             _LOGGER.warning(

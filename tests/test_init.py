@@ -23,6 +23,9 @@ from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
 from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate.const import HVACMode
+from homeassistant.components.select import ATTR_OPTION
+from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
+from homeassistant.components.select import SERVICE_SELECT_OPTION
 from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
@@ -31,9 +34,6 @@ from homeassistant.components.water_heater import SERVICE_SET_OPERATION_MODE
 from homeassistant.components.water_heater import SERVICE_SET_TEMPERATURE
 from homeassistant.components.water_heater import STATE_HEAT_PUMP
 from homeassistant.components.water_heater import STATE_PERFORMANCE
-from homeassistant.components.select import SERVICE_SELECT_OPTION
-from homeassistant.components.select import ATTR_OPTION
-from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
 from homeassistant.const import ATTR_ENTITY_ID
 from homeassistant.const import Platform
 from homeassistant.const import STATE_OFF
@@ -635,7 +635,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 26
-        assert responses.calls[25].request.body == '{"scheduleId": "0", "enable": true}'
+        assert responses.calls[25].request.body == '{"scheduleId": "0", "enabled": true}'
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "0"
 
         # Set the device with no schedule
@@ -648,5 +648,5 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 27
-        assert responses.calls[26].request.body == '{"scheduleId": "0", "enable": false}'
+        assert responses.calls[26].request.body == '{"scheduleId": "0", "enabled": false}'
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "none"
