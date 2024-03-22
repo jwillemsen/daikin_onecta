@@ -183,7 +183,7 @@ async def test_water_heater(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
             status=204,
-            headers={"X-RateLimit-Remaining-minute": "4", "X-RateLimit-Remaining-da": "10"},
+            headers={"X-RateLimit-Remaining-minute": "4", "X-RateLimit-Remaining-day": "10"},
         )
         responses.patch(
             DAIKIN_API_URL
