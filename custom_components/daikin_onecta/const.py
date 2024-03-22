@@ -1,4 +1,5 @@
 """Constants for Daikin Oncecta."""
+from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorStateClass
@@ -11,6 +12,7 @@ from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
+
 
 DOMAIN = "daikin_onecta"
 COORDINATOR = "coordinator"
@@ -140,7 +142,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInErrorState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -148,7 +150,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInWarningState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -164,7 +166,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInEmergencyState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -188,7 +190,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInModeConflict": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
@@ -196,7 +198,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
     "isInCautionState": {
-        CONF_DEVICE_CLASS: None,
+        CONF_DEVICE_CLASS: BinarySensorDeviceClass.PROBLEM,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,
         CONF_ICON: "mdi:information-outline",
