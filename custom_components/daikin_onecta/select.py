@@ -105,7 +105,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
             new_currentmode = "fixed"
             if option in ("auto", "off"):
                 new_currentmode = option
-            res = await self._device.set_path(
+            res = await self._device.patch(
                 self._device.id,
                 self._embedded_id,
                 "demandControl",
@@ -122,7 +122,7 @@ class DaikinDemandSelect(CoordinatorEntity, SelectEntity):
                 mode["value"] = new_currentmode
 
             if new_currentmode == "fixed":
-                res = await self._device.set_path(
+                res = await self._device.patch(
                     self._device.id,
                     self._embedded_id,
                     "demandControl",
