@@ -94,7 +94,7 @@ class DaikinApi:
 
             _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
 
-        if res.status_code == 200:
+        if method == "GET" and res.status_code == 200:
             try:
                 return res.json()
             except Exception:
