@@ -245,8 +245,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                 self._device.name,
                 scheduleid,
             )
-
-        if result is True:
+        else:
             self._attr_current_option = option
             self.async_write_ha_state()
 
