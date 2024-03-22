@@ -29,6 +29,9 @@ from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 
+from datetime import timedelta
+from datetime import date
+
 _LOGGER = logging.getLogger(__name__)
 
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({vol.Required(CONF_HOST): cv.string, vol.Optional(CONF_NAME): cv.string})
@@ -694,7 +697,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if self.preset_mode != PRESET_NONE:
             current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
             if self.preset_mode == PRESET_AWAY:
-                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", False)
+                value = {"enabled": False}
+                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
                 if result is False:
                     _LOGGER.warning(
                         "Device '%s' problem setting %s to off",
@@ -715,7 +719,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 result &= await self.async_turn_on()
 
             if preset_mode == PRESET_AWAY:
-                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", True)
+                value = {"enabled": True, "startDate": date.today().isoformat(), "endDate": (date.today() + timedelta(days=60)).isoformat() }
+                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
                 if result is False:
                     _LOGGER.warning(
                         "Device '%s' problem setting %s to on",

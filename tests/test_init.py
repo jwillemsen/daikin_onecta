@@ -42,6 +42,9 @@ from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
+from datetime import timedelta
+from datetime import date
+
 
 async def test_altherma(
     hass: HomeAssistant,
@@ -593,7 +596,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 24
-        assert responses.calls[23].request.body == '{"enabled": true, "startDate": "2024-03-22", "endDate": "2024-04-22"}'
+        assert responses.calls[23].request.body == '{"enabled": true, "startDate": "' + date.today().isoformat() + '", "endDate": "' + (date.today() + timedelta(days=60)).isoformat() + '"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
         # Set the device in preset mode none again
