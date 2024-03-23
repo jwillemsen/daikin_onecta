@@ -359,6 +359,11 @@ async def test_climate(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/schedule/any/current",
             status=204,
         )
+        responses.put(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
+            status=204,
+        )
 
         # Turn on the device, it was in cool mode
         await hass.services.async_call(
@@ -706,3 +711,29 @@ async def test_climate(
         assert len(responses.calls) == 27
         assert responses.calls[26].request.body == '{"scheduleId": "0", "enabled": false}'
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "none"
+
+        # Set the device with schedule 'User defined' enabled
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "User defined"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 28
+        assert responses.calls[27].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert hass.states.get("select.altherma_climatecontrol_schedule").state == "User defined"
+
+        # Set the device with no schedule
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "none"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 29
+        assert responses.calls[28].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
+        assert hass.states.get("select.altherma_climatecontrol_schedule").state == "none"
