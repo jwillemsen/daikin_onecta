@@ -360,7 +360,8 @@ async def test_climate(
             status=204,
         )
         responses.put(
-            DAIKIN_API_URL + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
             status=204,
         )
 
@@ -736,4 +737,3 @@ async def test_climate(
         assert len(responses.calls) == 29
         assert responses.calls[28].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == "none"
-
