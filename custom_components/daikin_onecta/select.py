@@ -177,6 +177,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
+        self._attr_icon = "mdi:calendar-clock"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",

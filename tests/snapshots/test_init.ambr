@@ -3628,7 +3628,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -3641,6 +3641,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
         'none',
@@ -3681,7 +3682,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -3694,6 +3695,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -3813,7 +3815,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -3826,6 +3828,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -3868,7 +3871,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -3881,6 +3884,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -3923,7 +3927,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -3936,6 +3940,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -21586,7 +21591,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -21599,6 +21604,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
         'none',
@@ -21639,7 +21645,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -21652,6 +21658,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -21771,7 +21778,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -21784,6 +21791,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -21826,7 +21834,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -21839,6 +21847,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -21881,7 +21890,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -21894,6 +21903,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -34064,7 +34074,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -34077,6 +34087,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
         'none',
@@ -34117,7 +34128,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -34130,6 +34141,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -34249,7 +34261,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -34262,6 +34274,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -34304,7 +34317,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -34317,6 +34330,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -34359,7 +34373,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -34372,6 +34386,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Sanne ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -46372,7 +46387,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -46385,6 +46400,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Werkkamer ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         'none',
@@ -49383,7 +49399,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -49396,6 +49412,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Laurens ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -49515,7 +49532,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -49528,6 +49545,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Woonkamer airco ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -87533,7 +87551,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -87546,6 +87564,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         'Automatic 1',
         'Automatic 2',
@@ -90023,7 +90042,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -90036,6 +90055,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
         '1',
@@ -90076,7 +90096,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'DomesticHotWaterTank Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -90089,6 +90109,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Vloerverwarming DomesticHotWaterTank Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
         'none',
@@ -94491,7 +94512,7 @@
     'options': dict({
     }),
     'original_device_class': None,
-    'original_icon': None,
+    'original_icon': 'mdi:calendar-clock',
     'original_name': 'ClimateControl Schedule',
     'platform': 'daikin_onecta',
     'supported_features': 0,
@@ -94504,6 +94525,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Altherma ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined 1',
         'User defined 2',
