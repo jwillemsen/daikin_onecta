@@ -92,8 +92,6 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
         currentMode = ""
         scheduleid = option
-        if option == "none":
-            scheduleid = self._attr_current_option
         for management_point in self._device.daikin_data["managementPoints"]:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
@@ -105,9 +103,16 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                         # related to that name
                         for scheduleName in scheduledict["value"]["modes"][currentMode]["currentSchedule"]["values"]:
                             readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"]["value"]
-                            if readableName == option:
-                                scheduleid = scheduleName
-                                break
+                            if not readableName:
+                                readableName = scheduleName
+                            if option == "none":
+                                if readableName == self._attr_current_option:
+                                    scheduleid = scheduleName
+                                    break
+                            else:
+                                if readableName == option:
+                                    scheduleid = scheduleName
+                                    break
 
         value = {"scheduleId": scheduleid, "enabled": option != "none"}
         result = await self._device.put(self._device.id, self._embedded_id, f"schedule/{currentMode}/current", value)
