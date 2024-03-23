@@ -54,7 +54,6 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                                 coordinator,
                                 embedded_id,
                                 management_point_type,
-                                None,
                                 value,
                             )
                         )
@@ -69,15 +68,13 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         coordinator,
         embedded_id,
         management_point_type,
-        sub_type,
         value,
     ) -> None:
-        _LOGGER.info("DaikinBinarySensor '%s' '%s' '%s'", management_point_type, sub_type, value)
+        _LOGGER.info("DaikinBinarySensor '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
-        self._sub_type = sub_type
         self._value = value
         self._attr_device_class = None
         self._attr_state_class = None
@@ -98,7 +95,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports binary sensor '%s'",
@@ -121,8 +118,6 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         managementPoints = self._device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
-                if self._sub_type is not None:
-                    management_point = management_point.get(self._sub_type).get("value")
                 cd = management_point.get(self._value)
                 if cd is not None:
                     res = cd.get("value")
