@@ -31,6 +31,8 @@ ATTR_OPERATION_MODE = "operation_mode"
 ATTR_STATE_ON = "on"
 ATTR_STATE_OFF = "off"
 
+SCHEDULE_OFF = "off"
+
 SENSOR_TYPE_POWER = "power"
 SENSOR_TYPE_ENERGY = "energy"
 SENSOR_PERIOD_DAILY = "d"
