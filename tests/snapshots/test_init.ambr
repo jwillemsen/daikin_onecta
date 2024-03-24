@@ -3610,7 +3610,7 @@
     'capabilities': dict({
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -3644,14 +3644,14 @@
       'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.altherma_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma[select.johnny_maaike_climatecontrol_schedule-entry]
@@ -3664,7 +3664,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -3700,14 +3700,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma[select.linde_climatecontrol_demand_control-entry]
@@ -3797,7 +3797,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -3833,14 +3833,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.linde_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma[select.sanne_climatecontrol_schedule-entry]
@@ -3853,7 +3853,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -3889,14 +3889,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.sanne_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma[select.werkkamer_climatecontrol_schedule-entry]
@@ -3909,7 +3909,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -3945,14 +3945,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.werkkamer_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma[sensor.altherma_climatecontrol_control_mode-entry]
@@ -21573,7 +21573,7 @@
     'capabilities': dict({
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -21607,14 +21607,14 @@
       'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.altherma_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[select.johnny_maaike_climatecontrol_schedule-entry]
@@ -21627,7 +21627,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -21663,14 +21663,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[select.linde_climatecontrol_demand_control-entry]
@@ -21760,7 +21760,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -21796,14 +21796,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.linde_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[select.sanne_climatecontrol_schedule-entry]
@@ -21816,7 +21816,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -21852,14 +21852,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.sanne_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[select.werkkamer_climatecontrol_schedule-entry]
@@ -21872,7 +21872,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -21908,14 +21908,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.werkkamer_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_climatecontrol_control_mode-entry]
@@ -34056,7 +34056,7 @@
     'capabilities': dict({
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -34090,14 +34090,14 @@
       'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.altherma_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate[select.johnny_maaike_climatecontrol_schedule-entry]
@@ -34110,7 +34110,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -34146,14 +34146,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate[select.linde_climatecontrol_demand_control-entry]
@@ -34243,7 +34243,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -34279,14 +34279,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.linde_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate[select.sanne_climatecontrol_schedule-entry]
@@ -34299,7 +34299,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -34335,14 +34335,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.sanne_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate[select.werkkamer_climatecontrol_schedule-entry]
@@ -34355,7 +34355,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -34391,14 +34391,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.werkkamer_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate[sensor.altherma_climatecontrol_control_mode-entry]
@@ -46369,7 +46369,7 @@
     'capabilities': dict({
       'options': list([
         '0',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -46403,14 +46403,14 @@
       'icon': 'mdi:calendar-clock',
       'options': list([
         '0',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.werkkamer_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption-entry]
@@ -49381,7 +49381,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -49417,14 +49417,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.laurens_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate_floorheatingairflow[select.woonkamer_airco_climatecontrol_demand_control-entry]
@@ -49514,7 +49514,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -49550,14 +49550,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.woonkamer_airco_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_cooling_daily_electrical_consumption-entry]
@@ -87533,7 +87533,7 @@
       'options': list([
         'Automatic 1',
         'Automatic 2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -87568,7 +87568,7 @@
       'options': list([
         'Automatic 1',
         'Automatic 2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
@@ -90024,7 +90024,7 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -90060,14 +90060,14 @@
         '0',
         '1',
         '2',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_mc80z[select.vloerverwarming_domestichotwatertank_schedule-entry]
@@ -90078,7 +90078,7 @@
     'capabilities': dict({
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -90112,7 +90112,7 @@
       'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
@@ -94494,7 +94494,7 @@
         'User defined 1',
         'User defined 2',
         'User defined 3',
-        'none',
+        'off',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -94530,14 +94530,14 @@
         'User defined 1',
         'User defined 2',
         'User defined 3',
-        'none',
+        'off',
       ]),
     }),
     'context': <ANY>,
     'entity_id': 'select.altherma_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'none',
+    'state': 'off',
   })
 # ---
 # name: test_water_heater[sensor.altherma_climatecontrol_control_mode-entry]

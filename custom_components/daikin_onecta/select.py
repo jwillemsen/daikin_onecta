@@ -8,6 +8,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
+from .const import SCHEDULE_OFF
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -80,7 +81,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                         currentMode = scheduledict["value"]["currentMode"]["value"]
                         # When there is no schedule enabled we return none
                         if not scheduledict["value"]["modes"][currentMode]["enabled"]["value"]:
-                            res = "none"
+                            res = SCHEDULE_OFF
                         else:
                             currentSchedule = scheduledict["value"]["modes"][currentMode]["currentSchedule"]["value"]
                             res = scheduledict["value"]["modes"][currentMode]["schedules"][currentSchedule]["name"]["value"]
@@ -105,7 +106,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                             readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"]["value"]
                             if not readableName:
                                 readableName = scheduleName
-                            if option == "none":
+                            if option == SCHEDULE_OFF:
                                 if readableName == self._attr_current_option:
                                     scheduleid = scheduleName
                                     break
@@ -114,7 +115,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                                     scheduleid = scheduleName
                                     break
 
-        value = {"scheduleId": scheduleid, "enabled": option != "none"}
+        value = {"scheduleId": scheduleid, "enabled": option != SCHEDULE_OFF}
         result = await self._device.put(self._device.id, self._embedded_id, f"schedule/{currentMode}/current", value)
         if result is False:
             _LOGGER.warning(
@@ -144,6 +145,6 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                                 readableName = scheduleName
                             opt.append(readableName)
 
-        opt.append("none")
+        opt.append(SCHEDULE_OFF)
 
         return opt

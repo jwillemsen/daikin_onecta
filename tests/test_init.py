@@ -47,6 +47,7 @@ from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta.const import COORDINATOR
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.const import DOMAIN as DAIKIN_DOMAIN
+from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
@@ -703,14 +704,14 @@ async def test_climate(
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_schedule", ATTR_OPTION: "none"},
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_schedule", ATTR_OPTION: SCHEDULE_OFF},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 27
         assert responses.calls[26].request.body == '{"scheduleId": "0", "enabled": false}'
-        assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "none"
+        assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == SCHEDULE_OFF
 
         # Set the device with schedule 'User defined' enabled
         await hass.services.async_call(
@@ -729,11 +730,11 @@ async def test_climate(
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "none"},
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: SCHEDULE_OFF},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(responses.calls) == 29
         assert responses.calls[28].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
-        assert hass.states.get("select.altherma_climatecontrol_schedule").state == "none"
+        assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF

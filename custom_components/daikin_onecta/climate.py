@@ -30,6 +30,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
+from .const import FANMODE_FIXED
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -421,7 +422,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             operation_mode = cc["operationMode"]["value"]
             fan_speed = fanControl["value"]["operationModes"][operation_mode]["fanSpeed"]
             mode = fan_speed["currentMode"]["value"]
-            if mode == "fixed":
+            if mode == FANMODE_FIXED:
                 fsm = fan_speed.get("modes")
                 if fsm is not None:
                     _LOGGER.info("FSM %s", fsm)
@@ -443,7 +444,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             _LOGGER.info("Found fanspeed %s", fan_speed)
             for c in fan_speed["currentMode"]["values"]:
                 _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
-                if c == "fixed":
+                if c == FANMODE_FIXED:
                     fsm = fan_speed.get("modes")
                     if fsm is not None:
                         _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
@@ -478,7 +479,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._embedded_id,
                     "fanControl",
                     f"/operationModes/{operationmode}/fanSpeed/currentMode",
-                    "fixed",
+                    FANMODE_FIXED,
                 )
                 if res is False:
                     _LOGGER.warning(
