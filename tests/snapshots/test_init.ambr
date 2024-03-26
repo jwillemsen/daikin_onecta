@@ -5282,7 +5282,7 @@
 # name: test_altherma[climate.altherma_leaving_water_offset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'current_temperature': 21,
+      'current_temperature': 27,
       'friendly_name': 'Altherma Leaving Water Offset',
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,
@@ -23245,7 +23245,7 @@
 # name: test_altherma_ratelimit[climate.altherma_leaving_water_offset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'current_temperature': 21,
+      'current_temperature': 27,
       'friendly_name': 'Altherma Leaving Water Offset',
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,
@@ -35728,7 +35728,7 @@
 # name: test_climate[climate.altherma_leaving_water_offset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'current_temperature': 21,
+      'current_temperature': 27,
       'friendly_name': 'Altherma Leaving Water Offset',
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,
@@ -92306,7 +92306,7 @@
 # name: test_mc80z[climate.vloerverwarming_leaving_water_offset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'current_temperature': -3,
+      'current_temperature': 25,
       'friendly_name': 'Vloerverwarming Leaving Water Offset',
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,
@@ -96633,7 +96633,7 @@
 # name: test_water_heater[climate.altherma_leaving_water_offset-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'current_temperature': 19.4,
+      'current_temperature': 26,
       'friendly_name': 'Altherma Leaving Water Offset',
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,

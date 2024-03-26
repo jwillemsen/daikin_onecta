@@ -165,7 +165,7 @@ async def test_mc80z(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "mc80z")
 
-    assert hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"] == -3
+    assert hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"] == 25
     assert hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"] == -3
 
 

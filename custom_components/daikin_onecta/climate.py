@@ -249,14 +249,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if sensory_data is not None:
             current_temp = sensory_data["value"]
         else:
-            # There is no sensoryData with the same name as the setpoint we are using, at that
-            # moment see if there is a sensor matching our controlMode
-            controlmode = self.control_mode()
-            setpointdict = self.sensory_data(controlmode["value"])
-            if setpointdict is not None:
+            # There is no sensoryData with the same name as the setpoint we are using, see
+            # if we are using leavingWaterOffset, at that moment see if we have a
+            # leavingWaterTemperature temperature
+            setpointdict = self.sensory_data("leavingWaterTemperature")
+            if self._setpoint == "leavingWaterOffset" and setpointdict is not None:
                 current_temp = setpointdict["value"]
             else:
-                # When there is no sensoryData matching our controlMode we return the
+                # When we don't have a leavingWaterOffset we return the
                 # value of our setpoint
                 setpointdict = self.setpoint()
                 if setpointdict is not None:
