@@ -176,7 +176,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
         return setpoint
 
-    def sensory_data(self):
+    def sensory_data(self, setpoint):
         sensoryData = None
         supported_management_point_types = {"climateControl"}
         if self._device.daikin_data["managementPoints"] is not None:
@@ -187,11 +187,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     sensoryData = management_point.get("sensoryData")
                     _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
                     if sensoryData is not None:
-                        sensoryData = sensoryData.get("value").get(self._setpoint)
+                        sensoryData = sensoryData.get("value").get(setpoint)
                         _LOGGER.info(
                             "Device '%s': %s sensoryData %s",
                             self._device.name,
-                            self._setpoint,
+                            setpoint,
                             sensoryData,
                         )
         return sensoryData
@@ -230,24 +230,23 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     @property
     def name(self):
         device_name = self._device.name
-        cc = self.climate_control()
-        namepoint = cc.get("name")
-        if namepoint is not None:
-            device_name = namepoint["value"]
         myname = self._setpoint[0].upper() + self._setpoint[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         return f"{device_name} {' '.join(readable)}"
 
     def get_current_temperature(self):
         current_temp = None
-        sensory_data = self.sensory_data()
+        sensory_data = self.sensory_data(self._setpoint)
         # Check if there is a sensoryData which is for the same setpoint, if so, return that
         if sensory_data is not None:
             current_temp = sensory_data["value"]
         else:
-            setpointdict = self.setpoint()
-            if setpointdict is not None:
-                current_temp = setpointdict["value"]
+            # There is no sensoryData with the same name as the setpoint we are using, see
+            # if we are using leavingWaterOffset, at that moment see if we have a
+            # leavingWaterTemperature temperature
+            lwsensor = self.sensory_data("leavingWaterTemperature")
+            if self._setpoint == "leavingWaterOffset" and lwsensor is not None:
+                current_temp = lwsensor["value"]
         _LOGGER.info(
             "Device '%s': %s current temperature '%s'",
             self._device.name,
