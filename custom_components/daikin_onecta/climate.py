@@ -176,7 +176,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
         return setpoint
 
-    def sensory_data(self):
+    def sensory_data(self, setpoint):
         sensoryData = None
         supported_management_point_types = {"climateControl"}
         if self._device.daikin_data["managementPoints"] is not None:
@@ -187,11 +187,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     sensoryData = management_point.get("sensoryData")
                     _LOGGER.info("Climate: Device sensoryData %s", sensoryData)
                     if sensoryData is not None:
-                        sensoryData = sensoryData.get("value").get(self._setpoint)
+                        sensoryData = sensoryData.get("value").get(setpoint)
                         _LOGGER.info(
                             "Device '%s': %s sensoryData %s",
                             self._device.name,
-                            self._setpoint,
+                            setpoint,
                             sensoryData,
                         )
         return sensoryData
@@ -238,16 +238,29 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         return f"{device_name} {' '.join(readable)}"
 
+    def control_mode(self):
+        cc = self.climate_control()
+        return cc.get("controlMode")
+
     def get_current_temperature(self):
         current_temp = None
-        sensory_data = self.sensory_data()
+        sensory_data = self.sensory_data(self._setpoint)
         # Check if there is a sensoryData which is for the same setpoint, if so, return that
         if sensory_data is not None:
             current_temp = sensory_data["value"]
         else:
-            setpointdict = self.setpoint()
+            # There is no sensoryData with the same name as the setpoint we are using, at that
+            # moment see if there is a sensor matching our controlMode
+            controlmode = self.control_mode()
+            setpointdict = self.sensory_data(controlmode["value"])
             if setpointdict is not None:
                 current_temp = setpointdict["value"]
+            else:
+                # When there is no sensoryData matching our controlMode we return the
+                # value of our setpoint
+                setpointdict = self.setpoint()
+                if setpointdict is not None:
+                    current_temp = setpointdict["value"]
         _LOGGER.info(
             "Device '%s': %s current temperature '%s'",
             self._device.name,
