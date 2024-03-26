@@ -78,6 +78,7 @@ async def test_altherma3m(
     assert hass.states.get("climate.leaving_water_offset").attributes["current_temperature"] == 25
     assert hass.states.get("climate.leaving_water_offset").attributes["temperature"] == 0
 
+
 async def test_altherma_ratelimit(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -166,6 +167,7 @@ async def test_mc80z(
 
     assert hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"] == -3
     assert hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"] == -3
+
 
 async def test_holidaymode(
     hass: HomeAssistant,
