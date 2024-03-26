@@ -248,15 +248,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             # There is no sensoryData with the same name as the setpoint we are using, see
             # if we are using leavingWaterOffset, at that moment see if we have a
             # leavingWaterTemperature temperature
-            setpointdict = self.sensory_data("leavingWaterTemperature")
-            if self._setpoint == "leavingWaterOffset" and setpointdict is not None:
-                current_temp = setpointdict["value"]
-            else:
-                # When we don't have a leavingWaterOffset we return the
-                # value of our setpoint
-                setpointdict = self.setpoint()
-                if setpointdict is not None:
-                    current_temp = setpointdict["value"]
+            lwsensor = self.sensory_data("leavingWaterTemperature")
+            if self._setpoint == "leavingWaterOffset" and lwsensor is not None:
+                current_temp = lwsensor["value"]
         _LOGGER.info(
             "Device '%s': %s current temperature '%s'",
             self._device.name,
