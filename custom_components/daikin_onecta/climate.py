@@ -238,10 +238,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         return f"{device_name} {' '.join(readable)}"
 
-    def control_mode(self):
-        cc = self.climate_control()
-        return cc.get("controlMode")
-
     def get_current_temperature(self):
         current_temp = None
         sensory_data = self.sensory_data(self._setpoint)
