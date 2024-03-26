@@ -230,10 +230,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     @property
     def name(self):
         device_name = self._device.name
-        cc = self.climate_control()
-        namepoint = cc.get("name")
-        if namepoint is not None:
-            device_name = namepoint["value"]
         myname = self._setpoint[0].upper() + self._setpoint[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         return f"{device_name} {' '.join(readable)}"
