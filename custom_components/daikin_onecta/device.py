@@ -22,8 +22,7 @@ class DaikinOnectaDevice:
 
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type == "climateControl":
+            if management_point["managementPointType"] == "climateControl":
                 self.name = management_point["name"]["value"]
 
         _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id)
