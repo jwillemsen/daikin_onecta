@@ -9,6 +9,7 @@ import requests
 from aiohttp import ClientResponseError
 from homeassistant import config_entries
 from homeassistant import core
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
 
@@ -61,8 +62,9 @@ class DaikinApi:
             try:
                 await self.session.async_ensure_token_valid()
             except ClientResponseError as ex:
+                # https://developers.home-assistant.io/docs/integration_setup_failures/#handling-expired-credentials
                 if ex.status == HTTPStatus.BAD_REQUEST:
-                    self._config_entry.async_start_reauth(self.hass)
+                    raise ConfigEntryAuthFailed from ex
                 raise ex
 
         return self.session.token["access_token"]
