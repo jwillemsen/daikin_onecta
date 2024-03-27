@@ -3,10 +3,13 @@ import asyncio
 import functools
 import logging
 from datetime import datetime
+from http import HTTPStatus
 
 import requests
+from aiohttp import ClientResponseError
 from homeassistant import config_entries
 from homeassistant import core
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
 
@@ -56,7 +59,14 @@ class DaikinApi:
     async def async_get_access_token(self) -> str:
         """Return a valid access token."""
         if not self.session.valid_token:
-            await self.session.async_ensure_token_valid()
+            try:
+                await self.session.async_ensure_token_valid()
+            except ClientResponseError as ex:
+                # https://developers.home-assistant.io/docs/integration_setup_failures/#handling-expired-credentials
+                if ex.status == HTTPStatus.BAD_REQUEST:
+                    raise ConfigEntryAuthFailed(f"Problem refreshing token: {ex}") from ex
+                raise ex
+
         return self.session.token["access_token"]
 
     async def doBearerRequest(self, method, resourceUrl, options=None):
