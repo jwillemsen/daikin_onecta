@@ -15,6 +15,7 @@ from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.const import OAUTH2_AUTHORIZE
 from custom_components.daikin_onecta.const import OAUTH2_TOKEN
 
+
 CLIENT_ID = "emU20GdJDiiUxI_HnFGz69dD"
 CLIENT_SECRET = "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA"
 
