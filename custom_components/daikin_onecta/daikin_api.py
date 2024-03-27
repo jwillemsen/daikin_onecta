@@ -3,8 +3,10 @@ import asyncio
 import functools
 import logging
 from datetime import datetime
+from http import HTTPStatus
 
 import requests
+from aiohttp import ClientResponseError
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
