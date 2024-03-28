@@ -42,8 +42,8 @@
   },
   "entity": {
     "binary_sensor": {
-      "isinwarningstate": {
-        "name": "Thermostat mode"
+      "climatecontrol_isinwarningstate": {
+        "name": "Climate Control Warning State"
       }
     },
     "climate": {

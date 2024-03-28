@@ -96,7 +96,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
-        #self._attr_translation_key = self._value.lower()
+        self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports binary sensor '%s'",
