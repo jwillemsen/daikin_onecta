@@ -263,12 +263,13 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
+        self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
             self._embedded_id,
-            self._attr_name,
+            self._value,
         )
 
     def update_state(self) -> None:

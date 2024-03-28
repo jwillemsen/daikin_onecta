@@ -41,6 +41,11 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "climatecontrol_isinwarningstate": {
+        "name": "Climate Control Warning State"
+      }
+    },
     "climate": {
       "daikin_onecta": {
         "state_attributes": {
