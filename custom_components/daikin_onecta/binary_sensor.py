@@ -78,7 +78,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._value = value
         self._attr_device_class = None
         self._attr_state_class = None
-        self._attr_has_entity_name = True
+        #self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info(
@@ -94,8 +94,9 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_name = "SS"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
+        self._attr_translation_key = "isInWarningState"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports binary sensor '%s'",
@@ -103,6 +104,10 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
             self._embedded_id,
             self._attr_name,
         )
+
+    @property
+    def translation_key(self):
+        return "isInWarningState"
 
     def update_state(self) -> None:
         self._attr_is_on = self.sensor_value()

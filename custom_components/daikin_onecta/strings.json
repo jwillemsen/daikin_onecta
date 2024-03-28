@@ -50,5 +50,12 @@
       "title": "The minute rate limit has been reached",
       "description": "You have reached your minute rate limit to the Daikin Cloud, don't make so many calls to your Daikin devices in one minute."
     }
+  },
+  "entity": {
+    "binary_sensor": {
+      "isInWarningState": {
+        "name": "FOO"
+      }
+    }
   }
 }

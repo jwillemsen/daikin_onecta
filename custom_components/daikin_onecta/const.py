@@ -49,6 +49,7 @@ SENSOR_PERIODS = {
 ENABLED_DEFAULT = "Enabled"
 STATE_CLASS = "STATE"
 ENTITY_CATEGORY = "ENTITY_CATEGORY"
+TRANSLATION_KEY = "TRANSLATION_KEY"
 
 # This maps the NAME as listed in the Daikin JSON data to:
 # - DEVICE_CLASS: home assistant device class, see
@@ -58,6 +59,7 @@ ENTITY_CATEGORY = "ENTITY_CATEGORY"
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 VALUE_SENSOR_MAPPING = {
     "controlMode": {
+        TRANSLATION_KEY: "controlMode",
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
         CONF_UNIT_OF_MEASUREMENT: None,

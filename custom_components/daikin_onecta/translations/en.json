@@ -41,6 +41,11 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "isInWarningState": {
+        "name": "FOO"
+      }
+    },
     "climate": {
       "daikin_onecta": {
         "state_attributes": {
