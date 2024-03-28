@@ -42,7 +42,7 @@
   },
   "entity": {
     "binary_sensor": {
-      "isInWarningState": {
+      "isinwarningstate": {
         "name": "FOO"
       }
     },
