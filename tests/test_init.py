@@ -340,6 +340,7 @@ async def test_climate(
     assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_cool_heat_master").state == STATE_ON
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_caution_state").state == STATE_OFF
+    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_warning_state").state == STATE_OFF
 
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
