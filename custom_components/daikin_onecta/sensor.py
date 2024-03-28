@@ -269,7 +269,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             "Device '%s:%s' supports sensor '%s'",
             device.name,
             self._embedded_id,
-            self._attr_name,
+            self._value,
         )
 
     def update_state(self) -> None:
