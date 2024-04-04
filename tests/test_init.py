@@ -73,10 +73,10 @@ async def test_altherma3m(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma3m")
 
-    assert hass.states.get("climate.leaving_water_offset").attributes["min_temp"] == -10
-    assert hass.states.get("climate.leaving_water_offset").attributes["max_temp"] == 10
-    assert hass.states.get("climate.leaving_water_offset").attributes["current_temperature"] == 25
-    assert hass.states.get("climate.leaving_water_offset").attributes["temperature"] == 0
+    assert hass.states.get("climate.altherma_leaving_water_offset").attributes["min_temp"] == -10
+    assert hass.states.get("climate.altherma_leaving_water_offset").attributes["max_temp"] == 10
+    assert hass.states.get("climate.altherma_leaving_water_offset").attributes["current_temperature"] == 25
+    assert hass.states.get("climate.altherma_leaving_water_offset").attributes["temperature"] == 0
 
 
 async def test_altherma_ratelimit(
@@ -179,7 +179,7 @@ async def test_holidaymode(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "holidaymode")
 
-    assert hass.states.get("climate.room_temperature").attributes["preset_mode"] == PRESET_AWAY
+    assert hass.states.get("climate.ndj_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
 
 @responses.activate
