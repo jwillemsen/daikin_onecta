@@ -119,7 +119,7 @@ class DaikinApi:
                     is_fixable=False,
                     is_persistent=True,
                     severity=ir.IssueSeverity.ERROR,
-                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/rate_limitation",
+                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
                     translation_key="minute_rate_limit",
                 )
 
@@ -131,7 +131,7 @@ class DaikinApi:
                     is_fixable=False,
                     is_persistent=True,
                     severity=ir.IssueSeverity.ERROR,
-                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/rate_limitation",
+                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
                     translation_key="day_rate_limit",
                 )
             if method == "GET":
