@@ -758,3 +758,29 @@ async def test_climate(
         assert len(responses.calls) == 29
         assert responses.calls[28].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
+
+        # Turn off the device through the hvac mode
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.OFF},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 30
+        assert responses.calls[29].request.body == '{"value": "off"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        # Turn off the device through the hvac mode, because it is already off it shouldn't result
+        # in a call to daikin
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.OFF},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 30
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
