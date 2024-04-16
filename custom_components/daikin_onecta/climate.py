@@ -364,7 +364,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         on_off_mode = None
         operation_mode = None
         if hvac_mode == HVACMode.OFF:
-            on_off_mode = "off"
+            if self.hvac_mode != HVACMode.OFF:
+                on_off_mode = "off"
         else:
             if self.hvac_mode == HVACMode.OFF:
                 on_off_mode = "on"
