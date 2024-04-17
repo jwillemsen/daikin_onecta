@@ -64,6 +64,7 @@ async def test_dry(
 
     assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
 
+
 async def test_dry2(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -75,6 +76,7 @@ async def test_dry2(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "dry2")
 
     assert hass.states.get("climate.bedroom_3_room_temperature").state == HVACMode.OFF
+
 
 async def test_altherma(
     hass: HomeAssistant,
