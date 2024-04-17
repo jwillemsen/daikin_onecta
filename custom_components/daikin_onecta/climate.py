@@ -424,16 +424,17 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             operation_mode = cc["operationMode"]["value"]
             operationmodedict = fanControl["value"]["operationModes"].get(operation_mode)
             if operationmodedict is not None:
-                fan_speed = operationmodedict["fanSpeed"]
-                mode = fan_speed["currentMode"]["value"]
-                if mode == FANMODE_FIXED:
-                    fsm = fan_speed.get("modes")
-                    if fsm is not None:
-                        _LOGGER.info("FSM %s", fsm)
-                        fixedModes = fsm[mode]
-                        fan_mode = str(fixedModes["value"])
-                else:
-                    fan_mode = mode
+                fan_speed = operationmodedict.get("fanSpeed")
+                if fan_speed is not None:
+                    mode = fan_speed["currentMode"]["value"]
+                    if mode == FANMODE_FIXED:
+                        fsm = fan_speed.get("modes")
+                        if fsm is not None:
+                            _LOGGER.info("FSM %s", fsm)
+                            fixedModes = fsm[mode]
+                            fan_mode = str(fixedModes["value"])
+                    else:
+                        fan_mode = mode
 
         return fan_mode
 
@@ -446,22 +447,23 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             operation_mode = cc["operationMode"]["value"]
             operationmodedict = fan_control["value"]["operationModes"].get(operation_mode)
             if operationmodedict is not None:
-                fan_speed = operationmodedict["fanSpeed"]
-                _LOGGER.info("Found fanspeed %s", fan_speed)
-                for c in fan_speed["currentMode"]["values"]:
-                    _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
-                    if c == FANMODE_FIXED:
-                        fsm = fan_speed.get("modes")
-                        if fsm is not None:
-                            _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
-                            fixedModes = fsm[c]
-                            min_val = int(fixedModes["minValue"])
-                            max_val = int(fixedModes["maxValue"])
-                            step_value = int(fixedModes["stepValue"])
-                            for val in range(min_val, max_val + 1, step_value):
-                                fan_modes.append(str(val))
-                    else:
-                        fan_modes.append(c)
+                fan_speed = operationmodedict.get("fanSpeed")
+                if fan_speed is not None:
+                    _LOGGER.info("Found fanspeed %s", fan_speed)
+                    for c in fan_speed["currentMode"]["values"]:
+                        _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
+                        if c == FANMODE_FIXED:
+                            fsm = fan_speed.get("modes")
+                            if fsm is not None:
+                                _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
+                                fixedModes = fsm[c]
+                                min_val = int(fixedModes["minValue"])
+                                max_val = int(fixedModes["maxValue"])
+                                step_value = int(fixedModes["stepValue"])
+                                for val in range(min_val, max_val + 1, step_value):
+                                    fan_modes.append(str(val))
+                        else:
+                            fan_modes.append(c)
 
         return fan_modes
 
