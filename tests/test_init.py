@@ -51,6 +51,18 @@ from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
+async def test_dry(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "dry")
+
+    assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
+
 
 async def test_altherma(
     hass: HomeAssistant,
@@ -784,3 +796,15 @@ async def test_climate(
 
         assert len(responses.calls) == 30
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        # Enable dry mode
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.DRY},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 32
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.DRY
