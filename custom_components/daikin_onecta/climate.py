@@ -218,10 +218,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         fanControl = cc.get("fanControl")
         if fanControl is not None:
             operationmode = cc["operationMode"]["value"]
-            if fanControl["value"]["operationModes"][operationmode].get("fanSpeed") is not None:
-                supported_features |= ClimateEntityFeature.FAN_MODE
-            if fanControl["value"]["operationModes"][operationmode].get("fanDirection") is not None:
-                supported_features |= ClimateEntityFeature.SWING_MODE
+            operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
+            if operationmodedict is not None:
+                if operationmodedict.get("fanSpeed") is not None:
+                    supported_features |= ClimateEntityFeature.FAN_MODE
+                if operationmodedict.get("fanDirection") is not None:
+                    supported_features |= ClimateEntityFeature.SWING_MODE
 
         _LOGGER.info("Device '%s' supports features %s", self._device.name, supported_features)
 
@@ -420,16 +422,18 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         fanControl = cc.get("fanControl")
         if fanControl is not None:
             operation_mode = cc["operationMode"]["value"]
-            fan_speed = fanControl["value"]["operationModes"][operation_mode]["fanSpeed"]
-            mode = fan_speed["currentMode"]["value"]
-            if mode == FANMODE_FIXED:
-                fsm = fan_speed.get("modes")
-                if fsm is not None:
-                    _LOGGER.info("FSM %s", fsm)
-                    fixedModes = fsm[mode]
-                    fan_mode = str(fixedModes["value"])
-            else:
-                fan_mode = mode
+            operationmodedict = fanControl["value"]["operationModes"].get(operation_mode)
+            if operationmodedict is not None:
+                fan_speed = operationmodedict["fanSpeed"]
+                mode = fan_speed["currentMode"]["value"]
+                if mode == FANMODE_FIXED:
+                    fsm = fan_speed.get("modes")
+                    if fsm is not None:
+                        _LOGGER.info("FSM %s", fsm)
+                        fixedModes = fsm[mode]
+                        fan_mode = str(fixedModes["value"])
+                else:
+                    fan_mode = mode
 
         return fan_mode
 
@@ -440,22 +444,24 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         fan_control = cc.get("fanControl")
         if fan_control is not None:
             operation_mode = cc["operationMode"]["value"]
-            fan_speed = fan_control["value"]["operationModes"][operation_mode]["fanSpeed"]
-            _LOGGER.info("Found fanspeed %s", fan_speed)
-            for c in fan_speed["currentMode"]["values"]:
-                _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
-                if c == FANMODE_FIXED:
-                    fsm = fan_speed.get("modes")
-                    if fsm is not None:
-                        _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
-                        fixedModes = fsm[c]
-                        min_val = int(fixedModes["minValue"])
-                        max_val = int(fixedModes["maxValue"])
-                        step_value = int(fixedModes["stepValue"])
-                        for val in range(min_val, max_val + 1, step_value):
-                            fan_modes.append(str(val))
-                else:
-                    fan_modes.append(c)
+            operationmodedict = fan_control["value"]["operationModes"].get(operation_mode)
+            if operationmodedict is not None:
+                fan_speed = operationmodedict["fanSpeed"]
+                _LOGGER.info("Found fanspeed %s", fan_speed)
+                for c in fan_speed["currentMode"]["values"]:
+                    _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
+                    if c == FANMODE_FIXED:
+                        fsm = fan_speed.get("modes")
+                        if fsm is not None:
+                            _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
+                            fixedModes = fsm[c]
+                            min_val = int(fixedModes["minValue"])
+                            max_val = int(fixedModes["maxValue"])
+                            step_value = int(fixedModes["stepValue"])
+                            for val in range(min_val, max_val + 1, step_value):
+                                fan_modes.append(str(val))
+                    else:
+                        fan_modes.append(c)
 
         return fan_modes
 
@@ -531,14 +537,16 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if fanControl is not None:
             swingMode = SWING_OFF
             operationmode = cc["operationMode"]["value"]
-            fan_direction = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
-            if fan_direction is not None:
-                horizontal = fan_direction.get("horizontal")
-                vertical = fan_direction.get("vertical")
-                if horizontal is not None:
-                    h = horizontal["currentMode"]["value"]
-                if vertical is not None:
-                    v = vertical["currentMode"]["value"]
+            operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
+            if operationmodedict is not None:
+                fan_direction = operationmodedict.get("fanDirection")
+                if fan_direction is not None:
+                    horizontal = fan_direction.get("horizontal")
+                    vertical = fan_direction.get("vertical")
+                    if horizontal is not None:
+                        h = horizontal["currentMode"]["value"]
+                    if vertical is not None:
+                        v = vertical["currentMode"]["value"]
         if h == "swing":
             swingMode = SWING_HORIZONTAL
         if v == "swing":
@@ -573,28 +581,30 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if fanControl is not None:
             swingModes = [SWING_OFF]
             operationmode = cc["operationMode"]["value"]
-            fanDirection = fanControl["value"]["operationModes"][operationmode].get("fanDirection")
-            if fanDirection is not None:
-                horizontal = fanDirection.get("horizontal")
-                vertical = fanDirection.get("vertical")
-                if horizontal is not None:
-                    for mode in horizontal["currentMode"]["values"]:
-                        if mode == "swing":
-                            swingModes.append(SWING_HORIZONTAL)
-                if vertical is not None:
-                    for mode in vertical["currentMode"]["values"]:
-                        if mode == "swing":
-                            swingModes.append(SWING_VERTICAL)
-                            if horizontal is not None:
-                                swingModes.append(SWING_BOTH)
-                        if mode == "floorHeatingAirflow":
-                            swingModes.append(mode)
-                            if horizontal is not None:
-                                swingModes.append("floorHeatingAirflow and Horizontal")
-                        if mode == "windNice":
-                            swingModes.append("Comfort Airflow")
-                            if horizontal is not None:
-                                swingModes.append("Comfort Airflow and Horizontal")
+            operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
+            if operationmodedict is not None:
+                fanDirection = operationmodedict.get("fanDirection")
+                if fanDirection is not None:
+                    horizontal = fanDirection.get("horizontal")
+                    vertical = fanDirection.get("vertical")
+                    if horizontal is not None:
+                        for mode in horizontal["currentMode"]["values"]:
+                            if mode == "swing":
+                                swingModes.append(SWING_HORIZONTAL)
+                    if vertical is not None:
+                        for mode in vertical["currentMode"]["values"]:
+                            if mode == "swing":
+                                swingModes.append(SWING_VERTICAL)
+                                if horizontal is not None:
+                                    swingModes.append(SWING_BOTH)
+                            if mode == "floorHeatingAirflow":
+                                swingModes.append(mode)
+                                if horizontal is not None:
+                                    swingModes.append("floorHeatingAirflow and Horizontal")
+                            if mode == "windNice":
+                                swingModes.append("Comfort Airflow")
+                                if horizontal is not None:
+                                    swingModes.append("Comfort Airflow and Horizontal")
         _LOGGER.info("Device '%s' support swing modes %s", self._device.name, swingModes)
         return swingModes
 
