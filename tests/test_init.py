@@ -51,6 +51,7 @@ from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
+
 async def test_dry(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
