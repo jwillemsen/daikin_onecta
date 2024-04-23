@@ -77,6 +77,7 @@ async def test_dry2(
 
     assert hass.states.get("climate.bedroom_3_room_temperature").state == HVACMode.OFF
 
+
 async def test_ururu(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
