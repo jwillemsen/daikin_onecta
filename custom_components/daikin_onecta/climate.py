@@ -56,6 +56,7 @@ DAIKIN_HVAC_TO_HA = {
     "heatingNight": HVACMode.HEAT,
     "auto": HVACMode.HEAT_COOL,
     "off": HVACMode.OFF,
+    "humidification": HVACMode.DRY,
 }
 
 HA_PRESET_TO_DAIKIN = {
