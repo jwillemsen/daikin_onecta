@@ -280,7 +280,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         return result
 
     async def async_turn_on(self):
-        """Turn device CLIMATE on."""
+        """Turn water heater on."""
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
         result = True
         if self.current_operation == STATE_OFF:
@@ -301,6 +301,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         return result
 
     async def async_turn_off(self):
+        """Turn water heater off."""
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
         result = True
         if self.current_operation != STATE_OFF:
