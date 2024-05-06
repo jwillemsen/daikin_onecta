@@ -250,6 +250,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
             result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
+            if result is True:
+                hwtd = self.hotwatertank_data
+                hwtd["onOffMode"]["value"] = on_off_mode
+
         # Only set powerfulMode when it is set and supported by the device
         if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
             result &= await self._device.patch(
@@ -259,6 +263,12 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 "",
                 powerful_mode,
             )
+            if result is True:
+                hwtd = self.hotwatertank_data
+                pwf = hwtd.get("powerfulMode")
+                if pwf is not None:
+                    if pwf["settable"] is True:
+                        pwf["value"] = powerful_mode
 
         if result is False:
             _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
@@ -266,5 +276,47 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             # Update local cached version
             self._attr_current_operation = operation_mode
             self.async_write_ha_state()
+
+        return result
+
+    async def async_turn_on(self):
+        """Turn water heater on."""
+        _LOGGER.debug("Device '%s' request to turn on", self._device.name)
+        result = True
+        if self.current_operation == STATE_OFF:
+            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "on")
+            if result is False:
+                _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
+            else:
+                hwtd = self.hotwatertank_data
+                hwtd["onOffMode"]["value"] = "on"
+                self._attr_current_operation = self.get_current_operation()
+                self.async_write_ha_state()
+        else:
+            _LOGGER.debug(
+                "Device '%s' request to turn on ignored because device is already on",
+                self._device.name,
+            )
+
+        return result
+
+    async def async_turn_off(self):
+        """Turn water heater off."""
+        _LOGGER.debug("Device '%s' request to turn off", self._device.name)
+        result = True
+        if self.current_operation != STATE_OFF:
+            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "off")
+            if result is False:
+                _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
+            else:
+                hwtd = self.hotwatertank_data
+                hwtd["onOffMode"]["value"] = "off"
+                self._attr_current_operation = self.get_current_operation()
+                self.async_write_ha_state()
+        else:
+            _LOGGER.debug(
+                "Device '%s' request to turn off ignored because device is already off",
+                self._device.name,
+            )
 
         return result

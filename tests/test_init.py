@@ -364,6 +364,54 @@ async def test_water_heater(
         assert responses.calls[6].request.body == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
+        # Turn the tank again off using turn_off
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "water_heater.altherma"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 8
+        assert responses.calls[7].request.body == '{"value": "off"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
+
+        # Turn the tank again off using turn_off, will be a noop
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "water_heater.altherma"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 8
+
+        # Turn the tank again on using turn_on
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "water_heater.altherma"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 9
+        assert responses.calls[8].request.body == '{"value": "on"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
+
+        # Turn the tank again on using turn_on, will be a noop
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "water_heater.altherma"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 9
+
 
 @responses.activate
 async def test_climate(
