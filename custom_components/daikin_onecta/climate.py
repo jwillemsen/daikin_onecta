@@ -31,6 +31,10 @@ from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import FANMODE_FIXED
+from .const import SWING_FLOOR
+from .const import SWING_FLOOR_HORIZONTAL
+from .const import SWING_COMFORT
+from .const import SWING_COMFORT_HORIZONTAL
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -558,14 +562,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             swingMode = SWING_BOTH
         if v == "floorHeatingAirflow":
             if h == "swing":
-                swingMode = "floorHeatingAirflowHorizontal"
+                swingMode = SWING_FLOOR_HORIZONTAL
             else:
-                swingMode = "floorHeatingAirflow"
+                swingMode = SWING_FLOOR
         if v == "windNice":
             if h == "swing":
-                swingMode = "ComfortAirflowHorizontal"
+                swingMode = SWING_COMFORT_HORIZONTAL
             else:
-                swingMode = "ComfortAirflow"
+                swingMode = SWING_COMFORT
 
         _LOGGER.info(
             "Device '%s' has swing mode '%s', determined from h:%s v:%s",
@@ -601,13 +605,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                                 if horizontal is not None:
                                     swingModes.append(SWING_BOTH)
                             if mode == "floorHeatingAirflow":
-                                swingModes.append(mode)
+                                swingModes.append(SWING_FLOOR)
                                 if horizontal is not None:
-                                    swingModes.append("floorHeatingAirflowHorizontal")
+                                    swingModes.append(SWING_FLOOR_HORIZONTAL)
                             if mode == "windNice":
-                                swingModes.append("ComfortAirflow")
+                                swingModes.append(SWING_COMFORT)
                                 if horizontal is not None:
-                                    swingModes.append("ComfortAirflowHorizontal")
+                                    swingModes.append(SWING_COMFORT_HORIZONTAL)
         _LOGGER.info("Device '%s' support swing modes %s", self._device.name, swingModes)
         return swingModes
 
@@ -632,8 +636,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     if swing_mode in (
                         SWING_HORIZONTAL,
                         SWING_BOTH,
-                        "ComfortAirflowHorizontal",
-                        "floorHeatingAirflowHorizontal",
+                        SWING_COMFORT_HORIZONTAL,
+                        SWING_FLOOR_HORIZONTAL
                     ):
                         new_h_mode = "swing"
                     res &= await self._device.patch(
@@ -655,13 +659,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     if swing_mode in (SWING_VERTICAL, SWING_BOTH):
                         new_v_mode = "swing"
                     if swing_mode in (
-                        "floorHeatingAirflow",
-                        "floorHeatingAirflowHorizontal",
+                        SWING_FLOOR,
+                        SWING_FLOOR_HORIZONTAL
                     ):
                         new_v_mode = "floorHeatingAirflow"
                     if swing_mode in (
-                        "ComfortAirflow",
-                        "ComfortAirflowHorizontal",
+                        SWING_COMFORT,
+                        SWING_COMFORT_HORIZONTAL
                     ):
                         new_v_mode = "windNice"
                     res &= await self._device.patch(
