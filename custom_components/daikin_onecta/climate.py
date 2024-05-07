@@ -31,10 +31,10 @@ from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import FANMODE_FIXED
-from .const import SWING_FLOOR
-from .const import SWING_FLOOR_HORIZONTAL
 from .const import SWING_COMFORT
 from .const import SWING_COMFORT_HORIZONTAL
+from .const import SWING_FLOOR
+from .const import SWING_FLOOR_HORIZONTAL
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -633,12 +633,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 vertical = fan_direction.get("vertical")
                 if horizontal is not None:
                     new_h_mode = "stop"
-                    if swing_mode in (
-                        SWING_HORIZONTAL,
-                        SWING_BOTH,
-                        SWING_COMFORT_HORIZONTAL,
-                        SWING_FLOOR_HORIZONTAL
-                    ):
+                    if swing_mode in (SWING_HORIZONTAL, SWING_BOTH, SWING_COMFORT_HORIZONTAL, SWING_FLOOR_HORIZONTAL):
                         new_h_mode = "swing"
                     res &= await self._device.patch(
                         self._device.id,
@@ -658,15 +653,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     new_v_mode = "stop"
                     if swing_mode in (SWING_VERTICAL, SWING_BOTH):
                         new_v_mode = "swing"
-                    if swing_mode in (
-                        SWING_FLOOR,
-                        SWING_FLOOR_HORIZONTAL
-                    ):
+                    if swing_mode in (SWING_FLOOR, SWING_FLOOR_HORIZONTAL):
                         new_v_mode = "floorHeatingAirflow"
-                    if swing_mode in (
-                        SWING_COMFORT,
-                        SWING_COMFORT_HORIZONTAL
-                    ):
+                    if swing_mode in (SWING_COMFORT, SWING_COMFORT_HORIZONTAL):
                         new_v_mode = "windNice"
                     res &= await self._device.patch(
                         self._device.id,
