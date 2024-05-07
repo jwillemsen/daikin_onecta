@@ -58,7 +58,6 @@ async def test_full_flow(
         "&redirect_uri=https://example.com/auth/external/callback"
         f"&state={state}"
         f"&scope=openid+onecta:basic.integration"
-        f"&client_secret={CLIENT_SECRET}"
     )
 
     client = await hass_client_no_auth()
