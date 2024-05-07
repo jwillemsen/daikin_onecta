@@ -42,6 +42,14 @@
               "4": "4",
               "5": "5"
             }
+          },
+          "swing_mode": {
+            "state": {
+              "floor": "Vloer Heating Airflow",
+              "floor_horizontal": "Vloer Heating Airflow en Horizontaal",
+              "comfort": "Comfort Airflow",
+              "comfort_horizontal": "Comfort Airflow en Horizontaal"
+            }
           }
         }
       }
