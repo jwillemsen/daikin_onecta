@@ -62,9 +62,9 @@
           "swing_mode": {
             "state": {
               "floorHeatingAirflow": "FloorHeating Airflow",
-              "floorHeatingAirflow and Horizontal": "FloorHeating Airflow and Horizontal",
-              "Comfort Airflow": "Comfort Airflow",
-              "Comfort Airflow and Horizontal": "Comfort Airflow and Horizontal"
+              "floorHeatingAirflowHorizontal": "FloorHeating Airflow and Horizontal",
+              "ComfortAirflow": "Comfort Airflow",
+              "ComfortAirflowHorizontal": "Comfort Airflow and Horizontal"
             }
           }
         }

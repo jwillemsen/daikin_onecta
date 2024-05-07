@@ -558,14 +558,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             swingMode = SWING_BOTH
         if v == "floorHeatingAirflow":
             if h == "swing":
-                swingMode = "floorHeatingAirflow and Horizontal"
+                swingMode = "floorHeatingAirflowHorizontal"
             else:
                 swingMode = "floorHeatingAirflow"
         if v == "windNice":
             if h == "swing":
-                swingMode = "Comfort Airflow and Horizontal"
+                swingMode = "ComfortAirflowHorizontal"
             else:
-                swingMode = "Comfort Airflow"
+                swingMode = "ComfortAirflow"
 
         _LOGGER.info(
             "Device '%s' has swing mode '%s', determined from h:%s v:%s",
@@ -603,11 +603,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             if mode == "floorHeatingAirflow":
                                 swingModes.append(mode)
                                 if horizontal is not None:
-                                    swingModes.append("floorHeatingAirflow and Horizontal")
+                                    swingModes.append("floorHeatingAirflowHorizontal")
                             if mode == "windNice":
-                                swingModes.append("Comfort Airflow")
+                                swingModes.append("ComfortAirflow")
                                 if horizontal is not None:
-                                    swingModes.append("Comfort Airflow and Horizontal")
+                                    swingModes.append("ComfortAirflowHorizontal")
         _LOGGER.info("Device '%s' support swing modes %s", self._device.name, swingModes)
         return swingModes
 
@@ -632,8 +632,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     if swing_mode in (
                         SWING_HORIZONTAL,
                         SWING_BOTH,
-                        "Comfort Airflow and Horizontal",
-                        "floorHeatingAirflow and Horizontal",
+                        "ComfortAirflowHorizontal",
+                        "floorHeatingAirflowHorizontal",
                     ):
                         new_h_mode = "swing"
                     res &= await self._device.patch(
@@ -656,12 +656,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         new_v_mode = "swing"
                     if swing_mode in (
                         "floorHeatingAirflow",
-                        "floorHeatingAirflow and Horizontal",
+                        "floorHeatingAirflowHorizontal",
                     ):
                         new_v_mode = "floorHeatingAirflow"
                     if swing_mode in (
-                        "Comfort Airflow",
-                        "Comfort Airflow and Horizontal",
+                        "ComfortAirflow",
+                        "ComfortAirflowHorizontal",
                     ):
                         new_v_mode = "windNice"
                     res &= await self._device.patch(
