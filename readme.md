@@ -30,15 +30,13 @@ Visit https://developer.cloud.daikineurope.com and sign up for a developer accou
 
 # Using config flow
 
-Start by going to Settings - Devices & Services and pressing the `+ ADD INTEGRATION` button to create a new Integration, then select `Daikin Onecta` in the drop-down menu.
+First create an account at https://developer.cloud.daikineurope.com, after that create an application at the Daikin Developer website, see the Getting started page at the Daikin Developer portal for more information. As `redirect uri` you can use `https://my.home-assistant.io/redirect/oauth`. If you don’t have My Home Assistant on your installation, you can use `<HOME_ASSISTANT_URL>/auth/external/callback` as the redirect URI instead. The `<HOME_ASSISTANT_URL>` must be the same as used during the configuration/authentication process. Internal examples: `http://192.168.0.2:8123/auth/external/callback`, `http://homeassistant.local:8123/auth/external/callback`. Copy and save the provided client id and secret, you need to enter these in the next step.
 
-Follow the instructions, you have to login at Daikin and authorize the application. After pressing the "Submit" button, the integration will be added, and the Daikin devices connected to your cloud account will be created. See https://www.home-assistant.io/integrations/application_credentials for more information about application credentials within Home Assistant.
+Now within Home Assistant go to Settings - Devices & Services and pressing the `ADD INTEGRATION` button to create a new Integration, select `Daikin Onecta` in the drop-down menu. In the `Add credentials` form enter a user defined name (for example `daikin_onecta`), and enter the `OAuth Client ID` and `OAuth Client Secret` as you obtained from the Daikin website, and finish by pressing the 'ADD` button.
 
-The `OAuth Client ID` and `OAuth Client Secret` need to be obtained from Daikin, see https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started for the id/secret keys which are valid Spring 2024. Use the `clientId` and `clientSecret` without the surrounding double quotes. The `Name` is user defined, for example `Daikin`. You _must_ create a Daikin Developer account to obtain the id/secret.
+You will now be redirected to the Daikin website where you have to authorize the application. When you agree to give the application permissions you will be redirected back to the `redirect uri` as you provided as part of the application on the Daikin website, there you have to link Home Assisant by pressing the `Link account` button. In case the provided instance URL is not correct you can edit it by pressing the pencil behind the URL. When you have pressed `Link account` the integration will be added and th Daikin devices connected to your Daikin cloud account should now be visible within Home Assistant.
 
 When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
-
-At this moment only https://my.home-assistant.io/redirect/oauth is supported as redirect_uri, see https://www.home-assistant.io/integrations/home_connect/ for some additional documentation about using My Home Assistant.
 
 This integration supports the following configuration settings to reduce the amount of polling to Daikin
 
