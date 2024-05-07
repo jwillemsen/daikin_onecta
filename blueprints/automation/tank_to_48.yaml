@@ -1,6 +1,6 @@
 blueprint:
   name: waterheater_53_to_48
-  description: Lower tank temperatur to 48C
+  description: Lower tank temperature to 48C
   domain: automation
   input:
     water_heater:
@@ -28,4 +28,3 @@ action:
       temperature: 48
     target:
       entity_id: !input water_heater
-
