@@ -1,0 +1,54 @@
+blueprint:
+  name: waterheater_53
+  description: Raise tank temperature when enough solar to 53C
+  domain: automation
+  input:
+    water_heater:
+      name: Water Heater
+      description: Water Heater to control
+      selector:
+        entity:
+          filter:
+            - domain: water_heater
+    active_power:
+      name: Current active power
+      description: Current active power imported/exported from your home
+      selector:
+        entity:
+          filter:
+            - domain: sensor
+            - device_class: power
+    outdoor_temperatur:
+      name: Current output temperature
+      description: Current outdoor temperature
+      selector:
+        entity:
+          filter:
+            - domain: sensor
+            - device_class: temperature
+
+trigger:
+  - platform: numeric_state
+    entity_id:
+      - !input active_power
+    below: -4000
+    for:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+condition:
+  - condition: numeric_state
+    entity_id: !input outdoor_temperatur
+    below: 24
+  - condition: numeric_state
+    entity_id: !input water_heater
+    below: 49
+    attribute: current_temperature
+action:
+  - service: water_heater.set_temperature
+    data:
+      temperature: 53
+    target:
+      entity_id: !input water_heater
+mode: single

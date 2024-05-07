@@ -17,7 +17,6 @@ scripts.yaml
 secrets.yaml
 tokenset.json
 .storage/**
-blueprints/**
 custom_components/dhcp/**
 custom_components/hacs/**
 custom_components/sonoff/**
@@ -25,5 +24,5 @@ custom_components/start_time/**
 custom_components/xiaomi_gateway3/**
 custom_components/yandex_station/**
 deps/**
-custom_components/daikin_residential_altherma/.vscode/**
-custom_components/daikin_residential_altherma/__pycache__/**
+custom_components/daikin_onecta/.vscode/**
+custom_components/daikin_onecta/__pycache__/**

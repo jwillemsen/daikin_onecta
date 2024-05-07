@@ -1,0 +1,30 @@
+blueprint:
+  name: waterheater_53_to_48
+  description: Lower tank temperature to 48C
+  domain: automation
+  input:
+    water_heater:
+      name: Water Heater
+      description: Water Heater to control
+      selector:
+        entity:
+          filter:
+            - domain: water_heater
+
+trigger:
+  - platform: numeric_state
+    entity_id:
+      - !input water_heater
+    above: 52
+    attribute: current_temperature
+condition:
+  - condition: numeric_state
+    entity_id: !input water_heater
+    attribute: temperature
+    above: 52
+action:
+  - service: water_heater.set_temperature
+    data:
+      temperature: 48
+    target:
+      entity_id: !input water_heater
