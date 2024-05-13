@@ -51,6 +51,7 @@ from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
+
 async def test_offlinedevice(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -60,8 +61,6 @@ async def test_offlinedevice(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "offlinedevice")
-
-    #assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
 
 
 async def test_dry(

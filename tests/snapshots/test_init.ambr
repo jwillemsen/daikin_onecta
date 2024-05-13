@@ -69865,7 +69865,7 @@
     'entity_id': 'binary_sensor.studio_climatecontrol_is_holiday_mode_active',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_climatecontrol_is_in_caution_state-entry]
@@ -69909,7 +69909,7 @@
     'entity_id': 'binary_sensor.studio_climatecontrol_is_in_caution_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_climatecontrol_is_in_error_state-entry]
@@ -69953,7 +69953,7 @@
     'entity_id': 'binary_sensor.studio_climatecontrol_is_in_error_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_climatecontrol_is_in_warning_state-entry]
@@ -69997,7 +69997,7 @@
     'entity_id': 'binary_sensor.studio_climatecontrol_is_in_warning_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_climatecontrol_is_powerful_mode_active-entry]
@@ -70040,7 +70040,7 @@
     'entity_id': 'binary_sensor.studio_climatecontrol_is_powerful_mode_active',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_gateway_is_firmware_update_supported-entry]
@@ -70083,7 +70083,7 @@
     'entity_id': 'binary_sensor.studio_gateway_is_firmware_update_supported',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'on',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_gateway_is_in_error_state-entry]
@@ -70127,7 +70127,7 @@
     'entity_id': 'binary_sensor.studio_gateway_is_in_error_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_outdoorunit_is_in_caution_state-entry]
@@ -70171,7 +70171,7 @@
     'entity_id': 'binary_sensor.studio_outdoorunit_is_in_caution_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_outdoorunit_is_in_error_state-entry]
@@ -70215,7 +70215,7 @@
     'entity_id': 'binary_sensor.studio_outdoorunit_is_in_error_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[binary_sensor.studio_outdoorunit_is_in_warning_state-entry]
@@ -70259,7 +70259,7 @@
     'entity_id': 'binary_sensor.studio_outdoorunit_is_in_warning_state',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[climate.studio_room_temperature-entry]
@@ -70469,7 +70469,7 @@
     'entity_id': 'sensor.studio_climatecontrol_cooling_daily_electrical_consumption',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -70517,7 +70517,7 @@
     'entity_id': 'sensor.studio_climatecontrol_cooling_weekly_electrical_consumption',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_cooling_yearly_electrical_consumption-entry]
@@ -70565,7 +70565,7 @@
     'entity_id': 'sensor.studio_climatecontrol_cooling_yearly_electrical_consumption',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_error_code-entry]
@@ -70608,7 +70608,7 @@
     'entity_id': 'sensor.studio_climatecontrol_error_code',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '00-',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_heating_daily_electrical_consumption-entry]
@@ -70656,7 +70656,7 @@
     'entity_id': 'sensor.studio_climatecontrol_heating_daily_electrical_consumption',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -70704,7 +70704,7 @@
     'entity_id': 'sensor.studio_climatecontrol_heating_weekly_electrical_consumption',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.3',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_heating_yearly_electrical_consumption-entry]
@@ -70752,7 +70752,7 @@
     'entity_id': 'sensor.studio_climatecontrol_heating_yearly_electrical_consumption',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '37.6',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_name-entry]
@@ -70795,7 +70795,7 @@
     'entity_id': 'sensor.studio_climatecontrol_name',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'Studio',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_on_off_mode-entry]
@@ -70838,7 +70838,7 @@
     'entity_id': 'sensor.studio_climatecontrol_on_off_mode',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_outdoor_temperature-entry]
@@ -70886,7 +70886,7 @@
     'entity_id': 'sensor.studio_climatecontrol_outdoor_temperature',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '19',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_powerful_mode-entry]
@@ -70929,7 +70929,7 @@
     'entity_id': 'sensor.studio_climatecontrol_powerful_mode',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'off',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_room_temperature-entry]
@@ -70977,7 +70977,7 @@
     'entity_id': 'sensor.studio_climatecontrol_room_temperature',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '22',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_gateway_error_code-entry]
@@ -71020,7 +71020,7 @@
     'entity_id': 'sensor.studio_gateway_error_code',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_gateway_firmware_version-entry]
@@ -71063,7 +71063,7 @@
     'entity_id': 'sensor.studio_gateway_firmware_version',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '1_31_0',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_gateway_ip_address-entry]
@@ -71106,7 +71106,7 @@
     'entity_id': 'sensor.studio_gateway_ip_address',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '192.168.0.0',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_gateway_mac_address-entry]
@@ -71149,7 +71149,7 @@
     'entity_id': 'sensor.studio_gateway_mac_address',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '__MAC_ADDRESS__',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_gateway_model_info-entry]
@@ -71192,7 +71192,7 @@
     'entity_id': 'sensor.studio_gateway_model_info',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': 'BRP069C4x',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_indoorunit_software_version-entry]
@@ -71235,7 +71235,7 @@
     'entity_id': 'sensor.studio_indoorunit_software_version',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '20003001',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_outdoorunit_error_code-entry]
@@ -71278,7 +71278,7 @@
     'entity_id': 'sensor.studio_outdoorunit_error_code',
     'last_changed': <ANY>,
     'last_updated': <ANY>,
-    'state': '00-',
+    'state': 'unknown',
   })
 # ---
 # name: test_offlinedevice[sensor.studio_ratelimit_day-entry]
