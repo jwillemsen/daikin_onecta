@@ -65,8 +65,11 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_max_temp = self.get_max_temp()
         self._attr_operation_list = self.get_operation_list()
         self._attr_current_operation = self.get_current_operation()
-        self._attr_available = self._device.available
         self._attr_device_info = self._device.device_info()
+
+    @property
+    def available(self) -> bool:
+        return self._device.available
 
     @callback
     def _handle_coordinator_update(self) -> None:

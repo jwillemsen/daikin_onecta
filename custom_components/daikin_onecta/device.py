@@ -15,7 +15,6 @@ class DaikinOnectaDevice:
         """Initialize a new Daikin Onecta Device."""
         self.api = apiInstance
         # get name from climateControl
-        self._available = True
         self.daikin_data = jsonData
         self.id = self.daikin_data["id"]
         self.name = self.daikin_data["deviceModel"]
