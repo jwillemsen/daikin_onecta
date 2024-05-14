@@ -1,5 +1,3 @@
-e8:4f:25:c7:fe:da
-
 """Support for the Daikin BRP069A62."""
 import logging
 
