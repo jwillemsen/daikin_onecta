@@ -61,8 +61,11 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     def update_state(self) -> None:
         self._attr_options = self.get_options()
         self._attr_current_option = self.get_current_option()
-        self._attr_available = self._device.available
         self._attr_device_info = self._device.device_info()
+
+    @property
+    def available(self) -> bool:
+        return self._device.available
 
     @callback
     def _handle_coordinator_update(self) -> None:

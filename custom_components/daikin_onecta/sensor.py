@@ -184,12 +184,12 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         )
 
     def update_state(self) -> None:
-        if self._device.available:
-            self._attr_native_value = self.sensor_value()
-        else:
-            self._attr_native_value = None
-        self._attr_available = self._device.available
+        self._attr_native_value = self.sensor_value()
         self._attr_device_info = self._device.device_info()
+
+    @property
+    def available(self) -> bool:
+        return self._device.available
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -276,12 +276,12 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         )
 
     def update_state(self) -> None:
-        if self._device.available:
-            self._attr_native_value = self.sensor_value()
-        else:
-            self._attr_native_value = None
-        self._attr_available = self._device.available
+        self._attr_native_value = self.sensor_value()
         self._attr_device_info = self._device.device_info()
+
+    @property
+    def available(self) -> bool:
+        return self._device.available
 
     @callback
     def _handle_coordinator_update(self) -> None:
