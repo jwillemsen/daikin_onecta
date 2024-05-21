@@ -1,16 +1,84 @@
 {
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Interval posodobitve visoke frekvence (minute)",
+          "low_scan_interval": "Interval posodobitve nizke frekvence (minute)",
+          "high_scan_start": "Začetni čas visoke frekvence obdobja",
+          "low_scan_start": "Začetni čas nizke frekvence obdobja",
+          "scan_ignore": "Število sekund, ko osvežitev podatkov po ukazu ni upoštevana"
+        },
+        "description": "Nastavitev ankete Daikin Onecta Cloud",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
   "config": {
     "abort": {
-      "already_configured": "Naprava je \u017ee konfigurirana"
+      "already_configured": "Integracija je že konfigurirana.",
+      "cannot_connect": "Povezava s storitvijo Daikin Cloud ni uspela.",
+      "init_failed": "Inicializacija Daikin API ni uspela.",
+      "token_retrieval_failed": "Pridobivanje nabora žetonov za dostop ni uspelo."
+    },
+    "error": {
+      "cannot_connect": "Povezava ni uspela",
+      "device_fail": "Nepričakovana napaka",
+      "device_timeout": "Povezava ni uspela",
+      "forbidden": "Neveljavna overitev",
+      "invalid_auth": "Neveljavna overitev",
+      "unknown": "Nepričakovana napaka"
     },
     "step": {
       "user": {
         "data": {
-          "host": "Gostitelj"
+          "email": "E-poštni naslov",
+          "password": "Geslo"
         },
-        "description": "Vnesite naslov IP va\u0161e Daikin klime.",
-        "title": "Nastavite Daikin klimo"
+        "description": "Vnesite e-poštni naslov in geslo, ki ju uporabljate za prijavo v Daikin Cloud, nato pritisnite Pošlji.",
+        "title": "Nastavitev Daikin Onecta"
       }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "climatecontrol_isinwarningstate": {
+        "name": "Stanje opozorila klimatskega nadzora"
+      }
+    },
+    "climate": {
+      "daikin_onecta": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Tiho",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "floor": "Tlačni tok ogrevanja",
+              "floor_horizontal": "Tlačni tok ogrevanja in vodoravni",
+              "comfort": "Tok udobja",
+              "comfort_horizontal": "Tok udobja in vodoravni"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Dnevna omejitev hitrosti je dosežena",
+      "description": "Dosegli ste dnevno omejitev hitrosti v storitvi Daikin Cloud, preverite frekvenco anketiranja v nastavitvah Daikin Onecta."
+    },
+    "minute_rate_limit": {
+      "title": "Omejitev hitrosti na minuto je dosežena",
+      "description": "Dosegli ste omejitev hitrosti na minuto v storitvi Daikin Cloud, ne delajte toliko klicev k svojim napravam Daikin v eni minuti."
     }
   }
 }
