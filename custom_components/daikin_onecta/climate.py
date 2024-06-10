@@ -749,7 +749,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def get_preset_modes(self):
         supported_preset_modes = [PRESET_NONE]
         cc = self.climate_control()
-        # self._current_preset_mode = PRESET_NONE
         for mode in PRESET_MODES:
             daikin_mode = HA_PRESET_TO_DAIKIN[mode]
             preset = cc.get(daikin_mode)
