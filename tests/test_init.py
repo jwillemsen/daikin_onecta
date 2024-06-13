@@ -296,6 +296,17 @@ async def test_water_heater(
         assert responses.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
 
+        # Set the tank temperature to 58, this should not result in a call as it is already 58
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_TEMPERATURE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 1
+
         # Set the tank off, this should just work
         await hass.services.async_call(
             WATER_HEATER_DOMAIN,

@@ -186,17 +186,19 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                     self._device.name,
                 )
                 return None
-        res = await self._device.patch(
-            self._device.id,
-            self._embedded_id,
-            "temperatureControl",
-            "/operationModes/heating/setpoints/domesticHotWaterTemperature",
-            int(value),
-        )
-        # When updating the value to the daikin cloud worked update our local cached version
-        if res:
-            self._attr_target_temperature = value
-            self.async_write_ha_state()
+
+        if int(value) != self._attr_target_temperature:
+            res = await self._device.patch(
+                self._device.id,
+                self._embedded_id,
+                "temperatureControl",
+                "/operationModes/heating/setpoints/domesticHotWaterTemperature",
+                int(value),
+            )
+            # When updating the value to the daikin cloud worked update our local cached version
+            if res:
+                self._attr_target_temperature = value
+                self.async_write_ha_state()
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
