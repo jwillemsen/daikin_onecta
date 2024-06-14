@@ -38,8 +38,6 @@ You will now be redirected to the Daikin website where you have to authorize the
 
 Only when the redirect back to your Home Assistant doesn't work first try to install/enable [My Home Assistant](https://www.home-assistant.io/integrations/my/). When that also doesn't work you can try `<HOME_ASSISTANT_URL>/auth/external/callback` as the redirect URI instead. The `<HOME_ASSISTANT_URL>` must be the same as used during the configuration/authentication process. Internal examples: `http://192.168.0.2:8123/auth/external/callback`, `http://homeassistant.local:8123/auth/external/callback`.
 
-When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
-
 This integration supports the following configuration settings to reduce the amount of polling to Daikin
 
 - High frequency period update interval (minutes)
@@ -47,6 +45,10 @@ This integration supports the following configuration settings to reduce the amo
 - High frequency period start time
 - Low frequency period start time
 - Number of seconds that a data refresh is ignored after a command
+
+# Reinstall
+
+When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
 
 # Setting the log level
 
