@@ -350,10 +350,15 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         modes = [HVACMode.OFF]
         operationmode = self.operation_mode()
         if operationmode is not None:
-            for mode in operationmode["values"]:
-                ha_mode = DAIKIN_HVAC_TO_HA[mode]
-                if ha_mode not in modes:
-                    modes.append(ha_mode)
+            if operationmode["settable"] is True:
+                for mode in operationmode["values"]:
+                    ha_mode = DAIKIN_HVAC_TO_HA[mode]
+                    if ha_mode not in modes:
+                        modes.append(ha_mode)
+            currentmode = operationmode["value"]
+            ha_currentmode = DAIKIN_HVAC_TO_HA[currentmode]
+            if ha_currentmode not in modes:
+                modes.append(ha_currentmode)
         return modes
 
     async def async_set_hvac_mode(self, hvac_mode):
