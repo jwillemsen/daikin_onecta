@@ -70279,11 +70279,7 @@
       ]),
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,
-        <HVACMode.FAN_ONLY: 'fan_only'>,
         <HVACMode.HEAT: 'heat'>,
-        <HVACMode.COOL: 'cool'>,
-        <HVACMode.HEAT_COOL: 'heat_cool'>,
-        <HVACMode.DRY: 'dry'>,
       ]),
       'max_temp': 31,
       'min_temp': 10,
@@ -70341,11 +70337,7 @@
       'friendly_name': 'Studio Room Temperature',
       'hvac_modes': list([
         <HVACMode.OFF: 'off'>,
-        <HVACMode.FAN_ONLY: 'fan_only'>,
         <HVACMode.HEAT: 'heat'>,
-        <HVACMode.COOL: 'cool'>,
-        <HVACMode.HEAT_COOL: 'heat_cool'>,
-        <HVACMode.DRY: 'dry'>,
       ]),
       'max_temp': 31,
       'min_temp': 10,
