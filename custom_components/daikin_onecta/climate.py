@@ -318,22 +318,23 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
 
         if ATTR_TEMPERATURE in kwargs:
-            operationmode = self.operation_mode()
-            omv = operationmode["value"]
             value = kwargs[ATTR_TEMPERATURE]
-            res = await self._device.patch(
-                self._device.id,
-                self._embedded_id,
-                "temperatureControl",
-                f"/operationModes/{omv}/setpoints/{self._setpoint}",
-                value,
-            )
-            # When updating the value to the daikin cloud worked update our local cached version
-            if res:
-                setpointdict = self.setpoint()
-                if setpointdict is not None:
-                    self._attr_target_temperature = value
-                    self.async_write_ha_state()
+            if self._attr_target_temperature != value:
+                operationmode = self.operation_mode()
+                omv = operationmode["value"]
+                res = await self._device.patch(
+                    self._device.id,
+                    self._embedded_id,
+                    "temperatureControl",
+                    f"/operationModes/{omv}/setpoints/{self._setpoint}",
+                    value,
+                )
+                # When updating the value to the daikin cloud worked update our local cached version
+                if res:
+                    setpointdict = self.setpoint()
+                    if setpointdict is not None:
+                        self._attr_target_temperature = value
+                        self.async_write_ha_state()
 
     def get_hvac_mode(self):
         """Return current HVAC mode."""
