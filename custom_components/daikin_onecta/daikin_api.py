@@ -142,7 +142,7 @@ class DaikinApi:
             self._last_patch_call = datetime.now()
             return True
 
-        raise Exception("Communication failed! Status: " + str(res.status_code) + " " + res.txt)
+        raise Exception("Communication failed! Status: " + str(res.status_code) + " " + res.text)
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
