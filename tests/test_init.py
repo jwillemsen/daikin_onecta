@@ -88,6 +88,7 @@ async def test_dry2(
 
     assert hass.states.get("climate.bedroom_3_room_temperature").state == HVACMode.OFF
 
+
 async def test_schedule(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -99,6 +100,7 @@ async def test_schedule(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "schedule")
 
     assert hass.states.get("select.bureau_climatecontrol_schedule").state == "off"
+
 
 async def test_ururu(
     hass: HomeAssistant,
