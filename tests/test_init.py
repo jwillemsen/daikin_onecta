@@ -99,7 +99,7 @@ async def test_schedule(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "schedule")
 
-    assert hass.states.get("select.bureau_climatecontrol_schedule").state == "off"
+    assert hass.states.get("select.master_climatecontrol_schedule").state == "off"
 
 
 async def test_ururu(

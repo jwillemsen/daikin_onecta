@@ -142,7 +142,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                     if scheduledict is not None:
                         currentMode = scheduledict["value"]["currentMode"]["value"]
                         for scheduleName in scheduledict["value"]["modes"][currentMode]["currentSchedule"]["values"]:
-                            readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"]["value"]
+                            readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"].get("value")
                             # The schedule can maybe have an empty name set, use at that moment the internal ID
                             if not readableName:
                                 readableName = scheduleName
