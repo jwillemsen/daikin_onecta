@@ -36,15 +36,18 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             self.update_interval,
         )
 
+    def scan_ignore(self):
+        return self.options.get("scan_ignore", 30)
+
     async def _async_update_data(self):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
 
         daikin_api = self.hass.data[DOMAIN][DAIKIN_API]
         devices = self.hass.data[DOMAIN][DAIKIN_DEVICES]
-        scan_ignore = self.options.get("scan_ignore", 30)
+        scan_ignore_value = self.scan_ignore()
 
-        if (datetime.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore:
-            self.update_interval = timedelta(seconds=scan_ignore)
+        if (datetime.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore_value:
+            self.update_interval = timedelta(seconds=scan_ignore_value)
             _LOGGER.debug(
                 "API UPDATE skipped (just updated from UI)",
             )

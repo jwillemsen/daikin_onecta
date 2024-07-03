@@ -936,13 +936,21 @@ async def test_climate(
         # In order to call update_entity we need to setup the HA core
         await async_setup_component(hass, "homeassistant", {})
 
-        # Call update_entity service to trigger an update
-        await hass.services.async_call(
-            HA_DOMAIN,
-            SERVICE_UPDATE_ENTITY,
-            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
-            blocking=True,
-        )
-        await hass.async_block_till_done()
+        # We patch the scan_ignore method to zero so that the coordinator will pull again
+        with patch(
+            "custom_components.daikin_onecta.OnectaDataUpdateCoordinator.scan_ignore",
+            return_value=0,
+        ):
+            with responses.RequestsMock() as rsps:
+                rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
+                # Call update_entity service to trigger an update
+                await hass.services.async_call(
+                    HA_DOMAIN,
+                    SERVICE_UPDATE_ENTITY,
+                    {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
+                    blocking=True,
+                )
+                await hass.async_block_till_done()
 
-        assert len(responses.calls) == 33
+                assert len(rsps.calls) == 1
+                assert rsps.calls[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
