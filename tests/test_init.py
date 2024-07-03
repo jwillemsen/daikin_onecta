@@ -6,7 +6,6 @@ from unittest.mock import patch
 
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
-from homeassistant.setup import async_setup_component
 import responses
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
@@ -42,6 +41,7 @@ from homeassistant.const import Platform
 from homeassistant.const import STATE_OFF
 from homeassistant.const import STATE_ON
 from homeassistant.core import HomeAssistant
+from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
