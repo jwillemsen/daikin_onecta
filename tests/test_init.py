@@ -23,6 +23,8 @@ from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
 from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate.const import HVACMode
+from homeassistant.components.homeassistant import SERVICE_UPDATE_ENTITY
+from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN
 from homeassistant.components.select import ATTR_OPTION
 from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
 from homeassistant.components.select import SERVICE_SELECT_OPTION
@@ -929,3 +931,14 @@ async def test_climate(
 
         assert len(responses.calls) == 32
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.DRY
+
+        # Call update_entity service to trigger an update
+        await hass.services.async_call(
+            HA_DOMAIN,
+            SERVICE_UPDATE_ENTITY,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature" },
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 33
