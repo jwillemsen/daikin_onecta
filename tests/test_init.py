@@ -465,6 +465,7 @@ async def test_water_heater(
 
         assert len(responses.calls) == 9
 
+
 @responses.activate
 async def test_climate(
     hass: HomeAssistant,
@@ -968,4 +969,3 @@ async def test_climate(
 
                 assert len(rsps.calls) == 1
                 assert rsps.calls[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
-
