@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
+from homeassistant.setup import async_setup_component
 import responses
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
@@ -931,6 +932,9 @@ async def test_climate(
 
         assert len(responses.calls) == 32
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.DRY
+
+        # In order to call update_entity we need to setup the HA core
+        await async_setup_component(hass, "homeassistant", {})
 
         # Call update_entity service to trigger an update
         await hass.services.async_call(
