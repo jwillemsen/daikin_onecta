@@ -57,8 +57,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
-    for component in COMPONENT_TYPES:
-        hass.async_create_task(hass.config_entries.async_forward_entry_setup(config_entry, component))
+    hass.async_create_task(hass.config_entries.async_forward_entry_setups(config_entry, COMPONENT_TYPES))
 
     return True
 
