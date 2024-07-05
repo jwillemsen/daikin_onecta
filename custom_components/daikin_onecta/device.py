@@ -55,7 +55,6 @@ class DaikinOnectaDevice:
                 # Serial numbers are unique identifiers within a specific domain
                 (DOMAIN, self.id)
             },
-            "connections": {(CONNECTION_NETWORK_MAC, mac_add)},
             "manufacturer": "Daikin",
             "model": model,
             "name": self.name,
