@@ -65,7 +65,7 @@ async def test_homehub(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "homehub")
 
-    assert hass.states.get("sensor.homehub_ratelimit_minute").state == '0'
+    assert hass.states.get("sensor.homehub_ratelimit_minute").state == "0"
 
 
 async def test_offlinedevice(
