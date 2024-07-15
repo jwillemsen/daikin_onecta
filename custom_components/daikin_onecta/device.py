@@ -46,9 +46,15 @@ class DaikinOnectaDevice:
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
             if management_point_type in supported_management_point_types:
-                mac_add = management_point["macAddress"]["value"]
-                model = management_point["modelInfo"]["value"]
-                sw_vers = management_point["firmwareVersion"]["value"]
+                mp = management_point.get("macAddress")
+                if mp is not None:
+                    mac_add = mp["value"]
+                mi = management_point.get("modelInfo")
+                if mi is not None:
+                    model = mi["value"]
+                fw = management_point.get("firmwareVersion")
+                if fw is not None:
+                    sw_vers = fw["value"]
 
         return {
             "identifiers": {
