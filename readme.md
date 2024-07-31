@@ -26,7 +26,7 @@ You can install the code manually by copying the `daikin_onecta` folder and all 
 
 # Prerequisites
 
-Visit https://developer.cloud.daikineurope.com and sign up for a developer account. Enter the email of your login for the Onecta App from Daikin.
+Visit https://developer.cloud.daikineurope.com and sign up for a developer account. Use the same login method and email address as you use with the Onecta app. Using a different login method and/or email address will result in no devices shown in Home Assistant.
 
 # Using config flow
 
