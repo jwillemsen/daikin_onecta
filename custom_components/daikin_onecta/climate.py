@@ -265,6 +265,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None:
             max_temp = setpointdict["maxValue"]
+        else:
+            max_temp = super().max_temp
         _LOGGER.info(
             "Device '%s': %s max temperature '%s'",
             self._device.name,
@@ -278,6 +280,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         setpointdict = self.setpoint()
         if setpointdict is not None:
             min_temp = setpointdict["minValue"]
+        else:
+            min_temp = super().min_temp
         _LOGGER.info(
             "Device '%s': %s min temperature '%s'",
             self._device.name,
