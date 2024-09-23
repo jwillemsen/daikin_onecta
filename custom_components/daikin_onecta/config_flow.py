@@ -40,13 +40,13 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                         "high_scan_interval",
                         default=self.options.get("high_scan_interval", 10),
                     ): NumberSelector(
-                        NumberSelectorConfig(min=5, max=60, step=1),
+                        NumberSelectorConfig(min=5, max=240, step=1),
                     ),
                     vol.Required(
                         "low_scan_interval",
                         default=self.options.get("low_scan_interval", 30),
                     ): NumberSelector(
-                        NumberSelectorConfig(min=10, max=60, step=1),
+                        NumberSelectorConfig(min=10, max=240, step=1),
                     ),
                     vol.Required(
                         "high_scan_start",
