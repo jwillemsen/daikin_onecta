@@ -97,7 +97,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         return dht
 
     def get_supported_features(self):
-        sf = WaterHeaterEntityFeature.OPERATION_MODE
+        sf = WaterHeaterEntityFeature.OPERATION_MODE | WaterHeaterEntityFeature.ON_OFF
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
         dht = self.domestic_hotwater_temperature
