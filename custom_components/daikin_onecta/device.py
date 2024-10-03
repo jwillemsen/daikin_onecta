@@ -41,6 +41,7 @@ class DaikinOnectaDevice:
         mac_add = ""
         model = ""
         sw_vers = ""
+        model_id = self.daikin_data.get("deviceModel")
         supported_management_point_types = {"gateway"}
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -65,6 +66,7 @@ class DaikinOnectaDevice:
             "manufacturer": "Daikin",
             "model": model,
             "name": self.name,
+            "model_id": model_id,
             "sw_version": sw_vers.replace("_", "."),
         }
 
