@@ -1,3 +1,5 @@
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=jwillemsen&repository=daikin_onecta)
+
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86&style=for-the-badge)](https://github.com/sponsors/jwillemsen)
 [![](https://img.shields.io/github/release/jwillemsen/daikin_onecta/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_onecta/releases)
 [![](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
