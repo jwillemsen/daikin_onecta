@@ -982,3 +982,16 @@ async def test_climate(
 
                 assert len(rsps.calls) == 1
                 assert rsps.calls[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
+
+
+async def test_minimal_data(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "minimal_data")
+
+    assert hass.states.get("water_heater.altherma").attributes["current_temperature"] == 53

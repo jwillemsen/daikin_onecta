@@ -89,11 +89,13 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def domestic_hotwater_temperature(self):
         # Find the json dictionary for controlling the hot water temperature
         dht = None
-        temp_control = self.hotwatertank_data["temperatureControl"]["value"]
-        if temp_control:
-            heating_mode = temp_control["operationModes"]["heating"]
-            if heating_mode is not None:
-                dht = heating_mode["setpoints"]["domesticHotWaterTemperature"]
+        tc = self.hotwatertank_data.get("temperatureControl")
+        if tc is not None:
+            temp_control = tc["value"]
+            if temp_control:
+                heating_mode = temp_control["operationModes"]["heating"]
+                if heating_mode is not None:
+                    dht = heating_mode["setpoints"]["domesticHotWaterTemperature"]
         return dht
 
     def get_supported_features(self):
