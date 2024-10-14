@@ -108,39 +108,41 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
             if cd is not None:
                 # Retrieve the available operationModes, we can only provide consumption data for
                 # supported operation modes
-                operation_modes = management_point["operationMode"]["values"]
-                cdv = cd.get("value")
-                if cdv is not None:
-                    cdve = cdv.get("electrical")
-                    if cdve is not None:
-                        _LOGGER.info("Device '%s' provides electrical", device.name)
-                        for mode in cdve:
-                            # Only handle consumptionData for an operation mode supported by this device
-                            if mode in operation_modes:
-                                _LOGGER.info(
-                                    "Device '%s' provides mode %s %s",
-                                    device.name,
-                                    management_point_type,
-                                    mode,
-                                )
-                                for period in cdve[mode]:
+                opmode = management_point.get("operationMode")
+                if opmode is not None:
+                    operation_modes = opmode["values"]
+                    cdv = cd.get("value")
+                    if cdv is not None:
+                        cdve = cdv.get("electrical")
+                        if cdve is not None:
+                            _LOGGER.info("Device '%s' provides electrical", device.name)
+                            for mode in cdve:
+                                # Only handle consumptionData for an operation mode supported by this device
+                                if mode in operation_modes:
                                     _LOGGER.info(
-                                        "Device '%s:%s' provides mode %s %s supports period %s",
+                                        "Device '%s' provides mode %s %s",
                                         device.name,
-                                        embedded_id,
                                         management_point_type,
                                         mode,
-                                        period,
                                     )
-                                    periodName = SENSOR_PERIODS[period]
-                                    sensor = f"{device.name} {management_point_type} {mode} {periodName}"
-                                    _LOGGER.info("Proposing sensor '%s'", sensor)
-                                    sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, mode, period))
-                            else:
-                                _LOGGER.info(
-                                    "Ignoring consumption data '%s', not a supported operation_mode",
-                                    mode,
-                                )
+                                    for period in cdve[mode]:
+                                        _LOGGER.info(
+                                            "Device '%s:%s' provides mode %s %s supports period %s",
+                                            device.name,
+                                            embedded_id,
+                                            management_point_type,
+                                            mode,
+                                            period,
+                                        )
+                                        periodName = SENSOR_PERIODS[period]
+                                        sensor = f"{device.name} {management_point_type} {mode} {periodName}"
+                                        _LOGGER.info("Proposing sensor '%s'", sensor)
+                                        sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, mode, period))
+                                else:
+                                    _LOGGER.info(
+                                        "Ignoring consumption data '%s', not a supported operation_mode",
+                                        mode,
+                                    )
 
     async_add_entities(sensors)
 
