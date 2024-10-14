@@ -983,6 +983,7 @@ async def test_climate(
                 assert len(rsps.calls) == 1
                 assert rsps.calls[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
 
+
 async def test_minimal_data(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
