@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Apparaat is al geconfigureerd",
+            "cannot_connect": "",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": ""
+        },
+        "error": {
+            "cannot_connect": "",
+            "device_fail": "",
+            "device_timeout": "",
+            "forbidden": "",
+            "invalid_auth": "",
+            "unknown": ""
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "",
+                    "host": "",
+                    "key": "",
+                    "password": "Wachtwoord",
+                    "email": "Email adres"
+                },
+                "description": "Voer het email adres en wachtwoord in voor het inloggen bij Daikin.",
+                "title": "Daikin Onecta instellen"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "High frequency period update interval (minutes)",
+                    "low_scan_interval": "Low frequency period update interval (minutes)",
+                    "high_scan_start": "High frequency period start time",
+                    "low_scan_start": "Low frequency period start time",
+                    "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
+                },
+                "description": "Configure Daikin Onecta Cloud polling",
+                "title": "Daikin Onecta"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "Stil",
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5"
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "Vloer Heating Airflow",
+                            "floor_horizontal": "Vloer Heating Airflow en Horizontaal",
+                            "comfort": "Comfort Airflow",
+                            "comfort_horizontal": "Comfort Airflow en Horizontaal"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}

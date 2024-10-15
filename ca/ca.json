@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "El dispositiu ja està configurat",
+            "cannot_connect": "Ha fallat la connexió",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": ""
+        },
+        "error": {
+            "cannot_connect": "Ha fallat la connexió",
+            "device_fail": "Error inesperat",
+            "device_timeout": "Ha fallat la connexió",
+            "forbidden": "Autenticació invàlida",
+            "invalid_auth": "Autenticació invàlida",
+            "unknown": "Error inesperat"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Clau API",
+                    "host": "Amfitrió",
+                    "key": "Clau API",
+                    "password": "Contrasenya",
+                    "email": ""
+                },
+                "description": "Introdueix l'Adreça IP del teu AC Daikin.\n\nTingues en compte que la Clau API i la Contrasenya s'utilitzen només als dispositius BRP072Cxx i SKYFi respectivament.",
+                "title": "Configuració de Daikin AC"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "",
+                    "low_scan_interval": "",
+                    "high_scan_start": "",
+                    "low_scan_start": "",
+                    "scan_ignore": ""
+                },
+                "description": "",
+                "title": ""
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "",
+                            "1": "",
+                            "2": "",
+                            "3": "",
+                            "4": "",
+                            "5": ""
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "",
+                            "floor_horizontal": "",
+                            "comfort": "",
+                            "comfort_horizontal": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}

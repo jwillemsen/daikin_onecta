@@ -1,0 +1,28 @@
+{
+    "config": {
+        "step": {
+            "pick_implementation": {
+                "title": ""
+            },
+            "reauth_confirm": {
+                "title": "",
+                "description": ""
+            }
+        },
+        "abort": {
+            "already_in_progress": "",
+            "oauth_error": "",
+            "oauth_failed": "",
+            "oauth_timeout": "",
+            "oauth_unauthorized": "",
+            "missing_configuration": "",
+            "authorize_url_timeout": "",
+            "no_url_available": "",
+            "user_rejected_authorize": "",
+            "reauth_successful": ""
+        },
+        "create_entry": {
+            "default": ""
+        }
+    }
+}
