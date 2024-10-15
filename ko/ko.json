@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "기기가 이미 구성되었습니다",
+            "cannot_connect": "연결하지 못했습니다",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": ""
+        },
+        "error": {
+            "cannot_connect": "",
+            "device_fail": "예상치 못한 오류가 발생했습니다",
+            "device_timeout": "연결하지 못했습니다",
+            "forbidden": "인증이 잘못되었습니다",
+            "invalid_auth": "",
+            "unknown": ""
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "",
+                    "host": "호스트",
+                    "key": "API 키",
+                    "password": "비밀번호",
+                    "email": ""
+                },
+                "description": "다이킨 에어컨의 IP 주소를 입력해주세요.\n\nAPI 키 및 비밀번호는 BRP072Cxx 와 SKYFi 기기에서 사용된다는 점에 유의하세요.",
+                "title": "다이킨 에어컨 구성하기"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "",
+                    "low_scan_interval": "",
+                    "high_scan_start": "",
+                    "low_scan_start": "",
+                    "scan_ignore": ""
+                },
+                "description": "",
+                "title": ""
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "",
+                            "1": "",
+                            "2": "",
+                            "3": "",
+                            "4": "",
+                            "5": ""
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "",
+                            "floor_horizontal": "",
+                            "comfort": "",
+                            "comfort_horizontal": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}

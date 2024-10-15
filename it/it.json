@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "L'integrazione è già configurata.",
+            "cannot_connect": "Impossibile connettersi",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": "File tokenset.json non trovato nella directory di configurazione."
+        },
+        "error": {
+            "cannot_connect": "Impossibile connettersi",
+            "device_fail": "Errore imprevisto",
+            "device_timeout": "Impossibile connettersi",
+            "forbidden": "Autenticazione non valida",
+            "invalid_auth": "Autenticazione non valida",
+            "unknown": "Errore imprevisto"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "Chiave API",
+                    "host": "Host",
+                    "key": "Chiave API",
+                    "password": "Password",
+                    "email": ""
+                },
+                "description": "Non è necessario introdurre parametri di configurazione in questo menu.\n\nAssicurati solo di aver ottenuto il tuo file tokenset.json usando la procedura con il MITM proxy, e di averlo salvato nella tua directory di configurazione, poi premi Submit per procedere.",
+                "title": "Configura Daikin Onecta"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "",
+                    "low_scan_interval": "",
+                    "high_scan_start": "",
+                    "low_scan_start": "",
+                    "scan_ignore": ""
+                },
+                "description": "",
+                "title": ""
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "",
+                            "1": "",
+                            "2": "",
+                            "3": "",
+                            "4": "",
+                            "5": ""
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "",
+                            "floor_horizontal": "",
+                            "comfort": "",
+                            "comfort_horizontal": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}
