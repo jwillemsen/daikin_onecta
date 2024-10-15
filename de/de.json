@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Gerät ist bereits konfiguriert",
+            "cannot_connect": "",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": ""
+        },
+        "error": {
+            "cannot_connect": "",
+            "device_fail": "",
+            "device_timeout": "Verbindung fehlgeschlagen",
+            "forbidden": "",
+            "invalid_auth": "",
+            "unknown": "Unerwarteter Fehler"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "",
+                    "host": "Host",
+                    "key": "Authentifizierungsschlüssel (wird nur von BRP072C \/ Zena-Geräten verwendet)",
+                    "password": "Passwort",
+                    "email": ""
+                },
+                "description": "Gib die IP-Adresse deiner Daikin AC ein.",
+                "title": "Daikin AC konfigurieren"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "High frequency period update interval (minutes)",
+                    "low_scan_interval": "Low frequency period update interval (minutes)",
+                    "high_scan_start": "High frequency period start time",
+                    "low_scan_start": "Low frequency period start time",
+                    "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
+                },
+                "description": "Configure Daikin Onecta Cloud polling",
+                "title": "Daikin Onecta"
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "Leise",
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5"
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "",
+                            "floor_horizontal": "",
+                            "comfort": "",
+                            "comfort_horizontal": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}
