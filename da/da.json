@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Enheden er allerede konfigureret",
+            "cannot_connect": "",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": ""
+        },
+        "error": {
+            "cannot_connect": "",
+            "device_fail": "",
+            "device_timeout": "",
+            "forbidden": "",
+            "invalid_auth": "",
+            "unknown": ""
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "",
+                    "host": "Vært",
+                    "key": "",
+                    "password": "",
+                    "email": ""
+                },
+                "description": "Indtast IP-adresse på dit Daikin AC.",
+                "title": "Konfigurer Daikin AC"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "",
+                    "low_scan_interval": "",
+                    "high_scan_start": "",
+                    "low_scan_start": "",
+                    "scan_ignore": ""
+                },
+                "description": "",
+                "title": ""
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "",
+                            "1": "",
+                            "2": "",
+                            "3": "",
+                            "4": "",
+                            "5": ""
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "",
+                            "floor_horizontal": "",
+                            "comfort": "",
+                            "comfort_horizontal": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}

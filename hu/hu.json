@@ -1,0 +1,88 @@
+{
+    "config": {
+        "abort": {
+            "already_configured": "Az eszköz már konfigurálva van",
+            "cannot_connect": "",
+            "init_failed": "",
+            "token_retrieval_failed": "",
+            "missing_config": ""
+        },
+        "error": {
+            "cannot_connect": "",
+            "device_fail": "Váratlan hiba",
+            "device_timeout": "Sikertelen csatlakozás",
+            "forbidden": "Érvénytelen hitelesítés",
+            "invalid_auth": "",
+            "unknown": ""
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "api_key": "",
+                    "host": "Hoszt",
+                    "key": "API kulcs",
+                    "password": "Jelszó",
+                    "email": ""
+                },
+                "description": "Add meg a Daikin légkondícionáló IP-címét.",
+                "title": "A Daikin légkondícionáló konfigurálása"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "",
+                    "low_scan_interval": "",
+                    "high_scan_start": "",
+                    "low_scan_start": "",
+                    "scan_ignore": ""
+                },
+                "description": "",
+                "title": ""
+            }
+        }
+    },
+    "entity": {
+        "binary_sensor": {
+            "climatecontrol_isinwarningstate": {
+                "name": ""
+            }
+        },
+        "climate": {
+            "daikin_onecta": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "",
+                            "1": "",
+                            "2": "",
+                            "3": "",
+                            "4": "",
+                            "5": ""
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floor": "",
+                            "floor_horizontal": "",
+                            "comfort": "",
+                            "comfort_horizontal": ""
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "",
+            "description": ""
+        },
+        "minute_rate_limit": {
+            "title": "",
+            "description": ""
+        }
+    }
+}
