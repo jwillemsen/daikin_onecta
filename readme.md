@@ -7,7 +7,7 @@
 
 # Daikin Onecta
 
-Home Assistant Integration for Daikin devices using the Daikin Onecta API, requires Home Assistant 2024.7.0 as minimum HA version.
+Home Assistant Integration for Daikin devices using the Daikin Onecta API.
 
 > [!IMPORTANT]
 > In order to use this integration you need to create an account on the Daikin Developer Portal at https://developer.cloud.daikineurope.com/login. The status of the Daikin Cloud can be found online at https://daikincloudsolutions.statuspage.io.
