@@ -494,7 +494,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     async def async_set_fan_mode(self, fan_mode):
         """Set the fan mode"""
         _LOGGER.debug(
-            "Device '%s' request to set fan_mode to %s",
+            "Device '%s' request to set fan_mode to '%s'",
             self._device.name,
             fan_mode,
         )
