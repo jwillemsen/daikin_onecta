@@ -92,6 +92,99 @@ async def test_dry(
     assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
 
 
+@responses.activate
+async def test_fanmode(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "fanmode")
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/temperatureControl",
+            status=204,
+        )
+        responses.patch(
+            DAIKIN_API_URL + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/onOffMode",
+            status=204,
+        )
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/operationMode",
+            status=204,
+        )
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.OFF
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.Sala_room_temperature", ATTR_HVAC_MODE: HVACMode.COOL},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(responses.calls) == 2
+
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.COOL
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "3"
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.Sala_room_temperature", ATTR_HVAC_MODE: HVACMode.DRY},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(responses.calls) == 3
+
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.DRY
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.Sala_room_temperature", ATTR_HVAC_MODE: HVACMode.COOL},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(responses.calls) == 4
+
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.COOL
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "3"
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.Sala_room_temperature", ATTR_HVAC_MODE: HVACMode.HEAT},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(responses.calls) == 5
+
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.HEAT
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.Sala_room_temperature", ATTR_HVAC_MODE: HVACMode.DRY},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(responses.calls) == 6
+
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.DRY
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
+
+
 async def test_dry2(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
