@@ -445,11 +445,16 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     if mode == FANMODE_FIXED:
                         fsm = fan_speed.get("modes")
                         if fsm is not None:
-                            _LOGGER.info("FSM %s", fsm)
                             fixedModes = fsm[mode]
                             fan_mode = str(fixedModes["value"])
                     else:
                         fan_mode = mode
+
+        _LOGGER.info(
+            "Device '%s' has fan mode '%s'",
+            self._device.name,
+            fan_mode,
+        )
 
         return fan_mode
 
@@ -466,11 +471,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 if fan_speed is not None:
                     _LOGGER.info("Found fanspeed %s", fan_speed)
                     for c in fan_speed["currentMode"]["values"]:
-                        _LOGGER.info("Device '%s' found fan mode %s", self._device.name, c)
                         if c == FANMODE_FIXED:
                             fsm = fan_speed.get("modes")
                             if fsm is not None:
-                                _LOGGER.info("Device '%s' found fixed %s", self._device.name, fsm)
                                 fixedModes = fsm[c]
                                 min_val = int(fixedModes["minValue"])
                                 max_val = int(fixedModes["maxValue"])
@@ -479,6 +482,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                                     fan_modes.append(str(val))
                         else:
                             fan_modes.append(c)
+
+        _LOGGER.info(
+            "Device '%s' has fan modes '%s'",
+            self._device.name,
+            fan_modes,
+        )
 
         return fan_modes
 
