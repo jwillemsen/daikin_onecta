@@ -220,8 +220,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if operationmodedict is not None:
                 if operationmodedict.get("fanSpeed") is not None:
                     supported_features |= ClimateEntityFeature.FAN_MODE
-                if operationmodedict.get("fanDirection") is not None:
-                    supported_features |= ClimateEntityFeature.SWING_MODE
+                fan_direction = operationmodedict.get("fanDirection")
+                if fan_direction is not None:
+                    if fan_direction.get("vertical") is not None:
+                        supported_features |= ClimateEntityFeature.SWING_MODE
+                    if fan_direction.get("horizontal") is not None:
+                        supported_features |= ClimateEntityFeature.SWING_HORIZONTAL_MODE
 
         _LOGGER.info("Device '%s' supports features %s", self._device.name, supported_features)
 
@@ -600,7 +604,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def get_swing_horizontal_modes(self):
         return self.__get_swing_modes("horizontal")
 
-    def __set_swing(self, direction, swing_mode):
+    async def __set_swing(self, direction, swing_mode):
         _LOGGER.debug(
             "Device '%s' request to set swing %s mode to %s",
             self._device.name,
