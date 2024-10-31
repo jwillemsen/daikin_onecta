@@ -45,7 +45,7 @@
           },
           "swing_mode": {
             "state": {
-              "floor": "Vloer Heating Airflow",
+              "floorheatingairflow": "Vloer Heating Airflow",
               "windnice": "Comfort Airflow",
             }
           }
