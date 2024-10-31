@@ -35,11 +35,6 @@ SCHEDULE_OFF = "off"
 
 FANMODE_FIXED = "fixed"
 
-SWING_FLOOR = "floor"
-SWING_FLOOR_HORIZONTAL = "floor_horizontal"
-SWING_COMFORT = "comfort"
-SWING_COMFORT_HORIZONTAL = "comfort_horizontal"
-
 SENSOR_TYPE_POWER = "power"
 SENSOR_TYPE_ENERGY = "energy"
 SENSOR_PERIOD_DAILY = "d"
