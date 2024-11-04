@@ -21,7 +21,6 @@ from homeassistant.components.climate import SERVICE_SET_PRESET_MODE
 from homeassistant.components.climate import SERVICE_SET_SWING_MODE
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
-from homeassistant.components.climate import SWING_BOTH
 from homeassistant.components.climate.const import HVACMode
 from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN
 from homeassistant.components.homeassistant import SERVICE_UPDATE_ENTITY
@@ -811,11 +810,20 @@ async def test_climate(
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 20
 
-        # Set the swing mode to SWING_BOTH, should result in two calls
+        # Set the horizontal swing mode to swing
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_SWING_HORIZONTAL_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: "swing"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        # Set the vertical swing mode to swing
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_SWING_MODE,
-            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: SWING_BOTH},
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: "swing"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -823,7 +831,8 @@ async def test_climate(
         assert len(responses.calls) == 15
         assert responses.calls[13].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/horizontal/currentMode"}'
         assert responses.calls[14].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
-        assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == SWING_BOTH
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_horizontal_mode"] == "swing"
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "swing"
 
         # Set the preset mode boost
         await hass.services.async_call(
@@ -1076,6 +1085,18 @@ async def test_climate(
                 assert len(rsps.calls) == 1
                 assert rsps.calls[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
 
+        # Set the swing mode to windnice, should result in a call with windNice
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_SWING_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: "windnice"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 33
+        assert responses.calls[32].request.body == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
 
 async def test_minimal_data(
     hass: HomeAssistant,
