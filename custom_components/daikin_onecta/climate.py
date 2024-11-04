@@ -16,7 +16,6 @@ from homeassistant.components.climate.const import PRESET_BOOST
 from homeassistant.components.climate.const import PRESET_COMFORT
 from homeassistant.components.climate.const import PRESET_ECO
 from homeassistant.components.climate.const import PRESET_NONE
-from homeassistant.components.climate.const import SWING_OFF
 from homeassistant.const import ATTR_TEMPERATURE
 from homeassistant.const import CONF_HOST
 from homeassistant.const import CONF_NAME
@@ -554,7 +553,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return res
 
     def __get_swing_modes(self, direction):
-        swingMode = SWING_OFF
+        swingMode = ''
         cc = self.climate_control()
         fanControl = cc.get("fanControl")
         if fanControl is not None:
@@ -573,6 +572,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             direction,
             swingMode,
         )
+
+        return swingMode
 
     def get_swing_mode(self):
         return self.__get_swing_modes("vertical")
