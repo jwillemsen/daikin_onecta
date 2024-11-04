@@ -19,6 +19,7 @@ from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
 from homeassistant.components.climate import SERVICE_SET_PRESET_MODE
 from homeassistant.components.climate import SERVICE_SET_SWING_MODE
+from homeassistant.components.climate import SERVICE_SET_SWING_HORIZONTAL_MODE
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
 from homeassistant.components.climate.const import HVACMode
