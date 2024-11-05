@@ -14,9 +14,17 @@
               "5": "mdi:numeric-5"
             }
           },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "mdi:arrow-oscillating-off",
+              "swing": "mdi:arrow-left-right"
+            }
+          },
           "swing_mode": {
             "state": {
-              "comfort": "mdi:waves"
+              "stop": "mdi:arrow-oscillating-off",
+              "swing": "mdi:arrow-up-down",
+              "windnice": "mdi:waves"
             }
           },
           "preset_mode": {
