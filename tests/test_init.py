@@ -18,8 +18,8 @@ from homeassistant.components.climate import PRESET_NONE
 from homeassistant.components.climate import SERVICE_SET_FAN_MODE
 from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
 from homeassistant.components.climate import SERVICE_SET_PRESET_MODE
-from homeassistant.components.climate import SERVICE_SET_SWING_MODE
 from homeassistant.components.climate import SERVICE_SET_SWING_HORIZONTAL_MODE
+from homeassistant.components.climate import SERVICE_SET_SWING_MODE
 from homeassistant.components.climate import SERVICE_TURN_OFF
 from homeassistant.components.climate import SERVICE_TURN_ON
 from homeassistant.components.climate.const import HVACMode
@@ -1098,6 +1098,7 @@ async def test_climate(
         assert len(responses.calls) == 33
         assert responses.calls[32].request.body == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
+
 
 async def test_minimal_data(
     hass: HomeAssistant,
