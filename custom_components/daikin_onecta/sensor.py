@@ -146,7 +146,9 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
                     if cdv is not None:
                         cdve = cdv.get("electrical")
                         if cdve is not None:
-                            handle_energy_sensors(coordinator, device, embedded_id, management_point_type, operation_modes, "electrical", cdve, sensors)
+                            handle_energy_sensors(
+                                coordinator, device, embedded_id, management_point_type, operation_modes, "electrical", cdve, sensors
+                            )
                         cdve = cdv.get("gas")
                         if cdve is not None:
                             handle_energy_sensors(coordinator, device, embedded_id, management_point_type, operation_modes, "gas", cdve, sensors)
