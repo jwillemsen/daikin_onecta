@@ -71349,6 +71349,2243 @@
     'state': '0',
   })
 # ---
+# name: test_gas[binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'ClimateControl Is Holiday Mode Active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_isholidaymodeactive',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_None_isHolidayModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Is Holiday Mode Active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_gas[binary_sensor.my_living_room_climatecontrol_is_powerful_mode_active-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_powerful_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'ClimateControl Is Powerful Mode Active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_ispowerfulmodeactive',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_None_isPowerfulModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[binary_sensor.my_living_room_climatecontrol_is_powerful_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Is Powerful Mode Active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_powerful_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_gas[climate.my_living_room_calculated_leaving_water_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+      ]),
+      'max_temp': 65,
+      'min_temp': 10,
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'climate',
+    'entity_category': None,
+    'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
+    'has_entity_name': False,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'My Living Room Calculated Leaving Water Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': <ClimateEntityFeature: 400>,
+    'translation_key': 'daikin_onecta',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_calculatedLeavingWaterTemperature',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[climate.my_living_room_calculated_leaving_water_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_temperature': None,
+      'friendly_name': 'My Living Room Calculated Leaving Water Temperature',
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+      ]),
+      'max_temp': 65,
+      'min_temp': 10,
+      'preset_mode': 'boost',
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'supported_features': <ClimateEntityFeature: 400>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'heat',
+  })
+# ---
+# name: test_gas[climate.my_living_room_leaving_water_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+      ]),
+      'max_temp': 30,
+      'min_temp': 20,
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'climate',
+    'entity_category': None,
+    'entity_id': 'climate.my_living_room_leaving_water_temperature',
+    'has_entity_name': False,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'My Living Room Leaving Water Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': <ClimateEntityFeature: 400>,
+    'translation_key': 'daikin_onecta',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_leavingWaterTemperature',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[climate.my_living_room_leaving_water_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_temperature': 12,
+      'friendly_name': 'My Living Room Leaving Water Temperature',
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+      ]),
+      'max_temp': 30,
+      'min_temp': 20,
+      'preset_mode': 'boost',
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'supported_features': <ClimateEntityFeature: 400>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'climate.my_living_room_leaving_water_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'heat',
+  })
+# ---
+# name: test_gas[climate.my_living_room_room_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+      ]),
+      'max_temp': 30,
+      'min_temp': 20,
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'climate',
+    'entity_category': None,
+    'entity_id': 'climate.my_living_room_room_temperature',
+    'has_entity_name': False,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'My Living Room Room Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': <ClimateEntityFeature: 401>,
+    'translation_key': 'daikin_onecta',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_roomTemperature',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[climate.my_living_room_room_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_temperature': 20,
+      'friendly_name': 'My Living Room Room Temperature',
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+      ]),
+      'max_temp': 30,
+      'min_temp': 20,
+      'preset_mode': 'boost',
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'supported_features': <ClimateEntityFeature: 401>,
+      'temperature': 25,
+    }),
+    'context': <ANY>,
+    'entity_id': 'climate.my_living_room_room_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'heat',
+  })
+# ---
+# name: test_gas[select.my_living_room_climatecontrol_schedule-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        'althermaClimateControl0',
+        'althermaClimateControl1',
+        'althermaClimateControl2',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': None,
+    'entity_id': 'select.my_living_room_climatecontrol_schedule',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:calendar-clock',
+    'original_name': 'ClimateControl Schedule',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_schedule',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[select.my_living_room_climatecontrol_schedule-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
+      'options': list([
+        'althermaClimateControl0',
+        'althermaClimateControl1',
+        'althermaClimateControl2',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.my_living_room_climatecontrol_schedule',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_control_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_control_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'ClimateControl Control Mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_controlmode',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_None_controlMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_control_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Control Mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_control_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'roomTemperature',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'ClimateControl Cooling Daily Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_cooling_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling Daily Electrical Consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '26',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_daily_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'ClimateControl Cooling Daily Gas Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_cooling_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_daily_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling Daily Gas Consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '26',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'ClimateControl Cooling Weekly Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_cooling_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling Weekly Electrical Consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '260',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_weekly_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'ClimateControl Cooling Weekly Gas Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_cooling_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_weekly_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling Weekly Gas Consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '260',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'ClimateControl Cooling Yearly Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_cooling_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling Yearly Electrical Consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_yearly_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'ClimateControl Cooling Yearly Gas Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_cooling_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_yearly_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling Yearly Gas Consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'ClimateControl Heating Daily Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_heating_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating Daily Electrical Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '26',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_daily_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'ClimateControl Heating Daily Gas Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_daily_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating Daily Gas Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '26',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'ClimateControl Heating Weekly Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_heating_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating Weekly Electrical Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '260',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_weekly_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'ClimateControl Heating Weekly Gas Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_weekly_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating Weekly Gas Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '260',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'ClimateControl Heating Yearly Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_heating_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating Yearly Electrical Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_yearly_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'ClimateControl Heating Yearly Gas Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_yearly_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating Yearly Gas Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heatup_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heatup_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'ClimateControl Heatup Mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_heatupmode',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_None_heatupMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heatup_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Heatup Mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heatup_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'reheatOnly',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_leaving_water_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_leaving_water_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'ClimateControl Leaving Water Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_leavingwatertemperature',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_sensoryData_leavingWaterTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_leaving_water_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'My Living Room ClimateControl Leaving Water Temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_leaving_water_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '12',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_name-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_name',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'ClimateControl Name',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_name',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_None_name',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_name-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Name',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_name',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'My Living Room',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_outdoor_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_outdoor_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'ClimateControl Outdoor Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_outdoortemperature',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_sensoryData_outdoorTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_outdoor_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'My Living Room ClimateControl Outdoor Temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_outdoor_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '25',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_room_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_room_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'ClimateControl Room Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_roomtemperature',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_sensoryData_roomTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_room_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'My Living Room ClimateControl Room Temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_room_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '20',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_setpoint_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_setpoint_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'ClimateControl Setpoint Mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'climatecontrol_setpointmode',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_None_setpointMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_setpoint_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room ClimateControl Setpoint Mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_setpoint_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'weatherDependent',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_domestichotwatertank_tank_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_domestichotwatertank_tank_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': 'mdi:bathtub-outline',
+    'original_name': 'DomesticHotWaterTank Tank Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'domestichotwatertank_tanktemperature',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_domesticHotWaterTank_sensoryData_tankTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_domestichotwatertank_tank_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'My Living Room DomesticHotWaterTank Tank Temperature',
+      'icon': 'mdi:bathtub-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_domestichotwatertank_tank_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '40',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_firmware_update_status-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_gateway_firmware_update_status',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Gateway Firmware Update Status',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_firmwareupdatestatus',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_firmwareUpdateStatus',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_firmware_update_status-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Firmware Update Status',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_firmware_update_status',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'in-progress',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_firmware_version-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_gateway_firmware_version',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Gateway Firmware Version',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_firmwareversion',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_firmwareVersion',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_firmware_version-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Firmware Version',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_firmware_version',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '436CC038000',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_ip_address-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_gateway_ip_address',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:ip-network',
+    'original_name': 'Gateway Ip Address',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_ipaddress',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_ipAddress',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_ip_address-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Ip Address',
+      'icon': 'mdi:ip-network',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_ip_address',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '192.168.0.1',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_mac_address-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_gateway_mac_address',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Gateway Mac Address',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_macaddress',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_macAddress',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_mac_address-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Mac Address',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_mac_address',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '00:23:7e:f8:26:4e',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_model_info-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_gateway_model_info',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Gateway Model Info',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_modelinfo',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_modelInfo',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_model_info-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Model Info',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_model_info',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'BRP069A62',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_name-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_gateway_name',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Gateway Name',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_name',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_name',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_name-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Name',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_name',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'My Gateway',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_serial_number-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_gateway_serial_number',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:numeric',
+    'original_name': 'Gateway Serial Number',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_serialnumber',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_serialNumber',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_gateway_serial_number-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room Gateway Serial Number',
+      'icon': 'mdi:numeric',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_gateway_serial_number',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '165000014',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_indoorunithydro_model_info-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_indoorunithydro_model_info',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'IndoorUnitHydro Model Info',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'indoorunithydro_modelinfo',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_indoorUnitHydro_None_modelInfo',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_indoorunithydro_model_info-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room IndoorUnitHydro Model Info',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_indoorunithydro_model_info',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'EHVH08S18CB3V',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_indoorunithydro_software_version-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_indoorunithydro_software_version',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'IndoorUnitHydro Software Version',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'indoorunithydro_softwareversion',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_indoorUnitHydro_None_softwareVersion',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_indoorunithydro_software_version-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room IndoorUnitHydro Software Version',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_indoorunithydro_software_version',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'ID66F2',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_outdoorunit_software_version-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_outdoorunit_software_version',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'OutdoorUnit Software Version',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': 'outdoorunit_softwareversion',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_outdoorUnit_None_softwareVersion',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_outdoorunit_software_version-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room OutdoorUnit Software Version',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_outdoorunit_software_version',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'ID0000',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_day-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_ratelimit_day',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'RateLimit day',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_day',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_day-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room RateLimit day',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_ratelimit_day',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_minute-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_ratelimit_minute',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'RateLimit minute',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_minute',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_minute-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room RateLimit minute',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_ratelimit_minute',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_ratelimit_reset-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_ratelimit_ratelimit_reset',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'RateLimit ratelimit_reset',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_ratelimit_reset',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_ratelimit_reset-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room RateLimit ratelimit_reset',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_ratelimit_ratelimit_reset',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_remaining_day-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_ratelimit_remaining_day',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'RateLimit remaining_day',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_remaining_day',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_remaining_day-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room RateLimit remaining_day',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_ratelimit_remaining_day',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_remaining_minutes-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_ratelimit_remaining_minutes',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'RateLimit remaining_minutes',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_remaining_minutes',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_remaining_minutes-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room RateLimit remaining_minutes',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_ratelimit_remaining_minutes',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_retry_after-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.my_living_room_ratelimit_retry_after',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'RateLimit retry_after',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_retry_after',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_ratelimit_retry_after-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'My Living Room RateLimit retry_after',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_ratelimit_retry_after',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_gas[water_heater.my_living_room-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'max_temp': None,
+      'min_temp': None,
+      'operation_list': list([
+        'off',
+        'heat_pump',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'water_heater',
+    'entity_category': None,
+    'entity_id': 'water_heater.my_living_room',
+    'has_entity_name': False,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'My Living Room',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'supported_features': <WaterHeaterEntityFeature: 10>,
+    'translation_key': None,
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_gas[water_heater.my_living_room-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_temperature': 40.0,
+      'friendly_name': 'My Living Room',
+      'max_temp': None,
+      'min_temp': None,
+      'operation_list': list([
+        'off',
+        'heat_pump',
+      ]),
+      'operation_mode': 'off',
+      'supported_features': <WaterHeaterEntityFeature: 10>,
+      'target_temp_high': None,
+      'target_temp_low': None,
+      'temperature': None,
+    }),
+    'context': <ANY>,
+    'entity_id': 'water_heater.my_living_room',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
 # name: test_holidaymode[binary_sensor.ndj_climatecontrol_is_holiday_mode_active-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
