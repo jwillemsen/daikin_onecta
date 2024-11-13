@@ -154,7 +154,7 @@ class DaikinApi:
             + " Url: "
             + resourceUrl
             + " Options: "
-            + str(optinons)
+            + str(options)
         )
 
     async def getCloudDeviceDetails(self):
