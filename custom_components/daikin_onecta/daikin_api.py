@@ -142,9 +142,20 @@ class DaikinApi:
             self._last_patch_call = datetime.now()
             return True
 
-        _LOGGER.error("REQUEST TYPE %s FAILED: %s %s", method, res.status_code, res.text)
+        _LOGGER.error("REQUEST TYPE %s FOR %s WITH OPTIONS %s FAILED: %s %s", method, resourceUrl, options, res.status_code, res.text)
 
-        raise Exception("Communication failed! Status: " + str(res.status_code) + " " + res.text)
+        raise Exception(
+            "Communication failed! Status: "
+            + str(res.status_code)
+            + " "
+            + res.text
+            + " Method: "
+            + method
+            + " Url: "
+            + resourceUrl
+            + " Options: "
+            + str(options)
+        )
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""

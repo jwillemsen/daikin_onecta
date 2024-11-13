@@ -305,7 +305,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         step_value = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            step_value = setpointdict["stepValue"]
+            step = setpointdict.get("stepValue")
+            if step is not None:
+                step_value = setpointdict["stepValue"]
+            else:
+                step_value = super().target_temperature_step
         _LOGGER.info(
             "Device '%s': %s target temperature step '%s'",
             self._device.name,
