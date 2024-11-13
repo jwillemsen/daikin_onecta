@@ -55,19 +55,6 @@ from custom_components.daikin_onecta.diagnostics import async_get_config_entry_d
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
 
-async def test_gas(
-    hass: HomeAssistant,
-    config_entry: MockConfigEntry,
-    onecta_auth: AsyncMock,
-    snapshot: SnapshotAssertion,
-    entity_registry: er.EntityRegistry,
-) -> None:
-    """Test entities."""
-    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "gas")
-
-    assert hass.states.get("climate.my_living_room_room_temperature").attributes["temperature"] == 25
-
-
 async def test_homehub(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -1101,3 +1088,16 @@ async def test_minimal_data(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "minimal_data")
 
     assert hass.states.get("water_heater.altherma").attributes["current_temperature"] == 53
+
+
+async def test_gas(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "gas")
+
+    assert hass.states.get("climate.my_living_room_room_temperature").attributes["temperature"] == 25
