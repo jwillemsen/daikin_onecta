@@ -213,12 +213,14 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         """Return current operation ie. heat, cool, idle."""
         state = STATE_OFF
         hwtd = self.hotwatertank_data
-        if hwtd["onOffMode"]["value"] == "on":
-            state = STATE_HEAT_PUMP
-            pwf = hwtd.get("powerfulMode")
-            if pwf is not None:
-                if pwf["value"] == "on":
-                    state = STATE_PERFORMANCE
+        onoff = hwtd.get("onOffMode")
+        if onoff is not None:
+            if onoff["value"] == "on":
+                state = STATE_HEAT_PUMP
+                pwf = hwtd.get("powerfulMode")
+                if pwf is not None:
+                    if pwf["value"] == "on":
+                        state = STATE_PERFORMANCE
         _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
         return state
 

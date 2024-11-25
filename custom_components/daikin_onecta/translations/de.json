@@ -3,38 +3,49 @@
     "step": {
       "init": {
         "data": {
-          "high_scan_interval": "High frequency period update interval (minutes)",
-          "low_scan_interval": "Low frequency period update interval (minutes)",
-          "high_scan_start": "High frequency period start time",
-          "low_scan_start": "Low frequency period start time",
-          "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
+          "high_scan_interval": "Aktualisierungsintervall der Hochfrequenzperiode (Minuten)",
+          "low_scan_interval": "Aktualisierungsintervall der Niederfrequenzperiode (Minuten)",
+          "high_scan_start": "Startzeit der Hochfrequenzperiode",
+          "low_scan_start": "Startzeit der Niederfrequenzperiode",
+          "scan_ignore": "Anzahl der Sekunden, die eine Datenaktualisierung nach einem Befehl ignoriert wird"
         },
-        "description": "Configure Daikin Onecta Cloud polling",
+        "description": "Daikin Onecta Cloud-Polling konfigurieren",
         "title": "Daikin Onecta"
       }
     }
   },
   "config": {
     "abort": {
-      "already_configured": "Ger\u00e4t ist bereits konfiguriert"
+      "already_configured": "Die Integration ist bereits konfiguriert.",
+      "cannot_connect": "Verbindung zur Daikin Cloud konnte nicht hergestellt werden.",
+      "init_failed": "Daikin API konnte nicht initialisiert werden.",
+      "token_retrieval_failed": "Der Zugriffstokensatz konnte nicht abgerufen werden."
     },
     "error": {
+      "cannot_connect": "Verbindung fehlgeschlagen",
+      "device_fail": "Unerwarteter Fehler",
       "device_timeout": "Verbindung fehlgeschlagen",
+      "forbidden": "Ungültige Authentifizierung",
+      "invalid_auth": "Ungültige Authentifizierung",
       "unknown": "Unerwarteter Fehler"
     },
     "step": {
       "user": {
         "data": {
-          "host": "Host",
-          "key": "Authentifizierungsschl\u00fcssel (wird nur von BRP072C / Zena-Ger\u00e4ten verwendet)",
+          "email": "E-Mail Adresse",
           "password": "Passwort"
         },
-        "description": "Gib die IP-Adresse deiner Daikin AC ein.",
-        "title": "Daikin AC konfigurieren"
+        "description": "Geben Sie die E-Mail-Adresse und das Passwort ein, die Sie für die Anmeldung bei Daikin Cloud verwenden, und drücken Sie dann auf Senden.",
+        "title": "Daikin Onecta konfigurieren"
       }
     }
   },
   "entity": {
+    "binary_sensor": {
+      "climatecontrol_isinwarningstate": {
+        "name": "Warnstatus der Klimaregelung"
+      }
+    },
     "climate": {
       "daikin_onecta": {
         "state_attributes": {
@@ -47,9 +58,27 @@
               "4": "4",
               "5": "5"
             }
+          },
+          "swing_mode": {
+            "state": {
+              "floor": "Fußbodenheizung Luftstrom",
+              "floor_horizontal": "Fußbodenheizung Luftstrom und Horizontale",
+              "comfort": "Komfort-Luftstrom",
+              "comfort_horizontal": "Komfort-Luftstrom und Horizontal"
+            }
           }
         }
       }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Das Tageslimit wurde erreicht",
+      "description": "Sie haben Ihr tägliches Ratenlimit für die Daikin Cloud erreicht. Überprüfen Sie Ihre Abfragehäufigkeit in der Daikin Onecta Konfiguration."
+    },
+    "minute_rate_limit": {
+      "title": "Das Minutenlimit wurde erreicht",
+      "description": "Sie haben Ihr minütliches Ratenlimit für die Daikin-Cloud erreicht. Rufen Sie Ihre Daikin-Geräte daher nicht so oft pro Minute an."
     }
   }
 }
