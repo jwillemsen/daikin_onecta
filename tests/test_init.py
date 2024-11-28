@@ -836,6 +836,26 @@ async def test_climate(
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_horizontal_mode"] == "swing"
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "swing"
 
+        # Set the horizontal swing mode another time to swing, should not result in a call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_SWING_HORIZONTAL_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_HORIZONTAL_MODE: "swing"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        # Set the vertical swing mode another time to swing, should not result in a call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_SWING_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: "swing"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 15
+
         # Set the preset mode boost
         await hass.services.async_call(
             CLIMATE_DOMAIN,
