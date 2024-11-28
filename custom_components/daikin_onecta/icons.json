@@ -24,7 +24,9 @@
             "state": {
               "stop": "mdi:arrow-oscillating-off",
               "swing": "mdi:arrow-up-down",
-              "windnice": "mdi:waves"
+              "windnice": "mdi:waves",
+              "floorheatingairflow": "mdi:arrow-right-bottom"
+              "
             }
           },
           "preset_mode": {
