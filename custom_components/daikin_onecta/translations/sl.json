@@ -61,10 +61,8 @@
           },
           "swing_mode": {
             "state": {
-              "floor": "Tlačni tok ogrevanja",
-              "floor_horizontal": "Tlačni tok ogrevanja in vodoravni",
-              "comfort": "Tok udobja",
-              "comfort_horizontal": "Tok udobja in vodoravni"
+              "floorheatingairflow": "Tlačni tok ogrevanja",
+              "windnice": "Tok udobja"
             }
           }
         }

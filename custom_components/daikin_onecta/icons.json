@@ -14,10 +14,18 @@
               "5": "mdi:numeric-5"
             }
           },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "mdi:arrow-oscillating-off",
+              "swing": "mdi:arrow-left-right"
+            }
+          },
           "swing_mode": {
             "state": {
-              "comfort": "mdi:waves",
-              "comfort_horizontal": "mdi:waves-arrow-left"
+              "stop": "mdi:arrow-oscillating-off",
+              "swing": "mdi:arrow-up-down",
+              "windnice": "mdi:waves",
+              "floorheatingairflow": "mdi:arrow-right-bottom"
             }
           },
           "preset_mode": {
