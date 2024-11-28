@@ -45,8 +45,16 @@
           },
           "swing_mode": {
             "state": {
+              "stop": "Draaien uit",
+              "swing": "Draaien",
               "floorheatingairflow": "Vloer Heating Airflow",
               "windnice": "Comfort Airflow"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Draaien uit",
+              "swing": "Draaien"
             }
           }
         }

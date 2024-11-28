@@ -61,8 +61,16 @@
           },
           "swing_mode": {
             "state": {
+              "stop": "Stop",
+              "swing": "Swing",
               "floorheatingairflow": "FloorHeating Airflow",
               "windnice": "Comfort Airflow"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Swing"
             }
           }
         }
