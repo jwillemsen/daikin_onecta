@@ -556,7 +556,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         return res
 
-    def __get_swing_modes(self, direction):
+    def __get_swing_mode(self, direction):
         swingMode = ""
         cc = self.climate_control()
         fanControl = cc.get("fanControl")
@@ -580,10 +580,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return swingMode
 
     def get_swing_mode(self):
-        return self.__get_swing_modes("vertical")
+        return self.__get_swing_mode("vertical")
 
     def get_swing_horizontal_mode(self):
-        return self.__get_swing_modes("horizontal")
+        return self.__get_swing_mode("horizontal")
 
     def __get_swing_modes(self, direction):
         swingModes = []
