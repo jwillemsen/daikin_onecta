@@ -10,6 +10,7 @@ import responses
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
 from homeassistant.components.climate import ATTR_PRESET_MODE
+from homeassistant.components.climate import ATTR_SWING_HORIZONTAL_MODE
 from homeassistant.components.climate import ATTR_SWING_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
 from homeassistant.components.climate import PRESET_AWAY
@@ -815,7 +816,7 @@ async def test_climate(
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_SWING_HORIZONTAL_MODE,
-            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_MODE: "swing"},
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_SWING_HORIZONTAL_MODE: "swing"},
             blocking=True,
         )
         await hass.async_block_till_done()

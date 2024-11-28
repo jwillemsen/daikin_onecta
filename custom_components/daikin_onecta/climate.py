@@ -650,7 +650,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_set_swing_mode(self, swing_mode):
         if self.swing_mode != swing_mode:
-            res = self.__set_swing("vertical", swing_mode)
+            res = await self.__set_swing("vertical", swing_mode)
 
             if res is True:
                 self._attr_swing_mode = swing_mode
@@ -666,7 +666,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_set_swing_horizontal_mode(self, swing_mode):
         if self.swing_horizontal_mode != swing_mode:
-            res = self.__set_swing("horizontal", swing_mode)
+            res = await self.__set_swing("horizontal", swing_mode)
 
             if res is True:
                 self._attr_swing_horizontal_mode = swing_mode
