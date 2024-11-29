@@ -1204,7 +1204,6 @@ async def test_climate(
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
 
-
 async def test_minimal_data(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
