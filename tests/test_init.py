@@ -1184,6 +1184,26 @@ async def test_climate(
         assert responses.calls[32].request.body == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
 
+        responses.put(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
+            status=429,
+            headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"},
+        )
+        # Set the device with schedule 'User defined' enabled, this should fail due to the rate limit
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "User defined"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 34
+        assert responses.calls[33].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
+
+
 
 async def test_minimal_data(
     hass: HomeAssistant,
