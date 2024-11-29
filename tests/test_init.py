@@ -572,6 +572,29 @@ async def test_water_heater(
 
         assert len(responses.calls) == 9
 
+        responses.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
+            status=400,
+        )
+
+        # Turn the tank off, this should fail and not work
+        try:
+            await hass.services.async_call(
+                WATER_HEATER_DOMAIN,
+                SERVICE_TURN_OFF,
+                {ATTR_ENTITY_ID: "water_heater.altherma"},
+                blocking=True,
+            )
+        except Exception as e:
+            assert len(responses.calls) == 10
+
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 10
+        assert responses.calls[9].request.body == '{"value": "off"}'
+        assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
+
 
 @responses.activate
 async def test_climate(
