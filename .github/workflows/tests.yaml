@@ -11,13 +11,17 @@ jobs:
   tests:
     runs-on: "ubuntu-latest"
     name: Run tests
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12", "3.13"]
     steps:
       - name: Check out code from GitHub
         uses: "actions/checkout@v4"
-      - name: Setup Python
+      - name: Setup Python ${{ matrix.python-version }}
         uses: "actions/setup-python@v5"
         with:
-          python-version: "3.13"
+          python-version: ${{ matrix.python-version }}
       - name: Install requirements
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
