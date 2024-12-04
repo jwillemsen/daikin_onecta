@@ -351,6 +351,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if onoff is not None:
             if onoff["value"] != "off":
                 mode = operationmode["value"]
+        _LOGGER.info(
+            "Device '%s': %s hvac mode '%s'",
+            self._device.name,
+            self._setpoint,
+            mode,
+        )
         return DAIKIN_HVAC_TO_HA.get(mode, HVACMode.HEAT_COOL)
 
     def get_hvac_modes(self):
