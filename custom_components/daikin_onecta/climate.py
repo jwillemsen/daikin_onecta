@@ -170,7 +170,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if oo is not None:
                 setpoint = oo["setpoints"].get(self._setpoint)
             _LOGGER.info(
-                "Device '%s': %s operation mode %s has setpoint %s",
+                "Device '%s' %s operation mode %s has setpoint %s",
                 self._device.name,
                 self._setpoint,
                 operation_mode,
@@ -191,7 +191,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     if sensoryData is not None:
                         sensoryData = sensoryData.get("value").get(setpoint)
                         _LOGGER.info(
-                            "Device '%s': %s sensoryData %s",
+                            "Device '%s' %s sensoryData %s",
                             self._device.name,
                             setpoint,
                             sensoryData,
@@ -251,7 +251,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if self._setpoint == "leavingWaterOffset" and lwsensor is not None:
                 current_temp = lwsensor["value"]
         _LOGGER.info(
-            "Device '%s': %s current temperature '%s'",
+            "Device '%s' %s current temperature '%s'",
             self._device.name,
             self._setpoint,
             current_temp,
@@ -266,7 +266,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         else:
             max_temp = super().max_temp
         _LOGGER.info(
-            "Device '%s': %s max temperature '%s'",
+            "Device '%s' %s max temperature '%s'",
             self._device.name,
             self._setpoint,
             max_temp,
@@ -281,7 +281,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         else:
             min_temp = super().min_temp
         _LOGGER.info(
-            "Device '%s': %s min temperature '%s'",
+            "Device '%s' %s min temperature '%s'",
             self._device.name,
             self._setpoint,
             min_temp,
@@ -294,7 +294,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if setpointdict is not None:
             value = setpointdict["value"]
         _LOGGER.info(
-            "Device '%s': %s target temperature '%s'",
+            "Device '%s' %s target temperature '%s'",
             self._device.name,
             self._setpoint,
             value,
@@ -311,7 +311,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             else:
                 step_value = super().target_temperature_step
         _LOGGER.info(
-            "Device '%s': %s target temperature step '%s'",
+            "Device '%s' %s target temperature step '%s'",
             self._device.name,
             self._setpoint,
             step_value,
@@ -352,7 +352,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if onoff["value"] != "off":
                 mode = operationmode["value"]
         _LOGGER.info(
-            "Device '%s': %s hvac mode '%s'",
+            "Device '%s' %s hvac mode '%s'",
             self._device.name,
             self._setpoint,
             mode,
@@ -477,7 +477,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if operationmodedict is not None:
                 fan_speed = operationmodedict.get("fanSpeed")
                 if fan_speed is not None:
-                    _LOGGER.info("Found fanspeed %s", fan_speed)
+                    _LOGGER.info("Device '%s' has fanspeed %s", self._device.name, fan_speed)
                     for c in fan_speed["currentMode"]["values"]:
                         if c == FANMODE_FIXED:
                             fsm = fan_speed.get("modes")
