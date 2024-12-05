@@ -378,7 +378,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     async def async_set_hvac_mode(self, hvac_mode):
         """Set HVAC mode."""
         _LOGGER.debug(
-            "Device '%s' request to set hvac_mode to %s",
+            "Device '%s' request to set hvac_mode to '%s'",
             self._device.name,
             hvac_mode,
         )
@@ -403,7 +403,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
             if result is False:
                 _LOGGER.warning(
-                    "Device '%s' problem setting onOffMode to %s",
+                    "Device '%s' problem setting onOffMode to '%s'",
                     self._device.name,
                     on_off_mode,
                 )
@@ -423,7 +423,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 )
                 if result is False:
                     _LOGGER.warning(
-                        "Device '%s' problem setting operationMode to %s",
+                        "Device '%s' problem setting operationMode to '%s'",
                         self._device.name,
                         operation_mode,
                     )
@@ -537,7 +537,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
             if res is False:
                 _LOGGER.warning(
-                    "Device '%s' problem setting fan_mode fixed to %s",
+                    "Device '%s' problem setting fan_mode fixed to '%s'",
                     self._device.name,
                     new_fixed_mode,
                 )
@@ -551,7 +551,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             )
             if res is False:
                 _LOGGER.warning(
-                    "Device '%s' problem setting fan_mode to %s",
+                    "Device '%s' problem setting fan_mode to '%s'",
                     self._device.name,
                     fan_mode,
                 )
@@ -617,7 +617,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def __set_swing(self, direction, swing_mode):
         _LOGGER.debug(
-            "Device '%s' request to set swing %s mode to %s",
+            "Device '%s' request to set swing %s mode to '%s'",
             self._device.name,
             direction,
             swing_mode,
@@ -647,7 +647,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     )
                     if res is False:
                         _LOGGER.warning(
-                            "Device '%s' problem setting %s swing mode to %s",
+                            "Device '%s' problem setting %s swing mode to '%s'",
                             self._device.name,
                             direction,
                             new_mode,
