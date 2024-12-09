@@ -60,7 +60,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                         "scan_ignore",
                         default=self.options.get("scan_ignore", 30),
                     ): NumberSelector(
-                        NumberSelectorConfig(min=20, max=100, step=1),
+                        NumberSelectorConfig(min=20, max=300, step=1),
                     ),
                 }
             ),
