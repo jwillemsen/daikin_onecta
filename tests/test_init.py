@@ -7,6 +7,8 @@ from unittest.mock import patch
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
 import responses
+from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN
+from homeassistant.components.button import SERVICE_PRESS
 from homeassistant.components.climate import ATTR_FAN_MODE
 from homeassistant.components.climate import ATTR_HVAC_MODE
 from homeassistant.components.climate import ATTR_PRESET_MODE
@@ -1228,3 +1230,29 @@ async def test_gas(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "gas")
 
     assert hass.states.get("climate.my_living_room_room_temperature").attributes["temperature"] == 25
+
+
+async def test_button(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "dry")
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        # Call button service
+        await hass.services.async_call(
+            BUTTON_DOMAIN,
+            SERVICE_PRESS,
+            {ATTR_ENTITY_ID: "button.altherma_refresh"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(responses.calls) == 0
