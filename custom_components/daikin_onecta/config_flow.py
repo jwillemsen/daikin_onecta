@@ -23,7 +23,6 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
     def __init__(self, config_entry):
         """Initialize HACS options flow."""
-        self.config_entry = config_entry
         self.options = dict(config_entry.options)
 
     async def async_step_init(self, user_input: dict[str, str] | None = None) -> FlowResult:
@@ -69,7 +68,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
     async def _update_options(self):
         """Update config entry options."""
-        return self.async_create_entry(title=self.config_entry.data.get("Hub "), data=self.options)
+        return self.async_create_entry(title="", data=self.options)
 
 
 class FlowHandler(
