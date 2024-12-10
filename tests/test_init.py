@@ -1232,6 +1232,7 @@ async def test_gas(
     assert hass.states.get("climate.my_living_room_room_temperature").attributes["temperature"] == 25
 
 
+@responses.activate
 async def test_button(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -1246,13 +1247,15 @@ async def test_button(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
     ):
+        responses.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("dry"))
+
         # Call button service
         await hass.services.async_call(
             BUTTON_DOMAIN,
             SERVICE_PRESS,
-            {ATTR_ENTITY_ID: "button.altherma_refresh"},
+            {ATTR_ENTITY_ID: "button.lounge_refresh"},
             blocking=True,
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 0
+        assert len(responses.calls) == 1
