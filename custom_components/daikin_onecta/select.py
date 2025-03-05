@@ -100,7 +100,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._management_point_type == management_point_type:
-                    scheduledict = management_point[self._value]
+                    scheduledict = management_point.get(self._value)
                     if scheduledict is not None:
                         currentMode = scheduledict["value"]["currentMode"]["value"]
                         # Look for a schedule with the user selected readable name, when we find it, we use the schedule id
