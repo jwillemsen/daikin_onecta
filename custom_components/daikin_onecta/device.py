@@ -86,6 +86,10 @@ class DaikinOnectaDevice:
     def setJsonData(self, desc):
         """Set a device description and parse/traverse data structure."""
         self.merge_json(self.daikin_data, desc)
+        _LOGGER.info(
+            "Device '%s'received new data from the Daikin cloud, isCloudConnectionUp '%s'",
+            self.available
+        )
 
     async def patch(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
