@@ -155,7 +155,8 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                             _LOGGER.info(
                                 "Device '%s:%s' has no heatupMode so add implicit off selection",
                                 self._device.name,
-                                self._embedded_id,)
+                                self._embedded_id,
+                            )
 
                             opt.append(SCHEDULE_OFF)
 

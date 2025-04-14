@@ -1271,4 +1271,4 @@ async def test_altherma_schedule(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_schedule")
 
-    assert hass.states.get("select.altherma_domestichotwatertank_schedule").state == 'User defined'
+    assert hass.states.get("select.altherma_domestichotwatertank_schedule").state == "User defined"
