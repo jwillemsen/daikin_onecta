@@ -150,12 +150,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
 
                         # Only add off when the schedule cuurent mode settable is true
                         if scheduledict["value"]["modes"][currentMode]["enabled"]["settable"]:
-                            _LOGGER.info(
-                                "Device '%s:%s' enabled can be set, so providing %s",
-                                self._device.name,
-                                self._embedded_id,
-                                SCHEDULE_OFF
-                            )
+                            _LOGGER.info("Device '%s:%s' enabled can be set, so providing %s", self._device.name, self._embedded_id, SCHEDULE_OFF)
 
                             opt.append(SCHEDULE_OFF)
 
