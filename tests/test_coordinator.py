@@ -90,7 +90,7 @@ class TestOnectaDataUpdateCoordinator:
             expected = timedelta(seconds=120)
             result = coordinator.determine_update_interval(mock_hass)
             assert result == expected
-            mock_random.randint.assert_called_once_with(1, 1800)
+            mock_random.randint.assert_called_once_with(60, 1800)
 
     @patch("custom_components.daikin_onecta.coordinator.datetime")
     def test_rate_limit_exceeded(self, mock_datetime, coordinator, mock_hass):
