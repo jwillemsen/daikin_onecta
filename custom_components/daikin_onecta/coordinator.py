@@ -89,7 +89,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             # 22:00 and a high scan interval of 9 minutes we randomize the next poll when it is
             # between 22:00 and 22:09
             if self.in_between(datetime.now().time(), ls, (ls_datetime + timedelta(seconds=high_scan_interval)).time()):
-                scan_interval = random.randint(60, scan_interval)
+                scan_interval = random.randint(60, int(scan_interval))
 
         # When we hit our daily rate limit we check the retry_after which is the amount of seconds
         # we have to wait before we can make a call again
