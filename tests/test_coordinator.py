@@ -1,11 +1,15 @@
 """Test the Daikin Onecta coordinator."""
-from datetime import datetime, time, timedelta
-from unittest.mock import MagicMock, patch
+from datetime import datetime
+from datetime import time
+from datetime import timedelta
+from unittest.mock import MagicMock
+from unittest.mock import patch
 
 import pytest
 from homeassistant.core import HomeAssistant
 
-from custom_components.daikin_onecta.const import DAIKIN_API, DOMAIN
+from custom_components.daikin_onecta.const import DAIKIN_API
+from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
 
 
@@ -23,7 +27,7 @@ def coordinator(mock_hass):
     """Return a coordinator with test options."""
     config_entry = MagicMock()
     config_entry.options = {
-        "low_scan_interval": 30,   # minutes
+        "low_scan_interval": 30,  # minutes
         "high_scan_interval": 10,  # minutes
         "high_scan_start": "07:00:00",
         "low_scan_start": "22:00:00",
