@@ -104,9 +104,9 @@ class TestOnectaDataUpdateCoordinator:
         mock_datetime.strptime.side_effect = datetime.strptime
 
         # Simulate daily rate limit reached
-        mock_hass.data[DOMAIN][DAIKIN_API].rate_limits = {"remaining_day": 0, "retry_after": 300}
+        mock_hass.data[DOMAIN][DAIKIN_API].rate_limits = {"remaining_day": 0, "retry_after": 3000}
 
         with patch.object(coordinator, "in_between", side_effect=[False, False]):
-            expected = timedelta(seconds=360)  # 300 + 60
+            expected = timedelta(seconds=3060)  # 3000 + 60
             result = coordinator.determine_update_interval(mock_hass)
             assert result == expected
