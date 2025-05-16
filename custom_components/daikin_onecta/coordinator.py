@@ -85,8 +85,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             scan_interval = high_scan_interval
         else:
             # When switching from high to low frequency polling we need to randomize the first
-            # ping so that we spread the load to daikin, so for example when we have a low start at
-            # 22:00 and a high scan interval of 9 minutes we randomize the next ping when it is
+            # poll so that we spread the load to daikin, so for example when we have a low start at
+            # 22:00 and a high scan interval of 9 minutes we randomize the next poll when it is
             # between 22:00 and 22:09
             if self.in_between(datetime.now().time(), ls, (ls_datetime + timedelta(seconds=high_scan_interval)).time()):
                 scan_interval = random.randint(1, scan_interval)
