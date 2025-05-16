@@ -148,15 +148,9 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                                 readableName = scheduleName
                             opt.append(readableName)
 
-                        # Only add off when there is no heatupMode, the Altherma hot water tank has this field available, for the
-                        # hot water tank there is no implicit off schedule, you can only select a schedule, not none
-                        heatupMode = management_point.get("heatupMode")
-                        if heatupMode is None:
-                            _LOGGER.info(
-                                "Device '%s:%s' has no heatupMode so add implicit off selection",
-                                self._device.name,
-                                self._embedded_id,
-                            )
+                        # Only add off when the schedule current mode enabled settable is true
+                        if scheduledict["value"]["modes"][currentMode]["enabled"]["settable"]:
+                            _LOGGER.info("Device '%s:%s' enabled can be set, so providing %s", self._device.name, self._embedded_id, SCHEDULE_OFF)
 
                             opt.append(SCHEDULE_OFF)
 
