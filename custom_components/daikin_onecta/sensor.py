@@ -130,16 +130,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
             cd = management_point.get("consumptionData")
             if cd is not None:
-                # Retrieve the available operationModes, we can only provide consumption data for
-                # supported operation modes
-                opmode = management_point.get("operationMode")
-                if opmode is not None:
-                    cdv = cd.get("value")
-                    if cdv is not None:
-                        for type in ["electrical", "gas"]:
-                            cdve = cdv.get(type)
-                            if cdve is not None:
-                                handle_energy_sensors(coordinator, device, embedded_id, management_point_type, type, cdve, sensors)
+                cdv = cd.get("value")
+                if cdv is not None:
+                    for type in ["electrical", "gas"]:
+                        cdve = cdv.get(type)
+                        if cdve is not None:
+                            handle_energy_sensors(coordinator, device, embedded_id, management_point_type, type, cdve, sensors)
 
     async_add_entities(sensors)
 
