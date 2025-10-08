@@ -1217,6 +1217,7 @@ async def test_minimal_data(
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "minimal_data")
 
     assert hass.states.get("water_heater.altherma").attributes["current_temperature"] == 53
+    assert hass.states.get("sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption").state == '1232'
 
 
 async def test_gas(
