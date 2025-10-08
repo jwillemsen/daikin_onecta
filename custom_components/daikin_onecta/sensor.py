@@ -208,7 +208,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                         cdve = cdv.get(self._sensor_type)
                         if cdve is not None:
                             for mode in cdve:
-                                # Only handle consumptionData for the operation mode supported of this sensor
+                                # Only handle consumptionData for the operation mode supported by this sensor
                                 if mode == self._operation_mode:
                                     energy_values = [0 if v is None else v for v in cdve[mode].get(self._period)]
                                     start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
