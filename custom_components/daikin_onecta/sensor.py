@@ -47,18 +47,19 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
             mode,
         )
         for period in cdve[mode]:
-            _LOGGER.info(
-                "Device '%s:%s' provides mode %s %s supports period %s",
-                device.name,
-                embedded_id,
-                management_point_type,
-                mode,
-                period,
-            )
-            periodName = SENSOR_PERIODS[period]
-            sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {periodName}"
-            _LOGGER.info("Proposing sensor '%s'", sensor)
-            sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period))
+            periodName = SENSOR_PERIODS.get(period)
+            if periodName is not None:
+                _LOGGER.info(
+                    "Device '%s:%s' provides mode %s %s supports period %s",
+                    device.name,
+                    embedded_id,
+                    management_point_type,
+                    mode,
+                    period,
+                )
+                sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {periodName}"
+                _LOGGER.info("Proposing sensor '%s'", sensor)
+                sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period))
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):

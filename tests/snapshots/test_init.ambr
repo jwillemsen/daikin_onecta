@@ -101008,6 +101008,177 @@
     'state': 'fixed',
   })
 # ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'DomesticHotWaterTank Heating Daily Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_electrical_heating_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating Daily Electrical Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '4',
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'DomesticHotWaterTank Heating Weekly Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_electrical_heating_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating Weekly Electrical Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '22',
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'DomesticHotWaterTank Heating Yearly Electrical Consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_electrical_heating_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating Yearly Electrical Consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '1232',
+  })
+# ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heatup_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
