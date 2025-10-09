@@ -37,18 +37,18 @@ async def async_setup(hass, async_add_entities):
     """
 
 
-def handle_energy_sensors(coordinator, device, embedded_id, management_point_type, operation_modes, sensor_type, cdve, sensors):
+def handle_energy_sensors(coordinator, device, embedded_id, management_point_type, sensor_type, cdve, sensors):
     _LOGGER.info("Device '%s' provides '%s'", device.name, sensor_type)
     for mode in cdve:
-        # Only handle consumptionData for an operation mode supported by this device
-        if mode in operation_modes:
-            _LOGGER.info(
-                "Device '%s' provides mode %s %s",
-                device.name,
-                management_point_type,
-                mode,
-            )
-            for period in cdve[mode]:
+        _LOGGER.info(
+            "Device '%s' provides mode %s %s",
+            device.name,
+            management_point_type,
+            mode,
+        )
+        for period in cdve[mode]:
+            periodName = SENSOR_PERIODS.get(period)
+            if periodName is not None:
                 _LOGGER.info(
                     "Device '%s:%s' provides mode %s %s supports period %s",
                     device.name,
@@ -57,15 +57,9 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
                     mode,
                     period,
                 )
-                periodName = SENSOR_PERIODS[period]
                 sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {periodName}"
                 _LOGGER.info("Proposing sensor '%s'", sensor)
                 sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period))
-        else:
-            _LOGGER.info(
-                "Ignoring consumption data '%s', not a supported operation_mode",
-                mode,
-            )
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
@@ -137,17 +131,12 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
             cd = management_point.get("consumptionData")
             if cd is not None:
-                # Retrieve the available operationModes, we can only provide consumption data for
-                # supported operation modes
-                opmode = management_point.get("operationMode")
-                if opmode is not None:
-                    operation_modes = opmode["values"]
-                    cdv = cd.get("value")
-                    if cdv is not None:
-                        for type in ["electrical", "gas"]:
-                            cdve = cdv.get(type)
-                            if cdve is not None:
-                                handle_energy_sensors(coordinator, device, embedded_id, management_point_type, operation_modes, type, cdve, sensors)
+                cdv = cd.get("value")
+                if cdv is not None:
+                    for type in ["electrical", "gas"]:
+                        cdve = cdv.get(type)
+                        if cdve is not None:
+                            handle_energy_sensors(coordinator, device, embedded_id, management_point_type, type, cdve, sensors)
 
     async_add_entities(sensors)
 
@@ -219,7 +208,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                         cdve = cdv.get(self._sensor_type)
                         if cdve is not None:
                             for mode in cdve:
-                                # Only handle consumptionData for an operation mode supported by this device
+                                # Only handle consumptionData for the operation mode supported by this sensor
                                 if mode == self._operation_mode:
                                     energy_values = [0 if v is None else v for v in cdve[mode].get(self._period)]
                                     start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
