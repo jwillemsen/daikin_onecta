@@ -284,6 +284,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         else:
             # Update local cached version
             self._attr_current_operation = operation_mode
+            self._attr_operation_list = self.get_operation_list()
             self.async_write_ha_state()
 
         return result
@@ -300,6 +301,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 hwtd = self.hotwatertank_data
                 hwtd["onOffMode"]["value"] = "on"
                 self._attr_current_operation = self.get_current_operation()
+                self._attr_operation_list = self.get_operation_list()
                 self.async_write_ha_state()
         else:
             _LOGGER.debug(
@@ -321,6 +323,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 hwtd = self.hotwatertank_data
                 hwtd["onOffMode"]["value"] = "off"
                 self._attr_current_operation = self.get_current_operation()
+                self._attr_operation_list = self.get_operation_list()
                 self.async_write_ha_state()
         else:
             _LOGGER.debug(
