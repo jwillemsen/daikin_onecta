@@ -15,7 +15,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import COORDINATOR
 from .const import DAIKIN_API
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
@@ -24,7 +23,9 @@ from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
+from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
+
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -64,7 +65,8 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
-    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+    onecta_data: OnectaRuntimeData = config_entry.runtime_data
+    coordinator = onecta_data.coordinator
     daikin_api = hass.data[DAIKIN_DOMAIN][DAIKIN_API]
     sensors = []
     supported_management_point_types = {

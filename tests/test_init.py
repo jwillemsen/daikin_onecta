@@ -50,10 +50,9 @@ from syrupy import SnapshotAssertion
 
 from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
-from custom_components.daikin_onecta.const import COORDINATOR
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
-from custom_components.daikin_onecta.const import DOMAIN as DAIKIN_DOMAIN
 from custom_components.daikin_onecta.const import SCHEDULE_OFF
+from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 
@@ -295,14 +294,16 @@ async def test_altherma_ratelimit(
             rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=429)
 
             # Test that updating the data through with a 429 doesn't crash
-            coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+            onecta_data: OnectaRuntimeData = config_entry.runtime_data
+            coordinator = onecta_data.coordinator
             await coordinator._async_update_data()
 
         with responses.RequestsMock() as rsps:
             rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
 
             # Test that updating the data through with a status 200 works
-            coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+            onecta_data: OnectaRuntimeData = config_entry.runtime_data
+            coordinator = onecta_data.coordinator
             await coordinator._async_update_data()
 
 

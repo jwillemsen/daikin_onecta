@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import logging
 import random
+from dataclasses import dataclass
 from datetime import datetime
 from datetime import timedelta
 
@@ -16,6 +17,13 @@ from .const import DOMAIN
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
+
+
+@dataclass
+class OnectaRuntimeData:
+    """Runtime Data for Onecta integration."""
+
+    coordinator: OnectaDataUpdateCoordinator
 
 
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
