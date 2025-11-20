@@ -9,7 +9,6 @@ from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
 
 from .const import DAIKIN_API
-from .const import DAIKIN_DEVICES
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .coordinator import OnectaRuntimeData
@@ -38,7 +37,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(hass, config_entry)
 
     hass.data.update({DOMAIN: {}})
-    hass.data[DOMAIN][DAIKIN_DEVICES] = {}
     daikin_api = DaikinApi(hass, config_entry, implementation)
     hass.data[DOMAIN][DAIKIN_API] = daikin_api
 
@@ -48,7 +46,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         raise ConfigEntryNotReady from err
 
     coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
-    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator)
+    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator, devices={})
 
     try:
         await coordinator.async_config_entry_first_refresh()
