@@ -15,7 +15,6 @@ from homeassistant.helpers.entity import EntityCategory
 
 
 DOMAIN = "daikin_onecta"
-COORDINATOR = "coordinator"
 
 OAUTH2_AUTHORIZE = "https://idp.onecta.daikineurope.com/v1/oidc/authorize"
 OAUTH2_TOKEN = "https://idp.onecta.daikineurope.com/v1/oidc/token"

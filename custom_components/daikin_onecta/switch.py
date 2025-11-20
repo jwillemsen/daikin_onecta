@@ -12,12 +12,12 @@ from homeassistant.core import callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
+from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -25,7 +25,8 @@ _LOGGER = logging.getLogger(__name__)
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin switches based on config_entry."""
-    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+    onecta_data: OnectaRuntimeData = config_entry.runtime_data
+    coordinator = onecta_data.coordinator
     sensors = []
     supported_management_point_types = {
         "domesticHotWaterTank",

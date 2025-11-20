@@ -5,18 +5,19 @@ from homeassistant.components.select import SelectEntity
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import COORDINATOR
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import SCHEDULE_OFF
+from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
 
-async def async_setup_entry(hass, entry, async_add_entities):
+async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
-    coordinator = hass.data[DAIKIN_DOMAIN][COORDINATOR]
+    onecta_data: OnectaRuntimeData = config_entry.runtime_data
+    coordinator = onecta_data.coordinator
     sensors = []
     for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
         managementPoints = device.daikin_data.get("managementPoints", [])

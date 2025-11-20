@@ -8,11 +8,11 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
 
-from .const import COORDINATOR
 from .const import DAIKIN_API
 from .const import DAIKIN_DEVICES
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
+from .coordinator import OnectaRuntimeData
 from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
@@ -48,7 +48,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         raise ConfigEntryNotReady from err
 
     coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
-    hass.data[DOMAIN][COORDINATOR] = coordinator
+    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator)
 
     try:
         await coordinator.async_config_entry_first_refresh()
@@ -74,5 +74,6 @@ async def async_unload_entry(hass, config_entry):
 
 async def update_listener(hass, config_entry):
     """Handle options update."""
-    coordinator = hass.data[DOMAIN][COORDINATOR]
+    onecta_data: OnectaRuntimeData = config_entry.runtime_data
+    coordinator = onecta_data.coordinator
     coordinator.update_settings(config_entry)
