@@ -16,14 +16,6 @@ from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
 
-PARALLEL_UPDATES = 0
-
-SERVICE_FORCE_UPDATE = "force_update"
-SERVICE_PULL_DEVICES = "pull_devices"
-
-SIGNAL_DELETE_ENTITY = "daikin_delete"
-SIGNAL_UPDATE_ENTITY = "daikin_update"
-
 COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select", "binary_sensor", "button"]
 
 
