@@ -6,6 +6,7 @@ import random
 from dataclasses import dataclass
 from datetime import datetime
 from datetime import timedelta
+from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
