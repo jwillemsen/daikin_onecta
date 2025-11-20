@@ -12,7 +12,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import DAIKIN_API
-from .const import DAIKIN_DEVICES
 from .const import DOMAIN
 from .device import DaikinOnectaDevice
 
@@ -24,6 +23,7 @@ class OnectaRuntimeData:
     """Runtime Data for Onecta integration."""
 
     coordinator: OnectaDataUpdateCoordinator
+    devices: {}
 
 
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
@@ -32,6 +32,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
         """Initialize."""
         self.options = config_entry.options
+        self._config_entry = config_entry
 
         super().__init__(
             hass,
@@ -52,7 +53,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
 
         daikin_api = self.hass.data[DOMAIN][DAIKIN_API]
-        devices = self.hass.data[DOMAIN][DAIKIN_DEVICES]
+        onecta_data: OnectaRuntimeData = self._config_entry.runtime_data
+        devices = onecta_data.devices
         scan_ignore_value = self.scan_ignore()
 
         if (datetime.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore_value:

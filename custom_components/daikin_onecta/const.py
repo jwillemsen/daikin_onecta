@@ -21,7 +21,6 @@ OAUTH2_TOKEN = "https://idp.onecta.daikineurope.com/v1/oidc/token"
 
 DAIKIN_DATA = "daikin_data"
 DAIKIN_API = "daikin_api"
-DAIKIN_DEVICES = "daikin_devices"
 DAIKIN_API_URL = "https://api.onecta.daikineurope.com"
 
 SCHEDULE_OFF = "off"

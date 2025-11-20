@@ -12,8 +12,6 @@ from homeassistant.core import callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DAIKIN_DEVICES
-from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
@@ -35,7 +33,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         "climateControlMainZone",
     }
 
-    for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
+    for dev_id, device in onecta_data.devices.items():
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]

@@ -23,8 +23,6 @@ from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DAIKIN_DEVICES
-from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import FANMODE_FIXED
 from .coordinator import OnectaRuntimeData
 
@@ -68,7 +66,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
-    for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
+    for dev_id, device in onecta_data.devices.items():
         modes = []
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {"climateControl"}

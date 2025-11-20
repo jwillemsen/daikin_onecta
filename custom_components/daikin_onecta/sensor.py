@@ -16,7 +16,6 @@ from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DAIKIN_API
-from .const import DAIKIN_DEVICES
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
@@ -75,7 +74,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
         "climateControl",
         "climateControlMainZone",
     }
-    for dev_id, device in hass.data[DAIKIN_DOMAIN][DAIKIN_DEVICES].items():
+    for dev_id, device in onecta_data.devices.items():
         # For each rate limit we provide a sensor
         for name in daikin_api.rate_limits.keys():
             sensors.append(DaikinLimitSensor(hass, device, coordinator, name))
