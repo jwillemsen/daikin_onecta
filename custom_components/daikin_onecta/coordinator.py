@@ -23,7 +23,7 @@ class OnectaRuntimeData:
     """Runtime Data for Onecta integration."""
 
     coordinator: OnectaDataUpdateCoordinator
-    devices: {}
+    devices: dict[str, Any]
 
 
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
