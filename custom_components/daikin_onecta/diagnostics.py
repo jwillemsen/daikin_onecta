@@ -9,6 +9,7 @@ from homeassistant.helpers.device_registry import DeviceEntry
 
 from .const import DAIKIN_API
 from .const import DOMAIN
+from .coordinator import OnectaRuntimeData
 
 
 async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, Any]:
