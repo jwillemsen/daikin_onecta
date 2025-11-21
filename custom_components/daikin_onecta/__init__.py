@@ -8,7 +8,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
 
-from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .coordinator import OnectaRuntimeData
 from .daikin_api import DaikinApi
