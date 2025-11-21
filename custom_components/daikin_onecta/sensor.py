@@ -6,6 +6,7 @@ from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.components.sensor import SensorStateClass
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
@@ -15,7 +16,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
@@ -61,7 +61,7 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
                 sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period))
 
 
-async def async_setup_entry(hass, config_entry, async_add_entities):
+async def async_setup_entry(hass, config_entry: ConfigEntry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
@@ -339,7 +339,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
-        daikin_api = self.config_entry.runtime_data.daikin_api
+        daikin_api = self._config_entry.runtime_data.daikin_api
         return daikin_api.rate_limits[self._limit_key]
 
     @property

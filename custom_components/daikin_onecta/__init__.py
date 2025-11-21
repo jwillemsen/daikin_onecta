@@ -36,7 +36,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
         raise ConfigEntryNotReady from err
 
     coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
-    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator, daikin_api=daikin_api)
+    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator, daikin_api=daikin_api, devices={})
 
     try:
         await coordinator.async_config_entry_first_refresh()
