@@ -27,7 +27,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     """Establish connection with Daikin."""
     implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(hass, config_entry)
 
-    hass.data.update({DOMAIN: {}})
     daikin_api = DaikinApi(hass, config_entry, implementation)
 
     try:
@@ -54,9 +53,6 @@ async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
     _LOGGER.debug("Unloading integration...")
     await asyncio.gather(*(hass.config_entries.async_forward_entry_unload(config_entry, component) for component in COMPONENT_TYPES))
-    hass.data[DOMAIN].clear()
-    if not hass.data[DOMAIN]:
-        hass.data.pop(DOMAIN)
     return True
 
 

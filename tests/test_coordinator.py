@@ -18,7 +18,6 @@ from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 def mock_hass():
     """Return a mocked HomeAssistant instance."""
     hass = MagicMock(spec=HomeAssistant)
-    hass.data = {DOMAIN: {}}
     return hass
 
 
