@@ -1,4 +1,4 @@
-"""Constants for Daikin Oncecta."""
+"""Constants for Daikin Onecta."""
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
