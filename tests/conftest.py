@@ -42,7 +42,7 @@ async def snapshot_platform_entities(
     snapshot: SnapshotAssertion,
     fixture_device_json,
 ) -> None:
-    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator={}, devices={})
+    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator=MagicMock(), devices={})
     """Snapshot entities and their states."""
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
