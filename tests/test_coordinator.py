@@ -7,31 +7,43 @@ from unittest.mock import patch
 
 import pytest
 from homeassistant.core import HomeAssistant
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 
-from custom_components.daikin_onecta.const import DAIKIN_API
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
+from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 
 
 @pytest.fixture
 def mock_hass():
     """Return a mocked HomeAssistant instance."""
     hass = MagicMock(spec=HomeAssistant)
-    hass.data = {DOMAIN: {DAIKIN_API: MagicMock()}}
-    hass.data[DOMAIN][DAIKIN_API].rate_limits = {"remaining_day": 100, "retry_after": 0}
     return hass
 
 
 @pytest.fixture
-def coordinator(mock_hass):
+def mock_config_entry() -> MockConfigEntry:
+    """Mock a config entry."""
+    entry = MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345")
+    entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator=MagicMock(), devices={})
+    return entry
+
+
+@pytest.fixture
+def coordinator(mock_hass, mock_config_entry):
     """Return a coordinator with test options."""
-    config_entry = MagicMock()
-    config_entry.options = {
+    config_entry = mock_config_entry
+    config_entry.add_to_hass(mock_hass)
+    options = {
         "low_scan_interval": 30,  # minutes
         "high_scan_interval": 10,  # minutes
         "high_scan_start": "07:00:00",
         "low_scan_start": "22:00:00",
     }
+    mock_hass.config_entries.async_update_entry(
+        config_entry,
+        data={**config_entry.data, **options},
+    )
     return OnectaDataUpdateCoordinator(mock_hass, config_entry)
 
 
@@ -97,14 +109,14 @@ class TestOnectaDataUpdateCoordinator:
             mock_random.randint.assert_called_once_with(60, 1800)
 
     @patch("custom_components.daikin_onecta.coordinator.datetime")
-    def test_rate_limit_exceeded(self, mock_datetime, coordinator, mock_hass):
+    def test_rate_limit_exceeded(self, mock_datetime, coordinator, mock_hass, mock_config_entry):
         """When rate limit is exceeded, interval = retry_after + fallback (60s)."""
         mock_now = datetime(2023, 1, 1, 23, 0, 0)
         mock_datetime.now.return_value = mock_now
         mock_datetime.strptime.side_effect = datetime.strptime
 
         # Simulate daily rate limit reached
-        mock_hass.data[DOMAIN][DAIKIN_API].rate_limits = {"remaining_day": 0, "retry_after": 3000}
+        mock_config_entry.runtime_data.daikin_api.rate_limits = {"remaining_day": 0, "retry_after": 3000}
 
         with patch.object(coordinator, "in_between", side_effect=[False, False]):
             expected = timedelta(seconds=3060)  # 3000 + 60

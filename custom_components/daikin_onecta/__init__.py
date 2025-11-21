@@ -8,8 +8,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
 
-from .const import DAIKIN_API
-from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .coordinator import OnectaRuntimeData
 from .daikin_api import DaikinApi
@@ -28,20 +26,18 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     """Establish connection with Daikin."""
     implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(hass, config_entry)
 
-    hass.data.update({DOMAIN: {}})
     daikin_api = DaikinApi(hass, config_entry, implementation)
-    hass.data[DOMAIN][DAIKIN_API] = daikin_api
 
     try:
         await daikin_api.async_get_access_token()
     except ClientError as err:
         raise ConfigEntryNotReady from err
 
-    coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
-    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator, devices={})
+    config_entry.runtime_data = OnectaRuntimeData(coordinator=None, daikin_api=daikin_api, devices={})
+    config_entry.runtime_data.coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
 
     try:
-        await coordinator.async_config_entry_first_refresh()
+        await config_entry.runtime_data.coordinator.async_config_entry_first_refresh()
     except Exception as ex:
         raise ConfigEntryNotReady(f"Config Not Ready: {ex}")
 
@@ -56,9 +52,6 @@ async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
     _LOGGER.debug("Unloading integration...")
     await asyncio.gather(*(hass.config_entries.async_forward_entry_unload(config_entry, component) for component in COMPONENT_TYPES))
-    hass.data[DOMAIN].clear()
-    if not hass.data[DOMAIN]:
-        hass.data.pop(DOMAIN)
     return True
 
 

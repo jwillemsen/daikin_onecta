@@ -12,8 +12,8 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
-from .const import DAIKIN_API
 from .const import DOMAIN
+from .daikin_api import DaikinApi
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -25,6 +25,7 @@ class OnectaRuntimeData:
 
     coordinator: OnectaDataUpdateCoordinator
     devices: dict[str, Any]
+    daikin_api: DaikinApi
 
 
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
@@ -53,9 +54,9 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self):
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
 
-        daikin_api = self.hass.data[DOMAIN][DAIKIN_API]
         onecta_data: OnectaRuntimeData = self._config_entry.runtime_data
         devices = onecta_data.devices
+        daikin_api = onecta_data.daikin_api
         scan_ignore_value = self.scan_ignore()
 
         if (datetime.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore_value:
@@ -104,7 +105,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
         # When we hit our daily rate limit we check the retry_after which is the amount of seconds
         # we have to wait before we can make a call again
-        daikin_api = hass.data[DOMAIN][DAIKIN_API]
+        daikin_api = self._config_entry.runtime_data.daikin_api
         if daikin_api.rate_limits["remaining_day"] == 0:
             scan_interval = max(daikin_api.rate_limits["retry_after"] + 60, scan_interval)
 

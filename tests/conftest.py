@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 from typing import Any
 from unittest.mock import AsyncMock
+from unittest.mock import MagicMock
 from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
@@ -16,6 +17,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
+from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
@@ -40,6 +42,7 @@ async def snapshot_platform_entities(
     snapshot: SnapshotAssertion,
     fixture_device_json,
 ) -> None:
+    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator=MagicMock(), devices={})
     """Snapshot entities and their states."""
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
