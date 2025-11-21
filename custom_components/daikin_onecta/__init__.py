@@ -33,11 +33,11 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     except ClientError as err:
         raise ConfigEntryNotReady from err
 
-    coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
-    config_entry.runtime_data = OnectaRuntimeData(coordinator=coordinator, daikin_api=daikin_api, devices={})
+    config_entry.runtime_data = OnectaRuntimeData(coordinator=None, daikin_api=daikin_api, devices={})
+    config_entry.runtime_data.coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
 
     try:
-        await coordinator.async_config_entry_first_refresh()
+        await config_entry.runtime_data.coordinator.async_config_entry_first_refresh()
     except Exception as ex:
         raise ConfigEntryNotReady(f"Config Not Ready: {ex}")
 
