@@ -7,14 +7,14 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.device_registry import DeviceEntry
 
-from .const import DAIKIN_API
 from .const import DOMAIN
 from .coordinator import OnectaRuntimeData
 
 
 async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, Any]:
     """Return diagnostics for a config entry."""
-    daikin_api = hass.data[DOMAIN][DAIKIN_API]
+    onecta_data: OnectaRuntimeData = config_entry.runtime_data
+    daikin_api = onecta_data.daikin_api
     return {
         "json_data": daikin_api.json_data,
         "rate_limits": daikin_api.rate_limits,
@@ -28,7 +28,7 @@ async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: Config
     data = {}
     dev_id = next(iter(device.identifiers))[1]
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    daikin_api = hass.data[DOMAIN][DAIKIN_API]
+    daikin_api = onecta_data.daikin_api
     daikin_device = onecta_data.devices.get(dev_id)
     if daikin_device is not None:
         data["device_json_data"] = daikin_device.daikin_data

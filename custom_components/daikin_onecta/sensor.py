@@ -15,7 +15,6 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DAIKIN_API
 from .const import DOMAIN as DAIKIN_DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
@@ -66,7 +65,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     """Set up Daikin climate based on config_entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
-    daikin_api = hass.data[DAIKIN_DOMAIN][DAIKIN_API]
+    daikin_api = onecta_data.daikin_api
     sensors = []
     supported_management_point_types = {
         "domesticHotWaterTank",
@@ -77,7 +76,7 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     for dev_id, device in onecta_data.devices.items():
         # For each rate limit we provide a sensor
         for name in daikin_api.rate_limits.keys():
-            sensors.append(DaikinLimitSensor(hass, device, coordinator, name))
+            sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, name))
 
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -306,6 +305,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
     def __init__(
         self,
         hass: HomeAssistant,
+        config_entry: ConfigEntry,
         device: DaikinOnectaDevice,
         coordinator,
         limit_key,
@@ -313,6 +313,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
         super().__init__(coordinator)
         self._hass = hass
+        self._config_entry = config_entry
         self._device = device
         self._limit_key = limit_key
         self._attr_has_entity_name = True
@@ -338,7 +339,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
-        daikin_api = self._hass.data[DAIKIN_DOMAIN][DAIKIN_API]
+        daikin_api = self.config_entry.runtime_data.daikin_api
         return daikin_api.rate_limits[self._limit_key]
 
     @property
