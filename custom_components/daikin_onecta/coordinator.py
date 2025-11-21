@@ -13,6 +13,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
 
 from .const import DOMAIN
+from .daikin_api import DaikinApi
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
