@@ -55,6 +55,7 @@ from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
+from custom_components.daikin_onecta.system_health import system_health_info
 
 
 async def test_homehub(
@@ -67,7 +68,9 @@ async def test_homehub(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "homehub")
 
-    assert hass.states.get("sensor.homehub_ratelimit_minute").state == "0"
+    info = await system_health_info(hass)
+
+    assert info["Minute"] == 0
 
 
 async def test_offlinedevice(
@@ -277,6 +280,11 @@ async def test_altherma_ratelimit(
 
             temp = hass.states.get("water_heater.altherma").attributes["temperature"]
 
+            info = await system_health_info(hass)
+
+            assert info["Minute"] == 0
+            assert info["Day"] == 0
+
             # Set the tank temperature to 58, but this should fail because of a rate limit
             await hass.services.async_call(
                 WATER_HEATER_DOMAIN,
@@ -417,6 +425,11 @@ async def test_water_heater(
             blocking=True,
         )
         await hass.async_block_till_done()
+
+        info = await system_health_info(hass)
+
+        assert info["Remaining minute"] == 4
+        assert info["Remaining day"] == 10
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
