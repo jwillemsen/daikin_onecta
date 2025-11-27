@@ -12,8 +12,6 @@ from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import ENABLED_DEFAULT
@@ -295,4 +293,3 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
                     res = cd.get("value")
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
         return res
-
