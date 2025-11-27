@@ -49,6 +49,8 @@ This integration supports the following configuration settings to reduce the amo
 - Low frequency period start time
 - Number of seconds that a data refresh is ignored after a command
 
+Current poll limits can be found under [system health](https://www.home-assistant.io/integrations/system_health/).
+
 # Reinstall
 
 When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
