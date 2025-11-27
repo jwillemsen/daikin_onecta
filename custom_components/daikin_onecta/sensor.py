@@ -74,10 +74,6 @@ async def async_setup_entry(hass, config_entry: ConfigEntry, async_add_entities)
         "climateControlMainZone",
     }
     for dev_id, device in onecta_data.devices.items():
-        # For each rate limit we provide a sensor
-        for name in daikin_api.rate_limits.keys():
-            sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, name))
-
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
@@ -300,49 +296,3 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
         return res
 
-
-class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
-    def __init__(
-        self,
-        hass: HomeAssistant,
-        config_entry: ConfigEntry,
-        device: DaikinOnectaDevice,
-        coordinator,
-        limit_key,
-    ) -> None:
-        _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
-        super().__init__(coordinator)
-        self._hass = hass
-        self._config_entry = config_entry
-        self._device = device
-        self._limit_key = limit_key
-        self._attr_has_entity_name = True
-        self._attr_icon = "mdi:information-outline"
-        self._attr_entity_category = EntityCategory.DIAGNOSTIC
-        self._attr_name = f"RateLimit {self._limit_key}"
-        self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
-        self._attr_state_class = SensorStateClass.MEASUREMENT
-        self.update_state()
-        _LOGGER.info(
-            "Device '%s' supports sensor '%s'",
-            device.name,
-            self._attr_name,
-        )
-
-    def update_state(self) -> None:
-        self._attr_device_info = self._device.device_info()
-        self._attr_native_value = self.sensor_value()
-
-    @callback
-    def _handle_coordinator_update(self) -> None:
-        self.update_state()
-        self.async_write_ha_state()
-
-    def sensor_value(self):
-        daikin_api = self._config_entry.runtime_data.daikin_api
-        return daikin_api.rate_limits[self._limit_key]
-
-    @property
-    def device_info(self):
-        """Return a device description for device registry."""
-        return self._device.device_info()
