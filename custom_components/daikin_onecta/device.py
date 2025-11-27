@@ -41,6 +41,7 @@ class DaikinOnectaDevice:
         mac_add = ""
         model = ""
         sw_vers = ""
+        serial_number = ""
         model_id = self.daikin_data.get("deviceModel")
         supported_management_point_types = {"gateway"}
         management_points = self.daikin_data.get("managementPoints", [])
@@ -56,6 +57,9 @@ class DaikinOnectaDevice:
                 fw = management_point.get("firmwareVersion")
                 if fw is not None:
                     sw_vers = fw["value"]
+                sn = management_point.get("serialNumber")
+                if sn is not None:
+                    serial_number = sn["value"]
 
         return {
             "identifiers": {
@@ -68,6 +72,7 @@ class DaikinOnectaDevice:
             "name": self.name,
             "model_id": model_id,
             "sw_version": sw_vers.replace("_", "."),
+            "serial_number": serial_number,
         }
 
     "Helper to merge the json, prevents invalid reads when other threads are reading the daikin_data"
