@@ -21,10 +21,12 @@ def async_register(hass: HomeAssistant, register: system_health.SystemHealthRegi
 
 async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
     """Get info for the info page."""
-    config_entry = hass.config_entries.async_entries(DOMAIN)[0]
+    entries = hass.config_entries.async_entries(DOMAIN)
+    if not entries:
+        return {"error": "Integration not configured"}
+    config_entry = entries[0]
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     daikin_api = onecta_data.daikin_api
-
     return {
         "Daikin API server": system_health.async_check_can_reach_url(hass, DAIKIN_API_URL + "/v1/gateway-devices"),
         "Daikin OAuth server": system_health.async_check_can_reach_url(hass, OAUTH2_AUTHORIZE),
