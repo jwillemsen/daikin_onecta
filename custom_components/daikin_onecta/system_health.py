@@ -10,6 +10,7 @@ from homeassistant.core import HomeAssistant
 from .const import DAIKIN_API_URL
 from .const import DOMAIN
 from .const import OAUTH2_AUTHORIZE
+from .coordinator import OnectaRuntimeData
 
 
 @callback

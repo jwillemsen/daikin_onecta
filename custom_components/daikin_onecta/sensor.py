@@ -63,7 +63,6 @@ async def async_setup_entry(hass, config_entry: ConfigEntry, async_add_entities)
     """Set up Daikin climate based on config_entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
-    daikin_api = onecta_data.daikin_api
     sensors = []
     supported_management_point_types = {
         "domesticHotWaterTank",
