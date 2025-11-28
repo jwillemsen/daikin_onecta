@@ -86,5 +86,18 @@
       "title": "The minute rate limit has been reached",
       "description": "You have reached your minute rate limit to the Daikin Cloud, don't make so many calls to your Daikin devices in one minute."
     }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API server",
+      "oauth2_status": "OAuth2 server",
+      "max_minute": "Maximum minute",
+      "max_day": "Maximum day",
+      "remaining_minute": "Remaining minute",
+      "remaining_day": "Remaining day",
+      "retry_after": "Retry after",
+      "ratelimit_reset": "Rate limit reset",
+      "oauth2_token_valid": "OAuth2 token valid"
+    }
   }
 }
