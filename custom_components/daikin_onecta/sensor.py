@@ -156,7 +156,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._period = period
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_name = f"{operation_mode.capitalize()} {periodName} {sensor_type.capitalize()} Consumption"
+        self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} {sensor_type.capitalize()} Consumption"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
         self._attr_icon = "mdi:fire"
@@ -167,7 +167,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_state_class = SensorStateClass.TOTAL_INCREASING
         self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
         self._sensor_type = sensor_type
-        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._embedded_id)}, "via_device": (DOMAIN, self._device.id)}
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._management_point_type)}, "via_device": (DOMAIN, self._device.id)}
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -242,12 +242,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._attr_has_entity_name = True
         self._attr_native_unit_of_measurement = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is None:
-            _LOGGER.info(
-                "No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING",
-                value,
-            )
-        else:
+        if sensor_settings is not None:
             self._attr_icon = sensor_settings[CONF_ICON]
             self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
@@ -257,12 +252,12 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{' '.join(readable)}"
+        self._attr_name = f"{mpt} {' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
         self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self._attr_device_info = {
-            "identifiers": {(DOMAIN, self._device.id + self._embedded_id)},
-            "name": self._device.name + " " + self._embedded_id,
+            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "name": self._device.name + " " + self._management_point_type,
             "via_device": (DOMAIN, self._device.id),
         }
         self.update_state()

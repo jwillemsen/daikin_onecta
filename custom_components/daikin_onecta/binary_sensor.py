@@ -79,14 +79,9 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._attr_device_class = None
         self._attr_state_class = None
         self._attr_has_entity_name = True
-        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._embedded_id)}, "via_device": (DOMAIN, self._device.id)}
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._management_point_type)}, "via_device": (DOMAIN, self._device.id)}
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is None:
-            _LOGGER.info(
-                "No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING",
-                value,
-            )
-        else:
+        if sensor_settings is not None:
             self._attr_icon = sensor_settings[CONF_ICON]
             self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
