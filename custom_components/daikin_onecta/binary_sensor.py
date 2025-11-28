@@ -11,10 +11,10 @@ from homeassistant.const import CONF_ICON
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
-from .const import DOMAIN
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -79,12 +79,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._attr_device_class = None
         self._attr_state_class = None
         self._attr_has_entity_name = True
-        self._attr_device_info = {
-            "identifiers": {
-                (DOMAIN, self._device.id + self._embedded_id)
-            },
-            "via_device": (DOMAIN, self._device.id)
-        }
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._embedded_id)}, "via_device": (DOMAIN, self._device.id)}
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is None:
             _LOGGER.info(

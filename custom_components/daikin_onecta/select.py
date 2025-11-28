@@ -5,8 +5,8 @@ from homeassistant.components.select import SelectEntity
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import SCHEDULE_OFF
 from .const import DOMAIN
+from .const import SCHEDULE_OFF
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -50,12 +50,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
         self._attr_icon = "mdi:calendar-clock"
-        self._attr_device_info = {
-            "identifiers": {
-                (DOMAIN, self._device.id + self._embedded_id)
-            },
-            "via_device": (DOMAIN, self._device.id)
-        }
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._embedded_id)}, "via_device": (DOMAIN, self._device.id)}
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",

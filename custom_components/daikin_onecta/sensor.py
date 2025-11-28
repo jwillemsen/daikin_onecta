@@ -14,12 +14,12 @@ from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
-from .const import DOMAIN
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -167,12 +167,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_state_class = SensorStateClass.TOTAL_INCREASING
         self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
         self._sensor_type = sensor_type
-        self._attr_device_info = {
-            "identifiers": {
-                (DOMAIN, self._device.id + self._embedded_id)
-            },
-            "via_device": (DOMAIN, self._device.id)
-        }
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._embedded_id)}, "via_device": (DOMAIN, self._device.id)}
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -266,11 +261,9 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
         self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self._attr_device_info = {
-            "identifiers": {
-                (DOMAIN, self._device.id + self._embedded_id)
-            },
+            "identifiers": {(DOMAIN, self._device.id + self._embedded_id)},
             "name": self._device.name + " " + self._embedded_id,
-            "via_device": (DOMAIN, self._device.id)
+            "via_device": (DOMAIN, self._device.id),
         }
         self.update_state()
         _LOGGER.info(

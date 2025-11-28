@@ -23,8 +23,8 @@ from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import FANMODE_FIXED
 from .const import DOMAIN
+from .const import FANMODE_FIXED
 from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
@@ -114,12 +114,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._setpoint}"
-        self._attr_device_info = {
-            "identifiers": {
-                (DOMAIN, self._device.id + self._embedded_id)
-            },
-            "via_device": (DOMAIN, self._device.id)
-        }
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._embedded_id)}, "via_device": (DOMAIN, self._device.id)}
         self.update_state()
 
     def update_state(self) -> None:
