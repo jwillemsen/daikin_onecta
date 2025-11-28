@@ -27,12 +27,13 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
         onecta_data: OnectaRuntimeData = config_entry.runtime_data
         daikin_api = onecta_data.daikin_api
         return {
-            "Daikin API server": system_health.async_check_can_reach_url(hass, DAIKIN_API_URL + "/v1/gateway-devices"),
-            "Daikin OAuth server": system_health.async_check_can_reach_url(hass, OAUTH2_AUTHORIZE),
-            "Minute": daikin_api.rate_limits["minute"],
-            "Day": daikin_api.rate_limits["day"],
-            "Remaining minute": daikin_api.rate_limits["remaining_minutes"],
-            "Remaining day": daikin_api.rate_limits["remaining_day"],
-            "Retry after": daikin_api.rate_limits["retry_after"],
-            "Ratelimit reset": daikin_api.rate_limits["ratelimit_reset"],
+            "api_status": system_health.async_check_can_reach_url(hass, DAIKIN_API_URL + "/v1/gateway-devices"),
+            "oauth2_status": system_health.async_check_can_reach_url(hass, OAUTH2_AUTHORIZE),
+            "max_minute": daikin_api.rate_limits["minute"],
+            "max_day": daikin_api.rate_limits["day"],
+            "remaining_minute": daikin_api.rate_limits["remaining_minutes"],
+            "remaining_day": daikin_api.rate_limits["remaining_day"],
+            "retry_after": daikin_api.rate_limits["retry_after"],
+            "ratelimit_reset": daikin_api.rate_limits["ratelimit_reset"],
+            "oauth2_token_valid": daikin_api.session.valid_token,
         }

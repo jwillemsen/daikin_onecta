@@ -70,7 +70,7 @@ async def test_homehub(
 
     info = await system_health_info(hass)
 
-    assert info["Minute"] == 0
+    assert info["max_minute"] == 0
 
 
 async def test_offlinedevice(
@@ -282,8 +282,8 @@ async def test_altherma_ratelimit(
 
             info = await system_health_info(hass)
 
-            assert info["Minute"] == 0
-            assert info["Day"] == 0
+            assert info["max_minute"] == 0
+            assert info["max_day"] == 0
 
             # Set the tank temperature to 58, but this should fail because of a rate limit
             await hass.services.async_call(
@@ -428,8 +428,8 @@ async def test_water_heater(
 
         info = await system_health_info(hass)
 
-        assert info["Remaining minute"] == 4
-        assert info["Remaining day"] == 10
+        assert info["remaining_minute"] == 4
+        assert info["remaining_day"] == 10
 
         assert len(responses.calls) == 1
         assert responses.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
