@@ -39,17 +39,17 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         _LOGGER.info("DaikinScheduleSelect '%s' '%s' '%s'", embedded_id, management_point_type, value)
         super().__init__(coordinator)
         self._device = device
-        self._embedded_id = embedded_id
         self._management_point_type = management_point_type
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._management_point_type)}, "via_device": (DOMAIN, self._device.id)}
+        self._embedded_id = embedded_id
         self._value = value
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
+        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_unique_id = f"{self._device.id}_{self._value}"
         self._attr_icon = "mdi:calendar-clock"
-        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._management_point_type)}, "via_device": (DOMAIN, self._device.id)}
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
