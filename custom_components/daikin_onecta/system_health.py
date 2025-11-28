@@ -35,5 +35,5 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
             "remaining_day": daikin_api.rate_limits["remaining_day"],
             "retry_after": daikin_api.rate_limits["retry_after"],
             "ratelimit_reset": daikin_api.rate_limits["ratelimit_reset"],
-            "oauth2_token_valid": daikin_api.session.valid_token
+            "oauth2_token_valid": daikin_api.session.valid_token,
         }
