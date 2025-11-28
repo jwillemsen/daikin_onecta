@@ -19,6 +19,7 @@ from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
+from .const import DOMAIN
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -155,7 +156,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._period = period
         periodName = SENSOR_PERIODS[period]
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_name = f"{mpt} {operation_mode.capitalize()} {periodName} {sensor_type.capitalize()} Consumption"
+        self._attr_name = f"{operation_mode.capitalize()} {periodName} {sensor_type.capitalize()} Consumption"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
         self._attr_icon = "mdi:fire"
@@ -166,6 +167,12 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_state_class = SensorStateClass.TOTAL_INCREASING
         self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
         self._sensor_type = sensor_type
+        self._attr_device_info = {
+            "identifiers": {
+                (DOMAIN, self._device.id + self._embedded_id)
+            },
+            "via_device": (DOMAIN, self._device.id)
+        }
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -176,7 +183,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 
     def update_state(self) -> None:
         self._attr_native_value = self.sensor_value()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:
@@ -256,9 +262,16 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
         self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
+        self._attr_device_info = {
+            "identifiers": {
+                (DOMAIN, self._device.id + self._embedded_id)
+            },
+            "name": self._device.name + " " + self._embedded_id,
+            "via_device": (DOMAIN, self._device.id)
+        }
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -269,7 +282,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
     def update_state(self) -> None:
         self._attr_native_value = self.sensor_value()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:

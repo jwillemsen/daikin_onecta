@@ -12,6 +12,7 @@ from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .coordinator import OnectaRuntimeData
+from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -51,6 +52,12 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}"
         self._management_point_type = management_point_type
+        self._attr_device_info = {
+            "identifiers": {
+                (DOMAIN, self._device.id + self._embedded_id)
+            },
+            "via_device": (DOMAIN, self._device.id)
+        }
         self.update_state()
         if self.supported_features & WaterHeaterEntityFeature.TARGET_TEMPERATURE:
             _LOGGER.debug("Device '%s' tank temperature is settable", device.name)
@@ -64,7 +71,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_max_temp = self.get_max_temp()
         self._attr_operation_list = self.get_operation_list()
         self._attr_current_operation = self.get_current_operation()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:

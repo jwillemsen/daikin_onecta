@@ -15,6 +15,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
+from .const import DOMAIN
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -101,8 +102,14 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
+        self._attr_device_info = {
+            "identifiers": {
+                (DOMAIN, self._device.id + self._embedded_id)
+            },
+            "via_device": (DOMAIN, self._device.id)
+        }
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -113,7 +120,6 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     def update_state(self) -> None:
         self._switch_state = self.sensor_value()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:
