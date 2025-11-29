@@ -55704,7 +55704,7 @@
     'state': 'heat',
   })
 # ---
-# name: test_climate_floorheatingairflow[select.mock_title_schedule-entry]
+# name: test_climate_floorheatingairflow[select.laurens_climatecontrol_schedule-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -55724,69 +55724,7 @@
     'disabled_by': None,
     'domain': 'select',
     'entity_category': None,
-    'entity_id': 'select.mock_title_schedule',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:calendar-clock',
-    'original_name': 'Schedule',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_schedule',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[select.mock_title_schedule-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco climateControl Schedule',
-      'icon': 'mdi:calendar-clock',
-      'options': list([
-        '0',
-        '1',
-        '2',
-        'off',
-      ]),
-    }),
-    'context': <ANY>,
-    'entity_id': 'select.mock_title_schedule',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_climate_floorheatingairflow[select.mock_title_schedule_2-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': dict({
-      'options': list([
-        '0',
-        '1',
-        '2',
-        'off',
-      ]),
-    }),
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'select',
-    'entity_category': None,
-    'entity_id': 'select.mock_title_schedule_2',
+    'entity_id': 'select.laurens_climatecontrol_schedule',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -55808,7 +55746,7 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_floorheatingairflow[select.mock_title_schedule_2-state]
+# name: test_climate_floorheatingairflow[select.laurens_climatecontrol_schedule-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Laurens climateControl Schedule',
@@ -55821,7 +55759,69 @@
       ]),
     }),
     'context': <ANY>,
-    'entity_id': 'select.mock_title_schedule_2',
+    'entity_id': 'select.laurens_climatecontrol_schedule',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_floorheatingairflow[select.woonkamer_airco_climatecontrol_schedule-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '0',
+        '1',
+        '2',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': None,
+    'entity_id': 'select.woonkamer_airco_climatecontrol_schedule',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:calendar-clock',
+    'original_name': 'Schedule',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_schedule',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_floorheatingairflow[select.woonkamer_airco_climatecontrol_schedule-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Woonkamer airco climateControl Schedule',
+      'icon': 'mdi:calendar-clock',
+      'options': list([
+        '0',
+        '1',
+        '2',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.woonkamer_airco_climatecontrol_schedule',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -58566,7 +58566,7 @@
     'state': '00-',
   })
 # ---
-# name: test_climate_floorheatingairflow[switch.mock_title_econo_mode-entry]
+# name: test_climate_floorheatingairflow[switch.laurens_climatecontrol_econo_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -58579,56 +58579,7 @@
     'disabled_by': None,
     'domain': 'switch',
     'entity_category': None,
-    'entity_id': 'switch.mock_title_econo_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:leaf',
-    'original_name': 'Econo Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_econoMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[switch.mock_title_econo_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco climateControl Econo Mode',
-      'icon': 'mdi:leaf',
-    }),
-    'context': <ANY>,
-    'entity_id': 'switch.mock_title_econo_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_climate_floorheatingairflow[switch.mock_title_econo_mode_2-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'switch',
-    'entity_category': None,
-    'entity_id': 'switch.mock_title_econo_mode_2',
+    'entity_id': 'switch.laurens_climatecontrol_econo_mode',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58650,21 +58601,21 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_floorheatingairflow[switch.mock_title_econo_mode_2-state]
+# name: test_climate_floorheatingairflow[switch.laurens_climatecontrol_econo_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Laurens climateControl Econo Mode',
       'icon': 'mdi:leaf',
     }),
     'context': <ANY>,
-    'entity_id': 'switch.mock_title_econo_mode_2',
+    'entity_id': 'switch.laurens_climatecontrol_econo_mode',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_climate_floorheatingairflow[switch.mock_title_streamer_mode-entry]
+# name: test_climate_floorheatingairflow[switch.laurens_climatecontrol_streamer_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -58677,56 +58628,7 @@
     'disabled_by': None,
     'domain': 'switch',
     'entity_category': None,
-    'entity_id': 'switch.mock_title_streamer_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'hass:air-filter',
-    'original_name': 'Streamer Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_streamerMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[switch.mock_title_streamer_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco climateControl Streamer Mode',
-      'icon': 'hass:air-filter',
-    }),
-    'context': <ANY>,
-    'entity_id': 'switch.mock_title_streamer_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_climate_floorheatingairflow[switch.mock_title_streamer_mode_2-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'switch',
-    'entity_category': None,
-    'entity_id': 'switch.mock_title_streamer_mode_2',
+    'entity_id': 'switch.laurens_climatecontrol_streamer_mode',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58748,14 +58650,112 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_floorheatingairflow[switch.mock_title_streamer_mode_2-state]
+# name: test_climate_floorheatingairflow[switch.laurens_climatecontrol_streamer_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Laurens climateControl Streamer Mode',
       'icon': 'hass:air-filter',
     }),
     'context': <ANY>,
-    'entity_id': 'switch.mock_title_streamer_mode_2',
+    'entity_id': 'switch.laurens_climatecontrol_streamer_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_floorheatingairflow[switch.woonkamer_airco_climatecontrol_econo_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': None,
+    'entity_id': 'switch.woonkamer_airco_climatecontrol_econo_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:leaf',
+    'original_name': 'Econo Mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_econoMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_floorheatingairflow[switch.woonkamer_airco_climatecontrol_econo_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Woonkamer airco climateControl Econo Mode',
+      'icon': 'mdi:leaf',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.woonkamer_airco_climatecontrol_econo_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_floorheatingairflow[switch.woonkamer_airco_climatecontrol_streamer_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'switch',
+    'entity_category': None,
+    'entity_id': 'switch.woonkamer_airco_climatecontrol_streamer_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'hass:air-filter',
+    'original_name': 'Streamer Mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_streamerMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_floorheatingairflow[switch.woonkamer_airco_climatecontrol_streamer_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Woonkamer airco climateControl Streamer Mode',
+      'icon': 'hass:air-filter',
+    }),
+    'context': <ANY>,
+    'entity_id': 'switch.woonkamer_airco_climatecontrol_streamer_mode',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

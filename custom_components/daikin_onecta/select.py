@@ -36,7 +36,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     """Daikin Schedule Select class."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
-        _LOGGER.info("DaikinScheduleSelect '%s' '%s' '%s'", embedded_id, management_point_type, value)
+        _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = management_point_type
