@@ -87,7 +87,6 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-        mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{' '.join(readable)}"

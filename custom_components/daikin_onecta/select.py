@@ -43,7 +43,6 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id + self._management_point_type)}, "via_device": (DOMAIN, self._device.id)}
         self._embedded_id = embedded_id
         self._value = value
-        mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_has_entity_name = True

@@ -55704,7 +55704,7 @@
     'state': 'heat',
   })
 # ---
-# name: test_climate_floorheatingairflow[select.laurens_climatecontrol_schedule-entry]
+# name: test_climate_floorheatingairflow[select.mock_title_schedule-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -55724,69 +55724,7 @@
     'disabled_by': None,
     'domain': 'select',
     'entity_category': None,
-    'entity_id': 'select.laurens_climatecontrol_schedule',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:calendar-clock',
-    'original_name': 'Schedule',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_schedule',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[select.laurens_climatecontrol_schedule-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Laurens climateControl Schedule',
-      'icon': 'mdi:calendar-clock',
-      'options': list([
-        '0',
-        '1',
-        '2',
-        'off',
-      ]),
-    }),
-    'context': <ANY>,
-    'entity_id': 'select.laurens_climatecontrol_schedule',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_climate_floorheatingairflow[select.woonkamer_airco_climatecontrol_schedule-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': dict({
-      'options': list([
-        '0',
-        '1',
-        '2',
-        'off',
-      ]),
-    }),
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'select',
-    'entity_category': None,
-    'entity_id': 'select.woonkamer_airco_climatecontrol_schedule',
+    'entity_id': 'select.mock_title_schedule',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -55808,7 +55746,7 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_floorheatingairflow[select.woonkamer_airco_climatecontrol_schedule-state]
+# name: test_climate_floorheatingairflow[select.mock_title_schedule-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Woonkamer airco climateControl Schedule',
@@ -55821,7 +55759,69 @@
       ]),
     }),
     'context': <ANY>,
-    'entity_id': 'select.woonkamer_airco_climatecontrol_schedule',
+    'entity_id': 'select.mock_title_schedule',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_floorheatingairflow[select.mock_title_schedule_2-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '0',
+        '1',
+        '2',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': None,
+    'entity_id': 'select.mock_title_schedule_2',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:calendar-clock',
+    'original_name': 'Schedule',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_schedule',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_floorheatingairflow[select.mock_title_schedule_2-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Laurens climateControl Schedule',
+      'icon': 'mdi:calendar-clock',
+      'options': list([
+        '0',
+        '1',
+        '2',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.mock_title_schedule_2',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -90817,7 +90817,7 @@
     'state': '1',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_firmware_update_supported-entry]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_holiday_mode_active-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -90830,56 +90830,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_firmware_update_supported',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Is Firmware Update Supported',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'gateway_isfirmwareupdatesupported',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_isFirmwareUpdateSupported',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_firmware_update_supported-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Is Firmware Update Supported',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_firmware_update_supported',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'on',
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_holiday_mode_active-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_holiday_mode_active',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_holiday_mode_active',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -90901,21 +90852,21 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_holiday_mode_active-state]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Altherma climateControl Is Holiday Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_holiday_mode_active',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_holiday_mode_active',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_holiday_mode_active_2-entry]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_emergency_state-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -90928,56 +90879,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_holiday_mode_active_2',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Is Holiday Mode Active',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_isholidaymodeactive',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isHolidayModeActive',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_holiday_mode_active_2-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma domesticHotWaterTank Is Holiday Mode Active',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_holiday_mode_active_2',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_emergency_state-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_emergency_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_emergency_state',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -90999,7 +90901,7 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_emergency_state-state]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_emergency_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
@@ -91007,14 +90909,14 @@
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_emergency_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_emergency_state',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_emergency_state_2-entry]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_error_state-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -91027,57 +90929,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_emergency_state_2',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Is In Emergency State',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_isinemergencystate',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isInEmergencyState',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_emergency_state_2-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'device_class': 'problem',
-      'friendly_name': 'Altherma domesticHotWaterTank Is In Emergency State',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_emergency_state_2',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_error_state-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_error_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_error_state',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -91099,7 +90951,7 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_error_state-state]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_error_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
@@ -91107,14 +90959,14 @@
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_error_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_error_state',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_error_state_2-entry]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_installer_state-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -91127,57 +90979,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_error_state_2',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Is In Error State',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_isinerrorstate',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isInErrorState',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_error_state_2-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'device_class': 'problem',
-      'friendly_name': 'Altherma domesticHotWaterTank Is In Error State',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_error_state_2',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_installer_state-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_installer_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_installer_state',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -91199,21 +91001,21 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_installer_state-state]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Altherma climateControl Is In Installer State',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_installer_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_installer_state',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_installer_state_2-entry]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_warning_state-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -91226,56 +91028,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_installer_state_2',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Is In Installer State',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_isininstallerstate',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isInInstallerState',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_installer_state_2-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma domesticHotWaterTank Is In Installer State',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_installer_state_2',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_warning_state-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_warning_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_warning_state',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -91297,7 +91050,7 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_warning_state-state]
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
@@ -91305,14 +91058,14 @@
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_warning_state',
+    'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_warning_state',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_warning_state_2-entry]
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -91325,7 +91078,205 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_in_warning_state_2',
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is Holiday Mode Active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'domestichotwatertank_isholidaymodeactive',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isHolidayModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma domesticHotWaterTank Is Holiday Mode Active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_emergency_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_emergency_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is In Emergency State',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'domestichotwatertank_isinemergencystate',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isInEmergencyState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_emergency_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Altherma domesticHotWaterTank Is In Emergency State',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_emergency_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is In Error State',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'domestichotwatertank_isinerrorstate',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Altherma domesticHotWaterTank Is In Error State',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_installer_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is In Installer State',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'domestichotwatertank_isininstallerstate',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_isInInstallerState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma domesticHotWaterTank Is In Installer State',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_installer_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_warning_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_warning_state',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -91347,7 +91298,7 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_in_warning_state_2-state]
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_in_warning_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
@@ -91355,14 +91306,14 @@
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_in_warning_state_2',
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_warning_state',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_powerful_mode_active-entry]
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -91375,7 +91326,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.mock_title_is_powerful_mode_active',
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -91397,14 +91348,63 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[binary_sensor.mock_title_is_powerful_mode_active-state]
+# name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'friendly_name': 'Altherma domesticHotWaterTank Is Powerful Mode Active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.mock_title_is_powerful_mode_active',
+    'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_gateway_is_firmware_update_supported-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.altherma_gateway_is_firmware_update_supported',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is Firmware Update Supported',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'gateway_isfirmwareupdatesupported',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_isFirmwareUpdateSupported',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_water_heater[binary_sensor.altherma_gateway_is_firmware_update_supported-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma gateway Is Firmware Update Supported',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.altherma_gateway_is_firmware_update_supported',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

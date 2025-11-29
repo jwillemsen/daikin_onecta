@@ -157,7 +157,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_has_entity_name = True
         self._period = period
         periodName = SENSOR_PERIODS[period]
-        mpt = management_point_type[0].upper() + management_point_type[1:]
         self._attr_name = f"{operation_mode.capitalize()} {periodName} {sensor_type.capitalize()} Consumption"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
         self._attr_entity_category = None
@@ -254,7 +253,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
             self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-        mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{' '.join(readable)}"
