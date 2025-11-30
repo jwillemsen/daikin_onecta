@@ -51,5 +51,55 @@
       "title": "The minute rate limit has been reached",
       "description": "You have reached your minute rate limit to the Daikin Cloud, don't make so many calls to your Daikin devices in one minute."
     }
+  },
+  "entity": {
+    "binary_sensor": {
+      "climatecontrol_isinwarningstate": {
+        "name": "Climate Control Warning State"
+      }
+    },
+    "climate": {
+      "daikin_onecta": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Quiet",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Swing",
+              "floorheatingairflow": "FloorHeating Airflow",
+              "windnice": "Comfort Airflow"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Swing"
+            }
+          }
+        }
+      }
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API server",
+      "oauth2_status": "OAuth2 server",
+      "max_minute": "Maximum minute",
+      "max_day": "Maximum day",
+      "remaining_minute": "Remaining minute",
+      "remaining_day": "Remaining day",
+      "retry_after": "Retry after",
+      "ratelimit_reset": "Rate limit reset",
+      "oauth2_token_valid": "OAuth2 token valid"
+    }
   }
 }
