@@ -77,33 +77,36 @@ async def async_setup_entry(hass, config_entry: ConfigEntry, async_add_entities)
             management_point_type = management_point["managementPointType"]
             embedded_id = management_point["embeddedId"]
 
-            # For all values provide a "value" we provide a sensor
             for value in management_point:
                 vv = management_point.get(value)
-                if isinstance(vv, dict):
-                    value_value = vv.get("value")
-                    settable = vv.get("settable", False)
-                    values = vv.get("values", [])
-                    if value_value is not None and settable is True and "on" in values and "off" in values:
-                        # Don't create when it is settable and values on/off, that is a switch
-                        pass
-                    elif len(values) == 0 and value_value is not None and isinstance(value_value, bool):
-                        # We don't have mutiple values and the value is a bool, this is a binary sensor
-                        pass
-                    elif value == "operationMode" and management_point_type in supported_management_point_types:
-                        # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
-                        pass
-                    elif value_value is not None and not isinstance(value_value, dict):
-                        sensors.append(
-                            DaikinValueSensor(
-                                device,
-                                coordinator,
-                                embedded_id,
-                                management_point_type,
-                                None,
-                                value,
+                # Only when we have a value sensor mapping we create a sensor
+                sensor_settings = VALUE_SENSOR_MAPPING.get(value)
+                if sensor_settings is not None:
+                    # When there is a value dict
+                    if isinstance(vv, dict):
+                        value_value = vv.get("value")
+                        settable = vv.get("settable", False)
+                        values = vv.get("values", [])
+                        if value_value is not None and settable is True and "on" in values and "off" in values:
+                            # Don't create when it is settable and values on/off, that is a switch
+                            pass
+                        elif len(values) == 0 and value_value is not None and isinstance(value_value, bool):
+                            # We don't have mutiple values and the value is a bool, this is a binary sensor
+                            pass
+                        elif value == "operationMode" and management_point_type in supported_management_point_types:
+                            # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
+                            pass
+                        elif value_value is not None and not isinstance(value_value, dict):
+                            sensors.append(
+                                DaikinValueSensor(
+                                    device,
+                                    coordinator,
+                                    embedded_id,
+                                    management_point_type,
+                                    None,
+                                    value,
+                                )
                             )
-                        )
 
             sd = management_point.get("sensoryData")
             if sd is not None:
