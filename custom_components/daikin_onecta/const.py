@@ -213,14 +213,6 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
     },
-    "iconId": {
-        CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-    },
     "firmwareVersion": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,

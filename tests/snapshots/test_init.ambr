@@ -7435,55 +7435,6 @@
     'state': '1252',
   })
 # ---
-# name: test_altherma[sensor.altherma_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '8',
-  })
-# ---
 # name: test_altherma[sensor.altherma_climatecontrol_leaving_water_temperature-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -7973,55 +7924,6 @@
     'state': '515',
   })
 # ---
-# name: test_altherma[sensor.altherma_domestichotwatertank_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_domestichotwatertank_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '9',
-  })
-# ---
 # name: test_altherma[sensor.altherma_domestichotwatertank_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -8224,55 +8126,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '3.2.1',
-  })
-# ---
-# name: test_altherma[sensor.altherma_gateway_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'gateway_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_gateway_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '3',
   })
 # ---
 # name: test_altherma[sensor.altherma_gateway_ip_address-entry]
@@ -8721,55 +8574,6 @@
     'state': '3608726-74',
   })
 # ---
-# name: test_altherma[sensor.altherma_indoorunithydro_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_indoorunithydro_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'indoorunithydro_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_indoorUnitHydro_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_indoorunithydro_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma IndoorUnitHydro Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_indoorunithydro_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '4',
-  })
-# ---
 # name: test_altherma[sensor.altherma_indoorunithydro_model_info-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -8915,55 +8719,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '0221',
-  })
-# ---
-# name: test_altherma[sensor.altherma_outdoorunit_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_outdoorunit_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'outdoorunit_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_outdoorUnit_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_outdoorunit_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma OutdoorUnit Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_outdoorunit_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '5',
   })
 # ---
 # name: test_altherma[sensor.altherma_outdoorunit_model_info-entry]
@@ -9209,55 +8964,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '6.3.0',
-  })
-# ---
-# name: test_altherma[sensor.altherma_userinterface_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_userinterface_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'userinterface_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_userInterface_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_userinterface_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma UserInterface Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_userinterface_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '6',
   })
 # ---
 # name: test_altherma[sensor.altherma_userinterface_micon_id-entry]
@@ -9798,55 +9504,6 @@
     'state': '11.5',
   })
 # ---
-# name: test_altherma[sensor.johnny_maaike_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.johnny_maaike_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma[sensor.johnny_maaike_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -9894,54 +9551,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Johnny&Maaike',
-  })
-# ---
-# name: test_altherma[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma[sensor.johnny_maaike_climatecontrol_outdoor_temperature-entry]
@@ -11140,55 +10749,6 @@
     'state': '18.7',
   })
 # ---
-# name: test_altherma[sensor.linde_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.linde_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma[sensor.linde_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -11236,54 +10796,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Linde',
-  })
-# ---
-# name: test_altherma[sensor.linde_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.linde_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma[sensor.linde_climatecontrol_outdoor_temperature-entry]
@@ -12482,55 +11994,6 @@
     'state': '31.5',
   })
 # ---
-# name: test_altherma[sensor.sanne_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.sanne_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma[sensor.sanne_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -12578,54 +12041,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Sanne',
-  })
-# ---
-# name: test_altherma[sensor.sanne_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.sanne_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma[sensor.sanne_climatecontrol_outdoor_temperature-entry]
@@ -13824,55 +13239,6 @@
     'state': '22.5',
   })
 # ---
-# name: test_altherma[sensor.werkkamer_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.werkkamer_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma[sensor.werkkamer_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -13920,54 +13286,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Werkkamer',
-  })
-# ---
-# name: test_altherma[sensor.werkkamer_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.werkkamer_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma[sensor.werkkamer_climatecontrol_outdoor_temperature-entry]
@@ -20287,55 +19605,6 @@
     'state': '1252',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.altherma_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '8',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.altherma_climatecontrol_leaving_water_temperature-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -20825,55 +20094,6 @@
     'state': '515',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '9',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -21076,55 +20296,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '3.2.1',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_gateway_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'gateway_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_gateway_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '3',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_gateway_ip_address-entry]
@@ -21573,55 +20744,6 @@
     'state': '3608726-74',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.altherma_indoorunithydro_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_indoorunithydro_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'indoorunithydro_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_indoorUnitHydro_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_indoorunithydro_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma IndoorUnitHydro Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_indoorunithydro_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '4',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.altherma_indoorunithydro_model_info-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -21767,55 +20889,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '0221',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_outdoorunit_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_outdoorunit_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'outdoorunit_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_outdoorUnit_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_outdoorunit_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma OutdoorUnit Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_outdoorunit_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '5',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_outdoorunit_model_info-entry]
@@ -22061,55 +21134,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '6.3.0',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_userinterface_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_userinterface_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'userinterface_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_userInterface_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_userinterface_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma UserInterface Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_userinterface_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '6',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_userinterface_micon_id-entry]
@@ -22650,55 +21674,6 @@
     'state': '11.5',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -22746,54 +21721,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Johnny&Maaike',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_outdoor_temperature-entry]
@@ -23992,55 +22919,6 @@
     'state': '18.7',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.linde_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.linde_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.linde_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -24088,54 +22966,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Linde',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.linde_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.linde_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.linde_climatecontrol_outdoor_temperature-entry]
@@ -25334,55 +24164,6 @@
     'state': '31.5',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.sanne_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -25430,54 +24211,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Sanne',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.sanne_climatecontrol_outdoor_temperature-entry]
@@ -26676,55 +25409,6 @@
     'state': '22.5',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -26772,54 +25456,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Werkkamer',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_outdoor_temperature-entry]
@@ -44598,55 +43234,6 @@
     'state': '1252',
   })
 # ---
-# name: test_climate[sensor.altherma_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '8',
-  })
-# ---
 # name: test_climate[sensor.altherma_climatecontrol_leaving_water_temperature-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -45136,55 +43723,6 @@
     'state': '515',
   })
 # ---
-# name: test_climate[sensor.altherma_domestichotwatertank_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'domestichotwatertank_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_domestichotwatertank_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '9',
-  })
-# ---
 # name: test_climate[sensor.altherma_domestichotwatertank_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -45387,55 +43925,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '3.2.1',
-  })
-# ---
-# name: test_climate[sensor.altherma_gateway_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'gateway_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_gateway_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '3',
   })
 # ---
 # name: test_climate[sensor.altherma_gateway_ip_address-entry]
@@ -45884,55 +44373,6 @@
     'state': '3608726-74',
   })
 # ---
-# name: test_climate[sensor.altherma_indoorunithydro_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_indoorunithydro_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'indoorunithydro_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_indoorUnitHydro_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_indoorunithydro_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma IndoorUnitHydro Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_indoorunithydro_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '4',
-  })
-# ---
 # name: test_climate[sensor.altherma_indoorunithydro_model_info-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -46078,55 +44518,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '0221',
-  })
-# ---
-# name: test_climate[sensor.altherma_outdoorunit_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_outdoorunit_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'outdoorunit_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_outdoorUnit_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_outdoorunit_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma OutdoorUnit Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_outdoorunit_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '5',
   })
 # ---
 # name: test_climate[sensor.altherma_outdoorunit_model_info-entry]
@@ -46372,55 +44763,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '6.3.0',
-  })
-# ---
-# name: test_climate[sensor.altherma_userinterface_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_userinterface_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'userinterface_iconid',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_userInterface_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_userinterface_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma UserInterface Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_userinterface_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '6',
   })
 # ---
 # name: test_climate[sensor.altherma_userinterface_micon_id-entry]
@@ -46961,55 +45303,6 @@
     'state': '11.5',
   })
 # ---
-# name: test_climate[sensor.johnny_maaike_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.johnny_maaike_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_climate[sensor.johnny_maaike_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -47057,54 +45350,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Johnny&Maaike',
-  })
-# ---
-# name: test_climate[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.johnny_maaike_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_climate[sensor.johnny_maaike_climatecontrol_outdoor_temperature-entry]
@@ -48303,55 +46548,6 @@
     'state': '18.7',
   })
 # ---
-# name: test_climate[sensor.linde_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.linde_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_climate[sensor.linde_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -48399,54 +46595,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Linde',
-  })
-# ---
-# name: test_climate[sensor.linde_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.linde_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_climate[sensor.linde_climatecontrol_outdoor_temperature-entry]
@@ -49645,55 +47793,6 @@
     'state': '31.5',
   })
 # ---
-# name: test_climate[sensor.sanne_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.sanne_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_climate[sensor.sanne_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -49741,54 +47840,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Sanne',
-  })
-# ---
-# name: test_climate[sensor.sanne_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.sanne_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_climate[sensor.sanne_climatecontrol_outdoor_temperature-entry]
@@ -50987,55 +49038,6 @@
     'state': '22.5',
   })
 # ---
-# name: test_climate[sensor.werkkamer_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.werkkamer_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_climate[sensor.werkkamer_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -51083,54 +49085,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Werkkamer',
-  })
-# ---
-# name: test_climate[sensor.werkkamer_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.werkkamer_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_climate[sensor.werkkamer_climatecontrol_outdoor_temperature-entry]
@@ -56219,55 +54173,6 @@
     'state': '23.3',
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.laurens_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Laurens ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.laurens_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -56315,54 +54220,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Laurens',
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.laurens_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Laurens ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.laurens_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'on',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_outdoor_temperature-entry]
@@ -57561,55 +55418,6 @@
     'state': '89.5',
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_icon_id-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.woonkamer_airco_climatecontrol_icon_id',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Icon Id',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_iconid',
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_None_iconId',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_icon_id-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco ClimateControl Icon Id',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.woonkamer_airco_climatecontrol_icon_id',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '15',
-  })
-# ---
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_name-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -57657,54 +55465,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'Woonkamer airco',
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_outdoor_silent_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.woonkamer_airco_climatecontrol_outdoor_silent_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Outdoor Silent Mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_outdoorsilentmode',
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_None_outdoorSilentMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_outdoor_silent_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco ClimateControl Outdoor Silent Mode',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.woonkamer_airco_climatecontrol_outdoor_silent_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_outdoor_temperature-entry]
@@ -78887,54 +76647,6 @@
     'state': '40',
   })
 # ---
-# name: test_gas[sensor.my_living_room_gateway_firmware_update_status-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.my_living_room_gateway_firmware_update_status',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Firmware Update Status',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'gateway_firmwareupdatestatus',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_firmwareUpdateStatus',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_gas[sensor.my_living_room_gateway_firmware_update_status-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'My Living Room Gateway Firmware Update Status',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.my_living_room_gateway_firmware_update_status',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'in-progress',
-  })
-# ---
 # name: test_gas[sensor.my_living_room_gateway_firmware_version-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -80268,54 +77980,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.ndj_climatecontrol_room_temperature',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '23',
-  })
-# ---
-# name: test_holidaymode[sensor.ndj_climatecontrol_target_temperature-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.ndj_climatecontrol_target_temperature',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Target Temperature',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_targettemperature',
-    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_None_targetTemperature',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_holidaymode[sensor.ndj_climatecontrol_target_temperature-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'NDJ ClimateControl Target Temperature',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.ndj_climatecontrol_target_temperature',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -83922,54 +81586,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'weatherDependent',
-  })
-# ---
-# name: test_mc80z[sensor.vloerverwarming_climatecontrol_target_temperature-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.vloerverwarming_climatecontrol_target_temperature',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Target Temperature',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'climatecontrol_targettemperature',
-    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_None_targetTemperature',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_mc80z[sensor.vloerverwarming_climatecontrol_target_temperature-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming ClimateControl Target Temperature',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.vloerverwarming_climatecontrol_target_temperature',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '-3',
   })
 # ---
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_error_code-entry]
