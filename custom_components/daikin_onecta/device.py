@@ -61,10 +61,6 @@ class DaikinOnectaDevice:
                 if mp is not None:
                     v = {"sw_version": mp["value"]}
                     device_info.update(**v)
-                mp = management_point.get("modelInfo")
-                if mp is not None:
-                    v = {"hw_version": mp["value"]}
-                    device_info.update(**v)
 
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
