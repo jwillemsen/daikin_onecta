@@ -30,6 +30,11 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "isinwarningstate": {
+        "name": "Is in waarschuwing status"
+      }
+    },
     "climate": {
       "roomtemperature": {
         "state_attributes": {
