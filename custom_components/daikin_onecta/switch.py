@@ -104,6 +104,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             "name": self._device.name + " " + mpt,
             "via_device": (DOMAIN, self._device.id),
         }
+        self._device.fill_device_info(self._attr_device_info, management_point_type)
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",

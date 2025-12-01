@@ -2,6 +2,7 @@ import json
 import logging
 
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
+from homeassistant.helpers.device_registry import DeviceInfo
 
 from .const import DOMAIN
 
@@ -36,13 +37,39 @@ class DaikinOnectaDevice:
             result = icu["value"]
         return result
 
-    def device_info(self):
+    def fill_device_info(self, device_info, management_point_type):
+        management_points = self.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
+            if management_point_type == management_point["managementPointType"]:
+                mp = management_point.get("eepromVersion")
+                if mp is not None:
+                    v = {"sw_version": mp["value"]}
+                    device_info.update(**v)
+                mp = management_point.get("modelInfo")
+                if mp is not None:
+                    v = {"model": mp["value"]}
+                    device_info.update(**v)
+                mp = management_point.get("firmwareVersion")
+                if mp is not None:
+                    v = {"sw_version": mp["value"]}
+                    device_info.update(**v)
+                mp = management_point.get("serialNumber")
+                if mp is not None:
+                    v = {"serial_number": mp["value"]}
+                    device_info.update(**v)
+                mp = management_point.get("softwareVersion")
+                if mp is not None:
+                    v = {"sw_version": mp["value"]}
+                    device_info.update(**v)
+                mp = management_point.get("modelInfo")
+                if mp is not None:
+                    v = {"hw_version": mp["value"]}
+                    device_info.update(**v)
+
+    def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
         mac_add = ""
-        model = ""
-        sw_vers = ""
-        serial_number = ""
-        model_id = self.daikin_data.get("deviceModel")
+        devicemodel = self.daikin_data.get("deviceModel")
         supported_management_point_types = {"gateway"}
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -51,29 +78,21 @@ class DaikinOnectaDevice:
                 mp = management_point.get("macAddress")
                 if mp is not None:
                     mac_add = mp["value"]
-                mi = management_point.get("modelInfo")
-                if mi is not None:
-                    model = mi["value"]
-                fw = management_point.get("firmwareVersion")
-                if fw is not None:
-                    sw_vers = fw["value"]
-                sn = management_point.get("serialNumber")
-                if sn is not None:
-                    serial_number = sn["value"]
 
-        return {
-            "identifiers": {
+        info = DeviceInfo(
+            identifiers={
                 # Serial numbers are unique identifiers within a specific domain
                 (DOMAIN, self.id)
             },
-            "connections": {(CONNECTION_NETWORK_MAC, mac_add)},
-            "manufacturer": "Daikin",
-            "model": model,
-            "name": self.name,
-            "model_id": model_id,
-            "sw_version": sw_vers.replace("_", "."),
-            "serial_number": serial_number,
-        }
+            connections={(CONNECTION_NETWORK_MAC, mac_add)},
+            manufacturer="Daikin",
+            name=self.name,
+            model_id=devicemodel,
+        )
+
+        self.fill_device_info(info, "gateway")
+
+        return info
 
     "Helper to merge the json, prevents invalid reads when other threads are reading the daikin_data"
 
