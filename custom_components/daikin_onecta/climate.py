@@ -119,8 +119,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id)}}
         self._device.fill_device_info(self._attr_device_info, "gateway")
         sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
-        if sensor_settings is not None:
-            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
+        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self.update_state()
 
     def update_state(self) -> None:
@@ -203,10 +202,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             sensoryData,
                         )
         return sensoryData
-
-    @property
-    def translation_key(self) -> str:
-        return "daikin_onecta"
 
     def get_supported_features(self):
         supported_features = 0

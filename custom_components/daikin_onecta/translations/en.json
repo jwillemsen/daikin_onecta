@@ -42,8 +42,8 @@
   },
   "entity": {
     "binary_sensor": {
-      "climatecontrol_isinwarningstate": {
-        "name": "Climate Control Warning State"
+      "isinwarningstate": {
+        "name": "Is In Warning State"
       }
     },
     "climate": {

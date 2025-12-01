@@ -684,7 +684,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -5651,7 +5651,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -5728,7 +5728,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -5807,7 +5807,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -5908,7 +5908,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '32db6075-b739-4026-b661-127009254b42_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -6034,7 +6034,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -6160,7 +6160,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -6286,7 +6286,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -16351,7 +16351,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -16428,7 +16428,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -16507,7 +16507,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -16608,7 +16608,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '32db6075-b739-4026-b661-127009254b42_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -16734,7 +16734,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -16860,7 +16860,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -16986,7 +16986,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -24129,7 +24129,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -24207,7 +24207,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -24284,7 +24284,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29456,7 +29456,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29532,7 +29532,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29613,7 +29613,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 432>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29695,7 +29695,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29771,7 +29771,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29847,7 +29847,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -29923,7 +29923,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -36452,7 +36452,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -36529,7 +36529,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -36608,7 +36608,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -36709,7 +36709,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '32db6075-b739-4026-b661-127009254b42_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -36835,7 +36835,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -36961,7 +36961,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -37087,7 +37087,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -44154,7 +44154,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -46523,7 +46523,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -46645,7 +46645,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 441>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -52596,7 +52596,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -52672,7 +52672,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -52753,7 +52753,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 432>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -52835,7 +52835,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -52911,7 +52911,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -52987,7 +52987,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -53063,7 +53063,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59505,7 +59505,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59581,7 +59581,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59662,7 +59662,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 432>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59744,7 +59744,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59820,7 +59820,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59896,7 +59896,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -59972,7 +59972,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -63202,7 +63202,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -64263,7 +64263,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'calculatedleavingwatertemperature',
     'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_calculatedLeavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -64341,7 +64341,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -64419,7 +64419,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -66324,7 +66324,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -68358,7 +68358,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -71050,7 +71050,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 384>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -71118,7 +71118,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 385>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -73053,7 +73053,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 952>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -74304,7 +74304,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 409>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -75069,7 +75069,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 953>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '95c2f177-dd7a-4bdc-ad48-1a7f47f34a01_roomTemperature',
     'unit_of_measurement': None,
   })
@@ -76282,7 +76282,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwateroffset',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterOffset',
     'unit_of_measurement': None,
   })
@@ -76360,7 +76360,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 400>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'leavingwatertemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterTemperature',
     'unit_of_measurement': None,
   })
@@ -76437,7 +76437,7 @@
     'previous_unique_id': None,
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 401>,
-    'translation_key': 'daikin_onecta',
+    'translation_key': 'roomtemperature',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_roomTemperature',
     'unit_of_measurement': None,
   })
