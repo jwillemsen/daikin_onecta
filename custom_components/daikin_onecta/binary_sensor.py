@@ -11,8 +11,10 @@ from homeassistant.const import CONF_ICON
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
+from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
@@ -72,30 +74,31 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         _LOGGER.info("DaikinBinarySensor '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
-        self._embedded_id = embedded_id
         self._management_point_type = management_point_type
+        mpt = management_point_type[0].upper() + management_point_type[1:]
+        self._attr_device_info = {
+            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "name": self._device.name + " " + mpt,
+            "via_device": (DOMAIN, self._device.id),
+        }
+        self._device.fill_device_info(self._attr_device_info, management_point_type)
+        self._embedded_id = embedded_id
         self._value = value
         self._attr_device_class = None
         self._attr_state_class = None
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is None:
-            _LOGGER.info(
-                "No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING",
-                value,
-            )
-        else:
+        if sensor_settings is not None:
             self._attr_icon = sensor_settings[CONF_ICON]
             self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-        mpt = management_point_type[0].upper() + management_point_type[1:]
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
-        self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports binary sensor '%s'",
@@ -106,7 +109,6 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
 
     def update_state(self) -> None:
         self._attr_is_on = self.sensor_value()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:

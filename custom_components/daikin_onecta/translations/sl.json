@@ -42,12 +42,12 @@
   },
   "entity": {
     "binary_sensor": {
-      "climatecontrol_isinwarningstate": {
+      "isinwarningstate": {
         "name": "Stanje opozorila klimatskega nadzora"
       }
     },
     "climate": {
-      "daikin_onecta": {
+      "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
             "state": {

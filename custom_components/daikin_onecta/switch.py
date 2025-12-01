@@ -12,6 +12,7 @@ from homeassistant.core import callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
@@ -86,23 +87,24 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         self._state_class = None
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is None:
-            _LOGGER.info(
-                "No mapping of value '%s' to HA settings, consider adding it to VALUE_SENSOR_MAPPING",
-                value,
-            )
-        else:
+        if sensor_settings is not None:
             self._attr_icon = sensor_settings[CONF_ICON]
             self._device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-        mpt = management_point_type[0].upper() + management_point_type[1:]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
+        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
+        mpt = management_point_type[0].upper() + management_point_type[1:]
+        self._attr_device_info = {
+            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "name": self._device.name + " " + mpt,
+            "via_device": (DOMAIN, self._device.id),
+        }
+        self._device.fill_device_info(self._attr_device_info, management_point_type)
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -113,7 +115,6 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     def update_state(self) -> None:
         self._switch_state = self.sensor_value()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:

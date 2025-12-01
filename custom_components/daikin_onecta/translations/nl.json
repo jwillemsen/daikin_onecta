@@ -30,8 +30,13 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "isinwarningstate": {
+        "name": "Is in waarschuwing status"
+      }
+    },
     "climate": {
-      "daikin_onecta": {
+      "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
             "state": {

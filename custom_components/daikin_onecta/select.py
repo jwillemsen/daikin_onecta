@@ -5,6 +5,7 @@ from homeassistant.components.select import SelectEntity
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import SCHEDULE_OFF
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
@@ -20,12 +21,11 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
     for dev_id, device in onecta_data.devices.items():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
-            management_point_type = management_point["managementPointType"]
-            embedded_id = management_point["embeddedId"]
-
             # When we have a schedule we provide a select sensor
-            demand = management_point.get("schedule")
-            if demand is not None:
+            schedule = management_point.get("schedule")
+            if schedule is not None:
+                management_point_type = management_point["managementPointType"]
+                embedded_id = management_point["embeddedId"]
                 _LOGGER.info("Device '%s' provides schedule", device.name)
                 sensors.append(DaikinScheduleSelect(device, coordinator, embedded_id, management_point_type, "schedule"))
 
@@ -33,21 +33,27 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 
 
 class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
-    """Daikin Schecule Select class."""
+    """Daikin Schedule Select class."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
         _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
-        self._embedded_id = embedded_id
         self._management_point_type = management_point_type
-        self._value = value
         mpt = management_point_type[0].upper() + management_point_type[1:]
+        self._attr_device_info = {
+            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "name": self._device.name + " " + mpt,
+            "via_device": (DOMAIN, self._device.id),
+        }
+        self._device.fill_device_info(self._attr_device_info, management_point_type)
+        self._embedded_id = embedded_id
+        self._value = value
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{mpt} {' '.join(readable)}"
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self._attr_has_entity_name = True
+        self._attr_name = f"{' '.join(readable)}"
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         self._attr_icon = "mdi:calendar-clock"
         self.update_state()
         _LOGGER.info(
@@ -60,7 +66,6 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     def update_state(self) -> None:
         self._attr_options = self.get_options()
         self._attr_current_option = self.get_current_option()
-        self._attr_device_info = self._device.device_info()
 
     @property
     def available(self) -> bool:

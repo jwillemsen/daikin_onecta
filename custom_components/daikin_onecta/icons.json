@@ -1,7 +1,7 @@
 {
   "entity": {
     "climate": {
-      "daikin_onecta": {
+      "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
             "state": {

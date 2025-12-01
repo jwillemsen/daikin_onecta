@@ -23,7 +23,10 @@ from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import FANMODE_FIXED
+from .const import TRANSLATION_KEY
+from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
@@ -113,6 +116,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._setpoint}"
+        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id)}}
+        self._device.fill_device_info(self._attr_device_info, "gateway")
+        sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
+        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self.update_state()
 
     def update_state(self) -> None:
@@ -132,7 +139,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_swing_horizontal_mode = self.get_swing_horizontal_mode()
         self._attr_preset_mode = self.get_preset_mode()
         self._attr_fan_mode = self.get_fan_mode()
-        self._attr_device_info = self._device.device_info()
 
     @callback
     def _handle_coordinator_update(self) -> None:
@@ -196,10 +202,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             sensoryData,
                         )
         return sensoryData
-
-    @property
-    def translation_key(self) -> str:
-        return "daikin_onecta"
 
     def get_supported_features(self):
         supported_features = 0
