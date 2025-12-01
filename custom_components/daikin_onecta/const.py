@@ -389,15 +389,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "ipaddress",
     },
-    "name": {
-        CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-        TRANSLATION_KEY: "name",
-    },
     "dateTime": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
