@@ -31,7 +31,7 @@
     "step": {
       "init": {
         "data": {
-          "high_scan_interval": "High frequency period update interval (minutes)XX",
+          "high_scan_interval": "High frequency period update interval (minutes)",
           "low_scan_interval": "Low frequency period update interval (minutes)",
           "high_scan_start": "High frequency period start time",
           "low_scan_start": "Low frequency period start time",
