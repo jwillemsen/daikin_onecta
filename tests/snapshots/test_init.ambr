@@ -1629,55 +1629,6 @@
     'state': '192.168.32.130',
   })
 # ---
-# name: test_altherma3m[sensor.altherma_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma3m[sensor.altherma_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '14:13:33:dc:22:72',
-  })
-# ---
 # name: test_altherma3m[water_heater.altherma-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -7393,55 +7344,6 @@
     'state': '192.168.1.207',
   })
 # ---
-# name: test_altherma[sensor.altherma_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.altherma_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_altherma[sensor.altherma_gateway_ssid-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -8240,55 +8142,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_gateway_error_code',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
-# name: test_altherma[sensor.johnny_maaike_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.johnny_maaike_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_gateway_mac_address',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -9197,55 +9050,6 @@
     'state': '',
   })
 # ---
-# name: test_altherma[sensor.linde_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.linde_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_altherma[sensor.linde_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -10148,55 +9952,6 @@
     'state': '',
   })
 # ---
-# name: test_altherma[sensor.sanne_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.sanne_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_altherma[sensor.sanne_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -11093,55 +10848,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_gateway_error_code',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
-# name: test_altherma[sensor.werkkamer_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[sensor.werkkamer_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -17603,55 +17309,6 @@
     'state': '192.168.1.207',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.altherma_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.altherma_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.altherma_gateway_ssid-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -18450,55 +18107,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_gateway_error_code',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_gateway_mac_address',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -19407,55 +19015,6 @@
     'state': '',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.linde_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.linde_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.linde_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -20358,55 +19917,6 @@
     'state': '',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.sanne_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.sanne_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_altherma_ratelimit[sensor.sanne_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -21303,55 +20813,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_gateway_error_code',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.werkkamer_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[sensor.werkkamer_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -24245,55 +23706,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.1.207',
-  })
-# ---
-# name: test_altherma_schedule[sensor.altherma_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_schedule[sensor.altherma_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '00:e9:3a:67:14:a6',
   })
 # ---
 # name: test_altherma_schedule[water_heater.altherma-entry]
@@ -29022,55 +28434,6 @@
     'state': '192.168.87.57',
   })
 # ---
-# name: test_button[sensor.bedroom_1_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_1_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.bedroom_1_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_1_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:9a:ec',
-  })
-# ---
 # name: test_button[sensor.bedroom_1_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -29322,55 +28685,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.58',
-  })
-# ---
-# name: test_button[sensor.bedroom_2_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_2_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.bedroom_2_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_2_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a2:e0',
   })
 # ---
 # name: test_button[sensor.bedroom_2_outdoorunit_error_code-entry]
@@ -29626,55 +28940,6 @@
     'state': '192.168.87.62',
   })
 # ---
-# name: test_button[sensor.bedroom_3_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_3_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.bedroom_3_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_3_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:ca',
-  })
-# ---
 # name: test_button[sensor.bedroom_3_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -29926,55 +29191,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.55',
-  })
-# ---
-# name: test_button[sensor.kitchen_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.kitchen_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.kitchen_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.kitchen_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:bc',
   })
 # ---
 # name: test_button[sensor.kitchen_outdoorunit_error_code-entry]
@@ -30230,55 +29446,6 @@
     'state': '192.168.87.56',
   })
 # ---
-# name: test_button[sensor.lounge_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.lounge_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.lounge_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.lounge_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a1:f0',
-  })
-# ---
 # name: test_button[sensor.lounge_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -30532,55 +29699,6 @@
     'state': '192.168.87.61',
   })
 # ---
-# name: test_button[sensor.master_bathroom_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_bathroom_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.master_bathroom_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_bathroom_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a5:24',
-  })
-# ---
 # name: test_button[sensor.master_bathroom_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -30832,55 +29950,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.59',
-  })
-# ---
-# name: test_button[sensor.master_bedroom_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_bedroom_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_button[sensor.master_bedroom_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_bedroom_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:86',
   })
 # ---
 # name: test_button[sensor.master_bedroom_outdoorunit_error_code-entry]
@@ -34291,7 +33360,7 @@
 # name: test_climate[button.altherma_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Altherma Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -34340,7 +33409,7 @@
 # name: test_climate[button.johnny_maaike_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Johnny&Maaike Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -34389,7 +33458,7 @@
 # name: test_climate[button.linde_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Linde Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -34487,7 +33556,7 @@
 # name: test_climate[button.werkkamer_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Werkkamer Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -36577,55 +35646,6 @@
     'state': '192.168.1.207',
   })
 # ---
-# name: test_climate[sensor.altherma_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.altherma_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_climate[sensor.altherma_gateway_ssid-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -37424,55 +36444,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_gateway_error_code',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
-# name: test_climate[sensor.johnny_maaike_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.johnny_maaike_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_gateway_mac_address',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -38381,55 +37352,6 @@
     'state': '',
   })
 # ---
-# name: test_climate[sensor.linde_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.linde_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.linde_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_climate[sensor.linde_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -39332,55 +38254,6 @@
     'state': '',
   })
 # ---
-# name: test_climate[sensor.sanne_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.sanne_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sanne_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
 # name: test_climate[sensor.sanne_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -40277,55 +39150,6 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_gateway_error_code',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '',
-  })
-# ---
-# name: test_climate[sensor.werkkamer_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[sensor.werkkamer_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -42471,55 +41295,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.1.200',
-  })
-# ---
-# name: test_climate_fixedfanmode[sensor.werkkamer_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_fixedfanmode[sensor.werkkamer_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'e8:4f:25:c7:fe:da',
   })
 # ---
 # name: test_climate_fixedfanmode[sensor.werkkamer_outdoorunit_error_code-entry]
@@ -44928,55 +43703,6 @@
     'state': '',
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.laurens_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Laurens Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.laurens_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'e8:4f:25:d3:f5:fe',
-  })
-# ---
 # name: test_climate_floorheatingairflow[sensor.laurens_gateway_region_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -45931,55 +44657,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '',
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.woonkamer_airco_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.woonkamer_airco_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:81:f4:46',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_region_code-entry]
@@ -51182,55 +49859,6 @@
     'state': '192.168.87.57',
   })
 # ---
-# name: test_dry2[sensor.bedroom_1_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_1_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.bedroom_1_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_1_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:9a:ec',
-  })
-# ---
 # name: test_dry2[sensor.bedroom_1_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -51482,55 +50110,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.58',
-  })
-# ---
-# name: test_dry2[sensor.bedroom_2_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_2_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.bedroom_2_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_2_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a2:e0',
   })
 # ---
 # name: test_dry2[sensor.bedroom_2_outdoorunit_error_code-entry]
@@ -51786,55 +50365,6 @@
     'state': '192.168.87.62',
   })
 # ---
-# name: test_dry2[sensor.bedroom_3_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_3_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.bedroom_3_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_3_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:ca',
-  })
-# ---
 # name: test_dry2[sensor.bedroom_3_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -52086,55 +50616,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.55',
-  })
-# ---
-# name: test_dry2[sensor.kitchen_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.kitchen_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.kitchen_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.kitchen_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:bc',
   })
 # ---
 # name: test_dry2[sensor.kitchen_outdoorunit_error_code-entry]
@@ -52390,55 +50871,6 @@
     'state': '192.168.87.56',
   })
 # ---
-# name: test_dry2[sensor.lounge_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.lounge_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.lounge_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.lounge_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a1:f0',
-  })
-# ---
 # name: test_dry2[sensor.lounge_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -52692,55 +51124,6 @@
     'state': '192.168.87.61',
   })
 # ---
-# name: test_dry2[sensor.master_bathroom_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_bathroom_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.master_bathroom_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_bathroom_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a5:24',
-  })
-# ---
 # name: test_dry2[sensor.master_bathroom_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -52992,55 +51375,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.59',
-  })
-# ---
-# name: test_dry2[sensor.master_bedroom_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_bedroom_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry2[sensor.master_bedroom_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_bedroom_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:86',
   })
 # ---
 # name: test_dry2[sensor.master_bedroom_outdoorunit_error_code-entry]
@@ -57748,55 +56082,6 @@
     'state': '192.168.87.57',
   })
 # ---
-# name: test_dry[sensor.bedroom_1_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_1_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.bedroom_1_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_1_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:9a:ec',
-  })
-# ---
 # name: test_dry[sensor.bedroom_1_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -58048,55 +56333,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.58',
-  })
-# ---
-# name: test_dry[sensor.bedroom_2_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_2_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.bedroom_2_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_2_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a2:e0',
   })
 # ---
 # name: test_dry[sensor.bedroom_2_outdoorunit_error_code-entry]
@@ -58352,55 +56588,6 @@
     'state': '192.168.87.62',
   })
 # ---
-# name: test_dry[sensor.bedroom_3_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.bedroom_3_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.bedroom_3_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.bedroom_3_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:ca',
-  })
-# ---
 # name: test_dry[sensor.bedroom_3_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -58652,55 +56839,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.55',
-  })
-# ---
-# name: test_dry[sensor.kitchen_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.kitchen_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.kitchen_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.kitchen_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:bc',
   })
 # ---
 # name: test_dry[sensor.kitchen_outdoorunit_error_code-entry]
@@ -58956,55 +57094,6 @@
     'state': '192.168.87.56',
   })
 # ---
-# name: test_dry[sensor.lounge_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.lounge_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.lounge_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.lounge_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a1:f0',
-  })
-# ---
 # name: test_dry[sensor.lounge_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -59258,55 +57347,6 @@
     'state': '192.168.87.61',
   })
 # ---
-# name: test_dry[sensor.master_bathroom_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_bathroom_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.master_bathroom_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_bathroom_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a5:24',
-  })
-# ---
 # name: test_dry[sensor.master_bathroom_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -59558,55 +57598,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.87.59',
-  })
-# ---
-# name: test_dry[sensor.master_bedroom_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_bedroom_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_dry[sensor.master_bedroom_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_bedroom_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'dc:fe:23:bb:a0:86',
   })
 # ---
 # name: test_dry[sensor.master_bedroom_outdoorunit_error_code-entry]
@@ -60640,55 +58631,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.1.2',
-  })
-# ---
-# name: test_fanmode[sensor.sala_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sala_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_fanmode[sensor.sala_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Sala Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.sala_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'MANUALLY_REMOVED',
   })
 # ---
 # name: test_gas[binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active-entry]
@@ -62241,55 +60183,6 @@
     'state': '192.168.0.1',
   })
 # ---
-# name: test_gas[sensor.my_living_room_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.my_living_room_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_gas[sensor.my_living_room_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'My Living Room Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.my_living_room_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '00:23:7e:f8:26:4e',
-  })
-# ---
 # name: test_gas[water_heater.my_living_room-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -63333,55 +61226,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.45.16',
-  })
-# ---
-# name: test_holidaymode[sensor.ndj_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.ndj_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_holidaymode[sensor.ndj_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'NDJ Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.ndj_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '00:23:7e:f8:91:3e',
   })
 # ---
 # name: test_holidaymode[water_heater.ndj-entry]
@@ -65207,55 +63051,6 @@
     'state': '192.168.1.31',
   })
 # ---
-# name: test_mc80z[sensor.air_purifier_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.air_purifier_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_mc80z[sensor.air_purifier_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'air-purifier Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.air_purifier_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '9c:50:d1:ba:3a:96',
-  })
-# ---
 # name: test_mc80z[sensor.vloerverwarming_climatecontrol_control_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -66330,55 +64125,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.1.205',
-  })
-# ---
-# name: test_mc80z[sensor.vloerverwarming_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.vloerverwarming_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_mc80z[sensor.vloerverwarming_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.vloerverwarming_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '00:23:7e:cb:98:8d',
   })
 # ---
 # name: test_mc80z[water_heater.vloerverwarming-entry]
@@ -69498,55 +67244,6 @@
     'state': 'unavailable',
   })
 # ---
-# name: test_offlinedevice[sensor.studio_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.studio_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_offlinedevice[sensor.studio_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Studio Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.studio_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unavailable',
-  })
-# ---
 # name: test_offlinedevice[sensor.studio_outdoorunit_error_code-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -70153,55 +67850,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.0.32',
-  })
-# ---
-# name: test_schedule[sensor.master_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.master_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_schedule[sensor.master_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.master_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'e8:4f:25:d7:97:aa',
   })
 # ---
 # name: test_ururu[binary_sensor.daikinap95800_climatecontrol_is_holiday_mode_active-entry]
@@ -70840,55 +68488,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.2.42',
-  })
-# ---
-# name: test_ururu[sensor.daikinap95800_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.daikinap95800_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '95c2f177-dd7a-4bdc-ad48-1a7f47f34a01_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_ururu[sensor.daikinap95800_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'DaikinAP95800 Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.daikinap95800_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '10:68:38:c4:d3:88',
   })
 # ---
 # name: test_water_heater[binary_sensor.altherma_climatecontrol_is_holiday_mode_active-entry]
@@ -72912,55 +70511,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '192.168.1.207',
-  })
-# ---
-# name: test_water_heater[sensor.altherma_gateway_mac_address-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:information-outline',
-    'original_name': 'Mac Address',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'macaddress',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_gateway_None_macAddress',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[sensor.altherma_gateway_mac_address-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Mac Address',
-      'icon': 'mdi:information-outline',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_gateway_mac_address',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '00:e9:3a:67:14:a6',
   })
 # ---
 # name: test_water_heater[water_heater.altherma-entry]

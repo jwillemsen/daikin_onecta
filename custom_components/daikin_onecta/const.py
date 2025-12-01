@@ -245,15 +245,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "daylightsavingtimeenabled",
     },
-    "macAddress": {
-        CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-        TRANSLATION_KEY: "macaddress",
-    },
     "roomTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
