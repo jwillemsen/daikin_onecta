@@ -88,13 +88,12 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._attr_state_class = None
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is not None:
-            self._attr_icon = sensor_settings[CONF_ICON]
-            self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
-            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-            self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
-            self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
+        self._attr_icon = sensor_settings[CONF_ICON]
+        self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
+        self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+        self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
+        self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{' '.join(readable)}"
