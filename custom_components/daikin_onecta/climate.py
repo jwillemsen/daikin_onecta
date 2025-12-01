@@ -16,7 +16,6 @@ from homeassistant.components.climate.const import PRESET_BOOST
 from homeassistant.components.climate.const import PRESET_COMFORT
 from homeassistant.components.climate.const import PRESET_ECO
 from homeassistant.components.climate.const import PRESET_NONE
-from homeassistant.const import CONF_ICON
 from homeassistant.const import ATTR_TEMPERATURE
 from homeassistant.const import CONF_HOST
 from homeassistant.const import CONF_NAME
@@ -24,10 +23,10 @@ from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import VALUE_SENSOR_MAPPING
-from .const import TRANSLATION_KEY
 from .const import DOMAIN
 from .const import FANMODE_FIXED
+from .const import TRANSLATION_KEY
+from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
