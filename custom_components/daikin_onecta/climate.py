@@ -16,6 +16,7 @@ from homeassistant.components.climate.const import PRESET_BOOST
 from homeassistant.components.climate.const import PRESET_COMFORT
 from homeassistant.components.climate.const import PRESET_ECO
 from homeassistant.components.climate.const import PRESET_NONE
+from homeassistant.const import CONF_ICON
 from homeassistant.const import ATTR_TEMPERATURE
 from homeassistant.const import CONF_HOST
 from homeassistant.const import CONF_NAME
@@ -23,6 +24,8 @@ from homeassistant.const import UnitOfTemperature
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import VALUE_SENSOR_MAPPING
+from .const import TRANSLATION_KEY
 from .const import DOMAIN
 from .const import FANMODE_FIXED
 from .coordinator import OnectaRuntimeData
@@ -116,6 +119,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._attr_unique_id = f"{self._device.id}_{self._setpoint}"
         self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id)}}
         self._device.fill_device_info(self._attr_device_info, "gateway")
+        sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
+        if sensor_settings is not None:
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self.update_state()
 
     def update_state(self) -> None:

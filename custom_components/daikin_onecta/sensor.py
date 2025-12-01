@@ -20,6 +20,7 @@ from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIODS
 from .const import VALUE_SENSOR_MAPPING
+from .const import TRANSLATION_KEY
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -264,11 +265,11 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
             self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
-        self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",

@@ -15,6 +15,7 @@ from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import VALUE_SENSOR_MAPPING
+from .const import TRANSLATION_KEY
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -93,11 +94,11 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         myname = value[0].upper() + value[1:]
         readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
-        self._attr_translation_key = f"{self._management_point_type.lower()}_{self._value.lower()}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports binary sensor '%s'",
