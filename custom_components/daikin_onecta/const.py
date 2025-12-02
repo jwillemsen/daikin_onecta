@@ -19,7 +19,7 @@ DOMAIN = "daikin_onecta"
 OAUTH2_AUTHORIZE = "https://idp.onecta.daikineurope.com/v1/oidc/authorize"
 OAUTH2_TOKEN = "https://idp.onecta.daikineurope.com/v1/oidc/token"
 
-DAIKIN_API_URL = "https://api.onecta.daikineurope.com"
+DAIKIN_API_URL = "https://api.onecta.daikineurope.com/"
 
 SCHEDULE_OFF = "off"
 

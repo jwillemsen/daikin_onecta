@@ -42,8 +42,14 @@
   },
   "entity": {
     "binary_sensor": {
-      "isinwarningstate": {
-        "name": "Is In Warning State"
+      "isinerrorstate": {
+        "name": "Is in error state"
+      },
+      "is_in_warning_state": {
+        "name": "Is in warning state"
+      },
+      "isininstallerstate": {
+        "name": "Is in installer state"
       }
     },
     "climate": {
