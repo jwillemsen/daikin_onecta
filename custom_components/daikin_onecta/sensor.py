@@ -1,6 +1,5 @@
 """Support for Daikin AC sensors."""
 import logging
-import re
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
@@ -270,9 +269,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
             self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
             self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
-        myname = value[0].upper() + value[1:]
-        readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
         self.update_state()
         _LOGGER.info(

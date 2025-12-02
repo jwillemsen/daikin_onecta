@@ -41,9 +41,150 @@
     }
   },
   "entity": {
+    "select": {
+      "schedule": {
+        "schedule": "Schedule"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer mode"
+      },
+      "economode": {
+        "name": "Econo mode"
+      }
+    },
+    "sensor": {
+      "ipaddress": {
+        "name": "IP address"
+      },
+      "tanktemperature": {
+        "name": "Tank temperature"
+      },
+      "heatupmode": {
+        "name": "Heatup mode"
+      },
+      "outdoortemperature": {
+        "name": "Outdoor temperature"
+      },
+      "leavingwatertemperature": {
+        "name": "Leaving water temperature"
+      },
+      "errorcode": {
+        "name": "Error code"
+      },
+      "setpointmode": {
+        "name": "Setpoint mode"
+      },
+      "powerfulmode": {
+        "name": "Powerfulmode"
+      },
+      "roomtemperature": {
+        "name": "Room temperature"
+      },
+      "onoffmode": {
+        "name": "On/Off mode"
+      },
+      "controlmode": {
+        "name": "Control mode"
+      },
+      "roomhumidity": {
+        "name": "Room humidity"
+      },
+      "pm1concentration": {
+        "name": "PM1 concentration"
+      },
+      "pm25concentration": {
+        "name": "PM25 concentration"
+      },
+      "operationmode": {
+        "name": "Operation mode"
+      },
+      "airpurificationmode": {
+        "name": "Air purification mode"
+      },
+      "wificonnectionssid": {
+        "name": "Wifi connection SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "Wifi connection strength"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10 concentration"
+      },
+      "leavingwateroffset": {
+        "name": "Leaving water offset"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Calculated leaving water temperature"
+      },
+      "heatexchangertemperature": {
+        "name": "Heat exchanger temperature"
+      },
+      "suctiontemperature": {
+        "name": "Suction temperature"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Dry keep setting"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Fan motor rotation speed"
+      },
+      "datetime": {
+        "name": "Date/time"
+      },
+      "regioncode": {
+        "name": "Region code"
+      },
+      "timezone": {
+        "name": "Timezone"
+      }
+    },
     "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Is holiday mode active"
+      },
+      "isinerrorstate": {
+        "name": "Is in error state"
+      },
       "isinwarningstate": {
-        "name": "Is In Warning State"
+        "name": "Is in warning state"
+      },
+      "isininstallerstate": {
+        "name": "Is in installer state"
+      },
+      "isinemergencystate": {
+        "name": "Is in emergency state"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Is powerful mode active"
+      },
+      "iscoolheatmaster": {
+        "name": "Is cool/heat master"
+      },
+      "isinmodeconflict": {
+        "name": "Is in mode conflict"
+      },
+      "isincautionstate": {
+        "name": "Is in caution state"
+      },
+      "islockfunctionenabled": {
+        "name": "Is lock function enabled"
+      },
+      "ledenabled": {
+        "name": "LED enabled"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Is firmware update supported"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Daylight saving time enabled"
       }
     },
     "climate": {

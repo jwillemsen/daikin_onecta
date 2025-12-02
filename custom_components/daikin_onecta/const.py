@@ -47,6 +47,15 @@ TRANSLATION_KEY = "TranslationKey"
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 # - TRANSLATION_KEY: Translation key
 VALUE_SENSOR_MAPPING = {
+    "schedule": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:calendar-clock",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: None,
+    },
     "controlMode": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
@@ -388,15 +397,6 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "datetime",
-    },
-    "miconId": {
-        CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-        TRANSLATION_KEY: "miconid",
     },
     "regionCode": {
         CONF_DEVICE_CLASS: None,
