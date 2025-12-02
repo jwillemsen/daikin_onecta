@@ -96,11 +96,10 @@ class DaikinApi:
                     if self.rate_limits["remaining_day"] > 0:
                         ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
+                    _LOGGER.debug("BEARER RESPONSE STATUS: %s", resp.status)
+
                     if method == "GET" and resp.status == 200:
                         return data
-                    elif resp.status == 204:
-                        self._last_patch_call = datetime.now()
-                        return True
                     elif resp.status == 429:
                         if self.rate_limits["remaining_minutes"] == 0:
                             ir.async_create_issue(
@@ -129,6 +128,9 @@ class DaikinApi:
                             return []
                         else:
                             return False
+                    elif resp.status == 204:
+                        self._last_patch_call = datetime.now()
+                        return True
 
                     _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", resp.status, self.rate_limits)
 

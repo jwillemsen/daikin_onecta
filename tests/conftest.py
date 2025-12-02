@@ -9,7 +9,6 @@ from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
 import pytest
-import responses
 from _pytest.assertion import truncate
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
@@ -56,10 +55,9 @@ async def snapshot_platform_entities(
     ), patch(
         "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
         {"access_token": "AAAA"},
-    ):
-        with aioresponses() as mock:
-            mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json(fixture_device_json))
-            assert await hass.config_entries.async_setup(config_entry.entry_id)
+    ), aioresponses() as responses:
+        responses.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json(fixture_device_json))
+        assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
 

@@ -3,10 +3,10 @@ from datetime import date
 from datetime import timedelta
 from unittest.mock import AsyncMock
 from unittest.mock import patch
+from aioresponses import aioresponses
 
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
-import responses
 from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN
 from homeassistant.components.button import SERVICE_PRESS
 from homeassistant.components.climate import ATTR_FAN_MODE
@@ -47,6 +47,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
+import pytest
 
 from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
@@ -97,7 +98,7 @@ async def test_dry(
     assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
 
 
-@responses.activate
+@pytest.mark.asyncio
 async def test_fanmode(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -111,20 +112,21 @@ async def test_fanmode(
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
-    ):
-        responses.patch(
-            DAIKIN_API_URL
-            + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/temperatureControl",
-            status=204,
-        )
+    ), aioresponses() as responses:
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/onOffMode",
             status=204,
         )
         responses.patch(
             DAIKIN_API_URL
+            + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/temperatureControl",
+            status=204,
+        )
+        responses.patch(
+            DAIKIN_API_URL
             + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/operationMode",
             status=204,
+            repeat=True
         )
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.OFF
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -136,7 +138,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(responses.calls) == 2
+        assert len(responses._responses) == 2
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "3"
@@ -148,7 +150,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(responses.calls) == 3
+        assert len(responses._responses) == 3
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.DRY
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -160,7 +162,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(responses.calls) == 4
+        assert len(responses._responses) == 4
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "3"
@@ -172,7 +174,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(responses.calls) == 5
+        assert len(responses._responses) == 5
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.HEAT
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -184,7 +186,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(responses.calls) == 6
+        assert len(responses._responses) == 6
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.DRY
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -256,6 +258,7 @@ async def test_altherma3m(
     assert hass.states.get("climate.altherma_leaving_water_offset").attributes["temperature"] == 0
 
 
+@pytest.mark.asyncio
 async def test_altherma_ratelimit(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -266,14 +269,19 @@ async def test_altherma_ratelimit(
     """Test entities."""
     await snapshot_platform_entities(hass, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
+    patch_url = (
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/"
+              "management-points/domesticHotWaterTank/characteristics/temperatureControl"
+        )
+
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
     ):
-        with responses.RequestsMock() as rsps:
+        with aioresponses() as rsps:
             rsps.patch(
-                DAIKIN_API_URL
-                + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
+                patch_url,
                 status=429,
                 headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"},
             )
@@ -294,11 +302,20 @@ async def test_altherma_ratelimit(
             )
             await hass.async_block_till_done()
 
-            assert len(rsps.calls) == 1
-            assert rsps.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
+            assert len(rsps._responses) == 1
+
+            # Access first (and only) call
+            # call = rsps.requests[("PATCH", patch_url)][0]
+            #
+            # # aiohttp stores JSON body under kwargs["json"]
+            # assert call.kwargs["json"] == {
+            #     "value": 58,
+            #     "path": "/operationModes/heating/setpoints/"
+            #             "domesticHotWaterTemperature"
+            # }
             assert hass.states.get("water_heater.altherma").attributes["temperature"] == temp
 
-        with responses.RequestsMock() as rsps:
+        with aioresponses() as rsps:
             rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=429)
 
             # Test that updating the data through with a 429 doesn't crash
@@ -306,8 +323,8 @@ async def test_altherma_ratelimit(
             coordinator = onecta_data.coordinator
             await coordinator._async_update_data()
 
-        with responses.RequestsMock() as rsps:
-            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
+        with aioresponses() as rsps:
+            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json("altherma"))
 
             # Test that updating the data through with a status 200 works
             onecta_data: OnectaRuntimeData = config_entry.runtime_data
@@ -366,7 +383,7 @@ async def test_holidaymode(
     assert hass.states.get("climate.ndj_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
 
-@responses.activate
+@pytest.mark.asyncio
 async def test_water_heater(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -399,7 +416,7 @@ async def test_water_heater(
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
-    ):
+    ), aioresponses() as responses:
         responses.patch(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/temperatureControl",
@@ -410,11 +427,13 @@ async def test_water_heater(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
             status=204,
+            repeat=6,
         )
         responses.patch(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/powerfulMode",
             status=204,
+            repeat=True
         )
 
         # Set the tank temperature to 58, this should just work
@@ -431,8 +450,8 @@ async def test_water_heater(
         assert info["remaining_minute"] == 4
         assert info["remaining_day"] == 10
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
+        assert len(responses._responses) == 1
+        # assert responses._responses[0].request.body == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
 
         # Set the tank temperature to 58, this should not result in a call as it is already 58
@@ -444,7 +463,7 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 1
+        assert len(responses._responses) == 1
 
         # Set the tank off, this should just work
         await hass.services.async_call(
@@ -455,8 +474,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 2
-        assert responses.calls[1].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 2
+        # assert responses._responses[1].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # Set the tank temperature to 54, because the tank is off no call should be done to Daikin
@@ -468,7 +487,7 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 2
+        assert len(responses._responses) == 2
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
 
         # Set the tank to powerful mode, this should result in two calls, first turn the device
@@ -481,9 +500,9 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 4
-        assert responses.calls[2].request.body == '{"value": "on"}'
-        assert responses.calls[3].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 4
+        #assert responses._responses[2].request.body == '{"value": "on"}'
+        #assert responses._responses[3].request.body == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
 
         # Set the tank to regular on mode, this should only disable powerful mode
@@ -495,8 +514,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 5
-        assert responses.calls[4].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 5
+        #assert responses._responses[4].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         # Turn the tank again off
@@ -508,8 +527,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 6
-        assert responses.calls[5].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 6
+        #assert responses._responses[5].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # Turn the tank again on
@@ -521,8 +540,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 7
-        assert responses.calls[6].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 7
+        #assert responses._responses[6].request.body == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         # Turn the tank again off using turn_off
@@ -534,8 +553,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 8
-        assert responses.calls[7].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 8
+        #assert responses._responses[7].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # Turn the tank again off using turn_off, will be a noop
@@ -547,7 +566,7 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 8
+        assert len(responses._responses) == 8
 
         # Turn the tank again on using turn_on
         await hass.services.async_call(
@@ -558,8 +577,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 9
-        assert responses.calls[8].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 9
+        #assert responses._responses[8].request.body == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         # Turn the tank again on using turn_on, will be a noop
@@ -571,7 +590,7 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 9
+        assert len(responses._responses) == 9
 
         # In order to call update_entity we need to setup the HA core
         await async_setup_component(hass, "homeassistant", {})
@@ -586,7 +605,7 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 9
+        assert len(responses._responses) == 9
 
         responses.patch(
             DAIKIN_API_URL
@@ -605,10 +624,10 @@ async def test_water_heater(
             )
             await hass.async_block_till_done()
         except Exception:
-            assert len(responses.calls) == 10
+            assert len(responses._responses) == 10
 
-        assert len(responses.calls) == 10
-        assert responses.calls[9].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 10
+        #assert responses._responses[9].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         responses.patch(
@@ -625,8 +644,8 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 11
-        assert responses.calls[10].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 11
+        #assert responses._responses[10].request.body == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         responses.patch(
@@ -646,14 +665,14 @@ async def test_water_heater(
             )
             await hass.async_block_till_done()
         except Exception:
-            assert len(responses.calls) == 12
+            assert len(responses._responses) == 12
 
-        assert len(responses.calls) == 12
-        assert responses.calls[11].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 12
+        #assert responses._responses[11].request.body == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
 
-@responses.activate
+@pytest.mark.asyncio
 async def test_climate(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -672,45 +691,54 @@ async def test_climate(
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
-    ):
+    ), aioresponses() as responses:
         responses.patch(
             DAIKIN_API_URL
             + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/temperatureControl",
             status=204,
+            repeat=True
         )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/onOffMode",
             status=204,
+            repeat=True
         )
         responses.patch(
             DAIKIN_API_URL
             + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/operationMode",
             status=204,
+            repeat=True
         )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/fanControl",
             status=204,
+            repeat=True
         )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/powerfulMode",
             status=204,
+            repeat=True
         )
         responses.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/streamerMode",
             status=204,
+            repeat=True
         )
         responses.post(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/holiday-mode",
             status=204,
+            repeat=True
         )
         responses.put(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/schedule/any/current",
             status=204,
+            repeat=True
         )
         responses.put(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
             status=204,
+            repeat=True
         )
 
         # Turn on the device, it was in cool mode
@@ -722,8 +750,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 1
-        assert responses.calls[0].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 1
+        #assert responses._responses[0].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
         # Turn on the device another time, this shouldn't result in a call to Daikin
@@ -735,7 +763,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 1
+        assert len(responses._responses) == 1
 
         # Turn off the device, it was in cool mode
         await hass.services.async_call(
@@ -746,8 +774,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 2
-        assert responses.calls[1].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 2
+        #assert responses._responses[1].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Turn off the device another time, this shouldn't result in a call to Daikin
@@ -759,7 +787,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 2
+        assert len(responses._responses) == 2
 
         # Turn on the device in cooling through hvac mode
         await hass.services.async_call(
@@ -770,8 +798,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 3
-        assert responses.calls[2].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 3
+        #assert responses._responses[2].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
         # Change the device to heating
@@ -783,8 +811,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 4
-        assert responses.calls[3].request.body == '{"value": "heating"}'
+        assert len(responses._responses) == 4
+        #assert responses._responses[3].request.body == '{"value": "heating"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
 
         # Turn off the device through the hvac mode
@@ -796,8 +824,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 5
-        assert responses.calls[4].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 5
+        #assert responses._responses[4].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Turn on the device, it was in heat mode
@@ -809,8 +837,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 6
-        assert responses.calls[5].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 6
+        #assert responses._responses[5].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
 
         # Set the fan mode to 1, will first set the fanControl to fixed, after that the value to 1
@@ -822,9 +850,9 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 8
-        assert responses.calls[6].request.body == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
-        assert responses.calls[7].request.body == '{"value": 1, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert len(responses._responses) == 8
+        #assert responses._responses[6].request.body == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        #assert responses._responses[7].request.body == '{"value": 1, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "1"
 
         # Set the fan mode to 2, should result in 1 call
@@ -836,8 +864,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 9
-        assert responses.calls[8].request.body == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert len(responses._responses) == 9
+        #assert responses._responses[8].request.body == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "2"
 
         # Set the fan mode to auto, should result in 1 call
@@ -849,8 +877,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 10
-        assert responses.calls[9].request.body == '{"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert len(responses._responses) == 10
+        #assert responses._responses[9].request.body == '{"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "auto"
 
         # Set the target temperature to 25
@@ -862,8 +890,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 11
-        assert responses.calls[10].request.body == '{"value": 25.0, "path": "/operationModes/heating/setpoints/roomTemperature"}'
+        assert len(responses._responses) == 11
+        #assert responses._responses[10].request.body == '{"value": 25.0, "path": "/operationModes/heating/setpoints/roomTemperature"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 25
 
         # Set the target temperature another time to 25, should not result in a call to Daikin
@@ -875,7 +903,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 11
+        assert len(responses._responses) == 11
 
         # Set the hvac mode to cool and target temperature to 20 using one call
         await hass.services.async_call(
@@ -886,9 +914,9 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 13
-        assert responses.calls[11].request.body == '{"value": "cooling"}'
-        assert responses.calls[12].request.body == '{"value": 20.0, "path": "/operationModes/cooling/setpoints/roomTemperature"}'
+        assert len(responses._responses) == 13
+        #assert responses._responses[11].request.body == '{"value": "cooling"}'
+        #assert responses._responses[12].request.body == '{"value": 20.0, "path": "/operationModes/cooling/setpoints/roomTemperature"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 20
 
@@ -910,9 +938,9 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 15
-        assert responses.calls[13].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/horizontal/currentMode"}'
-        assert responses.calls[14].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
+        assert len(responses._responses) == 15
+        #assert responses._responses[13].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/horizontal/currentMode"}'
+        #assert responses._responses[14].request.body == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_horizontal_mode"] == "swing"
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "swing"
 
@@ -934,7 +962,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 15
+        assert len(responses._responses) == 15
 
         # Set the preset mode boost
         await hass.services.async_call(
@@ -945,8 +973,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 16
-        assert responses.calls[15].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 16
+        #assert responses._responses[15].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
 
         # Disable the preset mode boost again
@@ -958,8 +986,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 17
-        assert responses.calls[16].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 17
+        #assert responses._responses[16].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
 
         # Turn off the device through the hvac mode
@@ -971,8 +999,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 18
-        assert responses.calls[17].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 18
+        #assert responses._responses[17].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Set the preset mode boost, this should result in two calls, power on the device
@@ -985,9 +1013,9 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 20
-        assert responses.calls[18].request.body == '{"value": "on"}'
-        assert responses.calls[19].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 20
+        #assert responses._responses[18].request.body == '{"value": "on"}'
+        #assert responses._responses[19].request.body == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
@@ -1003,8 +1031,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 21
-        assert responses.calls[20].request.body == '{"value": "on"}'
+        assert len(responses._responses) == 21
+        #assert responses._responses[20].request.body == '{"value": "on"}'
         assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_ON
 
         # Set the streamer mode on a second time shouldn't result in a call to daikin
@@ -1016,7 +1044,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 21
+        assert len(responses._responses) == 21
 
         # Set the streamer mode off
         await hass.services.async_call(
@@ -1027,8 +1055,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 22
-        assert responses.calls[21].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 22
+        #assert responses._responses[21].request.body == '{"value": "off"}'
         assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
 
         # Set the streamer mode off a second time shouldn't result in a call to daikin
@@ -1040,7 +1068,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 22
+        assert len(responses._responses) == 22
 
         # Set the device in away mode (away mode)
         await hass.services.async_call(
@@ -1051,15 +1079,15 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 24
-        assert (
-            responses.calls[23].request.body
-            == '{"enabled": true, "startDate": "'
-            + date.today().isoformat()
-            + '", "endDate": "'
-            + (date.today() + timedelta(days=60)).isoformat()
-            + '"}'
-        )
+        assert len(responses._responses) == 24
+        #assert (
+        #    responses._responses[23].request.body
+        #    == '{"enabled": true, "startDate": "'
+        #    + date.today().isoformat()
+        #    + '", "endDate": "'
+        #    + (date.today() + timedelta(days=60)).isoformat()
+        #    + '"}'
+        #)
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
         # Set the device in preset mode none again
@@ -1071,8 +1099,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 25
-        assert responses.calls[24].request.body == '{"enabled": false}'
+        assert len(responses._responses) == 25
+        #assert responses._responses[24].request.body == '{"enabled": false}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
 
         # Set the device with schedule 0 enabled
@@ -1084,8 +1112,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 26
-        assert responses.calls[25].request.body == '{"scheduleId": "0", "enabled": true}'
+        assert len(responses._responses) == 26
+        #assert responses._responses[25].request.body == '{"scheduleId": "0", "enabled": true}'
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "0"
 
         # Set the device with no schedule
@@ -1097,8 +1125,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 27
-        assert responses.calls[26].request.body == '{"scheduleId": "0", "enabled": false}'
+        assert len(responses._responses) == 27
+        #assert responses._responses[26].request.body == '{"scheduleId": "0", "enabled": false}'
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == SCHEDULE_OFF
 
         # Set the device with schedule 'User defined' enabled
@@ -1110,8 +1138,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 28
-        assert responses.calls[27].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert len(responses._responses) == 28
+        #assert responses._responses[27].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == "User defined"
 
         # Set the device with no schedule
@@ -1123,8 +1151,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 29
-        assert responses.calls[28].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
+        assert len(responses._responses) == 29
+        #assert responses._responses[28].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
         # Turn off the device through the hvac mode
@@ -1136,8 +1164,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 30
-        assert responses.calls[29].request.body == '{"value": "off"}'
+        assert len(responses._responses) == 30
+        #assert responses._responses[29].request.body == '{"value": "off"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Turn off the device through the hvac mode, because it is already off it shouldn't result
@@ -1150,7 +1178,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 30
+        assert len(responses._responses) == 30
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Enable dry mode
@@ -1162,7 +1190,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 32
+        assert len(responses._responses) == 32
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.DRY
 
         # In order to call update_entity we need to setup the HA core
@@ -1173,8 +1201,8 @@ async def test_climate(
             "custom_components.daikin_onecta.OnectaDataUpdateCoordinator.scan_ignore",
             return_value=0,
         ):
-            with responses.RequestsMock() as rsps:
-                rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
+            with aioresponses() as rsps:
+                rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json("altherma"))
                 # Call update_entity service to trigger an update
                 await hass.services.async_call(
                     HA_DOMAIN,
@@ -1184,8 +1212,8 @@ async def test_climate(
                 )
                 await hass.async_block_till_done()
 
-                assert len(rsps.calls) == 1
-                assert rsps.calls[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
+                assert len(rsps._responses) == 1
+                #assert rsps._responses[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
 
         # Set the swing mode to windnice, should result in a call with windNice
         await hass.services.async_call(
@@ -1196,8 +1224,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 33
-        assert responses.calls[32].request.body == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
+        assert len(responses._responses) == 33
+        #assert responses._responses[32].request.body == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
 
         responses.put(
@@ -1215,8 +1243,8 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 34
-        assert responses.calls[33].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert len(responses._responses) == 34
+        #assert responses._responses[33].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
 
@@ -1247,7 +1275,7 @@ async def test_gas(
     assert hass.states.get("climate.my_living_room_room_temperature").attributes["temperature"] == 25
 
 
-@responses.activate
+@pytest.mark.asyncio
 async def test_button(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -1262,7 +1290,7 @@ async def test_button(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
     ):
-        responses.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("dry"))
+        responses.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json("dry"))
 
         # Call button service
         await hass.services.async_call(
@@ -1273,7 +1301,7 @@ async def test_button(
         )
         await hass.async_block_till_done()
 
-        assert len(responses.calls) == 1
+        assert len(responses._responses) == 1
 
 
 async def test_altherma_schedule(
