@@ -81,8 +81,8 @@ class DaikinApi:
 
             try:
                 async with self._daikin_session.request(method=method, url=resource_url, headers=headers, data=options) as resp:
-
                     data = await resp.json()
+
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
                     self.rate_limits["remaining_minutes"] = int(resp.headers.get("X-RateLimit-Remaining-minute", 0))
@@ -97,11 +97,10 @@ class DaikinApi:
                         ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
                     if method == "GET" and resp.status == 200:
-                        try:
-                            return data
-                        except aiohttp.ContentTypeError:
-                            _LOGGER.error("RETRIEVE JSON FAILED: %s", resp.text())
-                            return False
+                        return data
+                    elif resp.status == 204:
+                        self._last_patch_call = datetime.now()
+                        return True
                     elif resp.status == 429:
                         if self.rate_limits["remaining_minutes"] == 0:
                             ir.async_create_issue(
@@ -130,9 +129,6 @@ class DaikinApi:
                             return []
                         else:
                             return False
-                    elif resp.status == 204:
-                        self._last_patch_call = datetime.now()
-                        return True
 
                     _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", resp.status, self.rate_limits)
 
