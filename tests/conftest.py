@@ -15,6 +15,7 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
+from aioresponses import aioresponses
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
@@ -34,6 +35,7 @@ def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) 
     """Enable custom integrations defined in the test dir."""
 
 
+@pytest.mark.asyncio
 async def snapshot_platform_entities(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -55,8 +57,8 @@ async def snapshot_platform_entities(
         "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
         {"access_token": "AAAA"},
     ):
-        with responses.RequestsMock() as rsps:
-            rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
+        with aioresponses() as mock:
+            mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json(fixture_device_json))
             assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
