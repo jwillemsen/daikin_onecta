@@ -54,7 +54,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_ICON: "mdi:calendar-clock",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
-        TRANSLATION_KEY: None,
+        TRANSLATION_KEY: "schedule",
     },
     "controlMode": {
         CONF_DEVICE_CLASS: None,
