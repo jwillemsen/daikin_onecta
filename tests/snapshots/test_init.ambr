@@ -69389,7 +69389,7 @@
     'state': 'unavailable',
   })
 # ---
-# name: test_offlinedevice[sensor.studio_climatecontrol_powerfulmode-entry]
+# name: test_offlinedevice[sensor.studio_climatecontrol_powerful_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -69402,7 +69402,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.studio_climatecontrol_powerfulmode',
+    'entity_id': 'sensor.studio_climatecontrol_powerful_mode',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -69414,7 +69414,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:rocket-launch',
-    'original_name': 'Powerfulmode',
+    'original_name': 'Powerful mode',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -69424,14 +69424,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_offlinedevice[sensor.studio_climatecontrol_powerfulmode-state]
+# name: test_offlinedevice[sensor.studio_climatecontrol_powerful_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Studio ClimateControl Powerfulmode',
+      'friendly_name': 'Studio ClimateControl Powerful mode',
       'icon': 'mdi:rocket-launch',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.studio_climatecontrol_powerfulmode',
+    'entity_id': 'sensor.studio_climatecontrol_powerful_mode',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
