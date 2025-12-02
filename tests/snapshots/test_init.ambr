@@ -8353,7 +8353,7 @@
     'state': 'DaikinAP83731',
   })
 # ---
-# name: test_altherma[sensor.johnny_maaike_gateway_timezone-entry]
+# name: test_altherma[sensor.johnny_maaike_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -8366,7 +8366,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_gateway_timezone',
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -8378,7 +8378,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -8388,14 +8388,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma[sensor.johnny_maaike_gateway_timezone-state]
+# name: test_altherma[sensor.johnny_maaike_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Timezone',
+      'friendly_name': 'Johnny&Maaike Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_gateway_timezone',
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -9307,7 +9307,7 @@
     'state': 'DaikinAP66051',
   })
 # ---
-# name: test_altherma[sensor.linde_gateway_timezone-entry]
+# name: test_altherma[sensor.linde_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -9320,7 +9320,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_gateway_timezone',
+    'entity_id': 'sensor.linde_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -9332,7 +9332,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -9342,14 +9342,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma[sensor.linde_gateway_timezone-state]
+# name: test_altherma[sensor.linde_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Timezone',
+      'friendly_name': 'Linde Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.linde_gateway_timezone',
+    'entity_id': 'sensor.linde_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -10261,7 +10261,7 @@
     'state': 'DaikinAP22483',
   })
 # ---
-# name: test_altherma[sensor.sanne_gateway_timezone-entry]
+# name: test_altherma[sensor.sanne_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -10274,7 +10274,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_gateway_timezone',
+    'entity_id': 'sensor.sanne_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -10286,7 +10286,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -10296,14 +10296,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma[sensor.sanne_gateway_timezone-state]
+# name: test_altherma[sensor.sanne_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Timezone',
+      'friendly_name': 'Sanne Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.sanne_gateway_timezone',
+    'entity_id': 'sensor.sanne_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -11215,7 +11215,7 @@
     'state': 'DaikinAP32931',
   })
 # ---
-# name: test_altherma[sensor.werkkamer_gateway_timezone-entry]
+# name: test_altherma[sensor.werkkamer_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -11228,7 +11228,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_timezone',
+    'entity_id': 'sensor.werkkamer_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -11240,7 +11240,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -11250,14 +11250,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma[sensor.werkkamer_gateway_timezone-state]
+# name: test_altherma[sensor.werkkamer_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Timezone',
+      'friendly_name': 'Werkkamer Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_timezone',
+    'entity_id': 'sensor.werkkamer_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -18529,7 +18529,7 @@
     'state': 'DaikinAP83731',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_timezone-entry]
+# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -18542,7 +18542,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_gateway_timezone',
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -18554,7 +18554,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -18564,14 +18564,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_timezone-state]
+# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Timezone',
+      'friendly_name': 'Johnny&Maaike Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_gateway_timezone',
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -19483,7 +19483,7 @@
     'state': 'DaikinAP66051',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.linde_gateway_timezone-entry]
+# name: test_altherma_ratelimit[sensor.linde_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -19496,7 +19496,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_gateway_timezone',
+    'entity_id': 'sensor.linde_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -19508,7 +19508,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -19518,14 +19518,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_ratelimit[sensor.linde_gateway_timezone-state]
+# name: test_altherma_ratelimit[sensor.linde_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Timezone',
+      'friendly_name': 'Linde Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.linde_gateway_timezone',
+    'entity_id': 'sensor.linde_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -20437,7 +20437,7 @@
     'state': 'DaikinAP22483',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.sanne_gateway_timezone-entry]
+# name: test_altherma_ratelimit[sensor.sanne_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -20450,7 +20450,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_gateway_timezone',
+    'entity_id': 'sensor.sanne_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -20462,7 +20462,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -20472,14 +20472,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_ratelimit[sensor.sanne_gateway_timezone-state]
+# name: test_altherma_ratelimit[sensor.sanne_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Timezone',
+      'friendly_name': 'Sanne Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.sanne_gateway_timezone',
+    'entity_id': 'sensor.sanne_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -21391,7 +21391,7 @@
     'state': 'DaikinAP32931',
   })
 # ---
-# name: test_altherma_ratelimit[sensor.werkkamer_gateway_timezone-entry]
+# name: test_altherma_ratelimit[sensor.werkkamer_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -21404,7 +21404,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_timezone',
+    'entity_id': 'sensor.werkkamer_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -21416,7 +21416,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -21426,14 +21426,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_ratelimit[sensor.werkkamer_gateway_timezone-state]
+# name: test_altherma_ratelimit[sensor.werkkamer_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Timezone',
+      'friendly_name': 'Werkkamer Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_timezone',
+    'entity_id': 'sensor.werkkamer_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -37493,7 +37493,7 @@
     'state': 'DaikinAP83731',
   })
 # ---
-# name: test_climate[sensor.johnny_maaike_gateway_timezone-entry]
+# name: test_climate[sensor.johnny_maaike_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -37506,7 +37506,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.johnny_maaike_gateway_timezone',
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -37518,7 +37518,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -37528,14 +37528,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate[sensor.johnny_maaike_gateway_timezone-state]
+# name: test_climate[sensor.johnny_maaike_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Timezone',
+      'friendly_name': 'Johnny&Maaike Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.johnny_maaike_gateway_timezone',
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -38447,7 +38447,7 @@
     'state': 'DaikinAP66051',
   })
 # ---
-# name: test_climate[sensor.linde_gateway_timezone-entry]
+# name: test_climate[sensor.linde_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -38460,7 +38460,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.linde_gateway_timezone',
+    'entity_id': 'sensor.linde_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -38472,7 +38472,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -38482,14 +38482,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate[sensor.linde_gateway_timezone-state]
+# name: test_climate[sensor.linde_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Timezone',
+      'friendly_name': 'Linde Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.linde_gateway_timezone',
+    'entity_id': 'sensor.linde_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -39401,7 +39401,7 @@
     'state': 'DaikinAP22483',
   })
 # ---
-# name: test_climate[sensor.sanne_gateway_timezone-entry]
+# name: test_climate[sensor.sanne_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -39414,7 +39414,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.sanne_gateway_timezone',
+    'entity_id': 'sensor.sanne_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -39426,7 +39426,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -39436,14 +39436,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate[sensor.sanne_gateway_timezone-state]
+# name: test_climate[sensor.sanne_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Timezone',
+      'friendly_name': 'Sanne Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.sanne_gateway_timezone',
+    'entity_id': 'sensor.sanne_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -40355,7 +40355,7 @@
     'state': 'DaikinAP32931',
   })
 # ---
-# name: test_climate[sensor.werkkamer_gateway_timezone-entry]
+# name: test_climate[sensor.werkkamer_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -40368,7 +40368,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.werkkamer_gateway_timezone',
+    'entity_id': 'sensor.werkkamer_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -40380,7 +40380,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -40390,14 +40390,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate[sensor.werkkamer_gateway_timezone-state]
+# name: test_climate[sensor.werkkamer_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Timezone',
+      'friendly_name': 'Werkkamer Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.werkkamer_gateway_timezone',
+    'entity_id': 'sensor.werkkamer_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -45006,7 +45006,7 @@
     'state': 'DaikinAP31731',
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_timezone-entry]
+# name: test_climate_floorheatingairflow[sensor.laurens_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -45019,7 +45019,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.laurens_gateway_timezone',
+    'entity_id': 'sensor.laurens_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -45031,7 +45031,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -45041,14 +45041,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_timezone-state]
+# name: test_climate_floorheatingairflow[sensor.laurens_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Laurens Gateway Timezone',
+      'friendly_name': 'Laurens Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.laurens_gateway_timezone',
+    'entity_id': 'sensor.laurens_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -46014,7 +46014,7 @@
     'state': 'DaikinAP79283',
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_timezone-entry]
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_time_zone-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -46027,7 +46027,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.woonkamer_airco_gateway_timezone',
+    'entity_id': 'sensor.woonkamer_airco_gateway_time_zone',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -46039,7 +46039,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:information-outline',
-    'original_name': 'Timezone',
+    'original_name': 'Time zone',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -46049,14 +46049,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_timezone-state]
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_time_zone-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco Gateway Timezone',
+      'friendly_name': 'Woonkamer airco Gateway Time zone',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.woonkamer_airco_gateway_timezone',
+    'entity_id': 'sensor.woonkamer_airco_gateway_time_zone',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
