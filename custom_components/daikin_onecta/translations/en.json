@@ -55,6 +55,24 @@
       }
     },
     "sensor": {
+      "coolingdailyelectricalconsumption": {
+        "name": "Cooling daily electrical consumption"
+      },
+      "coolingweeklyyelectricalconsumption": {
+        "name": "Cooling weekly electrical consumption"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Cooling yearly electrical consumption"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Heating daily electrical consumption"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Heating weekly electrical consumption"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Heating yearly electrical consumption"
+      },
       "ipaddress": {
         "name": "IP address"
       },
