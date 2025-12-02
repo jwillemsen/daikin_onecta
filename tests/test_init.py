@@ -738,7 +738,7 @@ async def test_climate(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
             status=204,
-            repeat=True
+            repeat=2
         )
 
         # Turn on the device, it was in cool mode
@@ -1201,19 +1201,18 @@ async def test_climate(
             "custom_components.daikin_onecta.OnectaDataUpdateCoordinator.scan_ignore",
             return_value=0,
         ):
-            with aioresponses() as rsps:
-                rsps.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json("altherma"))
-                # Call update_entity service to trigger an update
-                await hass.services.async_call(
-                    HA_DOMAIN,
-                    SERVICE_UPDATE_ENTITY,
-                    {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
-                    blocking=True,
-                )
-                await hass.async_block_till_done()
+            responses.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json("altherma"))
+            # Call update_entity service to trigger an update
+            await hass.services.async_call(
+                HA_DOMAIN,
+                SERVICE_UPDATE_ENTITY,
+                {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature"},
+                blocking=True,
+            )
+            await hass.async_block_till_done()
 
-                assert len(rsps._responses) == 1
-                #assert rsps._responses[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
+            assert len(responses._responses) == 33
+            #assert rsps._responses[0].request.url == DAIKIN_API_URL + "/v1/gateway-devices"
 
         # Set the swing mode to windnice, should result in a call with windNice
         await hass.services.async_call(
@@ -1224,7 +1223,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses._responses) == 33
+        assert len(responses._responses) == 34
         #assert responses._responses[32].request.body == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
 
@@ -1243,7 +1242,7 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(responses._responses) == 34
+        assert len(responses._responses) == 35
         #assert responses._responses[33].request.body == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
@@ -1289,7 +1288,7 @@ async def test_button(
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
-    ):
+    ), aioresponses() as responses:
         responses.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, payload=load_fixture_json("dry"))
 
         # Call button service

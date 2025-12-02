@@ -34,7 +34,6 @@ def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) 
     """Enable custom integrations defined in the test dir."""
 
 
-@pytest.mark.asyncio
 async def snapshot_platform_entities(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
