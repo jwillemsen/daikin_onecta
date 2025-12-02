@@ -43,7 +43,7 @@
   "entity": {
     "select": {
       "schedule": {
-        "schedule": "Schedule"
+        "name": "Schedule"
       }
     },
     "switch": {
