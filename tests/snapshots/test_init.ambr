@@ -64981,7 +64981,7 @@
     'state': '1',
   })
 # ---
-# name: test_mc80z[sensor.air_purifier_climatecontrol_pm25_concentration-entry]
+# name: test_mc80z[sensor.air_purifier_climatecontrol_pm2_5_concentration-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
     }),
@@ -64996,7 +64996,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.air_purifier_climatecontrol_pm25_concentration',
+    'entity_id': 'sensor.air_purifier_climatecontrol_pm2_5_concentration',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65008,7 +65008,7 @@
     }),
     'original_device_class': <SensorDeviceClass.PM25: 'pm25'>,
     'original_icon': 'mdi:blur',
-    'original_name': 'PM25 concentration',
+    'original_name': 'PM2.5 concentration',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -65018,17 +65018,17 @@
     'unit_of_measurement': 'μg/m³',
   })
 # ---
-# name: test_mc80z[sensor.air_purifier_climatecontrol_pm25_concentration-state]
+# name: test_mc80z[sensor.air_purifier_climatecontrol_pm2_5_concentration-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'pm25',
-      'friendly_name': 'air-purifier ClimateControl PM25 concentration',
+      'friendly_name': 'air-purifier ClimateControl PM2.5 concentration',
       'icon': 'mdi:blur',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'μg/m³',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.air_purifier_climatecontrol_pm25_concentration',
+    'entity_id': 'sensor.air_purifier_climatecontrol_pm2_5_concentration',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

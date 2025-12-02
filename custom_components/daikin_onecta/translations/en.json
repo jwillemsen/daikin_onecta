@@ -95,7 +95,7 @@
         "name": "PM1 concentration"
       },
       "pm25concentration": {
-        "name": "PM25 concentration"
+        "name": "PM2.5 concentration"
       },
       "operationmode": {
         "name": "Operation mode"
