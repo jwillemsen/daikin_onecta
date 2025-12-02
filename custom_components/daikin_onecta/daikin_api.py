@@ -70,14 +70,13 @@ class DaikinApi:
 
         return self.session.token["access_token"]
 
-    async def doBearerRequest(self, method, resourceUrl, options=None):
+    async def doBearerRequest(self, method, resource_url, options=None):
         async with self._cloud_lock:
             token = await self.async_get_access_token()
 
-            resource_url = DAIKIN_API_URL + resourceUrl
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
-            _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
+            _LOGGER.debug("BEARER REQUEST URL: %s", resource_url)
             _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
 
             try:
