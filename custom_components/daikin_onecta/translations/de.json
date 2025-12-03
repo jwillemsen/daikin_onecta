@@ -55,6 +55,9 @@
       }
     },
     "sensor": {
+      "ratelimitremainingday": {
+        "name": "Verbleibende für Tag"
+      },
       "coolingdailyelectricalconsumption": {
         "name": "Täglicher Stromverbrauch Kühlung"
       },

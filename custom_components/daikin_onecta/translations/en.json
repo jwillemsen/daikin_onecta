@@ -55,6 +55,9 @@
       }
     },
     "sensor": {
+      "ratelimitremainingday": {
+        "name": "Ratelimit remaining day"
+      },
       "coolingdailyelectricalconsumption": {
         "name": "Cooling daily electrical consumption"
       },
