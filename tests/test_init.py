@@ -1318,6 +1318,54 @@ async def test_gas(
 
     assert hass.states.get("climate.my_living_room_room_temperature").attributes["temperature"] == 25
 
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        aioclient_mock.clear_requests()
+        aioclient_mock.get(
+            DAIKIN_API_URL + "/v1/gateway-devices",
+            status=429,
+            json=load_fixture_json("dry"),
+            headers={"X-RateLimit-Remaining-minute": "0", "X-RateLimit-Remaining-day": "0"},
+        )
+
+        # Call button service
+        await hass.services.async_call(
+            BUTTON_DOMAIN,
+            SERVICE_PRESS,
+            {ATTR_ENTITY_ID: "button.my_living_room_refresh"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][1] == URL(DAIKIN_API_URL + "/v1/gateway-devices")
+
+        info = await system_health_info(hass)
+
+        assert info["remaining_minute"] == 0
+        assert info["remaining_day"] == 0
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        aioclient_mock.clear_requests()
+        aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, text="TET {")
+
+        # Call button service
+        await hass.services.async_call(
+            BUTTON_DOMAIN,
+            SERVICE_PRESS,
+            {ATTR_ENTITY_ID: "button.my_living_room_refresh"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][1] == URL(DAIKIN_API_URL + "/v1/gateway-devices")
+
 
 @pytest.mark.asyncio
 async def test_button(

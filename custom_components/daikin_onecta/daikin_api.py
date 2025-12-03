@@ -76,11 +76,12 @@ class DaikinApi:
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
             _LOGGER.info("Request URL: %s", resource_url)
-            _LOGGER.info("Request %s JSON: %s", method, options)
+            _LOGGER.info("Request %s Options: %s", method, options)
 
             try:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
                     await resp.text()
+                    _LOGGER.info("Response status: %s Text: %s Limit: %s", resp.status, await resp.text(), self.rate_limits)
 
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
@@ -94,8 +95,6 @@ class DaikinApi:
 
                     if self.rate_limits["remaining_day"] > 0:
                         ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
-
-                    _LOGGER.info("Response status: %s Limit: %s", resp.status, self.rate_limits)
 
                     if method == "GET" and resp.status == 200:
                         try:
