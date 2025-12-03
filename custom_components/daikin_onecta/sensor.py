@@ -1,16 +1,13 @@
 """Support for Daikin AC sensors."""
 import logging
-import re
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
-from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.components.sensor import SensorStateClass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
-from homeassistant.const import UnitOfEnergy
 from homeassistant.core import callback
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import EntityCategory
@@ -119,17 +116,19 @@ async def async_setup_entry(hass, config_entry: ConfigEntry, async_add_entities)
                 _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensory_data)
                 if sensory_data is not None:
                     for sensor in sensory_data:
-                        _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
-                        sensors.append(
-                            DaikinValueSensor(
-                                device,
-                                coordinator,
-                                embedded_id,
-                                management_point_type,
-                                "sensoryData",
-                                sensor,
+                        sensor_settings = VALUE_SENSOR_MAPPING.get(sensor)
+                        if sensor_settings is not None:
+                            _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
+                            sensors.append(
+                                DaikinValueSensor(
+                                    device,
+                                    coordinator,
+                                    embedded_id,
+                                    management_point_type,
+                                    "sensoryData",
+                                    sensor,
+                                )
                             )
-                        )
 
             cd = management_point.get("consumptionData")
             if cd is not None:
@@ -171,22 +170,23 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_has_entity_name = True
         self._period = period
         periodName = SENSOR_PERIODS[period]
-        self._attr_name = f"{operation_mode.capitalize()} {periodName} {sensor_type.capitalize()} Consumption"
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
-        self._attr_entity_category = None
-        self._attr_icon = "mdi:fire"
-        if operation_mode == "cooling":
-            self._attr_icon = "mdi:snowflake"
-        self._attr_device_class = SensorDeviceClass.ENERGY
-        self._attr_state_class = SensorStateClass.TOTAL_INCREASING
-        self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
+        buildname = f"{operation_mode.capitalize()}{periodName}{sensor_type.capitalize()}Consumption"
+        sensor_settings = VALUE_SENSOR_MAPPING.get(buildname)
+        self._attr_icon = sensor_settings[CONF_ICON]
+        self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
+        self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+        self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
+        self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
+        self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
         self._sensor_type = sensor_type
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
             self._embedded_id,
-            self._attr_name,
+            buildname,
         )
 
     def update_state(self) -> None:
@@ -260,19 +260,14 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._attr_device_class = None
         self._attr_state_class = None
         self._attr_has_entity_name = True
-        self._attr_native_unit_of_measurement = None
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is not None:
-            self._attr_icon = sensor_settings[CONF_ICON]
-            self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
-            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-            self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
-            self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-            self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
-        myname = value[0].upper() + value[1:]
-        readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{' '.join(readable)}"
+        self._attr_icon = sensor_settings[CONF_ICON]
+        self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
+        self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+        self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
+        self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+        self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
+        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
         self.update_state()
         _LOGGER.info(

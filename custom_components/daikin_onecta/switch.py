@@ -1,6 +1,5 @@
 """Support for Daikin AirBase zones."""
 import logging
-import re
 
 from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
@@ -15,6 +14,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
+from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
@@ -94,9 +94,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-        myname = value[0].upper() + value[1:]
-        readable = re.findall("[A-Z][^A-Z]*", myname)
-        self._attr_name = f"{' '.join(readable)}"
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         mpt = management_point_type[0].upper() + management_point_type[1:]
         self._attr_device_info = {
@@ -110,7 +108,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             "Device '%s:%s' supports sensor '%s'",
             device.name,
             self._embedded_id,
-            self._attr_name,
+            self._value,
         )
 
     def update_state(self) -> None:

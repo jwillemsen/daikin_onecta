@@ -41,15 +41,186 @@
     }
   },
   "entity": {
+    "select": {
+      "schedule": {
+        "name": "Schedule"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer mode"
+      },
+      "economode": {
+        "name": "Econo mode"
+      }
+    },
+    "sensor": {
+      "coolingdailyelectricalconsumption": {
+        "name": "Cooling daily electrical consumption"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Cooling weekly electrical consumption"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Cooling yearly electrical consumption"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Heating daily electrical consumption"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Heating weekly electrical consumption"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Heating yearly electrical consumption"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Cooling daily gas consumption"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Cooling weekly gas consumption"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Cooling yearly gas consumption"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Heating daily gas consumption"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Heating weekly gas consumption"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Heating yearly gas consumption"
+      },
+      "ipaddress": {
+        "name": "IP address"
+      },
+      "tanktemperature": {
+        "name": "Tank temperature"
+      },
+      "heatupmode": {
+        "name": "Heat up mode"
+      },
+      "outdoortemperature": {
+        "name": "Outdoor temperature"
+      },
+      "leavingwatertemperature": {
+        "name": "Leaving water temperature"
+      },
+      "errorcode": {
+        "name": "Error code"
+      },
+      "setpointmode": {
+        "name": "Setpoint mode"
+      },
+      "powerfulmode": {
+        "name": "Powerful mode"
+      },
+      "roomtemperature": {
+        "name": "Room temperature"
+      },
+      "onoffmode": {
+        "name": "On/Off mode"
+      },
+      "controlmode": {
+        "name": "Control mode"
+      },
+      "roomhumidity": {
+        "name": "Room humidity"
+      },
+      "pm1concentration": {
+        "name": "PM1 concentration"
+      },
+      "pm25concentration": {
+        "name": "PM2.5 concentration"
+      },
+      "operationmode": {
+        "name": "Operation mode"
+      },
+      "airpurificationmode": {
+        "name": "Air purification mode"
+      },
+      "wificonnectionssid": {
+        "name": "WiFi connection SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "WiFi connection strength"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10 concentration"
+      },
+      "leavingwateroffset": {
+        "name": "Leaving water offset"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Calculated leaving water temperature"
+      },
+      "heatexchangertemperature": {
+        "name": "Heat exchanger temperature"
+      },
+      "suctiontemperature": {
+        "name": "Suction temperature"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Dry keep setting"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Fan motor rotation speed"
+      },
+      "datetime": {
+        "name": "Date/time"
+      },
+      "regioncode": {
+        "name": "Region code"
+      },
+      "timezone": {
+        "name": "Time zone"
+      }
+    },
     "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Is holiday mode active"
+      },
       "isinerrorstate": {
         "name": "Is in error state"
       },
-      "is_in_warning_state": {
+      "isinwarningstate": {
         "name": "Is in warning state"
       },
       "isininstallerstate": {
         "name": "Is in installer state"
+      },
+      "isinemergencystate": {
+        "name": "Is in emergency state"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Is powerful mode active"
+      },
+      "iscoolheatmaster": {
+        "name": "Is cool/heat master"
+      },
+      "isinmodeconflict": {
+        "name": "Is in mode conflict"
+      },
+      "isincautionstate": {
+        "name": "Is in caution state"
+      },
+      "islockfunctionenabled": {
+        "name": "Is lock function enabled"
+      },
+      "ledenabled": {
+        "name": "LED enabled"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Is firmware update supported"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Daylight saving time enabled"
       }
     },
     "climate": {
