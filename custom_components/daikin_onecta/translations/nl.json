@@ -55,6 +55,9 @@
       }
     },
     "sensor": {
+      "ratelimitremainingday": {
+        "name": "Resterend per dag"
+      },
       "coolingdailyelectricalconsumption": {
         "name": "Dagelijks elektriciteitsverbruik koelen"
       },
