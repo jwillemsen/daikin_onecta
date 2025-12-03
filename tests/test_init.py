@@ -60,7 +60,6 @@ from custom_components.daikin_onecta.diagnostics import async_get_device_diagnos
 from custom_components.daikin_onecta.system_health import system_health_info
 
 
-
 async def test_homehub(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
