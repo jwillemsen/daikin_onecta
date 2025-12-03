@@ -10,6 +10,7 @@ from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import PERCENTAGE
 from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
+from homeassistant.const import UnitOfEnergy
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
 
@@ -464,7 +465,7 @@ VALUE_SENSOR_MAPPING = {
     "CoolingDailyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
-        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:snowflake",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -473,7 +474,7 @@ VALUE_SENSOR_MAPPING = {
     "CoolingWeeklyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
-        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:snowflake",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -482,7 +483,7 @@ VALUE_SENSOR_MAPPING = {
     "CoolingYearlyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
-        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:snowflake",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -491,7 +492,7 @@ VALUE_SENSOR_MAPPING = {
     "HeatingDailyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
-        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:fire",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -500,7 +501,7 @@ VALUE_SENSOR_MAPPING = {
     "HeatingWeeklyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
-        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:fire",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -509,7 +510,7 @@ VALUE_SENSOR_MAPPING = {
     "HeatingYearlyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
-        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:fire",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
