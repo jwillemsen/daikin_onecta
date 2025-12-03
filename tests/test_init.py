@@ -768,11 +768,6 @@ async def test_climate(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/schedule/any/current",
             status=204,
         )
-        aioclient_mock.put(
-            DAIKIN_API_URL
-            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
-            status=204,
-        )
 
         # Turn on the device, it was in cool mode
         await hass.services.async_call(
@@ -1161,6 +1156,12 @@ async def test_climate(
         assert len(aioclient_mock.mock_calls) == 28
         assert aioclient_mock.mock_calls[27][2] == '{"scheduleId": "0", "enabled": false}'
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == SCHEDULE_OFF
+
+        aioclient_mock.put(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
+            status=204,
+        )
 
         # Set the device with schedule 'User defined' enabled
         await hass.services.async_call(
