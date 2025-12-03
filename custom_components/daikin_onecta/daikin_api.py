@@ -1,11 +1,10 @@
 """Platform for the Daikin AC."""
 import asyncio
-import aiohttp
-import functools
 import logging
 from datetime import datetime
 from http import HTTPStatus
 
+import aiohttp
 from aiohttp import ClientResponseError
 from homeassistant import config_entries
 from homeassistant import core

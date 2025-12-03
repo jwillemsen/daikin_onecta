@@ -10,11 +10,11 @@ from unittest.mock import patch
 import homeassistant.helpers.entity_registry as er
 import pytest
 from _pytest.assertion import truncate
+from aioresponses import aioresponses
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from syrupy import SnapshotAssertion
-from aioresponses import aioresponses
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
