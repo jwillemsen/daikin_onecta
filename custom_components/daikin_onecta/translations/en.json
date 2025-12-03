@@ -58,7 +58,7 @@
       "coolingdailyelectricalconsumption": {
         "name": "Cooling daily electrical consumption"
       },
-      "coolingweeklyyelectricalconsumption": {
+      "coolingweeklyelectricalconsumption": {
         "name": "Cooling weekly electrical consumption"
       },
       "coolingyearlyelectricalconsumption": {
