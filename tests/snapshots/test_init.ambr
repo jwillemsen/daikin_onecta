@@ -34250,7 +34250,7 @@
 # name: test_climate[button.altherma_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -34299,7 +34299,7 @@
 # name: test_climate[button.johnny_maaike_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -34348,7 +34348,7 @@
 # name: test_climate[button.linde_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -34446,7 +34446,7 @@
 # name: test_climate[button.werkkamer_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,

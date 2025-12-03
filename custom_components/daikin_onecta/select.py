@@ -1,5 +1,4 @@
 import logging
-import re
 
 from homeassistant.components.select import SelectEntity
 from homeassistant.const import CONF_ICON
@@ -53,10 +52,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._device.fill_device_info(self._attr_device_info, management_point_type)
         self._embedded_id = embedded_id
         self._value = value
-        myname = value[0].upper() + value[1:]
-        readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_has_entity_name = True
-        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is not None:
