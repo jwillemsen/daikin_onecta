@@ -1112,12 +1112,12 @@ async def test_climate(
 
         assert len(aioclient_mock.mock_calls) == 25
         assert (
-           aioclient_mock.mock_calls[24][2]
-           == '{"enabled": true, "startDate": "'
-           + date.today().isoformat()
-           + '", "endDate": "'
-           + (date.today() + timedelta(days=60)).isoformat()
-           + '"}'
+            aioclient_mock.mock_calls[24][2]
+            == '{"enabled": true, "startDate": "'
+            + date.today().isoformat()
+            + '", "endDate": "'
+            + (date.today() + timedelta(days=60)).isoformat()
+            + '"}'
         )
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
