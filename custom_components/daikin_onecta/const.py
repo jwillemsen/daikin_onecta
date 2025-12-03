@@ -10,6 +10,7 @@ from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import PERCENTAGE
 from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
+from homeassistant.const import UnitOfEnergy
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
 
@@ -47,6 +48,15 @@ TRANSLATION_KEY = "TranslationKey"
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 # - TRANSLATION_KEY: Translation key
 VALUE_SENSOR_MAPPING = {
+    "schedule": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:calendar-clock",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "schedule",
+    },
     "controlMode": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
@@ -389,15 +399,6 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "datetime",
     },
-    "miconId": {
-        CONF_DEVICE_CLASS: None,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:information-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-        TRANSLATION_KEY: "miconid",
-    },
     "regionCode": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
@@ -460,5 +461,113 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "pm10concentration",
+    },
+    "CoolingDailyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingdailyelectricalconsumption",
+    },
+    "CoolingWeeklyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingweeklyelectricalconsumption",
+    },
+    "CoolingYearlyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingyearlyelectricalconsumption",
+    },
+    "HeatingDailyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingdailyelectricalconsumption",
+    },
+    "HeatingWeeklyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingweeklyelectricalconsumption",
+    },
+    "HeatingYearlyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingyearlyelectricalconsumption",
+    },
+    "CoolingDailyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingdailygasconsumption",
+    },
+    "CoolingWeeklyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingweeklygasconsumption",
+    },
+    "CoolingYearlyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingyearlygasconsumption",
+    },
+    "HeatingDailyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingdailygasconsumption",
+    },
+    "HeatingWeeklyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingweeklygasconsumption",
+    },
+    "HeatingYearlyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingyearlygasconsumption",
     },
 }

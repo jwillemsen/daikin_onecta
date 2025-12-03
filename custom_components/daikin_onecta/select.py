@@ -1,12 +1,15 @@
 import logging
-import re
 
 from homeassistant.components.select import SelectEntity
+from homeassistant.const import CONF_ICON
 from homeassistant.core import callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
+from .const import ENABLED_DEFAULT
 from .const import SCHEDULE_OFF
+from .const import TRANSLATION_KEY
+from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -49,18 +52,19 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._device.fill_device_info(self._attr_device_info, management_point_type)
         self._embedded_id = embedded_id
         self._value = value
-        myname = value[0].upper() + value[1:]
-        readable = re.findall("[A-Z][^A-Z]*", myname)
         self._attr_has_entity_name = True
-        self._attr_name = f"{' '.join(readable)}"
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
-        self._attr_icon = "mdi:calendar-clock"
+        sensor_settings = VALUE_SENSOR_MAPPING.get(value)
+        if sensor_settings is not None:
+            self._attr_icon = sensor_settings[CONF_ICON]
+            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
             device.name,
             self._embedded_id,
-            self._attr_name,
+            self._value,
         )
 
     def update_state(self) -> None:
