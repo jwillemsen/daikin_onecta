@@ -115,23 +115,23 @@ async def test_fanmode(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value="XXXXXX",
     ):
+        # aioclient_mock.patch(
+        #     DAIKIN_API_URL
+        #     + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/temperatureControl",
+        #     status=204,
+        # )
+        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.OFF
+        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
+
         aioclient_mock.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/onOffMode",
             status=204,
         )
         aioclient_mock.patch(
             DAIKIN_API_URL
-            + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/temperatureControl",
-            status=204,
-        )
-        aioclient_mock.patch(
-            DAIKIN_API_URL
             + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/operationMode",
             status=204,
-            #            repeat=True,
         )
-        assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.OFF
-        assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
 
         await hass.services.async_call(
             CLIMATE_DOMAIN,
@@ -140,10 +140,16 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(aioclient_mock.mock_calls) == 2
+        assert len(aioclient_mock.mock_calls) == 3
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "3"
+
+        aioclient_mock.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/13995b32-fc6e-43ed-918e-5d2b01095ccb/management-points/climateControl/characteristics/operationMode",
+            status=204,
+        )
 
         await hass.services.async_call(
             CLIMATE_DOMAIN,
@@ -152,7 +158,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(aioclient_mock._responses) == 3
+        assert len(aioclient_mock.mock_calls) == 4
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.DRY
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -164,7 +170,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(aioclient_mock._responses) == 4
+        assert len(aioclient_mock.mock_calls) == 5
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "3"
@@ -176,7 +182,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(aioclient_mock._responses) == 5
+        assert len(aioclient_mock.mock_calls) == 6
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.HEAT
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -188,7 +194,7 @@ async def test_fanmode(
             blocking=True,
         )
         await hass.async_block_till_done()
-        assert len(aioclient_mock._responses) == 6
+        assert len(aioclient_mock.mock_calls) == 7
 
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.DRY
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"

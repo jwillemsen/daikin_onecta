@@ -1,6 +1,7 @@
 """Platform for the Daikin AC."""
 import asyncio
 import logging
+import json
 from datetime import datetime
 from http import HTTPStatus
 
@@ -80,7 +81,7 @@ class DaikinApi:
 
             try:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
-                    data = await resp.json()
+                    data = await resp.text()
 
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
@@ -98,7 +99,12 @@ class DaikinApi:
                     _LOGGER.debug("BEARER RESPONSE STATUS: %s", resp.status)
 
                     if method == "GET" and resp.status == 200:
-                        return data
+                        try:
+                            return json.loads(data)
+                        except Exception:
+                            _LOGGER.error("RETRIEVE JSON FAILED: %s", resp.text())
+                            return False
+
                     elif resp.status == 429:
                         if self.rate_limits["remaining_minutes"] == 0:
                             ir.async_create_issue(
