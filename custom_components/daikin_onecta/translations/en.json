@@ -80,7 +80,7 @@
         "name": "Tank temperature"
       },
       "heatupmode": {
-        "name": "Heatup mode"
+        "name": "Heat up mode"
       },
       "outdoortemperature": {
         "name": "Outdoor temperature"
@@ -122,10 +122,10 @@
         "name": "Air purification mode"
       },
       "wificonnectionssid": {
-        "name": "Wifi connection SSID"
+        "name": "WiFi connection SSID"
       },
       "wificonnectionstrength": {
-        "name": "Wifi connection strength"
+        "name": "WiFi connection strength"
       },
       "ssid": {
         "name": "SSID"

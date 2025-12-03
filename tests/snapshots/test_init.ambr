@@ -1254,6 +1254,55 @@
     'state': '',
   })
 # ---
+# name: test_altherma3m[sensor.altherma_domestichotwatertank_heat_up_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'Heat up mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatupmode',
+    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_None_heatupMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_altherma3m[sensor.altherma_domestichotwatertank_heat_up_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'reheatSchedule',
+  })
+# ---
 # name: test_altherma3m[sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -1423,55 +1472,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '191',
-  })
-# ---
-# name: test_altherma3m[sensor.altherma_domestichotwatertank_heatup_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:alphabetical',
-    'original_name': 'Heatup mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'heatupmode',
-    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_None_heatupMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma3m[sensor.altherma_domestichotwatertank_heatup_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Heatup mode',
-      'icon': 'mdi:alphabetical',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'reheatSchedule',
   })
 # ---
 # name: test_altherma3m[sensor.altherma_domestichotwatertank_setpoint_mode-entry]
@@ -7522,7 +7522,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -7535,7 +7535,7 @@
 # name: test_altherma[sensor.altherma_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Wifi connection SSID',
+      'friendly_name': 'Altherma Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -7573,7 +7573,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -7587,7 +7587,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Altherma Gateway Wifi connection strength',
+      'friendly_name': 'Altherma Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -8427,7 +8427,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -8440,7 +8440,7 @@
 # name: test_altherma[sensor.johnny_maaike_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Wifi connection SSID',
+      'friendly_name': 'Johnny&Maaike Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -8478,7 +8478,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -8492,7 +8492,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Johnny&Maaike Gateway Wifi connection strength',
+      'friendly_name': 'Johnny&Maaike Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -9381,7 +9381,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -9394,7 +9394,7 @@
 # name: test_altherma[sensor.linde_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi connection SSID',
+      'friendly_name': 'Linde Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -9432,7 +9432,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -9446,7 +9446,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi connection strength',
+      'friendly_name': 'Linde Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -10335,7 +10335,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -10348,7 +10348,7 @@
 # name: test_altherma[sensor.sanne_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Wifi connection SSID',
+      'friendly_name': 'Sanne Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -10386,7 +10386,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -10400,7 +10400,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Sanne Gateway Wifi connection strength',
+      'friendly_name': 'Sanne Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -11289,7 +11289,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -11302,7 +11302,7 @@
 # name: test_altherma[sensor.werkkamer_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Wifi connection SSID',
+      'friendly_name': 'Werkkamer Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -11340,7 +11340,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -11354,7 +11354,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Werkkamer Gateway Wifi connection strength',
+      'friendly_name': 'Werkkamer Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -17698,7 +17698,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -17711,7 +17711,7 @@
 # name: test_altherma_ratelimit[sensor.altherma_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Wifi connection SSID',
+      'friendly_name': 'Altherma Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -17749,7 +17749,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -17763,7 +17763,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Altherma Gateway Wifi connection strength',
+      'friendly_name': 'Altherma Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -18603,7 +18603,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -18616,7 +18616,7 @@
 # name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Wifi connection SSID',
+      'friendly_name': 'Johnny&Maaike Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -18654,7 +18654,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -18668,7 +18668,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Johnny&Maaike Gateway Wifi connection strength',
+      'friendly_name': 'Johnny&Maaike Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -19557,7 +19557,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -19570,7 +19570,7 @@
 # name: test_altherma_ratelimit[sensor.linde_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi connection SSID',
+      'friendly_name': 'Linde Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -19608,7 +19608,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -19622,7 +19622,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi connection strength',
+      'friendly_name': 'Linde Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -20511,7 +20511,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -20524,7 +20524,7 @@
 # name: test_altherma_ratelimit[sensor.sanne_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Wifi connection SSID',
+      'friendly_name': 'Sanne Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -20562,7 +20562,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -20576,7 +20576,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Sanne Gateway Wifi connection strength',
+      'friendly_name': 'Sanne Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -21465,7 +21465,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -21478,7 +21478,7 @@
 # name: test_altherma_ratelimit[sensor.werkkamer_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Wifi connection SSID',
+      'friendly_name': 'Werkkamer Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -21516,7 +21516,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -21530,7 +21530,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Werkkamer Gateway Wifi connection strength',
+      'friendly_name': 'Werkkamer Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -23807,6 +23807,55 @@
     'state': '',
   })
 # ---
+# name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heat_up_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'Heat up mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatupmode',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_heatupMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heat_up_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'reheatSchedule',
+  })
+# ---
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -23976,55 +24025,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '424',
-  })
-# ---
-# name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heatup_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:alphabetical',
-    'original_name': 'Heatup mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'heatupmode',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_heatupMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heatup_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Heatup mode',
-      'icon': 'mdi:alphabetical',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'reheatSchedule',
   })
 # ---
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_setpoint_mode-entry]
@@ -36662,7 +36662,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -36675,7 +36675,7 @@
 # name: test_climate[sensor.altherma_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Gateway Wifi connection SSID',
+      'friendly_name': 'Altherma Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -36713,7 +36713,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -36727,7 +36727,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Altherma Gateway Wifi connection strength',
+      'friendly_name': 'Altherma Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -37567,7 +37567,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -37580,7 +37580,7 @@
 # name: test_climate[sensor.johnny_maaike_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Gateway Wifi connection SSID',
+      'friendly_name': 'Johnny&Maaike Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -37618,7 +37618,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -37632,7 +37632,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Johnny&Maaike Gateway Wifi connection strength',
+      'friendly_name': 'Johnny&Maaike Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -38521,7 +38521,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -38534,7 +38534,7 @@
 # name: test_climate[sensor.linde_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Gateway Wifi connection SSID',
+      'friendly_name': 'Linde Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -38572,7 +38572,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -38586,7 +38586,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Linde Gateway Wifi connection strength',
+      'friendly_name': 'Linde Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -39475,7 +39475,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -39488,7 +39488,7 @@
 # name: test_climate[sensor.sanne_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Gateway Wifi connection SSID',
+      'friendly_name': 'Sanne Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -39526,7 +39526,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -39540,7 +39540,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Sanne Gateway Wifi connection strength',
+      'friendly_name': 'Sanne Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -40429,7 +40429,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -40442,7 +40442,7 @@
 # name: test_climate[sensor.werkkamer_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Gateway Wifi connection SSID',
+      'friendly_name': 'Werkkamer Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -40480,7 +40480,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -40494,7 +40494,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Werkkamer Gateway Wifi connection strength',
+      'friendly_name': 'Werkkamer Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -45080,7 +45080,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -45093,7 +45093,7 @@
 # name: test_climate_floorheatingairflow[sensor.laurens_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Laurens Gateway Wifi connection SSID',
+      'friendly_name': 'Laurens Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -45131,7 +45131,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -45145,7 +45145,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Laurens Gateway Wifi connection strength',
+      'friendly_name': 'Laurens Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -46088,7 +46088,7 @@
     }),
     'original_device_class': None,
     'original_icon': 'mdi:access-point-network',
-    'original_name': 'Wifi connection SSID',
+    'original_name': 'WiFi connection SSID',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -46101,7 +46101,7 @@
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_wifi_connection_ssid-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Woonkamer airco Gateway Wifi connection SSID',
+      'friendly_name': 'Woonkamer airco Gateway WiFi connection SSID',
       'icon': 'mdi:access-point-network',
     }),
     'context': <ANY>,
@@ -46139,7 +46139,7 @@
     }),
     'original_device_class': <SensorDeviceClass.SIGNAL_STRENGTH: 'signal_strength'>,
     'original_icon': 'mdi:wifi',
-    'original_name': 'Wifi connection strength',
+    'original_name': 'WiFi connection strength',
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -46153,7 +46153,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'signal_strength',
-      'friendly_name': 'Woonkamer airco Gateway Wifi connection strength',
+      'friendly_name': 'Woonkamer airco Gateway WiFi connection strength',
       'icon': 'mdi:wifi',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': 'dBm',
@@ -64788,6 +64788,55 @@
     'state': '',
   })
 # ---
+# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heat_up_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heat_up_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'Heat up mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatupmode',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_domesticHotWaterTank_None_heatupMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heat_up_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heat up mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heat_up_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'scheduleOnly',
+  })
+# ---
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heating_daily_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -64957,55 +65006,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '68',
-  })
-# ---
-# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heatup_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heatup_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:alphabetical',
-    'original_name': 'Heatup mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'heatupmode',
-    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_domesticHotWaterTank_None_heatupMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heatup_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heatup mode',
-      'icon': 'mdi:alphabetical',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heatup_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'scheduleOnly',
   })
 # ---
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_setpoint_mode-entry]
@@ -66526,6 +66526,55 @@
     'state': 'fixed',
   })
 # ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heat_up_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'Heat up mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatupmode',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_None_heatupMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heat_up_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'reheatOnly',
+  })
+# ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -66695,55 +66744,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '1232',
-  })
-# ---
-# name: test_minimal_data[sensor.altherma_domestichotwatertank_heatup_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:alphabetical',
-    'original_name': 'Heatup mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'heatupmode',
-    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_None_heatupMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_minimal_data[sensor.altherma_domestichotwatertank_heatup_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Heatup mode',
-      'icon': 'mdi:alphabetical',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'reheatOnly',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_setpoint_mode-entry]
@@ -71483,6 +71483,55 @@
     'state': '',
   })
 # ---
+# name: test_water_heater[sensor.altherma_domestichotwatertank_heat_up_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:alphabetical',
+    'original_name': 'Heat up mode',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatupmode',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_heatupMode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_water_heater[sensor.altherma_domestichotwatertank_heat_up_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
+      'icon': 'mdi:alphabetical',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'reheatOnly',
+  })
+# ---
 # name: test_water_heater[sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -71652,55 +71701,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '281',
-  })
-# ---
-# name: test_water_heater[sensor.altherma_domestichotwatertank_heatup_mode-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:alphabetical',
-    'original_name': 'Heatup mode',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'heatupmode',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_None_heatupMode',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_water_heater[sensor.altherma_domestichotwatertank_heatup_mode-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Heatup mode',
-      'icon': 'mdi:alphabetical',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.altherma_domestichotwatertank_heatup_mode',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'reheatOnly',
   })
 # ---
 # name: test_water_heater[sensor.altherma_domestichotwatertank_setpoint_mode-entry]
