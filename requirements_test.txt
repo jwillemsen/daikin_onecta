@@ -3,4 +3,3 @@ pytest-homeassistant-custom-component
 anyio
 aiohttp_cors
 pytest-asyncio
-aioresponses
