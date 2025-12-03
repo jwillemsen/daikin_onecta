@@ -103,7 +103,10 @@ class DaikinApi:
                             return json.loads(data)
                         except Exception:
                             _LOGGER.error("RETRIEVE JSON FAILED: %s", resp.text())
-                            return False
+                            if method == "GET":
+                                return []
+                            else:
+                                return False
 
                     elif resp.status == 429:
                         if self.rate_limits["remaining_minutes"] == 0:

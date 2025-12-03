@@ -1243,7 +1243,7 @@ async def test_climate(
             await hass.async_block_till_done()
 
             assert len(aioclient_mock.mock_calls) == 34
-            assert aioclient_mock.mock_calls[33][1] == DAIKIN_API_URL + "/v1/gateway-devices"
+            assert aioclient_mock.mock_calls[33][1].path == "/v1/gateway-devices"
 
         # Set the swing mode to windnice, should result in a call with windNice
         await hass.services.async_call(
@@ -1262,7 +1262,7 @@ async def test_climate(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
             status=429,
-            headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"},
+            headers={"X-RateLimit-Remaining-minute": "0", "X-RateLimit-Remaining-day": "0"},
         )
         # Set the device with schedule 'User defined' enabled, this should fail due to the rate limit
         await hass.services.async_call(
@@ -1273,8 +1273,13 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
+        info = await system_health_info(hass)
+
+        assert info["remaining_minute"] == 0
+        assert info["remaining_day"] == 0
+
         assert len(aioclient_mock.mock_calls) == 36
-        # assert aioclient_mock.mock_calls[33][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert aioclient_mock.mock_calls[35][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
 
