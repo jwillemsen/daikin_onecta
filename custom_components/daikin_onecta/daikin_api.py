@@ -1,6 +1,5 @@
 """Platform for the Daikin AC."""
 import asyncio
-import json
 import logging
 from datetime import datetime
 from http import HTTPStatus
@@ -100,9 +99,9 @@ class DaikinApi:
 
                     if method == "GET" and resp.status == 200:
                         try:
-                            return json.loads(data)
+                            return await resp.json()
                         except Exception:
-                            _LOGGER.error("RETRIEVE JSON FAILED: %s", resp.text())
+                            _LOGGER.error("RETRIEVE JSON FAILED: %s", await resp.text())
                             if method == "GET":
                                 return []
                             else:
