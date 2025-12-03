@@ -116,17 +116,19 @@ async def async_setup_entry(hass, config_entry: ConfigEntry, async_add_entities)
                 _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensory_data)
                 if sensory_data is not None:
                     for sensor in sensory_data:
-                        _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
-                        sensors.append(
-                            DaikinValueSensor(
-                                device,
-                                coordinator,
-                                embedded_id,
-                                management_point_type,
-                                "sensoryData",
-                                sensor,
+                        sensor_settings = VALUE_SENSOR_MAPPING.get(sensor)
+                        if sensor_settings is not None:
+                            _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
+                            sensors.append(
+                                DaikinValueSensor(
+                                    device,
+                                    coordinator,
+                                    embedded_id,
+                                    management_point_type,
+                                    "sensoryData",
+                                    sensor,
+                                )
                             )
-                        )
 
             cd = management_point.get("consumptionData")
             if cd is not None:

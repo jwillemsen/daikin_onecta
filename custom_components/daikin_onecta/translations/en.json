@@ -73,6 +73,24 @@
       "heatingyearlyelectricalconsumption": {
         "name": "Heating yearly electrical consumption"
       },
+      "coolingdailygasconsumption": {
+        "name": "Cooling daily gas consumption"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Cooling weekly gas consumption"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Cooling yearly gas consumption"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Heating daily gas consumption"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Heating weekly gas consumption"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Heating yearly gas consumption"
+      },
       "ipaddress": {
         "name": "IP address"
       },
