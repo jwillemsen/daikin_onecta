@@ -75,8 +75,8 @@ class DaikinApi:
 
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
-            _LOGGER.debug("BEARER REQUEST URL: %s", resource_url)
-            _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
+            _LOGGER.info("Request URL: %s", resource_url)
+            _LOGGER.info("Request %s JSON: %s", method, options)
 
             try:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
@@ -95,13 +95,13 @@ class DaikinApi:
                     if self.rate_limits["remaining_day"] > 0:
                         ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
-                    _LOGGER.debug("BEARER RESPONSE STATUS: %s", resp.status)
+                    _LOGGER.info("Response status: %s Limit: %s", resp.status, self.rate_limits)
 
                     if method == "GET" and resp.status == 200:
                         try:
                             return await resp.json()
                         except Exception:
-                            _LOGGER.error("RETRIEVE JSON FAILED: %s", await resp.text())
+                            _LOGGER.error("Retrieve JSON failed: %s", await resp.text())
                             if method == "GET":
                                 return []
                             else:
@@ -138,8 +138,6 @@ class DaikinApi:
                     elif resp.status == 204:
                         self._last_patch_call = datetime.now()
                         return True
-
-                    _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", resp.status, self.rate_limits)
 
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
