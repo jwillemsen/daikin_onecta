@@ -171,7 +171,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._period = period
         periodName = SENSOR_PERIODS[period]
         buildname = f"{operation_mode.capitalize()}{periodName}{sensor_type.capitalize()}Consumption"
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
         sensor_settings = VALUE_SENSOR_MAPPING.get(buildname)
         self._attr_icon = sensor_settings[CONF_ICON]
         self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
@@ -181,6 +180,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_native_unit_of_measurement = UnitOfEnergy.KILO_WATT_HOUR
         self._sensor_type = sensor_type
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{sensor_type}_{self._operation_mode}_{self._period}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
