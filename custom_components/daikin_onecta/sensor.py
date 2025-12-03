@@ -3,14 +3,12 @@ import logging
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorEntity
-from homeassistant.components.sensor import SensorStateClass
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import callback
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
@@ -319,11 +317,15 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._device = device
         self._limit_key = limit_key
         self._attr_has_entity_name = True
-        self._attr_icon = "mdi:information-outline"
-        self._attr_entity_category = EntityCategory.DIAGNOSTIC
-        self._attr_name = f"RateLimit {self._limit_key}"
         self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
-        self._attr_state_class = SensorStateClass.MEASUREMENT
+        sensor_settings = VALUE_SENSOR_MAPPING.get("RatelimitRemainingDay")
+        self._attr_icon = sensor_settings[CONF_ICON]
+        self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
+        self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
+        self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
+        self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
+        self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
+        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + "gateway")},
             "name": self._device.name + " " + "gateway",
@@ -334,7 +336,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         _LOGGER.info(
             "Device '%s' supports sensor '%s'",
             device.name,
-            self._attr_name,
+            self._limit_key,
         )
 
     def update_state(self) -> None:
