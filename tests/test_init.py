@@ -648,6 +648,7 @@ async def test_water_heater(
 
         assert len(aioclient_mock.mock_calls) == 10
 
+        aioclient_mock.clear_requests()
         aioclient_mock.patch(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
@@ -665,18 +666,20 @@ async def test_water_heater(
             )
             await hass.async_block_till_done()
         except Exception:
-            assert len(aioclient_mock.mock_calls) == 11
+            assert len(aioclient_mock.mock_calls) == 1
 
-        assert len(aioclient_mock.mock_calls) == 11
-        assert aioclient_mock.mock_calls[10][2] == '{"value": "off"}'
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][2] == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
-        # aioclient_mock.patch(
-        #     DAIKIN_API_URL
-        #     + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
-        #     status=204,
-        # )
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
+            status=204,
+        )
 
+        # Turn the tank off, this should work again
         await hass.services.async_call(
             WATER_HEATER_DOMAIN,
             SERVICE_TURN_OFF,
@@ -685,16 +688,17 @@ async def test_water_heater(
         )
         await hass.async_block_till_done()
 
-        assert len(aioclient_mock.mock_calls) == 12
-        assert aioclient_mock.mock_calls[11][2] == '{"value": "off"}'
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][2] == '{"value": "off"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
-        # aioclient_mock.patch(
-        #     DAIKIN_API_URL
-        #     + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
-        #     status=429,
-        #     headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"},
-        # )
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/domesticHotWaterTank/characteristics/onOffMode",
+            status=429,
+            headers={"X-RateLimit-Limit-minute": "0", "X-RateLimit-Limit-day": "0"},
+        )
 
         # Turn the tank on, this should fail and not work due to the daily limit
         try:
@@ -706,10 +710,10 @@ async def test_water_heater(
             )
             await hass.async_block_till_done()
         except Exception:
-            assert len(aioclient_mock.mock_calls) == 13
+            assert len(aioclient_mock.mock_calls) == 1
 
-        assert len(aioclient_mock.mock_calls) == 13
-        assert aioclient_mock.mock_calls[12][2] == '{"value": "on"}'
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][2] == '{"value": "on"}'
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
 
@@ -1261,6 +1265,7 @@ async def test_climate(
         assert aioclient_mock.mock_calls[34][2] == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
 
+        aioclient_mock.clear_requests()
         aioclient_mock.put(
             DAIKIN_API_URL
             + "/v1/gateway-devices/1ece521b-5401-4a42-acce-6f76fba246aa/management-points/climateControlMainZone/schedule/cooling/current",
@@ -1281,8 +1286,8 @@ async def test_climate(
         assert info["remaining_minute"] == 0
         assert info["remaining_day"] == 0
 
-        assert len(aioclient_mock.mock_calls) == 36
-        assert aioclient_mock.mock_calls[35][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
 
