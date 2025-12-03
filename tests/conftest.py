@@ -13,6 +13,7 @@ from _pytest.assertion import truncate
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 from syrupy import SnapshotAssertion
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
