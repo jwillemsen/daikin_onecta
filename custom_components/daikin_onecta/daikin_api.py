@@ -4,13 +4,13 @@ import logging
 from datetime import datetime
 from http import HTTPStatus
 
-import aiohttp
 from aiohttp import ClientResponseError
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .const import DAIKIN_API_URL
 from .const import DOMAIN
@@ -32,7 +32,7 @@ class DaikinApi:
         self.hass = hass
         self._config_entry = entry
         self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
-        self._daikin_session = aiohttp.ClientSession(base_url=DAIKIN_API_URL)
+        self._daikin_session = async_get_clientsession(hass)
 
         # The Daikin cloud returns old settings if queried with a GET
         # immediately after a PATCH request. Se we use this attribute
@@ -79,7 +79,7 @@ class DaikinApi:
             _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
 
             try:
-                async with self._daikin_session.request(method=method, url=resource_url, headers=headers, data=options) as resp:
+                async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
                     data = await resp.json()
 
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
