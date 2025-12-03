@@ -41,9 +41,186 @@
     }
   },
   "entity": {
+    "select": {
+      "schedule": {
+        "name": "Zeitplan"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer-Modus"
+      },
+      "economode": {
+        "name": "Econo-Modus"
+      }
+    },
+    "sensor": {
+      "coolingdailyelectricalconsumption": {
+        "name": "Täglicher Stromverbrauch Kühlung"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Wöchentlicher Stromverbrauch Kühlung"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Jährlicher Stromverbrauch Kühlung"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Täglicher Stromverbrauch Heizung"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Wöchentlicher Stromverbrauch Heizung"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Jährlicher Stromverbrauch Heizung"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Täglicher Gasverbrauch Kühlung"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Wöchentlicher Gasverbrauch Kühlung"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Jährlicher Gasverbrauch Kühlung"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Täglicher Gasverbrauch Heizung"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Wöchentlicher Gasverbrauch Heizung"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Jährlicher Gasverbrauch Heizung"
+      },
+      "ipaddress": {
+        "name": "IP-Adresse"
+      },
+      "tanktemperature": {
+        "name": "Tanktemperatur"
+      },
+      "heatupmode": {
+        "name": "Aufheizmodus"
+      },
+      "outdoortemperature": {
+        "name": "Außentemperatur"
+      },
+      "leavingwatertemperature": {
+        "name": "Austrittswasser-Temperatur"
+      },
+      "errorcode": {
+        "name": "Fehlercode"
+      },
+      "setpointmode": {
+        "name": "Sollwertmodus"
+      },
+      "powerfulmode": {
+        "name": "Power-Modus"
+      },
+      "roomtemperature": {
+        "name": "Raumtemperatur"
+      },
+      "onoffmode": {
+        "name": "Ein/Aus-Modus"
+      },
+      "controlmode": {
+        "name": "Steuermodus"
+      },
+      "roomhumidity": {
+        "name": "Raumluftfeuchtigkeit"
+      },
+      "pm1concentration": {
+        "name": "PM1 Konzentration"
+      },
+      "pm25concentration": {
+        "name": "PM2.5 Konzentration"
+      },
+      "operationmode": {
+        "name": "Betriebsmodus"
+      },
+      "airpurificationmode": {
+        "name": "Luftreinigungsmodus"
+      },
+      "wificonnectionssid": {
+        "name": "WLAN-Verbindungs-SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "WLAN-Verbindungsstärke"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10 Konzentration"
+      },
+      "leavingwateroffset": {
+        "name": "Austrittswasser-Offset"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Berechnete Austrittswasser-Temperatur"
+      },
+      "heatexchangertemperature": {
+        "name": "Wärmetauscher-Temperatur"
+      },
+      "suctiontemperature": {
+        "name": "Ansaugtemperatur"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Trocklagern Einstellung"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Lüftermotor Drehzahl"
+      },
+      "datetime": {
+        "name": "Datum/Uhrzeit"
+      },
+      "regioncode": {
+        "name": "Regionscode"
+      },
+      "timezone": {
+        "name": "Zeitzone"
+      }
+    },
     "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Urlaubsmodus"
+      },
+      "isinerrorstate": {
+        "name": "Fehler-Zustand"
+      },
       "isinwarningstate": {
-        "name": "Warnstatus der Klimaregelung"
+        "name": "Warn-Zustand"
+      },
+      "isininstallerstate": {
+        "name": "Installateurmodus"
+      },
+      "isinemergencystate": {
+        "name": "Notfall-Zustand"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Power-Modus"
+      },
+      "iscoolheatmaster": {
+        "name": "Ist Kühl-/Heizmaster"
+      },
+      "isinmodeconflict": {
+        "name": "Moduskonflikt"
+      },
+      "isincautionstate": {
+        "name": "Vorsicht-Zustand"
+      },
+      "islockfunctionenabled": {
+        "name": "Sperrfunktion"
+      },
+      "ledenabled": {
+        "name": "LED"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Firmware-Update Unterstützung"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Sommerzeit"
       }
     },
     "climate": {
@@ -61,10 +238,16 @@
           },
           "swing_mode": {
             "state": {
-              "floor": "Fußbodenheizung Luftstrom",
-              "floor_horizontal": "Fußbodenheizung Luftstrom und Horizontale",
-              "comfort": "Komfort-Luftstrom",
-              "comfort_horizontal": "Komfort-Luftstrom und Horizontal"
+              "stop": "Stopp",
+              "swing": "Schwingen",
+              "floorheatingairflow": "Fußbodenheizung Luftstrom",
+              "windnice": "Komfort Luftstrom"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stopp",
+              "swing": "Schwingen"
             }
           }
         }
@@ -79,6 +262,19 @@
     "minute_rate_limit": {
       "title": "Das Minutenlimit wurde erreicht",
       "description": "Sie haben Ihr minütliches Ratenlimit für die Daikin-Cloud erreicht. Rufen Sie Ihre Daikin-Geräte daher nicht so oft pro Minute an."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API-Server",
+      "oauth2_status": "OAuth2-Server",
+      "max_minute": "Minuten-Maximum",
+      "max_day": "Tages-Maximum",
+      "remaining_minute": "Verbleibende für Minute",
+      "remaining_day": "Verbleibende für Tag",
+      "retry_after": "Erneut versuchen nach",
+      "ratelimit_reset": "Ratenlimit zurücksetzen",
+      "oauth2_token_valid": "OAuth2-Token gültig"
     }
   }
 }
