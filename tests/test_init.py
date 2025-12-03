@@ -47,6 +47,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
+from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 from syrupy import SnapshotAssertion
 
 from .conftest import load_fixture_json
@@ -57,6 +58,7 @@ from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
 from custom_components.daikin_onecta.system_health import system_health_info
+
 
 
 async def test_homehub(
@@ -1243,7 +1245,7 @@ async def test_climate(
             await hass.async_block_till_done()
 
             assert len(aioclient_mock.mock_calls) == 34
-            assert aioclient_mock.mock_calls[33][1].path == "/v1/gateway-devices"
+            assert aioclient_mock.mock_calls[33][1] == URL(DAIKIN_API_URL + "/v1/gateway-devices")
 
         # Set the swing mode to windnice, should result in a call with windNice
         await hass.services.async_call(
