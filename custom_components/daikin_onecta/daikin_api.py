@@ -101,10 +101,7 @@ class DaikinApi:
                             return await resp.json()
                         except Exception:
                             _LOGGER.error("Retrieve JSON failed: %s", await resp.text())
-                            if method == "GET":
-                                return []
-                            else:
-                                return False
+                            return []
 
                     elif resp.status == 429:
                         if self.rate_limits["remaining_minutes"] == 0:
