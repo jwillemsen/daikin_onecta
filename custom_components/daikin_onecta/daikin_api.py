@@ -80,7 +80,7 @@ class DaikinApi:
 
             try:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
-                    data = await resp.text()
+                    await resp.text()
 
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
