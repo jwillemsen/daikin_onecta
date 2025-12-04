@@ -1,0 +1,283 @@
+{
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Oppdateringsintervall for høy frekvens (minutter)",
+          "low_scan_interval": "Oppdateringsintervall for lav frekvens (minutter)",
+          "high_scan_start": "Starttidspunkt for høy frekvensperiode",
+          "low_scan_start": "Starttidspunkt for lav frekvensperiode",
+          "scan_ignore": "Antall sekunder som dataopdatering ignoreres etter en kommando"
+        },
+        "description": "Konfigurer Daikin Onecta Cloud polling",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Integrasjonen er allerede konfigurert.",
+      "cannot_connect": "Kunne ikke koble til Daikin Cloud.",
+      "init_failed": "Kunne ikke initialisere Daikin API.",
+      "token_retrieval_failed": "Kunne ikke hente tilgangstokensett."
+    },
+    "error": {
+      "cannot_connect": "Kunne ikke koble til (tilkobling)",
+      "device_fail": "Uventet feil",
+      "device_timeout": "Kunne ikke koble til (timeout)",
+      "forbidden": "Ugyldig autentisering",
+      "invalid_auth": "Ugyldig autentisering",
+      "unknown": "Uventet feil"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "E-postadresse",
+          "password": "Passord"
+        },
+        "description": "Skriv inn IP adresse av Daikin AC.\n\n Merk at API-n\u00f8kkel og Passord bare brukes av henholdsvis BRP072Cxx og SKYFi-enheter.",
+        "title": "Konfigurer Daikin Onecta"
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "schedule": {
+        "name": "Tidsplan"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer-modus"
+      },
+      "economode": {
+        "name": "Økonomimodus"
+      }
+    },
+    "sensor": {
+      "ratelimitremainingday": {
+        "name": "Gjenstår i dag"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Daglig strømforbruk kjøling"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Ukentlig strømforbruk kjøling"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Årlig strømforbruk kjøling"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Daglig strømforbruk oppvarming"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Ukentlig strømforbruk oppvarming"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Årlig strømforbruk oppvarming"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Daglig gassforbruk kjøling"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Ukentlig gassforbruk kjøling"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Årlig gassforbruk kjøling"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Daglig gassforbruk oppvarming"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Ukentlig gassforbruk oppvarming"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Årlig gassforbruk oppvarming"
+      },
+      "ipaddress": {
+        "name": "IP-adresse"
+      },
+      "tanktemperature": {
+        "name": "Tanktemperatur"
+      },
+      "heatupmode": {
+        "name": "Oppvarmingsmodus"
+      },
+      "outdoortemperature": {
+        "name": "Utetemperatur"
+      },
+      "leavingwatertemperature": {
+        "name": "Utgående vanntemperatur"
+      },
+      "errorcode": {
+        "name": "Feilkode"
+      },
+      "setpointmode": {
+        "name": "Setpunkt-modus"
+      },
+      "powerfulmode": {
+        "name": "Kraftig modus"
+      },
+      "roomtemperature": {
+        "name": "Romtemperatur"
+      },
+      "onoffmode": {
+        "name": "Av/På-modus"
+      },
+      "controlmode": {
+        "name": "Kontrollmodus"
+      },
+      "roomhumidity": {
+        "name": "Romfuktighet"
+      },
+      "pm1concentration": {
+        "name": "PM1-konsentrasjon"
+      },
+      "pm25concentration": {
+        "name": "PM2,5-konsentrasjon"
+      },
+      "operationmode": {
+        "name": "Driftsmodus"
+      },
+      "airpurificationmode": {
+        "name": "Luftrensingmodus"
+      },
+      "wificonnectionssid": {
+        "name": "WiFi-tilkoblings-SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "WiFi-tilkoblingsstyrke"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10-konsentrasjon"
+      },
+      "leavingwateroffset": {
+        "name": "Offset for utgående vann"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Beregnet utgående vanntemperatur"
+      },
+      "heatexchangertemperature": {
+        "name": "Varmevekslertemperatur"
+      },
+      "suctiontemperature": {
+        "name": "Sugetemperatur"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Innstilling for tørr oppbevaring"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Rotasjonshastighet for ventilatormotor"
+      },
+      "datetime": {
+        "name": "Dato/tid"
+      },
+      "regioncode": {
+        "name": "Regionkode"
+      },
+      "timezone": {
+        "name": "Tidssone"
+      }
+    },
+    "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Er feriemodus aktiv"
+      },
+      "isinerrorstate": {
+        "name": "Er i feiltilstand"
+      },
+      "isinwarningstate": {
+        "name": "Er i advarselstilstand"
+      },
+      "isininstallerstate": {
+        "name": "Er i installasjonstilstand"
+      },
+      "isinemergencystate": {
+        "name": "Er i nødtilstand"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Er kraftig modus aktiv"
+      },
+      "iscoolheatmaster": {
+        "name": "Er kjøl-/varmemaster"
+      },
+      "isinmodeconflict": {
+        "name": "Er i moduskonflikt"
+      },
+      "isincautionstate": {
+        "name": "Er i forsiktighetstilstand"
+      },
+      "islockfunctionenabled": {
+        "name": "Er låsfunksjon aktivert"
+      },
+      "ledenabled": {
+        "name": "LED aktivert"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Støttes firmware-oppdatering"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Sommertid aktivert"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Stille",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Stopp",
+              "swing": "Sving",
+              "floorheatingairflow": "Gulvvarme-luftstrøm",
+              "windnice": "Komfortabel luftstrøm"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stopp",
+              "swing": "Sving"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Daglig begrenset frekvens nådd",
+      "description": "Du har nådd din daglige grense for anrop til Daikin Cloud. Kontroller pollefrekvensen i Daikin Onecta-konfigurasjonen."
+    },
+    "minute_rate_limit": {
+      "title": "Minutt-basert begrenset frekvens nådd",
+      "description": "Du har nådd din minutt-baserte grense for anrop til Daikin Cloud. Ikke gjør så mange anrop til Daikin-enhetene på ett minutt."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API-server",
+      "oauth2_status": "OAuth2-server",
+      "max_minute": "Maksimum per minutt",
+      "max_day": "Maksimum per dag",
+      "remaining_minute": "Gjenstår per minutt",
+      "remaining_day": "Gjenstår per dag",
+      "retry_after": "Prøv på nytt etter",
+      "ratelimit_reset": "Tilbakestilling av frekvensgrense",
+      "oauth2_token_valid": "OAuth2-token gyldig"
+    }
+  }
+}
