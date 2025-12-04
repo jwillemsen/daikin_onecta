@@ -1,17 +1,17 @@
 """Platform for the Daikin AC."""
 import asyncio
-import functools
+import json
 import logging
 from datetime import datetime
 from http import HTTPStatus
 
-import requests
 from aiohttp import ClientResponseError
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .const import DAIKIN_API_URL
 from .const import DOMAIN
@@ -33,6 +33,7 @@ class DaikinApi:
         self.hass = hass
         self._config_entry = entry
         self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
+        self._daikin_session = async_get_clientsession(hass)
 
         # The Daikin cloud returns old settings if queried with a GET
         # immediately after a PATCH request. Se we use this attribute
@@ -69,93 +70,78 @@ class DaikinApi:
 
         return self.session.token["access_token"]
 
-    async def doBearerRequest(self, method, resourceUrl, options=None):
+    async def doBearerRequest(self, method, resource_url, options=None):
         async with self._cloud_lock:
             token = await self.async_get_access_token()
 
-            resourceUrl = DAIKIN_API_URL + resourceUrl
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
-            _LOGGER.debug("BEARER REQUEST URL: %s", resourceUrl)
-            _LOGGER.debug("BEARER TYPE %s JSON: %s", method, options)
+            _LOGGER.info("Request URL: %s", resource_url)
+            _LOGGER.info("Request %s Options: %s", method, options)
 
-            func = functools.partial(requests.request, url=resourceUrl, method=method, headers=headers, data=options)
             try:
-                res = await self.hass.async_add_executor_job(func)
+                async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
+                    response_data = await resp.text()
+                    _LOGGER.info("Response status: %s Text: %s Limit: %s", resp.status, response_data, self.rate_limits)
+
+                    self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
+                    self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
+                    self.rate_limits["remaining_minutes"] = int(resp.headers.get("X-RateLimit-Remaining-minute", 0))
+                    self.rate_limits["remaining_day"] = int(resp.headers.get("X-RateLimit-Remaining-day", 0))
+                    self.rate_limits["retry_after"] = int(resp.headers.get("retry-after", 0))
+                    self.rate_limits["ratelimit_reset"] = int(resp.headers.get("ratelimit-reset", 0))
+
+                    if self.rate_limits["remaining_minutes"] > 0:
+                        ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
+
+                    if self.rate_limits["remaining_day"] > 0:
+                        ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
+
+                    if method == "GET" and resp.status == 200:
+                        try:
+                            return json.loads(response_data)
+                        except json.JSONDecodeError:
+                            _LOGGER.exception("Retrieve JSON failed: %s", response_data)
+                            return []
+
+                    elif resp.status == 429:
+                        if self.rate_limits["remaining_minutes"] == 0:
+                            ir.async_create_issue(
+                                self.hass,
+                                DOMAIN,
+                                "minute_rate_limit",
+                                is_fixable=False,
+                                is_persistent=True,
+                                severity=ir.IssueSeverity.ERROR,
+                                learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
+                                translation_key="minute_rate_limit",
+                            )
+
+                        if self.rate_limits["remaining_day"] == 0:
+                            ir.async_create_issue(
+                                self.hass,
+                                DOMAIN,
+                                "day_rate_limit",
+                                is_fixable=False,
+                                is_persistent=True,
+                                severity=ir.IssueSeverity.ERROR,
+                                learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
+                                translation_key="day_rate_limit",
+                            )
+                        if method == "GET":
+                            return []
+                        else:
+                            return False
+                    elif resp.status == 204:
+                        self._last_patch_call = datetime.now()
+                        return True
+
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
-                if method == "GET":
-                    return []
-                else:
-                    return False
 
-            self.rate_limits["minute"] = int(res.headers.get("X-RateLimit-Limit-minute", 0))
-            self.rate_limits["day"] = int(res.headers.get("X-RateLimit-Limit-day", 0))
-            self.rate_limits["remaining_minutes"] = int(res.headers.get("X-RateLimit-Remaining-minute", 0))
-            self.rate_limits["remaining_day"] = int(res.headers.get("X-RateLimit-Remaining-day", 0))
-            self.rate_limits["retry_after"] = int(res.headers.get("retry-after", 0))
-            self.rate_limits["ratelimit_reset"] = int(res.headers.get("ratelimit-reset", 0))
-
-            if self.rate_limits["remaining_minutes"] > 0:
-                ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
-
-            if self.rate_limits["remaining_day"] > 0:
-                ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
-
-            _LOGGER.debug("BEARER RESPONSE CODE: %s LIMIT: %s", res.status_code, self.rate_limits)
-
-        if method == "GET" and res.status_code == 200:
-            try:
-                return res.json()
-            except Exception:
-                _LOGGER.error("RETRIEVE JSON FAILED: %s", res.text)
-                return False
-        elif res.status_code == 429:
-            if self.rate_limits["remaining_minutes"] == 0:
-                ir.async_create_issue(
-                    self.hass,
-                    DOMAIN,
-                    "minute_rate_limit",
-                    is_fixable=False,
-                    is_persistent=True,
-                    severity=ir.IssueSeverity.ERROR,
-                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
-                    translation_key="minute_rate_limit",
-                )
-
-            if self.rate_limits["remaining_day"] == 0:
-                ir.async_create_issue(
-                    self.hass,
-                    DOMAIN,
-                    "day_rate_limit",
-                    is_fixable=False,
-                    is_persistent=True,
-                    severity=ir.IssueSeverity.ERROR,
-                    learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
-                    translation_key="day_rate_limit",
-                )
-            if method == "GET":
-                return []
-            else:
-                return False
-        elif res.status_code == 204:
-            self._last_patch_call = datetime.now()
-            return True
-
-        _LOGGER.error("REQUEST TYPE %s FOR %s WITH OPTIONS %s FAILED: %s %s", method, resourceUrl, options, res.status_code, res.text)
-
-        raise Exception(
-            "Communication failed! Status: "
-            + str(res.status_code)
-            + " "
-            + res.text
-            + " Method: "
-            + method
-            + " Url: "
-            + resourceUrl
-            + " Options: "
-            + str(options)
-        )
+        if method == "GET":
+            return []
+        return False
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
