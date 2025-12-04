@@ -19,10 +19,10 @@ _LOGGER = logging.getLogger(__name__)
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
-    """Config flow options handler for daikin_onecta ."""
+    """Config flow options handler for Daikin Onecta ."""
 
     def __init__(self, config_entry):
-        """Initialize HACS options flow."""
+        """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
     async def async_step_init(self, user_input: dict[str, str] | None = None) -> FlowResult:
@@ -90,6 +90,7 @@ class FlowHandler(
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
         """Create an oauth config entry or update existing entry for reauth."""
+        # TODO In order to support multiple accounts this code has to be reworked, not using the domain as unique id
         existing_entry = await self.async_set_unique_id(DOMAIN)
         if existing_entry:
             self.hass.config_entries.async_update_entry(existing_entry, data=data)
