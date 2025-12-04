@@ -80,8 +80,8 @@ class DaikinApi:
 
             try:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
-                    await resp.text()
-                    _LOGGER.info("Response status: %s Text: %s Limit: %s", resp.status, await resp.text(), self.rate_limits)
+                    response_data = await resp.text()
+                    _LOGGER.info("Response status: %s Text: %s Limit: %s", resp.status, response_data, self.rate_limits)
 
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
@@ -100,7 +100,7 @@ class DaikinApi:
                         try:
                             return await resp.json()
                         except Exception:
-                            _LOGGER.error("Retrieve JSON failed: %s", await resp.text())
+                            _LOGGER.error("Retrieve JSON failed: %s", response_data)
                             return []
 
                     elif resp.status == 429:
