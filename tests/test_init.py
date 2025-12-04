@@ -1380,6 +1380,21 @@ async def test_gas(
         assert len(aioclient_mock.mock_calls) == 1
         assert aioclient_mock.mock_calls[0][1] == URL(DAIKIN_API_URL + "/v1/gateway-devices")
 
+        aioclient_mock.clear_requests()
+        aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=300, json="TEST")
+
+        # Call button service
+        await hass.services.async_call(
+            BUTTON_DOMAIN,
+            SERVICE_PRESS,
+            {ATTR_ENTITY_ID: "button.my_living_room_refresh"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 1
+        assert aioclient_mock.mock_calls[0][1] == URL(DAIKIN_API_URL + "/v1/gateway-devices")
+
 
 @pytest.mark.asyncio
 async def test_button(

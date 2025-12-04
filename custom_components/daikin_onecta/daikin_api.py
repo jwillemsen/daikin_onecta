@@ -99,7 +99,7 @@ class DaikinApi:
 
                     if method == "GET" and resp.status == 200:
                         try:
-                            return await resp.json()
+                            return json.loads(response_data)
                         except json.JSONDecodeError:
                             _LOGGER.exception("Retrieve JSON failed: %s", response_data)
                             return []
@@ -138,9 +138,10 @@ class DaikinApi:
 
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
-                if method == "GET":
-                    return []
-                return False
+
+        if method == "GET":
+            return []
+        return False
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
