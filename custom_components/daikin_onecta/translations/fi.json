@@ -1,11 +1,283 @@
 {
-  "config": {
-    "step": {
-      "user": {
-        "data": {
-          "host": "Palvelin"
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "Aktiivisen ajanjakson päivitysväli (minuuttia)",
+                    "low_scan_interval": "Hiljaisen ajanjakson päivitysväli (minuuttia)",
+                    "high_scan_start": "Aktiivisen ajanjakson aloitusaika",
+                    "low_scan_start": "Hiljaisen ajanjakson aloitusaika",
+                    "scan_ignore": "Sekuntien määrä, jonka ajan tietojen päivitys ohitetaan komennon jälkeen"
+                },
+                "description": "Määritä Daikin Onecta Cloud -kysely",
+                "title": "Daikin Onecta"
+            }
         }
-      }
+    },
+    "config": {
+        "abort": {
+            "already_configured": "Integraatio on jo määritetty.",
+            "cannot_connect": "Yhteys Daikin Cloudiin epäonnistui.",
+            "init_failed": "Daikin API:n alustus epäonnistui.",
+            "token_retrieval_failed": "Pääsytunnusten hakeminen epäonnistui."
+        },
+        "error": {
+            "cannot_connect": "Yhteys epäonnistui",
+            "device_fail": "Odottamaton virhe",
+            "device_timeout": "Yhteys epäonnistui",
+            "forbidden": "Virheellinen todennus",
+            "invalid_auth": "Virheellinen todennus",
+            "unknown": "Odottamaton virhe"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "email": "Sähköpostiosoite",
+                    "password": "Salasana"
+                },
+                "description": "Syötä sähköpostiosoite ja salasana, joita käytät kirjautuaksesi Daikin Cloudiin, ja paina Lähetä.",
+                "title": "Määritä Daikin Onecta"
+            }
+        }
+    },
+    "entity": {
+        "select": {
+            "schedule": {
+                "name": "Aikataulu"
+            }
+        },
+        "switch": {
+            "streamermode": {
+                "name": "Streamer-tila"
+            },
+            "economode": {
+                "name": "Econo-tila"
+            }
+        },
+        "sensor": {
+            "ratelimitremainingday": {
+                "name": "Kyselyjä jäljellä tänään"
+            },
+            "coolingdailyelectricalconsumption": {
+                "name": "Jäähdytyksen päivittäinen sähkönkulutus"
+            },
+            "coolingweeklyelectricalconsumption": {
+                "name": "Jäähdytyksen viikoittainen sähkönkulutus"
+            },
+            "coolingyearlyelectricalconsumption": {
+                "name": "Jäähdytyksen vuosittainen sähkönkulutus"
+            },
+            "heatingdailyelectricalconsumption": {
+                "name": "Lämmityksen päivittäinen sähkönkulutus"
+            },
+            "heatingweeklyelectricalconsumption": {
+                "name": "Lämmityksen viikoittainen sähkönkulutus"
+            },
+            "heatingyearlyelectricalconsumption": {
+                "name": "Lämmityksen vuosittainen sähkönkulutus"
+            },
+            "coolingdailygasconsumption": {
+                "name": "Jäähdytyksen päivittäinen kaasunkulutus"
+            },
+            "coolingweeklygasconsumption": {
+                "name": "Jäähdytyksen viikoittainen kaasunkulutus"
+            },
+            "coolingyearlygasconsumption": {
+                "name": "Jäähdytyksen vuosittainen kaasunkulutus"
+            },
+            "heatingdailygasconsumption": {
+                "name": "Lämmityksen päivittäinen kaasunkulutus"
+            },
+            "heatingweeklygasconsumption": {
+                "name": "Lämmityksen viikoittainen kaasunkulutus"
+            },
+            "heatingyearlygasconsumption": {
+                "name": "Lämmityksen vuosittainen kaasunkulutus"
+            },
+            "ipaddress": {
+                "name": "IP-osoite"
+            },
+            "tanktemperature": {
+                "name": "Säiliön lämpötila"
+            },
+            "heatupmode": {
+                "name": "Lämmitystila"
+            },
+            "outdoortemperature": {
+                "name": "Ulkolämpötila"
+            },
+            "leavingwatertemperature": {
+                "name": "Lähtevän veden lämpötila"
+            },
+            "errorcode": {
+                "name": "Virhekoodi"
+            },
+            "setpointmode": {
+                "name": "Asetuspisteen tila"
+            },
+            "powerfulmode": {
+                "name": "Tehotila"
+            },
+            "roomtemperature": {
+                "name": "Huonelämpötila"
+            },
+            "onoffmode": {
+                "name": "Päälle/pois-tila"
+            },
+            "controlmode": {
+                "name": "Ohjaustila"
+            },
+            "roomhumidity": {
+                "name": "Huoneen kosteus"
+            },
+            "pm1concentration": {
+                "name": "PM1-pitoisuus"
+            },
+            "pm25concentration": {
+                "name": "PM2.5-pitoisuus"
+            },
+            "operationmode": {
+                "name": "Käyttötila"
+            },
+            "airpurificationmode": {
+                "name": "Ilmanpuhdistustila"
+            },
+            "wificonnectionssid": {
+                "name": "WiFi-yhteyden SSID"
+            },
+            "wificonnectionstrength": {
+                "name": "WiFi-yhteyden voimakkuus"
+            },
+            "ssid": {
+                "name": "SSID"
+            },
+            "pm10concentration": {
+                "name": "PM10-pitoisuus"
+            },
+            "leavingwateroffset": {
+                "name": "Lähtevän veden poikkeama"
+            },
+            "calculatedleavingwatertemperature": {
+                "name": "Laskettu lähtevän veden lämpötila"
+            },
+            "heatexchangertemperature": {
+                "name": "Lämmönvaihtimen lämpötila"
+            },
+            "suctiontemperature": {
+                "name": "Imulämpötila"
+            },
+            "deltad": {
+                "name": "DeltaD"
+            },
+            "drykeepsetting": {
+                "name": "Kuivatusasetus"
+            },
+            "fanmotorrotationspeed": {
+                "name": "Puhaltimen moottorin pyörimisnopeus"
+            },
+            "datetime": {
+                "name": "Päivämäärä/aika"
+            },
+            "regioncode": {
+                "name": "Aluekoodi"
+            },
+            "timezone": {
+                "name": "Aikavyöhyke"
+            }
+        },
+        "binary_sensor": {
+            "isholidaymodeactive": {
+                "name": "Onko lomatila aktiivinen"
+            },
+            "isinerrorstate": {
+                "name": "Onko virhetilassa"
+            },
+            "isinwarningstate": {
+                "name": "Onko varoitustilassa"
+            },
+            "isininstallerstate": {
+                "name": "Onko asentajatilassa"
+            },
+            "isinemergencystate": {
+                "name": "Onko hätätilassa"
+            },
+            "ispowerfulmodeactive": {
+                "name": "Onko tehotila aktiivinen"
+            },
+            "iscoolheatmaster": {
+                "name": "Onko jäähdytys/lämmitys päätila"
+            },
+            "isinmodeconflict": {
+                "name": "Onko konfliktitilassa"
+            },
+            "isincautionstate": {
+                "name": "Onko varovaisuustilassa"
+            },
+            "islockfunctionenabled": {
+                "name": "Onko lukitustoiminto käytössä"
+            },
+            "ledenabled": {
+                "name": "LED käytössä"
+            },
+            "isfirmwareupdatesupported": {
+                "name": "Onko laiteohjelmiston päivitys tuettu"
+            },
+            "daylightsavingtimeenabled": {
+                "name": "Kesäaika käytössä"
+            }
+        },
+        "climate": {
+            "roomtemperature": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "quiet": "Hiljainen",
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5"
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "stop": "Pysäytä",
+                            "swing": "Keinu",
+                            "floorheatingairflow": "Lattialämmityksen ilmavirta",
+                            "windnice": "Mukavuusilmavirta"
+                        }
+                    },
+                    "swing_horizontal_mode": {
+                        "state": {
+                            "stop": "Pysäytä",
+                            "swing": "Keinu"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "title": "Päivittäinen kysely raja on saavutettu",
+            "description": "Olet saavuttanut päivittäisen kysely rajan Daikin Cloudissa, tarkista kyselytiheys Daikin Onecta -asetuksista."
+        },
+        "minute_rate_limit": {
+            "title": "Minuuttikohtainen kysely raja on saavutettu",
+            "description": "Olet saavuttanut minuuttikohtaisen kysely rajan Daikin Cloudissa, älä tee liian monta kutsua Daikin-laitteisiin yhden minuutin aikana."
+        }
+    },
+    "system_health": {
+        "info": {
+            "api_status": "API-palvelin",
+            "oauth2_status": "OAuth2-palvelin",
+            "max_minute": "Enimmäismäärä minuutissa",
+            "max_day": "Enimmäismäärä päivässä",
+            "remaining_minute": "Jäljellä oleva minuutti",
+            "remaining_day": "Jäljellä oleva päivä",
+            "retry_after": "Yritä uudelleen jälkeen",
+            "ratelimit_reset": "Kysely rajan palautus",
+            "oauth2_token_valid": "OAuth2-tunnus voimassa"
+        }
     }
-  }
 }
