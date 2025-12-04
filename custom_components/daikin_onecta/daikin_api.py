@@ -137,6 +137,9 @@ class DaikinApi:
 
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
+                if method == "GET":
+                    return []
+                return False
 
     async def getCloudDeviceDetails(self):
         """Get pure Device Data from the Daikin cloud devices."""
