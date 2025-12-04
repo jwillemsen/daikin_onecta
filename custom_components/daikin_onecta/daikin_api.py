@@ -1,5 +1,6 @@
 """Platform for the Daikin AC."""
 import asyncio
+import json
 import logging
 from datetime import datetime
 from http import HTTPStatus
