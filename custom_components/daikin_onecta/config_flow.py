@@ -102,9 +102,6 @@ class FlowHandler(
         """Handle a flow start."""
         await self.async_set_unique_id(DOMAIN)
 
-        if self.source != config_entries.SOURCE_REAUTH and self._async_current_entries():
-            return self.async_abort(reason="single_instance_allowed")
-
         return await super().async_step_user(user_input)
 
     async def async_step_reauth(self, entry_data: Mapping[str, Any]) -> FlowResult:
@@ -125,5 +122,5 @@ class FlowHandler(
     @staticmethod
     @callback
     def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlowHandler:
-        """Options callback for AccuWeather."""
+        """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
