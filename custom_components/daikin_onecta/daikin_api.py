@@ -99,8 +99,8 @@ class DaikinApi:
                     if method == "GET" and resp.status == 200:
                         try:
                             return await resp.json()
-                        except Exception:
-                            _LOGGER.error("Retrieve JSON failed: %s", response_data)
+                        except json.JSONDecodeError:
+                            _LOGGER.exception("Retrieve JSON failed: %s", response_data)
                             return []
 
                     elif resp.status == 429:

@@ -60,6 +60,7 @@ from custom_components.daikin_onecta.diagnostics import async_get_device_diagnos
 from custom_components.daikin_onecta.system_health import system_health_info
 
 
+@pytest.mark.asyncio
 async def test_homehub(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -76,6 +77,7 @@ async def test_homehub(
     assert info["max_minute"] == 0
 
 
+@pytest.mark.asyncio
 async def test_offlinedevice(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -88,6 +90,7 @@ async def test_offlinedevice(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "offlinedevice")
 
 
+@pytest.mark.asyncio
 async def test_dry(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -198,6 +201,7 @@ async def test_fanmode(
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
 
 
+@pytest.mark.asyncio
 async def test_dry2(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -212,6 +216,7 @@ async def test_dry2(
     assert hass.states.get("climate.bedroom_3_room_temperature").state == HVACMode.OFF
 
 
+@pytest.mark.asyncio
 async def test_schedule(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -226,6 +231,7 @@ async def test_schedule(
     assert hass.states.get("select.master_climatecontrol_schedule").state == "off"
 
 
+@pytest.mark.asyncio
 async def test_ururu(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -240,6 +246,7 @@ async def test_ururu(
     assert hass.states.get("climate.daikinap95800_room_temperature").state == HVACMode.HEAT
 
 
+@pytest.mark.asyncio
 async def test_altherma(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -252,6 +259,7 @@ async def test_altherma(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
 
+@pytest.mark.asyncio
 async def test_altherma3m(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -332,6 +340,7 @@ async def test_altherma_ratelimit(
         await coordinator._async_update_data()
 
 
+@pytest.mark.asyncio
 async def test_climate_fixedfanmode(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -346,6 +355,7 @@ async def test_climate_fixedfanmode(
     assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
 
 
+@pytest.mark.asyncio
 async def test_climate_floorheatingairflow(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -358,6 +368,7 @@ async def test_climate_floorheatingairflow(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_floorheatingairflow")
 
 
+@pytest.mark.asyncio
 async def test_mc80z(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -373,6 +384,7 @@ async def test_mc80z(
     assert hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"] == -3
 
 
+@pytest.mark.asyncio
 async def test_holidaymode(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -1290,6 +1302,7 @@ async def test_climate(
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
 
+@pytest.mark.asyncio
 async def test_minimal_data(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -1305,6 +1318,7 @@ async def test_minimal_data(
     assert hass.states.get("sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption").state == "1232"
 
 
+@pytest.mark.asyncio
 async def test_gas(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
@@ -1397,6 +1411,7 @@ async def test_button(
         assert len(aioclient_mock.mock_calls) == 2
 
 
+@pytest.mark.asyncio
 async def test_altherma_schedule(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
