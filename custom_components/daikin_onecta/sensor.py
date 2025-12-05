@@ -15,6 +15,7 @@ from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import SENSOR_PERIOD_WEEKLY
+from .const import SENSOR_PERIOD_MONTHLY
 from .const import SENSOR_PERIODS
 from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
@@ -217,7 +218,8 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                                 if mode == self._operation_mode:
                                     energy_values = [0 if v is None else v for v in cdve[mode].get(self._period)]
                                     start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
-                                    energy_value = round(sum(energy_values[start_index:]), 3)
+                                    end_index = len(energy_values)
+                                    energy_value = round(sum(energy_values[start_index:end_index]), 3)
                                     _LOGGER.info(
                                         "Device '%s' has energy value '%s' for '%s' mode %s %s period %s",
                                         self._device.name,
