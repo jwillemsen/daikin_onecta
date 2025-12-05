@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import time
 from typing import Any
 from unittest.mock import AsyncMock
 from unittest.mock import MagicMock
@@ -17,10 +18,19 @@ from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClien
 from syrupy import SnapshotAssertion
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
+from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
+
+FAKE_REFRESH_TOKEN = "some-refresh-token"
+FAKE_ACCESS_TOKEN = (
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+    ".eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ"
+    ".SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+)
+FAKE_AUTH_IMPL = "conftest-imported-cred"
 
 
 def load_fixture_json(name):
@@ -54,7 +64,7 @@ async def snapshot_platform_entities(
         "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
     ), patch(
         "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
-        {"access_token": "AAAA"},
+        {"access_token": FAKE_ACCESS_TOKEN},
     ):
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
         assert await hass.config_entries.async_setup(config_entry.entry_id)
@@ -78,7 +88,7 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
             "auth_implementation": "cloud",
             "token": {
                 "refresh_token": "mock-refresh-token",
-                "access_token": "mock-access-token",
+                "access_token": FAKE_ACCESS_TOKEN,
                 "type": "Bearer",
                 "expires_in": 60,
                 "expires_at": 1000,
@@ -103,6 +113,36 @@ def async_get_access_token() -> AsyncMock:
 
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
-        return_value="aa",
+        return_value=FAKE_ACCESS_TOKEN,
     ):
         yield
+
+
+@pytest.fixture(name="token_expiration_time")
+def mock_token_expiration_time() -> float:
+    """Fixture for expiration time of the config entry auth token."""
+    return time.time() + 86400
+
+
+@pytest.fixture(name="token_entry")
+def mock_token_entry(token_expiration_time: float) -> dict[str, Any]:
+    """Fixture for OAuth 'token' data for a ConfigEntry."""
+    return {
+        "refresh_token": FAKE_REFRESH_TOKEN,
+        "access_token": FAKE_ACCESS_TOKEN,
+        "type": "Bearer",
+        "expires_at": token_expiration_time,
+    }
+
+
+@pytest.fixture(name="config_entry_v1_1")
+def mock_config_entry_v1_1(token_entry: dict[str, Any]) -> MockConfigEntry:
+    """Fixture for a config entry."""
+    return MockConfigEntry(
+        domain=DOMAIN,
+        data={
+            "auth_implementation": FAKE_AUTH_IMPL,
+            "token": token_entry,
+        },
+        minor_version=1,
+    )

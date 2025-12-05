@@ -18,8 +18,7 @@
     "abort": {
       "already_configured": "Η ενσωμάτωση έχει ήδη ρυθμιστεί.",
       "cannot_connect": "Αποτυχία σύνδεσης με το Daikin Cloud.",
-      "init_failed": "Αποτυχία αρχικοποίησης του Daikin API.",
-      "token_retrieval_failed": "Αποτυχία ανάκτησης συνόλου διακριτικών πρόσβασης."
+      "init_failed": "Αποτυχία αρχικοποίησης του Daikin API."
     },
     "error": {
       "cannot_connect": "Αποτυχία σύνδεσης",

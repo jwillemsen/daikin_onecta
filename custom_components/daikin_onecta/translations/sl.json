@@ -18,8 +18,7 @@
     "abort": {
       "already_configured": "Integracija je že konfigurirana.",
       "cannot_connect": "Povezava s storitvijo Daikin Cloud ni uspela.",
-      "init_failed": "Inicializacija Daikin API ni uspela.",
-      "token_retrieval_failed": "Pridobivanje nabora žetonov za dostop ni uspelo."
+      "init_failed": "Inicializacija Daikin API ni uspela."
     },
     "error": {
       "cannot_connect": "Povezava ni uspela",
