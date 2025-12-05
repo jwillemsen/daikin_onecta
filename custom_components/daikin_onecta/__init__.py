@@ -72,18 +72,23 @@ async def update_listener(hass, config_entry):
 
 async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Migrate old entry."""
-    _LOGGER.info("Migration from version %s.%s successful", config_entry.version, config_entry.minor_version)
+    _LOGGER.info("Migration from version %s.%s", config_entry.version, config_entry.minor_version)
 
     if config_entry.version == 1:
         match config_entry.minor_version:
             case 1:
+                try:
+                    unique_id = jwt.decode(
+                        config_entry.data["token"]["access_token"],
+                        options={"verify_signature": False},
+                    )["sub"]
+                except (jwt.DecodeError, KeyError) as err:
+                    _LOGGER.error("Failed to decode JWT during migration: %s", err)
+                    return False
                 hass.config_entries.async_update_entry(
                     config_entry,
                     minor_version=2,
-                    unique_id=jwt.decode(
-                        config_entry.data["token"]["access_token"],
-                        options={"verify_signature": False},
-                    )["sub"],
+                    unique_id=unique_id,
                 )
 
     _LOGGER.info("Migration to version %s.%s successful", config_entry.version, config_entry.minor_version)
