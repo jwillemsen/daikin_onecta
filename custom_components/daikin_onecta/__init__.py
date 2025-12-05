@@ -79,7 +79,7 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
             case 1:
                 hass.config_entries.async_update_entry(
                     config_entry,
-                    minor_version=3,
+                    minor_version=2,
                     unique_id=jwt.decode(
                         config_entry.data["token"]["access_token"],
                         options={"verify_signature": False},
