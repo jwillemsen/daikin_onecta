@@ -33,13 +33,7 @@ async def async_setup(hass, config):
 
 async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Establish connection with Daikin."""
-    try:
-        implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(hass, config_entry)
-    except ImplementationUnavailableError as err:
-        raise ConfigEntryNotReady(
-            translation_domain=DOMAIN,
-            translation_key="oauth2_implementation_unavailable",
-        ) from err
+    implementation = await config_entry_oauth2_flow.async_get_config_entry_implementation(hass, config_entry)
 
     daikin_api = DaikinApi(hass, config_entry, implementation)
 
