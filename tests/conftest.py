@@ -22,6 +22,11 @@ from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
 
+FAKE_ACCESS_TOKEN = (
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+    ".eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ"
+    ".SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+)
 
 def load_fixture_json(name):
     with open(f"tests/fixtures/{name}.json") as json_file:
@@ -54,7 +59,7 @@ async def snapshot_platform_entities(
         "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
     ), patch(
         "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
-        {"access_token": "AAAA"},
+        {"access_token": FAKE_ACCESS_TOKEN},
     ):
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
         assert await hass.config_entries.async_setup(config_entry.entry_id)
@@ -78,7 +83,7 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
             "auth_implementation": "cloud",
             "token": {
                 "refresh_token": "mock-refresh-token",
-                "access_token": "mock-access-token",
+                "access_token": FAKE_ACCESS_TOKEN,
                 "type": "Bearer",
                 "expires_in": 60,
                 "expires_at": 1000,
@@ -103,6 +108,6 @@ def async_get_access_token() -> AsyncMock:
 
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
-        return_value="aa",
+        return_value=FAKE_ACCESS_TOKEN,
     ):
         yield
