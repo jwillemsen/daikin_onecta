@@ -18,8 +18,7 @@
     "abort": {
       "already_configured": "De integratie is al geconfigureerd.",
       "cannot_connect": "Verbinding met Daikin Cloud mislukt.",
-      "init_failed": "Initialiseren van de Daikin API is mislukt.",
-      "token_retrieval_failed": "Ophalen van de access token-set is mislukt."
+      "init_failed": "Initialiseren van de Daikin API is mislukt."
     },
     "error": {
       "cannot_connect": "Verbinding mislukt",
@@ -110,16 +109,16 @@
         "name": "IP‑adres"
       },
       "tanktemperature": {
-        "name": "Tanktemperatuur"
+        "name": "Tank temperatuur"
       },
       "heatupmode": {
         "name": "Opwarmmodus"
       },
       "outdoortemperature": {
-        "name": "Buitentemperatuur"
+        "name": "Buiten temperatuur"
       },
       "leavingwatertemperature": {
-        "name": "Vertrekkende watertemperatuur"
+        "name": "Vertrekkende water temperatuur"
       },
       "errorcode": {
         "name": "Foutcode"
@@ -131,7 +130,7 @@
         "name": "Powerful‑modus"
       },
       "roomtemperature": {
-        "name": "Ruimtetemperatuur"
+        "name": "Ruimte temperatuur"
       },
       "onoffmode": {
         "name": "Aan/uit‑modus"
@@ -170,13 +169,13 @@
         "name": "Vertrekkende water‑offset"
       },
       "calculatedleavingwatertemperature": {
-        "name": "Berekende vertrekkende watertemperatuur"
+        "name": "Berekende vertrekkende water temperatuur"
       },
       "heatexchangertemperature": {
-        "name": "Warmtewisselaartemperatuur"
+        "name": "Warmtewisselaar temperatuur"
       },
       "suctiontemperature": {
-        "name": "Aanzuigtemperatuur"
+        "name": "Aanzuig temperatuur"
       },
       "deltad": {
         "name": "DeltaD"
@@ -185,7 +184,7 @@
         "name": "Dry‑keep‑instelling"
       },
       "fanmotorrotationspeed": {
-        "name": "Rotatiesnelheid ventilatormotor"
+        "name": "Rotatiesnelheid ventilator motor"
       },
       "datetime": {
         "name": "Datum/tijd"

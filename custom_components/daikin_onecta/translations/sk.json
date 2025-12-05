@@ -3,8 +3,7 @@
     "abort": {
       "already_configured": "Integrácia je už nakonfigurovaná.",
       "cannot_connect": "Nepodarilo sa pripojiť k Daikin Cloud.",
-      "init_failed": "Nepodarilo sa inicializovať rozhranie Daikin API.",
-      "token_retrieval_failed": "Nepodarilo sa načítať sadu prístupových tokenov."
+      "init_failed": "Nepodarilo sa inicializovať rozhranie Daikin API."
     },
     "error": {
       "cannot_connect": "Nepodarilo sa pripojiť",

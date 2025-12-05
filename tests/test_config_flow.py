@@ -10,11 +10,12 @@ from homeassistant.components.application_credentials import ClientCredential
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.setup import async_setup_component
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 
+from .conftest import FAKE_ACCESS_TOKEN
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.const import OAUTH2_AUTHORIZE
 from custom_components.daikin_onecta.const import OAUTH2_TOKEN
-
 
 CLIENT_ID = "emU20GdJDiiUxI_HnFGz69dD"
 CLIENT_SECRET = "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA"
@@ -69,7 +70,7 @@ async def test_full_flow(
         OAUTH2_TOKEN,
         json={
             "refresh_token": "mock-refresh-token",
-            "access_token": "mock-access-token",
+            "access_token": FAKE_ACCESS_TOKEN,
             "type": "Bearer",
             "expires_in": 60,
         },
@@ -80,3 +81,20 @@ async def test_full_flow(
 
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1
     assert len(mock_setup.mock_calls) == 1
+
+
+async def test_config_entry_unique_id_migration(
+    hass: HomeAssistant,
+    config_entry_v1_1: MockConfigEntry,
+) -> None:
+    """Test that old config entries use the unique id obtained from the JWT subject."""
+    config_entry_v1_1.add_to_hass(hass)
+
+    assert config_entry_v1_1.unique_id != "1234567890"
+    assert config_entry_v1_1.minor_version == 1
+
+    await hass.config_entries.async_setup(config_entry_v1_1.entry_id)
+    await hass.async_block_till_done()
+
+    assert config_entry_v1_1.unique_id == "1234567890"
+    assert config_entry_v1_1.minor_version == 2
