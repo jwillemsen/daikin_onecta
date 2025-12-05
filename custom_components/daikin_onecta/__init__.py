@@ -72,7 +72,7 @@ async def update_listener(hass, config_entry):
 
 async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Migrate old entry."""
-    _LOGGER.info("Migration from version %s:%s successful", config_entry.version, config_entry.minor_version)
+    _LOGGER.info("Migration from version %s.%s successful", config_entry.version, config_entry.minor_version)
 
     if config_entry.version == 1:
         match config_entry.minor_version:
@@ -86,5 +86,5 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
                     )["sub"],
                 )
 
-    _LOGGER.info("Migration to version %s:%s successful", config_entry.version, config_entry.minor_version)
+    _LOGGER.info("Migration to version %s.%s successful", config_entry.version, config_entry.minor_version)
     return True
