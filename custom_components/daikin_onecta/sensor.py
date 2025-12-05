@@ -50,18 +50,18 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
             periodName = SENSOR_PERIODS.get(period)
             # When we have the yearly sensor we also add a monthly
             if period == SENSOR_PERIOD_YEARLY:
-                periodi = SENSOR_PERIOD_MONTHLY
+                period_monthly = SENSOR_PERIOD_MONTHLY
                 _LOGGER.info(
-                    "Device '%s:%s' provides mode %s %s supports periodi %s",
+                    "Device '%s:%s' provides mode %s %s supports period %s",
                     device.name,
                     embedded_id,
                     management_point_type,
                     mode,
-                    periodi,
+                    period_monthly,
                 )
                 sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {SENSOR_PERIOD_MONTHLY}"
                 _LOGGER.info("Proposing sensor '%s'", sensor)
-                sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, periodi))
+                sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period_monthly))
             if periodName is not None:
                 _LOGGER.info(
                     "Device '%s:%s' provides mode %s %s supports period %s",
