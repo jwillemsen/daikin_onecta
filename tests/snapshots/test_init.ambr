@@ -964,7 +964,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControl_electrical_heating_mo',
+    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -1453,7 +1453,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -6617,7 +6617,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -6894,7 +6894,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -7391,7 +7391,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -8027,7 +8027,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_mo',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -8304,7 +8304,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_mo',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -9095,7 +9095,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_mo',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -9372,7 +9372,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_mo',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -10163,7 +10163,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_mo',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -10440,7 +10440,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_mo',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -11231,7 +11231,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -11508,7 +11508,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -17420,7 +17420,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -17697,7 +17697,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -18194,7 +18194,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -18830,7 +18830,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_mo',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -19107,7 +19107,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_mo',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -19898,7 +19898,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_mo',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -20175,7 +20175,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_mo',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -20966,7 +20966,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_mo',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -21243,7 +21243,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_mo',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -22034,7 +22034,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -22311,7 +22311,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -24608,7 +24608,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -24885,7 +24885,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -25431,7 +25431,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -37182,7 +37182,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -37459,7 +37459,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -37956,7 +37956,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -38592,7 +38592,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_mo',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -38869,7 +38869,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_mo',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -39660,7 +39660,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_mo',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -39937,7 +39937,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_mo',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -40728,7 +40728,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_mo',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -41005,7 +41005,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_mo',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -41796,7 +41796,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -42073,7 +42073,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -44054,7 +44054,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -44331,7 +44331,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -46675,7 +46675,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_electrical_cooling_mo',
+    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -46952,7 +46952,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_electrical_heating_mo',
+    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -47743,7 +47743,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_electrical_cooling_mo',
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -48020,7 +48020,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_electrical_heating_mo',
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -62665,7 +62665,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_electrical_cooling_mo',
+    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -62942,7 +62942,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_electrical_heating_mo',
+    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -63933,7 +63933,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_cooling_mo',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -63990,7 +63990,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlygasconsumption',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_cooling_mo',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -64275,7 +64275,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlygasconsumption',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_mo',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -64495,7 +64495,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_heating_mo',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -68288,7 +68288,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_electrical_cooling_mo',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -68565,7 +68565,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_electrical_heating_mo',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -69054,7 +69054,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -70238,7 +70238,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControl_electrical_cooling_mo',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -70466,7 +70466,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControl_electrical_heating_mo',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -70963,7 +70963,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -72177,7 +72177,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_electrical_cooling_mo',
+    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -72454,7 +72454,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_electrical_heating_mo',
+    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -75382,7 +75382,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'coolingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -75659,7 +75659,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
@@ -76205,7 +76205,7 @@
     'suggested_object_id': None,
     'supported_features': 0,
     'translation_key': 'heatingmonthlyelectricalconsumption',
-    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_montlhly',
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---

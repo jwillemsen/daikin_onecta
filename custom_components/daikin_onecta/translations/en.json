@@ -100,7 +100,7 @@
       "heatingweeklygasconsumption": {
         "name": "Heating weekly gas consumption"
       },
-      "heatingweeklymonthlyconsumption": {
+      "heatingmonthlyconsumption": {
         "name": "Heating monthly gas consumption"
       },
       "heatingyearlygasconsumption": {
