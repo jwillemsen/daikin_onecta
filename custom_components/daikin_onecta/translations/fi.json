@@ -18,8 +18,7 @@
         "abort": {
             "already_configured": "Integraatio on jo määritetty.",
             "cannot_connect": "Yhteys Daikin Cloudiin epäonnistui.",
-            "init_failed": "Daikin API:n alustus epäonnistui.",
-            "token_retrieval_failed": "Pääsytunnusten hakeminen epäonnistui."
+            "init_failed": "Daikin API:n alustus epäonnistui."
         },
         "error": {
             "cannot_connect": "Yhteys epäonnistui",

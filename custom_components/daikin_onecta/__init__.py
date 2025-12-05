@@ -1,9 +1,10 @@
 """Platform for the Daikin AC."""
-import asyncio
 import logging
 
+import jwt
 from aiohttp import ClientError
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers import config_entry_oauth2_flow
@@ -14,7 +15,15 @@ from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
 
-COMPONENT_TYPES = ["climate", "sensor", "water_heater", "switch", "select", "binary_sensor", "button"]
+PLATFORMS = [
+    Platform.CLIMATE,
+    Platform.SENSOR,
+    Platform.WATER_HEATER,
+    Platform.SWITCH,
+    Platform.SELECT,
+    Platform.BINARY_SENSOR,
+    Platform.BUTTON,
+]
 
 
 async def async_setup(hass, config):
@@ -43,7 +52,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
-    await hass.config_entries.async_forward_entry_setups(config_entry, COMPONENT_TYPES)
+    await hass.config_entries.async_forward_entry_setups(config_entry, PLATFORMS)
 
     return True
 
@@ -51,8 +60,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 async def async_unload_entry(hass, config_entry):
     """Unload a config entry."""
     _LOGGER.debug("Unloading integration...")
-    await asyncio.gather(*(hass.config_entries.async_forward_entry_unload(config_entry, component) for component in COMPONENT_TYPES))
-    return True
+    return await hass.config_entries.async_unload_platforms(config_entry, PLATFORMS)
 
 
 async def update_listener(hass, config_entry):
@@ -60,3 +68,28 @@ async def update_listener(hass, config_entry):
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
     coordinator.update_settings(config_entry)
+
+
+async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
+    """Migrate old entry."""
+    _LOGGER.info("Migration from version %s.%s", config_entry.version, config_entry.minor_version)
+
+    if config_entry.version == 1:
+        match config_entry.minor_version:
+            case 1:
+                try:
+                    unique_id = jwt.decode(
+                        config_entry.data["token"]["access_token"],
+                        options={"verify_signature": False},
+                    )["sub"]
+                except (jwt.DecodeError, KeyError) as err:
+                    _LOGGER.exception("Failed to decode JWT during migration: %s", err)
+                    return False
+                hass.config_entries.async_update_entry(
+                    config_entry,
+                    minor_version=2,
+                    unique_id=unique_id,
+                )
+
+    _LOGGER.info("Migration to version %s.%s successful", config_entry.version, config_entry.minor_version)
+    return True

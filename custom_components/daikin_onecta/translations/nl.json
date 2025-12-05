@@ -18,8 +18,7 @@
     "abort": {
       "already_configured": "De integratie is al geconfigureerd.",
       "cannot_connect": "Verbinding met Daikin Cloud mislukt.",
-      "init_failed": "Initialiseren van de Daikin API is mislukt.",
-      "token_retrieval_failed": "Ophalen van de access token-set is mislukt."
+      "init_failed": "Initialiseren van de Daikin API is mislukt."
     },
     "error": {
       "cannot_connect": "Verbinding mislukt",
