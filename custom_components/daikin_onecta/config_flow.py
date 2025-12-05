@@ -97,7 +97,7 @@ class FlowHandler(
         try:
             unique_id = jwt.decode(data["token"]["access_token"], options={"verify_signature": False})["sub"]
         except (jwt.DecodeError, KeyError) as err:
-            _LOGGER.error("Failed to decode JWT: %s", err)
+            _LOGGER.exception("Failed to decode JWT: %s", err)
             return self.async_abort(reason="invalid_token")
 
         await self.async_set_unique_id(unique_id)
