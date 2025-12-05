@@ -28,6 +28,7 @@ FAKE_ACCESS_TOKEN = (
     ".SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 )
 
+
 def load_fixture_json(name):
     with open(f"tests/fixtures/{name}.json") as json_file:
         data = json.load(json_file)
