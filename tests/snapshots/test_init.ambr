@@ -928,6 +928,63 @@
     'state': '4',
   })
 # ---
+# name: test_altherma3m[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma3m[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma3m[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -1358,6 +1415,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '4',
+  })
+# ---
+# name: test_altherma3m[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma3m[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
   })
 # ---
 # name: test_altherma3m[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -6467,6 +6581,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -6681,6 +6852,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -7121,6 +7349,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -7706,6 +7991,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -7920,6 +8262,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -8660,6 +9059,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma[sensor.linde_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.linde_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Linde ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma[sensor.linde_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -8874,6 +9330,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma[sensor.linde_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.linde_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Linde ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -9614,6 +10127,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma[sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sanne ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma[sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -9828,6 +10398,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma[sensor.sanne_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.sanne_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sanne ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -10568,6 +11195,63 @@
     'state': '0.1',
   })
 # ---
+# name: test_altherma[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -10782,6 +11466,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -16643,6 +17384,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma_ratelimit[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma_ratelimit[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -16857,6 +17655,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -17297,6 +18152,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -17882,6 +18794,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -18096,6 +19065,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -18836,6 +19862,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma_ratelimit[sensor.linde_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.linde_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Linde ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma_ratelimit[sensor.linde_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -19050,6 +20133,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.linde_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.linde_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Linde ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -19790,6 +20930,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sanne ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma_ratelimit[sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -20004,6 +21201,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.sanne_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sanne ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -20744,6 +21998,63 @@
     'state': '0.1',
   })
 # ---
+# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -20958,6 +22269,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -23204,6 +24572,63 @@
     'state': '0',
   })
 # ---
+# name: test_altherma_schedule[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_schedule[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_altherma_schedule[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -23418,6 +24843,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_altherma_schedule[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_schedule[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -23911,6 +25393,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '2',
+  })
+# ---
+# name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
   })
 # ---
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -35607,6 +37146,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -35821,6 +37417,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -36261,6 +37914,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -36846,6 +38556,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -37060,6 +38827,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -37800,6 +39624,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate[sensor.linde_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.linde_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Linde ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate[sensor.linde_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -38014,6 +39895,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.linde_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate[sensor.linde_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.linde_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Linde ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -38754,6 +40692,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate[sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sanne ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate[sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -38968,6 +40963,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sanne_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate[sensor.sanne_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.sanne_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sanne ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -39708,6 +41760,63 @@
     'state': '0.1',
   })
 # ---
+# name: test_climate[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -39922,6 +42031,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -41852,6 +44018,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -42066,6 +44289,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -44359,6 +46639,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.laurens_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Laurens ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.laurens_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -44573,6 +46910,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.laurens_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.laurens_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '71f33ee1-a82d-4f08-8f61-bf25fd872731_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Laurens ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.laurens_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -45313,6 +47707,63 @@
     'state': '0',
   })
 # ---
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.woonkamer_airco_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Woonkamer airco ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.woonkamer_airco_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -45527,6 +47978,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.woonkamer_airco_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.woonkamer_airco_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '27920256-e0af-4780-8f5f-1f88d8fdf0ba_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Woonkamer airco ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.woonkamer_airco_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -60121,6 +62629,63 @@
     'state': '0',
   })
 # ---
+# name: test_fanmode[sensor.sala_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sala_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_fanmode[sensor.sala_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sala ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sala_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_fanmode[sensor.sala_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -60335,6 +62900,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.sala_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_fanmode[sensor.sala_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.sala_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_fanmode[sensor.sala_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Sala ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.sala_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -61275,6 +63897,120 @@
     'state': '26',
   })
 # ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly gas consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlygasconsumption',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Cooling monthly gas consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
 # name: test_gas[sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -61503,6 +64239,63 @@
     'state': '264',
   })
 # ---
+# name: test_gas[sensor.my_living_room_climatecontrol_energy-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_energy',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Energy',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlygasconsumption',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_energy-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Energy',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_energy',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
 # name: test_gas[sensor.my_living_room_climatecontrol_heat_up_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -61664,6 +64457,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '26',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
   })
 # ---
 # name: test_gas[sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -65402,6 +68252,63 @@
     'state': '0',
   })
 # ---
+# name: test_mc80z[sensor.vloerverwarming_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_mc80z[sensor.vloerverwarming_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Vloerverwarming ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_mc80z[sensor.vloerverwarming_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -65620,6 +68527,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '3',
+  })
+# ---
+# name: test_mc80z[sensor.vloerverwarming_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_mc80z[sensor.vloerverwarming_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Vloerverwarming ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
   })
 # ---
 # name: test_mc80z[sensor.vloerverwarming_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -66052,6 +69016,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '1',
+  })
+# ---
+# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
   })
 # ---
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -67181,6 +70202,63 @@
     'state': '0',
   })
 # ---
+# name: test_minimal_data[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_minimal_data[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -67346,6 +70424,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -67790,6 +70925,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '4',
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -68949,6 +72141,63 @@
     'state': 'unavailable',
   })
 # ---
+# name: test_offlinedevice[sensor.studio_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.studio_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_offlinedevice[sensor.studio_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Studio ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.studio_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unavailable',
+  })
+# ---
 # name: test_offlinedevice[sensor.studio_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -69163,6 +72412,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.studio_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unavailable',
+  })
+# ---
+# name: test_offlinedevice[sensor.studio_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.studio_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_offlinedevice[sensor.studio_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Studio ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.studio_climatecontrol_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -72040,6 +75346,63 @@
     'state': '0',
   })
 # ---
+# name: test_water_heater[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_water_heater[sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
 # name: test_water_heater[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -72258,6 +75621,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '5',
+  })
+# ---
+# name: test_water_heater[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_water_heater[sensor.altherma_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
   })
 # ---
 # name: test_water_heater[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -72743,6 +76163,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_water_heater[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_mo',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_water_heater[sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

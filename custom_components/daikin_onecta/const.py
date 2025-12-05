@@ -29,12 +29,18 @@ FANMODE_FIXED = "fixed"
 SENSOR_PERIOD_DAILY = "d"
 SENSOR_PERIOD_WEEKLY = "w"
 SENSOR_PERIOD_YEARLY = "m"
-SENSOR_PERIOD_MONTHLY = "month"
+SENSOR_PERIOD_MONTHLY = "mo"
 SENSOR_PERIODS = {
     SENSOR_PERIOD_DAILY: "Daily",
     SENSOR_PERIOD_WEEKLY: "Weekly",
-    SENSOR_PERIOD_MONTHLY: "Month",
     SENSOR_PERIOD_YEARLY: "Yearly",
+    SENSOR_PERIOD_MONTHLY: "Monthly",
+}
+SENSOR_PERIODS_ARRAY = {
+    SENSOR_PERIOD_DAILY: "d",
+    SENSOR_PERIOD_WEEKLY: "w",
+    SENSOR_PERIOD_YEARLY: "m",
+    SENSOR_PERIOD_MONTHLY: "m",
 }
 
 ENABLED_DEFAULT = "Enabled"
@@ -482,6 +488,15 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "coolingweeklyelectricalconsumption",
     },
+    "CoolingMonthlyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingmonthlyelectricalconsumption",
+    },
     "CoolingYearlyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
@@ -508,6 +523,15 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "heatingweeklyelectricalconsumption",
+    },
+    "HeatingMonthlyElectricalConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingmonthlyelectricalconsumption",
     },
     "HeatingYearlyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
@@ -536,6 +560,15 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "coolingweeklygasconsumption",
     },
+    "CoolingMonthlyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingmonthlygasconsumption",
+    },
     "CoolingYearlyGasConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
         CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
@@ -562,6 +595,15 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "heatingweeklygasconsumption",
+    },
+    "HeatingMonthlyGasConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingmonthlygasconsumption",
     },
     "HeatingYearlyGasConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,

@@ -1,5 +1,6 @@
 """Support for Daikin AC sensors."""
 import logging
+from datetime import date
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorEntity
@@ -14,9 +15,11 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
-from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIOD_MONTHLY
+from .const import SENSOR_PERIOD_WEEKLY
+from .const import SENSOR_PERIOD_YEARLY
 from .const import SENSOR_PERIODS
+from .const import SENSOR_PERIODS_ARRAY
 from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
@@ -46,6 +49,20 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
         for period in cdve[mode]:
             periodName = SENSOR_PERIODS.get(period)
             if periodName is not None:
+                _LOGGER.info(
+                    "Device '%s:%s' provides mode %s %s supports period %s",
+                    device.name,
+                    embedded_id,
+                    management_point_type,
+                    mode,
+                    period,
+                )
+                sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {periodName}"
+                _LOGGER.info("Proposing sensor '%s'", sensor)
+                sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period))
+            if period == SENSOR_PERIOD_YEARLY:
+                periodName = SENSOR_PERIOD_MONTHLY
+                period = SENSOR_PERIOD_MONTHLY
                 _LOGGER.info(
                     "Device '%s:%s' provides mode %s %s supports period %s",
                     device.name,
@@ -216,9 +233,16 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                             for mode in cdve:
                                 # Only handle consumptionData for the operation mode supported by this sensor
                                 if mode == self._operation_mode:
-                                    energy_values = [0 if v is None else v for v in cdve[mode].get(self._period)]
-                                    start_index = 7 if self._period == SENSOR_PERIOD_WEEKLY else 12
-                                    end_index = len(energy_values)
+                                    energy_values = [0 if v is None else v for v in cdve[mode].get(SENSOR_PERIODS_ARRAY[self._period])]
+                                    if self._period == SENSOR_PERIOD_WEEKLY:
+                                        start_index = 7
+                                        end_index = len(energy_values)
+                                    elif self._period == SENSOR_PERIOD_MONTHLY:
+                                        start_index = 11 + date.today().month
+                                        end_index = start_index + 1
+                                    else:
+                                        start_index = 12
+                                        end_index = len(energy_values)
                                     energy_value = round(sum(energy_values[start_index:end_index]), 3)
                                     _LOGGER.info(
                                         "Device '%s' has energy value '%s' for '%s' mode %s %s period %s",

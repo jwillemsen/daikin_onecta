@@ -64,6 +64,9 @@
       "coolingweeklyelectricalconsumption": {
         "name": "Wekelijks elektriciteitsverbruik koelen"
       },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Maandelijks elektriciteitsverbruik koelen"
+      },
       "coolingyearlyelectricalconsumption": {
         "name": "Jaarlijks elektriciteitsverbruik koelen"
       },
@@ -72,6 +75,9 @@
       },
       "heatingweeklyelectricalconsumption": {
         "name": "Wekelijks elektriciteitsverbruik verwarmen"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Maandelijks elektriciteitsverbruik verwarmen"
       },
       "heatingyearlyelectricalconsumption": {
         "name": "Jaarlijks elektriciteitsverbruik verwarmen"
@@ -82,6 +88,9 @@
       "coolingweeklygasconsumption": {
         "name": "Wekelijks gasverbruik koelen"
       },
+      "coolingmonthlygasconsumption": {
+        "name": "Maandelijks gasverbruik koelen"
+      },
       "coolingyearlygasconsumption": {
         "name": "Jaarlijks gasverbruik koelen"
       },
@@ -90,6 +99,9 @@
       },
       "heatingweeklygasconsumption": {
         "name": "Wekelijks gasverbruik verwarmen"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Maandelijks gasverbruik verwarmen"
       },
       "heatingyearlygasconsumption": {
         "name": "Jaarlijks gasverbruik verwarmen"

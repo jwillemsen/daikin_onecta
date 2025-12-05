@@ -64,6 +64,9 @@
       "coolingweeklyelectricalconsumption": {
         "name": "Cooling weekly electrical consumption"
       },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Cooling monthly electrical consumption"
+      },
       "coolingyearlyelectricalconsumption": {
         "name": "Cooling yearly electrical consumption"
       },
@@ -72,6 +75,9 @@
       },
       "heatingweeklyelectricalconsumption": {
         "name": "Heating weekly electrical consumption"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Heating monthly electrical consumption"
       },
       "heatingyearlyelectricalconsumption": {
         "name": "Heating yearly electrical consumption"
@@ -82,6 +88,9 @@
       "coolingweeklygasconsumption": {
         "name": "Cooling weekly gas consumption"
       },
+      "coolingmonthlygasconsumption": {
+        "name": "Cooling monthly gas consumption"
+      },
       "coolingyearlygasconsumption": {
         "name": "Cooling yearly gas consumption"
       },
@@ -90,6 +99,9 @@
       },
       "heatingweeklygasconsumption": {
         "name": "Heating weekly gas consumption"
+      },
+      "heatingweeklymonthlyconsumption": {
+        "name": "Heating monthly gas consumption"
       },
       "heatingyearlygasconsumption": {
         "name": "Heating yearly gas consumption"
