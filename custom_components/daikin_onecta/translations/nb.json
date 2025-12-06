@@ -100,7 +100,7 @@
       "heatingweeklygasconsumption": {
         "name": "Ukentlig gassforbruk oppvarming"
       },
-      "heatingmonthlyconsumption": {
+      "heatingmonthlygasconsumption": {
         "name": "Månedlig gassforbruk oppvarming"
       },
       "heatingyearlygasconsumption": {

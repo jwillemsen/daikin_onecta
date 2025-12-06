@@ -77,7 +77,7 @@
         "name": "Vekeleg straumforbruk oppvarming"
       },
       "heatingmonthlyelectricalconsumption": {
-        "name": "Månadleg straumforbruk kjøling"
+        "name": "Månadleg straumforbruk oppvarming"
       },
       "heatingyearlyelectricalconsumption": {
         "name": "Årleg straumforbruk oppvarming"
@@ -100,7 +100,7 @@
       "heatingweeklygasconsumption": {
         "name": "Vekeleg gassforbruk oppvarming"
       },
-      "heatingmonthlyconsumption": {
+      "heatingmonthlygasconsumption": {
         "name": "Månadleg gassforbruk oppvarming"
       },
       "heatingyearlygasconsumption": {
