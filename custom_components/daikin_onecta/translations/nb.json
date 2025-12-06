@@ -18,7 +18,8 @@
     "abort": {
       "already_configured": "Integrasjonen er allerede konfigurert.",
       "cannot_connect": "Kunne ikke koble til Daikin Cloud.",
-      "init_failed": "Kunne ikke initialisere Daikin API."
+      "init_failed": "Kunne ikke initialisere Daikin API.",
+      "wrong_account": "Pass på at du konfigurerer på nytt mot den samme kontoen"
     },
     "error": {
       "cannot_connect": "Kunne ikke koble til (tilkobling)",
@@ -63,6 +64,9 @@
       "coolingweeklyelectricalconsumption": {
         "name": "Ukentlig strømforbruk kjøling"
       },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Månedlig strømforbruk kjøling"
+      },
       "coolingyearlyelectricalconsumption": {
         "name": "Årlig strømforbruk kjøling"
       },
@@ -71,6 +75,9 @@
       },
       "heatingweeklyelectricalconsumption": {
         "name": "Ukentlig strømforbruk oppvarming"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Månedlig strømforbruk oppvarming"
       },
       "heatingyearlyelectricalconsumption": {
         "name": "Årlig strømforbruk oppvarming"
@@ -81,6 +88,9 @@
       "coolingweeklygasconsumption": {
         "name": "Ukentlig gassforbruk kjøling"
       },
+      "coolingmonthlygasconsumption": {
+        "name": "Månedlig gassforbruk kjøling"
+      },
       "coolingyearlygasconsumption": {
         "name": "Årlig gassforbruk kjøling"
       },
@@ -89,6 +99,9 @@
       },
       "heatingweeklygasconsumption": {
         "name": "Ukentlig gassforbruk oppvarming"
+      },
+      "heatingmonthlyconsumption": {
+        "name": "Månedlig gassforbruk oppvarming"
       },
       "heatingyearlygasconsumption": {
         "name": "Årlig gassforbruk oppvarming"
