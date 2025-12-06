@@ -18,7 +18,8 @@
     "abort": {
       "already_configured": "Die Integration ist bereits konfiguriert.",
       "cannot_connect": "Verbindung zur Daikin Cloud konnte nicht hergestellt werden.",
-      "init_failed": "Daikin API konnte nicht initialisiert werden."
+      "init_failed": "Daikin API konnte nicht initialisiert werden.",
+      "wrong_account": "Bitte stellen Sie sicher, dass Sie die Konfiguration für dasselbe Konto neu vornehmen."
     },
     "error": {
       "cannot_connect": "Verbindung fehlgeschlagen",
@@ -63,6 +64,9 @@
       "coolingweeklyelectricalconsumption": {
         "name": "Wöchentlicher Stromverbrauch Kühlung"
       },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Monatlicher Stromverbrauch Kühlung"
+      },
       "coolingyearlyelectricalconsumption": {
         "name": "Jährlicher Stromverbrauch Kühlung"
       },
@@ -71,6 +75,9 @@
       },
       "heatingweeklyelectricalconsumption": {
         "name": "Wöchentlicher Stromverbrauch Heizung"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Monatlicher Stromverbrauch Heizung"
       },
       "heatingyearlyelectricalconsumption": {
         "name": "Jährlicher Stromverbrauch Heizung"
@@ -81,6 +88,9 @@
       "coolingweeklygasconsumption": {
         "name": "Wöchentlicher Gasverbrauch Kühlung"
       },
+      "coolingmonthlygasconsumption": {
+        "name": "Monatlicher Gasverbrauch Kühlung"
+      },
       "coolingyearlygasconsumption": {
         "name": "Jährlicher Gasverbrauch Kühlung"
       },
@@ -89,6 +99,9 @@
       },
       "heatingweeklygasconsumption": {
         "name": "Wöchentlicher Gasverbrauch Heizung"
+      },
+      "heatingmonthlyconsumption": {
+        "name": "Monatlicher Gasverbrauch Heizung"
       },
       "heatingyearlygasconsumption": {
         "name": "Jährlicher Gasverbrauch Heizung"
