@@ -5224,7 +5224,7 @@
 # name: test_altherma[button.altherma_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -5273,7 +5273,7 @@
 # name: test_altherma[button.johnny_maaike_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -5322,7 +5322,7 @@
 # name: test_altherma[button.linde_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -5420,7 +5420,7 @@
 # name: test_altherma[button.werkkamer_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35789,7 +35789,7 @@
 # name: test_climate[button.altherma_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35838,7 +35838,7 @@
 # name: test_climate[button.johnny_maaike_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Johnny&Maaike Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35887,7 +35887,7 @@
 # name: test_climate[button.linde_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Linde Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35985,7 +35985,7 @@
 # name: test_climate[button.werkkamer_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer Refresh',
+      'friendly_name': 'Sanne Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -64239,63 +64239,6 @@
     'state': '264',
   })
 # ---
-# name: test_gas[sensor.my_living_room_climatecontrol_energy-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': set({
-    }),
-    'area_id': None,
-    'capabilities': dict({
-      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
-    }),
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.my_living_room_climatecontrol_energy',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
-    }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
-    'original_icon': 'mdi:fire',
-    'original_name': 'Energy',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'heatingmonthlygasconsumption',
-    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_monthly',
-    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
-  })
-# ---
-# name: test_gas[sensor.my_living_room_climatecontrol_energy-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      'device_class': 'energy',
-      'friendly_name': 'My Living Room ClimateControl Energy',
-      'icon': 'mdi:fire',
-      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
-      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.my_living_room_climatecontrol_energy',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '264',
-  })
-# ---
 # name: test_gas[sensor.my_living_room_climatecontrol_heat_up_mode-entry]
   EntityRegistryEntrySnapshot({
     'aliases': set({
@@ -64510,6 +64453,63 @@
     }),
     'context': <ANY>,
     'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '264',
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': set({
+    }),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly gas consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlygasconsumption',
+    'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_climateControl_gas_heating_monthly',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_gas[sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'My Living Room ClimateControl Heating monthly gas consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
