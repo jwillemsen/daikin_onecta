@@ -1301,6 +1301,47 @@ async def test_climate(
         assert aioclient_mock.mock_calls[0][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/onOffMode",
+            status=300,
+        )
+        # Try to enable cooling, this fails, so the device should stay off
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.COOL},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 1
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/onOffMode",
+            status=204,
+        )
+        aioclient_mock.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/operationMode",
+            status=300,
+        )
+        # Try to enable heating, changing on/off works but setting operation mode now fails
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_HVAC_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.HEAT},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 2
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+
+
 
 @pytest.mark.asyncio
 async def test_minimal_data(

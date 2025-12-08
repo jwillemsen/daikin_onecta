@@ -5224,7 +5224,7 @@
 # name: test_altherma[button.altherma_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Altherma Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -5273,7 +5273,7 @@
 # name: test_altherma[button.johnny_maaike_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Johnny&Maaike Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -5322,7 +5322,7 @@
 # name: test_altherma[button.linde_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Linde Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -5420,7 +5420,7 @@
 # name: test_altherma[button.werkkamer_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Werkkamer Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35789,7 +35789,7 @@
 # name: test_climate[button.altherma_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Altherma Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35838,7 +35838,7 @@
 # name: test_climate[button.johnny_maaike_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Johnny&Maaike Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35887,7 +35887,7 @@
 # name: test_climate[button.linde_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Linde Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
@@ -35985,7 +35985,7 @@
 # name: test_climate[button.werkkamer_refresh-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Sanne Refresh',
+      'friendly_name': 'Werkkamer Refresh',
       'icon': 'mdi:refresh',
     }),
     'context': <ANY>,
