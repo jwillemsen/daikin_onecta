@@ -1341,8 +1341,6 @@ async def test_climate(
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
 
-
-
 @pytest.mark.asyncio
 async def test_minimal_data(
     hass: HomeAssistant,
