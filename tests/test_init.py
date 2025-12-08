@@ -1304,7 +1304,7 @@ async def test_climate(
         aioclient_mock.clear_requests()
         aioclient_mock.patch(
             DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/onOffMode",
-            status=300,
+            status=500,
         )
         # Try to enable cooling, this fails, so the device should stay off
         await hass.services.async_call(
@@ -1326,7 +1326,7 @@ async def test_climate(
         aioclient_mock.patch(
             DAIKIN_API_URL
             + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/operationMode",
-            status=300,
+            status=500,
         )
         # Try to enable heating, changing on/off works but setting operation mode now fails
         await hass.services.async_call(
