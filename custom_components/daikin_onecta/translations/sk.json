@@ -1,14 +1,30 @@
 {
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Interval aktualizácie s vysokou frekvenciou obnovy (v minútach)",
+          "low_scan_interval": "Interval aktualizácie s nízkou frekvenciou obnovy (v minútach)",
+          "high_scan_start": "Čas začiatku vysokofrekvenčného obdobia",
+          "low_scan_start": "Čas začiatku nízkofrekvenčného obdobia",
+          "scan_ignore": "Počet sekúnd, počas ktorých sa ignoruje obnovenie dát po odoslaní príkazu"
+        },
+        "description": "Konfigurácia obnovovania dát z Daikin Onecta Cloud",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
   "config": {
     "abort": {
       "already_configured": "Integrácia je už nakonfigurovaná.",
       "cannot_connect": "Nepodarilo sa pripojiť k Daikin Cloud.",
-      "init_failed": "Nepodarilo sa inicializovať rozhranie Daikin API."
+      "init_failed": "Nepodarilo sa inicializovať rozhranie Daikin API.",
+      "wrong_account": "Uistite sa prosím, že rekonfigurujete s rovnakým účtom."
     },
     "error": {
       "cannot_connect": "Nepodarilo sa pripojiť",
       "device_fail": "Neočakávaná chyba",
-      "device_timeout": "Nepodarilo sa pripojiť",
+      "device_timeout": "Časový limit pripojenia vypršal",
       "forbidden": "Neplatné overenie",
       "invalid_auth": "Neplatné overenie",
       "unknown": "Neočakávaná chyba"
@@ -16,12 +32,264 @@
     "step": {
       "user": {
         "data": {
-          "email": "Email adresa",
+          "email": "E-mailová adresa",
           "password": "Heslo"
         },
-        "description": "Zadajte e-mailovú adresu a heslo, ktoré používate na prihlásenie do Daikin Cloud, a potom stlačte Odoslať.",
+        "description": "Zadajte e-mailovú adresu a heslo, ktoré používate na prihlásenie do Daikin Cloud, potom stlačte Odoslať.",
         "title": "Konfigurácia Daikin Onecta"
       }
+    }
+  },
+  "entity": {
+    "select": {
+      "schedule": {
+        "name": "Rozvrh"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer režim"
+      },
+      "economode": {
+        "name": "Ekonomický režim"
+      }
+    },
+    "sensor": {
+      "ratelimitremainingday": {
+        "name": "Zostávajúci denný limit požiadaviek"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Denná spotreba elektriny pri chladení"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Týždenná spotreba elektriny pri chladení"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Mesačná spotreba elektriny pri chladení"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Ročná spotreba elektriny pri chladení"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Denná spotreba elektriny pri vykurovaní"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Týždenná spotreba elektriny pri vykurovaní"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Mesačná spotreba elektriny pri vykurovaní"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Ročná spotreba elektriny pri vykurovaní"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Denná spotreba plynu pri chladení"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Týždenná spotreba plynu pri chladení"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Mesačná spotreba plynu pri chladení"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Ročná spotreba plynu pri chladení"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Denná spotreba plynu pri vykurovaní"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Týždenná spotreba plynu pri vykurovaní"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Mesačná spotreba plynu pri vykurovaní"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Ročná spotreba plynu pri vykurovaní"
+      },
+      "ipaddress": {
+        "name": "IP adresa"
+      },
+      "tanktemperature": {
+        "name": "Teplota zásobníka"
+      },
+      "heatupmode": {
+        "name": "Režim ohrievania"
+      },
+      "outdoortemperature": {
+        "name": "Vonkajšia teplota"
+      },
+      "leavingwatertemperature": {
+        "name": "Teplota vychádzajúcej vody"
+      },
+      "errorcode": {
+        "name": "Kód chyby"
+      },
+      "setpointmode": {
+        "name": "Režim nastavenej teploty"
+      },
+      "powerfulmode": {
+        "name": "Výkonný režim"
+      },
+      "roomtemperature": {
+        "name": "Teplota v miestnosti"
+      },
+      "onoffmode": {
+        "name": "Režim zapnuté/vypnuté"
+      },
+      "controlmode": {
+        "name": "Režim ovládania"
+      },
+      "roomhumidity": {
+        "name": "Vlhkosť v miestnosti"
+      },
+      "pm1concentration": {
+        "name": "Koncentrácia PM1"
+      },
+      "pm25concentration": {
+        "name": "Koncentrácia PM2.5"
+      },
+      "operationmode": {
+        "name": "Prevádzkový režim"
+      },
+      "airpurificationmode": {
+        "name": "Režim čistenia vzduchu"
+      },
+      "wificonnectionssid": {
+        "name": "SSID WiFi pripojenia"
+      },
+      "wificonnectionstrength": {
+        "name": "Sila WiFi signálu"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "Koncentrácia PM10"
+      },
+      "leavingwateroffset": {
+        "name": "Ofset teploty vychádzajúcej vody"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Vypočítaná teplota vychádzajúcej vody"
+      },
+      "heatexchangertemperature": {
+        "name": "Teplota výmenníka tepla"
+      },
+      "suctiontemperature": {
+        "name": "Teplota nasávania"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Nastavenie udržiavania sucha"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Rýchlosť otáčok motora ventilátora"
+      },
+      "datetime": {
+        "name": "Dátum a čas"
+      },
+      "regioncode": {
+        "name": "Kód regiónu"
+      },
+      "timezone": {
+        "name": "Časové pásmo"
+      }
+    },
+    "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Je aktívny režim dovolenky"
+      },
+      "isinerrorstate": {
+        "name": "Je v stave chyby"
+      },
+      "isinwarningstate": {
+        "name": "Je v stave varovania"
+      },
+      "isininstallerstate": {
+        "name": "Je v stave inštalátora"
+      },
+      "isinemergencystate": {
+        "name": "Je v núdzovom stave"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Je aktívny výkonný režim"
+      },
+      "iscoolheatmaster": {
+        "name": "Je hlavná jednotka chladenia/vykurovania"
+      },
+      "isinmodeconflict": {
+        "name": "Je v konfliktnom režime"
+      },
+      "isincautionstate": {
+        "name": "Je v stave upozornenia"
+      },
+      "islockfunctionenabled": {
+        "name": "Je zapnutá funkcia zámku"
+      },
+      "ledenabled": {
+        "name": "LED zapnutá"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Je podporovaná aktualizácia firmvéru"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Letný čas zapnutý"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Tichý",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Kývanie",
+              "floorheatingairflow": "Prúdenie vzduchu pri podlahovom vykurovaní",
+              "windnice": "Komfortné prúdenie vzduchu"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Kývanie"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Bol dosiahnutý denný limit požiadaviek",
+      "description": "Dosiahli ste denný limit požiadaviek na Daikin Cloud. Skontrolujte frekvenciu obnovovania dát v konfigurácii Daikin Onecta."
+    },
+    "minute_rate_limit": {
+      "title": "Bol dosiahnutý minútový limit požiadaviek",
+      "description": "Dosiahli ste minútový limit požiadaviek na Daikin Cloud. Nevykonávajte toľko príkazov k vašim Daikin zariadeniam v priebehu jednej minúty."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API server",
+      "oauth2_status": "OAuth2 server",
+      "max_minute": "Maximum za minútu",
+      "max_day": "Maximum za deň",
+      "remaining_minute": "Zostáva za minútu",
+      "remaining_day": "Zostáva za deň",
+      "retry_after": "Opakovať po",
+      "ratelimit_reset": "Reset limitu požiadaviek",
+      "oauth2_token_valid": "OAuth2 token platný"
     }
   }
 }
