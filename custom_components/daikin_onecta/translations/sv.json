@@ -1,0 +1,295 @@
+{
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Högfrekvent uppdateringsintervall (minuter)",
+          "low_scan_interval": "Lågfrekvent uppdateringsintervall (minuter)",
+          "high_scan_start": "Högfrekvent period starttid",
+          "low_scan_start": "Lågfrekvent period starttid",
+          "scan_ignore": "Antal sekunder en uppdatering ignoreras efter ett kommando"
+        },
+        "description": "Konfigurera Daikin Onecta Molnuppkoppling",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Integrationen är redan konfigurerad.",
+      "cannot_connect": "Kunde inte ansluta till Daikin Cloud.",
+      "init_failed": "Kunde inte initialisera Daikin API",
+      "wrong_account": "var god kontrollera att du konfigurerar mot samma konto."
+    },
+    "error": {
+      "cannot_connect": "Kunde inte ansluta",
+      "device_fail": "Ett oväntat fel uppstod",
+      "device_timeout": "Kunde inte ansluta",
+      "forbidden": "Felaktig autentisering",
+      "invalid_auth": "Felaktig autentisering",
+      "unknown": "Ett oväntat fel uppstod"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "Mailaddress",
+          "password": "Lösenord"
+        },
+        "description": "Ange mailadressen och lösenordet du använder för att logga in i Daikin Cloud, och tryck sedan Bekräfta.",
+        "title": "Konfigurera Daikin Onecta"
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "schedule": {
+        "name": "Schema"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamerläge"
+      },
+      "economode": {
+        "name": "Ekoläge"
+      }
+    },
+    "sensor": {
+      "ratelimitremainingday": {
+        "name": "Kvarstående anrop idag"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Daglig energiförbrukning för kyla"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Veckovis energiförbrukning för kyla"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Månadsvis energiförbrukning för kyla"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Årlig energiförbrukning för kyla"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Daglig energiförbrukning för värme"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Veckovis energiförbrukning för värme"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Månadsvis energiförbrukning för värme"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Årlig energiförbrukning för värme"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Daglig gasförbrukning för kyla"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Veckovis gasförbrukning för kyla"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Månadsvis gasförbrukning för kyla"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Årlig gasförbrukning för kyla"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Daglig gasförbrukning för värme"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Veckovis gasförbrukning för värme"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Månadsvis gasförbrukning för värme"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Årlig gasförbrukning för värme"
+      },
+      "ipaddress": {
+        "name": "IP adress"
+      },
+      "tanktemperature": {
+        "name": "Tanktemperatur"
+      },
+      "heatupmode": {
+        "name": "Uppvärmningsläge"
+      },
+      "outdoortemperature": {
+        "name": "Utomhustemperatur"
+      },
+      "leavingwatertemperature": {
+        "name": "Framledningstemperatur"
+      },
+      "errorcode": {
+        "name": "Felkod"
+      },
+      "setpointmode": {
+        "name": "Börvärdesläge"
+      },
+      "powerfulmode": {
+        "name": "Kraftfullt läge"
+      },
+      "roomtemperature": {
+        "name": "Rumstemperatur"
+      },
+      "onoffmode": {
+        "name": "Av/På läge"
+      },
+      "controlmode": {
+        "name": "Styrläge"
+      },
+      "roomhumidity": {
+        "name": "Rumsluftfuktighet"
+      },
+      "pm1concentration": {
+        "name": "PM1 koncentration"
+      },
+      "pm25concentration": {
+        "name": "PM2.5 koncentration"
+      },
+      "operationmode": {
+        "name": "Läge"
+      },
+      "airpurificationmode": {
+        "name": "Luftreningsläge"
+      },
+      "wificonnectionssid": {
+        "name": "Wifi SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "WiFi uppkopplingsstyrka"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10 koncentration"
+      },
+      "leavingwateroffset": {
+        "name": "Framledningsjustering"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Beräknad framledningstemperatur"
+      },
+      "heatexchangertemperature": {
+        "name": "Värmeväxlartemperatur"
+      },
+      "suctiontemperature": {
+        "name": "Sugtemperatur"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Håll torrt"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Fläktmotor rotationshastighet"
+      },
+      "datetime": {
+        "name": "Datum/Tid"
+      },
+      "regioncode": {
+        "name": "Regionkod"
+      },
+      "timezone": {
+        "name": "Tidszon"
+      }
+    },
+    "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Semesterläge aktivt"
+      },
+      "isinerrorstate": {
+        "name": "Är i felläge"
+      },
+      "isinwarningstate": {
+        "name": "Är i varningsläge"
+      },
+      "isininstallerstate": {
+        "name": "Installatörsläge aktivt"
+      },
+      "isinemergencystate": {
+        "name": "Nöddrift aktivt"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Kraftfullt läge aktivt"
+      },
+      "iscoolheatmaster": {
+        "name": "Är primärenhet för värme/kyla"
+      },
+      "isinmodeconflict": {
+        "name": "Är i lägeskonflikt"
+      },
+      "isincautionstate": {
+        "name": "Är i försiktighetsläge"
+      },
+      "islockfunctionenabled": {
+        "name": "Låsfunktion aktiv"
+      },
+      "ledenabled": {
+        "name": "LED aktiv"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Uppdatering stöttat"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Sommartid aktivt"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Tyst",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Swing",
+              "floorheatingairflow": "FloorHeating Airflow",
+              "windnice": "Comfort Airflow"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Svängning"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Den dagliga anropsgränsen har uppnåts.",
+      "description": "Du har nått din dagliga anropsgräns till Daikin Cloud, kontrollera din uppdateringsfrekvens i konfigurationen."
+    },
+    "minute_rate_limit": {
+      "title": "Den minutbaserade anropsgränsen har uppnåts.",
+      "description": "Du har nått max antal anrop per minut till Daikin Cloud, gör inte så många anrop till dina Daikin enheter på en minut."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API server",
+      "oauth2_status": "OAuth2 server",
+      "max_minute": "Max minut",
+      "max_day": "Max dag",
+      "remaining_minute": "Återstående minut",
+      "remaining_day": "Återstående dag",
+      "retry_after": "Försök efter",
+      "ratelimit_reset": "Anropsbegränsning återställning",
+      "oauth2_token_valid": "OAuth2 token giltlig"
+    }
+  }
+}
