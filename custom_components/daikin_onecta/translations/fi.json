@@ -271,12 +271,12 @@
   },
   "issues": {
     "day_rate_limit": {
-      "title": "Päivittäinen kysely raja on saavutettu",
-      "description": "Olet saavuttanut päivittäisen kysely rajan Daikin Cloudissa, tarkista kyselytiheys Daikin Onecta -asetuksista."
+      "title": "Päivittäinen kyselyraja on saavutettu",
+      "description": "Olet saavuttanut päivittäisen kyselyrajan Daikin Cloudissa, tarkista kyselytiheys Daikin Onecta -asetuksista."
     },
     "minute_rate_limit": {
-      "title": "Minuuttikohtainen kysely raja on saavutettu",
-      "description": "Olet saavuttanut minuuttikohtaisen kysely rajan Daikin Cloudissa, älä tee liian monta kutsua Daikin-laitteisiin yhden minuutin aikana."
+      "title": "Minuuttikohtainen kyselyraja on saavutettu",
+      "description": "Olet saavuttanut minuuttikohtaisen kyselyrajan Daikin Cloudissa, älä tee liian monta kutsua Daikin-laitteisiin yhden minuutin aikana."
     }
   },
   "system_health": {
