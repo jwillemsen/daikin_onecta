@@ -285,10 +285,10 @@
       "oauth2_status": "OAuth2-palvelin",
       "max_minute": "Enimmäismäärä minuutissa",
       "max_day": "Enimmäismäärä päivässä",
-      "remaining_minute": "Jäljellä oleva minuutti",
-      "remaining_day": "Jäljellä oleva päivä",
+      "remaining_minute": "Jäljellä minuutissa",
+      "remaining_day": "Jäljellä päivässä",
       "retry_after": "Yritä uudelleen jälkeen",
-      "ratelimit_reset": "Kysely rajan palautus",
+      "ratelimit_reset": "Kyselyrajan nollaus",
       "oauth2_token_valid": "OAuth2-tunnus voimassa"
     }
   }
