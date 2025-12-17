@@ -19,7 +19,7 @@
       "already_configured": "Integrationen är redan konfigurerad.",
       "cannot_connect": "Kunde inte ansluta till Daikin Cloud.",
       "init_failed": "Kunde inte initialisera Daikin API",
-      "wrong_account": "var god kontrollera att du konfigurerar mot samma konto."
+      "wrong_account": "Var god kontrollera att du konfigurerar mot samma konto."
     },
     "error": {
       "cannot_connect": "Kunde inte ansluta",
@@ -32,7 +32,7 @@
     "step": {
       "user": {
         "data": {
-          "email": "Mailaddress",
+          "email": "E-postaddress",
           "password": "Lösenord"
         },
         "description": "Ange mailadressen och lösenordet du använder för att logga in i Daikin Cloud, och tryck sedan Bekräfta.",
@@ -107,7 +107,7 @@
         "name": "Årlig gasförbrukning för värme"
       },
       "ipaddress": {
-        "name": "IP adress"
+        "name": "IP-adress"
       },
       "tanktemperature": {
         "name": "Tanktemperatur"
@@ -155,7 +155,7 @@
         "name": "Luftreningsläge"
       },
       "wificonnectionssid": {
-        "name": "Wifi SSID"
+        "name": "WiFi SSID"
       },
       "wificonnectionstrength": {
         "name": "WiFi uppkopplingsstyrka"
@@ -232,10 +232,10 @@
         "name": "LED aktiv"
       },
       "isfirmwareupdatesupported": {
-        "name": "Uppdatering stöttat"
+        "name": "Uppdatering stöds"
       },
       "daylightsavingtimeenabled": {
-        "name": "Sommartid aktivt"
+        "name": "Sommartid aktiv"
       }
     },
     "climate": {
@@ -253,15 +253,15 @@
           },
           "swing_mode": {
             "state": {
-              "stop": "Stop",
-              "swing": "Swing",
-              "floorheatingairflow": "FloorHeating Airflow",
-              "windnice": "Comfort Airflow"
+              "stop": "Stopp",
+              "swing": "Svängning",
+              "floorheatingairflow": "Golvvärme - luftflöde",
+              "windnice": "Komfortluftflöde"
             }
           },
           "swing_horizontal_mode": {
             "state": {
-              "stop": "Stop",
+              "stop": "Stopp",
               "swing": "Svängning"
             }
           }
@@ -288,8 +288,8 @@
       "remaining_minute": "Återstående minut",
       "remaining_day": "Återstående dag",
       "retry_after": "Försök efter",
-      "ratelimit_reset": "Anropsbegränsning återställning",
-      "oauth2_token_valid": "OAuth2 token giltlig"
+      "ratelimit_reset": "Återställning av anropsgräns",
+      "oauth2_token_valid": "OAuth2 token giltig"
     }
   }
 }
