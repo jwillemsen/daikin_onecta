@@ -7,9 +7,9 @@
           "low_scan_interval": "Διάστημα ενημέρωσης περιόδου χαμηλής συχνότητας (λεπτά)",
           "high_scan_start": "Ώρα έναρξης περιόδου υψηλής συχνότητας",
           "low_scan_start": "Ώρα έναρξης περιόδου χαμηλής συχνότητας",
-          "scan_ignore": "Αριθμός δευτερολέπτων που αγνοείται μια ανανέωση δεδομένων μετά από μια εντολή"
+          "scan_ignore": "Αριθμός δευτερολέπτων κατά τα οποία αγνοείται η ανανέωση δεδομένων μετά από εντολή"
         },
-        "description": "Ρύθμιση λήψης δεδομένων από το Daikin Onecta Cloud",
+        "description": "Ρύθμιση συχνότητας ανάκτησης δεδομένων από το Daikin Onecta Cloud",
         "title": "Daikin Onecta"
       }
     }
@@ -18,31 +18,224 @@
     "abort": {
       "already_configured": "Η ενσωμάτωση έχει ήδη ρυθμιστεί.",
       "cannot_connect": "Αποτυχία σύνδεσης με το Daikin Cloud.",
-      "init_failed": "Αποτυχία αρχικοποίησης του Daikin API."
+      "init_failed": "Αποτυχία αρχικοποίησης του Daikin API.",
+      "wrong_account": "Βεβαιωθείτε ότι επαναρυθμίζετε με τον ίδιο λογαριασμό."
     },
     "error": {
       "cannot_connect": "Αποτυχία σύνδεσης",
       "device_fail": "Μη αναμενόμενο σφάλμα",
       "device_timeout": "Αποτυχία σύνδεσης",
-      "forbidden": "Μη έγκυρη πιστοποίηση",
-      "invalid_auth": "Μη έγκυρη πιστοποίηση",
+      "forbidden": "Μη έγκυρος έλεγχος ταυτότητας",
+      "invalid_auth": "Μη έγκυρος έλεγχος ταυτότητας",
       "unknown": "Μη αναμενόμενο σφάλμα"
     },
     "step": {
       "user": {
         "data": {
-          "email": "Διεύθυνση ηλεκτρονικού ταχυδρομείου",
-          "password": "Κωδικός"
+          "email": "Διεύθυνση email",
+          "password": "Κωδικός πρόσβασης"
         },
-        "description": "Εισάγετε τη διεύθυνση ηλεκτρονικού ταχυδρομείου και τον κωδικό πρόσβασης που χρησιμοποιείτε για να συνδεθείτε στο Daikin Cloud και πατήστε Υποβολή.",
-        "title": "Διαμόρφωση του Daikin Onecta"
+        "description": "Εισαγάγετε τη διεύθυνση email και τον κωδικό πρόσβασης που χρησιμοποιείτε για τη σύνδεση στο Daikin Cloud και πατήστε Υποβολή.",
+        "title": "Ρύθμιση Daikin Onecta"
       }
     }
   },
   "entity": {
+    "select": {
+      "schedule": {
+        "name": "Πρόγραμμα"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Λειτουργία Streamer"
+      },
+      "economode": {
+        "name": "Λειτουργία εξοικονόμησης"
+      }
+    },
+    "sensor": {
+      "ratelimitremainingday": {
+        "name": "Υπόλοιπο ημερήσιου ορίου κλήσεων"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Ημερήσια ηλεκτρική κατανάλωση ψύξης"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Εβδομαδιαία ηλεκτρική κατανάλωση ψύξης"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Μηνιαία ηλεκτρική κατανάλωση ψύξης"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Ετήσια ηλεκτρική κατανάλωση ψύξης"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Ημερήσια ηλεκτρική κατανάλωση θέρμανσης"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Εβδομαδιαία ηλεκτρική κατανάλωση θέρμανσης"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Μηνιαία ηλεκτρική κατανάλωση θέρμανσης"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Ετήσια ηλεκτρική κατανάλωση θέρμανσης"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Ημερήσια κατανάλωση αερίου ψύξης"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Εβδομαδιαία κατανάλωση αερίου ψύξης"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Μηνιαία κατανάλωση αερίου ψύξης"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Ετήσια κατανάλωση αερίου ψύξης"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Ημερήσια κατανάλωση αερίου θέρμανσης"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Εβδομαδιαία κατανάλωση αερίου θέρμανσης"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Μηνιαία κατανάλωση αερίου θέρμανσης"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Ετήσια κατανάλωση αερίου θέρμανσης"
+      },
+      "ipaddress": {
+        "name": "Διεύθυνση IP"
+      },
+      "tanktemperature": {
+        "name": "Θερμοκρασία δοχείου ΖΝΧ"
+      },
+      "heatupmode": {
+        "name": "Λειτουργία προθέρμανσης"
+      },
+      "outdoortemperature": {
+        "name": "Εξωτερική θερμοκρασία"
+      },
+      "leavingwatertemperature": {
+        "name": "Θερμοκρασία νερού προσαγωγής"
+      },
+      "errorcode": {
+        "name": "Κωδικός σφάλματος"
+      },
+      "setpointmode": {
+        "name": "Λειτουργία σημείου ρύθμισης"
+      },
+      "powerfulmode": {
+        "name": "Δυναμική Λειτουργία (Powerful)"
+      },
+      "roomtemperature": {
+        "name": "Θερμοκρασία χώρου"
+      },
+      "onoffmode": {
+        "name": "Λειτουργία On/Off"
+      },
+      "controlmode": {
+        "name": "Λειτουργία ελέγχου"
+      },
+      "roomhumidity": {
+        "name": "Υγρασία χώρου"
+      },
+      "pm1concentration": {
+        "name": "Συγκέντρωση PM1"
+      },
+      "pm25concentration": {
+        "name": "Συγκέντρωση PM2.5"
+      },
+      "operationmode": {
+        "name": "Τρόπος λειτουργίας"
+      },
+      "airpurificationmode": {
+        "name": "Λειτουργία καθαρισμού αέρα"
+      },
+      "wificonnectionssid": {
+        "name": "SSID σύνδεσης WiFi"
+      },
+      "wificonnectionstrength": {
+        "name": "Ισχύς σήματος WiFi"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "Συγκέντρωση PM10"
+      },
+      "leavingwateroffset": {
+        "name": "Offset θερμοκρασίας νερού προσαγωγής"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Υπολογισμένη θερμοκρασία εξερχόμενου νερού"
+      },
+      "heatexchangertemperature": {
+        "name": "Θερμοκρασία εναλλάκτη θερμότητας"
+      },
+      "suctiontemperature": {
+        "name": "Θερμοκρασία αναρρόφησης"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Ρύθμιση διατήρησης αφύγρανσης"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Ταχύτητα περιστροφής κινητήρα ανεμιστήρα"
+      },
+      "datetime": {
+        "name": "Ημερομηνία/Ώρα"
+      },
+      "regioncode": {
+        "name": "Κωδικός περιοχής"
+      },
+      "timezone": {
+        "name": "TΖώνη ώρας"
+      }
+    },
     "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Ενεργή λειτουργία διακοπών"
+      },
+      "isinerrorstate": {
+        "name": "Σε κατάσταση σφάλματος"
+      },
       "isinwarningstate": {
-        "name": "Κατάσταση Προειδοποίησης Ελέγχου Κλιματισμού"
+        "name": "Σε κατάσταση προειδοποίησης"
+      },
+      "isininstallerstate": {
+        "name": "Σε κατάσταση εγκαταστάτη"
+      },
+      "isinemergencystate": {
+        "name": "Σε κατάσταση εγκαταστάτη"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Ενεργή λειτουργία ενισχυμένης ισχύος"
+      },
+      "iscoolheatmaster": {
+        "name": "Κύρια μονάδα ψύξης/θέρμανσης"
+      },
+      "isinmodeconflict": {
+        "name": "Σε σύγκρουση λειτουργιών"
+      },
+      "isincautionstate": {
+        "name": "Σε κατάσταση προσοχής"
+      },
+      "islockfunctionenabled": {
+        "name": "Ενεργή λειτουργία κλειδώματος"
+      },
+      "ledenabled": {
+        "name": "LED ενεργό"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Υποστηρίζεται ενημέρωση υλικολογισμικού"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Θερινή ώρα ενεργή"
       }
     },
     "climate": {
@@ -50,7 +243,7 @@
         "state_attributes": {
           "fan_mode": {
             "state": {
-              "quiet": "Αθόρυβη Λειτουργία",
+              "quiet": "Αθόρυβη",
               "1": "1",
               "2": "2",
               "3": "3",
@@ -60,8 +253,16 @@
           },
           "swing_mode": {
             "state": {
-              "floorheatingairflow": "Ροή Αέρα Θέρμανσης Δαπέδου",
-              "windnice": "Άνετη Ροή Αέρα"
+              "stop": "Στάση",
+              "swing": "Παλινδρόμηση",
+              "floorheatingairflow": "Ροή αέρα Δαπέδου",
+              "windnice": "Ροή αέρα Άνεσης"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Στάση",
+              "swing": "Παλινδρόμηση"
             }
           }
         }
@@ -70,12 +271,25 @@
   },
   "issues": {
     "day_rate_limit": {
-      "title": "Έχει συμπληρωθεί το ημερήσιο όριο",
-      "description": "Έχετε φτάσει το ημερήσιο όριό σας στο Daikin Cloud, ελέγξτε τη συχνότητα επικοινωνίας στη ρύθμιση του Daikin Onecta."
+      "title": "Έχει επιτευχθεί το ημερήσιο όριο κλήσεων",
+      "description": "Έχετε φτάσει το ημερήσιο όριο κλήσεων προς το Daikin Cloud. Ελέγξτε τη συχνότητα ανάκτησης δεδομένων στις ρυθμίσεις Daikin Onecta."
     },
     "minute_rate_limit": {
-      "title": "Έχει συμπληρωθεί το όριο ανα λεπτό",
-      "description": "Έχετε φτάσει το όριό σας ανά λεπτό στο Daikin Cloud, μην κάνετε τόσες πολλές κλήσεις στις συσκευές Daikin σας μέσα σε ένα λεπτό."
+      "title": "Έχει επιτευχθεί το όριο κλήσεων ανά λεπτό",
+      "description": "Έχετε φτάσει το όριο κλήσεων ανά λεπτό προς το Daikin Cloud. Μην πραγματοποιείτε τόσες πολλές κλήσεις στις συσκευές Daikin μέσα σε ένα λεπτό."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "Διακομιστής API",
+      "oauth2_status": "Διακομιστής OAuth2",
+      "max_minute": "Μέγιστο ανά λεπτό",
+      "max_day": "Μέγιστο ανά ημέρα",
+      "remaining_minute": "Υπόλοιπο ανά λεπτό",
+      "remaining_day": "Υπόλοιπο ανά ημέρα",
+      "retry_after": "Επανάληψη μετά από",
+      "ratelimit_reset": "Επαναφορά ορίου κλήσεων",
+      "oauth2_token_valid": "Το OAuth2 token είναι έγκυρο"
     }
   }
 }
