@@ -90,7 +90,7 @@ class FlowHandler(
     @property
     def extra_authorize_data(self) -> dict[str, str]:
         """Extra data that needs to be appended to the authorize url."""
-        return {"scope": "openid onecta:basic.integration"}
+        return {"scope": "openid onecta:basic.integration offline_access"}
 
     async def async_oauth_create_entry(self, data: dict) -> FlowResult:
         """Create an oauth config entry or update existing entry for reauth."""

@@ -58,7 +58,7 @@ async def test_full_flow(
         f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}"
         "&redirect_uri=https://example.com/auth/external/callback"
         f"&state={state}"
-        f"&scope=openid+onecta:basic.integration"
+        f"&scope=openid+onecta:basic.integration+offline_access"
     )
 
     client = await hass_client_no_auth()
