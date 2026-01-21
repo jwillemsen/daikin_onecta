@@ -90,7 +90,8 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     def get_current_option(self):
         """Return the state of the sensor."""
         res = None
-        for management_point in self._device.daikin_data["managementPoints"]:
+        management_points = self._device.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._management_point_type == management_point_type:
@@ -111,7 +112,8 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
         currentMode = ""
         scheduleid = option
-        for management_point in self._device.daikin_data["managementPoints"]:
+        management_points = self._device.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._management_point_type == management_point_type:
@@ -149,7 +151,8 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
 
     def get_options(self):
         opt = []
-        for management_point in self._device.daikin_data["managementPoints"]:
+        management_points = self._device.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             if self._embedded_id == management_point["embeddedId"]:
                 management_point_type = management_point["managementPointType"]
                 if self._management_point_type == management_point_type:

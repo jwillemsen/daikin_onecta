@@ -238,7 +238,8 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                             for mode in cdve:
                                 # Only handle consumptionData for the operation mode supported by this sensor
                                 if mode == self._operation_mode:
-                                    energy_values = [0 if v is None else v for v in cdve[mode].get(SENSOR_PERIODS_ARRAY[self._period])]
+                                    period_data = cdve[mode].get(SENSOR_PERIODS_ARRAY[self._period]) or []
+                                    energy_values = [0 if v is None else v for v in period_data]
                                     if self._period == SENSOR_PERIOD_WEEKLY:
                                         start_index = 7
                                         end_index = len(energy_values)
@@ -324,7 +325,12 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
                 if self._sub_type is not None:
-                    management_point = management_point.get(self._sub_type).get("value")
+                    sub_type_data = management_point.get(self._sub_type)
+                    if sub_type_data is None:
+                        continue
+                    management_point = sub_type_data.get("value")
+                    if management_point is None:
+                        continue
                 cd = management_point.get(self._value)
                 if cd is not None:
                     res = cd.get("value")

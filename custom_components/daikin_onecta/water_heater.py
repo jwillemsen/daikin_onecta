@@ -93,7 +93,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def hotwatertank_data(self):
         # Find the management point for the hot water tank
         hwd = None
-        for management_point in self._device.daikin_data["managementPoints"]:
+        management_points = self._device.daikin_data.get("managementPoints", [])
+        for management_point in management_points:
             if management_point["managementPointType"] == self._management_point_type:
                 hwd = management_point
         return hwd
@@ -176,7 +177,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         ret = None
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            ret = float(self.domestic_hotwater_temperature["maxValue"])
+            ret = float(dht["maxValue"])
         _LOGGER.debug(
             "Device '%s' hot water tank maximum temperature '%s'",
             self._device.name,
@@ -202,17 +203,18 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 )
                 return None
 
-        if int(value) != self._attr_target_temperature:
+        int_value = int(value)
+        if int_value != self._attr_target_temperature:
             res = await self._device.patch(
                 self._device.id,
                 self._embedded_id,
                 "temperatureControl",
                 "/operationModes/heating/setpoints/domesticHotWaterTemperature",
-                int(value),
+                int_value,
             )
             # When updating the value to the daikin cloud worked update our local cached version
             if res:
-                self._attr_target_temperature = value
+                self._attr_target_temperature = int_value
                 self.async_write_ha_state()
 
     async def async_set_temperature(self, **kwargs):
