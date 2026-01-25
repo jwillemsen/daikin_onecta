@@ -1,0 +1,295 @@
+{
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Gyakoribb frissítések közötti időtartam (perc)",
+          "low_scan_interval": "Ritkább frissítések közötti időtartam (perc)",
+          "high_scan_start": "Gyakoribb frissítések kezdete",
+          "low_scan_start": "Ritkább frissítések kezdete",
+          "scan_ignore": "Frissítés késleltetése parancs kiadása után (másodperc)"
+        },
+        "description": "Daikin Onecta Cloud lekérdezés beállításai",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Az integráció már be van állítva.",
+      "cannot_connect": "Nem sikerült csatlakozni a Daikin Cloudhoz.",
+      "init_failed": "Nem sikerült inicializálni a Daikin API-t.",
+      "wrong_account": "Kérjük, ugyanahhoz a Daikin Onecta Cloud fiókhoz konfigurálja újra a lekérdezés beállításait."
+    },
+    "error": {
+      "cannot_connect": "Sikertelen csatlakozás",
+      "device_fail": "Váratlan hiba",
+      "device_timeout": "Sikertelen csatlakozás időtúllépés miatt",
+      "forbidden": "Érvénytelen hitelesítés",
+      "invalid_auth": "Érvénytelen hitelesítés",
+      "unknown": "Váratlan hiba"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "E-mail cím",
+          "password": "Jelszó"
+        },
+        "description": "Adja meg a Daikin Cloud bejelentkezéshez használt e-mail címét és jelszavát, majd nyomja meg a Küldés gombot.",
+        "title": "Daikin Onecta beállítása"
+      }
+    }
+  },
+  "entity": {
+    "select": {
+      "schedule": {
+        "name": "Ütemezés"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer mód"
+      },
+      "economode": {
+        "name": "Takarékos mód"
+      }
+    },
+    "sensor": {
+      "ratelimitremainingday": {
+        "name": "Napi kéréskeretből rendelkezésre áll"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Hűtés napi villamosenergia-fogyasztás"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Hűtés heti villamosenergia-fogyasztás"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Hűtés havi villamosenergia-fogyasztás"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Hűtés éves villamosenergia-fogyasztás"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Fűtés napi villamosenergia-fogyasztás"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Fűtés heti villamosenergia-fogyasztás"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Fűtés havi villamosenergia-fogyasztás"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Fűtés éves villamosenergia-fogyasztás"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Hűtés napi gázfogyasztás"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Hűtés heti gázfogyasztás"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Hűtés havi gázfogyasztás"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Hűtés éves gázfogyasztás"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Fűtés napi gázfogyasztás"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Fűtés heti gázfogyasztás"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Fűtés havi gázfogyasztás"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Fűtés éves gázfogyasztás"
+      },
+      "ipaddress": {
+        "name": "IP cím"
+      },
+      "tanktemperature": {
+        "name": "Tartály hőmérséklet"
+      },
+      "heatupmode": {
+        "name": "Felfűtési mód"
+      },
+      "outdoortemperature": {
+        "name": "Kültéri hőmérséklet"
+      },
+      "leavingwatertemperature": {
+        "name": "Előremenő víz hőmérséklete"
+      },
+      "errorcode": {
+        "name": "Hibakód"
+      },
+      "setpointmode": {
+        "name": "Célérték mód"
+      },
+      "powerfulmode": {
+        "name": "Erőteljes mód"
+      },
+      "roomtemperature": {
+        "name": "Szobahőmérséklet"
+      },
+      "onoffmode": {
+        "name": "Be/Ki mód"
+      },
+      "controlmode": {
+        "name": "Vezérlési mód"
+      },
+      "roomhumidity": {
+        "name": "Szoba páratartalom"
+      },
+      "pm1concentration": {
+        "name": "PM1 koncentráció"
+      },
+      "pm25concentration": {
+        "name": "PM2.5 koncentráció"
+      },
+      "operationmode": {
+        "name": "Üzemmód"
+      },
+      "airpurificationmode": {
+        "name": "Légtisztítási mód"
+      },
+      "wificonnectionssid": {
+        "name": "WiFi kapcsolat SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "WiFi jelerősség"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10 koncentráció"
+      },
+      "leavingwateroffset": {
+        "name": "Előremenő víz eltolás"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Számított előremenő víz hőmérséklet"
+      },
+      "heatexchangertemperature": {
+        "name": "Hőcserélő hőmérséklet"
+      },
+      "suctiontemperature": {
+        "name": "Szívóoldali hőmérséklet"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Szárítási beállítás"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Ventilátormotor fordulatszám"
+      },
+      "datetime": {
+        "name": "Dátum/idő"
+      },
+      "regioncode": {
+        "name": "Régiókód"
+      },
+      "timezone": {
+        "name": "Időzóna"
+      }
+    },
+    "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Szabadság mód aktív"
+      },
+      "isinerrorstate": {
+        "name": "Hibaállapotban van"
+      },
+      "isinwarningstate": {
+        "name": "Figyelmeztetési állapotban van"
+      },
+      "isininstallerstate": {
+        "name": "Telepítői állapotban van"
+      },
+      "isinemergencystate": {
+        "name": "Vészhelyzeti állapotban van"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Erőteljes mód aktív"
+      },
+      "iscoolheatmaster": {
+        "name": "Hűtés/fűtés elsődleges"
+      },
+      "isinmodeconflict": {
+        "name": "Üzemmód ütközés"
+      },
+      "isincautionstate": {
+        "name": "Óvatossági állapotban van"
+      },
+      "islockfunctionenabled": {
+        "name": "Zárolva"
+      },
+      "ledenabled": {
+        "name": "LED engedélyezve"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Firmware frissítés támogatott"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Nyári időszámítás engedélyezve"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Csendes",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Álló",
+              "swing": "Mozgó",
+              "floorheatingairflow": "Padlófűtés légáramlás",
+              "windnice": "Kényelmes légáramlás"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Álló",
+              "swing": "Mozgó"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "A napi lekérdezéskorlátot elérve",
+      "description": "Elérte a napi lekérdezéskorlátot a Daikin Cloudhoz. Ellenőrizze a lekérdezési gyakoriságot a Daikin Onecta beállításaiban."
+    },
+    "minute_rate_limit": {
+      "title": "A percenkénti lekérdezéskorlátot elérve",
+      "description": "Elérte a percenkénti lekérdezéskorlátot a Daikin Cloudhoz. Ne végezzen ennyi hívást a Daikin eszközeihez egy percen belül."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API szerver",
+      "oauth2_status": "OAuth2 szerver",
+      "max_minute": "Percenkénti maximum",
+      "max_day": "Napi maximum",
+      "remaining_minute": "Percenkénti hátralévő",
+      "remaining_day": "Napi hátralévő",
+      "retry_after": "Újrapróbálkozás után",
+      "ratelimit_reset": "Kéréslimit visszaállítás",
+      "oauth2_token_valid": "OAuth2 token érvényes"
+    }
+  }
+}
