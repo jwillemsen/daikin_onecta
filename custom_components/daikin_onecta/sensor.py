@@ -238,26 +238,28 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                             for mode in cdve:
                                 # Only handle consumptionData for the operation mode supported by this sensor
                                 if mode == self._operation_mode:
-                                    energy_values = [0 if v is None else v for v in cdve[mode].get(SENSOR_PERIODS_ARRAY[self._period])]
-                                    if self._period == SENSOR_PERIOD_WEEKLY:
-                                        start_index = 7
-                                        end_index = len(energy_values)
-                                    elif self._period == SENSOR_PERIOD_MONTHLY:
-                                        start_index = 11 + date.today().month
-                                        end_index = start_index + 1
-                                    else:
-                                        start_index = 12
-                                        end_index = len(energy_values)
-                                    energy_value = round(sum(energy_values[start_index:end_index]), 3)
-                                    _LOGGER.info(
-                                        "Device '%s' has energy value '%s' for '%s' mode %s %s period %s",
-                                        self._device.name,
-                                        energy_value,
-                                        self._sensor_type,
-                                        management_point_type,
-                                        mode,
-                                        self._period,
-                                    )
+                                    period_data = cdve[mode].get(SENSOR_PERIODS_ARRAY[self._period])
+                                    if period_data is not None:
+                                        energy_values = [0 if v is None else v for v in period_data]
+                                        if self._period == SENSOR_PERIOD_WEEKLY:
+                                            start_index = 7
+                                            end_index = len(energy_values)
+                                        elif self._period == SENSOR_PERIOD_MONTHLY:
+                                            start_index = 11 + date.today().month
+                                            end_index = start_index + 1
+                                        else:
+                                            start_index = 12
+                                            end_index = len(energy_values)
+                                        energy_value = round(sum(energy_values[start_index:end_index]), 3)
+                                        _LOGGER.info(
+                                            "Device '%s' has energy value '%s' for '%s' mode %s %s period %s",
+                                            self._device.name,
+                                            energy_value,
+                                            self._sensor_type,
+                                            management_point_type,
+                                            mode,
+                                            self._period,
+                                        )
 
         return energy_value
 
@@ -324,7 +326,11 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         for management_point in managementPoints:
             if self._embedded_id == management_point["embeddedId"]:
                 if self._sub_type is not None:
-                    management_point = management_point.get(self._sub_type).get("value")
+                    sub_type_data = management_point.get(self._sub_type)
+                    if sub_type_data is not None:
+                        management_point_v = sub_type_data.get("value")
+                        if management_point_v is not None:
+                            management_point = management_point_v
                 cd = management_point.get(self._value)
                 if cd is not None:
                     res = cd.get("value")

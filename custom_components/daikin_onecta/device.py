@@ -92,7 +92,9 @@ class DaikinOnectaDevice:
 
     "Helper to merge the json, prevents invalid reads when other threads are reading the daikin_data"
 
-    def merge_json(self, a: dict, b: dict, path=[]):
+    def merge_json(self, a: dict, b: dict, path=None):
+        if path is None:
+            path = []
         for key in b:
             if key in a:
                 if isinstance(a[key], dict) and isinstance(b[key], dict):
