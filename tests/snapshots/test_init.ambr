@@ -982,7 +982,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '462',
   })
 # ---
 # name: test_altherma3m[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -1471,7 +1471,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '81',
   })
 # ---
 # name: test_altherma3m[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -6912,7 +6912,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '457',
   })
 # ---
 # name: test_altherma[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -7409,7 +7409,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '120',
   })
 # ---
 # name: test_altherma[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -8322,7 +8322,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '3.7',
   })
 # ---
 # name: test_altherma[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -9390,7 +9390,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '4.9',
   })
 # ---
 # name: test_altherma[sensor.linde_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -10458,7 +10458,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '11.3',
   })
 # ---
 # name: test_altherma[sensor.sanne_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -11526,7 +11526,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '8',
   })
 # ---
 # name: test_altherma[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -17715,7 +17715,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '457',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -18212,7 +18212,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '120',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -19125,7 +19125,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '3.7',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -20193,7 +20193,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '4.9',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.linde_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -21261,7 +21261,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '11.3',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.sanne_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -22329,7 +22329,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '8',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -24903,7 +24903,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '618',
   })
 # ---
 # name: test_altherma_schedule[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -25449,7 +25449,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '140',
   })
 # ---
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -37477,7 +37477,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '457',
   })
 # ---
 # name: test_climate[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -37974,7 +37974,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '120',
   })
 # ---
 # name: test_climate[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -38887,7 +38887,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '3.7',
   })
 # ---
 # name: test_climate[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -39955,7 +39955,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '4.9',
   })
 # ---
 # name: test_climate[sensor.linde_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -41023,7 +41023,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '11.3',
   })
 # ---
 # name: test_climate[sensor.sanne_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -42091,7 +42091,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '8',
   })
 # ---
 # name: test_climate[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -44349,7 +44349,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '6',
   })
 # ---
 # name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -46970,7 +46970,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '3.7',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -62960,7 +62960,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '0.9',
   })
 # ---
 # name: test_fanmode[sensor.sala_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -63951,7 +63951,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '264',
+    'state': '0',
   })
 # ---
 # name: test_gas[sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption-entry]
@@ -64008,7 +64008,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '264',
+    'state': '0',
   })
 # ---
 # name: test_gas[sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -64456,7 +64456,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '264',
+    'state': '0',
   })
 # ---
 # name: test_gas[sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption-entry]
@@ -64513,7 +64513,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '264',
+    'state': '0',
   })
 # ---
 # name: test_gas[sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -68583,7 +68583,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '325',
   })
 # ---
 # name: test_mc80z[sensor.vloerverwarming_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -69072,7 +69072,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '49',
   })
 # ---
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -70484,7 +70484,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '755',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -70981,7 +70981,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '143',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -75677,7 +75677,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '609',
   })
 # ---
 # name: test_water_heater[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -76223,7 +76223,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '116',
   })
 # ---
 # name: test_water_heater[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
