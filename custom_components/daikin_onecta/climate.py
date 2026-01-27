@@ -373,7 +373,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             value,
                         )
 
-
     def get_hvac_mode(self):
         """Return current HVAC mode."""
         mode = HVACMode.OFF
