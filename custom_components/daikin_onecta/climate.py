@@ -344,6 +344,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
         if ATTR_TEMPERATURE in kwargs:
             value = kwargs[ATTR_TEMPERATURE]
+            _LOGGER.debug(
+                "Device '%s' request to set temperature to '%s'",
+                self._device.name,
+                value,
+            )
             if self._attr_target_temperature != value:
                 operationmode = self.operation_mode()
                 if operationmode is not None:
@@ -361,6 +366,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                         if setpointdict is not None:
                             self._attr_target_temperature = value
                             self.async_write_ha_state()
+                    else:
+                        _LOGGER.warning(
+                            "Device '%s' problem setting temperature to '%s'",
+                            self._device.name,
+                            value,
+                        )
+
 
     def get_hvac_mode(self):
         """Return current HVAC mode."""
