@@ -232,19 +232,18 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             fanControl = cc.get("fanControl")
             if fanControl is not None:
                 operation_mode_data = cc.get("operationMode")
-                if operation_mode_data is None:
-                    return supported_features
-                operationmode = operation_mode_data.get("value")
-                operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
-                if operationmodedict is not None:
-                    if operationmodedict.get("fanSpeed") is not None:
-                        supported_features |= ClimateEntityFeature.FAN_MODE
-                    fan_direction = operationmodedict.get("fanDirection")
-                    if fan_direction is not None:
-                        if fan_direction.get("vertical") is not None:
-                            supported_features |= ClimateEntityFeature.SWING_MODE
-                        if fan_direction.get("horizontal") is not None:
-                            supported_features |= ClimateEntityFeature.SWING_HORIZONTAL_MODE
+                if operation_mode_data is not None:
+                    operationmode = operation_mode_data.get("value")
+                    operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
+                    if operationmodedict is not None:
+                        if operationmodedict.get("fanSpeed") is not None:
+                            supported_features |= ClimateEntityFeature.FAN_MODE
+                        fan_direction = operationmodedict.get("fanDirection")
+                        if fan_direction is not None:
+                            if fan_direction.get("vertical") is not None:
+                                supported_features |= ClimateEntityFeature.SWING_MODE
+                            if fan_direction.get("horizontal") is not None:
+                                supported_features |= ClimateEntityFeature.SWING_HORIZONTAL_MODE
 
             _LOGGER.info("Device '%s' supports features %s", self._device.name, supported_features)
 
