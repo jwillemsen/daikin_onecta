@@ -1,7 +1,7 @@
 ---
 name: Issue report
 about: Create an issue to help us improve
-title: "[Issue]: "
+title: "[Issue] "
 labels: ""
 assignees: ""
 ---
