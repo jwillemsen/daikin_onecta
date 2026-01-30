@@ -16,13 +16,11 @@ REDACT_KEYS = {
     "serialNumber", "macAddress"
 }
 
-def get_entitities(hass: HomeAssistant, config_entry: ConfigEntry, device_id: str | None = None):
+def get_entitities(hass: HomeAssistant, config_entry: ConfigEntry):
     entity_registry = er.async_get(hass)
     entities_data: dict[str, dict[str, Any]] = {}
 
     for entity_entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
-        if device_id and entity_entry.device_id != device_id:
-            continue
         entity_id = entity_entry.entity_id
         state = hass.states.get(entity_id)
 
@@ -69,5 +67,5 @@ async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: Config
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = config_entry.options
     data["oauth2_token_valid"] = daikin_api.session.valid_token
-    data["entities"] = get_entitities(hass, config_entry, device_id=device.id)
+    data["entities"] = get_entitities(hass, config_entry)
     return data
