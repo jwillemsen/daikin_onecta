@@ -9,7 +9,7 @@ on:
 
 jobs:
   precommit:
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-slim"
     name: Pre-commit
     steps:
       - name: Check out the repository

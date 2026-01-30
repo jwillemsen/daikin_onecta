@@ -9,7 +9,7 @@ on:
 
 jobs:
   tests:
-    runs-on: "ubuntu-latest"
+    runs-on: "ubuntu-slim"
     name: Run tests
     strategy:
       fail-fast: false
