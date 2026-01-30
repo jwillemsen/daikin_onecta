@@ -3,6 +3,7 @@ from __future__ import annotations
 
 from typing import Any
 
+from homeassistant.components.diagnostics import async_redact_data
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
@@ -10,11 +11,8 @@ from homeassistant.helpers.device_registry import DeviceEntry
 
 from .coordinator import OnectaRuntimeData
 
-from homeassistant.components.diagnostics import async_redact_data
+REDACT_KEYS = {"serialNumber", "macAddress"}
 
-REDACT_KEYS = {
-    "serialNumber", "macAddress"
-}
 
 def get_entities(hass: HomeAssistant, config_entry: ConfigEntry):
     entity_registry = er.async_get(hass)
