@@ -10,9 +10,7 @@ from homeassistant.helpers.device_registry import DeviceEntry
 
 from .coordinator import OnectaRuntimeData
 
-
-async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, Any]:
-    """Return diagnostics for a config entry."""
+def get_entitities(hass: HomeAssistant, config_entry: ConfigEntry):
     entity_registry = er.async_get(hass)
     entities_data: dict[str, dict[str, Any]] = {}
 
@@ -35,6 +33,10 @@ async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: 
 
         entities_data[entity_id] = entity_info
 
+    return entities_data
+
+async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, Any]:
+    """Return diagnostics for a config entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     daikin_api = onecta_data.daikin_api
     return {
@@ -42,7 +44,7 @@ async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: 
         "rate_limits": daikin_api.rate_limits,
         "options": config_entry.options,
         "oauth2_token_valid": daikin_api.session.valid_token,
-        "entities": entities_data,
+        "entities": get_entitities(hass, config_entry),
     }
 
 
@@ -58,4 +60,5 @@ async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: Config
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = config_entry.options
     data["oauth2_token_valid"] = daikin_api.session.valid_token
+    data["entities"] = get_entitities(hass, config_entry),
     return data
