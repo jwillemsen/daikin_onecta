@@ -10,12 +10,19 @@ from homeassistant.helpers.device_registry import DeviceEntry
 
 from .coordinator import OnectaRuntimeData
 
+from homeassistant.components.diagnostics import async_redact_data
 
-def get_entitities(hass: HomeAssistant, config_entry: ConfigEntry):
+REDACT_KEYS = {
+    "serialNumber", "macAddress"
+}
+
+def get_entitities(hass: HomeAssistant, config_entry: ConfigEntry, device_id: str | None = None):
     entity_registry = er.async_get(hass)
     entities_data: dict[str, dict[str, Any]] = {}
 
     for entity_entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
+        if device_id and entity_entry.device_id != device_id:
+            continue
         entity_id = entity_entry.entity_id
         state = hass.states.get(entity_id)
 
@@ -30,7 +37,7 @@ def get_entitities(hass: HomeAssistant, config_entry: ConfigEntry):
 
         if state:
             entity_info["state"] = state.state
-            entity_info["attributes"] = dict(state.attributes)
+            entity_info["attributes"] = async_redact_data(dict(state.attributes), REDACT_KEYS)
 
         entities_data[entity_id] = entity_info
 
@@ -42,7 +49,7 @@ async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: 
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     daikin_api = onecta_data.daikin_api
     return {
-        "json_data": daikin_api.json_data,
+        "json_data": async_redact_data(daikin_api.json_data, REDACT_KEYS),
         "rate_limits": daikin_api.rate_limits,
         "options": config_entry.options,
         "oauth2_token_valid": daikin_api.session.valid_token,
@@ -58,9 +65,9 @@ async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: Config
     daikin_api = onecta_data.daikin_api
     daikin_device = onecta_data.devices.get(dev_id)
     if daikin_device is not None:
-        data["device_json_data"] = daikin_device.daikin_data
+        data["device_json_data"] = async_redact_data(daikin_device.daikin_data, REDACT_KEYS)
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = config_entry.options
     data["oauth2_token_valid"] = daikin_api.session.valid_token
-    data["entities"] = get_entitities(hass, config_entry)
+    data["entities"] = get_entitities(hass, config_entry, device_id=device.id)
     return data
