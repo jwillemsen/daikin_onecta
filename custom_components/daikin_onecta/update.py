@@ -53,7 +53,7 @@ async def async_setup_entry(
             continue
 
         firmware_update_supported = _get_value(gateway_mp, "isFirmwareUpdateSupported")
-        if firmware_update_supported is None:
+        if firmware_update_supported is not True:
             _LOGGER.debug(
                 "Device %s gateway has no isFirmwareUpdateSupported, skipping update entity",
                 device.name,
