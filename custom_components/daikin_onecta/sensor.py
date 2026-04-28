@@ -91,7 +91,6 @@ async def async_setup_entry(
         "domesticHotWaterFlowThrough",
         "climateControl",
         "climateControlMainZone",
-        "userInterface",
     }
     for device in onecta_data.devices.values():
         # For each device we provide a remaining day sensor
