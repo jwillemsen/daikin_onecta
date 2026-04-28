@@ -103,6 +103,9 @@ async def test_dry(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "dry")
 
     assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
+    assert hass.states.get("update.lounge_firmware_update").attributes["in_progress"] == False
+    assert hass.states.get("update.lounge_firmware_update").attributes["installed_version"] == "1_30_0"
+    assert hass.states.get("update.lounge_firmware_update").attributes["latest_version"] == None
 
 
 @pytest.mark.asyncio
@@ -1497,3 +1500,4 @@ async def test_altherma_firmwareupdate(
     assert hass.states.get("update.climate_control_getr422_firmware_update").attributes["installed_version"] == "4.0.1"
     assert hass.states.get("update.climate_control_getr422_firmware_update").attributes["latest_version"] == "4.1.901"
     assert hass.states.get("update.climate_control_getr422_firmware_update").attributes["release_summary"] == "Altherma WLAN update 4.1.901"
+    assert hass.states.get("update.climate_control_getr422_firmware_update").attributes["in_progress"] == True

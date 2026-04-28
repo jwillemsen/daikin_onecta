@@ -94,7 +94,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         super().__init__(coordinator)
         self._device = device
         self._coordinator = coordinator
-        self._attr_supported_features = UpdateEntityFeature(0)
+        self._attr_supported_features = UpdateEntityFeature.PROGRESS
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get("FirmwareUpdate")
         self._attr_icon = sensor_settings[CONF_ICON]
@@ -139,6 +139,11 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         """Brief hint that the mobile app is used to apply updates."""
         return self._release_summary
 
+    @property
+    def in_progress(self) -> bool | None:
+        """Is the update in progress."""
+        return self._in_progress
+
     # ------------------------------------------------------------------
     # Internal helpers
     # ------------------------------------------------------------------
@@ -150,6 +155,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._latest_version = None
         self._release_url = None
         self._release_summary = None
+        self._in_progress = False
         firmwareUpdate = gateway_mp.get("firmwareUpdate")
         if firmwareUpdate is not None:
             firmwareUpdateValue = firmwareUpdate.get("value")
@@ -157,6 +163,11 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
                 self._latest_version = firmwareUpdateValue.get("version")
                 self._release_url = None
                 self._release_summary = firmwareUpdateValue.get("description")
+        firmwareUpdateStatus = gateway_mp.get("firmwareUpdateStatus")
+        if firmwareUpdateStatus is not None:
+            firmwareUpdateStatusValue = firmwareUpdateStatus.get("value")
+            if firmwareUpdateStatusValue is not None:
+                self._in_progress = firmwareUpdateStatusValue == "in-progress"
 
     @callback
     def _handle_coordinator_update(self) -> None:
