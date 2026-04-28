@@ -1478,3 +1478,18 @@ async def test_altherma_schedule(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_schedule")
 
     assert hass.states.get("select.altherma_domestichotwatertank_schedule").state == "User defined"
+
+
+@pytest.mark.asyncio
+async def test_altherma_firmwareupdate(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+    aioclient_mock: AiohttpClientMocker,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_firmwareupdate")
+
+    info = await system_health_info(hass)
