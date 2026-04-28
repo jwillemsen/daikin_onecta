@@ -150,6 +150,13 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._latest_version = None
         self._release_url = None
         self._release_summary = None
+        firmwareUpdate = gateway_mp.get("firmwareUpdate")
+        if firmwareUpdate is not None:
+            firmwareUpdateValue = firmwareUpdate.get("value")
+            if firmwareUpdateValue is not None:
+                self._latest_version = firmwareUpdateValue.get("version")
+                self._release_url = None
+                self._release_summary = firmwareUpdateValue.get("description")
 
     @callback
     def _handle_coordinator_update(self) -> None:
