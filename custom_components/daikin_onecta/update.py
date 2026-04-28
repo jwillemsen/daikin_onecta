@@ -1,32 +1,27 @@
 """Support for Daikin firmware update entities."""
-
 from __future__ import annotations
 
 import logging
 from typing import Any
 
-from homeassistant.components.update import (
-    UpdateDeviceClass,
-    UpdateEntity,
-    UpdateEntityFeature,
-)
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import EntityCategory
-from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
-
 from homeassistant.components.sensor import CONF_STATE_CLASS
-from .const import DOMAIN
-from .coordinator import OnectaDataUpdateCoordinator
-from .daikin_api import DaikinApi
-from .device import DaikinOnectaDevice
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
+from homeassistant.components.update import UpdateEntity
+from homeassistant.components.update import UpdateEntityFeature
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
+from homeassistant.core import callback
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
+from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
+from .const import TRANSLATION_KEY
+from .const import VALUE_SENSOR_MAPPING
+from .coordinator import OnectaDataUpdateCoordinator
+from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -64,9 +59,7 @@ async def async_setup_entry(
             )
             continue
 
-        entities.append(
-            DaikinFirmwareUpdateEntity(coordinator, device, gateway_mp)
-        )
+        entities.append(DaikinFirmwareUpdateEntity(coordinator, device, gateway_mp))
 
     async_add_entities(entities)
 
@@ -88,9 +81,7 @@ def _get_value(mp: dict, characteristic: str) -> Any:
 
 
 class DaikinFirmwareUpdateEntity(UpdateEntity):
-    """Represents the gateway firmware for a single Daikin device.
-
-    """
+    """Represents the gateway firmware for a single Daikin device."""
 
     def __init__(
         self,
@@ -156,12 +147,8 @@ class DaikinFirmwareUpdateEntity(UpdateEntity):
 
     def _update_from_management_point(self, gateway_mp: dict) -> None:
         """Pull the latest values out of a gateway management point dict."""
-        self._installed_version: str | None = _get_value(
-            gateway_mp, "firmwareVersion"
-        )
-        self._is_update_supported: bool = bool(
-            _get_value(gateway_mp, "isFirmwareUpdateSupported")
-        )
+        self._installed_version: str | None = _get_value(gateway_mp, "firmwareVersion")
+        self._is_update_supported: bool = bool(_get_value(gateway_mp, "isFirmwareUpdateSupported"))
 
     @callback
     def _handle_coordinator_update(self) -> None:
