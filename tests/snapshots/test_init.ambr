@@ -606,7 +606,7 @@
 # name: test_altherma3m[binary_sensor.altherma_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Is firmware update supported',
+      'friendly_name': 'Altherma Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -1798,7 +1798,7 @@
 # name: test_altherma3m[sensor.altherma_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway IP address',
+      'friendly_name': 'Altherma Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -1851,7 +1851,7 @@
 # name: test_altherma3m[sensor.altherma_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Ratelimit remaining day',
+      'friendly_name': 'Altherma Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -1863,7 +1863,7 @@
     'state': '0',
   })
 # ---
-# name: test_altherma3m[update.altherma_gateway_firmware_update-entry]
+# name: test_altherma3m[update.altherma_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -1877,7 +1877,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -1900,14 +1900,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma3m[update.altherma_gateway_firmware_update-state]
+# name: test_altherma3m[update.altherma_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma gateway Firmware update',
+      'friendly_name': 'Altherma Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.2.5',
@@ -1920,7 +1920,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -26791,7 +26791,7 @@
     'state': '0',
   })
 # ---
-# name: test_altherma_schedule[update.altherma_gateway_firmware_update-entry]
+# name: test_altherma_schedule[update.altherma_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -26805,7 +26805,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -26828,14 +26828,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_schedule[update.altherma_gateway_firmware_update-state]
+# name: test_altherma_schedule[update.altherma_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma Gateway Firmware update',
+      'friendly_name': 'Altherma Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.5.0',
@@ -26848,7 +26848,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -27174,7 +27174,7 @@
 # name: test_button[binary_sensor.bedroom_1_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 1 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27226,7 +27226,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 1 gateway Is in error state',
+      'friendly_name': 'Bedroom 1 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27640,7 +27640,7 @@
 # name: test_button[binary_sensor.bedroom_2_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 2 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27692,7 +27692,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 2 gateway Is in error state',
+      'friendly_name': 'Bedroom 2 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -28106,7 +28106,7 @@
 # name: test_button[binary_sensor.bedroom_3_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 3 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -28158,7 +28158,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 3 gateway Is in error state',
+      'friendly_name': 'Bedroom 3 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -28572,7 +28572,7 @@
 # name: test_button[binary_sensor.kitchen_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Is firmware update supported',
+      'friendly_name': 'Kitchen Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -28624,7 +28624,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Kitchen gateway Is in error state',
+      'friendly_name': 'Kitchen Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29038,7 +29038,7 @@
 # name: test_button[binary_sensor.lounge_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Is firmware update supported',
+      'friendly_name': 'Lounge Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29090,7 +29090,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Lounge gateway Is in error state',
+      'friendly_name': 'Lounge Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29504,7 +29504,7 @@
 # name: test_button[binary_sensor.master_bathroom_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Is firmware update supported',
+      'friendly_name': 'Master Bathroom Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29556,7 +29556,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Master Bathroom gateway Is in error state',
+      'friendly_name': 'Master Bathroom Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -29970,7 +29970,7 @@
 # name: test_button[binary_sensor.master_bedroom_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Is firmware update supported',
+      'friendly_name': 'Master Bedroom Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -30022,7 +30022,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Master Bedroom gateway Is in error state',
+      'friendly_name': 'Master Bedroom Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -31697,7 +31697,7 @@
 # name: test_button[sensor.bedroom_1_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Error code',
+      'friendly_name': 'Bedroom 1 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -31748,7 +31748,7 @@
 # name: test_button[sensor.bedroom_1_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway IP address',
+      'friendly_name': 'Bedroom 1 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -31801,7 +31801,7 @@
 # name: test_button[sensor.bedroom_1_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 1 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -32014,7 +32014,7 @@
 # name: test_button[sensor.bedroom_2_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Error code',
+      'friendly_name': 'Bedroom 2 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -32065,7 +32065,7 @@
 # name: test_button[sensor.bedroom_2_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway IP address',
+      'friendly_name': 'Bedroom 2 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -32118,7 +32118,7 @@
 # name: test_button[sensor.bedroom_2_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 2 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -32331,7 +32331,7 @@
 # name: test_button[sensor.bedroom_3_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Error code',
+      'friendly_name': 'Bedroom 3 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -32382,7 +32382,7 @@
 # name: test_button[sensor.bedroom_3_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway IP address',
+      'friendly_name': 'Bedroom 3 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -32435,7 +32435,7 @@
 # name: test_button[sensor.bedroom_3_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 3 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -32648,7 +32648,7 @@
 # name: test_button[sensor.kitchen_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Error code',
+      'friendly_name': 'Kitchen Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -32699,7 +32699,7 @@
 # name: test_button[sensor.kitchen_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway IP address',
+      'friendly_name': 'Kitchen Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -32752,7 +32752,7 @@
 # name: test_button[sensor.kitchen_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Ratelimit remaining day',
+      'friendly_name': 'Kitchen Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -32965,7 +32965,7 @@
 # name: test_button[sensor.lounge_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Error code',
+      'friendly_name': 'Lounge Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -33016,7 +33016,7 @@
 # name: test_button[sensor.lounge_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway IP address',
+      'friendly_name': 'Lounge Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -33069,7 +33069,7 @@
 # name: test_button[sensor.lounge_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Ratelimit remaining day',
+      'friendly_name': 'Lounge Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -33282,7 +33282,7 @@
 # name: test_button[sensor.master_bathroom_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Error code',
+      'friendly_name': 'Master Bathroom Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -33333,7 +33333,7 @@
 # name: test_button[sensor.master_bathroom_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway IP address',
+      'friendly_name': 'Master Bathroom Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -33386,7 +33386,7 @@
 # name: test_button[sensor.master_bathroom_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Ratelimit remaining day',
+      'friendly_name': 'Master Bathroom Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -33599,7 +33599,7 @@
 # name: test_button[sensor.master_bedroom_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Error code',
+      'friendly_name': 'Master Bedroom Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -33650,7 +33650,7 @@
 # name: test_button[sensor.master_bedroom_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway IP address',
+      'friendly_name': 'Master Bedroom Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -33703,7 +33703,7 @@
 # name: test_button[sensor.master_bedroom_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Ratelimit remaining day',
+      'friendly_name': 'Master Bedroom Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -33766,7 +33766,7 @@
     'state': '-',
   })
 # ---
-# name: test_button[update.bedroom_1_gateway_firmware_update-entry]
+# name: test_button[update.bedroom_1_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -33780,7 +33780,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_1_gateway_firmware_update',
+    'entity_id': 'update.bedroom_1_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -33803,14 +33803,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.bedroom_1_gateway_firmware_update-state]
+# name: test_button[update.bedroom_1_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 1 gateway Firmware update',
+      'friendly_name': 'Bedroom 1 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -33823,14 +33823,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_1_gateway_firmware_update',
+    'entity_id': 'update.bedroom_1_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.bedroom_2_gateway_firmware_update-entry]
+# name: test_button[update.bedroom_2_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -33844,7 +33844,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_2_gateway_firmware_update',
+    'entity_id': 'update.bedroom_2_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -33867,14 +33867,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.bedroom_2_gateway_firmware_update-state]
+# name: test_button[update.bedroom_2_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 2 gateway Firmware update',
+      'friendly_name': 'Bedroom 2 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -33887,14 +33887,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_2_gateway_firmware_update',
+    'entity_id': 'update.bedroom_2_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.bedroom_3_gateway_firmware_update-entry]
+# name: test_button[update.bedroom_3_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -33908,7 +33908,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_3_gateway_firmware_update',
+    'entity_id': 'update.bedroom_3_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -33931,14 +33931,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.bedroom_3_gateway_firmware_update-state]
+# name: test_button[update.bedroom_3_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 3 gateway Firmware update',
+      'friendly_name': 'Bedroom 3 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -33951,14 +33951,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_3_gateway_firmware_update',
+    'entity_id': 'update.bedroom_3_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.kitchen_gateway_firmware_update-entry]
+# name: test_button[update.kitchen_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -33972,7 +33972,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.kitchen_gateway_firmware_update',
+    'entity_id': 'update.kitchen_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -33995,14 +33995,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.kitchen_gateway_firmware_update-state]
+# name: test_button[update.kitchen_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Kitchen gateway Firmware update',
+      'friendly_name': 'Kitchen Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -34015,14 +34015,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.kitchen_gateway_firmware_update',
+    'entity_id': 'update.kitchen_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.lounge_gateway_firmware_update-entry]
+# name: test_button[update.lounge_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -34036,7 +34036,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.lounge_gateway_firmware_update',
+    'entity_id': 'update.lounge_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -34059,14 +34059,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.lounge_gateway_firmware_update-state]
+# name: test_button[update.lounge_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Lounge gateway Firmware update',
+      'friendly_name': 'Lounge Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -34079,14 +34079,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.lounge_gateway_firmware_update',
+    'entity_id': 'update.lounge_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.master_bathroom_gateway_firmware_update-entry]
+# name: test_button[update.master_bathroom_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -34100,7 +34100,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bathroom_gateway_firmware_update',
+    'entity_id': 'update.master_bathroom_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -34123,14 +34123,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.master_bathroom_gateway_firmware_update-state]
+# name: test_button[update.master_bathroom_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bathroom gateway Firmware update',
+      'friendly_name': 'Master Bathroom Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -34143,14 +34143,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bathroom_gateway_firmware_update',
+    'entity_id': 'update.master_bathroom_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.master_bedroom_gateway_firmware_update-entry]
+# name: test_button[update.master_bedroom_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -34164,7 +34164,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bedroom_gateway_firmware_update',
+    'entity_id': 'update.master_bedroom_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -34187,14 +34187,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.master_bedroom_gateway_firmware_update-state]
+# name: test_button[update.master_bedroom_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bedroom gateway Firmware update',
+      'friendly_name': 'Master Bedroom Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -34207,7 +34207,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bedroom_gateway_firmware_update',
+    'entity_id': 'update.master_bedroom_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -45715,7 +45715,7 @@
 # name: test_climate_fixedfanmode[binary_sensor.werkkamer_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer gateway Is firmware update supported',
+      'friendly_name': 'Werkkamer Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -45767,7 +45767,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Werkkamer gateway Is in error state',
+      'friendly_name': 'Werkkamer Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -46852,7 +46852,7 @@
 # name: test_climate_fixedfanmode[sensor.werkkamer_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer gateway Error code',
+      'friendly_name': 'Werkkamer Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -46903,7 +46903,7 @@
 # name: test_climate_fixedfanmode[sensor.werkkamer_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer gateway IP address',
+      'friendly_name': 'Werkkamer Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -46956,7 +46956,7 @@
 # name: test_climate_fixedfanmode[sensor.werkkamer_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Werkkamer gateway Ratelimit remaining day',
+      'friendly_name': 'Werkkamer Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -47019,7 +47019,7 @@
     'state': '00-',
   })
 # ---
-# name: test_climate_fixedfanmode[update.werkkamer_gateway_firmware_update-entry]
+# name: test_climate_fixedfanmode[update.werkkamer_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -47033,7 +47033,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.werkkamer_gateway_firmware_update',
+    'entity_id': 'update.werkkamer_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -47056,14 +47056,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_fixedfanmode[update.werkkamer_gateway_firmware_update-state]
+# name: test_climate_fixedfanmode[update.werkkamer_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Werkkamer gateway Firmware update',
+      'friendly_name': 'Werkkamer Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_28_0',
@@ -47076,7 +47076,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.werkkamer_gateway_firmware_update',
+    'entity_id': 'update.werkkamer_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -51675,7 +51675,7 @@
 # name: test_dry2[binary_sensor.bedroom_1_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 1 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -51727,7 +51727,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 1 gateway Is in error state',
+      'friendly_name': 'Bedroom 1 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -52141,7 +52141,7 @@
 # name: test_dry2[binary_sensor.bedroom_2_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 2 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -52193,7 +52193,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 2 gateway Is in error state',
+      'friendly_name': 'Bedroom 2 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -52607,7 +52607,7 @@
 # name: test_dry2[binary_sensor.bedroom_3_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 3 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -52659,7 +52659,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 3 gateway Is in error state',
+      'friendly_name': 'Bedroom 3 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -53073,7 +53073,7 @@
 # name: test_dry2[binary_sensor.kitchen_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Is firmware update supported',
+      'friendly_name': 'Kitchen Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -53125,7 +53125,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Kitchen gateway Is in error state',
+      'friendly_name': 'Kitchen Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -53539,7 +53539,7 @@
 # name: test_dry2[binary_sensor.lounge_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Is firmware update supported',
+      'friendly_name': 'Lounge Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -53591,7 +53591,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Lounge gateway Is in error state',
+      'friendly_name': 'Lounge Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -54005,7 +54005,7 @@
 # name: test_dry2[binary_sensor.master_bathroom_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Is firmware update supported',
+      'friendly_name': 'Master Bathroom Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -54057,7 +54057,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Master Bathroom gateway Is in error state',
+      'friendly_name': 'Master Bathroom Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -54471,7 +54471,7 @@
 # name: test_dry2[binary_sensor.master_bedroom_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Is firmware update supported',
+      'friendly_name': 'Master Bedroom Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -54523,7 +54523,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Master Bedroom gateway Is in error state',
+      'friendly_name': 'Master Bedroom Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -56198,7 +56198,7 @@
 # name: test_dry2[sensor.bedroom_1_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Error code',
+      'friendly_name': 'Bedroom 1 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -56249,7 +56249,7 @@
 # name: test_dry2[sensor.bedroom_1_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway IP address',
+      'friendly_name': 'Bedroom 1 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -56302,7 +56302,7 @@
 # name: test_dry2[sensor.bedroom_1_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 1 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -56515,7 +56515,7 @@
 # name: test_dry2[sensor.bedroom_2_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Error code',
+      'friendly_name': 'Bedroom 2 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -56566,7 +56566,7 @@
 # name: test_dry2[sensor.bedroom_2_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway IP address',
+      'friendly_name': 'Bedroom 2 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -56619,7 +56619,7 @@
 # name: test_dry2[sensor.bedroom_2_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 2 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -56832,7 +56832,7 @@
 # name: test_dry2[sensor.bedroom_3_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Error code',
+      'friendly_name': 'Bedroom 3 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -56883,7 +56883,7 @@
 # name: test_dry2[sensor.bedroom_3_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway IP address',
+      'friendly_name': 'Bedroom 3 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -56936,7 +56936,7 @@
 # name: test_dry2[sensor.bedroom_3_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 3 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -57149,7 +57149,7 @@
 # name: test_dry2[sensor.kitchen_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Error code',
+      'friendly_name': 'Kitchen Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -57200,7 +57200,7 @@
 # name: test_dry2[sensor.kitchen_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway IP address',
+      'friendly_name': 'Kitchen Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -57253,7 +57253,7 @@
 # name: test_dry2[sensor.kitchen_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Ratelimit remaining day',
+      'friendly_name': 'Kitchen Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -57466,7 +57466,7 @@
 # name: test_dry2[sensor.lounge_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Error code',
+      'friendly_name': 'Lounge Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -57517,7 +57517,7 @@
 # name: test_dry2[sensor.lounge_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway IP address',
+      'friendly_name': 'Lounge Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -57570,7 +57570,7 @@
 # name: test_dry2[sensor.lounge_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Ratelimit remaining day',
+      'friendly_name': 'Lounge Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -57783,7 +57783,7 @@
 # name: test_dry2[sensor.master_bathroom_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Error code',
+      'friendly_name': 'Master Bathroom Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -57834,7 +57834,7 @@
 # name: test_dry2[sensor.master_bathroom_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway IP address',
+      'friendly_name': 'Master Bathroom Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -57887,7 +57887,7 @@
 # name: test_dry2[sensor.master_bathroom_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Ratelimit remaining day',
+      'friendly_name': 'Master Bathroom Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -58100,7 +58100,7 @@
 # name: test_dry2[sensor.master_bedroom_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Error code',
+      'friendly_name': 'Master Bedroom Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -58151,7 +58151,7 @@
 # name: test_dry2[sensor.master_bedroom_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway IP address',
+      'friendly_name': 'Master Bedroom Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -58204,7 +58204,7 @@
 # name: test_dry2[sensor.master_bedroom_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Ratelimit remaining day',
+      'friendly_name': 'Master Bedroom Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -58267,7 +58267,7 @@
     'state': '-',
   })
 # ---
-# name: test_dry2[update.bedroom_1_gateway_firmware_update-entry]
+# name: test_dry2[update.bedroom_1_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58281,7 +58281,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_1_gateway_firmware_update',
+    'entity_id': 'update.bedroom_1_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58304,14 +58304,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.bedroom_1_gateway_firmware_update-state]
+# name: test_dry2[update.bedroom_1_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 1 gateway Firmware update',
+      'friendly_name': 'Bedroom 1 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58324,14 +58324,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_1_gateway_firmware_update',
+    'entity_id': 'update.bedroom_1_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.bedroom_2_gateway_firmware_update-entry]
+# name: test_dry2[update.bedroom_2_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58345,7 +58345,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_2_gateway_firmware_update',
+    'entity_id': 'update.bedroom_2_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58368,14 +58368,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.bedroom_2_gateway_firmware_update-state]
+# name: test_dry2[update.bedroom_2_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 2 gateway Firmware update',
+      'friendly_name': 'Bedroom 2 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58388,14 +58388,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_2_gateway_firmware_update',
+    'entity_id': 'update.bedroom_2_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.bedroom_3_gateway_firmware_update-entry]
+# name: test_dry2[update.bedroom_3_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58409,7 +58409,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_3_gateway_firmware_update',
+    'entity_id': 'update.bedroom_3_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58432,14 +58432,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.bedroom_3_gateway_firmware_update-state]
+# name: test_dry2[update.bedroom_3_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 3 gateway Firmware update',
+      'friendly_name': 'Bedroom 3 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58452,14 +58452,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_3_gateway_firmware_update',
+    'entity_id': 'update.bedroom_3_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.kitchen_gateway_firmware_update-entry]
+# name: test_dry2[update.kitchen_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58473,7 +58473,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.kitchen_gateway_firmware_update',
+    'entity_id': 'update.kitchen_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58496,14 +58496,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.kitchen_gateway_firmware_update-state]
+# name: test_dry2[update.kitchen_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Kitchen gateway Firmware update',
+      'friendly_name': 'Kitchen Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58516,14 +58516,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.kitchen_gateway_firmware_update',
+    'entity_id': 'update.kitchen_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.lounge_gateway_firmware_update-entry]
+# name: test_dry2[update.lounge_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58537,7 +58537,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.lounge_gateway_firmware_update',
+    'entity_id': 'update.lounge_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58560,14 +58560,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.lounge_gateway_firmware_update-state]
+# name: test_dry2[update.lounge_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Lounge gateway Firmware update',
+      'friendly_name': 'Lounge Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58580,14 +58580,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.lounge_gateway_firmware_update',
+    'entity_id': 'update.lounge_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.master_bathroom_gateway_firmware_update-entry]
+# name: test_dry2[update.master_bathroom_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58601,7 +58601,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bathroom_gateway_firmware_update',
+    'entity_id': 'update.master_bathroom_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58624,14 +58624,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.master_bathroom_gateway_firmware_update-state]
+# name: test_dry2[update.master_bathroom_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bathroom gateway Firmware update',
+      'friendly_name': 'Master Bathroom Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58644,14 +58644,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bathroom_gateway_firmware_update',
+    'entity_id': 'update.master_bathroom_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.master_bedroom_gateway_firmware_update-entry]
+# name: test_dry2[update.master_bedroom_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -58665,7 +58665,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bedroom_gateway_firmware_update',
+    'entity_id': 'update.master_bedroom_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -58688,14 +58688,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.master_bedroom_gateway_firmware_update-state]
+# name: test_dry2[update.master_bedroom_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bedroom gateway Firmware update',
+      'friendly_name': 'Master Bedroom Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -58708,7 +58708,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bedroom_gateway_firmware_update',
+    'entity_id': 'update.master_bedroom_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -58962,7 +58962,7 @@
 # name: test_dry[binary_sensor.bedroom_1_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 1 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -59014,7 +59014,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 1 gateway Is in error state',
+      'friendly_name': 'Bedroom 1 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -59428,7 +59428,7 @@
 # name: test_dry[binary_sensor.bedroom_2_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 2 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -59480,7 +59480,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 2 gateway Is in error state',
+      'friendly_name': 'Bedroom 2 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -59894,7 +59894,7 @@
 # name: test_dry[binary_sensor.bedroom_3_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Is firmware update supported',
+      'friendly_name': 'Bedroom 3 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -59946,7 +59946,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Bedroom 3 gateway Is in error state',
+      'friendly_name': 'Bedroom 3 Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -60360,7 +60360,7 @@
 # name: test_dry[binary_sensor.kitchen_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Is firmware update supported',
+      'friendly_name': 'Kitchen Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -60412,7 +60412,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Kitchen gateway Is in error state',
+      'friendly_name': 'Kitchen Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -60826,7 +60826,7 @@
 # name: test_dry[binary_sensor.lounge_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Is firmware update supported',
+      'friendly_name': 'Lounge Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -60878,7 +60878,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Lounge gateway Is in error state',
+      'friendly_name': 'Lounge Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -61292,7 +61292,7 @@
 # name: test_dry[binary_sensor.master_bathroom_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Is firmware update supported',
+      'friendly_name': 'Master Bathroom Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -61344,7 +61344,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Master Bathroom gateway Is in error state',
+      'friendly_name': 'Master Bathroom Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -61758,7 +61758,7 @@
 # name: test_dry[binary_sensor.master_bedroom_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Is firmware update supported',
+      'friendly_name': 'Master Bedroom Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -61810,7 +61810,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Master Bedroom gateway Is in error state',
+      'friendly_name': 'Master Bedroom Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -63485,7 +63485,7 @@
 # name: test_dry[sensor.bedroom_1_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Error code',
+      'friendly_name': 'Bedroom 1 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -63536,7 +63536,7 @@
 # name: test_dry[sensor.bedroom_1_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway IP address',
+      'friendly_name': 'Bedroom 1 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -63589,7 +63589,7 @@
 # name: test_dry[sensor.bedroom_1_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 1 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 1 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -63802,7 +63802,7 @@
 # name: test_dry[sensor.bedroom_2_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Error code',
+      'friendly_name': 'Bedroom 2 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -63853,7 +63853,7 @@
 # name: test_dry[sensor.bedroom_2_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway IP address',
+      'friendly_name': 'Bedroom 2 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -63906,7 +63906,7 @@
 # name: test_dry[sensor.bedroom_2_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 2 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 2 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -64119,7 +64119,7 @@
 # name: test_dry[sensor.bedroom_3_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Error code',
+      'friendly_name': 'Bedroom 3 Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -64170,7 +64170,7 @@
 # name: test_dry[sensor.bedroom_3_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway IP address',
+      'friendly_name': 'Bedroom 3 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -64223,7 +64223,7 @@
 # name: test_dry[sensor.bedroom_3_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Bedroom 3 gateway Ratelimit remaining day',
+      'friendly_name': 'Bedroom 3 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -64436,7 +64436,7 @@
 # name: test_dry[sensor.kitchen_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Error code',
+      'friendly_name': 'Kitchen Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -64487,7 +64487,7 @@
 # name: test_dry[sensor.kitchen_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway IP address',
+      'friendly_name': 'Kitchen Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -64540,7 +64540,7 @@
 # name: test_dry[sensor.kitchen_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Kitchen gateway Ratelimit remaining day',
+      'friendly_name': 'Kitchen Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -64753,7 +64753,7 @@
 # name: test_dry[sensor.lounge_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Error code',
+      'friendly_name': 'Lounge Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -64804,7 +64804,7 @@
 # name: test_dry[sensor.lounge_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway IP address',
+      'friendly_name': 'Lounge Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -64857,7 +64857,7 @@
 # name: test_dry[sensor.lounge_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Lounge gateway Ratelimit remaining day',
+      'friendly_name': 'Lounge Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -65070,7 +65070,7 @@
 # name: test_dry[sensor.master_bathroom_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Error code',
+      'friendly_name': 'Master Bathroom Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -65121,7 +65121,7 @@
 # name: test_dry[sensor.master_bathroom_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway IP address',
+      'friendly_name': 'Master Bathroom Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -65174,7 +65174,7 @@
 # name: test_dry[sensor.master_bathroom_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bathroom gateway Ratelimit remaining day',
+      'friendly_name': 'Master Bathroom Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -65387,7 +65387,7 @@
 # name: test_dry[sensor.master_bedroom_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Error code',
+      'friendly_name': 'Master Bedroom Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -65438,7 +65438,7 @@
 # name: test_dry[sensor.master_bedroom_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway IP address',
+      'friendly_name': 'Master Bedroom Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -65491,7 +65491,7 @@
 # name: test_dry[sensor.master_bedroom_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master Bedroom gateway Ratelimit remaining day',
+      'friendly_name': 'Master Bedroom Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -65554,7 +65554,7 @@
     'state': '-',
   })
 # ---
-# name: test_dry[update.bedroom_1_gateway_firmware_update-entry]
+# name: test_dry[update.bedroom_1_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65568,7 +65568,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_1_gateway_firmware_update',
+    'entity_id': 'update.bedroom_1_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65591,14 +65591,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.bedroom_1_gateway_firmware_update-state]
+# name: test_dry[update.bedroom_1_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 1 gateway Firmware update',
+      'friendly_name': 'Bedroom 1 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65611,14 +65611,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_1_gateway_firmware_update',
+    'entity_id': 'update.bedroom_1_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.bedroom_2_gateway_firmware_update-entry]
+# name: test_dry[update.bedroom_2_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65632,7 +65632,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_2_gateway_firmware_update',
+    'entity_id': 'update.bedroom_2_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65655,14 +65655,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.bedroom_2_gateway_firmware_update-state]
+# name: test_dry[update.bedroom_2_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 2 gateway Firmware update',
+      'friendly_name': 'Bedroom 2 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65675,14 +65675,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_2_gateway_firmware_update',
+    'entity_id': 'update.bedroom_2_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.bedroom_3_gateway_firmware_update-entry]
+# name: test_dry[update.bedroom_3_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65696,7 +65696,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_3_gateway_firmware_update',
+    'entity_id': 'update.bedroom_3_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65719,14 +65719,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.bedroom_3_gateway_firmware_update-state]
+# name: test_dry[update.bedroom_3_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 3 gateway Firmware update',
+      'friendly_name': 'Bedroom 3 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65739,14 +65739,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_3_gateway_firmware_update',
+    'entity_id': 'update.bedroom_3_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.kitchen_gateway_firmware_update-entry]
+# name: test_dry[update.kitchen_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65760,7 +65760,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.kitchen_gateway_firmware_update',
+    'entity_id': 'update.kitchen_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65783,14 +65783,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.kitchen_gateway_firmware_update-state]
+# name: test_dry[update.kitchen_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Kitchen gateway Firmware update',
+      'friendly_name': 'Kitchen Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65803,14 +65803,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.kitchen_gateway_firmware_update',
+    'entity_id': 'update.kitchen_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.lounge_gateway_firmware_update-entry]
+# name: test_dry[update.lounge_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65824,7 +65824,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.lounge_gateway_firmware_update',
+    'entity_id': 'update.lounge_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65847,14 +65847,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.lounge_gateway_firmware_update-state]
+# name: test_dry[update.lounge_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Lounge gateway Firmware update',
+      'friendly_name': 'Lounge Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65867,14 +65867,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.lounge_gateway_firmware_update',
+    'entity_id': 'update.lounge_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.master_bathroom_gateway_firmware_update-entry]
+# name: test_dry[update.master_bathroom_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65888,7 +65888,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bathroom_gateway_firmware_update',
+    'entity_id': 'update.master_bathroom_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65911,14 +65911,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.master_bathroom_gateway_firmware_update-state]
+# name: test_dry[update.master_bathroom_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bathroom gateway Firmware update',
+      'friendly_name': 'Master Bathroom Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65931,14 +65931,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bathroom_gateway_firmware_update',
+    'entity_id': 'update.master_bathroom_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.master_bedroom_gateway_firmware_update-entry]
+# name: test_dry[update.master_bedroom_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -65952,7 +65952,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bedroom_gateway_firmware_update',
+    'entity_id': 'update.master_bedroom_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -65975,14 +65975,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.master_bedroom_gateway_firmware_update-state]
+# name: test_dry[update.master_bedroom_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bedroom gateway Firmware update',
+      'friendly_name': 'Master Bedroom Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -65995,7 +65995,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bedroom_gateway_firmware_update',
+    'entity_id': 'update.master_bedroom_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -67192,7 +67192,7 @@
     'state': '0',
   })
 # ---
-# name: test_fanmode[update.sala_gateway_firmware_update-entry]
+# name: test_fanmode[update.sala_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -67206,7 +67206,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.sala_gateway_firmware_update',
+    'entity_id': 'update.sala_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -67229,14 +67229,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_fanmode[update.sala_gateway_firmware_update-state]
+# name: test_fanmode[update.sala_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Sala Gateway Firmware update',
+      'friendly_name': 'Sala Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '4_0_3',
@@ -67249,7 +67249,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.sala_gateway_firmware_update',
+    'entity_id': 'update.sala_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -69569,7 +69569,7 @@
 # name: test_holidaymode[binary_sensor.ndj_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'NDJ gateway Is firmware update supported',
+      'friendly_name': 'NDJ Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -69621,7 +69621,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'NDJ gateway Is in error state',
+      'friendly_name': 'NDJ Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -70173,7 +70173,7 @@
 # name: test_holidaymode[sensor.ndj_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'NDJ gateway Error code',
+      'friendly_name': 'NDJ Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -70224,7 +70224,7 @@
 # name: test_holidaymode[sensor.ndj_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'NDJ gateway IP address',
+      'friendly_name': 'NDJ Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -70277,7 +70277,7 @@
 # name: test_holidaymode[sensor.ndj_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'NDJ gateway Ratelimit remaining day',
+      'friendly_name': 'NDJ Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -70289,7 +70289,7 @@
     'state': '0',
   })
 # ---
-# name: test_holidaymode[update.ndj_gateway_firmware_update-entry]
+# name: test_holidaymode[update.ndj_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -70303,7 +70303,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.ndj_gateway_firmware_update',
+    'entity_id': 'update.ndj_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -70326,14 +70326,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_holidaymode[update.ndj_gateway_firmware_update-state]
+# name: test_holidaymode[update.ndj_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'NDJ gateway Firmware update',
+      'friendly_name': 'NDJ Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '438CC083000',
@@ -70346,7 +70346,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.ndj_gateway_firmware_update',
+    'entity_id': 'update.ndj_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -70775,7 +70775,7 @@
 # name: test_mc80z[binary_sensor.air_purifier_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'air-purifier gateway Is firmware update supported',
+      'friendly_name': 'air-purifier Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -70827,7 +70827,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'air-purifier gateway Is in error state',
+      'friendly_name': 'air-purifier Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -71445,7 +71445,7 @@
 # name: test_mc80z[binary_sensor.vloerverwarming_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming gateway Is firmware update supported',
+      'friendly_name': 'Vloerverwarming Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -71497,7 +71497,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Vloerverwarming gateway Is in error state',
+      'friendly_name': 'Vloerverwarming Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -72238,7 +72238,7 @@
 # name: test_mc80z[sensor.air_purifier_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'air-purifier gateway Error code',
+      'friendly_name': 'air-purifier Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -72289,7 +72289,7 @@
 # name: test_mc80z[sensor.air_purifier_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'air-purifier gateway IP address',
+      'friendly_name': 'air-purifier Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -72342,7 +72342,7 @@
 # name: test_mc80z[sensor.air_purifier_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'air-purifier gateway Ratelimit remaining day',
+      'friendly_name': 'air-purifier Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -73585,7 +73585,7 @@
 # name: test_mc80z[sensor.vloerverwarming_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming gateway Error code',
+      'friendly_name': 'Vloerverwarming Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -73636,7 +73636,7 @@
 # name: test_mc80z[sensor.vloerverwarming_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming gateway IP address',
+      'friendly_name': 'Vloerverwarming Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -73689,7 +73689,7 @@
 # name: test_mc80z[sensor.vloerverwarming_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming gateway Ratelimit remaining day',
+      'friendly_name': 'Vloerverwarming Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -73701,7 +73701,7 @@
     'state': '0',
   })
 # ---
-# name: test_mc80z[update.air_purifier_gateway_firmware_update-entry]
+# name: test_mc80z[update.air_purifier_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -73715,7 +73715,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.air_purifier_gateway_firmware_update',
+    'entity_id': 'update.air_purifier_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -73738,14 +73738,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_mc80z[update.air_purifier_gateway_firmware_update-state]
+# name: test_mc80z[update.air_purifier_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'air-purifier gateway Firmware update',
+      'friendly_name': 'air-purifier Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_28_0',
@@ -73758,14 +73758,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.air_purifier_gateway_firmware_update',
+    'entity_id': 'update.air_purifier_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_mc80z[update.vloerverwarming_gateway_firmware_update-entry]
+# name: test_mc80z[update.vloerverwarming_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -73779,7 +73779,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.vloerverwarming_gateway_firmware_update',
+    'entity_id': 'update.vloerverwarming_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -73802,14 +73802,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_mc80z[update.vloerverwarming_gateway_firmware_update-state]
+# name: test_mc80z[update.vloerverwarming_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Vloerverwarming gateway Firmware update',
+      'friendly_name': 'Vloerverwarming Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '436CC166000',
@@ -73822,7 +73822,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.vloerverwarming_gateway_firmware_update',
+    'entity_id': 'update.vloerverwarming_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -74147,7 +74147,7 @@
 # name: test_minimal_data[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is holiday mode active',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -74199,7 +74199,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in error state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -74250,7 +74250,7 @@
 # name: test_minimal_data[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is in installer state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -74301,7 +74301,7 @@
 # name: test_minimal_data[binary_sensor.altherma_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Is firmware update supported',
+      'friendly_name': 'Altherma Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -75295,7 +75295,7 @@
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Heat up mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -75352,7 +75352,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating daily electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -75411,7 +75411,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating monthly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -75470,7 +75470,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating weekly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -75529,7 +75529,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating yearly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -75582,7 +75582,7 @@
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Setpoint mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -75639,7 +75639,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Altherma Tank temperature',
+      'friendly_name': 'Altherma DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -75692,7 +75692,7 @@
 # name: test_minimal_data[sensor.altherma_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway IP address',
+      'friendly_name': 'Altherma Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -75745,7 +75745,7 @@
 # name: test_minimal_data[sensor.altherma_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Ratelimit remaining day',
+      'friendly_name': 'Altherma Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -75757,7 +75757,7 @@
     'state': '0',
   })
 # ---
-# name: test_minimal_data[update.altherma_gateway_firmware_update-entry]
+# name: test_minimal_data[update.altherma_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -75771,7 +75771,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -75794,14 +75794,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_minimal_data[update.altherma_gateway_firmware_update-state]
+# name: test_minimal_data[update.altherma_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma gateway Firmware update',
+      'friendly_name': 'Altherma Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': None,
@@ -75814,7 +75814,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -75869,7 +75869,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 53.0,
-      'friendly_name': 'Altherma',
+      'friendly_name': 'Altherma DomesticHotWaterTank',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
@@ -76188,7 +76188,7 @@
 # name: test_offlinedevice[binary_sensor.studio_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Studio gateway Is firmware update supported',
+      'friendly_name': 'Studio Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -76240,7 +76240,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Studio gateway Is in error state',
+      'friendly_name': 'Studio Gateway Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -77411,7 +77411,7 @@
 # name: test_offlinedevice[sensor.studio_gateway_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Studio gateway Error code',
+      'friendly_name': 'Studio Gateway Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -77462,7 +77462,7 @@
 # name: test_offlinedevice[sensor.studio_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Studio gateway IP address',
+      'friendly_name': 'Studio Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -77515,7 +77515,7 @@
 # name: test_offlinedevice[sensor.studio_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Studio gateway Ratelimit remaining day',
+      'friendly_name': 'Studio Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -77578,7 +77578,7 @@
     'state': 'unavailable',
   })
 # ---
-# name: test_offlinedevice[update.studio_gateway_firmware_update-entry]
+# name: test_offlinedevice[update.studio_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -77592,7 +77592,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.studio_gateway_firmware_update',
+    'entity_id': 'update.studio_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -77615,14 +77615,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_offlinedevice[update.studio_gateway_firmware_update-state]
+# name: test_offlinedevice[update.studio_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Studio gateway Firmware update',
+      'friendly_name': 'Studio Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_31_0',
@@ -77635,7 +77635,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.studio_gateway_firmware_update',
+    'entity_id': 'update.studio_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -77836,7 +77836,7 @@
 # name: test_schedule[binary_sensor.master_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master gateway Is firmware update supported',
+      'friendly_name': 'Master Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78210,7 +78210,7 @@
 # name: test_schedule[sensor.master_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master gateway IP address',
+      'friendly_name': 'Master Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -78263,7 +78263,7 @@
 # name: test_schedule[sensor.master_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Master gateway Ratelimit remaining day',
+      'friendly_name': 'Master Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -78275,7 +78275,7 @@
     'state': '0',
   })
 # ---
-# name: test_schedule[update.master_gateway_firmware_update-entry]
+# name: test_schedule[update.master_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -78289,7 +78289,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_gateway_firmware_update',
+    'entity_id': 'update.master_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -78312,14 +78312,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_schedule[update.master_gateway_firmware_update-state]
+# name: test_schedule[update.master_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master gateway Firmware update',
+      'friendly_name': 'Master Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_31_0',
@@ -78332,7 +78332,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_gateway_firmware_update',
+    'entity_id': 'update.master_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -78533,7 +78533,7 @@
 # name: test_ururu[binary_sensor.daikinap95800_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'DaikinAP95800 gateway Is firmware update supported',
+      'friendly_name': 'DaikinAP95800 Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78988,7 +78988,7 @@
 # name: test_ururu[sensor.daikinap95800_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'DaikinAP95800 gateway IP address',
+      'friendly_name': 'DaikinAP95800 Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -79041,7 +79041,7 @@
 # name: test_ururu[sensor.daikinap95800_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'DaikinAP95800 gateway Ratelimit remaining day',
+      'friendly_name': 'DaikinAP95800 Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -79053,7 +79053,7 @@
     'state': '0',
   })
 # ---
-# name: test_ururu[update.daikinap95800_gateway_firmware_update-entry]
+# name: test_ururu[update.daikinap95800_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -79067,7 +79067,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.daikinap95800_gateway_firmware_update',
+    'entity_id': 'update.daikinap95800_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -79090,14 +79090,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_ururu[update.daikinap95800_gateway_firmware_update-state]
+# name: test_ururu[update.daikinap95800_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'DaikinAP95800 gateway Firmware update',
+      'friendly_name': 'DaikinAP95800 Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_14_88',
@@ -79110,7 +79110,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.daikinap95800_gateway_firmware_update',
+    'entity_id': 'update.daikinap95800_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -79724,7 +79724,7 @@
 # name: test_water_heater[binary_sensor.altherma_gateway_is_firmware_update_supported-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Is firmware update supported',
+      'friendly_name': 'Altherma Gateway Is firmware update supported',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -81380,7 +81380,7 @@
 # name: test_water_heater[sensor.altherma_gateway_ip_address-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway IP address',
+      'friendly_name': 'Altherma Gateway IP address',
       'icon': 'mdi:ip-network',
     }),
     'context': <ANY>,
@@ -81433,7 +81433,7 @@
 # name: test_water_heater[sensor.altherma_gateway_ratelimit_remaining_day-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma gateway Ratelimit remaining day',
+      'friendly_name': 'Altherma Gateway Ratelimit remaining day',
       'icon': 'mdi:information-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
@@ -81445,7 +81445,7 @@
     'state': '0',
   })
 # ---
-# name: test_water_heater[update.altherma_gateway_firmware_update-entry]
+# name: test_water_heater[update.altherma_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -81459,7 +81459,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -81482,14 +81482,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[update.altherma_gateway_firmware_update-state]
+# name: test_water_heater[update.altherma_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma gateway Firmware update',
+      'friendly_name': 'Altherma Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.2.5',
@@ -81502,7 +81502,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_gateway_firmware_update',
+    'entity_id': 'update.altherma_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

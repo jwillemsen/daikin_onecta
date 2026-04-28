@@ -110,11 +110,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_unique_id = f"{device.id}_firmware_update"
 
         # Link to the HA device
-        self._attr_device_info = {
-            "identifiers": {(DOMAIN, self._device.id + "gateway")},
-            "name": self._device.name + " " + "gateway",
-            "via_device": (DOMAIN, self._device.id),
-        }
+        self._attr_device_info = self._device.device_info()
         self._device.fill_device_info(self._attr_device_info, "gateway")
 
         # Populate initial state
@@ -132,17 +128,17 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @property
     def latest_version(self) -> str | None:
         """Return the latest known firmware version."""
-        return None
+        return self._latest_version
 
     @property
     def release_url(self) -> str | None:
         """Point users to the Daikin support site for firmware info."""
-        return None
+        return self._release_url
 
     @property
     def release_summary(self) -> str | None:
         """Brief hint that the mobile app is used to apply updates."""
-        return None
+        return self._release_summary
 
     # ------------------------------------------------------------------
     # Internal helpers
@@ -152,6 +148,9 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         """Pull the latest values out of a gateway management point dict."""
         self._installed_version: str | None = _get_value(gateway_mp, "firmwareVersion")
         self._is_update_supported: bool = bool(_get_value(gateway_mp, "isFirmwareUpdateSupported"))
+        self._latest_version = None
+        self._release_url = None
+        self._release_summary = None
 
     @callback
     def _handle_coordinator_update(self) -> None:
