@@ -76,7 +76,7 @@ async def async_setup_entry(
     """Set up Daikin climate based on config_entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         modes = []
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {"climateControl"}

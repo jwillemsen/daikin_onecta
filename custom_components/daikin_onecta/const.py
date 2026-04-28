@@ -3,6 +3,7 @@ from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorStateClass
+from homeassistant.components.update import UpdateDeviceClass
 from homeassistant.const import CONCENTRATION_MICROGRAMS_PER_CUBIC_METER
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
@@ -622,5 +623,14 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "ratelimitremainingday",
+    },
+    "FirmwareUpdate": {
+        CONF_DEVICE_CLASS: UpdateDeviceClass.FIRMWARE,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:update",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
+        TRANSLATION_KEY: "firmwareupdate",
     },
 }

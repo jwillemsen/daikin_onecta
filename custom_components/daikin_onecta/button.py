@@ -27,7 +27,7 @@ async def async_setup_entry(
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
 
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         entities.append(DaikinRefreshButton(device, config_entry, coordinator))
 
     if entities:

@@ -41,7 +41,7 @@ async def async_setup_entry(
         "climateControlMainZone",
     }
 
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]

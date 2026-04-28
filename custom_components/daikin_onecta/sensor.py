@@ -92,7 +92,7 @@ async def async_setup_entry(
         "climateControl",
         "climateControlMainZone",
     }
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         # For each device we provide a remaining day sensor
         sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day"))
         management_points = device.daikin_data.get("managementPoints", [])

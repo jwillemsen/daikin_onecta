@@ -41,6 +41,11 @@
     }
   },
   "entity": {
+    "update": {
+      "firmwareupdate": {
+        "name": "Firmware update"
+      }
+    },
     "select": {
       "schedule": {
         "name": "Schedule"

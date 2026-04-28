@@ -103,6 +103,9 @@ async def test_dry(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "dry")
 
     assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
+    assert hass.states.get("update.lounge_gateway_firmware_update").attributes["in_progress"] is False
+    assert hass.states.get("update.lounge_gateway_firmware_update").attributes["installed_version"] == "1_30_0"
+    assert hass.states.get("update.lounge_gateway_firmware_update").attributes["latest_version"] is None
 
 
 @pytest.mark.asyncio
@@ -1478,3 +1481,21 @@ async def test_altherma_schedule(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_schedule")
 
     assert hass.states.get("select.altherma_domestichotwatertank_schedule").state == "User defined"
+
+
+@pytest.mark.asyncio
+async def test_altherma_firmwareupdate(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+    aioclient_mock: AiohttpClientMocker,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_firmwareupdate")
+
+    assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["installed_version"] == "4.0.1"
+    assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["latest_version"] == "4.1.901"
+    assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["release_summary"] == "Altherma WLAN update 4.1.901"
+    assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["in_progress"] is True

@@ -53,6 +53,11 @@
     }
   },
   "entity": {
+    "update": {
+      "firmwareupdate": {
+        "name": "Firmware update"
+      }
+    },
     "binary_sensor": {
       "isinwarningstate": {
         "name": "Climate Control Warning State"
