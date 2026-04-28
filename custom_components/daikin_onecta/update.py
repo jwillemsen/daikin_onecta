@@ -43,7 +43,7 @@ async def async_setup_entry(
 
     entities: list[DaikinFirmwareUpdateEntity] = []
 
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         gateway_mp = _get_gateway_management_point(device)
         if gateway_mp is None:
             _LOGGER.debug(

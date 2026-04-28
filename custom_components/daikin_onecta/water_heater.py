@@ -28,7 +28,7 @@ async def async_setup_entry(
     """Set up Daikin water tank entities."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         supported_management_point_types = {
             "domesticHotWaterTank",
             "domesticHotWaterFlowThrough",

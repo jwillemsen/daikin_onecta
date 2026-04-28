@@ -28,7 +28,7 @@ async def async_setup_entry(
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
     sensors = []
-    for dev_id, device in onecta_data.devices.items():
+    for device in onecta_data.devices.values():
         managementPoints = device.daikin_data.get("managementPoints", [])
         for management_point in managementPoints:
             # When we have a schedule we provide a select sensor
