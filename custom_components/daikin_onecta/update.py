@@ -27,9 +27,7 @@ from .device import DaikinOnectaDevice
 _LOGGER = logging.getLogger(__name__)
 
 # The Daikin Onecta cloud API exposes firmware info on the "gateway" management
-# point.  The relevant characteristics are:
-#   firmwareVersion       – currently installed version string
-#   isFirmwareUpdateSupported – whether the gateway hardware supports OTA updates
+# point.
 
 
 async def async_setup_entry(
