@@ -21,6 +21,7 @@ from .const import ENTITY_CATEGORY
 from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaDataUpdateCoordinator
+from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
