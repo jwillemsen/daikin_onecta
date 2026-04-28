@@ -60,6 +60,9 @@
       }
     },
     "sensor": {
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ratelimitremainingday": {
         "name": "Ratelimit remaining day"
       },

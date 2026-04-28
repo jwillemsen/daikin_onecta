@@ -57,6 +57,15 @@ TRANSLATION_KEY = "TranslationKey"
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 # - TRANSLATION_KEY: Translation key
 VALUE_SENSOR_MAPPING = {
+    "sgtin": {
+        CONF_DEVICE_CLASS: None,
+        CONF_STATE_CLASS: None,
+        CONF_UNIT_OF_MEASUREMENT: None,
+        CONF_ICON: "mdi:information-outline",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "sgtin",
+    },
     "schedule": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,
