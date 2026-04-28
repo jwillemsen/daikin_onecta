@@ -44,22 +44,16 @@ async def async_setup_entry(
 
     for device in onecta_data.devices.values():
         gateway_mp = _get_gateway_management_point(device)
-        if gateway_mp is None:
-            _LOGGER.debug(
-                "Device %s has no gateway management point, skipping update entity",
-                device.name,
-            )
-            continue
+        if gateway_mp is not None:
+            firmware_update_supported = _get_value(gateway_mp, "isFirmwareUpdateSupported")
+            if firmware_update_supported is not True:
+                _LOGGER.debug(
+                    "Device %s gateway has no isFirmwareUpdateSupported, skipping update entity",
+                    device.name,
+                )
+                continue
 
-        firmware_update_supported = _get_value(gateway_mp, "isFirmwareUpdateSupported")
-        if firmware_update_supported is not True:
-            _LOGGER.debug(
-                "Device %s gateway has no isFirmwareUpdateSupported, skipping update entity",
-                device.name,
-            )
-            continue
-
-        entities.append(DaikinFirmwareUpdateEntity(coordinator, device, gateway_mp))
+            entities.append(DaikinFirmwareUpdateEntity(coordinator, device, gateway_mp))
 
     async_add_entities(entities)
 
