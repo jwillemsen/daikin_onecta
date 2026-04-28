@@ -14,6 +14,7 @@ from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import callback
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
 from .const import ENABLED_DEFAULT
@@ -81,7 +82,7 @@ def _get_value(mp: dict, characteristic: str) -> Any:
     return char.get("value")
 
 
-class DaikinFirmwareUpdateEntity(UpdateEntity):
+class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     """Represents the gateway firmware for a single Daikin device."""
 
     def __init__(
@@ -91,6 +92,7 @@ class DaikinFirmwareUpdateEntity(UpdateEntity):
         gateway_mp: dict,
     ) -> None:
         """Initialise the update entity."""
+        super().__init__(coordinator)
         self._device = device
         self._coordinator = coordinator
         self._attr_supported_features = UpdateEntityFeature(0)
