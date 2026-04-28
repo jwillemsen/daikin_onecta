@@ -1863,7 +1863,7 @@
     'state': '0',
   })
 # ---
-# name: test_altherma3m[update.altherma_firmware_update-entry]
+# name: test_altherma3m[update.altherma_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -1877,7 +1877,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_firmware_update',
+    'entity_id': 'update.altherma_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -1900,14 +1900,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma3m[update.altherma_firmware_update-state]
+# name: test_altherma3m[update.altherma_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma Firmware update',
+      'friendly_name': 'Altherma Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.2.5',
@@ -1920,7 +1920,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_firmware_update',
+    'entity_id': 'update.altherma_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -15294,7 +15294,7 @@
     'state': '0',
   })
 # ---
-# name: test_altherma_firmwareupdate[update.climate_control_getr422_firmware_update-entry]
+# name: test_altherma_firmwareupdate[update.climate_control_getr422_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -15308,7 +15308,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.climate_control_getr422_firmware_update',
+    'entity_id': 'update.climate_control_getr422_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -15331,14 +15331,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_firmwareupdate[update.climate_control_getr422_firmware_update-state]
+# name: test_altherma_firmwareupdate[update.climate_control_getr422_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Climate control getr422 Firmware update',
+      'friendly_name': 'Climate control getr422 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': True,
       'installed_version': '4.0.1',
@@ -15351,7 +15351,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.climate_control_getr422_firmware_update',
+    'entity_id': 'update.climate_control_getr422_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -29017,7 +29017,7 @@
     'state': '0',
   })
 # ---
-# name: test_altherma_schedule[update.altherma_firmware_update-entry]
+# name: test_altherma_schedule[update.altherma_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -29031,7 +29031,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_firmware_update',
+    'entity_id': 'update.altherma_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -29054,14 +29054,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_altherma_schedule[update.altherma_firmware_update-state]
+# name: test_altherma_schedule[update.altherma_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma Firmware update',
+      'friendly_name': 'Altherma Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.5.0',
@@ -29074,7 +29074,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_firmware_update',
+    'entity_id': 'update.altherma_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -35992,7 +35992,7 @@
     'state': '-',
   })
 # ---
-# name: test_button[update.bedroom_1_firmware_update-entry]
+# name: test_button[update.bedroom_1_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36006,7 +36006,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_1_firmware_update',
+    'entity_id': 'update.bedroom_1_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36029,14 +36029,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.bedroom_1_firmware_update-state]
+# name: test_button[update.bedroom_1_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 1 Firmware update',
+      'friendly_name': 'Bedroom 1 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36049,14 +36049,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_1_firmware_update',
+    'entity_id': 'update.bedroom_1_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.bedroom_2_firmware_update-entry]
+# name: test_button[update.bedroom_2_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36070,7 +36070,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_2_firmware_update',
+    'entity_id': 'update.bedroom_2_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36093,14 +36093,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.bedroom_2_firmware_update-state]
+# name: test_button[update.bedroom_2_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 2 Firmware update',
+      'friendly_name': 'Bedroom 2 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36113,14 +36113,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_2_firmware_update',
+    'entity_id': 'update.bedroom_2_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.bedroom_3_firmware_update-entry]
+# name: test_button[update.bedroom_3_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36134,7 +36134,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_3_firmware_update',
+    'entity_id': 'update.bedroom_3_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36157,14 +36157,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.bedroom_3_firmware_update-state]
+# name: test_button[update.bedroom_3_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 3 Firmware update',
+      'friendly_name': 'Bedroom 3 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36177,14 +36177,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_3_firmware_update',
+    'entity_id': 'update.bedroom_3_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.kitchen_firmware_update-entry]
+# name: test_button[update.kitchen_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36198,7 +36198,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.kitchen_firmware_update',
+    'entity_id': 'update.kitchen_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36221,14 +36221,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.kitchen_firmware_update-state]
+# name: test_button[update.kitchen_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Kitchen Firmware update',
+      'friendly_name': 'Kitchen Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36241,14 +36241,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.kitchen_firmware_update',
+    'entity_id': 'update.kitchen_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.lounge_firmware_update-entry]
+# name: test_button[update.lounge_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36262,7 +36262,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.lounge_firmware_update',
+    'entity_id': 'update.lounge_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36285,14 +36285,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.lounge_firmware_update-state]
+# name: test_button[update.lounge_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Lounge Firmware update',
+      'friendly_name': 'Lounge Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36305,14 +36305,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.lounge_firmware_update',
+    'entity_id': 'update.lounge_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.master_bathroom_firmware_update-entry]
+# name: test_button[update.master_bathroom_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36326,7 +36326,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bathroom_firmware_update',
+    'entity_id': 'update.master_bathroom_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36349,14 +36349,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.master_bathroom_firmware_update-state]
+# name: test_button[update.master_bathroom_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bathroom Firmware update',
+      'friendly_name': 'Master Bathroom Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36369,14 +36369,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bathroom_firmware_update',
+    'entity_id': 'update.master_bathroom_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_button[update.master_bedroom_firmware_update-entry]
+# name: test_button[update.master_bedroom_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -36390,7 +36390,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bedroom_firmware_update',
+    'entity_id': 'update.master_bedroom_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -36413,14 +36413,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_button[update.master_bedroom_firmware_update-state]
+# name: test_button[update.master_bedroom_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bedroom Firmware update',
+      'friendly_name': 'Master Bedroom Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -36433,7 +36433,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bedroom_firmware_update',
+    'entity_id': 'update.master_bedroom_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -36738,7 +36738,7 @@
 # name: test_climate[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is holiday mode active',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -36790,7 +36790,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in emergency state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in emergency state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -36842,7 +36842,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in error state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -36893,7 +36893,7 @@
 # name: test_climate[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is in installer state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -36945,7 +36945,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in warning state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in warning state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -36996,7 +36996,7 @@
 # name: test_climate[binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is powerful mode active',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is powerful mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -42060,7 +42060,7 @@
 # name: test_climate[sensor.altherma_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Error code',
+      'friendly_name': 'Altherma DomesticHotWaterTank Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -42117,7 +42117,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating daily electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -42176,7 +42176,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating monthly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -42235,7 +42235,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating weekly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -42294,7 +42294,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating yearly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -42347,7 +42347,7 @@
 # name: test_climate[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Setpoint mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -42404,7 +42404,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Altherma Tank temperature',
+      'friendly_name': 'Altherma DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -47620,7 +47620,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 48.0,
-      'friendly_name': 'Altherma',
+      'friendly_name': 'Altherma DomesticHotWaterTank',
       'max_temp': 60.0,
       'min_temp': 30.0,
       'operation_list': list([
@@ -49245,7 +49245,7 @@
     'state': '00-',
   })
 # ---
-# name: test_climate_fixedfanmode[update.werkkamer_firmware_update-entry]
+# name: test_climate_fixedfanmode[update.werkkamer_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -49259,7 +49259,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.werkkamer_firmware_update',
+    'entity_id': 'update.werkkamer_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -49282,14 +49282,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_climate_fixedfanmode[update.werkkamer_firmware_update-state]
+# name: test_climate_fixedfanmode[update.werkkamer_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Werkkamer Firmware update',
+      'friendly_name': 'Werkkamer Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_28_0',
@@ -49302,7 +49302,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.werkkamer_firmware_update',
+    'entity_id': 'update.werkkamer_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -60493,7 +60493,7 @@
     'state': '-',
   })
 # ---
-# name: test_dry2[update.bedroom_1_firmware_update-entry]
+# name: test_dry2[update.bedroom_1_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60507,7 +60507,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_1_firmware_update',
+    'entity_id': 'update.bedroom_1_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60530,14 +60530,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.bedroom_1_firmware_update-state]
+# name: test_dry2[update.bedroom_1_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 1 Firmware update',
+      'friendly_name': 'Bedroom 1 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60550,14 +60550,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_1_firmware_update',
+    'entity_id': 'update.bedroom_1_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.bedroom_2_firmware_update-entry]
+# name: test_dry2[update.bedroom_2_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60571,7 +60571,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_2_firmware_update',
+    'entity_id': 'update.bedroom_2_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60594,14 +60594,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.bedroom_2_firmware_update-state]
+# name: test_dry2[update.bedroom_2_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 2 Firmware update',
+      'friendly_name': 'Bedroom 2 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60614,14 +60614,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_2_firmware_update',
+    'entity_id': 'update.bedroom_2_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.bedroom_3_firmware_update-entry]
+# name: test_dry2[update.bedroom_3_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60635,7 +60635,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_3_firmware_update',
+    'entity_id': 'update.bedroom_3_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60658,14 +60658,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.bedroom_3_firmware_update-state]
+# name: test_dry2[update.bedroom_3_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 3 Firmware update',
+      'friendly_name': 'Bedroom 3 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60678,14 +60678,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_3_firmware_update',
+    'entity_id': 'update.bedroom_3_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.kitchen_firmware_update-entry]
+# name: test_dry2[update.kitchen_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60699,7 +60699,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.kitchen_firmware_update',
+    'entity_id': 'update.kitchen_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60722,14 +60722,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.kitchen_firmware_update-state]
+# name: test_dry2[update.kitchen_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Kitchen Firmware update',
+      'friendly_name': 'Kitchen Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60742,14 +60742,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.kitchen_firmware_update',
+    'entity_id': 'update.kitchen_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.lounge_firmware_update-entry]
+# name: test_dry2[update.lounge_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60763,7 +60763,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.lounge_firmware_update',
+    'entity_id': 'update.lounge_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60786,14 +60786,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.lounge_firmware_update-state]
+# name: test_dry2[update.lounge_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Lounge Firmware update',
+      'friendly_name': 'Lounge Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60806,14 +60806,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.lounge_firmware_update',
+    'entity_id': 'update.lounge_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.master_bathroom_firmware_update-entry]
+# name: test_dry2[update.master_bathroom_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60827,7 +60827,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bathroom_firmware_update',
+    'entity_id': 'update.master_bathroom_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60850,14 +60850,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.master_bathroom_firmware_update-state]
+# name: test_dry2[update.master_bathroom_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bathroom Firmware update',
+      'friendly_name': 'Master Bathroom Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60870,14 +60870,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bathroom_firmware_update',
+    'entity_id': 'update.master_bathroom_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry2[update.master_bedroom_firmware_update-entry]
+# name: test_dry2[update.master_bedroom_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -60891,7 +60891,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bedroom_firmware_update',
+    'entity_id': 'update.master_bedroom_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -60914,14 +60914,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry2[update.master_bedroom_firmware_update-state]
+# name: test_dry2[update.master_bedroom_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bedroom Firmware update',
+      'friendly_name': 'Master Bedroom Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -60934,7 +60934,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bedroom_firmware_update',
+    'entity_id': 'update.master_bedroom_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -67780,7 +67780,7 @@
     'state': '-',
   })
 # ---
-# name: test_dry[update.bedroom_1_firmware_update-entry]
+# name: test_dry[update.bedroom_1_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -67794,7 +67794,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_1_firmware_update',
+    'entity_id': 'update.bedroom_1_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -67817,14 +67817,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.bedroom_1_firmware_update-state]
+# name: test_dry[update.bedroom_1_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 1 Firmware update',
+      'friendly_name': 'Bedroom 1 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -67837,14 +67837,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_1_firmware_update',
+    'entity_id': 'update.bedroom_1_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.bedroom_2_firmware_update-entry]
+# name: test_dry[update.bedroom_2_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -67858,7 +67858,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_2_firmware_update',
+    'entity_id': 'update.bedroom_2_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -67881,14 +67881,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.bedroom_2_firmware_update-state]
+# name: test_dry[update.bedroom_2_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 2 Firmware update',
+      'friendly_name': 'Bedroom 2 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -67901,14 +67901,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_2_firmware_update',
+    'entity_id': 'update.bedroom_2_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.bedroom_3_firmware_update-entry]
+# name: test_dry[update.bedroom_3_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -67922,7 +67922,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.bedroom_3_firmware_update',
+    'entity_id': 'update.bedroom_3_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -67945,14 +67945,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.bedroom_3_firmware_update-state]
+# name: test_dry[update.bedroom_3_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Bedroom 3 Firmware update',
+      'friendly_name': 'Bedroom 3 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -67965,14 +67965,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.bedroom_3_firmware_update',
+    'entity_id': 'update.bedroom_3_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.kitchen_firmware_update-entry]
+# name: test_dry[update.kitchen_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -67986,7 +67986,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.kitchen_firmware_update',
+    'entity_id': 'update.kitchen_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -68009,14 +68009,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.kitchen_firmware_update-state]
+# name: test_dry[update.kitchen_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Kitchen Firmware update',
+      'friendly_name': 'Kitchen Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -68029,14 +68029,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.kitchen_firmware_update',
+    'entity_id': 'update.kitchen_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.lounge_firmware_update-entry]
+# name: test_dry[update.lounge_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -68050,7 +68050,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.lounge_firmware_update',
+    'entity_id': 'update.lounge_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -68073,14 +68073,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.lounge_firmware_update-state]
+# name: test_dry[update.lounge_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Lounge Firmware update',
+      'friendly_name': 'Lounge Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -68093,14 +68093,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.lounge_firmware_update',
+    'entity_id': 'update.lounge_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.master_bathroom_firmware_update-entry]
+# name: test_dry[update.master_bathroom_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -68114,7 +68114,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bathroom_firmware_update',
+    'entity_id': 'update.master_bathroom_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -68137,14 +68137,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.master_bathroom_firmware_update-state]
+# name: test_dry[update.master_bathroom_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bathroom Firmware update',
+      'friendly_name': 'Master Bathroom Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -68157,14 +68157,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bathroom_firmware_update',
+    'entity_id': 'update.master_bathroom_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_dry[update.master_bedroom_firmware_update-entry]
+# name: test_dry[update.master_bedroom_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -68178,7 +68178,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_bedroom_firmware_update',
+    'entity_id': 'update.master_bedroom_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -68201,14 +68201,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_dry[update.master_bedroom_firmware_update-state]
+# name: test_dry[update.master_bedroom_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Bedroom Firmware update',
+      'friendly_name': 'Master Bedroom Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
@@ -68221,7 +68221,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_bedroom_firmware_update',
+    'entity_id': 'update.master_bedroom_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -69418,7 +69418,7 @@
     'state': '0',
   })
 # ---
-# name: test_fanmode[update.sala_firmware_update-entry]
+# name: test_fanmode[update.sala_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -69432,7 +69432,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.sala_firmware_update',
+    'entity_id': 'update.sala_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -69455,14 +69455,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_fanmode[update.sala_firmware_update-state]
+# name: test_fanmode[update.sala_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Sala Firmware update',
+      'friendly_name': 'Sala Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '4_0_3',
@@ -69475,7 +69475,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.sala_firmware_update',
+    'entity_id': 'update.sala_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -71258,7 +71258,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'My Living Room DomesticHotWaterTank Tank temperature',
+      'friendly_name': 'My Living Room Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -71424,7 +71424,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 40.0,
-      'friendly_name': 'My Living Room DomesticHotWaterTank',
+      'friendly_name': 'My Living Room',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
@@ -72515,7 +72515,7 @@
     'state': '0',
   })
 # ---
-# name: test_holidaymode[update.ndj_firmware_update-entry]
+# name: test_holidaymode[update.ndj_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -72529,7 +72529,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.ndj_firmware_update',
+    'entity_id': 'update.ndj_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -72552,14 +72552,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_holidaymode[update.ndj_firmware_update-state]
+# name: test_holidaymode[update.ndj_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'NDJ Firmware update',
+      'friendly_name': 'NDJ Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '438CC083000',
@@ -72572,7 +72572,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.ndj_firmware_update',
+    'entity_id': 'update.ndj_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -75927,7 +75927,7 @@
     'state': '0',
   })
 # ---
-# name: test_mc80z[update.air_purifier_firmware_update-entry]
+# name: test_mc80z[update.air_purifier_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -75941,7 +75941,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.air_purifier_firmware_update',
+    'entity_id': 'update.air_purifier_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -75964,14 +75964,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_mc80z[update.air_purifier_firmware_update-state]
+# name: test_mc80z[update.air_purifier_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'air-purifier Firmware update',
+      'friendly_name': 'air-purifier Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_28_0',
@@ -75984,14 +75984,14 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.air_purifier_firmware_update',
+    'entity_id': 'update.air_purifier_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
   })
 # ---
-# name: test_mc80z[update.vloerverwarming_firmware_update-entry]
+# name: test_mc80z[update.vloerverwarming_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -76005,7 +76005,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.vloerverwarming_firmware_update',
+    'entity_id': 'update.vloerverwarming_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -76028,14 +76028,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_mc80z[update.vloerverwarming_firmware_update-state]
+# name: test_mc80z[update.vloerverwarming_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Vloerverwarming Firmware update',
+      'friendly_name': 'Vloerverwarming Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '436CC166000',
@@ -76048,7 +76048,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.vloerverwarming_firmware_update',
+    'entity_id': 'update.vloerverwarming_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -79740,7 +79740,7 @@
     'state': 'unavailable',
   })
 # ---
-# name: test_offlinedevice[update.studio_firmware_update-entry]
+# name: test_offlinedevice[update.studio_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -79754,7 +79754,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.studio_firmware_update',
+    'entity_id': 'update.studio_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -79777,14 +79777,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_offlinedevice[update.studio_firmware_update-state]
+# name: test_offlinedevice[update.studio_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Studio Firmware update',
+      'friendly_name': 'Studio Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_31_0',
@@ -79797,7 +79797,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.studio_firmware_update',
+    'entity_id': 'update.studio_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -80437,7 +80437,7 @@
     'state': '0',
   })
 # ---
-# name: test_schedule[update.master_firmware_update-entry]
+# name: test_schedule[update.master_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -80451,7 +80451,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.master_firmware_update',
+    'entity_id': 'update.master_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -80474,14 +80474,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_schedule[update.master_firmware_update-state]
+# name: test_schedule[update.master_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Master Firmware update',
+      'friendly_name': 'Master Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_31_0',
@@ -80494,7 +80494,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.master_firmware_update',
+    'entity_id': 'update.master_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -81215,7 +81215,7 @@
     'state': '0',
   })
 # ---
-# name: test_ururu[update.daikinap95800_firmware_update-entry]
+# name: test_ururu[update.daikinap95800_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -81229,7 +81229,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.daikinap95800_firmware_update',
+    'entity_id': 'update.daikinap95800_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -81252,14 +81252,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_ururu[update.daikinap95800_firmware_update-state]
+# name: test_ururu[update.daikinap95800_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'DaikinAP95800 Firmware update',
+      'friendly_name': 'DaikinAP95800 Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_14_88',
@@ -81272,7 +81272,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.daikinap95800_firmware_update',
+    'entity_id': 'update.daikinap95800_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -83607,7 +83607,7 @@
     'state': '0',
   })
 # ---
-# name: test_water_heater[update.altherma_firmware_update-entry]
+# name: test_water_heater[update.altherma_gateway_firmware_update-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -83621,7 +83621,7 @@
     'disabled_by': None,
     'domain': 'update',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'update.altherma_firmware_update',
+    'entity_id': 'update.altherma_gateway_firmware_update',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -83644,14 +83644,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_water_heater[update.altherma_firmware_update-state]
+# name: test_water_heater[update.altherma_gateway_firmware_update-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'auto_update': False,
       'device_class': 'firmware',
       'display_precision': 0,
       'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
-      'friendly_name': 'Altherma Firmware update',
+      'friendly_name': 'Altherma Gateway Firmware update',
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.2.5',
@@ -83664,7 +83664,7 @@
       'update_percentage': None,
     }),
     'context': <ANY>,
-    'entity_id': 'update.altherma_firmware_update',
+    'entity_id': 'update.altherma_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

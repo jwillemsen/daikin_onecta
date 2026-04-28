@@ -16,6 +16,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
 from .const import TRANSLATION_KEY
@@ -92,6 +93,12 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         super().__init__(coordinator)
         self._device = device
         self._coordinator = coordinator
+        self._attr_device_info = {
+            "identifiers": {(DOMAIN, self._device.id + "gateway")},
+            "name": self._device.name + " " + "Gateway",
+            "via_device": (DOMAIN, self._device.id),
+        }
+        self._device.fill_device_info(self._attr_device_info, "gateway")
         self._attr_supported_features = UpdateEntityFeature.PROGRESS
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get("FirmwareUpdate")
@@ -105,10 +112,6 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
 
         # Unique ID: <device_id>_firmware_update
         self._attr_unique_id = f"{device.id}_firmware_update"
-
-        # Link to the HA device
-        self._attr_device_info = self._device.device_info()
-        self._device.fill_device_info(self._attr_device_info, "gateway")
 
         # Populate initial state
         self._update_from_management_point(gateway_mp)
