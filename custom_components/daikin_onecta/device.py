@@ -91,8 +91,6 @@ class DaikinOnectaDevice:
 
         return info
 
-    "Helper to merge the json, prevents invalid reads when other threads are reading the daikin_data"
-
     def setJsonData(self, desc):
         """Overwrite the json data for this device."""
         self.daikin_data = desc
