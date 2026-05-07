@@ -1,6 +1,4 @@
 """Coordinator for Daikin Onecta integration."""
-from __future__ import annotations
-
 import logging
 import random
 from dataclasses import dataclass
@@ -23,7 +21,7 @@ _LOGGER = logging.getLogger(__name__)
 class OnectaRuntimeData:
     """Runtime Data for Onecta integration."""
 
-    coordinator: OnectaDataUpdateCoordinator
+    coordinator: "OnectaDataUpdateCoordinator"
     devices: dict[str, Any]
     daikin_api: DaikinApi
 
