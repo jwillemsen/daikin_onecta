@@ -1,6 +1,4 @@
 """Provide info to system health."""
-from __future__ import annotations
-
 from typing import Any
 
 from homeassistant.components import system_health

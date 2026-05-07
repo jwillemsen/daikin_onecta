@@ -1,6 +1,4 @@
 """Support for Daikin firmware update entities."""
-from __future__ import annotations
-
 import logging
 from typing import Any
 
