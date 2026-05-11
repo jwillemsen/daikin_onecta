@@ -146,10 +146,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         return self._in_progress
 
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
-        """Trigger a firmware update via the Daikin Onecta cloud API.
-
-        PUT /gateway-devices/{id}/management-points/gateway/firmware/{firmwareId}
-        """
+        """Trigger a firmware update via the Daikin Onecta cloud API."""
         if self._firmware_id is None:
             _LOGGER.error(
                 "Cannot install firmware for %s: no firmware ID available",
