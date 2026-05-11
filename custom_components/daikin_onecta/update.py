@@ -39,27 +39,33 @@ async def async_setup_entry(
     coordinator = onecta_data.coordinator
 
     entities: list[DaikinFirmwareUpdateEntity] = []
+    supported_management_point_types = {
+        "gateway",
+        "userInterface",
+    }
 
     for device in onecta_data.devices.values():
-        gateway_mp = _get_gateway_management_point(device)
-        if gateway_mp is not None:
-            firmware_update_supported = _get_value(gateway_mp, "isFirmwareUpdateSupported")
-            if firmware_update_supported is not True:
-                _LOGGER.debug(
-                    "Device %s gateway has no isFirmwareUpdateSupported, skipping update entity",
-                    device.name,
-                )
-                continue
+        for mp_type in supported_management_point_types:
+            management_point = _get_management_point(device, mp_type)
+            if management_point is not None:
+                firmware_update_supported = _get_value(management_point, "isFirmwareUpdateSupported")
+                if firmware_update_supported is not True:
+                    _LOGGER.debug(
+                        "Device %s %S has no isFirmwareUpdateSupported, skipping update entity",
+                        mp_type,
+                        device.name,
+                    )
+                    continue
 
-            entities.append(DaikinFirmwareUpdateEntity(coordinator, device, gateway_mp))
+                entities.append(DaikinFirmwareUpdateEntity(coordinator, device, management_point, mp_type))
 
     async_add_entities(entities)
 
 
-def _get_gateway_management_point(device: DaikinOnectaDevice) -> dict | None:
+def _get_management_point(device: DaikinOnectaDevice, mp_type: str) -> dict | None:
     """Return the gateway management point dict, or None if absent."""
     for mp in device.daikin_data.get("managementPoints", []):
-        if mp.get("managementPointType") == "gateway":
+        if mp.get("managementPointType") == mp_type:
             return mp
     return None
 
@@ -80,14 +86,17 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         coordinator: OnectaDataUpdateCoordinator,
         device: DaikinOnectaDevice,
         gateway_mp: dict,
+        management_point_type: str,
     ) -> None:
         """Initialise the update entity."""
         super().__init__(coordinator)
         self._device = device
         self._coordinator = coordinator
+        self._management_point_type = management_point_type
+        mpt = management_point_type[0].upper() + management_point_type[1:]
         self._attr_device_info = {
-            "identifiers": {(DOMAIN, self._device.id + "gateway")},
-            "name": self._device.name + " " + "Gateway",
+            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "name": self._device.name + " " + mpt,
             "via_device": (DOMAIN, self._device.id),
         }
         self._device.fill_device_info(self._attr_device_info, "gateway")
@@ -141,22 +150,22 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     # Internal helpers
     # ------------------------------------------------------------------
 
-    def _update_from_management_point(self, gateway_mp: dict) -> None:
+    def _update_from_management_point(self, management_point: dict) -> None:
         """Pull the latest values out of a gateway management point dict."""
-        self._installed_version: str | None = _get_value(gateway_mp, "firmwareVersion")
-        self._is_update_supported: bool = bool(_get_value(gateway_mp, "isFirmwareUpdateSupported"))
+        self._installed_version: str | None = _get_value(management_point, "firmwareVersion")
+        self._is_update_supported: bool = bool(_get_value(management_point, "isFirmwareUpdateSupported"))
         self._latest_version = None
         self._release_url = None
         self._release_summary = None
         self._in_progress = False
-        firmwareUpdate = gateway_mp.get("firmwareUpdate")
+        firmwareUpdate = management_point.get("firmwareUpdate")
         if firmwareUpdate is not None:
             firmwareUpdateValue = firmwareUpdate.get("value")
             if firmwareUpdateValue is not None:
                 self._latest_version = firmwareUpdateValue.get("version")
                 self._release_url = None
                 self._release_summary = firmwareUpdateValue.get("description")
-        firmwareUpdateStatus = gateway_mp.get("firmwareUpdateStatus")
+        firmwareUpdateStatus = management_point.get("firmwareUpdateStatus")
         if firmwareUpdateStatus is not None:
             firmwareUpdateStatusValue = firmwareUpdateStatus.get("value")
             if firmwareUpdateStatusValue is not None:
@@ -165,7 +174,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        gateway_mp = _get_gateway_management_point(self._device)
-        if gateway_mp is not None:
-            self._update_from_management_point(gateway_mp)
+        mp = _get_management_point(self._device, self._management_point_type)
+        if mp is not None:
+            self._update_from_management_point(mp)
         self.async_write_ha_state()

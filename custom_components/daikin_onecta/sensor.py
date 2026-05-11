@@ -365,7 +365,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + "gateway")},
-            "name": self._device.name + " " + "gateway",
+            "name": self._device.name + " " + "Gateway",
             "via_device": (DOMAIN, self._device.id),
         }
         self._device.fill_device_info(self._attr_device_info, "gateway")
