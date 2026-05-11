@@ -51,7 +51,7 @@ async def async_setup_entry(
                 firmware_update_supported = _get_value(management_point, "isFirmwareUpdateSupported")
                 if firmware_update_supported is not True:
                     _LOGGER.debug(
-                        "Device %s %S has no isFirmwareUpdateSupported, skipping update entity",
+                        "Device %s %s has no isFirmwareUpdateSupported, skipping update entity",
                         mp_type,
                         device.name,
                     )
