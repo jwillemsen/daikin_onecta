@@ -99,7 +99,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             "name": self._device.name + " " + mpt,
             "via_device": (DOMAIN, self._device.id),
         }
-        self._device.fill_device_info(self._attr_device_info, "gateway")
+        self._device.fill_device_info(self._attr_device_info, management_point_type)
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get("FirmwareUpdate")
         self._attr_icon = sensor_settings[CONF_ICON]
