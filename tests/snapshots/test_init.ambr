@@ -1894,7 +1894,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_firmware_update',
     'unit_of_measurement': None,
@@ -1915,7 +1915,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -15376,7 +15376,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 5>,
     'translation_key': 'firmwareupdate',
     'unique_id': '29e9a6af-0a8e-49ac-bc19-361c1347ba95_firmware_update',
     'unit_of_measurement': None,
@@ -15397,7 +15397,7 @@
       'release_summary': 'Altherma WLAN update 4.1.901',
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 5>,
       'title': None,
       'update_percentage': None,
     }),
@@ -15777,7 +15777,7 @@
 # name: test_altherma_ratelimit[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Is holiday mode active',
+      'friendly_name': 'Altherma Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -15829,7 +15829,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma DomesticHotWaterTank Is in emergency state',
+      'friendly_name': 'Altherma Is in emergency state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -15881,7 +15881,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma DomesticHotWaterTank Is in error state',
+      'friendly_name': 'Altherma Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -15932,7 +15932,7 @@
 # name: test_altherma_ratelimit[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Is in installer state',
+      'friendly_name': 'Altherma Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -15984,7 +15984,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma DomesticHotWaterTank Is in warning state',
+      'friendly_name': 'Altherma Is in warning state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -16035,7 +16035,7 @@
 # name: test_altherma_ratelimit[binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Is powerful mode active',
+      'friendly_name': 'Altherma Is powerful mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21099,7 +21099,7 @@
 # name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Error code',
+      'friendly_name': 'Altherma Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -21156,7 +21156,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating daily electrical consumption',
+      'friendly_name': 'Altherma Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -21215,7 +21215,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'friendly_name': 'Altherma Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -21274,7 +21274,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating weekly electrical consumption',
+      'friendly_name': 'Altherma Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -21333,7 +21333,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating yearly electrical consumption',
+      'friendly_name': 'Altherma Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -21386,7 +21386,7 @@
 # name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Setpoint mode',
+      'friendly_name': 'Altherma Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -21443,7 +21443,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Altherma DomesticHotWaterTank Tank temperature',
+      'friendly_name': 'Altherma Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -26659,7 +26659,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 48.0,
-      'friendly_name': 'Altherma DomesticHotWaterTank',
+      'friendly_name': 'Altherma',
       'max_temp': 60.0,
       'min_temp': 30.0,
       'operation_list': list([
@@ -26980,7 +26980,7 @@
 # name: test_altherma_schedule[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is holiday mode active',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27032,7 +27032,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in emergency state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in emergency state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27084,7 +27084,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in error state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27135,7 +27135,7 @@
 # name: test_altherma_schedule[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is in installer state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27187,7 +27187,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in warning state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in warning state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27238,7 +27238,7 @@
 # name: test_altherma_schedule[binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is powerful mode active',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is powerful mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -27699,7 +27699,7 @@
 # name: test_altherma_schedule[select.altherma_domestichotwatertank_schedule-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Schedule',
+      'friendly_name': 'Altherma DomesticHotWaterTank Schedule',
       'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
@@ -28555,7 +28555,7 @@
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Error code',
+      'friendly_name': 'Altherma DomesticHotWaterTank Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -28606,7 +28606,7 @@
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Heat up mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -28663,7 +28663,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating daily electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28722,7 +28722,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating monthly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28781,7 +28781,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating weekly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28840,7 +28840,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating yearly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -28893,7 +28893,7 @@
 # name: test_altherma_schedule[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Setpoint mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -28950,7 +28950,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Altherma Tank temperature',
+      'friendly_name': 'Altherma DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -29099,7 +29099,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_firmware_update',
     'unit_of_measurement': None,
@@ -29120,7 +29120,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -29181,7 +29181,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 51.0,
-      'friendly_name': 'Altherma',
+      'friendly_name': 'Altherma DomesticHotWaterTank',
       'max_temp': 60.0,
       'min_temp': 30.0,
       'operation_list': list([
@@ -36074,7 +36074,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_firmware_update',
     'unit_of_measurement': None,
@@ -36095,7 +36095,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -36138,7 +36138,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_firmware_update',
     'unit_of_measurement': None,
@@ -36159,7 +36159,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -36202,7 +36202,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_firmware_update',
     'unit_of_measurement': None,
@@ -36223,7 +36223,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -36266,7 +36266,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_firmware_update',
     'unit_of_measurement': None,
@@ -36287,7 +36287,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -36330,7 +36330,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_firmware_update',
     'unit_of_measurement': None,
@@ -36351,7 +36351,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -36394,7 +36394,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_firmware_update',
     'unit_of_measurement': None,
@@ -36415,7 +36415,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -36458,7 +36458,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_firmware_update',
     'unit_of_measurement': None,
@@ -36479,7 +36479,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -49327,7 +49327,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_firmware_update',
     'unit_of_measurement': None,
@@ -49348,7 +49348,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60575,7 +60575,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_firmware_update',
     'unit_of_measurement': None,
@@ -60596,7 +60596,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60639,7 +60639,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_firmware_update',
     'unit_of_measurement': None,
@@ -60660,7 +60660,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60703,7 +60703,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_firmware_update',
     'unit_of_measurement': None,
@@ -60724,7 +60724,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60767,7 +60767,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_firmware_update',
     'unit_of_measurement': None,
@@ -60788,7 +60788,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60831,7 +60831,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_firmware_update',
     'unit_of_measurement': None,
@@ -60852,7 +60852,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60895,7 +60895,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_firmware_update',
     'unit_of_measurement': None,
@@ -60916,7 +60916,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -60959,7 +60959,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_firmware_update',
     'unit_of_measurement': None,
@@ -60980,7 +60980,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -67862,7 +67862,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_firmware_update',
     'unit_of_measurement': None,
@@ -67883,7 +67883,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -67926,7 +67926,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_firmware_update',
     'unit_of_measurement': None,
@@ -67947,7 +67947,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -67990,7 +67990,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_firmware_update',
     'unit_of_measurement': None,
@@ -68011,7 +68011,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -68054,7 +68054,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_firmware_update',
     'unit_of_measurement': None,
@@ -68075,7 +68075,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -68118,7 +68118,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_firmware_update',
     'unit_of_measurement': None,
@@ -68139,7 +68139,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -68182,7 +68182,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_firmware_update',
     'unit_of_measurement': None,
@@ -68203,7 +68203,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -68246,7 +68246,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_firmware_update',
     'unit_of_measurement': None,
@@ -68267,7 +68267,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -68277,6 +68277,1826 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'unknown',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is holiday mode active',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is holiday mode active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isholidaymodeactive',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isHolidayModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike ClimateControl Is holiday mode active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_caution_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_caution_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in caution state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in caution state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isincautionstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInCautionState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_caution_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike ClimateControl Is in caution state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_caution_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in error state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in error state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinerrorstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike ClimateControl Is in error state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in mode conflict',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in mode conflict',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinmodeconflict',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInModeConflict',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike ClimateControl Is in mode conflict',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_warning_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_warning_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in warning state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in warning state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinwarningstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInWarningState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_in_warning_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike ClimateControl Is in warning state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_warning_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is powerful mode active',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is powerful mode active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ispowerfulmodeactive',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isPowerfulModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike ClimateControl Is powerful mode active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_gateway_is_firmware_update_supported-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_gateway_is_firmware_update_supported',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is firmware update supported',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is firmware update supported',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isfirmwareupdatesupported',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_isFirmwareUpdateSupported',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_gateway_is_firmware_update_supported-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Gateway Is firmware update supported',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_gateway_is_firmware_update_supported',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_gateway_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_gateway_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in error state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in error state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinerrorstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_gateway_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike Gateway Is in error state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_gateway_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in caution state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in caution state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isincautionstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_isInCautionState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike OutdoorUnit Is in caution state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in error state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in error state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinerrorstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike OutdoorUnit Is in error state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_warning_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_warning_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in warning state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in warning state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinwarningstate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_isInWarningState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_warning_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Johnny&Maaike OutdoorUnit Is in warning state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_warning_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[button.johnny_maaike_refresh-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.johnny_maaike_refresh',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Refresh',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:refresh',
+    'original_name': 'Refresh',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_refresh',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[button.johnny_maaike_refresh-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Refresh',
+      'icon': 'mdi:refresh',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.johnny_maaike_refresh',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_dx4_firmwareupdate[climate.johnny_maaike_room_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'fan_modes': list([
+        'auto',
+        'quiet',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+      ]),
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.FAN_ONLY: 'fan_only'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+        <HVACMode.DRY: 'dry'>,
+      ]),
+      'max_temp': 31,
+      'min_temp': 10,
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'swing_horizontal_modes': list([
+        'stop',
+        'swing',
+      ]),
+      'swing_modes': list([
+        'stop',
+        'swing',
+        'windnice',
+      ]),
+      'target_temp_step': 0.5,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'climate',
+    'entity_category': None,
+    'entity_id': 'climate.johnny_maaike_room_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Room Temperature',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Room Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <ClimateEntityFeature: 953>,
+    'translation_key': 'roomtemperature',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_roomTemperature',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[climate.johnny_maaike_room_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_temperature': 18,
+      'fan_mode': 'auto',
+      'fan_modes': list([
+        'auto',
+        'quiet',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+      ]),
+      'friendly_name': 'Johnny&Maaike Room Temperature',
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.FAN_ONLY: 'fan_only'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+        <HVACMode.DRY: 'dry'>,
+      ]),
+      'max_temp': 31,
+      'min_temp': 10,
+      'preset_mode': 'none',
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'supported_features': <ClimateEntityFeature: 953>,
+      'swing_horizontal_mode': 'stop',
+      'swing_horizontal_modes': list([
+        'stop',
+        'swing',
+      ]),
+      'swing_mode': 'stop',
+      'swing_modes': list([
+        'stop',
+        'swing',
+        'windnice',
+      ]),
+      'target_temp_step': 0.5,
+      'temperature': 14.5,
+    }),
+    'context': <ANY>,
+    'entity_id': 'climate.johnny_maaike_room_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[select.johnny_maaike_climatecontrol_schedule-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '0',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': None,
+    'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Schedule',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:calendar-clock',
+    'original_name': 'Schedule',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'schedule',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_schedule',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[select.johnny_maaike_climatecontrol_schedule-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
+      'options': list([
+        '0',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling daily electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling daily electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingdailyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling daily electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling monthly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_monthly',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling weekly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling weekly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingweeklyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling weekly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling yearly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling yearly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingyearlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Cooling yearly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_error_code-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_error_code',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Error code',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Error code',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'errorcode',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_errorCode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_error_code-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike ClimateControl Error code',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_error_code',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '00-',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating daily electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating daily electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingdailyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating daily electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0.1',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating monthly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_monthly',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '1.3',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating weekly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating weekly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingweeklyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating weekly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0.1',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating yearly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating yearly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingyearlyelectricalconsumption',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Johnny&Maaike ClimateControl Heating yearly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '15.7',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_outdoor_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Outdoor temperature',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 1,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'Outdoor temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'outdoortemperature',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_sensoryData_outdoorTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_outdoor_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'Johnny&Maaike ClimateControl Outdoor temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '12',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_room_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_room_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Room temperature',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 1,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'Room temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'roomtemperature',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_sensoryData_roomTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_room_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'Johnny&Maaike ClimateControl Room temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_climatecontrol_room_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '18',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_error_code-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_gateway_error_code',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Error code',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Error code',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'errorcode',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_errorCode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_error_code-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Gateway Error code',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_gateway_error_code',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ip_address-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_gateway_ip_address',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'IP address',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:ip-network',
+    'original_name': 'IP address',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ipaddress',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_ipAddress',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ip_address-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Gateway IP address',
+      'icon': 'mdi:ip-network',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_gateway_ip_address',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '192.168.1.193',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ratelimit_remaining_day-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_gateway_ratelimit_remaining_day',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Ratelimit remaining day',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Ratelimit remaining day',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ratelimitremainingday',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_limitsensor_remaining_day',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ratelimit_remaining_day-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Gateway Ratelimit remaining day',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_gateway_ratelimit_remaining_day',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ssid-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_gateway_ssid',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'SSID',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:access-point-network',
+    'original_name': 'SSID',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ssid',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_ssid',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ssid-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Gateway SSID',
+      'icon': 'mdi:access-point-network',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_gateway_ssid',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'DaikinAP83731',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_time_zone-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Time zone',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Time zone',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'timezone',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_timeZone',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_time_zone-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike Gateway Time zone',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'Europe/Amsterdam',
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_outdoorunit_error_code-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.johnny_maaike_outdoorunit_error_code',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Error code',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Error code',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'errorcode',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_errorCode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_outdoorunit_error_code-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Johnny&Maaike OutdoorUnit Error code',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.johnny_maaike_outdoorunit_error_code',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '00-',
+  })
+# ---
+# name: test_dx4_firmwareupdate[update.johnny_maaike_gateway_firmware_update-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'update',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'update.johnny_maaike_gateway_firmware_update',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Firmware update',
+    'options': dict({
+    }),
+    'original_device_class': <UpdateDeviceClass.FIRMWARE: 'firmware'>,
+    'original_icon': 'mdi:update',
+    'original_name': 'Firmware update',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <UpdateEntityFeature: 1>,
+    'translation_key': 'firmwareupdate',
+    'unique_id': '32db6075-b739-4026-b661-127009254b42_firmware_update',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_dx4_firmwareupdate[update.johnny_maaike_gateway_firmware_update-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'auto_update': False,
+      'device_class': 'firmware',
+      'display_precision': 0,
+      'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
+      'friendly_name': 'Johnny&Maaike Gateway Firmware update',
+      'icon': 'mdi:update',
+      'in_progress': False,
+      'installed_version': '2_0_0',
+      'latest_version': '2_3_0',
+      'release_summary': 'DX4 WLAN security update 2_3_0',
+      'release_url': None,
+      'skipped_version': None,
+      'supported_features': <UpdateEntityFeature: 1>,
+      'title': None,
+      'update_percentage': None,
+    }),
+    'context': <ANY>,
+    'entity_id': 'update.johnny_maaike_gateway_firmware_update',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
   })
 # ---
 # name: test_fanmode[binary_sensor.sala_climatecontrol_is_holiday_mode_active-entry]
@@ -69500,7 +71320,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_firmware_update',
     'unit_of_measurement': None,
@@ -69521,7 +71341,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -72597,7 +74417,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_firmware_update',
     'unit_of_measurement': None,
@@ -72618,7 +74438,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -76009,7 +77829,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_firmware_update',
     'unit_of_measurement': None,
@@ -76030,7 +77850,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -76073,7 +77893,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_firmware_update',
     'unit_of_measurement': None,
@@ -76094,7 +77914,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -76424,7 +78244,7 @@
 # name: test_minimal_data[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Is holiday mode active',
+      'friendly_name': 'Altherma Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -76476,7 +78296,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma DomesticHotWaterTank Is in error state',
+      'friendly_name': 'Altherma Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -76527,7 +78347,7 @@
 # name: test_minimal_data[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Is in installer state',
+      'friendly_name': 'Altherma Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -77572,7 +79392,7 @@
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
+      'friendly_name': 'Altherma Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -77629,7 +79449,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating daily electrical consumption',
+      'friendly_name': 'Altherma Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -77688,7 +79508,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
+      'friendly_name': 'Altherma Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -77747,7 +79567,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating weekly electrical consumption',
+      'friendly_name': 'Altherma Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -77806,7 +79626,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma DomesticHotWaterTank Heating yearly electrical consumption',
+      'friendly_name': 'Altherma Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -77859,7 +79679,7 @@
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma DomesticHotWaterTank Setpoint mode',
+      'friendly_name': 'Altherma Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -77916,7 +79736,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Altherma DomesticHotWaterTank Tank temperature',
+      'friendly_name': 'Altherma Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -78082,7 +79902,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 53.0,
-      'friendly_name': 'Altherma DomesticHotWaterTank',
+      'friendly_name': 'Altherma',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
@@ -79822,7 +81642,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_firmware_update',
     'unit_of_measurement': None,
@@ -79843,7 +81663,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -80519,7 +82339,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_firmware_update',
     'unit_of_measurement': None,
@@ -80540,7 +82360,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -81297,7 +83117,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '95c2f177-dd7a-4bdc-ad48-1a7f47f34a01_firmware_update',
     'unit_of_measurement': None,
@@ -81318,7 +83138,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
@@ -83689,7 +85509,7 @@
     'platform': 'daikin_onecta',
     'previous_unique_id': None,
     'suggested_object_id': None,
-    'supported_features': <UpdateEntityFeature: 4>,
+    'supported_features': <UpdateEntityFeature: 1>,
     'translation_key': 'firmwareupdate',
     'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_firmware_update',
     'unit_of_measurement': None,
@@ -83710,7 +85530,7 @@
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
-      'supported_features': <UpdateEntityFeature: 4>,
+      'supported_features': <UpdateEntityFeature: 1>,
       'title': None,
       'update_percentage': None,
     }),
