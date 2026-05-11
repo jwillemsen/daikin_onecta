@@ -32,6 +32,8 @@ from homeassistant.components.select import ATTR_OPTION
 from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
 from homeassistant.components.select import SERVICE_SELECT_OPTION
 from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
+from homeassistant.components.update import DOMAIN as UPDATE_DOMAIN
+from homeassistant.components.update import SERVICE_INSTALL
 from homeassistant.components.water_heater import ATTR_OPERATION_MODE
 from homeassistant.components.water_heater import ATTR_TEMPERATURE
 from homeassistant.components.water_heater import DOMAIN as WATER_HEATER_DOMAIN
@@ -1499,3 +1501,42 @@ async def test_altherma_firmwareupdate(
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["latest_version"] == "4.1.901"
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["release_summary"] == "Altherma WLAN update 4.1.901"
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["in_progress"] is True
+
+
+@pytest.mark.asyncio
+async def test_dx4_firmwareupdate(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+    aioclient_mock: AiohttpClientMocker,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "dx4_firmwareavailable")
+
+    assert hass.states.get("update.johnny_maaike_gateway_firmware_update").attributes["installed_version"] == "2_0_0"
+    assert hass.states.get("update.johnny_maaike_gateway_firmware_update").attributes["latest_version"] == "2_3_0"
+    assert hass.states.get("update.johnny_maaike_gateway_firmware_update").attributes["release_summary"] == "DX4 WLAN security update 2_3_0"
+    assert hass.states.get("update.johnny_maaike_gateway_firmware_update").attributes["in_progress"] is False
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        aioclient_mock.put(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/32db6075-b739-4026-b661-127009254b42/management-points/gateway/firmware/5db22235-b750-401f-afd6-6d05841ffcc3",
+            status=204,
+        )
+
+        await hass.services.async_call(
+            UPDATE_DOMAIN,
+            SERVICE_INSTALL,
+            {
+                ATTR_ENTITY_ID: "update.johnny_maaike_gateway_firmware_update",
+            },
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(aioclient_mock.mock_calls) == 2
