@@ -1501,6 +1501,8 @@ async def test_altherma_firmwareupdate(
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["latest_version"] == "4.1.901"
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["release_summary"] == "Altherma WLAN update 4.1.901"
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["in_progress"] is True
+    assert hass.states.get("update.climate_control_getr422_userinterface_firmware_update").attributes["installed_version"] == "3.12.1"
+    assert hass.states.get("update.climate_control_getr422_userinterface_firmware_update").attributes["latest_version"] == "3.12.1"
 
 
 @pytest.mark.asyncio
