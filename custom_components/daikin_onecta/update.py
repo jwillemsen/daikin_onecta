@@ -48,15 +48,6 @@ async def async_setup_entry(
         for mp_type in supported_management_point_types:
             management_point = _get_management_point(device, mp_type)
             if management_point is not None:
-                firmware_update_supported = _get_value(management_point, "isFirmwareUpdateSupported")
-                if firmware_update_supported is not True:
-                    _LOGGER.debug(
-                        "Device %s %s has no isFirmwareUpdateSupported, skipping update entity",
-                        mp_type,
-                        device.name,
-                    )
-                    continue
-
                 entities.append(DaikinFirmwareUpdateEntity(coordinator, device, management_point, mp_type))
 
     async_add_entities(entities)
@@ -175,8 +166,10 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     # ------------------------------------------------------------------
 
     def _update_from_management_point(self, management_point: dict) -> None:
-        """Pull the latest values out of a gateway management point dict."""
+        """Pull the latest values out of a management point dict."""
         self._installed_version: str | None = _get_value(management_point, "firmwareVersion")
+        if self._installed_version is None:
+            self._installed_version = _get_value(management_point, "softwareVersion")
         self._is_update_supported: bool = bool(_get_value(management_point, "isFirmwareUpdateSupported"))
         self._latest_version = self._installed_version
         self._release_url = None
