@@ -107,7 +107,7 @@ async def test_dry(
     assert hass.states.get("climate.lounge_room_temperature").state == HVACMode.DRY
     assert hass.states.get("update.lounge_gateway_firmware_update").attributes["in_progress"] is False
     assert hass.states.get("update.lounge_gateway_firmware_update").attributes["installed_version"] == "1_30_0"
-    assert hass.states.get("update.lounge_gateway_firmware_update").attributes["latest_version"] is None
+    assert hass.states.get("update.lounge_gateway_firmware_update").attributes["latest_version"] == "1_30_0"
 
 
 @pytest.mark.asyncio

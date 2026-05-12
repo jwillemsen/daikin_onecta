@@ -178,7 +178,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         """Pull the latest values out of a gateway management point dict."""
         self._installed_version: str | None = _get_value(management_point, "firmwareVersion")
         self._is_update_supported: bool = bool(_get_value(management_point, "isFirmwareUpdateSupported"))
-        self._latest_version = None
+        self._latest_version = self._installed_version
         self._release_url = None
         self._release_summary = None
         self._firmware_id = None

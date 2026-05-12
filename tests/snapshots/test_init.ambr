@@ -1911,7 +1911,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.2.5',
-      'latest_version': None,
+      'latest_version': '3.2.5',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -1924,7 +1924,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_altherma3m[water_heater.altherma-entry]
@@ -13500,7 +13500,7 @@
 # name: test_altherma_firmwareupdate[binary_sensor.climate_control_getr422_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is holiday mode active',
+      'friendly_name': 'Climate control getr422 Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13552,7 +13552,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in emergency state',
+      'friendly_name': 'Climate control getr422 Is in emergency state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13604,7 +13604,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in error state',
+      'friendly_name': 'Climate control getr422 Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13655,7 +13655,7 @@
 # name: test_altherma_firmwareupdate[binary_sensor.climate_control_getr422_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in installer state',
+      'friendly_name': 'Climate control getr422 Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13707,7 +13707,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in warning state',
+      'friendly_name': 'Climate control getr422 Is in warning state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -14730,7 +14730,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Error code',
+      'friendly_name': 'Climate control getr422 Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -14781,7 +14781,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heat up mode',
+      'friendly_name': 'Climate control getr422 Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -14838,7 +14838,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating daily electrical consumption',
+      'friendly_name': 'Climate control getr422 Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -14897,7 +14897,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating monthly electrical consumption',
+      'friendly_name': 'Climate control getr422 Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -14956,7 +14956,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating weekly electrical consumption',
+      'friendly_name': 'Climate control getr422 Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -15015,7 +15015,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating yearly electrical consumption',
+      'friendly_name': 'Climate control getr422 Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -15068,7 +15068,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_on_off_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank On/Off mode',
+      'friendly_name': 'Climate control getr422 On/Off mode',
       'icon': 'mdi:toggle-switch-variant',
     }),
     'context': <ANY>,
@@ -15119,7 +15119,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Setpoint mode',
+      'friendly_name': 'Climate control getr422 Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -15176,7 +15176,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Tank temperature',
+      'friendly_name': 'Climate control getr422 Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -15457,7 +15457,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 60.6,
-      'friendly_name': 'Climate control getr422 DomesticHotWaterTank',
+      'friendly_name': 'Climate control getr422',
       'max_temp': 65.0,
       'min_temp': 20.0,
       'operation_list': list([
@@ -29116,7 +29116,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.5.0',
-      'latest_version': None,
+      'latest_version': '3.5.0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -29129,7 +29129,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_altherma_schedule[water_heater.altherma-entry]
@@ -36091,7 +36091,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36104,7 +36104,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_button[update.bedroom_2_gateway_firmware_update-entry]
@@ -36155,7 +36155,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36168,7 +36168,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_button[update.bedroom_3_gateway_firmware_update-entry]
@@ -36219,7 +36219,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36232,7 +36232,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_button[update.kitchen_gateway_firmware_update-entry]
@@ -36283,7 +36283,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36296,7 +36296,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_button[update.lounge_gateway_firmware_update-entry]
@@ -36347,7 +36347,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36360,7 +36360,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_button[update.master_bathroom_gateway_firmware_update-entry]
@@ -36411,7 +36411,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36424,7 +36424,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_button[update.master_bedroom_gateway_firmware_update-entry]
@@ -36475,7 +36475,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -36488,7 +36488,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_climate[binary_sensor.altherma_climatecontrol_is_holiday_mode_active-entry]
@@ -49344,7 +49344,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_28_0',
-      'latest_version': None,
+      'latest_version': '1_28_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -49357,7 +49357,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_climate_floorheatingairflow[binary_sensor.laurens_climatecontrol_is_cool_heat_master-entry]
@@ -60592,7 +60592,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60605,7 +60605,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry2[update.bedroom_2_gateway_firmware_update-entry]
@@ -60656,7 +60656,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60669,7 +60669,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry2[update.bedroom_3_gateway_firmware_update-entry]
@@ -60720,7 +60720,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60733,7 +60733,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry2[update.kitchen_gateway_firmware_update-entry]
@@ -60784,7 +60784,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60797,7 +60797,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry2[update.lounge_gateway_firmware_update-entry]
@@ -60848,7 +60848,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60861,7 +60861,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry2[update.master_bathroom_gateway_firmware_update-entry]
@@ -60912,7 +60912,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60925,7 +60925,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry2[update.master_bedroom_gateway_firmware_update-entry]
@@ -60976,7 +60976,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -60989,7 +60989,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[binary_sensor.bedroom_1_climatecontrol_is_holiday_mode_active-entry]
@@ -67879,7 +67879,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -67892,7 +67892,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[update.bedroom_2_gateway_firmware_update-entry]
@@ -67943,7 +67943,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -67956,7 +67956,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[update.bedroom_3_gateway_firmware_update-entry]
@@ -68007,7 +68007,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -68020,7 +68020,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[update.kitchen_gateway_firmware_update-entry]
@@ -68071,7 +68071,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -68084,7 +68084,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[update.lounge_gateway_firmware_update-entry]
@@ -68135,7 +68135,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -68148,7 +68148,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[update.master_bathroom_gateway_firmware_update-entry]
@@ -68199,7 +68199,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -68212,7 +68212,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dry[update.master_bedroom_gateway_firmware_update-entry]
@@ -68263,7 +68263,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_30_0',
-      'latest_version': None,
+      'latest_version': '1_30_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -68276,7 +68276,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active-entry]
@@ -71337,7 +71337,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '4_0_3',
-      'latest_version': None,
+      'latest_version': '4_0_3',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -71350,7 +71350,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_gas[binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active-entry]
@@ -73129,7 +73129,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'My Living Room Tank temperature',
+      'friendly_name': 'My Living Room DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -73295,7 +73295,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 40.0,
-      'friendly_name': 'My Living Room',
+      'friendly_name': 'My Living Room DomesticHotWaterTank',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
@@ -74434,7 +74434,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '438CC083000',
-      'latest_version': None,
+      'latest_version': '438CC083000',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -74447,7 +74447,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_holidaymode[water_heater.ndj-entry]
@@ -77846,7 +77846,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_28_0',
-      'latest_version': None,
+      'latest_version': '1_28_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -77859,7 +77859,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_mc80z[update.vloerverwarming_gateway_firmware_update-entry]
@@ -77910,7 +77910,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '436CC166000',
-      'latest_version': None,
+      'latest_version': '436CC166000',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -77923,7 +77923,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_mc80z[water_heater.vloerverwarming-entry]
@@ -81659,7 +81659,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_31_0',
-      'latest_version': None,
+      'latest_version': '1_31_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -81672,7 +81672,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_schedule[binary_sensor.master_climatecontrol_is_holiday_mode_active-entry]
@@ -82356,7 +82356,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_31_0',
-      'latest_version': None,
+      'latest_version': '1_31_0',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -82369,7 +82369,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_ururu[binary_sensor.daikinap95800_climatecontrol_is_holiday_mode_active-entry]
@@ -83134,7 +83134,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '1_14_88',
-      'latest_version': None,
+      'latest_version': '1_14_88',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -83147,7 +83147,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_water_heater[binary_sensor.altherma_climatecontrol_is_holiday_mode_active-entry]
@@ -85526,7 +85526,7 @@
       'icon': 'mdi:update',
       'in_progress': False,
       'installed_version': '3.2.5',
-      'latest_version': None,
+      'latest_version': '3.2.5',
       'release_summary': None,
       'release_url': None,
       'skipped_version': None,
@@ -85539,7 +85539,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': 'unknown',
+    'state': 'off',
   })
 # ---
 # name: test_water_heater[water_heater.altherma-entry]
