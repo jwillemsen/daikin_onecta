@@ -48,7 +48,6 @@ async def async_setup_entry(
         for mp_type in supported_management_point_types:
             management_point = _get_management_point(device, mp_type)
             if management_point is not None:
-                firmware_update_supported = _get_value(management_point, "isFirmwareUpdateSupported")
                 entities.append(DaikinFirmwareUpdateEntity(coordinator, device, management_point, mp_type))
 
     async_add_entities(entities)
