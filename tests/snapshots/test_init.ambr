@@ -13500,7 +13500,7 @@
 # name: test_altherma_firmwareupdate[binary_sensor.climate_control_getr422_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 Is holiday mode active',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13552,7 +13552,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Climate control getr422 Is in emergency state',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in emergency state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13604,7 +13604,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Climate control getr422 Is in error state',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13655,7 +13655,7 @@
 # name: test_altherma_firmwareupdate[binary_sensor.climate_control_getr422_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 Is in installer state',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -13707,7 +13707,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Climate control getr422 Is in warning state',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Is in warning state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -14730,7 +14730,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 Error code',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -14781,7 +14781,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 Heat up mode',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -14838,7 +14838,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 Heating daily electrical consumption',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -14897,7 +14897,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 Heating monthly electrical consumption',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -14956,7 +14956,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 Heating weekly electrical consumption',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -15015,7 +15015,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Climate control getr422 Heating yearly electrical consumption',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -15068,7 +15068,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_on_off_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 On/Off mode',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank On/Off mode',
       'icon': 'mdi:toggle-switch-variant',
     }),
     'context': <ANY>,
@@ -15119,7 +15119,7 @@
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Climate control getr422 Setpoint mode',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -15176,7 +15176,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Climate control getr422 Tank temperature',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -15457,7 +15457,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 60.6,
-      'friendly_name': 'Climate control getr422',
+      'friendly_name': 'Climate control getr422 DomesticHotWaterTank',
       'max_temp': 65.0,
       'min_temp': 20.0,
       'operation_list': list([
@@ -73129,7 +73129,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'My Living Room DomesticHotWaterTank Tank temperature',
+      'friendly_name': 'My Living Room Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -73295,7 +73295,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 40.0,
-      'friendly_name': 'My Living Room DomesticHotWaterTank',
+      'friendly_name': 'My Living Room',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
