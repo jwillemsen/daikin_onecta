@@ -107,35 +107,6 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         # Populate initial state
         self._update_from_management_point(gateway_mp)
 
-    # ------------------------------------------------------------------
-    # UpdateEntity properties
-    # ------------------------------------------------------------------
-
-    @property
-    def installed_version(self) -> str | None:
-        """Return the currently installed firmware version."""
-        return self._installed_version
-
-    @property
-    def latest_version(self) -> str | None:
-        """Return the latest known firmware version."""
-        return self._latest_version
-
-    @property
-    def release_url(self) -> str | None:
-        """Point users to the Daikin support site for firmware info."""
-        return self._release_url
-
-    @property
-    def release_summary(self) -> str | None:
-        """Brief hint that the mobile app is used to apply updates."""
-        return self._release_summary
-
-    @property
-    def in_progress(self) -> bool | None:
-        """Is the update in progress."""
-        return self._in_progress
-
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
         """Trigger a firmware update via the Daikin Onecta cloud API."""
         if self._firmware_id is None:
@@ -151,14 +122,14 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             self._firmware_id,
         )
 
-        self._in_progress = True
+        self._attr_in_progress = True
         self.async_write_ha_state()
 
         result = await self._device.put(self._device.id, self._management_point_type, f"firmware/{self._firmware_id}", "")
 
         if not result:
             _LOGGER.error("Failed to trigger firmware update for %s", self._device.name)
-            self._in_progress = False
+            self._attr_in_progress = False
             self.async_write_ha_state()
 
     # ------------------------------------------------------------------
@@ -167,15 +138,15 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
 
     def _update_from_management_point(self, management_point: dict) -> None:
         """Pull the latest values out of a management point dict."""
-        self._installed_version: str | None = _get_value(management_point, "firmwareVersion")
-        if self._installed_version is None:
-            self._installed_version = _get_value(management_point, "softwareVersion")
+        self._attr_installed_version: str | None = _get_value(management_point, "firmwareVersion")
+        if self._attr_installed_version is None:
+            self._attr_installed_version = _get_value(management_point, "softwareVersion")
         self._is_update_supported: bool = bool(_get_value(management_point, "isFirmwareUpdateSupported"))
-        self._latest_version = self._installed_version
-        self._release_url = None
-        self._release_summary = None
+        self._attr_latest_version = self._attr_installed_version
+        self._attr_release_url = None
+        self._attr_release_summary = None
         self._firmware_id = None
-        self._in_progress = False
+        self._attr_in_progress = False
         self._attr_supported_features = UpdateEntityFeature.INSTALL
 
         firmwareUpdate = management_point.get("firmwareUpdate")
@@ -184,14 +155,14 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             if firmwareUpdateValue is not None:
                 firmware_update_version = firmwareUpdateValue.get("version")
                 if firmware_update_version is not None:
-                    self._latest_version = firmware_update_version
-                self._release_summary = firmwareUpdateValue.get("description")
+                    self._attr_latest_version = firmware_update_version
+                self._attr_release_summary = firmwareUpdateValue.get("description")
                 self._firmware_id = firmwareUpdateValue.get("id")
         firmwareUpdateStatus = management_point.get("firmwareUpdateStatus")
         if firmwareUpdateStatus is not None:
             firmwareUpdateStatusValue = firmwareUpdateStatus.get("value")
             if firmwareUpdateStatusValue is not None:
-                self._in_progress = firmwareUpdateStatusValue == "in-progress"
+                self._attr_in_progress = firmwareUpdateStatusValue == "in-progress"
                 self._attr_supported_features |= UpdateEntityFeature.PROGRESS
 
     @callback
