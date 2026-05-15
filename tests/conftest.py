@@ -8,7 +8,6 @@ from unittest.mock import patch
 
 import homeassistant.helpers.entity_registry as er
 import pytest
-from freezegun import freeze_time
 from _pytest.assertion import truncate
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
@@ -41,6 +40,7 @@ def load_fixture_json(name):
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
 def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:  # noqa: F811
     """Enable custom integrations defined in the test dir."""
+
 
 @pytest.mark.freeze_time("2026-01-01 12:00:00+00:00")
 async def snapshot_platform_entities(
