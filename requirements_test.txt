@@ -4,3 +4,4 @@ anyio
 aiohttp_cors
 pytest-asyncio
 pytest-freezegun
+setuptools
