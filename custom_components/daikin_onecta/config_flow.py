@@ -15,6 +15,8 @@ from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.selector import NumberSelector
 from homeassistant.helpers.selector import NumberSelectorConfig
 from homeassistant.helpers.selector import TimeSelector
+from homeassistant.components import zeroconf
+from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 
 from .const import DOMAIN
 
@@ -131,3 +133,34 @@ class FlowHandler(
     def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlowHandler:
         """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
+
+    async def async_step_zeroconf(
+        self, discovery_info: ZeroconfServiceInfo
+    ) -> ConfigFlowResult:
+        """Handle a discovered Daikin device via mDNS.
+
+        Handles two service types:
+        - _daikin._tcp.local.  : generic Daikin gateway
+        - _https._tcp.local.   : Daikin Altherma 4 (hostname altherma4-XXXX-XXXX.local.)
+        """
+        _LOGGER.debug(
+            "Daikin device discovered via mDNS: host=%s hostname=%s type=%s properties=%s",
+            discovery_info.host,
+            discovery_info.hostname,
+            discovery_info.type,
+            discovery_info.properties,
+        )
+
+        if self._async_current_entries():
+            return self.async_abort(reason="already_configured")
+
+        # Strip trailing dot and .local suffix for a clean display name.
+        # e.g. "altherma4-a1b2-c3d4.local." -> "altherma4-a1b2-c3d4"
+        hostname = discovery_info.hostname.rstrip(".")
+        if hostname.endswith(".local"):
+            hostname = hostname[: -len(".local")]
+
+        self.context["title_placeholders"] = {"name": hostname}
+
+        return await self.async_step_user()
+
