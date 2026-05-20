@@ -151,9 +151,13 @@ class FlowHandler(
         if self._async_current_entries():
             return self.async_abort(reason="already_configured")
 
+        hostname = discovery_info.hostname
+        if not hostname:
+            return self.async_abort(reason="unknown")
+
         # Strip trailing dot and .local suffix for a clean display name.
         # e.g. "altherma4-a1b2-c3d4.local." -> "altherma4-a1b2-c3d4"
-        hostname = discovery_info.hostname.rstrip(".")
+        hostname = hostname.rstrip(".")
         if hostname.endswith(".local"):
             hostname = hostname[: -len(".local")]
 

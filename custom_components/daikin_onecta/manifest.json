@@ -3,7 +3,7 @@
   "name": "Daikin Onecta",
   "codeowners": ["@jwillemsen"],
   "config_flow": true,
-  "dependencies": ["application_credentials"],
+  "dependencies": ["application_credentials", "zeroconf"],
   "documentation": "https://github.com/jwillemsen/daikin_onecta",
   "integration_type": "device",
   "iot_class": "cloud_polling",
@@ -23,12 +23,10 @@
     {
         "type": "_daikin._tcp.local.",
         "name": "altherma",
-        "port": 4321
     },
     {
         "type": "_daikin._tcp.local.",
         "name": "ndj",
-        "port": 4321
     }
   ]
 }
