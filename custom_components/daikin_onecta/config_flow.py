@@ -15,7 +15,6 @@ from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.selector import NumberSelector
 from homeassistant.helpers.selector import NumberSelectorConfig
 from homeassistant.helpers.selector import TimeSelector
-from homeassistant.components import zeroconf
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 
 from .const import DOMAIN
@@ -134,9 +133,7 @@ class FlowHandler(
         """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
 
-    async def async_step_zeroconf(
-        self, discovery_info: ZeroconfServiceInfo
-    ) -> ConfigFlowResult:
+    async def async_step_zeroconf(self, discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
         """Handle a discovered Daikin device via mDNS.
 
         Handles two service types:
@@ -163,4 +160,3 @@ class FlowHandler(
         self.context["title_placeholders"] = {"name": hostname}
 
         return await self.async_step_user()
-
