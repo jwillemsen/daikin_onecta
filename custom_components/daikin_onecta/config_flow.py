@@ -140,7 +140,7 @@ class FlowHandler(
         - _daikin._tcp.local.  : generic Daikin gateway
         - _https._tcp.local.   : Daikin Altherma 4 (hostname altherma4-XXXX-XXXX.local.)
         """
-        _LOGGER.debug(
+        _LOGGER.info(
             "Daikin device discovered via mDNS: host=%s hostname=%s type=%s properties=%s",
             discovery_info.host,
             discovery_info.hostname,

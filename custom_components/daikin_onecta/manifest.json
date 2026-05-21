@@ -3,7 +3,7 @@
   "name": "Daikin Onecta",
   "codeowners": ["@jwillemsen"],
   "config_flow": true,
-  "dependencies": ["application_credentials", "zeroconf"],
+  "dependencies": ["application_credentials"],
   "documentation": "https://github.com/jwillemsen/daikin_onecta",
   "integration_type": "device",
   "iot_class": "cloud_polling",
