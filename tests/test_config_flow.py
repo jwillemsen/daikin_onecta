@@ -129,15 +129,46 @@ async def test_zeroconf_flow(
     setup_credentials,
 ) -> None:
     """Test zeroconf flow."""
+    assert await async_setup_component(hass, "daikin_onecta", {})
+
+    await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
+
     result = await hass.config_entries.flow.async_init(
         DOMAIN,
         context={"source": SOURCE_ZEROCONF},
         data=ZEROCONF_DISCOVERY,
     )
     await hass.async_block_till_done()
+    assert result["type"] == "external"
+    assert result["url"].startswith(OAUTH2_AUTHORIZE)
+
 
     result = await hass.config_entries.flow.async_configure(
         result["flow_id"],
         {},
     )
-    await hass.async_block_till_done()
+
+    # state = config_entry_oauth2_flow._encode_jwt(
+    #     hass,
+    #     {
+    #         "flow_id": result["flow_id"],
+    #         "redirect_uri": "https://example.com/auth/external/callback",
+    #     },
+    # )
+    # client = await hass_client_no_auth()
+    # resp = await client.get(f"/auth/external/callback?code=abcd&state={state}")
+    #
+    # aioclient_mock.post(
+    #     OAUTH2_TOKEN,
+    #     json={
+    #         "refresh_token": "mock-refresh-token",
+    #         "access_token": FAKE_ACCESS_TOKEN,
+    #         "type": "Bearer",
+    #         "expires_in": 60,
+    #     },
+    # )
+    # with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
+    #     await hass.config_entries.flow.async_configure(result["flow_id"])
+    # await hass.async_block_till_done()
+    # assert len(hass.config_entries.async_entries(DOMAIN)) == 1
+    # assert len(mock_setup.mock_calls) == 1
