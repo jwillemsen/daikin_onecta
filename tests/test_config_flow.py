@@ -138,36 +138,46 @@ async def test_zeroconf_flow(
         context={"source": SOURCE_ZEROCONF},
         data=ZEROCONF_DISCOVERY,
     )
+    state = config_entry_oauth2_flow._encode_jwt(
+        hass,
+        {
+            "flow_id": result["flow_id"],
+            "redirect_uri": "https://example.com/auth/external/callback",
+        },
+    )
+
+    assert result["url"] == (
+        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}"
+        "&redirect_uri=https://example.com/auth/external/callback"
+        f"&state={state}"
+        f"&scope=openid+onecta:basic.integration+offline_access"
+    )
+
+    client = await hass_client_no_auth()
+    resp = await client.get(f"/auth/external/callback?code=abcd&state={state}")
+    assert resp.status == 200
+    assert resp.headers["content-type"] == "text/html; charset=utf-8"
+
+    aioclient_mock.post(
+        OAUTH2_TOKEN,
+        json={
+            "refresh_token": "mock-refresh-token",
+            "access_token": FAKE_ACCESS_TOKEN,
+            "type": "Bearer",
+            "expires_in": 60,
+        },
+    )
+
     await hass.async_block_till_done()
     assert result["type"] == "external"
     assert result["url"].startswith(OAUTH2_AUTHORIZE)
 
-    result = await hass.config_entries.flow.async_configure(
-        result["flow_id"],
-        {},
-    )
+    with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
+        await hass.config_entries.flow.async_configure(
+            result["flow_id"],
+            {},
+        )
 
-    # state = config_entry_oauth2_flow._encode_jwt(
-    #     hass,
-    #     {
-    #         "flow_id": result["flow_id"],
-    #         "redirect_uri": "https://example.com/auth/external/callback",
-    #     },
-    # )
-    # client = await hass_client_no_auth()
-    # resp = await client.get(f"/auth/external/callback?code=abcd&state={state}")
-    #
-    # aioclient_mock.post(
-    #     OAUTH2_TOKEN,
-    #     json={
-    #         "refresh_token": "mock-refresh-token",
-    #         "access_token": FAKE_ACCESS_TOKEN,
-    #         "type": "Bearer",
-    #         "expires_in": 60,
-    #     },
-    # )
-    # with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
-    #     await hass.config_entries.flow.async_configure(result["flow_id"])
-    # await hass.async_block_till_done()
-    # assert len(hass.config_entries.async_entries(DOMAIN)) == 1
-    # assert len(mock_setup.mock_calls) == 1
+    await hass.async_block_till_done()
+    assert len(hass.config_entries.async_entries(DOMAIN)) == 1
+    assert len(mock_setup.mock_calls) == 1
