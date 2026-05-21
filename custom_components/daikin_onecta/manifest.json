@@ -9,7 +9,6 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/jwillemsen/daikin_onecta/issues",
   "requirements": [],
-  "version": "4.5.2",
   "zeroconf":
   [
     {
@@ -29,4 +28,5 @@
         "name": "ndj"
     }
   ]
+  "version": "4.6.1"
 }

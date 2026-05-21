@@ -42,6 +42,7 @@ def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) 
     """Enable custom integrations defined in the test dir."""
 
 
+@pytest.mark.freeze_time("2026-01-01 12:00:00+00:00")
 async def snapshot_platform_entities(
     hass: HomeAssistant,
     aioclient_mock: AiohttpClientMocker,
