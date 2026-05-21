@@ -1,10 +1,10 @@
 {
   "domain": "daikin_onecta",
   "name": "Daikin Onecta",
+  "after_dependencies": ["zeroconf"],
   "codeowners": ["@jwillemsen"],
   "config_flow": true,
   "dependencies": ["application_credentials"],
-  "after_dependencies": ["zeroconf"],
   "documentation": "https://github.com/jwillemsen/daikin_onecta",
   "integration_type": "device",
   "iot_class": "cloud_polling",
