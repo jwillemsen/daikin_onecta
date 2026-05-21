@@ -134,12 +134,7 @@ class FlowHandler(
         return OptionsFlowHandler(config_entry)
 
     async def async_step_zeroconf(self, discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
-        """Handle a discovered Daikin device via mDNS.
-
-        Handles two service types:
-        - _daikin._tcp.local.  : generic Daikin gateway
-        - _https._tcp.local.   : Daikin Altherma 4 (hostname altherma4-XXXX-XXXX.local.)
-        """
+        """Handle a discovered Daikin device via mDNS."""
         _LOGGER.info(
             "Daikin device discovered via mDNS: host=%s hostname=%s type=%s properties=%s",
             discovery_info.host,
