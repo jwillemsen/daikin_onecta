@@ -142,7 +142,6 @@ async def test_zeroconf_flow(
     assert result["type"] == "external"
     assert result["url"].startswith(OAUTH2_AUTHORIZE)
 
-
     result = await hass.config_entries.flow.async_configure(
         result["flow_id"],
         {},
