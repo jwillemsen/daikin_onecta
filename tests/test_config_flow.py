@@ -1,4 +1,5 @@
 """Test the daikin_onecta config flow."""
+from ipaddress import ip_address
 from unittest.mock import patch
 
 import pytest
@@ -7,8 +8,10 @@ from homeassistant.components.application_credentials import (
     async_import_client_credential,
 )
 from homeassistant.components.application_credentials import ClientCredential
+from homeassistant.config_entries import SOURCE_ZEROCONF
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
@@ -98,3 +101,83 @@ async def test_config_entry_unique_id_migration(
 
     assert config_entry_v1_1.unique_id == "1234567890"
     assert config_entry_v1_1.minor_version == 2
+
+
+ZEROCONF_DISCOVERY = ZeroconfServiceInfo(
+    ip_address=ip_address("10.0.0.131"),
+    ip_addresses=[ip_address("10.0.0.131")],
+    hostname="altherma.local.",
+    name="altherma.local._tcp.local.",
+    port=4321,
+    type="_daikin._tcp.local.",
+    properties={
+        "miconID": "17003904",
+        "devID": "[0]",
+        "sernum": "172300018",
+        "disvers": "1.0.0",
+        "fwvers": "436CC152000",
+        "areaInfo": "/MNCSEBase/mgo-123456789",
+    },
+)
+
+
+async def test_zeroconf_flow(
+    hass: HomeAssistant,
+    hass_client_no_auth,
+    aioclient_mock,
+    current_request_with_host,
+    setup_credentials,
+) -> None:
+    """Test zeroconf flow."""
+    assert await async_setup_component(hass, "daikin_onecta", {})
+
+    await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": SOURCE_ZEROCONF},
+        data=ZEROCONF_DISCOVERY,
+    )
+    state = config_entry_oauth2_flow._encode_jwt(
+        hass,
+        {
+            "flow_id": result["flow_id"],
+            "redirect_uri": "https://example.com/auth/external/callback",
+        },
+    )
+
+    assert result["url"] == (
+        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}"
+        "&redirect_uri=https://example.com/auth/external/callback"
+        f"&state={state}"
+        f"&scope=openid+onecta:basic.integration+offline_access"
+    )
+
+    client = await hass_client_no_auth()
+    resp = await client.get(f"/auth/external/callback?code=abcd&state={state}")
+    assert resp.status == 200
+    assert resp.headers["content-type"] == "text/html; charset=utf-8"
+
+    aioclient_mock.post(
+        OAUTH2_TOKEN,
+        json={
+            "refresh_token": "mock-refresh-token",
+            "access_token": FAKE_ACCESS_TOKEN,
+            "type": "Bearer",
+            "expires_in": 60,
+        },
+    )
+
+    await hass.async_block_till_done()
+    assert result["type"] == "external"
+    assert result["url"].startswith(OAUTH2_AUTHORIZE)
+
+    with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
+        await hass.config_entries.flow.async_configure(
+            result["flow_id"],
+            {},
+        )
+
+    await hass.async_block_till_done()
+    assert len(hass.config_entries.async_entries(DOMAIN)) == 1
+    assert len(mock_setup.mock_calls) == 1

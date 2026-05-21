@@ -1,6 +1,7 @@
 {
   "domain": "daikin_onecta",
   "name": "Daikin Onecta",
+  "after_dependencies": ["zeroconf"],
   "codeowners": ["@jwillemsen"],
   "config_flow": true,
   "dependencies": ["application_credentials"],
@@ -9,5 +10,24 @@
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/jwillemsen/daikin_onecta/issues",
   "requirements": [],
-  "version": "4.6.1"
+  "version": "4.6.1",
+  "zeroconf":
+  [
+    {
+        "type": "_https._tcp.local.",
+        "name": "altherma4-*"
+    },
+    {
+        "type": "_https._tcp.local.",
+        "name": "homehub"
+    },
+    {
+        "type": "_daikin._tcp.local.",
+        "name": "altherma"
+    },
+    {
+        "type": "_daikin._tcp.local.",
+        "name": "ndj"
+    }
+  ]
 }
