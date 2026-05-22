@@ -1,4 +1,23 @@
 {
+  "entity": {
+    "water_heater": {
+      "hot_water_tank": {
+        "state": {
+          "off": "Arrêt",
+          "heat_pump": "Normal",
+          "performance": "Boost"
+        }
+      }
+    },
+    "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "off": "Arrêt",
+          "cool": "Frais"
+        }
+      }
+    }
+  },
   "options": {
     "step": {
       "init": {
