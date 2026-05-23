@@ -69,6 +69,7 @@ async def update_listener(hass, config_entry):
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
     coordinator.update_settings(config_entry)
+    coordinator.async_update_listeners()
 
 
 async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:

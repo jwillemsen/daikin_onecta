@@ -12,11 +12,13 @@ from homeassistant.config_entries import SOURCE_REAUTH
 from homeassistant.core import callback
 from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers.selector import BooleanSelector
 from homeassistant.helpers.selector import NumberSelector
 from homeassistant.helpers.selector import NumberSelectorConfig
 from homeassistant.helpers.selector import TimeSelector
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 
+from .const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
@@ -65,6 +67,10 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                     ): NumberSelector(
                         NumberSelectorConfig(min=20, max=300, step=1),
                     ),
+                    vol.Required(
+                        CONF_HOMEKIT_FAN_MODE_ALIASES,
+                        default=self.options.get(CONF_HOMEKIT_FAN_MODE_ALIASES, False),
+                    ): BooleanSelector(),
                 }
             ),
             errors=errors,

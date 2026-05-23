@@ -7,6 +7,10 @@ from datetime import timedelta
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
 from homeassistant.components.climate import ClimateEntity
+from homeassistant.components.climate import FAN_HIGH
+from homeassistant.components.climate import FAN_LOW
+from homeassistant.components.climate import FAN_MEDIUM
+from homeassistant.components.climate import FAN_MIDDLE
 from homeassistant.components.climate import PLATFORM_SCHEMA
 from homeassistant.components.climate.const import ATTR_HVAC_MODE
 from homeassistant.components.climate.const import ClimateEntityFeature
@@ -26,6 +30,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from .const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from .const import DOMAIN
 from .const import FANMODE_FIXED
 from .const import TRANSLATION_KEY
@@ -37,6 +42,14 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({vol.Required(CONF_HOST): cv.string, vol.Optional(CONF_NAME): cv.string})
 
 PRESET_MODES = {PRESET_COMFORT, PRESET_ECO, PRESET_AWAY, PRESET_BOOST}
+
+DAIKIN_FAN_MODE_QUIET = "quiet"
+
+HOMEKIT_FIXED_FAN_MODE_ALIASES = {
+    FAN_MIDDLE: "2",
+    FAN_MEDIUM: "3",
+    FAN_HIGH: "5",
+}
 
 HA_HVAC_TO_DAIKIN = {
     HVACMode.FAN_ONLY: "fanOnly",
@@ -173,6 +186,52 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if cc is not None:
             om = cc.get("operationMode")
         return om
+
+    @property
+    def _homekit_fan_mode_aliases_enabled(self):
+        return self.coordinator.options.get(CONF_HOMEKIT_FAN_MODE_ALIASES, False)
+
+    def _homekit_fan_mode_aliases(self, fan_speed):
+        aliases = {}
+        if not self._homekit_fan_mode_aliases_enabled:
+            return aliases
+
+        current_mode = fan_speed.get("currentMode", {})
+        current_mode_values = current_mode.get("values", [])
+        if DAIKIN_FAN_MODE_QUIET in current_mode_values:
+            aliases[FAN_LOW] = DAIKIN_FAN_MODE_QUIET
+
+        if FANMODE_FIXED not in current_mode_values:
+            return aliases
+
+        fixed_mode = fan_speed.get("modes", {}).get(FANMODE_FIXED)
+        if fixed_mode is None:
+            return aliases
+
+        min_val = int(fixed_mode["minValue"])
+        max_val = int(fixed_mode["maxValue"])
+        step_value = int(fixed_mode["stepValue"])
+        fixed_values = {str(val) for val in range(min_val, max_val + 1, step_value)}
+
+        for alias, daikin_mode in HOMEKIT_FIXED_FAN_MODE_ALIASES.items():
+            if daikin_mode in fixed_values:
+                aliases[alias] = daikin_mode
+
+        return aliases
+
+    def _get_homekit_fan_mode(self, fan_speed, fan_mode):
+        if not self._homekit_fan_mode_aliases_enabled:
+            return fan_mode
+
+        aliases = self._homekit_fan_mode_aliases(fan_speed)
+        for alias, daikin_mode in aliases.items():
+            if fan_mode == daikin_mode:
+                return alias
+
+        return fan_mode
+
+    def _resolve_homekit_fan_mode_alias(self, fan_speed, fan_mode):
+        return self._homekit_fan_mode_aliases(fan_speed).get(fan_mode, fan_mode)
 
     def setpoint(self):
         setpoint = None
@@ -489,6 +548,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                             fan_mode = str(fixedModes["value"])
                     else:
                         fan_mode = mode
+                    fan_mode = self._get_homekit_fan_mode(fan_speed, fan_mode)
 
         _LOGGER.info(
             "Device '%s' has fan mode '%s'",
@@ -522,6 +582,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                                     fan_modes.append(str(val))
                         else:
                             fan_modes.append(c)
+                    for alias in self._homekit_fan_mode_aliases(fan_speed):
+                        if alias not in fan_modes:
+                            fan_modes.append(alias)
 
         _LOGGER.info(
             "Device '%s' has fan modes '%s'",
@@ -533,6 +596,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     async def async_set_fan_mode(self, fan_mode):
         """Set the fan mode"""
+        fan_mode = str(fan_mode)
         _LOGGER.debug(
             "Device '%s' request to set fan_mode to '%s'",
             self._device.name,
@@ -542,10 +606,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         res = True
         cc = self.climate_control()
         operationmode = cc["operationMode"]["value"]
+        fan_control = cc.get("fanControl")
+        fan_speed = fan_control["value"]["operationModes"][operationmode].get("fanSpeed")
+        requested_fan_mode = fan_mode
+        fan_mode = self._resolve_homekit_fan_mode_alias(fan_speed, fan_mode)
         if fan_mode.isnumeric():
-            if not self._attr_fan_mode.isnumeric():
-                # Only set the currentMode to fixed when we currently don't have set
-                # a numeric mode
+            if fan_speed["currentMode"]["value"] != FANMODE_FIXED:
+                # Only set currentMode to fixed when it isn't already fixed.
                 res = await self._device.patch(
                     self._device.id,
                     self._embedded_id,
@@ -589,7 +656,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 )
 
         if res is True:
-            self._attr_fan_mode = fan_mode
+            if fan_mode.isnumeric():
+                fan_speed["currentMode"]["value"] = FANMODE_FIXED
+                fan_speed["modes"][FANMODE_FIXED]["value"] = int(fan_mode)
+            else:
+                fan_speed["currentMode"]["value"] = fan_mode
+            self._attr_fan_mode = requested_fan_mode
             self.async_write_ha_state()
 
         return res

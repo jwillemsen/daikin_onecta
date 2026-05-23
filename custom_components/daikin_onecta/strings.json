@@ -35,7 +35,8 @@
           "low_scan_interval": "Low frequency period update interval (minutes)",
           "high_scan_start": "High frequency period start time",
           "low_scan_start": "Low frequency period start time",
-          "scan_ignore": "Number of seconds that a data refresh is ignored after a command"
+          "scan_ignore": "Number of seconds that a data refresh is ignored after a command",
+          "homekit_fan_mode_aliases": "Expose HomeKit compatible fan speed aliases"
         },
         "description": "Configure Daikin Onecta Cloud polling",
         "title": "Daikin Onecta"
