@@ -189,9 +189,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     @property
     def _homekit_fan_mode_aliases_enabled(self):
+        """Return whether HomeKit fan mode aliases are enabled."""
         return self.coordinator.options.get(CONF_HOMEKIT_FAN_MODE_ALIASES, False)
 
     def _homekit_fan_mode_aliases(self, fan_speed):
+        """Return HomeKit fan mode aliases available for the fan speed data."""
         aliases = {}
         if not self._homekit_fan_mode_aliases_enabled:
             return aliases
@@ -220,6 +222,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return aliases
 
     def _get_homekit_fan_mode(self, fan_speed, fan_mode):
+        """Return the HomeKit alias for a Daikin fan mode when available."""
         if not self._homekit_fan_mode_aliases_enabled:
             return fan_mode
 
@@ -231,6 +234,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return fan_mode
 
     def _resolve_homekit_fan_mode_alias(self, fan_speed, fan_mode):
+        """Return the Daikin fan mode represented by a HomeKit alias."""
         return self._homekit_fan_mode_aliases(fan_speed).get(fan_mode, fan_mode)
 
     def setpoint(self):
