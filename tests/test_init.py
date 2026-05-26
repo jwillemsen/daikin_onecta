@@ -2,6 +2,7 @@
 from datetime import date
 from datetime import timedelta
 from unittest.mock import AsyncMock
+from unittest.mock import MagicMock
 from unittest.mock import patch
 
 import homeassistant.helpers.device_registry as dr
@@ -15,6 +16,10 @@ from homeassistant.components.climate import ATTR_PRESET_MODE
 from homeassistant.components.climate import ATTR_SWING_HORIZONTAL_MODE
 from homeassistant.components.climate import ATTR_SWING_MODE
 from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
+from homeassistant.components.climate import FAN_HIGH
+from homeassistant.components.climate import FAN_LOW
+from homeassistant.components.climate import FAN_MEDIUM
+from homeassistant.components.climate import FAN_MIDDLE
 from homeassistant.components.climate import PRESET_AWAY
 from homeassistant.components.climate import PRESET_BOOST
 from homeassistant.components.climate import PRESET_NONE
@@ -52,8 +57,12 @@ from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClien
 from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 from syrupy import SnapshotAssertion
 
+from .conftest import FAKE_ACCESS_TOKEN
 from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
+from custom_components.daikin_onecta import update_listener
+from custom_components.daikin_onecta.climate import DaikinClimate
+from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
@@ -124,7 +133,7 @@ async def test_fanmode(
 
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
-        return_value="XXXXXX",
+        return_value=FAKE_ACCESS_TOKEN,
     ):
         assert hass.states.get("climate.Sala_room_temperature").state == HVACMode.OFF
         assert hass.states.get("climate.Sala_room_temperature").attributes["fan_mode"] == "auto"
@@ -358,6 +367,134 @@ async def test_climate_fixedfanmode(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_fixedfanmode")
 
     assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
+    fan_modes = hass.states.get("climate.werkkamer_room_temperature").attributes["fan_modes"]
+    assert FAN_LOW not in fan_modes
+    assert FAN_MIDDLE not in fan_modes
+    assert FAN_MEDIUM not in fan_modes
+    assert FAN_HIGH not in fan_modes
+
+
+@pytest.mark.asyncio
+async def test_climate_homekit_fan_mode_aliases(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+    aioclient_mock: AiohttpClientMocker,
+) -> None:
+    """Test HomeKit fan mode aliases."""
+    hass.config_entries.async_update_entry(config_entry, options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
+
+    await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "climate_fixedfanmode")
+
+    state = hass.states.get("climate.werkkamer_room_temperature")
+    assert state.attributes["fan_mode"] == FAN_MEDIUM
+    assert state.attributes["fan_modes"] == ["auto", "quiet", "1", "2", "3", "4", "5", FAN_LOW, FAN_MIDDLE, FAN_MEDIUM, FAN_HIGH]
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        aioclient_mock.patch(
+            DAIKIN_API_URL + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/fanControl",
+            status=204,
+        )
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: FAN_LOW},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert aioclient_mock.mock_calls[-1][2] == '{"value": "quiet", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == FAN_LOW
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: FAN_MIDDLE},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert aioclient_mock.mock_calls[-2][2] == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert aioclient_mock.mock_calls[-1][2] == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == FAN_MIDDLE
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: FAN_HIGH},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert aioclient_mock.mock_calls[-1][2] == '{"value": 5, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == FAN_HIGH
+
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: 3},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert aioclient_mock.mock_calls[-1][2] == '{"value": 3, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+    assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
+
+
+async def test_update_listener_notifies_entities() -> None:
+    """Test options updates notify coordinator listeners."""
+    coordinator = MagicMock()
+    config_entry = MagicMock()
+    config_entry.runtime_data = MagicMock(coordinator=coordinator)
+
+    await update_listener(None, config_entry)
+
+    coordinator.update_settings.assert_called_once_with(config_entry)
+    coordinator.async_update_listeners.assert_called_once_with()
+
+
+def test_homekit_fan_mode_alias_helpers() -> None:
+    """Test HomeKit fan mode alias helper edge cases."""
+    climate = DaikinClimate.__new__(DaikinClimate)
+    climate.coordinator = MagicMock(options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
+
+    assert climate._homekit_fan_mode_aliases(
+        {
+            "currentMode": {
+                "values": ["quiet", "auto"],
+            },
+        }
+    ) == {FAN_LOW: "quiet"}
+
+    assert climate._homekit_fan_mode_aliases(
+        {
+            "currentMode": {
+                "values": ["quiet", "auto", "fixed"],
+            },
+            "modes": {},
+        }
+    ) == {FAN_LOW: "quiet"}
+
+    fan_speed = {
+        "currentMode": {
+            "values": ["quiet", "auto", "fixed"],
+        },
+        "modes": {
+            "fixed": {
+                "minValue": 1,
+                "maxValue": 5,
+                "stepValue": 1,
+            },
+        },
+    }
+    assert climate._get_homekit_fan_mode(fan_speed, "4") == "4"
+    assert climate._resolve_homekit_fan_mode_alias(fan_speed, FAN_HIGH) == "5"
 
 
 @pytest.mark.asyncio
