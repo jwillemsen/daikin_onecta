@@ -672,6 +672,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     def __get_swing_mode(self, direction):
         swingMode = ""
+        settable = False
         cc = self.climate_control()
         fanControl = cc.get("fanControl")
         if fanControl is not None:
@@ -682,13 +683,15 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 if fan_direction is not None:
                     fd = fan_direction.get(direction)
                     if fd is not None:
+                        settable = fd["currentMode"].get("settable", False)
                         swingMode = fd["currentMode"]["value"].lower()
 
         _LOGGER.info(
-            "Device '%s' has %s swing mode '%s'",
+            "Device '%s' has %s swing mode '%s' and is settable %s",
             self._device.name,
             direction,
             swingMode,
+            settable,
         )
 
         return swingMode
