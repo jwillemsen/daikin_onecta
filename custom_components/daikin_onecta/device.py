@@ -123,9 +123,11 @@ class DaikinOnectaDevice:
 
         return res
 
-    async def put(self, id, embeddedId, dataPoint, value):
+    async def put(self, id, embeddedId, dataPoint, value=None):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = json.dumps(value)
+        setOptions = None
+        if value is not None:
+            setOptions = json.dumps(value)
 
         _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
 
