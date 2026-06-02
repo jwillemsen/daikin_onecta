@@ -7809,7 +7809,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '88',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -8469,7 +8469,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '3.7',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -9577,7 +9577,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.6',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.linde_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -9864,7 +9864,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.linde_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -10685,7 +10685,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.6',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -10972,7 +10972,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.sanne_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -11793,7 +11793,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.5',
+    'state': '0.1',
   })
 # ---
 # name: test_altherma[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -12080,7 +12080,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_altherma[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -21737,7 +21737,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '88',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -22397,7 +22397,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '3.7',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -23505,7 +23505,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.6',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.linde_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -23792,7 +23792,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.linde_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -24613,7 +24613,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.6',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -24900,7 +24900,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.sanne_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -25721,7 +25721,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.5',
+    'state': '0.1',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -26008,7 +26008,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -43197,7 +43197,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '88',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
@@ -43857,7 +43857,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '3.7',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -44965,7 +44965,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.6',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.linde_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -45252,7 +45252,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.linde_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -46073,7 +46073,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.6',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -46360,7 +46360,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.sanne_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -47181,7 +47181,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.5',
+    'state': '0.1',
   })
 # ---
 # name: test_climate[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -47468,7 +47468,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.1',
+    'state': '0',
   })
 # ---
 # name: test_climate[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -52688,7 +52688,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2.3',
+    'state': '5.5',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -52975,7 +52975,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.7',
+    'state': '0',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -55171,6 +55171,1680 @@
     }),
     'context': <ANY>,
     'entity_id': 'update.woonkamer_airco_gateway_firmware_update',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is holiday mode active',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is holiday mode active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isholidaymodeactive',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_isHolidayModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer ClimateControl Is holiday mode active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_in_caution_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_caution_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in caution state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in caution state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isincautionstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_isInCautionState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_in_caution_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer ClimateControl Is in caution state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_caution_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in error state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in error state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinerrorstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer ClimateControl Is in error state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_in_warning_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_warning_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in warning state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in warning state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinwarningstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_isInWarningState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_in_warning_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer ClimateControl Is in warning state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_warning_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is powerful mode active',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is powerful mode active',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ispowerfulmodeactive',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_isPowerfulModeActive',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer ClimateControl Is powerful mode active',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_gateway_is_firmware_update_supported-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_gateway_is_firmware_update_supported',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is firmware update supported',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is firmware update supported',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isfirmwareupdatesupported',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_isFirmwareUpdateSupported',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_gateway_is_firmware_update_supported-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer Gateway Is firmware update supported',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_gateway_is_firmware_update_supported',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_gateway_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_gateway_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in error state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in error state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinerrorstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_gateway_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer Gateway Is in error state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_gateway_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_outdoorunit_is_in_caution_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_caution_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in caution state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in caution state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isincautionstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_outdoorUnit_None_isInCautionState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_outdoorunit_is_in_caution_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer OutdoorUnit Is in caution state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_caution_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_outdoorunit_is_in_error_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_error_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in error state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in error state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinerrorstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_outdoorUnit_None_isInErrorState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_outdoorunit_is_in_error_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer OutdoorUnit Is in error state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_error_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_outdoorunit_is_in_warning_state-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_warning_state',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Is in warning state',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Is in warning state',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'isinwarningstate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_outdoorUnit_None_isInWarningState',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_outdoorunit_is_in_warning_state-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'problem',
+      'friendly_name': 'Werkkamer OutdoorUnit Is in warning state',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_warning_state',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[button.werkkamer_refresh-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
+    'entity_id': 'button.werkkamer_refresh',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Refresh',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:refresh',
+    'original_name': 'Refresh',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': None,
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_refresh',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[button.werkkamer_refresh-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer Refresh',
+      'icon': 'mdi:refresh',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.werkkamer_refresh',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[climate.werkkamer_room_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'fan_modes': list([
+        'auto',
+        'quiet',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        'low',
+        'middle',
+        'medium',
+        'high',
+      ]),
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.FAN_ONLY: 'fan_only'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+        <HVACMode.DRY: 'dry'>,
+      ]),
+      'max_temp': 31,
+      'min_temp': 10,
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'swing_horizontal_modes': list([
+        'stop',
+        'swing',
+      ]),
+      'swing_modes': list([
+        'stop',
+        'swing',
+        'windnice',
+      ]),
+      'target_temp_step': 0.5,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'climate',
+    'entity_category': None,
+    'entity_id': 'climate.werkkamer_room_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Room Temperature',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Room Temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <ClimateEntityFeature: 953>,
+    'translation_key': 'roomtemperature',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_roomTemperature',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[climate.werkkamer_room_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'current_temperature': 19,
+      'fan_mode': 'medium',
+      'fan_modes': list([
+        'auto',
+        'quiet',
+        '1',
+        '2',
+        '3',
+        '4',
+        '5',
+        'low',
+        'middle',
+        'medium',
+        'high',
+      ]),
+      'friendly_name': 'Werkkamer Room Temperature',
+      'hvac_modes': list([
+        <HVACMode.OFF: 'off'>,
+        <HVACMode.FAN_ONLY: 'fan_only'>,
+        <HVACMode.HEAT: 'heat'>,
+        <HVACMode.COOL: 'cool'>,
+        <HVACMode.HEAT_COOL: 'heat_cool'>,
+        <HVACMode.DRY: 'dry'>,
+      ]),
+      'max_temp': 31,
+      'min_temp': 10,
+      'preset_mode': 'none',
+      'preset_modes': list([
+        'away',
+        'boost',
+        'none',
+      ]),
+      'supported_features': <ClimateEntityFeature: 953>,
+      'swing_horizontal_mode': 'stop',
+      'swing_horizontal_modes': list([
+        'stop',
+        'swing',
+      ]),
+      'swing_mode': 'stop',
+      'swing_modes': list([
+        'stop',
+        'swing',
+        'windnice',
+      ]),
+      'target_temp_step': 0.5,
+      'temperature': 21,
+    }),
+    'context': <ANY>,
+    'entity_id': 'climate.werkkamer_room_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[select.werkkamer_climatecontrol_schedule-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'options': list([
+        '0',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'select',
+    'entity_category': None,
+    'entity_id': 'select.werkkamer_climatecontrol_schedule',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Schedule',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:calendar-clock',
+    'original_name': 'Schedule',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'schedule',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_schedule',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[select.werkkamer_climatecontrol_schedule-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer ClimateControl Schedule',
+      'icon': 'mdi:calendar-clock',
+      'options': list([
+        '0',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'select.werkkamer_climatecontrol_schedule',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling daily electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling daily electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingdailyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling daily electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling monthly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_monthly',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling monthly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling weekly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling weekly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingweeklyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling weekly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Cooling yearly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:snowflake',
+    'original_name': 'Cooling yearly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'coolingyearlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_cooling_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Cooling yearly electrical consumption',
+      'icon': 'mdi:snowflake',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0.1',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_error_code-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_error_code',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Error code',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Error code',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'errorcode',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_None_errorCode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_error_code-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer ClimateControl Error code',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_error_code',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'U0-00',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating daily electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating daily electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingdailyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_d',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating daily electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating monthly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating monthly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingmonthlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_monthly',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating monthly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating weekly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating weekly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingweeklyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_w',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating weekly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0.3',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating yearly electrical consumption',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 2,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_icon': 'mdi:fire',
+    'original_name': 'Heating yearly electrical consumption',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'heatingyearlyelectricalconsumption',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_electrical_heating_m',
+    'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'energy',
+      'friendly_name': 'Werkkamer ClimateControl Heating yearly electrical consumption',
+      'icon': 'mdi:fire',
+      'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
+      'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '12.5',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_outdoor_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Outdoor temperature',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 1,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'Outdoor temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'outdoortemperature',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_sensoryData_outdoorTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_outdoor_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'Werkkamer ClimateControl Outdoor temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '14.5',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_room_temperature-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.werkkamer_climatecontrol_room_temperature',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Room temperature',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 1,
+      }),
+    }),
+    'original_device_class': <SensorDeviceClass.TEMPERATURE: 'temperature'>,
+    'original_icon': '',
+    'original_name': 'Room temperature',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'roomtemperature',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_sensoryData_roomTemperature',
+    'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_room_temperature-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'device_class': 'temperature',
+      'friendly_name': 'Werkkamer ClimateControl Room temperature',
+      'icon': '',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+      'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_climatecontrol_room_temperature',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '19',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_error_code-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.werkkamer_gateway_error_code',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Error code',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Error code',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'errorcode',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_errorCode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_error_code-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer Gateway Error code',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_gateway_error_code',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_ip_address-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.werkkamer_gateway_ip_address',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'IP address',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:ip-network',
+    'original_name': 'IP address',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ipaddress',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_None_ipAddress',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_ip_address-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer Gateway IP address',
+      'icon': 'mdi:ip-network',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_gateway_ip_address',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '192.168.1.200',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_ratelimit_remaining_day-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Ratelimit remaining day',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Ratelimit remaining day',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'ratelimitremainingday',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_limitsensor_remaining_day',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_ratelimit_remaining_day-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer Gateway Ratelimit remaining day',
+      'icon': 'mdi:information-outline',
+      'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_outdoorunit_error_code-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.werkkamer_outdoorunit_error_code',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Error code',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': 'mdi:information-outline',
+    'original_name': 'Error code',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'errorcode',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_outdoorUnit_None_errorCode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_outdoorunit_error_code-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'friendly_name': 'Werkkamer OutdoorUnit Error code',
+      'icon': 'mdi:information-outline',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.werkkamer_outdoorunit_error_code',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '00-',
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[update.werkkamer_gateway_firmware_update-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'update',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'update.werkkamer_gateway_firmware_update',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Firmware update',
+    'options': dict({
+    }),
+    'original_device_class': <UpdateDeviceClass.FIRMWARE: 'firmware'>,
+    'original_icon': 'mdi:update',
+    'original_name': 'Firmware update',
+    'platform': 'daikin_onecta',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': <UpdateEntityFeature: 1>,
+    'translation_key': 'firmwareupdate',
+    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_gateway_firmware_update',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_climate_homekit_fan_mode_aliases[update.werkkamer_gateway_firmware_update-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      'auto_update': False,
+      'device_class': 'firmware',
+      'display_precision': 0,
+      'entity_picture': '/api/brands/integration/daikin_onecta/icon.png',
+      'friendly_name': 'Werkkamer Gateway Firmware update',
+      'icon': 'mdi:update',
+      'in_progress': False,
+      'installed_version': '1_28_0',
+      'latest_version': '1_28_0',
+      'release_summary': None,
+      'release_url': None,
+      'skipped_version': None,
+      'supported_features': <UpdateEntityFeature: 1>,
+      'title': None,
+      'update_percentage': None,
+    }),
+    'context': <ANY>,
+    'entity_id': 'update.werkkamer_gateway_firmware_update',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -70959,7 +72633,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '1.3',
+    'state': '0',
   })
 # ---
 # name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -72130,7 +73804,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0',
+    'state': '2.4',
   })
 # ---
 # name: test_fanmode[sensor.sala_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -80559,7 +82233,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '53',
+    'state': '75',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -81310,7 +82984,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '146',
+    'state': '137',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
