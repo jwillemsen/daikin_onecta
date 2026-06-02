@@ -122,12 +122,11 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             self._firmware_id,
         )
 
-        result = await self._device.put(self._device.id, self._management_point_type, f"firmware/{self._firmware_id}")
+        self._attr_in_progress = await self._device.put(self._device.id, self._management_point_type, f"firmware/{self._firmware_id}")
 
-        if not result:
+        if not self._attr_in_progress:
             _LOGGER.error("Failed to trigger firmware update for %s", self._device.name)
-
-        self.async_write_ha_state()
+            self.async_write_ha_state()
 
     # ------------------------------------------------------------------
     # Internal helpers

@@ -76275,7 +76275,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'My Living Room DomesticHotWaterTank Tank temperature',
+      'friendly_name': 'My Living Room Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -76569,7 +76569,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 40.0,
-      'friendly_name': 'My Living Room DomesticHotWaterTank',
+      'friendly_name': 'My Living Room',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
@@ -78635,7 +78635,7 @@
 # name: test_mc80z[binary_sensor.vloerverwarming_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Is holiday mode active',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78687,7 +78687,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Vloerverwarming Is in emergency state',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Is in emergency state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78739,7 +78739,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Vloerverwarming Is in error state',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78790,7 +78790,7 @@
 # name: test_mc80z[binary_sensor.vloerverwarming_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Is in installer state',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78842,7 +78842,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Vloerverwarming Is in warning state',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Is in warning state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -78893,7 +78893,7 @@
 # name: test_mc80z[binary_sensor.vloerverwarming_domestichotwatertank_is_powerful_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Is powerful mode active',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Is powerful mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -79298,7 +79298,7 @@
 # name: test_mc80z[select.vloerverwarming_domestichotwatertank_schedule-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Schedule',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Schedule',
       'icon': 'mdi:calendar-clock',
       'options': list([
         'User defined',
@@ -80636,7 +80636,7 @@
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_error_code-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Error code',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Error code',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -80687,7 +80687,7 @@
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Heat up mode',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -80744,7 +80744,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Vloerverwarming Heating daily electrical consumption',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -80803,7 +80803,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Vloerverwarming Heating monthly electrical consumption',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -80862,7 +80862,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Vloerverwarming Heating weekly electrical consumption',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -80921,7 +80921,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Vloerverwarming Heating yearly electrical consumption',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -80974,7 +80974,7 @@
 # name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Vloerverwarming Setpoint mode',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -81031,7 +81031,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Vloerverwarming Tank temperature',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -81441,7 +81441,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 41.0,
-      'friendly_name': 'Vloerverwarming',
+      'friendly_name': 'Vloerverwarming DomesticHotWaterTank',
       'max_temp': 60.0,
       'min_temp': 30.0,
       'operation_list': list([
@@ -81710,7 +81710,7 @@
 # name: test_minimal_data[binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is holiday mode active',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is holiday mode active',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -81762,7 +81762,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'problem',
-      'friendly_name': 'Altherma Is in error state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in error state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -81813,7 +81813,7 @@
 # name: test_minimal_data[binary_sensor.altherma_domestichotwatertank_is_in_installer_state-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Is in installer state',
+      'friendly_name': 'Altherma DomesticHotWaterTank Is in installer state',
       'icon': 'mdi:information-outline',
     }),
     'context': <ANY>,
@@ -82858,7 +82858,7 @@
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heat_up_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Heat up mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heat up mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -82915,7 +82915,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating daily electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating daily electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -82974,7 +82974,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating monthly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating monthly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -83033,7 +83033,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating weekly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating weekly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -83092,7 +83092,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'energy',
-      'friendly_name': 'Altherma Heating yearly electrical consumption',
+      'friendly_name': 'Altherma DomesticHotWaterTank Heating yearly electrical consumption',
       'icon': 'mdi:fire',
       'state_class': <SensorStateClass.TOTAL_INCREASING: 'total_increasing'>,
       'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
@@ -83145,7 +83145,7 @@
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_setpoint_mode-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      'friendly_name': 'Altherma Setpoint mode',
+      'friendly_name': 'Altherma DomesticHotWaterTank Setpoint mode',
       'icon': 'mdi:alphabetical',
     }),
     'context': <ANY>,
@@ -83202,7 +83202,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'device_class': 'temperature',
-      'friendly_name': 'Altherma Tank temperature',
+      'friendly_name': 'Altherma DomesticHotWaterTank Tank temperature',
       'icon': 'mdi:bathtub-outline',
       'state_class': <SensorStateClass.MEASUREMENT: 'measurement'>,
       'unit_of_measurement': <UnitOfTemperature.CELSIUS: '°C'>,
@@ -83496,7 +83496,7 @@
   StateSnapshot({
     'attributes': ReadOnlyDict({
       'current_temperature': 53.0,
-      'friendly_name': 'Altherma',
+      'friendly_name': 'Altherma DomesticHotWaterTank',
       'max_temp': None,
       'min_temp': None,
       'operation_list': list([
