@@ -126,7 +126,8 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
 
         if not self._attr_in_progress:
             _LOGGER.error("Failed to trigger firmware update for %s", self._device.name)
-            self.async_write_ha_state()
+
+        self.async_write_ha_state()
 
     # ------------------------------------------------------------------
     # Internal helpers
