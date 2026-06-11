@@ -56,6 +56,10 @@ Current poll limits can be found under [system health](https://my.home-assistant
 
 When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
 
+# Enable debug logging
+
+To enable debug logging go to [Daikin Onecta integration](https://my.home-assistant.io/redirect/integration/?domain=daikin_onecta), press the three dots in the upper right corner and select `Enable debug logging`.
+
 # Setting the log level
 
 If you'd like to see more granular logs, to investigate the communication or for other debugging purposes, you can set the log level in the Home Assistant config. The following lines can be added to set the overall log level for the component and the oauth2 helper which this integration uses:
