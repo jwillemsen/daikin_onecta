@@ -1,5 +1,3 @@
-"""Unit tests for DaikinOnectaDevice silent-revert detection."""
-
 import logging
 from datetime import datetime
 from datetime import timedelta
