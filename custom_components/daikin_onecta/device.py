@@ -24,7 +24,6 @@ REVERT_CHECK_TTL = timedelta(minutes=5)
 
 @dataclass
 class _PendingWrite:
-
     """A successful PATCH whose effect has not yet been observed via the cloud."""
 
     embedded_id: str
