@@ -1,4 +1,5 @@
 """Unit tests for DaikinOnectaDevice silent-revert detection."""
+
 import logging
 from datetime import datetime
 from datetime import timedelta
@@ -43,19 +44,23 @@ def _make_device(operation_mode="auto", fan_current_mode="auto"):
 
 
 def _new_payload(operation_mode_value, fan_current_mode_value=None, drop_fan=False):
-    fan_block = {} if drop_fan else {
-        "fanControl": {
-            "value": {
-                "operationModes": {
-                    "auto": {
-                        "fanSpeed": {
-                            "currentMode": {"value": fan_current_mode_value, "values": ["auto", "fixed"]},
+    fan_block = (
+        {}
+        if drop_fan
+        else {
+            "fanControl": {
+                "value": {
+                    "operationModes": {
+                        "auto": {
+                            "fanSpeed": {
+                                "currentMode": {"value": fan_current_mode_value, "values": ["auto", "fixed"]},
+                            },
                         },
                     },
                 },
             },
-        },
-    }
+        }
+    )
     return {
         "id": "dev-1",
         "deviceModel": "dx23",
@@ -135,9 +140,7 @@ async def test_mismatching_refresh_warns_and_drops_pending_write(caplog):
 @pytest.mark.asyncio
 async def test_missing_characteristic_keeps_pending_write(caplog):
     device, _ = _make_device()
-    await device.patch(
-        "dev-1", "climateControl", "fanControl", "/operationModes/auto/fanSpeed/currentMode", "auto"
-    )
+    await device.patch("dev-1", "climateControl", "fanControl", "/operationModes/auto/fanSpeed/currentMode", "auto")
     with caplog.at_level(logging.WARNING, logger="custom_components.daikin_onecta.device"):
         device.setJsonData(_new_payload("auto", drop_fan=True))
     # No fanControl in the new payload -> keep watching, no warning yet.
