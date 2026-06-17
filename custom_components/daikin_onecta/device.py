@@ -11,6 +11,11 @@ from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
+# Sentinel returned by _read_value when the requested characteristic/path is not
+# present in the device payload, so we can distinguish that from an explicit
+# ``None`` value that the cloud actually reports.
+_MISSING = object()
+
 # How long to keep watching for a silent revert after a successful PATCH.
 # After this period we stop checking the pending write to avoid false positives
 # caused by legitimate user changes via the wired controller or the Onecta app.
@@ -124,31 +129,31 @@ class DaikinOnectaDevice:
         self._check_pending_writes()
 
     def _read_value(self, embedded_id, data_point, data_point_path):
-        """Return the current value at the given characteristic path, or None.
+        """Return the current value at the given characteristic path.
 
         The characteristic value is stored under ``managementPoint[data_point]["value"]``.
         For nested writes (``data_point_path`` like ``/operationModes/auto/fanSpeed/currentMode``)
         we walk that path inside the characteristic value and read the final ``value`` field.
+        Returns the sentinel ``_MISSING`` when the path is not present in the payload, so that
+        an explicit ``None`` value coming from the cloud can still be compared correctly.
         """
         for management_point in self.daikin_data.get("managementPoints", []):
             if management_point.get("embeddedId") != embedded_id:
                 continue
             characteristic = management_point.get(data_point)
             if characteristic is None:
-                return None
+                return _MISSING
             if not data_point_path:
-                return characteristic.get("value")
+                return characteristic.get("value", _MISSING)
             node = characteristic.get("value")
             for segment in data_point_path.strip("/").split("/"):
-                if not isinstance(node, dict):
-                    return None
-                node = node.get(segment)
-                if node is None:
-                    return None
+                if not isinstance(node, dict) or segment not in node:
+                    return _MISSING
+                node = node[segment]
             if isinstance(node, dict):
-                return node.get("value")
+                return node.get("value", _MISSING)
             return node
-        return None
+        return _MISSING
 
     def _check_pending_writes(self):
         """Warn when a previously accepted PATCH has been reverted by the cloud/unit."""
@@ -161,7 +166,7 @@ class DaikinOnectaDevice:
                 # Stop watching expired entries silently.
                 continue
             actual = self._read_value(pending.embedded_id, pending.data_point, pending.data_point_path)
-            if actual is None:
+            if actual is _MISSING:
                 # Value not present yet in the new payload, keep watching.
                 remaining[key] = pending
                 continue
