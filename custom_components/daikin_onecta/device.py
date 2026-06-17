@@ -1,5 +1,6 @@
 import json
 import logging
+from dataclasses import dataclass
 from datetime import datetime
 from datetime import timedelta
 
@@ -16,6 +17,17 @@ _LOGGER = logging.getLogger(__name__)
 REVERT_CHECK_TTL = timedelta(minutes=5)
 
 
+@dataclass
+class _PendingWrite:
+    """A successful PATCH whose effect has not yet been observed via the cloud."""
+
+    embedded_id: str
+    data_point: str
+    data_point_path: str
+    value: object
+    set_at: datetime
+
+
 class DaikinOnectaDevice:
     """Class to represent and control one Daikin Onecta Device."""
 
@@ -29,8 +41,10 @@ class DaikinOnectaDevice:
         # Successful PATCH writes for which we have not yet observed the
         # resulting value via a coordinator refresh. Used to warn the user
         # when the Daikin cloud, gateway or wired master controller silently
-        # reverts a change.
-        self._pending_writes: list[dict] = []
+        # reverts a change. Keyed by (embedded_id, data_point, data_point_path)
+        # so a newer PATCH to the same characteristic supersedes the previous
+        # one and we do not warn about writes that were intentionally replaced.
+        self._pending_writes: dict[tuple[str, str, str], _PendingWrite] = {}
 
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -141,17 +155,17 @@ class DaikinOnectaDevice:
         if not self._pending_writes:
             return
         now = datetime.now()
-        remaining: list[dict] = []
-        for pending in self._pending_writes:
-            if now - pending["set_at"] > REVERT_CHECK_TTL:
+        remaining: dict[tuple[str, str, str], _PendingWrite] = {}
+        for key, pending in self._pending_writes.items():
+            if now - pending.set_at > REVERT_CHECK_TTL:
                 # Stop watching expired entries silently.
                 continue
-            actual = self._read_value(pending["embedded_id"], pending["data_point"], pending["data_point_path"])
+            actual = self._read_value(pending.embedded_id, pending.data_point, pending.data_point_path)
             if actual is None:
                 # Value not present yet in the new payload, keep watching.
-                remaining.append(pending)
+                remaining[key] = pending
                 continue
-            if actual == pending["value"]:
+            if actual == pending.value:
                 # The write took effect, stop watching this entry.
                 continue
             _LOGGER.warning(
@@ -159,10 +173,10 @@ class DaikinOnectaDevice:
                 "The unit, gateway or a wired master controller (for example a BRC1H) most likely reverted "
                 "the change. Check the master controller's operation mode lock / cool-heat selection setting.",
                 self.name,
-                pending["embedded_id"],
-                pending["data_point"],
-                pending["data_point_path"] or "",
-                pending["value"],
+                pending.embedded_id,
+                pending.data_point,
+                pending.data_point_path or "",
+                pending.value,
                 actual,
             )
             # Warn only once per pending write, then drop it.
@@ -182,14 +196,15 @@ class DaikinOnectaDevice:
         _LOGGER.info("Result: {}".format(res))
 
         if res is True:
-            self._pending_writes.append(
-                {
-                    "embedded_id": embeddedId,
-                    "data_point": dataPoint,
-                    "data_point_path": dataPointPath,
-                    "value": value,
-                    "set_at": datetime.now(),
-                }
+            # Replace any previous pending write for the same characteristic so
+            # superseded values do not generate a false revert warning.
+            key = (embeddedId, dataPoint, dataPointPath or "")
+            self._pending_writes[key] = _PendingWrite(
+                embedded_id=embeddedId,
+                data_point=dataPoint,
+                data_point_path=dataPointPath or "",
+                value=value,
+                set_at=datetime.now(),
             )
 
         return res
