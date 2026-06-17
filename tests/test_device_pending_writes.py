@@ -77,32 +77,32 @@ def _new_payload(operation_mode_value, fan_current_mode_value=None, drop_fan=Fal
 
 def test_read_value_top_level_and_nested():
     device, _ = _make_device(operation_mode="auto", fan_current_mode="fixed")
-    assert device._read_value("climateControl", "operationMode", "") == "auto"
-    assert device._read_value("climateControl", "fanControl", "/operationModes/auto/fanSpeed/currentMode") == "fixed"
+    assert device._read_value("climateControl", "operationMode", "") == "auto"  # nosec B101
+    assert device._read_value("climateControl", "fanControl", "/operationModes/auto/fanSpeed/currentMode") == "fixed"  # nosec B101
 
 
 def test_read_value_returns_missing_for_unknown_paths():
     device, _ = _make_device()
-    assert device._read_value("does-not-exist", "operationMode", "") is _MISSING
-    assert device._read_value("climateControl", "doesNotExist", "") is _MISSING
-    assert device._read_value("climateControl", "fanControl", "/operationModes/unknown/fanSpeed/currentMode") is _MISSING
+    assert device._read_value("does-not-exist", "operationMode", "") is _MISSING  # nosec B101
+    assert device._read_value("climateControl", "doesNotExist", "") is _MISSING  # nosec B101
+    assert device._read_value("climateControl", "fanControl", "/operationModes/unknown/fanSpeed/currentMode") is _MISSING  # nosec B101
 
 
 def test_read_value_distinguishes_missing_from_explicit_none():
     device, _ = _make_device()
     # Replace value with explicit None
     device.daikin_data["managementPoints"][0]["operationMode"] = {"value": None}
-    assert device._read_value("climateControl", "operationMode", "") is None
+    assert device._read_value("climateControl", "operationMode", "") is None  # nosec B101
     # Drop the "value" key entirely -> missing
     device.daikin_data["managementPoints"][0]["operationMode"] = {}
-    assert device._read_value("climateControl", "operationMode", "") is _MISSING
+    assert device._read_value("climateControl", "operationMode", "") is _MISSING  # nosec B101
 
 
 @pytest.mark.asyncio
 async def test_successful_patch_records_pending_write():
     device, _ = _make_device()
     await device.patch("dev-1", "climateControl", "operationMode", "", "auto")
-    assert ("climateControl", "operationMode", "") in device._pending_writes
+    assert ("climateControl", "operationMode", "") in device._pending_writes  # nosec B101
 
 
 @pytest.mark.asyncio
@@ -110,7 +110,7 @@ async def test_failed_patch_does_not_record_pending_write():
     device, api = _make_device()
     api.doBearerRequest = AsyncMock(return_value=False)
     await device.patch("dev-1", "climateControl", "operationMode", "", "auto")
-    assert device._pending_writes == {}
+    assert device._pending_writes == {}  # nosec B101
 
 
 @pytest.mark.asyncio
@@ -120,8 +120,8 @@ async def test_matching_refresh_clears_pending_write_silently(caplog):
     caplog.clear()
     with caplog.at_level(logging.WARNING, logger="custom_components.daikin_onecta.device"):
         device.setJsonData(_new_payload("auto", fan_current_mode_value="auto"))
-    assert device._pending_writes == {}
-    assert "reverted" not in caplog.text
+    assert device._pending_writes == {}  # nosec B101
+    assert "reverted" not in caplog.text  # nosec B101
 
 
 @pytest.mark.asyncio
@@ -130,9 +130,9 @@ async def test_mismatching_refresh_warns_and_drops_pending_write(caplog):
     await device.patch("dev-1", "climateControl", "operationMode", "", "auto")
     with caplog.at_level(logging.WARNING, logger="custom_components.daikin_onecta.device"):
         device.setJsonData(_new_payload("cooling", fan_current_mode_value="auto"))
-    assert device._pending_writes == {}
-    assert "was set to 'auto'" in caplog.text
-    assert "now reports 'cooling'" in caplog.text
+    assert device._pending_writes == {}  # nosec B101
+    assert "was set to 'auto'" in caplog.text  # nosec B101
+    assert "now reports 'cooling'" in caplog.text  # nosec B101
 
 
 @pytest.mark.asyncio
@@ -142,8 +142,8 @@ async def test_missing_characteristic_keeps_pending_write(caplog):
     with caplog.at_level(logging.WARNING, logger="custom_components.daikin_onecta.device"):
         device.setJsonData(_new_payload("auto", drop_fan=True))
     # No fanControl in the new payload -> keep watching, no warning yet.
-    assert ("climateControl", "fanControl", "/operationModes/auto/fanSpeed/currentMode") in device._pending_writes
-    assert "reverted" not in caplog.text
+    assert ("climateControl", "fanControl", "/operationModes/auto/fanSpeed/currentMode") in device._pending_writes  # nosec B101
+    assert "reverted" not in caplog.text  # nosec B101
 
 
 @pytest.mark.asyncio
@@ -151,14 +151,14 @@ async def test_second_patch_supersedes_previous_pending_write(caplog):
     device, _ = _make_device()
     await device.patch("dev-1", "climateControl", "operationMode", "", "auto")
     await device.patch("dev-1", "climateControl", "operationMode", "", "cooling")
-    assert len(device._pending_writes) == 1
+    assert len(device._pending_writes) == 1  # nosec B101
     pending = next(iter(device._pending_writes.values()))
-    assert pending.value == "cooling"
+    assert pending.value == "cooling"  # nosec B101
     # Cloud confirms the latest value -> no warning, no leftover entries.
     with caplog.at_level(logging.WARNING, logger="custom_components.daikin_onecta.device"):
         device.setJsonData(_new_payload("cooling", fan_current_mode_value="auto"))
-    assert device._pending_writes == {}
-    assert "reverted" not in caplog.text
+    assert device._pending_writes == {}  # nosec B101
+    assert "reverted" not in caplog.text  # nosec B101
 
 
 def test_expired_pending_write_is_dropped_silently(caplog):
@@ -172,5 +172,5 @@ def test_expired_pending_write_is_dropped_silently(caplog):
     )
     with caplog.at_level(logging.WARNING, logger="custom_components.daikin_onecta.device"):
         device.setJsonData(_new_payload("cooling", fan_current_mode_value="auto"))
-    assert device._pending_writes == {}
-    assert "reverted" not in caplog.text
+    assert device._pending_writes == {}  # nosec B101
+    assert "reverted" not in caplog.text  # nosec B101
