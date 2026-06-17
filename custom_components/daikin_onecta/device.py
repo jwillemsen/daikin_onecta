@@ -129,31 +129,35 @@ class DaikinOnectaDevice:
         self._check_pending_writes()
 
     def _read_value(self, embedded_id, data_point, data_point_path):
-        """Return the current value at the given characteristic path.
+        """Return the current value at the given characteristic path, or _MISSING if absent."""
+        management_point = self._find_management_point(embedded_id)
+        if management_point is None:
+            return _MISSING
+        characteristic = management_point.get(data_point)
+        if characteristic is None:
+            return _MISSING
+        node = characteristic.get("value", _MISSING)
+        if data_point_path:
+            node = self._walk_path(node, data_point_path)
+        if isinstance(node, dict):
+            return node.get("value", _MISSING)
+        return node
 
-        The characteristic value is stored under ``managementPoint[data_point]["value"]``.
-        For nested writes (``data_point_path`` like ``/operationModes/auto/fanSpeed/currentMode``)
-        we walk that path inside the characteristic value and read the final ``value`` field.
-        Returns the sentinel ``_MISSING`` when the path is not present in the payload, so that
-        an explicit ``None`` value coming from the cloud can still be compared correctly.
-        """
+    def _find_management_point(self, embedded_id):
+        """Return the management point with the given embedded id, or None."""
         for management_point in self.daikin_data.get("managementPoints", []):
-            if management_point.get("embeddedId") != embedded_id:
-                continue
-            characteristic = management_point.get(data_point)
-            if characteristic is None:
+            if management_point.get("embeddedId") == embedded_id:
+                return management_point
+        return None
+
+    @staticmethod
+    def _walk_path(node, path):
+        """Follow ``path`` (``/a/b/c``) inside ``node`` and return the resulting subtree or _MISSING."""
+        for segment in path.strip("/").split("/"):
+            if not isinstance(node, dict) or segment not in node:
                 return _MISSING
-            if not data_point_path:
-                return characteristic.get("value", _MISSING)
-            node = characteristic.get("value")
-            for segment in data_point_path.strip("/").split("/"):
-                if not isinstance(node, dict) or segment not in node:
-                    return _MISSING
-                node = node[segment]
-            if isinstance(node, dict):
-                return node.get("value", _MISSING)
-            return node
-        return _MISSING
+            node = node[segment]
+        return node
 
     def _check_pending_writes(self):
         """Warn when a previously accepted PATCH has been reverted by the cloud/unit."""
