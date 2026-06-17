@@ -36,7 +36,7 @@ Visit https://developer.cloud.daikineurope.com and sign up for a developer accou
 
 First create an account at https://developer.cloud.daikineurope.com, after that create an application at the Daikin Developer website, see the Getting started page at the Daikin Developer portal for more information. As `redirect uri` always first use `https://my.home-assistant.io/redirect/oauth`. Copy and save the provided client id and secret, you need to enter these in the next step.
 
-When you want to setup with a single Daikin Onecta account go within Home Assistant to Settings - Devices & Services and pressing the `ADD INTEGRATION` button to create a new Integration, select `Daikin Onecta` in the drop-down menu or use [My Home Assistant](https://my.home-assistant.io/redirect/config_flow_start/?domain=daikin_onecta). In the `Add credentials` form enter a user-defined name (for example `daikin_onecta`), and enter the `OAuth Client ID` and `OAuth Client Secret` as you obtained from the Daikin website, and finish by pressing the `ADD` button. When you want to setup a second or more Daikin Onecta accounts follow these [steps](https://www.home-assistant.io/integrations/application_credentials/#manual-setup) to first add the additional credentials, and after that setup the integration using [My Home Assistant](https://my.home-assistant.io/redirect/config_flow_start/?domain=daikin_onecta).
+When you want to setup with a single Daikin Onecta account you can use [My Home Assistant](https://my.home-assistant.io/redirect/config_flow_start/?domain=daikin_onecta) or manually go within Home Assistant to Settings - Devices & Services and pressing the `ADD INTEGRATION` button to add a new Integration, select `Daikin Onecta` in the drop-down menu or use . In the `Add credentials` form enter a user-defined name (for example `daikin_onecta`), and enter the `OAuth Client ID` and `OAuth Client Secret` as you obtained from the Daikin website, and finish by pressing the `ADD` button. When you want to setup a second or more Daikin Onecta accounts follow these [steps](https://www.home-assistant.io/integrations/application_credentials/#manual-setup) to first add the additional credentials, and after that setup the integration using [My Home Assistant](https://my.home-assistant.io/redirect/config_flow_start/?domain=daikin_onecta).
 
 You will be redirected to the Daikin website where you have to authorize the application. First check the checkbox in the permission form that you give this 3rd party integration information and control for your devices, after that select the `I agree` button to give the application permissions, after that you will be redirected back to the `redirect uri` as you provided as part of the application on the Daikin website, there you have to link Home Assistant by pressing the `Link account` button. In case the provided instance URL is not correct you can edit it by pressing the pencil behind the URL. When you have pressed `Link account` the integration will be added and the Daikin devices connected to your Daikin cloud account should now be visible within Home Assistant.
 
@@ -55,6 +55,10 @@ Current poll limits can be found under [system health](https://my.home-assistant
 # Reinstall
 
 When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
+
+# Enable debug logging
+
+To enable debug logging go to [Daikin Onecta integration](https://my.home-assistant.io/redirect/integration/?domain=daikin_onecta), press the three dots in the upper right corner and select `Enable debug logging`.
 
 # Setting the log level
 

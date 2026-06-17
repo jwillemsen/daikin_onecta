@@ -1,0 +1,306 @@
+{
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Інтервал оновлення в період високої частоти (хвилини)",
+          "low_scan_interval": "Інтервал оновлення в період низької частоти (хвилини)",
+          "high_scan_start": "Час початку періоду високої частоти",
+          "low_scan_start": "Час початку періоду низької частоти",
+          "scan_ignore": "Кількість секунд, протягом яких оновлення даних ігнорується після команди",
+          "homekit_fan_mode_aliases": "Показувати сумісні з HomeKit псевдоніми швидкостей вентилятора"
+        },
+        "description": "Налаштування опитування Daikin Onecta Cloud",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "config": {
+    "abort": {
+      "already_configured": "Інтеграцію вже налаштовано.",
+      "cannot_connect": "Не вдалося підключитися до Daikin Cloud.",
+      "init_failed": "Не вдалося ініціалізувати Daikin API.",
+      "invalid_token": "Недійсний або прострочений токен; будь ласка, повторно налаштуйте інтеграцію.",
+      "unknown": "Сталася неочікувана помилка.",
+      "wrong_account": "Будь ласка, переконайтеся, що ви виконуєте повторне налаштування з тим самим обліковим записом."
+    },
+    "error": {
+      "cannot_connect": "Не вдалося підключитися",
+      "device_fail": "Неочікувана помилка",
+      "device_timeout": "Не вдалося підключитися",
+      "forbidden": "Недійсна автентифікація",
+      "invalid_auth": "Недійсна автентифікація",
+      "unknown": "Неочікувана помилка"
+    },
+    "step": {
+      "user": {
+        "data": {
+          "email": "Адреса електронної пошти",
+          "password": "Пароль"
+        },
+        "description": "Введіть адресу електронної пошти та пароль, які ви використовуєте для входу в Daikin Cloud, а потім натисніть «Надіслати».",
+        "title": "Налаштування Daikin Onecta"
+      }
+    }
+  },
+  "entity": {
+    "update": {
+      "firmwareupdate": {
+        "name": "Оновлення прошивки"
+      }
+    },
+    "select": {
+      "schedule": {
+        "name": "Розклад"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Режим стримера"
+      },
+      "economode": {
+        "name": "Економний режим"
+      }
+    },
+    "sensor": {
+      "sgtin": {
+        "name": "SGTIN"
+      },
+      "ratelimitremainingday": {
+        "name": "Залишок добового ліміту запитів"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Добове споживання електроенергії на охолодження"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Тижневе споживання електроенергії на охолодження"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Місячне споживання електроенергії на охолодження"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Річне споживання електроенергії на охолодження"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Добове споживання електроенергії на опалення"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Тижневе споживання електроенергії на опалення"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Місячне споживання електроенергії на опалення"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Річне споживання електроенергії на опалення"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Добове споживання газу на охолодження"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Тижневе споживання газу на охолодження"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Місячне споживання газу на охолодження"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Річне споживання газу на охолодження"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Добове споживання газу на опалення"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Тижневе споживання газу на опалення"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Місячне споживання газу на опалення"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Річне споживання газу на опалення"
+      },
+      "ipaddress": {
+        "name": "IP-адреса"
+      },
+      "tanktemperature": {
+        "name": "Температура бака"
+      },
+      "heatupmode": {
+        "name": "Режим нагрівання"
+      },
+      "outdoortemperature": {
+        "name": "Зовнішня температура"
+      },
+      "leavingwatertemperature": {
+        "name": "Температура води на виході"
+      },
+      "errorcode": {
+        "name": "Код помилки"
+      },
+      "setpointmode": {
+        "name": "Режим уставки"
+      },
+      "powerfulmode": {
+        "name": "Потужний режим"
+      },
+      "roomtemperature": {
+        "name": "Температура в приміщенні"
+      },
+      "onoffmode": {
+        "name": "Режим Увімк./Вимк."
+      },
+      "controlmode": {
+        "name": "Режим керування"
+      },
+      "roomhumidity": {
+        "name": "Вологість у приміщенні"
+      },
+      "pm1concentration": {
+        "name": "Концентрація PM1"
+      },
+      "pm25concentration": {
+        "name": "Концентрація PM2.5"
+      },
+      "operationmode": {
+        "name": "Режим роботи"
+      },
+      "airpurificationmode": {
+        "name": "Режим очищення повітря"
+      },
+      "wificonnectionssid": {
+        "name": "SSID Wi-Fi-з’єднання"
+      },
+      "wificonnectionstrength": {
+        "name": "Сила Wi-Fi-сигналу"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "Концентрація PM10"
+      },
+      "leavingwateroffset": {
+        "name": "Зсув температури води на виході"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Розрахункова температура води на виході"
+      },
+      "heatexchangertemperature": {
+        "name": "Температура теплообмінника"
+      },
+      "suctiontemperature": {
+        "name": "Температура всмоктування"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Налаштування підтримки сухості"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Швидкість обертання двигуна вентилятора"
+      },
+      "datetime": {
+        "name": "Дата/час"
+      },
+      "regioncode": {
+        "name": "Код регіону"
+      },
+      "timezone": {
+        "name": "Часовий пояс"
+      }
+    },
+    "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Режим відпустки активний"
+      },
+      "isinerrorstate": {
+        "name": "У стані помилки"
+      },
+      "isinwarningstate": {
+        "name": "У стані попередження"
+      },
+      "isininstallerstate": {
+        "name": "У стані інсталятора"
+      },
+      "isinemergencystate": {
+        "name": "В аварійному стані"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Потужний режим активний"
+      },
+      "iscoolheatmaster": {
+        "name": "Майстер охолодження/нагрівання"
+      },
+      "isinmodeconflict": {
+        "name": "Конфлікт режимів"
+      },
+      "isincautionstate": {
+        "name": "У стані застереження"
+      },
+      "islockfunctionenabled": {
+        "name": "Функція блокування ввімкнена"
+      },
+      "ledenabled": {
+        "name": "LED увімкнено"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Підтримується оновлення прошивки"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Літній час увімкнено"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Тихий",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Стоп",
+              "swing": "Гойдання",
+              "floorheatingairflow": "Потік повітря для підлогового опалення",
+              "windnice": "Комфортний потік повітря"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Стоп",
+              "swing": "Гойдання"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Досягнуто добового ліміту запитів",
+      "description": "Ви досягли добового ліміту запитів до Daikin Cloud, перевірте частоту опитування в налаштуваннях Daikin Onecta."
+    },
+    "minute_rate_limit": {
+      "title": "Досягнуто хвилинного ліміту запитів",
+      "description": "Ви досягли хвилинного ліміту запитів до Daikin Cloud, не робіть так багато викликів до ваших пристроїв Daikin за одну хвилину."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API-сервер",
+      "oauth2_status": "OAuth2-сервер",
+      "max_minute": "Максимум за хвилину",
+      "max_day": "Максимум за день",
+      "remaining_minute": "Залишок за хвилину",
+      "remaining_day": "Залишок за день",
+      "retry_after": "Повторити через",
+      "ratelimit_reset": "Скидання ліміту запитів",
+      "oauth2_token_valid": "Токен OAuth2 дійсний"
+    }
+  }
+}
