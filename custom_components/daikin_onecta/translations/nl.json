@@ -57,6 +57,9 @@
       "ratelimitremainingday": {
         "name": "Resterend per dag"
       },
+      "lastupdated": {
+        "name": "Laatste cloud update"
+      },
       "coolingdailyelectricalconsumption": {
         "name": "Dagelijks elektriciteitsverbruik koelen"
       },

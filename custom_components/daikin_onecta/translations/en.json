@@ -69,6 +69,9 @@
       "ratelimitremainingday": {
         "name": "Ratelimit remaining day"
       },
+      "lastupdated": {
+        "name": "Last cloud update"
+      },
       "coolingdailyelectricalconsumption": {
         "name": "Cooling daily electrical consumption"
       },
