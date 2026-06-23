@@ -14,4 +14,6 @@ jobs:
     - name: Create daikin_onecta.zip
       run: cd custom_components && zip -r ../daikin_onecta.zip daikin_onecta/
     - name: Upload daikin_onecta.zip to release
-      run: gh release upload ${{ github.event.release.tag_name }} daikin_onecta.zip
+      env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+      run: gh release upload "$RELEASE_TAG" daikin_onecta.zip
