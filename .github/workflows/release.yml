@@ -1,0 +1,20 @@
+name: Attach HACS Release Asset
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  attach-zip:
+    runs-on: ubuntu-slim
+    permissions:
+      contents: write
+    steps:
+    - uses: actions/checkout@v7
+    - name: Create daikin_onecta.zip
+      run: cd custom_components && zip -r ../daikin_onecta.zip daikin_onecta/
+    - name: Upload daikin_onecta.zip to release
+      uses: softprops/action-gh-release@v3
+      with:
+        files: daikin_onecta.zip
+
