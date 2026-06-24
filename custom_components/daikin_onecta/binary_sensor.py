@@ -81,7 +81,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = management_point_type
-        mpt = management_point_type[0].upper() + management_point_type[1:]
+        mpt = self._device.device_name_suffix(embedded_id, management_point_type)
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
