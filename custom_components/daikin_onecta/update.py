@@ -28,6 +28,14 @@ _LOGGER = logging.getLogger(__name__)
 # The Daikin Onecta cloud API exposes firmware updates
 
 
+def _get_value(mp: dict, characteristic: str) -> Any:
+    """Safely read .value from a management point characteristic."""
+    char = mp.get(characteristic)
+    if not isinstance(char, dict):
+        return None
+    return char.get("value")
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
@@ -44,12 +52,19 @@ async def async_setup_entry(
         "outdoorUnit",
         "indoorUnitHydro",
     }
+    required_version_fields = {
+        "firmwareVersion",
+        "softwareVersion",
+    }
 
     for device in onecta_data.devices.values():
         for mp_type in supported_management_point_types:
             management_point = _get_management_point(device, mp_type)
             if management_point is not None:
-                entities.append(DaikinFirmwareUpdateEntity(coordinator, device, management_point, mp_type))
+                for field in required_version_fields:
+                    if _get_value(management_point, field) is not None:
+                        entities.append(DaikinFirmwareUpdateEntity(coordinator, device, management_point, mp_type))
+                        break
 
     async_add_entities(entities)
 
@@ -60,14 +75,6 @@ def _get_management_point(device: DaikinOnectaDevice, mp_type: str) -> dict | No
         if mp.get("managementPointType") == mp_type:
             return mp
     return None
-
-
-def _get_value(mp: dict, characteristic: str) -> Any:
-    """Safely read .value from a management point characteristic."""
-    char = mp.get(characteristic)
-    if not isinstance(char, dict):
-        return None
-    return char.get("value")
 
 
 class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
