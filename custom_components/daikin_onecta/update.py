@@ -25,8 +25,7 @@ from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
-# The Daikin Onecta cloud API exposes firmware info on the "gateway" management
-# point.
+# The Daikin Onecta cloud API exposes firmware updates
 
 
 async def async_setup_entry(
@@ -42,6 +41,8 @@ async def async_setup_entry(
     supported_management_point_types = {
         "gateway",
         "userInterface",
+        "outdoorUnit",
+        "indoorUnitHydro",
     }
 
     for device in onecta_data.devices.values():
@@ -145,6 +146,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._firmware_id = None
         self._attr_in_progress = False
         self._attr_supported_features = UpdateEntityFeature.INSTALL
+        self._attr_extra_state_attributes = {}
 
         firmwareUpdate = management_point.get("firmwareUpdate")
         if firmwareUpdate is not None:
@@ -155,6 +157,9 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
                     self._attr_latest_version = firmware_update_version
                 self._attr_release_summary = firmwareUpdateValue.get("description")
                 self._firmware_id = firmwareUpdateValue.get("id")
+                firmware_update_type = firmwareUpdateValue.get("type")
+                if firmware_update_type is not None:
+                    self._attr_extra_state_attributes["firmware_update_type"] = firmware_update_type
         firmwareUpdateStatus = management_point.get("firmwareUpdateStatus")
         if firmwareUpdateStatus is not None:
             firmwareUpdateStatusValue = firmwareUpdateStatus.get("value")
