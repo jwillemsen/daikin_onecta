@@ -42,6 +42,8 @@ async def async_setup_entry(
     supported_management_point_types = {
         "gateway",
         "userInterface",
+        "outdoorUnit",
+        "indoorUnitHydro",
     }
 
     for device in onecta_data.devices.values():
