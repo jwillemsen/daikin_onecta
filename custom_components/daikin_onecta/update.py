@@ -25,8 +25,7 @@ from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
-# The Daikin Onecta cloud API exposes firmware info on the "gateway" management
-# point.
+# The Daikin Onecta cloud API exposes firmware updates
 
 
 async def async_setup_entry(
