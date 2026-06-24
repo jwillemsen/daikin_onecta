@@ -644,13 +644,4 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "firmwareupdate",
     },
-    "LastUpdated": {
-        CONF_DEVICE_CLASS: SensorDeviceClass.TIMESTAMP,
-        CONF_STATE_CLASS: None,
-        CONF_UNIT_OF_MEASUREMENT: None,
-        CONF_ICON: "mdi:clock-outline",
-        ENABLED_DEFAULT: True,
-        ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
-        TRANSLATION_KEY: "lastupdated",
-    },
 }

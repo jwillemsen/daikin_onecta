@@ -25,7 +25,9 @@ from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
-# The Daikin Onecta cloud API exposes firmware updates
+# The Daikin Onecta cloud API exposes firmware/software version information
+# on multiple management point types: ``gateway`` (firmware update),
+# ``userInterface``, ``outdoorUnit`` and ``indoorUnitHydro``.
 
 
 def _get_value(mp: dict, characteristic: str) -> Any:
@@ -92,7 +94,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._device = device
         self._coordinator = coordinator
         self._management_point_type = management_point_type
-        mpt = self._device.device_name_suffix(management_point_type)
+        mpt = self._device.device_name_suffix(gateway_mp.get("embeddedId"), management_point_type)
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,

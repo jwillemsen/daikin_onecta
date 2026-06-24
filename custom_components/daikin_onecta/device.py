@@ -66,17 +66,20 @@ class DaikinOnectaDevice:
             result = icu["value"]
         return result
 
-    def device_name_suffix(self, management_point_type: str) -> str:
+    def device_name_suffix(self, embedded_id: str, management_point_type: str) -> str:
         """Return the user-visible suffix for a management-point sub-device.
 
         Includes ``managementPointSubType`` (e.g. ``mainZone``) when present,
         so multi-zone setups can distinguish their sub-devices in HA. The
-        device-registry identifier (``id + management_point_type``) is left
-        unchanged so existing installations keep their entities.
+        management point is identified by its ``embeddedId`` so that payloads
+        with multiple management points of the same type but different
+        sub-types resolve correctly. The device-registry identifier
+        (``id + management_point_type``) is left unchanged so existing
+        installations keep their entities.
         """
         mpt = management_point_type[0].upper() + management_point_type[1:]
         for mp in self.daikin_data.get("managementPoints", []):
-            if mp.get("managementPointType") == management_point_type:
+            if mp.get("embeddedId") == embedded_id:
                 subtype = mp.get("managementPointSubType")
                 if isinstance(subtype, str) and subtype:
                     mpt += " " + subtype[0].upper() + subtype[1:]

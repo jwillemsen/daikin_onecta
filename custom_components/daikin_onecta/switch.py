@@ -103,7 +103,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
             self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
-        mpt = self._device.device_name_suffix(management_point_type)
+        mpt = self._device.device_name_suffix(embedded_id, management_point_type)
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,

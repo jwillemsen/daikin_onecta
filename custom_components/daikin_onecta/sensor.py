@@ -1,7 +1,6 @@
 """Support for Daikin AC sensors."""
 import logging
 from datetime import date
-from datetime import datetime
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorEntity
@@ -96,9 +95,6 @@ async def async_setup_entry(
     for device in onecta_data.devices.values():
         # For each device we provide a remaining day sensor
         sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day"))
-        # Per-device timestamp sensor (top-level "timestamp" field of the gateway-device entry)
-        if device.daikin_data.get("timestamp") is not None:
-            sensors.append(DaikinTimestampSensor(device, coordinator))
         management_points = device.daikin_data.get("managementPoints", [])
         for management_point in management_points:
             management_point_type = management_point["managementPointType"]
@@ -183,7 +179,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = management_point_type
-        mpt = self._device.device_name_suffix(management_point_type)
+        mpt = self._device.device_name_suffix(embedded_id, management_point_type)
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
@@ -282,7 +278,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = management_point_type
-        mpt = self._device.device_name_suffix(management_point_type)
+        mpt = self._device.device_name_suffix(embedded_id, management_point_type)
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
@@ -391,55 +387,3 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
     def sensor_value(self):
         daikin_api = self._config_entry.runtime_data.daikin_api
         return daikin_api.rate_limits[self._limit_key]
-
-
-class DaikinTimestampSensor(CoordinatorEntity, SensorEntity):
-    """Exposes the top-level `timestamp` field of a gateway-device as a HA timestamp sensor."""
-
-    def __init__(
-        self,
-        device: DaikinOnectaDevice,
-        coordinator,
-    ) -> None:
-        super().__init__(coordinator)
-        self._device = device
-        self._attr_has_entity_name = True
-        sensor_settings = VALUE_SENSOR_MAPPING.get("LastUpdated")
-        self._attr_icon = sensor_settings[CONF_ICON]
-        self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
-        self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-        self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
-        self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-        self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
-        self._attr_unique_id = f"{self._device.id}_lastupdated"
-        self._attr_device_info = {
-            "identifiers": {(DOMAIN, self._device.id + "gateway")},
-            "name": self._device.name + " " + "Gateway",
-            "via_device": (DOMAIN, self._device.id),
-        }
-        self._device.fill_device_info(self._attr_device_info, "gateway")
-        self.update_state()
-
-    def update_state(self) -> None:
-        self._attr_native_value = self._parse_timestamp(self._device.daikin_data.get("timestamp"))
-
-    @staticmethod
-    def _parse_timestamp(value):
-        if not isinstance(value, str):
-            return None
-        # Accept ISO-8601 timestamps, including the trailing "Z" used by the Onecta API.
-        try:
-            return datetime.fromisoformat(value.replace("Z", "+00:00"))
-        except ValueError:
-            _LOGGER.warning("Could not parse timestamp value '%s'", value)
-            return None
-
-    @property
-    def available(self) -> bool:
-        return self._device.available
-
-    @callback
-    def _handle_coordinator_update(self) -> None:
-        self.update_state()
-        self.async_write_ha_state()
