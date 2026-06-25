@@ -9,7 +9,7 @@ on:
 
 jobs:
   validate:
-    runs-on: "ubuntu-slim"
+    runs-on: "ubuntu-latest"
     steps:
       - name: HACS validation
         uses: "hacs/action@main"
