@@ -631,30 +631,44 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     )
 
             new_fixed_mode = int(fan_mode)
-            res &= await self._device.patch(
-                self._device.id,
-                self._embedded_id,
-                "fanControl",
-                f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
-                new_fixed_mode,
-            )
-            if res is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting fan_mode fixed to '%s'",
-                    self._device.name,
+            if fan_speed["modes"]["fixed"]["value"] != new_fixed_mode:
+                res &= await self._device.patch(
+                    self._device.id,
+                    self._embedded_id,
+                    "fanControl",
+                    f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
                     new_fixed_mode,
                 )
+                if res is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting fan_mode fixed to '%s'",
+                        self._device.name,
+                        new_fixed_mode,
+                    )
+            else:
+                _LOGGER.debug(
+                    "Device '%s' request to set fan mode '%s' ignored already set",
+                    self._device.name,
+                    fan_mode,
+                )
         else:
-            res = await self._device.patch(
-                self._device.id,
-                self._embedded_id,
-                "fanControl",
-                f"/operationModes/{operationmode}/fanSpeed/currentMode",
-                fan_mode,
-            )
-            if res is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting fan_mode to '%s'",
+            if fan_speed["currentMode"]["value"] != fan_mode:
+                res = await self._device.patch(
+                    self._device.id,
+                    self._embedded_id,
+                    "fanControl",
+                    f"/operationModes/{operationmode}/fanSpeed/currentMode",
+                    fan_mode,
+                )
+                if res is False:
+                    _LOGGER.warning(
+                        "Device '%s' problem setting fan_mode to '%s'",
+                        self._device.name,
+                        fan_mode,
+                    )
+            else:
+                _LOGGER.debug(
+                    "Device '%s' request to set fan mode '%s' ignored already set",
                     self._device.name,
                     fan_mode,
                 )
