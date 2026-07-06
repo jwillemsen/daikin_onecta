@@ -1026,21 +1026,7 @@ async def test_climate(
         assert aioclient_mock.mock_calls[6][2] == '{"value": "on"}'
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
 
-        # Set the fan mode to 1, will first set the fanControl to fixed, after that the value to 1
-        await hass.services.async_call(
-            CLIMATE_DOMAIN,
-            SERVICE_SET_FAN_MODE,
-            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: 1},
-            blocking=True,
-        )
-        await hass.async_block_till_done()
-
-        assert len(aioclient_mock.mock_calls) == 9
-        assert aioclient_mock.mock_calls[7][2] == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
-        assert aioclient_mock.mock_calls[8][2] == '{"value": 1, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
-        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "1"
-
-        # Set the fan mode to 2, should result in 1 call
+        # Set the fan mode to 2, will first set the fanControl to fixed, after that the value to 2
         await hass.services.async_call(
             CLIMATE_DOMAIN,
             SERVICE_SET_FAN_MODE,
@@ -1049,9 +1035,33 @@ async def test_climate(
         )
         await hass.async_block_till_done()
 
-        assert len(aioclient_mock.mock_calls) == 10
-        assert aioclient_mock.mock_calls[9][2] == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert len(aioclient_mock.mock_calls) == 9
+        assert aioclient_mock.mock_calls[7][2] == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert aioclient_mock.mock_calls[8][2] == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "2"
+
+        # Set the fan mode again to 2, shouldn't result in any calls
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: 2},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(aioclient_mock.mock_calls) == 9
+
+        # Set the fan mode to 3, should result in 1 call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: 3},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 10
+        assert aioclient_mock.mock_calls[9][2] == '{"value": 3, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
 
         # Set the fan mode to auto, should result in 1 call
         await hass.services.async_call(
@@ -1065,6 +1075,17 @@ async def test_climate(
         assert len(aioclient_mock.mock_calls) == 11
         assert aioclient_mock.mock_calls[10][2] == '{"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}'
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "auto"
+
+        # Set the fan mode again to auto, should result in 0 call
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_FAN_MODE,
+            {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_FAN_MODE: "auto"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        assert len(aioclient_mock.mock_calls) == 11
 
         # Set the target temperature to 25
         await hass.services.async_call(
