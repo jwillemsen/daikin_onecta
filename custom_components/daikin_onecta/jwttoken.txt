@@ -1,0 +1,14 @@
+38ad3f6adfc44e8db5ec6eff7e212923
+
+
+
+JWILLEMSEN
+TOKEN: 38ad3f6adfc44e8db5ec6eff7e212923
+
+REMEDY
+TOKEN: 690228ee1f604683b0a160f9c74d15c3
+
+
+sensor.altherma_climatecontrol_cooling_daily_electrical_consumption
+sensor.altherma_climatecontrol_cooling_monthly_electrical_consumptio
+sensor.altherma_climatecontrol_maandelijks_elektriciteitsverbruik_verwarmen
