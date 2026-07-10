@@ -2,11 +2,13 @@
 import logging
 
 import jwt
-from aiohttp import ClientError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.exceptions import ConfigEntryNotReady
+from homeassistant.exceptions import OAuth2TokenRequestError
+from homeassistant.exceptions import OAuth2TokenRequestReauthError
 from homeassistant.helpers import config_entry_oauth2_flow
 
 from .coordinator import OnectaDataUpdateCoordinator
@@ -40,7 +42,9 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
     try:
         await daikin_api.async_get_access_token()
-    except ClientError as err:
+    except OAuth2TokenRequestReauthError as err:
+        raise ConfigEntryAuthFailed from err
+    except (OAuth2TokenRequestError, aiohttp.ClientError) as err:
         raise ConfigEntryNotReady from err
 
     config_entry.runtime_data = OnectaRuntimeData(coordinator=None, daikin_api=daikin_api, devices={})
