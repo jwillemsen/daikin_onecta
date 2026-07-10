@@ -58,15 +58,13 @@ class DaikinApi:
         _LOGGER.info("Daikin Onecta API initialized.")
 
     async def async_get_access_token(self) -> str:
-        """Return a valid access token."""
-        if not self.session.valid_token:
-            try:
-                await self.session.async_ensure_token_valid()
-            except ClientResponseError as ex:
-                # https://developers.home-assistant.io/docs/integration_setup_failures/#handling-expired-credentials
-                if ex.status == HTTPStatus.BAD_REQUEST:
-                    raise ConfigEntryAuthFailed(f"Problem refreshing token: {ex}") from ex
-                raise ex
+        try:
+            await self.session.async_ensure_token_valid()
+        except ClientResponseError as ex:
+            # https://developers.home-assistant.io/docs/integration_setup_failures/#handling-expired-credentials
+            if ex.status == HTTPStatus.BAD_REQUEST:
+                raise ConfigEntryAuthFailed(f"Problem refreshing token: {ex}") from ex
+            raise ex
 
         return self.session.token["access_token"]
 
