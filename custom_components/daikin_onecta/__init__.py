@@ -1,6 +1,7 @@
 """Platform for the Daikin AC."""
 import logging
 
+import aiohttp
 import jwt
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
