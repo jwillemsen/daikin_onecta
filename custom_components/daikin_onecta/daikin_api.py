@@ -63,7 +63,7 @@ class DaikinApi:
         except ClientResponseError as ex:
             # https://developers.home-assistant.io/docs/integration_setup_failures/#handling-expired-credentials
             _LOGGER.exception("Refreshing token failed")
-            if ex.status == HTTPStatus.BAD_REQUEST:
+            if 400 <= ex.status < 500:
                 raise ConfigEntryAuthFailed(f"Problem refreshing token: {ex}") from ex
             raise
 
