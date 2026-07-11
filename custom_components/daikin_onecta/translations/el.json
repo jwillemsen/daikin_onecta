@@ -15,29 +15,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "Η ενσωμάτωση έχει ήδη ρυθμιστεί.",
-      "cannot_connect": "Αποτυχία σύνδεσης με το Daikin Cloud.",
-      "init_failed": "Αποτυχία αρχικοποίησης του Daikin API.",
-      "wrong_account": "Βεβαιωθείτε ότι επαναρυθμίζετε με τον ίδιο λογαριασμό."
-    },
-    "error": {
-      "cannot_connect": "Αποτυχία σύνδεσης",
-      "device_fail": "Μη αναμενόμενο σφάλμα",
-      "device_timeout": "Αποτυχία σύνδεσης",
-      "forbidden": "Μη έγκυρος έλεγχος ταυτότητας",
-      "invalid_auth": "Μη έγκυρος έλεγχος ταυτότητας",
-      "unknown": "Μη αναμενόμενο σφάλμα"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "email": "Διεύθυνση email",
-          "password": "Κωδικός πρόσβασης"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Εισαγάγετε τη διεύθυνση email και τον κωδικό πρόσβασης που χρησιμοποιείτε για τη σύνδεση στο Daikin Cloud και πατήστε Υποβολή.",
-        "title": "Ρύθμιση Daikin Onecta"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Η ενσωμάτωση Daikin Onecta πρέπει να επαναπιστοποιήσει τον λογαριασμό σας"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Μη έγκυρο ή ληγμένο token· παρακαλώ επαναδιαμορφώστε την ενσωμάτωση.",
+      "wrong_account": "Βεβαιωθείτε ότι επαναδιαμορφώνετε τον ίδιο λογαριασμό.",
+      "unknown": "Απέτυχε λόγω απροσδόκητου σφάλματος."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {

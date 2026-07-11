@@ -15,30 +15,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "L'integrazione \u00e8 gi\u00e0 configurata.",
-      "cannot_connect": "Impossibile connettersi",
-      "missing_config": "File tokenset.json non trovato nella directory di configurazione."
-    },
-    "error": {
-      "cannot_connect": "Impossibile connettersi",
-      "device_fail": "Errore imprevisto",
-      "device_timeout": "Impossibile connettersi",
-      "forbidden": "Autenticazione non valida",
-      "invalid_auth": "Autenticazione non valida",
-      "unknown": "Errore imprevisto"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "api_key": "Chiave API",
-          "host": "Host",
-          "key": "Chiave API",
-          "password": "Password"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Non \u00e8 necessario introdurre parametri di configurazione in questo menu.\n\nAssicurati solo di aver ottenuto il tuo file tokenset.json usando la procedura con il MITM proxy, e di averlo salvato nella tua directory di configurazione, poi premi Submit per procedere.",
-        "title": "Configura Daikin Onecta"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "L'integrazione Daikin Onecta deve riautenticare il tuo account"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Token non valido o scaduto; riconfigurare l'integrazione.",
+      "wrong_account": "Assicurati di riconfigurare lo stesso account.",
+      "unknown": "Operazione non riuscita a causa di un errore imprevisto."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
@@ -114,7 +125,7 @@
         "name": "Temperatura del serbatoio"
       },
       "heatupmode": {
-        "name": "Modalit\u00E0 riscaldamento"
+        "name": "Modalità riscaldamento"
       },
       "outdoortemperature": {
         "name": "Temperatura esterna"
@@ -126,22 +137,22 @@
         "name": "Codice di errore"
       },
       "setpointmode": {
-        "name": "Modalit\u00E0 setpoint"
+        "name": "Modalità setpoint"
       },
       "powerfulmode": {
-        "name": "Modalit\u00E0 powerful"
+        "name": "Modalità powerful"
       },
       "roomtemperature": {
         "name": "Temperatura della stanza"
       },
       "onoffmode": {
-        "name": "Modalit\u00E0 On/Off"
+        "name": "Modalità On/Off"
       },
       "controlmode": {
-        "name": "Modalit\u00E0 di controllo"
+        "name": "Modalità di controllo"
       },
       "roomhumidity": {
-        "name": "Umidit\u00E0 della stanza"
+        "name": "Umidità della stanza"
       },
       "pm1concentration": {
         "name": "Concentrazione di PM1"
@@ -150,16 +161,16 @@
         "name": "Concentrazione di PM2.5"
       },
       "operationmode": {
-        "name": "Modalit\u00E0 operativa"
+        "name": "Modalità operativa"
       },
       "airpurificationmode": {
-        "name": "Modalit\u00E0 purificazione d'aria"
+        "name": "Modalità purificazione d'aria"
       },
       "wificonnectionssid": {
         "name": "SSID della rete WiFi"
       },
       "wificonnectionstrength": {
-        "name": "Intensit\u00E0 del segnale WiFi"
+        "name": "Intensità del segnale WiFi"
       },
       "ssid": {
         "name": "SSID"
@@ -186,7 +197,7 @@
         "name": "Impostazione mantenimento asciutto"
       },
       "fanmotorrotationspeed": {
-        "name": "Velocit\u00E0 di rotazione della ventola del motore"
+        "name": "Velocità di rotazione della ventola del motore"
       },
       "datetime": {
         "name": "Data/Ora"
@@ -200,7 +211,7 @@
     },
     "binary_sensor": {
       "isholidaymodeactive": {
-        "name": "Modalit\u00E0 vacanza attiva"
+        "name": "Modalità vacanza attiva"
       },
       "isinerrorstate": {
         "name": "Stato di errore"
@@ -215,13 +226,13 @@
         "name": "Stato di emergenza"
       },
       "ispowerfulmodeactive": {
-        "name": "Modalit\u00E0 powerful attiva"
+        "name": "Modalità powerful attiva"
       },
       "iscoolheatmaster": {
         "name": "Is cool/heat master"
       },
       "isinmodeconflict": {
-        "name": "Modalit\u00E0 in conflitto"
+        "name": "Modalità in conflitto"
       },
       "isincautionstate": {
         "name": "Stato di cautela"
@@ -272,12 +283,12 @@
   },
   "issues": {
     "day_rate_limit": {
-      "title": "Il limite giornaliero di richieste \u00E8 stato raggiunto",
+      "title": "Il limite giornaliero di richieste è stato raggiunto",
       "description": "Hai raggiunto il limite giornaliero di richieste verso il Cloud Daikin, controlla la tua frequenza di polling nella configurazione Daikin Onecta."
     },
     "minute_rate_limit": {
-      "title": "Il limite per minuto di richieste \u00E8 stato raggiunto",
-      "description": "Hai raggiunto il limite per minuto di richieste verso il Cloud Daikin, non fare cos\u00EC tante chiamate al servizio Daikin in un minuto."
+      "title": "Il limite per minuto di richieste è stato raggiunto",
+      "description": "Hai raggiunto il limite per minuto di richieste verso il Cloud Daikin, non fare così tante chiamate al servizio Daikin in un minuto."
     }
   },
   "system_health": {

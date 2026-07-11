@@ -34,25 +34,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "L'appareil est d\u00e9j\u00e0 configur\u00e9",
-      "cannot_connect": "\u00c9chec de connexion"
-    },
-    "error": {
-      "device_fail": "Erreur inattendue",
-      "device_timeout": "Echec de la connexion",
-      "forbidden": "Authentification invalide"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "host": "Nom d'h\u00f4te ou adresse IP",
-          "key": "Cl\u00e9 d'authentification (utilis\u00e9e uniquement par les appareils BRP072C/Zena)",
-          "password": "Mot de passe de l'appareil (utilis\u00e9 uniquement par les appareils SKYFi)"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Saisissez l'adresse IP de votre Daikin AC. \n\n Notez que Cl\u00e9 d'API et Mot de passe sont utilis\u00e9s respectivement par les p\u00e9riph\u00e9riques BRP072Cxx et SKYFi.",
-        "title": "Configurer Daikin AC"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "L'intégration Daikin Onecta doit ré-authentifier votre compte"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Jeton invalide ou expiré ; veuillez reconfigurer l'intégration.",
+      "wrong_account": "Veuillez vous assurer de reconfigurer le même compte.",
+      "unknown": "Échec en raison d'une erreur inattendue."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   }
 }

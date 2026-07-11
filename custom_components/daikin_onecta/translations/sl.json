@@ -15,28 +15,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "Integracija je že konfigurirana.",
-      "cannot_connect": "Povezava s storitvijo Daikin Cloud ni uspela.",
-      "init_failed": "Inicializacija Daikin API ni uspela."
-    },
-    "error": {
-      "cannot_connect": "Povezava ni uspela",
-      "device_fail": "Nepričakovana napaka",
-      "device_timeout": "Povezava ni uspela",
-      "forbidden": "Neveljavna overitev",
-      "invalid_auth": "Neveljavna overitev",
-      "unknown": "Nepričakovana napaka"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "email": "E-poštni naslov",
-          "password": "Geslo"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Vnesite e-poštni naslov in geslo, ki ju uporabljate za prijavo v Daikin Cloud, nato pritisnite Pošlji.",
-        "title": "Nastavitev Daikin Onecta"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Integracija Daikin Onecta mora znova overiti vaš račun"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Neveljaven ali potekel žeton; prosimo, ponovno konfigurirajte integracijo.",
+      "wrong_account": "Prepričajte se, da znova konfigurirate isti račun.",
+      "unknown": "Neuspešno zaradi nepričakovane napake."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
