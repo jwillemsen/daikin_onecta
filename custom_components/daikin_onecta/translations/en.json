@@ -22,7 +22,8 @@
       "init_failed": "Failed to initialize Daikin API.",
       "invalid_token": "Invalid or expired token; please reconfigure the integration.",
       "unknown": "Failed due to an unexpected error.",
-      "wrong_account": "Please ensure you reconfigure against the same account."
+      "wrong_account": "Please ensure you reconfigure against the same account.",
+      "oauth_implementation_unavailable": "OAuth2 implementation is currently unavailable"
     },
     "error": {
       "cannot_connect": "Failed to connect",
@@ -301,6 +302,11 @@
       "retry_after": "Retry after",
       "ratelimit_reset": "Rate limit reset",
       "oauth2_token_valid": "OAuth2 token valid"
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "OAuth2 implementation is currently unavailable"
     }
   }
 }
