@@ -23,7 +23,7 @@
       "invalid_token": "Invalid or expired token; please reconfigure the integration.",
       "unknown": "Failed due to an unexpected error.",
       "wrong_account": "Please ensure you reconfigure against the same account.",
-      "oauth_implementation_unavailable": "OAuth2 implementation is currently unavailable"
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]"
     },
     "error": {
       "cannot_connect": "Failed to connect",
@@ -306,7 +306,7 @@
   },
   "exceptions": {
     "oauth2_implementation_unavailable": {
-      "message": "OAuth2 implementation is currently unavailable"
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
     }
   }
 }
