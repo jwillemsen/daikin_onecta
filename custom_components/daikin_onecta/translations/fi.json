@@ -15,29 +15,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "Integraatio on jo määritetty.",
-      "cannot_connect": "Yhteys Daikin Cloudiin epäonnistui.",
-      "init_failed": "Daikin API:n alustus epäonnistui.",
-      "wrong_account": "Varmista, että suoritat uudelleenkonfiguroinnin samaa tiliä vasten."
-    },
-    "error": {
-      "cannot_connect": "Yhteys epäonnistui",
-      "device_fail": "Odottamaton virhe",
-      "device_timeout": "Yhteys epäonnistui",
-      "forbidden": "Virheellinen todennus",
-      "invalid_auth": "Virheellinen todennus",
-      "unknown": "Odottamaton virhe"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "email": "Sähköpostiosoite",
-          "password": "Salasana"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Syötä sähköpostiosoite ja salasana, joita käytät kirjautuaksesi Daikin Cloudiin, ja paina Lähetä.",
-        "title": "Määritä Daikin Onecta"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Daikin Onecta -integraation on todennettava tilisi uudelleen"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Virheellinen tai vanhentunut tunnus; määritä integrointi uudelleen.",
+      "wrong_account": "Varmista, että määrität uudelleen saman tilin.",
+      "unknown": "Epäonnistui odottamattoman virheen vuoksi."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {

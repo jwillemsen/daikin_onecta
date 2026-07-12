@@ -15,29 +15,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "Die Integration ist bereits konfiguriert.",
-      "cannot_connect": "Verbindung zur Daikin Cloud konnte nicht hergestellt werden.",
-      "init_failed": "Daikin API konnte nicht initialisiert werden.",
-      "wrong_account": "Bitte stellen Sie sicher, dass Sie die Konfiguration für dasselbe Konto neu vornehmen."
-    },
-    "error": {
-      "cannot_connect": "Verbindung fehlgeschlagen",
-      "device_fail": "Unerwarteter Fehler",
-      "device_timeout": "Verbindung fehlgeschlagen",
-      "forbidden": "Ungültige Authentifizierung",
-      "invalid_auth": "Ungültige Authentifizierung",
-      "unknown": "Unerwarteter Fehler"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "email": "E-Mail Adresse",
-          "password": "Passwort"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Geben Sie die E-Mail-Adresse und das Passwort ein, die Sie für die Anmeldung bei Daikin Cloud verwenden, und drücken Sie dann auf Senden.",
-        "title": "Daikin Onecta konfigurieren"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Die Daikin Onecta Integration muss Ihr Konto erneut authentifizieren"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Ungültiges oder abgelaufenes Token; bitte die Integration neu konfigurieren.",
+      "wrong_account": "Bitte stellen Sie sicher, dass Sie dasselbe Konto neu konfigurieren.",
+      "unknown": "Fehlgeschlagen aufgrund eines unerwarteten Fehlers."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {

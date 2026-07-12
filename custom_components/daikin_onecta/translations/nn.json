@@ -15,29 +15,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "Integrasjonen er allereie konfigurert.",
-      "cannot_connect": "Kunne ikkje koble til Daikin Cloud.",
-      "init_failed": "Kunne ikkje initialisere Daikin API.",
-      "wrong_account": "Pass på at du konfigurerer på nytt mot den same kontoen"
-    },
-    "error": {
-      "cannot_connect": "Kunne ikkje koble til (tilkobling)",
-      "device_fail": "Uventa feil",
-      "device_timeout": "Kunne ikkje koble til (timeout)",
-      "forbidden": "Ugyldig autentisering",
-      "invalid_auth": "Ugyldig autentisering",
-      "unknown": "Uventa feil"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "email": "E-postadresse",
-          "password": "Passord"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Skriv inn IP-adressa til Daikin AC.\n\nMerk at API-nøkkel og passord berre vert brukt av henholdsvis BRP072Cxx og SKYFi-einingar.",
-        "title": "Konfigurer Daikin Onecta"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Daikin Onecta-integrasjonen må autentisere kontoen din på nytt"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Ugyldig eller utløpt token; konfigurer integrasjonen på nytt.",
+      "wrong_account": "Sørg for at du konfigurerer på nytt mot same konto.",
+      "unknown": "Mislyktest på grunn av ein uventa feil."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {

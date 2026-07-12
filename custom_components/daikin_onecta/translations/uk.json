@@ -16,31 +16,41 @@
     }
   },
   "config": {
-    "abort": {
-      "already_configured": "Інтеграцію вже налаштовано.",
-      "cannot_connect": "Не вдалося підключитися до Daikin Cloud.",
-      "init_failed": "Не вдалося ініціалізувати Daikin API.",
-      "invalid_token": "Недійсний або прострочений токен; будь ласка, повторно налаштуйте інтеграцію.",
-      "unknown": "Сталася неочікувана помилка.",
-      "wrong_account": "Будь ласка, переконайтеся, що ви виконуєте повторне налаштування з тим самим обліковим записом."
-    },
-    "error": {
-      "cannot_connect": "Не вдалося підключитися",
-      "device_fail": "Неочікувана помилка",
-      "device_timeout": "Не вдалося підключитися",
-      "forbidden": "Недійсна автентифікація",
-      "invalid_auth": "Недійсна автентифікація",
-      "unknown": "Неочікувана помилка"
-    },
     "step": {
-      "user": {
+      "pick_implementation": {
         "data": {
-          "email": "Адреса електронної пошти",
-          "password": "Пароль"
+          "implementation": "[%key:common::config_flow::data::implementation%]"
         },
-        "description": "Введіть адресу електронної пошти та пароль, які ви використовуєте для входу в Daikin Cloud, а потім натисніть «Надіслати».",
-        "title": "Налаштування Daikin Onecta"
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Інтеграції Daikin Onecta потрібно повторно автентифікувати ваш обліковий запис"
       }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Недійсний або прострочений токен; будь ласка, переналаштуйте інтеграцію.",
+      "wrong_account": "Переконайтеся, що ви переналаштовуєте той самий обліковий запис.",
+      "unknown": "Не вдалося через неочікувану помилку."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
