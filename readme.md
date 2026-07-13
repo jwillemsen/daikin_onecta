@@ -60,7 +60,7 @@ When you try to reinstall this integration check if you don't have an old client
 
 The `Is in error state`, `Is in warning state` and `Is in caution state` binary sensors only tell you that the unit signalled a problem; they don't tell you what the problem is. The code behind it, if the unit reports one, is in the separate `Error code` sensor of the same management point, so the `Error code` sensor under `Control` goes with the `Control` binary sensors, and the one under `Outdoor Unit` goes with the outdoor ones. These are diagnostic entities and are enabled by default.
 
-So when one of the problem binary sensors turns on, read the `Error code` sensor next to it to find out why. This integration passes that code on exactly as the Daikin cloud API returns it and does not interpret it. What a code means depends on your unit, so look it up in the documentation of your unit or ask Daikin.
+So when one of the problem binary sensors turns on, read the `Error code` sensor next to it to find out why. This integration passes that code on exactly as the Daikin cloud API returns it and does not interpret it. What a code means depends on your unit, so look it up in the documentation of your unit.
 
 Keep in mind that a unit can clear the code by itself. An automation that reacts to a problem binary sensor may find that the `Error code` sensor has already gone back to the value it shows when there is no error by the time the automation reads it.
 
