@@ -56,6 +56,14 @@ Current poll limits can be found under [system health](https://my.home-assistant
 
 When you try to reinstall this integration check if you don't have an old client id and secret configured within Home Assistant, see [Application Credentials](https://www.home-assistant.io/integrations/application_credentials/) for more information.
 
+# Error, warning and caution sensors
+
+The `Is in error state`, `Is in warning state` and `Is in caution state` binary sensors only tell you that the unit signalled a problem, they don't tell you what the problem is. The code behind it, if the unit reports one, is in the separate `Error code` sensor of the same management point, so the `Error code` sensor under `Control` goes with the `Control` binary sensors, and the one under `Outdoor Unit` goes with the outdoor ones. These are diagnostic entities and are enabled by default.
+
+So when one of the problem binary sensors turns on, read the `Error code` sensor next to it to find out why. This integration passes that code on exactly as the Daikin cloud API returns it and does not interpret it. What a code means depends on your unit, so look it up in the documentation of your unit or ask Daikin.
+
+Keep in mind that a unit can clear the code by itself. An automation that reacts to a problem binary sensor may find that the `Error code` sensor has already gone back to the value it shows when there is no error by the time the automation reads it.
+
 # Enable debug logging
 
 To enable debug logging go to [Daikin Onecta integration](https://my.home-assistant.io/redirect/integration/?domain=daikin_onecta), press the three dots in the upper right corner and select `Enable debug logging`.
