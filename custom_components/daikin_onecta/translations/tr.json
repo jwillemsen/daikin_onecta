@@ -1,0 +1,321 @@
+{
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Yüksek frekanslı dönem güncelleme aralığı (dakika)",
+          "low_scan_interval": "Düşük frekanslı dönem güncelleme aralığı (dakika)",
+          "high_scan_start": "Yüksek frekanslı dönem başlangıç saati",
+          "low_scan_start": "Düşük frekanslı dönem başlangıç saati",
+          "scan_ignore": "Bir komuttan sonra veri yenilemenin yok sayılacağı saniye sayısı",
+          "homekit_fan_mode_aliases": "HomeKit uyumlu fan hızı takma adlarını sun"
+        },
+        "description": "Daikin Onecta bulut güncelleme sıklığını yapılandırın",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "config": {
+    "step": {
+      "pick_implementation": {
+        "data": {
+          "implementation": "[%key:common::config_flow::data::implementation%]"
+        },
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]",
+        "description": "Daikin Onecta entegrasyonunun hesabınızın kimliğini yeniden doğrulaması gerekiyor"
+      }
+    },
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "invalid_token": "Geçersiz veya süresi dolmuş erişim anahtarı; lütfen entegrasyonu yeniden yapılandırın.",
+      "wrong_account": "Lütfen aynı hesap üzerinden yeniden yapılandırdığınızdan emin olun.",
+      "unknown": "Beklenmeyen bir hata nedeniyle başarısız oldu."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    }
+  },
+  "entity": {
+    "update": {
+      "firmwareupdate": {
+        "name": "Ürün yazılımı güncellemesi"
+      }
+    },
+    "select": {
+      "schedule": {
+        "name": "Program"
+      }
+    },
+    "switch": {
+      "streamermode": {
+        "name": "Streamer modu"
+      },
+      "economode": {
+        "name": "Econo modu"
+      }
+    },
+    "sensor": {
+      "sgtin": {
+        "name": "SGTIN"
+      },
+      "ratelimitremainingday": {
+        "name": "Günlük kalan istek hakkı"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Soğutma günlük elektrik tüketimi"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Soğutma haftalık elektrik tüketimi"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Soğutma aylık elektrik tüketimi"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Soğutma yıllık elektrik tüketimi"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Isıtma günlük elektrik tüketimi"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Isıtma haftalık elektrik tüketimi"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Isıtma aylık elektrik tüketimi"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Isıtma yıllık elektrik tüketimi"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Soğutma günlük gaz tüketimi"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Soğutma haftalık gaz tüketimi"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Soğutma aylık gaz tüketimi"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Soğutma yıllık gaz tüketimi"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Isıtma günlük gaz tüketimi"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Isıtma haftalık gaz tüketimi"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Isıtma aylık gaz tüketimi"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Isıtma yıllık gaz tüketimi"
+      },
+      "ipaddress": {
+        "name": "IP adresi"
+      },
+      "tanktemperature": {
+        "name": "Depo sıcaklığı"
+      },
+      "heatupmode": {
+        "name": "Su ısıtma modu"
+      },
+      "outdoortemperature": {
+        "name": "Dış sıcaklık"
+      },
+      "leavingwatertemperature": {
+        "name": "Çıkış suyu sıcaklığı"
+      },
+      "errorcode": {
+        "name": "Hata kodu"
+      },
+      "setpointmode": {
+        "name": "Ayar noktası modu"
+      },
+      "powerfulmode": {
+        "name": "Güçlü mod"
+      },
+      "roomtemperature": {
+        "name": "Oda sıcaklığı"
+      },
+      "onoffmode": {
+        "name": "Açık/kapalı durumu"
+      },
+      "controlmode": {
+        "name": "Kontrol modu"
+      },
+      "roomhumidity": {
+        "name": "Oda nemi"
+      },
+      "pm1concentration": {
+        "name": "PM1 konsantrasyonu"
+      },
+      "pm25concentration": {
+        "name": "PM2.5 konsantrasyonu"
+      },
+      "operationmode": {
+        "name": "Çalışma modu"
+      },
+      "airpurificationmode": {
+        "name": "Hava temizleme modu"
+      },
+      "wificonnectionssid": {
+        "name": "Wi-Fi bağlantı SSID'si"
+      },
+      "wificonnectionstrength": {
+        "name": "Wi-Fi sinyal gücü"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "pm10concentration": {
+        "name": "PM10 konsantrasyonu"
+      },
+      "leavingwateroffset": {
+        "name": "Çıkış suyu sıcaklık ofseti"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Hesaplanan çıkış suyu sıcaklığı"
+      },
+      "heatexchangertemperature": {
+        "name": "Eşanjör sıcaklığı"
+      },
+      "suctiontemperature": {
+        "name": "Emiş sıcaklığı"
+      },
+      "deltad": {
+        "name": "Delta D"
+      },
+      "drykeepsetting": {
+        "name": "Kuru tutma ayarı"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Fan motoru dönüş hızı"
+      },
+      "datetime": {
+        "name": "Tarih/saat"
+      },
+      "regioncode": {
+        "name": "Bölge kodu"
+      },
+      "timezone": {
+        "name": "Saat dilimi"
+      }
+    },
+    "binary_sensor": {
+      "isholidaymodeactive": {
+        "name": "Tatil modu etkin mi"
+      },
+      "isinerrorstate": {
+        "name": "Hata durumunda mı"
+      },
+      "isinwarningstate": {
+        "name": "Uyarı durumunda mı"
+      },
+      "isininstallerstate": {
+        "name": "Montör modunda mı"
+      },
+      "isinemergencystate": {
+        "name": "Acil durum modunda mı"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Güçlü mod etkin mi"
+      },
+      "iscoolheatmaster": {
+        "name": "Soğutma/ısıtma ana ünitesi mi"
+      },
+      "isinmodeconflict": {
+        "name": "Mod çakışması var mı"
+      },
+      "isincautionstate": {
+        "name": "Dikkat durumunda mı"
+      },
+      "islockfunctionenabled": {
+        "name": "Kilit işlevi etkin mi"
+      },
+      "ledenabled": {
+        "name": "LED etkin"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Ürün yazılımı güncellemesi destekleniyor mu"
+      },
+      "daylightsavingtimeenabled": {
+        "name": "Yaz saati uygulaması etkin"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Sessiz",
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "stop": "Salınım kapalı",
+              "swing": "Salınım",
+              "floorheatingairflow": "Yerden ısıtma hava akışı",
+              "windnice": "Konfor hava akışı"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Salınım kapalı",
+              "swing": "Salınım"
+            }
+          }
+        }
+      }
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "title": "Günlük istek sınırına ulaşıldı",
+      "description": "Daikin Cloud için günlük istek sınırınıza ulaştınız, Daikin Onecta yapılandırmasındaki yoklama sıklığınızı gözden geçirin."
+    },
+    "minute_rate_limit": {
+      "title": "Dakikalık istek sınırına ulaşıldı",
+      "description": "Daikin Cloud için dakikalık istek sınırınıza ulaştınız, Daikin cihazlarınıza bir dakika içinde bu kadar çok çağrı yapmayın."
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API sunucusu",
+      "oauth2_status": "OAuth2 sunucusu",
+      "max_minute": "Dakikalık azami",
+      "max_day": "Günlük azami",
+      "remaining_minute": "Dakikalık kalan",
+      "remaining_day": "Günlük kalan",
+      "retry_after": "Yeniden deneme süresi",
+      "ratelimit_reset": "İstek sınırı sıfırlanması",
+      "oauth2_token_valid": "OAuth2 erişim anahtarı geçerli"
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  }
+}
