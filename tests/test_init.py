@@ -242,7 +242,7 @@ async def test_schedule(
     """Test entities."""
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "schedule")
 
-    assert hass.states.get("select.master_climatecontrol_schedule").state == "off"
+    assert hass.states.get("select.master_climatecontrol_mainzone_schedule").state == "off"
 
 
 @pytest.mark.asyncio
@@ -883,9 +883,9 @@ async def test_climate(
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
     assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
-    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_cool_heat_master").state == STATE_ON
-    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_caution_state").state == STATE_OFF
-    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_warning_state").state == STATE_OFF
+    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_mainzone_is_cool_heat_master").state == STATE_ON
+    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_mainzone_is_in_caution_state").state == STATE_OFF
+    assert hass.states.get("binary_sensor.werkkamer_climatecontrol_mainzone_is_in_warning_state").state == STATE_OFF
 
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
@@ -1226,26 +1226,26 @@ async def test_climate(
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
         # Test streamer mode switch
-        assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
+        assert hass.states.get("switch.werkkamer_climatecontrol_mainzone_streamer_mode").state == STATE_OFF
 
         # Set the streamer mode on
         await hass.services.async_call(
             SWITCH_DOMAIN,
             SERVICE_TURN_ON,
-            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_mainzone_streamer_mode"},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 22
         assert aioclient_mock.mock_calls[21][2] == '{"value": "on"}'
-        assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_ON
+        assert hass.states.get("switch.werkkamer_climatecontrol_mainzone_streamer_mode").state == STATE_ON
 
         # Set the streamer mode on a second time shouldn't result in a call to daikin
         await hass.services.async_call(
             SWITCH_DOMAIN,
             SERVICE_TURN_ON,
-            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_mainzone_streamer_mode"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -1256,20 +1256,20 @@ async def test_climate(
         await hass.services.async_call(
             SWITCH_DOMAIN,
             SERVICE_TURN_OFF,
-            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_mainzone_streamer_mode"},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 23
         assert aioclient_mock.mock_calls[22][2] == '{"value": "off"}'
-        assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
+        assert hass.states.get("switch.werkkamer_climatecontrol_mainzone_streamer_mode").state == STATE_OFF
 
         # Set the streamer mode off a second time shouldn't result in a call to daikin
         await hass.services.async_call(
             SWITCH_DOMAIN,
             SERVICE_TURN_OFF,
-            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_streamer_mode"},
+            {ATTR_ENTITY_ID: "switch.werkkamer_climatecontrol_mainzone_streamer_mode"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -1313,27 +1313,27 @@ async def test_climate(
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_schedule", ATTR_OPTION: "0"},
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_mainzone_schedule", ATTR_OPTION: "0"},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 27
         assert aioclient_mock.mock_calls[26][2] == '{"scheduleId": "0", "enabled": true}'
-        assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "0"
+        assert hass.states.get("select.werkkamer_climatecontrol_mainzone_schedule").state == "0"
 
         # Set the device with no schedule
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_schedule", ATTR_OPTION: SCHEDULE_OFF},
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_mainzone_schedule", ATTR_OPTION: SCHEDULE_OFF},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 28
         assert aioclient_mock.mock_calls[27][2] == '{"scheduleId": "0", "enabled": false}'
-        assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == SCHEDULE_OFF
+        assert hass.states.get("select.werkkamer_climatecontrol_mainzone_schedule").state == SCHEDULE_OFF
 
         aioclient_mock.put(
             DAIKIN_API_URL
@@ -1345,27 +1345,27 @@ async def test_climate(
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "User defined"},
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_mainzone_schedule", ATTR_OPTION: "User defined"},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 29
         assert aioclient_mock.mock_calls[28][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
-        assert hass.states.get("select.altherma_climatecontrol_schedule").state == "User defined"
+        assert hass.states.get("select.altherma_climatecontrol_mainzone_schedule").state == "User defined"
 
         # Set the device with no schedule
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: SCHEDULE_OFF},
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_mainzone_schedule", ATTR_OPTION: SCHEDULE_OFF},
             blocking=True,
         )
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 30
         assert aioclient_mock.mock_calls[29][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
-        assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
+        assert hass.states.get("select.altherma_climatecontrol_mainzone_schedule").state == SCHEDULE_OFF
 
         # Turn off the device through the hvac mode
         await hass.services.async_call(
@@ -1450,7 +1450,7 @@ async def test_climate(
         await hass.services.async_call(
             SELECT_DOMAIN,
             SERVICE_SELECT_OPTION,
-            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "User defined"},
+            {ATTR_ENTITY_ID: "select.altherma_climatecontrol_mainzone_schedule", ATTR_OPTION: "User defined"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -1462,7 +1462,7 @@ async def test_climate(
 
         assert len(aioclient_mock.mock_calls) == 1
         assert aioclient_mock.mock_calls[0][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
-        assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
+        assert hass.states.get("select.altherma_climatecontrol_mainzone_schedule").state == SCHEDULE_OFF
 
         aioclient_mock.clear_requests()
         aioclient_mock.patch(
