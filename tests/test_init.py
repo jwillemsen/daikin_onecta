@@ -274,6 +274,7 @@ async def test_altherma(
 
     await hass.async_block_till_done()
 
+
 @pytest.mark.asyncio
 async def test_altherma3m(
     hass: HomeAssistant,
@@ -1663,6 +1664,7 @@ async def test_altherma_firmwareupdate(
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["in_progress"] is True
     assert hass.states.get("update.climate_control_getr422_userinterface_firmware_update").attributes["installed_version"] == "3.12.1"
     assert hass.states.get("update.climate_control_getr422_userinterface_firmware_update").attributes["latest_version"] == "3.12.1"
+
 
 @pytest.mark.asyncio
 async def test_dx4_firmwareupdate(
