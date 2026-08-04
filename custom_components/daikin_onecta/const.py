@@ -4,13 +4,13 @@ from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorStateClass
 from homeassistant.components.update import UpdateDeviceClass
-from homeassistant.const import UnitOfDensity
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
 from homeassistant.const import PERCENTAGE
 from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
+from homeassistant.const import UnitOfDensity
 from homeassistant.const import UnitOfEnergy
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
