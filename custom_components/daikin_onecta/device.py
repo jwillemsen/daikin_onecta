@@ -107,7 +107,7 @@ class DaikinOnectaDevice:
 
         res = await self.api.doBearerRequest("PATCH", setPath, setOptions)
 
-        _LOGGER.debug("Result: %s", res)
+        _LOGGER.debug("Result: {}".format(res))
 
         return res
 
@@ -119,7 +119,7 @@ class DaikinOnectaDevice:
 
         res = await self.api.doBearerRequest("POST", setPath, setOptions)
 
-        _LOGGER.debug("Result: %s", res)
+        _LOGGER.debug("Result: {}".format(res))
 
         return res
 
@@ -133,6 +133,6 @@ class DaikinOnectaDevice:
 
         res = await self.api.doBearerRequest("PUT", setPath, setOptions)
 
-        _LOGGER.debug("Result: %s", res)
+        _LOGGER.debug("Result: {}".format(res))
 
         return res
