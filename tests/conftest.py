@@ -14,6 +14,7 @@ from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 from syrupy import SnapshotAssertion
+from syrupy.filters import props
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.const import DOMAIN
@@ -74,8 +75,10 @@ async def snapshot_platform_entities(
 
     assert entity_entries
     for entity_entry in entity_entries:
-        entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")  # todo add assert back
-        hass.states.get(entity_entry.entity_id) == snapshot(name=f"{entity_entry.entity_id}-state")  # todo add assert back
+        assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
+
+        # Exclude attributes.friendly_name
+        assert hass.states.get(entity_entry.entity_id) == snapshot(name=f"{entity_entry.entity_id}-state", exclude=props("friendly_name"))
 
 
 @pytest.fixture(name="config_entry")
