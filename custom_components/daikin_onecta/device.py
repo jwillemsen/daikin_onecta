@@ -94,7 +94,7 @@ class DaikinOnectaDevice:
     def setJsonData(self, desc):
         """Overwrite the json data for this device."""
         self.daikin_data = desc
-        _LOGGER.info("Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'", self.name, self.available)
+        _LOGGER.debug("Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'", self.name, self.available)
 
     async def patch(self, id, embeddedId, dataPoint, dataPointPath, value):
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
@@ -103,11 +103,11 @@ class DaikinOnectaDevice:
             setBody["path"] = dataPointPath
         setOptions = json.dumps(setBody)
 
-        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
+        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
 
         res = await self.api.doBearerRequest("PATCH", setPath, setOptions)
 
-        _LOGGER.info("Result: {}".format(res))
+        _LOGGER.debug("Result: %s", res)
 
         return res
 
@@ -115,11 +115,11 @@ class DaikinOnectaDevice:
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
         setOptions = json.dumps(value)
 
-        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
+        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
 
         res = await self.api.doBearerRequest("POST", setPath, setOptions)
 
-        _LOGGER.info("Result: {}".format(res))
+        _LOGGER.debug("Result: %s", res)
 
         return res
 
@@ -129,10 +129,10 @@ class DaikinOnectaDevice:
         if value is not None:
             setOptions = json.dumps(value)
 
-        _LOGGER.info("Path: " + setPath + " , options: %s", setOptions)
+        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
 
         res = await self.api.doBearerRequest("PUT", setPath, setOptions)
 
-        _LOGGER.info("Result: {}".format(res))
+        _LOGGER.debug("Result: %s", res)
 
         return res

@@ -52,7 +52,7 @@ class DaikinApi:
         # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
 
-        _LOGGER.info("Daikin Onecta API initialized.")
+        _LOGGER.debug("Daikin Onecta API initialized.")
 
     async def async_get_access_token(self) -> str:
         await self.session.async_ensure_token_valid()
@@ -64,13 +64,13 @@ class DaikinApi:
 
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
 
-            _LOGGER.info("Request URL: %s", resource_url)
-            _LOGGER.info("Request %s Options: %s", method, options)
+            _LOGGER.debug("Request URL: %s", resource_url)
+            _LOGGER.debug("Request %s Options: %s", method, options)
 
             try:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
                     response_data = await resp.text()
-                    _LOGGER.info("Response status: %s Text: %s Limit: %s", resp.status, response_data, self.rate_limits)
+                    _LOGGER.debug("Response status: %s Text: %s Limit: %s", resp.status, response_data, self.rate_limits)
 
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))

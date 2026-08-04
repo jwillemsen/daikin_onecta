@@ -251,7 +251,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
                                             start_index = 12
                                             end_index = len(energy_values)
                                         energy_value = round(sum(energy_values[start_index:end_index]), 3)
-                                        _LOGGER.info(
+                                        _LOGGER.debug(
                                             "Device '%s' has energy value '%s' for '%s' mode %s %s period %s",
                                             self._device.name,
                                             energy_value,
