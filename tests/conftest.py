@@ -75,7 +75,6 @@ async def snapshot_platform_entities(
 
     assert entity_entries
     for entity_entry in entity_entries:
-        # Exclude original_name
         assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
 
         # Exclude attributes.friendly_name
