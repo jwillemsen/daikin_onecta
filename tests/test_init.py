@@ -272,6 +272,7 @@ async def test_altherma(
     """Test entities."""
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma")
 
+    await hass.async_block_till_done()
 
 @pytest.mark.asyncio
 async def test_altherma3m(
@@ -1654,6 +1655,7 @@ async def test_altherma_firmwareupdate(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "altherma_firmwareupdate")
+    await hass.async_block_till_done()
 
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["installed_version"] == "4.0.1"
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["latest_version"] == "4.1.901"
@@ -1661,7 +1663,6 @@ async def test_altherma_firmwareupdate(
     assert hass.states.get("update.climate_control_getr422_gateway_firmware_update").attributes["in_progress"] is True
     assert hass.states.get("update.climate_control_getr422_userinterface_firmware_update").attributes["installed_version"] == "3.12.1"
     assert hass.states.get("update.climate_control_getr422_userinterface_firmware_update").attributes["latest_version"] == "3.12.1"
-
 
 @pytest.mark.asyncio
 async def test_dx4_firmwareupdate(
