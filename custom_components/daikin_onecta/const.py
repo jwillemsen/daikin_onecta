@@ -4,7 +4,7 @@ from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorDeviceClass
 from homeassistant.components.sensor import SensorStateClass
 from homeassistant.components.update import UpdateDeviceClass
-from homeassistant.const import CONCENTRATION_MICROGRAMS_PER_CUBIC_METER
+from homeassistant.const import UnitOfDensity
 from homeassistant.const import CONF_DEVICE_CLASS
 from homeassistant.const import CONF_ICON
 from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
@@ -458,7 +458,7 @@ VALUE_SENSOR_MAPPING = {
     "pm1Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM1,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
-        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfDensity.MICROGRAMS_PER_CUBIC_METER,
         CONF_ICON: "mdi:blur",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -467,7 +467,7 @@ VALUE_SENSOR_MAPPING = {
     "pm25Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM25,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
-        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfDensity.MICROGRAMS_PER_CUBIC_METER,
         CONF_ICON: "mdi:blur",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
@@ -476,7 +476,7 @@ VALUE_SENSOR_MAPPING = {
     "pm10Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM10,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
-        CONF_UNIT_OF_MEASUREMENT: CONCENTRATION_MICROGRAMS_PER_CUBIC_METER,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfDensity.MICROGRAMS_PER_CUBIC_METER,
         CONF_ICON: "mdi:blur",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
