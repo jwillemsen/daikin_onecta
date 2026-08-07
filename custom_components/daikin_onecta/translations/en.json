@@ -228,6 +228,12 @@
       },
       "coolingyearlythermaloutput": {
         "name": "Cooling yearly thermal output"
+      },
+      "currentpowerconsumption": {
+        "name": "Current power consumption"
+      },
+      "currentheatproduction": {
+        "name": "Current heat production"
       }
     },
     "binary_sensor": {
@@ -269,12 +275,6 @@
       },
       "daylightsavingtimeenabled": {
         "name": "Daylight saving time enabled"
-      },
-      "currentpowerconsumption": {
-        "name": "Current power consumption"
-      },
-      "currentheatproduction": {
-        "name": "Current heat production"
       }
     },
     "climate": {
