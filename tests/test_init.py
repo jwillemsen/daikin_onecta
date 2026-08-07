@@ -1716,5 +1716,3 @@ async def test_skyair(
 ) -> None:
     """Test entities."""
     await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "skyair")
-
-

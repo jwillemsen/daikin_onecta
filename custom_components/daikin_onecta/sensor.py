@@ -62,7 +62,9 @@ def handle_energy_sensors(coordinator, device, embedded_id, management_point_typ
                 )
                 sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {SENSOR_PERIOD_MONTHLY}"
                 _LOGGER.info("Proposing sensor '%s'", sensor)
-                sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period_monthly, datatype))
+                sensors.append(
+                    DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period_monthly, datatype)
+                )
             if periodName is not None:
                 _LOGGER.info(
                     "Device '%s:%s' provides mode %s %s supports period %s",
@@ -168,15 +170,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     """Representation of a power/energy sensor."""
 
     def __init__(
-        self,
-        device: DaikinOnectaDevice,
-        coordinator,
-        embedded_id,
-        management_point_type,
-        sensor_type,
-        operation_mode,
-        period,
-        datatype
+        self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, sensor_type, operation_mode, period, datatype
     ) -> None:
         super().__init__(coordinator)
         self._device = device
