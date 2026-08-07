@@ -654,7 +654,7 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "currentpowerconsumption",
     },
-    "currentThermalOutput": {
+    "currentHeatProduction": {
         CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfPower.WATT,
