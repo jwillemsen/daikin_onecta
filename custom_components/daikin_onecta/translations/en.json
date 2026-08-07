@@ -232,7 +232,7 @@
       "currentpowerconsumption": {
         "name": "Current power consumption"
       },
-      "currenthermaloutput": {
+      "currentthermaloutput": {
         "name": "Current thermal output"
       }
     },

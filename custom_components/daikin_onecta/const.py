@@ -661,7 +661,7 @@ VALUE_SENSOR_MAPPING = {
         CONF_ICON: "mdi:fire",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
-        TRANSLATION_KEY: "currenthermaloutput",
+        TRANSLATION_KEY: "currentthermaloutput",
     },
     "HeatingMonthlyThermalOutput": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
