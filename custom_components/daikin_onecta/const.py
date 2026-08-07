@@ -645,8 +645,8 @@ VALUE_SENSOR_MAPPING = {
         TRANSLATION_KEY: "firmwareupdate",
     },
     "currentPowerConsumption": {
-        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
-        CONF_STATE_CLASS: SensorStateClass.TOTAL,
+        CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:lightning-bolt",
         ENABLED_DEFAULT: True,
@@ -654,8 +654,8 @@ VALUE_SENSOR_MAPPING = {
         TRANSLATION_KEY: "currentpowerconsumption",
     },
     "currentHeatProduction": {
-        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
-        CONF_STATE_CLASS: SensorStateClass.TOTAL,
+        CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
         CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
         CONF_ICON: "mdi:fire",
         ENABLED_DEFAULT: True,

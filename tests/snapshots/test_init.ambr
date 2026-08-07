@@ -90538,7 +90538,7 @@
     ]),
     'area_id': None,
     'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'config_subentry_id': <ANY>,
@@ -90557,11 +90557,8 @@
     'name': None,
     'object_id_base': 'Current heat production',
     'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
     }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:fire',
     'original_name': 'Current heat production',
     'platform': 'daikin_onecta',
@@ -90576,9 +90573,9 @@
 # name: test_skyair[sensor.gostinaia_woonkamer_outdoorunit_current_heat_production-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:fire',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
@@ -90596,7 +90593,7 @@
     ]),
     'area_id': None,
     'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'config_subentry_id': <ANY>,
@@ -90615,11 +90612,8 @@
     'name': None,
     'object_id_base': 'Current power consumption',
     'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
     }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:lightning-bolt',
     'original_name': 'Current power consumption',
     'platform': 'daikin_onecta',
@@ -90634,9 +90628,9 @@
 # name: test_skyair[sensor.gostinaia_woonkamer_outdoorunit_current_power_consumption-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:lightning-bolt',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
@@ -91584,7 +91578,7 @@
     ]),
     'area_id': None,
     'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'config_subentry_id': <ANY>,
@@ -91603,11 +91597,8 @@
     'name': None,
     'object_id_base': 'Current heat production',
     'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
     }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:fire',
     'original_name': 'Current heat production',
     'platform': 'daikin_onecta',
@@ -91622,9 +91613,9 @@
 # name: test_skyair[sensor.slaapkamer_andre_olha_outdoorunit_current_heat_production-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:fire',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
@@ -91642,7 +91633,7 @@
     ]),
     'area_id': None,
     'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'config_subentry_id': <ANY>,
@@ -91661,11 +91652,8 @@
     'name': None,
     'object_id_base': 'Current power consumption',
     'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
     }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:lightning-bolt',
     'original_name': 'Current power consumption',
     'platform': 'daikin_onecta',
@@ -91680,9 +91668,9 @@
 # name: test_skyair[sensor.slaapkamer_andre_olha_outdoorunit_current_power_consumption-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:lightning-bolt',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
@@ -92630,7 +92618,7 @@
     ]),
     'area_id': None,
     'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'config_subentry_id': <ANY>,
@@ -92649,11 +92637,8 @@
     'name': None,
     'object_id_base': 'Current heat production',
     'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
     }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:fire',
     'original_name': 'Current heat production',
     'platform': 'daikin_onecta',
@@ -92668,9 +92653,9 @@
 # name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_current_heat_production-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:fire',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
@@ -92688,7 +92673,7 @@
     ]),
     'area_id': None,
     'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
     }),
     'config_entry_id': <ANY>,
     'config_subentry_id': <ANY>,
@@ -92707,11 +92692,8 @@
     'name': None,
     'object_id_base': 'Current power consumption',
     'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 2,
-      }),
     }),
-    'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
+    'original_device_class': <SensorDeviceClass.POWER: 'power'>,
     'original_icon': 'mdi:lightning-bolt',
     'original_name': 'Current power consumption',
     'platform': 'daikin_onecta',
@@ -92726,9 +92708,9 @@
 # name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_current_power_consumption-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:lightning-bolt',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.TOTAL: 'total'>,
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
