@@ -257,6 +257,12 @@
       },
       "daylightsavingtimeenabled": {
         "name": "Daylight saving time enabled"
+      },
+      "currentpowerconsumption": {
+        "name": "Current power consumption"
+      },
+      "currentheatproduction": {
+        "name": "Current heat production"
       }
     },
     "climate": {

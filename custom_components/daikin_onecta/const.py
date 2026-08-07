@@ -644,4 +644,22 @@ VALUE_SENSOR_MAPPING = {
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "firmwareupdate",
     },
+    "currentPowerConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:lightning-bolt",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "currentpowerconsumption",
+    },
+    "currentHeatProduction": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "currentheatproduction",
+    },
 }
