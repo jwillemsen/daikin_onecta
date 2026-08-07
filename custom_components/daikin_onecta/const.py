@@ -12,6 +12,7 @@ from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
 from homeassistant.const import UnitOfDensity
 from homeassistant.const import UnitOfEnergy
+from homeassistant.const import UnitOfPower
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
 
@@ -647,20 +648,20 @@ VALUE_SENSOR_MAPPING = {
     "currentPowerConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
-        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfPower.WATT,
         CONF_ICON: "mdi:lightning-bolt",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "currentpowerconsumption",
     },
-    "currentHeatProduction": {
+    "currentThermalOutput": {
         CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
         CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
-        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfPower.WATT,
         CONF_ICON: "mdi:fire",
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
-        TRANSLATION_KEY: "currentheatproduction",
+        TRANSLATION_KEY: "currenthermaloutput",
     },
     "HeatingMonthlyThermalOutput": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,

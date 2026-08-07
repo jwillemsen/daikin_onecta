@@ -232,8 +232,8 @@
       "currentpowerconsumption": {
         "name": "Current power consumption"
       },
-      "currentheatproduction": {
-        "name": "Current heat production"
+      "currenthermaloutput": {
+        "name": "Current thermal output"
       }
     },
     "binary_sensor": {
