@@ -12,6 +12,7 @@ from homeassistant.const import REVOLUTIONS_PER_MINUTE
 from homeassistant.const import SIGNAL_STRENGTH_DECIBELS_MILLIWATT
 from homeassistant.const import UnitOfDensity
 from homeassistant.const import UnitOfEnergy
+from homeassistant.const import UnitOfPower
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
 
@@ -643,5 +644,59 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: EntityCategory.DIAGNOSTIC,
         TRANSLATION_KEY: "firmwareupdate",
+    },
+    "currentPowerConsumption": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfPower.WATT,
+        CONF_ICON: "mdi:lightning-bolt",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "currentpowerconsumption",
+    },
+    "currentHeatProduction": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.POWER,
+        CONF_STATE_CLASS: SensorStateClass.MEASUREMENT,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfPower.WATT,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "currentthermaloutput",
+    },
+    "HeatingMonthlyThermalOutput": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingmonthlythermaloutput",
+    },
+    "HeatingYearlyThermalOutput": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:fire",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "heatingyearlythermaloutput",
+    },
+    "CoolingMonthlyThermalOutput": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingmonthlythermaloutput",
+    },
+    "CoolingYearlyThermalOutput": {
+        CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
+        CONF_STATE_CLASS: SensorStateClass.TOTAL_INCREASING,
+        CONF_UNIT_OF_MEASUREMENT: UnitOfEnergy.KILO_WATT_HOUR,
+        CONF_ICON: "mdi:snowflake",
+        ENABLED_DEFAULT: True,
+        ENTITY_CATEGORY: None,
+        TRANSLATION_KEY: "coolingyearlythermaloutput",
     },
 }

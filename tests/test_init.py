@@ -1703,3 +1703,16 @@ async def test_dx4_firmwareupdate(
         )
         await hass.async_block_till_done()
         assert len(aioclient_mock.mock_calls) == 2
+
+
+@pytest.mark.asyncio
+async def test_skyair(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+    onecta_auth: AsyncMock,
+    snapshot: SnapshotAssertion,
+    entity_registry: er.EntityRegistry,
+    aioclient_mock: AiohttpClientMocker,
+) -> None:
+    """Test entities."""
+    await snapshot_platform_entities(hass, aioclient_mock, config_entry, Platform.SENSOR, entity_registry, snapshot, "skyair")
