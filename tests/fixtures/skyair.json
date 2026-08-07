@@ -33,7 +33,10 @@
               "settable": false,
               "value": "10.20.26.51"
             },
-            "macAddress": "**REDACTED**",
+            "macAddress": {
+              "settable": false,
+              "value": "10:68:38:c4:d3:88"
+            },
             "regionCode": {
               "settable": false,
               "value": "eu"
@@ -708,7 +711,10 @@
               "settable": false,
               "value": "10.20.26.52"
             },
-            "macAddress": "**REDACTED**",
+            "macAddress": {
+              "settable": false,
+              "value": "10:68:38:c4:d3:24"
+            },
             "regionCode": {
               "settable": false,
               "value": "eu"
@@ -1379,7 +1385,10 @@
               "settable": false,
               "value": "10.20.26.53"
             },
-            "macAddress": "**REDACTED**",
+            "macAddress": {
+              "settable": false,
+              "value": "10:68:38:c4:d5:88"
+            },
             "regionCode": {
               "settable": false,
               "value": "eu"
