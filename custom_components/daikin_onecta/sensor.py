@@ -158,10 +158,10 @@ async def async_setup_entry(
                 if cd is not None:
                     cdv = cd.get("value")
                     if cdv is not None:
-                        for type in ["electrical", "gas", "thermal"]:
-                            cdve = cdv.get(type)
+                        for energy_type in ["electrical", "gas", "thermal"]:
+                            cdve = cdv.get(energy_type)
                             if cdve is not None:
-                                handle_energy_sensors(coordinator, device, embedded_id, management_point_type, type, cdve, sensors, datatype)
+                                handle_energy_sensors(coordinator, device, embedded_id, management_point_type, energy_type, cdve, sensors, datatype)
 
     async_add_entities(sensors)
 
