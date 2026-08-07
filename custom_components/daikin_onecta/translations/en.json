@@ -216,6 +216,18 @@
       },
       "timezone": {
         "name": "Time zone"
+      },
+      "heatingmonthlythermaloutput": {
+        "name": "Heating monthly thermal output"
+      },
+      "heatingyearlythermaloutput": {
+        "name": "Heating yearly thermal output"
+      },
+      "coolingmonthlythermaloutput": {
+        "name": "Cooling monthly thermal output"
+      },
+      "coolingyearlythermaloutput": {
+        "name": "Cooling yearly thermal output"
       }
     },
     "binary_sensor": {
