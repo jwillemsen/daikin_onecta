@@ -81436,7 +81436,7 @@
     'supported_features': 0,
     'translation_key': 'pm10concentration',
     'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_sensoryData_pm10Concentration',
-    'unit_of_measurement': <UnitOfDensity.MICROGRAMS_PER_CUBIC_METER: 'μg/m³'>,
+    'unit_of_measurement': 'μg/m³',
   })
 # ---
 # name: test_mc80z[sensor.air_purifier_climatecontrol_pm10_concentration-state]
@@ -81445,7 +81445,7 @@
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'pm10',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:blur',
       <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfDensity.MICROGRAMS_PER_CUBIC_METER: 'μg/m³'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: 'μg/m³',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.air_purifier_climatecontrol_pm10_concentration',
@@ -81491,7 +81491,7 @@
     'supported_features': 0,
     'translation_key': 'pm1concentration',
     'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_sensoryData_pm1Concentration',
-    'unit_of_measurement': <UnitOfDensity.MICROGRAMS_PER_CUBIC_METER: 'μg/m³'>,
+    'unit_of_measurement': 'μg/m³',
   })
 # ---
 # name: test_mc80z[sensor.air_purifier_climatecontrol_pm1_concentration-state]
@@ -81500,7 +81500,7 @@
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'pm1',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:blur',
       <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfDensity.MICROGRAMS_PER_CUBIC_METER: 'μg/m³'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: 'μg/m³',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.air_purifier_climatecontrol_pm1_concentration',
@@ -81546,7 +81546,7 @@
     'supported_features': 0,
     'translation_key': 'pm25concentration',
     'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_climateControl_sensoryData_pm25Concentration',
-    'unit_of_measurement': <UnitOfDensity.MICROGRAMS_PER_CUBIC_METER: 'μg/m³'>,
+    'unit_of_measurement': 'μg/m³',
   })
 # ---
 # name: test_mc80z[sensor.air_purifier_climatecontrol_pm2_5_concentration-state]
@@ -81555,7 +81555,7 @@
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'pm25',
       <EntityStateAttribute.ICON: 'icon'>: 'mdi:blur',
       <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfDensity.MICROGRAMS_PER_CUBIC_METER: 'μg/m³'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: 'μg/m³',
     }),
     'context': <ANY>,
     'entity_id': 'sensor.air_purifier_climatecontrol_pm2_5_concentration',
