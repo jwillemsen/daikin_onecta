@@ -192,7 +192,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 "Device '%s' set tank temperature ignored because device is off",
                 self._device.name,
             )
-            return None
+            return
         dht = self.domestic_hotwater_temperature
         if dht is not None:
             if dht["settable"] is False:
@@ -200,7 +200,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                     "Device '%s' set tank temperature ignored because tank temperature can't be set",
                     self._device.name,
                 )
-                return None
+                return
 
         int_value = int(value)
         if int_value != self._attr_target_temperature:

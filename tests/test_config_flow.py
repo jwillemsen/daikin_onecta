@@ -4,9 +4,7 @@ from unittest.mock import patch
 
 import pytest
 from homeassistant import config_entries
-from homeassistant.components.application_credentials import (
-    async_import_client_credential,
-)
+from homeassistant.components.application_credentials import async_import_client_credential
 from homeassistant.components.application_credentials import ClientCredential
 from homeassistant.config_entries import SOURCE_ZEROCONF
 from homeassistant.core import HomeAssistant

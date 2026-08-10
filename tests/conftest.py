@@ -39,7 +39,7 @@ def load_fixture_json(name):
 
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
-def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:  # noqa: F811
+def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:
     """Enable custom integrations defined in the test dir."""
 
 
@@ -55,16 +55,21 @@ async def snapshot_platform_entities(
 ) -> None:
     config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator=MagicMock(), devices={})
     """Snapshot entities and their states."""
-    with patch(
-        "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
-    ), patch(
-        "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.valid_token",
-        False,
-    ), patch(
-        "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
-    ), patch(
-        "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
-        {"access_token": FAKE_ACCESS_TOKEN},
+    with (
+        patch(
+            "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
+        ),
+        patch(
+            "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.valid_token",
+            False,
+        ),
+        patch(
+            "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
+        ),
+        patch(
+            "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
+            {"access_token": FAKE_ACCESS_TOKEN},
+        ),
     ):
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
         assert await hass.config_entries.async_setup(config_entry.entry_id)
