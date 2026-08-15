@@ -5,6 +5,7 @@
 [![Releases](https://img.shields.io/github/release/jwillemsen/daikin_onecta/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_onecta/releases)
 [![Maintainer](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
 [![Coverage](https://img.shields.io/codecov/c/github/jwillemsen/daikin_onecta?style=for-the-badge)](https://codecov.io/gh/jwillemsen/daikin_onecta)
+[![Lokalise Project](https://shields.io)](DE_DIRECTE_INVITE_LINK_VAN_JOUW_PROJECT)
 
 # Daikin Onecta
 
@@ -86,6 +87,18 @@ logger:
   logs:
     custom_components.daikin_onecta.climate: debug
 ```
+
+# 🌐 Translations
+
+You can help translate this integration into your own language! We use **Lokalise** to manage all translation strings. You don't need any coding skills to help—just a free Lokalise account.
+
+### How to contribute:
+1. Click the **Lokalise** badge above to join our translation project.
+2. Select your language (or request it if it's missing).
+3. Start translating the open strings.
+4. Once a language is 100% completed, it will automatically be pulled into this repository via a Pull Request.
+
+*A huge thank you to all community members helping to make this integration accessible to everyone!*
 
 # Thanks to:
 
