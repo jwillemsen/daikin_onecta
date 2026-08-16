@@ -26,7 +26,6 @@ from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
-
 _LOGGER = logging.getLogger(__name__)
 
 

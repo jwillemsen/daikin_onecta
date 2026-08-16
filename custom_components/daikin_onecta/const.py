@@ -16,7 +16,6 @@ from homeassistant.const import UnitOfPower
 from homeassistant.const import UnitOfTemperature
 from homeassistant.helpers.entity import EntityCategory
 
-
 DOMAIN = "daikin_onecta"
 
 OAUTH2_AUTHORIZE = "https://idp.onecta.daikineurope.com/v1/oidc/authorize"

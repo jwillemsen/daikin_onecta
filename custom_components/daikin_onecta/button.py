@@ -11,7 +11,6 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .coordinator import OnectaRuntimeData
 
-
 _LOGGER = logging.getLogger(__name__)
 
 

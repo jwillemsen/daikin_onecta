@@ -159,8 +159,7 @@ class FlowHandler(
         # Strip trailing dot and .local suffix for a clean display name.
         # e.g. "altherma4-a1b2-c3d4.local." -> "altherma4-a1b2-c3d4"
         hostname = hostname.rstrip(".")
-        if hostname.endswith(".local"):
-            hostname = hostname[: -len(".local")]
+        hostname = hostname.removesuffix(".local")
 
         self.context["title_placeholders"] = {"name": hostname}
 
