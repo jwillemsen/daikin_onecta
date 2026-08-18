@@ -5,7 +5,7 @@
 [![Releases](https://img.shields.io/github/release/jwillemsen/daikin_onecta/all.svg?style=for-the-badge)](https://github.com/jwillemsen/daikin_onecta/releases)
 [![Maintainer](https://img.shields.io/badge/MAINTAINER-%40jwillemsen-green?style=for-the-badge)](https://github.com/jwillemsen)
 [![Coverage](https://img.shields.io/codecov/c/github/jwillemsen/daikin_onecta?style=for-the-badge)](https://codecov.io/gh/jwillemsen/daikin_onecta)
-[![Lokalise](https://img.shields.io/badge/Lokalise-Translations-blue?logo=lokalise)](https://app.lokalise.com/public/794367736a83fe4a568a68.92678930/)
+[![Lokalise](https://img.shields.io/badge/Lokalise-Translations-blue?style=for-the-badge)](https://app.lokalise.com/public/794367736a83fe4a568a68.92678930/)
 
 # Daikin Onecta
 
