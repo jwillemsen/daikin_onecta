@@ -69,6 +69,8 @@ async def async_setup_entry(
 
 
 class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
+
+
     def __init__(
         self,
         device: DaikinOnectaDevice,
@@ -90,18 +92,18 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._device.fill_device_info(self._attr_device_info, management_point_type)
         self._embedded_id = embedded_id
         self._value = value
+        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
+        self._attr_has_entity_name = True
         self._attr_device_class = None
         self._attr_state_class = None
-        self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
         if sensor_settings is not None:
+            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
             self._attr_icon = sensor_settings[CONF_ICON]
             self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
             self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
             self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
             self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports binary sensor '%s'",

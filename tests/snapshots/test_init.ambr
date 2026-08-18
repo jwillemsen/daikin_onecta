@@ -721,7 +721,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 0,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 0,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_leaving_water_offset',
@@ -5590,206 +5590,6 @@
     'state': 'unknown',
   })
 # ---
-# name: test_altherma[button.johnny_maaike_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.johnny_maaike_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[button.johnny_maaike_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.johnny_maaike_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_altherma[button.linde_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.linde_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[button.linde_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.linde_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_altherma[button.sanne_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.sanne_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[button.sanne_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.sanne_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_altherma[button.werkkamer_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.werkkamer_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma[button.werkkamer_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.werkkamer_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
 # name: test_altherma[climate.altherma_leaving_water_offset-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -5937,7 +5737,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 19,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 19,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_leaving_water_temperature',
@@ -6017,7 +5817,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 24.5,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 24.5,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_room_temperature',
@@ -6144,7 +5944,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.johnny_maaike_room_temperature',
@@ -6271,7 +6071,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.linde_room_temperature',
@@ -6398,7 +6198,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.sanne_room_temperature',
@@ -6525,7 +6325,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.werkkamer_room_temperature',
@@ -19775,206 +19575,6 @@
     'state': 'unknown',
   })
 # ---
-# name: test_altherma_ratelimit[button.johnny_maaike_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.johnny_maaike_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[button.johnny_maaike_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.johnny_maaike_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_altherma_ratelimit[button.linde_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.linde_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[button.linde_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.linde_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_altherma_ratelimit[button.sanne_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.sanne_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[button.sanne_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.sanne_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_altherma_ratelimit[button.werkkamer_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.werkkamer_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_altherma_ratelimit[button.werkkamer_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.werkkamer_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
 # name: test_altherma_ratelimit[climate.altherma_leaving_water_offset-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -20122,7 +19722,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 19,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 19,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_leaving_water_temperature',
@@ -20202,7 +19802,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 24.5,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 24.5,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_room_temperature',
@@ -20329,7 +19929,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.johnny_maaike_room_temperature',
@@ -20456,7 +20056,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.linde_room_temperature',
@@ -20583,7 +20183,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.sanne_room_temperature',
@@ -20710,7 +20310,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.werkkamer_room_temperature',
@@ -28822,7 +28422,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 0,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 0,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_leaving_water_offset',
@@ -28979,7 +28579,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 20,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_room_temperature',
@@ -41796,206 +41396,6 @@
     'state': 'unknown',
   })
 # ---
-# name: test_climate[button.johnny_maaike_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.johnny_maaike_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '32db6075-b739-4026-b661-127009254b42_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[button.johnny_maaike_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.johnny_maaike_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_climate[button.linde_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.linde_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[button.linde_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.linde_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_climate[button.sanne_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.sanne_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[button.sanne_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.sanne_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
-# name: test_climate[button.werkkamer_refresh-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'button',
-    'entity_category': <EntityCategory.CONFIG: 'config'>,
-    'entity_id': 'button.werkkamer_refresh',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Refresh',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': 'mdi:refresh',
-    'original_name': 'Refresh',
-    'platform': 'daikin_onecta',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': None,
-    'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_refresh',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_climate[button.werkkamer_refresh-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-    }),
-    'context': <ANY>,
-    'entity_id': 'button.werkkamer_refresh',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'unknown',
-  })
-# ---
 # name: test_climate[climate.altherma_leaving_water_offset-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -42143,7 +41543,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 19,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 19,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_leaving_water_temperature',
@@ -42223,7 +41623,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 24.5,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 24.5,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_room_temperature',
@@ -42350,7 +41750,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.johnny_maaike_room_temperature',
@@ -42477,7 +41877,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.linde_room_temperature',
@@ -42604,7 +42004,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.sanne_room_temperature',
@@ -42731,7 +42131,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.werkkamer_room_temperature',
@@ -50789,7 +50189,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 21,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 21,
     }),
     'context': <ANY>,
     'entity_id': 'climate.werkkamer_room_temperature',
@@ -53399,7 +52799,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
     }),
     'context': <ANY>,
     'entity_id': 'climate.laurens_room_temperature',
@@ -53517,7 +52917,7 @@
         'floorheatingairflow',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 23.5,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23.5,
     }),
     'context': <ANY>,
     'entity_id': 'climate.woonkamer_airco_room_temperature',
@@ -57016,7 +56416,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 21,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 21,
     }),
     'context': <ANY>,
     'entity_id': 'climate.werkkamer_room_temperature',
@@ -73957,7 +73357,7 @@
         'windnice',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 14.5,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 14.5,
     }),
     'context': <ANY>,
     'entity_id': 'climate.johnny_maaike_room_temperature',
@@ -75450,7 +74850,7 @@
         'swing',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.sala_room_temperature',
@@ -76760,7 +76160,7 @@
         'none',
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 25,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
     }),
     'context': <ANY>,
     'entity_id': 'climate.my_living_room_room_temperature',
@@ -81170,7 +80570,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: -3,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: -3,
     }),
     'context': <ANY>,
     'entity_id': 'climate.vloerverwarming_leaving_water_offset',
@@ -84185,7 +83585,7 @@
       <ClimateEntityCapabilityAttribute.MIN_TEMP: 'min_temp'>: 12,
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 385>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 22,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 22,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_room_temperature',
@@ -87679,7 +87079,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 409>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 20,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
     }),
     'context': <ANY>,
     'entity_id': 'climate.master_room_temperature',
@@ -89382,7 +88782,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 409>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 20,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
     }),
     'context': <ANY>,
     'entity_id': 'climate.gostinaia_woonkamer_room_temperature',
@@ -89479,7 +88879,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 409>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 20,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
     }),
     'context': <ANY>,
     'entity_id': 'climate.slaapkamer_andre_olha_room_temperature',
@@ -89576,7 +88976,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 409>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 20,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
     }),
     'context': <ANY>,
     'entity_id': 'climate.tretii_blok_spalnia_vtoroi_etazh_room_temperature',
@@ -93709,7 +93109,7 @@
         'swing',
       ]),
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 20,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
     }),
     'context': <ANY>,
     'entity_id': 'climate.daikinap95800_room_temperature',
@@ -94903,7 +94303,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 0,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 0,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_leaving_water_offset',
@@ -95060,7 +94460,7 @@
       ]),
       <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature: 401>,
       <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
-      <ClimateEntityStateAttribute.TEMPERATURE: 'temperature'>: 19,
+      <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 19,
     }),
     'context': <ANY>,
     'entity_id': 'climate.altherma_room_temperature',
