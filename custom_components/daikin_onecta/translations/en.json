@@ -80,6 +80,12 @@
       }
     },
     "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "cool": "Cool",
+          "off": "Off"
+        }
+      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
@@ -290,6 +296,15 @@
       "firmwareupdate": {
         "name": "Firmware update"
       }
+    },
+    "water_heater": {
+      "hot_water_tank": {
+        "state": {
+          "heat_pump": "Normal",
+          "off": "Off",
+          "performance": "Boost"
+        }
+      }
     }
   },
   "exceptions": {
@@ -305,25 +320,6 @@
     "minute_rate_limit": {
       "description": "You have reached your minute rate limit to the Daikin Cloud, don't make so many calls to your Daikin devices in one minute.",
       "title": "The minute rate limit has been reached"
-    }
-  },
-  "entity": {
-    "climate": {
-      "leavingwateroffset": {
-        "state": {
-          "cool": "Cool",
-          "off": "[%key:state::default::off%]"
-        }
-      }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "heat_pump": "Normal",
-          "off": "[%key:state::default::off%]",
-          "performance": "Boost"
-        }
-      }
     }
   },
   "options": {
