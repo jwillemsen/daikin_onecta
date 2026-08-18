@@ -1,7 +1,7 @@
 name: Lokalise Bulk Upload Existing Translations
 
 on:
-  workflow_dispatch:
+  workflow_dispatch: # Handmatig te starten via de GitHub Actions tab
 
 jobs:
   bulk-upload:
@@ -10,10 +10,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Installeer Lokalise CLI v2 via curl
-        run: |
-          curl -sfL https://githubusercontent.com | sh
-          sudo mv ./bin/lokalise2 /usr/local/bin/lokalise2
+      # Officiële installer met het juiste, volledige versienummer
+      - name: Installeer Lokalise CLI v2
+        uses: lokalise/install-lokalise-cli-v2@v2.1.0
+        with:
+          add-to-path: true
 
       - name: Push alle bestaande .json bestanden naar Lokalise
         run: |
@@ -23,12 +24,13 @@ jobs:
             # Haal de taalcode uit de bestandsnaam (bijv. nl uit nl.json)
             lang="${file%.json}"
             
-            echo "Uploading $file as language code: $lang ..."
+            echo "Uploading $file als taalcode: $lang ..."
             
             lokalise2 file upload \
               --token "${{ secrets.LOKALISE_API_TOKEN }}" \
               --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
               --file "$file" \
               --lang-iso "$lang" \
-              --convert-placeholders=1
+              --convert-placeholders=1 \
+              --replace-modified=1
           done
