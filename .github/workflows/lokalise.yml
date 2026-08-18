@@ -61,7 +61,8 @@ jobs:
             --unzip-to "custom_components/daikin_onecta/translations/" \
             --bundle-structure "%LANG_ISO%.%FORMAT%" \
             --original-filenames=false \
-            --export-empty-as "skip"
+            --export-empty-as "skip" \
+            --indentation "2sp"
 
       # Home Assistant validatie linter (Hassfest)
       - name: Run Hassfest Validation
