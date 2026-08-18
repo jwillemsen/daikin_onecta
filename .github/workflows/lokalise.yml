@@ -13,7 +13,6 @@ on:
   workflow_dispatch:
 
 jobs:
-  # TAAK 1: Engelse bronbestanden direct uploaden
   push-source:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -22,7 +21,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Push en.json naar Lokalise
-        uses: lokalise/lokalise-cli-action@v2
+        uses: lokalise/lokalise-cli-action-repo@v2
         with:
           api_token: ${{ secrets.LOKALISE_API_TOKEN }}
           project_id: ${{ secrets.LOKALISE_PROJECT_ID }}
@@ -30,7 +29,6 @@ jobs:
           file: "custom_components/daikin_onecta/translations/en.json"
           lang_iso: "en"
 
-  # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
