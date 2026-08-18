@@ -33,7 +33,8 @@ jobs:
             --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
             --file "custom_components/daikin_onecta/translations/en.json" \
             --lang-iso "en" \
-            --convert-placeholders=1
+            --convert-placeholders=1 \
+            --replace-modified
 
   # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
