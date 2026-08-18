@@ -1,0 +1,90 @@
+name: Lokalise Translation Sync
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'custom_components/daikin_onecta/translations/en.json'
+  repository_dispatch:
+    types: [lokalise_webhook]
+  schedule:
+    - cron: '0 2 * * *' # Elke nacht om 02:00 UTC als vangnet
+  workflow_dispatch: # Handmatige startknop in GitHub Actions UI
+
+jobs:
+  # TAAK 1: Engelse bronbestanden direct uploaden
+  push-source:
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-slim
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Installeer Lokalise CLI v2 via curl
+        run: |
+          curl -sfL https://raw.githubusercontent.com/lokalise/lokalise-cli-2-go/master/install.sh | sh
+          sudo mv ./bin/lokalise2 /usr/local/bin/lokalise2
+
+      - name: Push en.json naar Lokalise
+        run: |
+          lokalise2 file upload \
+            --token "${{ secrets.LOKALISE_API_TOKEN }}" \
+            --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
+            --file "custom_components/daikin_onecta/translations/en.json" \
+            --lang-iso "en" \
+            --convert-placeholders=1 \
+            --replace-modified
+
+  # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
+  pull-translations:
+    if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      # Officiële installer
+      - name: Installeer Lokalise CLI v2
+        uses: lokalise/install-lokalise-cli-v2@v2.1.0
+        with:
+          add-to-path: true
+
+      # Download de bestanden exact in het juiste Home Assistant formaat
+      - name: Download vertalingen uit Lokalise
+        run: |
+          lokalise2 file download \
+            --token "${{ secrets.LOKALISE_API_TOKEN }}" \
+            --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
+            --format "json" \
+            --unzip-to "custom_components/daikin_onecta/translations/" \
+            --bundle-structure "%LANG_ISO%.%FORMAT%" \
+            --original-filenames=false \
+            --export-empty-as "skip" \
+            --indentation "2sp"
+
+      # Verwijder het binaire lokalise2 bestand handmatig voordat de PR gemaakt wordt
+      - name: Clean up temporary files
+        run: |
+          rm -f ./lokalise2
+          rm -f ./bin/lokalise2
+
+      # Home Assistant validatie linter (Hassfest)
+      - name: Run Hassfest Validation
+        uses: home-assistant/actions/hassfest@master
+
+      # Open automatisch een nette Pull Request met de nieuwe talen
+      - name: Create Pull Request met nieuwe vertalingen
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update translation files van Lokalise"
+          title: "🤖 Translation updates van Lokalise"
+          body: "Deze automatische PR bevat de nieuwste vertalingen vanuit het Lokalise project."
+          branch: "lokalise-translations"
+          delete-branch: true
+          # Beperk de PR-actie tot ALLEEN wijzigingen in de translations map
+          add-paths: |
+            custom_components/daikin_onecta/translations/*.json

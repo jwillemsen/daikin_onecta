@@ -1,20 +1,26 @@
 {
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "high_scan_interval": "Interval posodobitve visoke frekvence (minute)",
-          "low_scan_interval": "Interval posodobitve nizke frekvence (minute)",
-          "high_scan_start": "Začetni čas visoke frekvence obdobja",
-          "low_scan_start": "Začetni čas nizke frekvence obdobja",
-          "scan_ignore": "Število sekund, ko osvežitev podatkov po ukazu ni upoštevana"
-        },
-        "description": "Nastavitev ankete Daikin Onecta Cloud",
-        "title": "Daikin Onecta"
-      }
-    }
-  },
   "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Neveljaven ali potekel žeton; prosimo, ponovno konfigurirajte integracijo.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Neuspešno zaradi nepričakovane napake.",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Prepričajte se, da znova konfigurirate isti račun."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
     "step": {
       "pick_implementation": {
         "data": {
@@ -26,30 +32,9 @@
         "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       },
       "reauth_confirm": {
-        "title": "[%key:common::config_flow::title::reauth%]",
-        "description": "Integracija Daikin Onecta mora znova overiti vaš račun"
+        "description": "Integracija Daikin Onecta mora znova overiti vaš račun",
+        "title": "[%key:common::config_flow::title::reauth%]"
       }
-    },
-    "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
-      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
-      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
-      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
-      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
-      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
-      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
-      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
-      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
-      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
-      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
-      "invalid_token": "Neveljaven ali potekel žeton; prosimo, ponovno konfigurirajte integracijo.",
-      "wrong_account": "Prepričajte se, da znova konfigurirate isti račun.",
-      "unknown": "Neuspešno zaradi nepričakovane napake."
-    },
-    "create_entry": {
-      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
@@ -59,16 +44,21 @@
       }
     },
     "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "off": "[%key:state::default::off%]"
+        }
+      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
             "state": {
-              "quiet": "Tiho",
               "1": "1",
               "2": "2",
               "3": "3",
               "4": "4",
-              "5": "5"
+              "5": "5",
+              "quiet": "Tiho"
             }
           },
           "swing_mode": {
@@ -79,16 +69,43 @@
           }
         }
       }
+    },
+    "water_heater": {
+      "hot_water_tank": {
+        "state": {
+          "off": "[%key:state::default::off%]"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
     }
   },
   "issues": {
     "day_rate_limit": {
-      "title": "Dnevna omejitev hitrosti je dosežena",
-      "description": "Dosegli ste dnevno omejitev hitrosti v storitvi Daikin Cloud, preverite frekvenco anketiranja v nastavitvah Daikin Onecta."
+      "description": "Dosegli ste dnevno omejitev hitrosti v storitvi Daikin Cloud, preverite frekvenco anketiranja v nastavitvah Daikin Onecta.",
+      "title": "Dnevna omejitev hitrosti je dosežena"
     },
     "minute_rate_limit": {
-      "title": "Omejitev hitrosti na minuto je dosežena",
-      "description": "Dosegli ste omejitev hitrosti na minuto v storitvi Daikin Cloud, ne delajte toliko klicev k svojim napravam Daikin v eni minuti."
+      "description": "Dosegli ste omejitev hitrosti na minuto v storitvi Daikin Cloud, ne delajte toliko klicev k svojim napravam Daikin v eni minuti.",
+      "title": "Omejitev hitrosti na minuto je dosežena"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Interval posodobitve visoke frekvence (minute)",
+          "high_scan_start": "Začetni čas visoke frekvence obdobja",
+          "low_scan_interval": "Interval posodobitve nizke frekvence (minute)",
+          "low_scan_start": "Začetni čas nizke frekvence obdobja",
+          "scan_ignore": "Število sekund, ko osvežitev podatkov po ukazu ni upoštevana"
+        },
+        "description": "Nastavitev ankete Daikin Onecta Cloud",
+        "title": "Daikin Onecta"
+      }
     }
   }
 }

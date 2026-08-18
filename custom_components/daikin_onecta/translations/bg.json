@@ -1,20 +1,26 @@
 {
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "high_scan_interval": "Интервал на актуализация за период с висока честота (минути)",
-          "low_scan_interval": "Интервал на актуализация за период с ниска честота (минути)",
-          "high_scan_start": "Начално време на период с висока честота",
-          "low_scan_start": "Начално време на период с ниска честота",
-          "scan_ignore": "Брой секунди, през които опресняването на данните се игнорира след команда"
-        },
-        "description": "Конфигуриране на опресняването на Daikin Onecta Cloud",
-        "title": "Daikin Onecta"
-      }
-    }
-  },
   "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Невалиден или изтекъл токен; моля, преконфигурирайте интеграцията.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Неуспешно поради неочаквана грешка.",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Уверете се, че преконфигурирате същия акаунт."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
     "step": {
       "pick_implementation": {
         "data": {
@@ -26,237 +32,69 @@
         "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       },
       "reauth_confirm": {
-        "title": "[%key:common::config_flow::title::reauth%]",
-        "description": "Интеграцията Daikin Onecta трябва да удостовери акаунта ви отново"
+        "description": "Интеграцията Daikin Onecta трябва да удостовери акаунта ви отново",
+        "title": "[%key:common::config_flow::title::reauth%]"
       }
-    },
-    "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
-      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
-      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
-      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
-      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
-      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
-      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
-      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
-      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
-      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
-      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
-      "invalid_token": "Невалиден или изтекъл токен; моля, преконфигурирайте интеграцията.",
-      "wrong_account": "Уверете се, че преконфигурирате същия акаунт.",
-      "unknown": "Неуспешно поради неочаквана грешка."
-    },
-    "create_entry": {
-      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
-    "select": {
-      "schedule": {
-        "name": "График"
-      }
-    },
-    "switch": {
-      "streamermode": {
-        "name": "Режим Streamer"
-      },
-      "economode": {
-        "name": "Икономичен режим (Econo)"
-      }
-    },
-    "sensor": {
-      "ratelimitremainingday": {
-        "name": "Оставащ дневен лимит на заявките"
-      },
-      "coolingdailyelectricalconsumption": {
-        "name": "Дневно потребление на ел. енергия за охлаждане"
-      },
-      "coolingweeklyelectricalconsumption": {
-        "name": "Седмично потребление на ел. енергия за охлаждане"
-      },
-      "coolingyearlyelectricalconsumption": {
-        "name": "Годишно потребление на ел. енергия за охлаждане"
-      },
-      "heatingdailyelectricalconsumption": {
-        "name": "Дневно потребление на ел. енергия за отопление"
-      },
-      "heatingweeklyelectricalconsumption": {
-        "name": "Седмично потребление на ел. енергия за отопление"
-      },
-      "heatingyearlyelectricalconsumption": {
-        "name": "Годишно потребление на ел. енергия за отопление"
-      },
-      "coolingdailygasconsumption": {
-        "name": "Дневно потребление на газ за охлаждане"
-      },
-      "coolingweeklygasconsumption": {
-        "name": "Седмично потребление на газ за охлаждане"
-      },
-      "coolingyearlygasconsumption": {
-        "name": "Годишно потребление на газ за охлаждане"
-      },
-      "heatingdailygasconsumption": {
-        "name": "Дневно потребление на газ за отопление"
-      },
-      "heatingweeklygasconsumption": {
-        "name": "Седмично потребление на газ за отопление"
-      },
-      "heatingyearlygasconsumption": {
-        "name": "Годишно потребление на газ за отопление"
-      },
-      "ipaddress": {
-        "name": "IP адрес"
-      },
-      "tanktemperature": {
-        "name": "Температура на водосъдържателя"
-      },
-      "heatupmode": {
-        "name": "Режим на загряване"
-      },
-      "outdoortemperature": {
-        "name": "Външна температура"
-      },
-      "leavingwatertemperature": {
-        "name": "Температура на изходящата вода"
-      },
-      "errorcode": {
-        "name": "Код за грешка"
-      },
-      "setpointmode": {
-        "name": "Режим на зададена стойност"
-      },
-      "powerfulmode": {
-        "name": "Мощен режим (Powerful)"
-      },
-      "roomtemperature": {
-        "name": "Стайна температура"
-      },
-      "onoffmode": {
-        "name": "Режим Вкл./Изкл."
-      },
-      "controlmode": {
-        "name": "Режим на управление"
-      },
-      "roomhumidity": {
-        "name": "Влажност в стаята"
-      },
-      "pm1concentration": {
-        "name": "Концентрация на PM1"
-      },
-      "pm25concentration": {
-        "name": "Концентрация на PM2.5"
-      },
-      "operationmode": {
-        "name": "Работен режим"
-      },
-      "airpurificationmode": {
-        "name": "Режим на пречистване на въздуха"
-      },
-      "wificonnectionssid": {
-        "name": "SSID на WiFi връзката"
-      },
-      "wificonnectionstrength": {
-        "name": "Сила на WiFi връзката"
-      },
-      "ssid": {
-        "name": "SSID"
-      },
-      "pm10concentration": {
-        "name": "Концентрация на PM10"
-      },
-      "leavingwateroffset": {
-        "name": "Отклонение на изходящата вода"
-      },
-      "calculatedleavingwatertemperature": {
-        "name": "Изчислена температура на изходящата вода"
-      },
-      "heatexchangertemperature": {
-        "name": "Температура на топлообменника"
-      },
-      "suctiontemperature": {
-        "name": "Температура на засмукване"
-      },
-      "deltad": {
-        "name": "DeltaD"
-      },
-      "drykeepsetting": {
-        "name": "Настройка за поддържане на сухота"
-      },
-      "fanmotorrotationspeed": {
-        "name": "Скорост на въртене на мотора на вентилатора"
-      },
-      "datetime": {
-        "name": "Дата/час"
-      },
-      "regioncode": {
-        "name": "Код на региона"
-      },
-      "timezone": {
-        "name": "Часова зона"
-      }
-    },
     "binary_sensor": {
-      "isholidaymodeactive": {
-        "name": "Активен ли е ваканционен режим"
-      },
-      "isinerrorstate": {
-        "name": "В състояние на грешка ли е"
-      },
-      "isinwarningstate": {
-        "name": "В предупредително състояние ли е"
-      },
-      "isininstallerstate": {
-        "name": "В инсталаторски режим ли е"
-      },
-      "isinemergencystate": {
-        "name": "В аварийно състояние ли е"
-      },
-      "ispowerfulmodeactive": {
-        "name": "Активен ли е мощен режим"
+      "daylightsavingtimeenabled": {
+        "name": "Включено лятно часово време"
       },
       "iscoolheatmaster": {
-        "name": "Главен ли е за охлаждане/отопление"
-      },
-      "isinmodeconflict": {
-        "name": "Има ли конфликт на режими"
-      },
-      "isincautionstate": {
-        "name": "В състояние на внимание ли е"
-      },
-      "islockfunctionenabled": {
-        "name": "Включена ли е функцията за заключване"
-      },
-      "ledenabled": {
-        "name": "Включен LED"
+        "name": "Главен ли е за охлаждане\/отопление"
       },
       "isfirmwareupdatesupported": {
         "name": "Поддържа ли се актуализация на фърмуера"
       },
-      "daylightsavingtimeenabled": {
-        "name": "Включено лятно часово време"
+      "isholidaymodeactive": {
+        "name": "Активен ли е ваканционен режим"
+      },
+      "isincautionstate": {
+        "name": "В състояние на внимание ли е"
+      },
+      "isinemergencystate": {
+        "name": "В аварийно състояние ли е"
+      },
+      "isinerrorstate": {
+        "name": "В състояние на грешка ли е"
+      },
+      "isininstallerstate": {
+        "name": "В инсталаторски режим ли е"
+      },
+      "isinmodeconflict": {
+        "name": "Има ли конфликт на режими"
+      },
+      "isinwarningstate": {
+        "name": "В предупредително състояние ли е"
+      },
+      "islockfunctionenabled": {
+        "name": "Включена ли е функцията за заключване"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Активен ли е мощен режим"
+      },
+      "ledenabled": {
+        "name": "Включен LED"
       }
     },
     "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "off": "[%key:state::default::off%]"
+        }
+      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
             "state": {
-              "quiet": "Тих",
               "1": "1",
               "2": "2",
               "3": "3",
               "4": "4",
-              "5": "5"
-            }
-          },
-          "swing_mode": {
-            "state": {
-              "stop": "Стоп",
-              "swing": "Осцилация",
-              "floorheatingairflow": "Въздушен поток за подово отопление",
-              "windnice": "Комфортен въздушен поток"
+              "5": "5",
+              "quiet": "Тих"
             }
           },
           "swing_horizontal_mode": {
@@ -264,32 +102,211 @@
               "stop": "Стоп",
               "swing": "Осцилация"
             }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Въздушен поток за подово отопление",
+              "stop": "Стоп",
+              "swing": "Осцилация",
+              "windnice": "Комфортен въздушен поток"
+            }
           }
+        }
+      }
+    },
+    "select": {
+      "schedule": {
+        "name": "График"
+      }
+    },
+    "sensor": {
+      "airpurificationmode": {
+        "name": "Режим на пречистване на въздуха"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Изчислена температура на изходящата вода"
+      },
+      "controlmode": {
+        "name": "Режим на управление"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Дневно потребление на ел. енергия за охлаждане"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Дневно потребление на газ за охлаждане"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Седмично потребление на ел. енергия за охлаждане"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Седмично потребление на газ за охлаждане"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Годишно потребление на ел. енергия за охлаждане"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Годишно потребление на газ за охлаждане"
+      },
+      "datetime": {
+        "name": "Дата\/час"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Настройка за поддържане на сухота"
+      },
+      "errorcode": {
+        "name": "Код за грешка"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Скорост на въртене на мотора на вентилатора"
+      },
+      "heatexchangertemperature": {
+        "name": "Температура на топлообменника"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Дневно потребление на ел. енергия за отопление"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Дневно потребление на газ за отопление"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Седмично потребление на ел. енергия за отопление"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Седмично потребление на газ за отопление"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Годишно потребление на ел. енергия за отопление"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Годишно потребление на газ за отопление"
+      },
+      "heatupmode": {
+        "name": "Режим на загряване"
+      },
+      "ipaddress": {
+        "name": "IP адрес"
+      },
+      "leavingwateroffset": {
+        "name": "Отклонение на изходящата вода"
+      },
+      "leavingwatertemperature": {
+        "name": "Температура на изходящата вода"
+      },
+      "onoffmode": {
+        "name": "Режим Вкл.\/Изкл."
+      },
+      "operationmode": {
+        "name": "Работен режим"
+      },
+      "outdoortemperature": {
+        "name": "Външна температура"
+      },
+      "pm10concentration": {
+        "name": "Концентрация на PM10"
+      },
+      "pm1concentration": {
+        "name": "Концентрация на PM1"
+      },
+      "pm25concentration": {
+        "name": "Концентрация на PM2.5"
+      },
+      "powerfulmode": {
+        "name": "Мощен режим (Powerful)"
+      },
+      "ratelimitremainingday": {
+        "name": "Оставащ дневен лимит на заявките"
+      },
+      "regioncode": {
+        "name": "Код на региона"
+      },
+      "roomhumidity": {
+        "name": "Влажност в стаята"
+      },
+      "roomtemperature": {
+        "name": "Стайна температура"
+      },
+      "setpointmode": {
+        "name": "Режим на зададена стойност"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "suctiontemperature": {
+        "name": "Температура на засмукване"
+      },
+      "tanktemperature": {
+        "name": "Температура на водосъдържателя"
+      },
+      "timezone": {
+        "name": "Часова зона"
+      },
+      "wificonnectionssid": {
+        "name": "SSID на WiFi връзката"
+      },
+      "wificonnectionstrength": {
+        "name": "Сила на WiFi връзката"
+      }
+    },
+    "switch": {
+      "economode": {
+        "name": "Икономичен режим (Econo)"
+      },
+      "streamermode": {
+        "name": "Режим Streamer"
+      }
+    },
+    "water_heater": {
+      "hot_water_tank": {
+        "state": {
+          "off": "[%key:state::default::off%]"
         }
       }
     }
   },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
   "issues": {
     "day_rate_limit": {
-      "title": "Дневният лимит за заявки е достигнат",
-      "description": "Достигнахте дневния си лимит за връзка с Daikin Cloud, проверете честотата на опресняване в конфигурацията на Daikin Onecta."
+      "description": "Достигнахте дневния си лимит за връзка с Daikin Cloud, проверете честотата на опресняване в конфигурацията на Daikin Onecta.",
+      "title": "Дневният лимит за заявки е достигнат"
     },
     "minute_rate_limit": {
-      "title": "Минутният лимит за заявки е достигнат",
-      "description": "Достигнахте лимита за минута за връзка с Daikin Cloud, не правете толкова много заявки към вашите Daikin устройства в рамките на една минута."
+      "description": "Достигнахте лимита за минута за връзка с Daikin Cloud, не правете толкова много заявки към вашите Daikin устройства в рамките на една минута.",
+      "title": "Минутният лимит за заявки е достигнат"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Интервал на актуализация за период с висока честота (минути)",
+          "high_scan_start": "Начално време на период с висока честота",
+          "low_scan_interval": "Интервал на актуализация за период с ниска честота (минути)",
+          "low_scan_start": "Начално време на период с ниска честота",
+          "scan_ignore": "Брой секунди, през които опресняването на данните се игнорира след команда"
+        },
+        "description": "Конфигуриране на опресняването на Daikin Onecta Cloud",
+        "title": "Daikin Onecta"
+      }
     }
   },
   "system_health": {
     "info": {
       "api_status": "API сървър",
-      "oauth2_status": "OAuth2 сървър",
-      "max_minute": "Максимум за минута",
       "max_day": "Максимум за ден",
-      "remaining_minute": "Оставащи за минута",
-      "remaining_day": "Оставащи за ден",
-      "retry_after": "Опит отново след",
+      "max_minute": "Максимум за минута",
+      "oauth2_status": "OAuth2 сървър",
+      "oauth2_token_valid": "Валиден OAuth2 токен",
       "ratelimit_reset": "Нулиране на лимита",
-      "oauth2_token_valid": "Валиден OAuth2 токен"
+      "remaining_day": "Оставащи за ден",
+      "remaining_minute": "Оставащи за минута",
+      "retry_after": "Опит отново след"
     }
   }
 }

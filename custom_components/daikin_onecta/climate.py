@@ -831,21 +831,22 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return res
 
     def get_preset_mode(self):
-        cc = self.climate_control()
         current_preset_mode = PRESET_NONE
-        for mode in self.preset_modes:
-            daikin_mode = HA_PRESET_TO_DAIKIN[mode]
-            preset = cc.get(daikin_mode)
-            if preset is not None:
-                preset_value = preset.get("value")
-                if preset_value is not None:
-                    # for example holidayMode value is a dict object with an enabled value
-                    if isinstance(preset_value, dict):
-                        enabled_value = preset_value.get("enabled")
-                        if enabled_value is not None and enabled_value:
+        cc = self.climate_control()
+        if cc is not None:
+            for mode in self.preset_modes:
+                daikin_mode = HA_PRESET_TO_DAIKIN[mode]
+                preset = cc.get(daikin_mode)
+                if preset is not None:
+                    preset_value = preset.get("value")
+                    if preset_value is not None:
+                        # for example holidayMode value is a dict object with an enabled value
+                        if isinstance(preset_value, dict):
+                            enabled_value = preset_value.get("enabled")
+                            if enabled_value is not None and enabled_value:
+                                current_preset_mode = mode
+                        if preset_value == "on":
                             current_preset_mode = mode
-                    if preset_value == "on":
-                        current_preset_mode = mode
         return current_preset_mode
 
     async def async_set_preset_mode(self, preset_mode):
@@ -904,19 +905,21 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def get_preset_modes(self):
         supported_preset_modes = [PRESET_NONE]
         cc = self.climate_control()
-        for mode in PRESET_MODES:
-            daikin_mode = HA_PRESET_TO_DAIKIN[mode]
-            preset = cc.get(daikin_mode)
-            if preset is not None and preset.get("value") is not None:
-                supported_preset_modes.append(mode)
+        if cc is not None:
+            for mode in PRESET_MODES:
+                daikin_mode = HA_PRESET_TO_DAIKIN[mode]
+                preset = cc.get(daikin_mode)
+                if preset is not None and preset.get("value") is not None:
+                    supported_preset_modes.append(mode)
 
-        _LOGGER.debug(
-            "Device '%s' supports preset_modes %s",
-            self._device.name,
-            format(supported_preset_modes),
-        )
+            _LOGGER.debug(
+                "Device '%s' supports preset_modes %s",
+                self._device.name,
+                format(supported_preset_modes),
+            )
 
-        supported_preset_modes.sort()
+            supported_preset_modes.sort()
+
         return supported_preset_modes
 
     async def async_turn_on(self):

@@ -1,39 +1,26 @@
 {
-  "entity": {
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "off": "Arrêt",
-          "heat_pump": "Normal",
-          "performance": "Boost"
-        }
-      }
-    },
-    "climate": {
-      "leavingwateroffset": {
-        "state": {
-          "off": "Arrêt",
-          "cool": "Frais"
-        }
-      }
-    }
-  },
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "high_scan_interval": "Intervalle de mise à jour de haute fréquence (minutes)",
-          "low_scan_interval": "Intervalle de mise à jour de basse fréquence (minutes)",
-          "high_scan_start": "Heure de démarrage de la période de haute fréquence",
-          "low_scan_start": "Heure de démarrage de la période de basse fréquence",
-          "scan_ignore": "Nombre de secondes pendant lesquelles une actualisation des données est ignorée après une requête"
-        },
-        "description": "Configuration des requêtes du Cloud Daikin Onecta",
-        "title": "Daikin Onecta"
-      }
-    }
-  },
   "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Jeton invalide ou expiré ; veuillez reconfigurer l'intégration.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Échec en raison d'une erreur inattendue.",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Veuillez vous assurer de reconfigurer le même compte."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
     "step": {
       "pick_implementation": {
         "data": {
@@ -45,30 +32,48 @@
         "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       },
       "reauth_confirm": {
-        "title": "[%key:common::config_flow::title::reauth%]",
-        "description": "L'intégration Daikin Onecta doit ré-authentifier votre compte"
+        "description": "L'intégration Daikin Onecta doit ré-authentifier votre compte",
+        "title": "[%key:common::config_flow::title::reauth%]"
+      }
+    }
+  },
+  "entity": {
+    "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "cool": "Frais",
+          "off": "[%key:state::default::off%]"
+        }
       }
     },
-    "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
-      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
-      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
-      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
-      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
-      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
-      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
-      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
-      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
-      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
-      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
-      "invalid_token": "Jeton invalide ou expiré ; veuillez reconfigurer l'intégration.",
-      "wrong_account": "Veuillez vous assurer de reconfigurer le même compte.",
-      "unknown": "Échec en raison d'une erreur inattendue."
-    },
-    "create_entry": {
-      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    "water_heater": {
+      "hot_water_tank": {
+        "state": {
+          "heat_pump": "Normal",
+          "off": "[%key:state::default::off%]",
+          "performance": "Boost"
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Intervalle de mise à jour de haute fréquence (minutes)",
+          "high_scan_start": "Heure de démarrage de la période de haute fréquence",
+          "low_scan_interval": "Intervalle de mise à jour de basse fréquence (minutes)",
+          "low_scan_start": "Heure de démarrage de la période de basse fréquence",
+          "scan_ignore": "Nombre de secondes pendant lesquelles une actualisation des données est ignorée après une requête"
+        },
+        "description": "Configuration des requêtes du Cloud Daikin Onecta",
+        "title": "Daikin Onecta"
+      }
     }
   }
 }
