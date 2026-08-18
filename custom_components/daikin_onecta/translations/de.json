@@ -112,7 +112,7 @@
       "heatingweeklygasconsumption": {
         "name": "Wöchentlicher Gasverbrauch Heizung"
       },
-      "heatingmonthlyconsumption": {
+      "heatingmonthlygasconsumption": {
         "name": "Monatlicher Gasverbrauch Heizung"
       },
       "heatingyearlygasconsumption": {
