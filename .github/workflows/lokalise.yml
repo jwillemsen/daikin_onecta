@@ -64,6 +64,12 @@ jobs:
             --export-empty-as "skip" \
             --indentation "2sp"
 
+      # Verwijder het binaire lokalise2 bestand handmatig voordat de PR gemaakt wordt
+      - name: Clean up temporary files
+        run: |
+          rm -f ./lokalise2
+          rm -f ./bin/lokalise2
+
       # Home Assistant validatie linter (Hassfest)
       - name: Run Hassfest Validation
         uses: home-assistant/actions/hassfest@master
@@ -78,3 +84,6 @@ jobs:
           body: "Deze automatische PR bevat de nieuwste vertalingen vanuit het Lokalise project."
           branch: "lokalise-translations"
           delete-branch: true
+          # Beperk de PR-actie tot ALLEEN wijzigingen in de translations map
+          add-paths: |
+            custom_components/daikin_onecta/translations/*.json
