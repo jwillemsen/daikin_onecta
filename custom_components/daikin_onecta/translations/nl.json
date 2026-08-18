@@ -153,6 +153,9 @@
       "coolingyearlygasconsumption": {
         "name": "Jaarlijks gasverbruik koelen"
       },
+      "currentpowerconsumption": {
+        "name": "Huidig ​​stroomverbruik"
+      },
       "datetime": {
         "name": "Datum\/tijd"
       },
@@ -243,6 +246,9 @@
       "setpointmode": {
         "name": "Setpoint‑modus"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },
@@ -268,6 +274,11 @@
       },
       "streamermode": {
         "name": "Streamer‑modus"
+      }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "Firmware-update"
       }
     },
     "water_heater": {
