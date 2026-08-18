@@ -43,7 +43,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull vertalingen uit Lokalise
         uses: lokalise/lokalise-pull-action@v5.3.0
