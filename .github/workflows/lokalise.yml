@@ -39,7 +39,7 @@ jobs:
   # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
