@@ -20,14 +20,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Push en.json naar Lokalise
-        uses: lokalise/lokalise-cli-action-repo@v2
+      - name: Installeer Lokalise CLI v2
+        uses: lokalise/install-lokalise-cli-v2@v2
         with:
-          api_token: ${{ secrets.LOKALISE_API_TOKEN }}
-          project_id: ${{ secrets.LOKALISE_PROJECT_ID }}
-          action: "file/upload"
-          file: "custom_components/daikin_onecta/translations/en.json"
-          lang_iso: "en"
+          add-to-path: true
+
+      - name: Push en.json naar Lokalise
+        run: |
+          lokalise2 file upload \
+            --token "${{ secrets.LOKALISE_API_TOKEN }}" \
+            --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
+            --file "custom_components/daikin_onecta/translations/en.json" \
+            --lang-iso "en" \
+            --platforms "web" \
+            --convert-placeholders
 
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
@@ -46,7 +52,7 @@ jobs:
           translations_path: 'custom_components/daikin_onecta/translations'
           file_format: 'json'
           flat_naming: true
-          override_base_branch: 'master'
+          override_base_branch:
 
       - name: Run Hassfest Validation
         uses: home-assistant/actions/hassfest@master
