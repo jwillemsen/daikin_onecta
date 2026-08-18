@@ -55,8 +55,7 @@ jobs:
           flat_naming: true
           override_base_branch: 'master'
           always_pull_base: true
-          filename_pattern: '%LANG_ISO%.%FORMAT%'
+          additional_params: '--bundle-structure=%LANG_ISO%.%FORMAT%'
 
-      # Home Assistant validatie linter (Hassfest)
       - name: Run Hassfest Validation
         uses: home-assistant/actions/hassfest@master
