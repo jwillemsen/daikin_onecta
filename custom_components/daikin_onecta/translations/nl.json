@@ -1,20 +1,26 @@
 {
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "high_scan_interval": "Update-interval hoge frequentieperiode (minuten)",
-          "low_scan_interval": "Update-interval lage frequentieperiode (minuten)",
-          "high_scan_start": "Starttijd hoge frequentieperiode",
-          "low_scan_start": "Starttijd lage frequentieperiode",
-          "scan_ignore": "Aantal seconden waarin een gegevensverversing wordt genegeerd na een opdracht"
-        },
-        "description": "Polling van Daikin Onecta Cloud configureren",
-        "title": "Daikin Onecta"
-      }
-    }
-  },
   "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Ongeldige of verlopen token; configureer de integratie opnieuw.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Mislukt door een onverwachte fout.",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Zorg dat je opnieuw configureert met hetzelfde account."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
     "step": {
       "pick_implementation": {
         "data": {
@@ -26,228 +32,51 @@
         "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       },
       "reauth_confirm": {
-        "title": "[%key:common::config_flow::title::reauth%]",
-        "description": "De Daikin Onecta integratie moet je account opnieuw authenticeren"
+        "description": "De Daikin Onecta integratie moet je account opnieuw authenticeren",
+        "title": "[%key:common::config_flow::title::reauth%]"
       }
-    },
-    "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
-      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
-      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
-      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
-      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
-      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
-      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
-      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
-      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
-      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
-      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
-      "invalid_token": "Ongeldige of verlopen token; configureer de integratie opnieuw.",
-      "wrong_account": "Zorg dat je opnieuw configureert met hetzelfde account.",
-      "unknown": "Mislukt door een onverwachte fout."
-    },
-    "create_entry": {
-      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
-    "select": {
-      "schedule": {
-        "name": "Schema"
-      }
-    },
-    "switch": {
-      "streamermode": {
-        "name": "Streamer‑modus"
-      },
-      "economode": {
-        "name": "Econo‑modus"
-      }
-    },
-    "sensor": {
-      "ratelimitremainingday": {
-        "name": "Resterend per dag"
-      },
-      "coolingdailyelectricalconsumption": {
-        "name": "Dagelijks elektriciteitsverbruik koelen"
-      },
-      "coolingweeklyelectricalconsumption": {
-        "name": "Wekelijks elektriciteitsverbruik koelen"
-      },
-      "coolingmonthlyelectricalconsumption": {
-        "name": "Maandelijks elektriciteitsverbruik koelen"
-      },
-      "coolingyearlyelectricalconsumption": {
-        "name": "Jaarlijks elektriciteitsverbruik koelen"
-      },
-      "heatingdailyelectricalconsumption": {
-        "name": "Dagelijks elektriciteitsverbruik verwarmen"
-      },
-      "heatingweeklyelectricalconsumption": {
-        "name": "Wekelijks elektriciteitsverbruik verwarmen"
-      },
-      "heatingmonthlyelectricalconsumption": {
-        "name": "Maandelijks elektriciteitsverbruik verwarmen"
-      },
-      "heatingyearlyelectricalconsumption": {
-        "name": "Jaarlijks elektriciteitsverbruik verwarmen"
-      },
-      "coolingdailygasconsumption": {
-        "name": "Dagelijks gasverbruik koelen"
-      },
-      "coolingweeklygasconsumption": {
-        "name": "Wekelijks gasverbruik koelen"
-      },
-      "coolingmonthlygasconsumption": {
-        "name": "Maandelijks gasverbruik koelen"
-      },
-      "coolingyearlygasconsumption": {
-        "name": "Jaarlijks gasverbruik koelen"
-      },
-      "heatingdailygasconsumption": {
-        "name": "Dagelijks gasverbruik verwarmen"
-      },
-      "heatingweeklygasconsumption": {
-        "name": "Wekelijks gasverbruik verwarmen"
-      },
-      "heatingmonthlygasconsumption": {
-        "name": "Maandelijks gasverbruik verwarmen"
-      },
-      "heatingyearlygasconsumption": {
-        "name": "Jaarlijks gasverbruik verwarmen"
-      },
-      "ipaddress": {
-        "name": "IP‑adres"
-      },
-      "tanktemperature": {
-        "name": "Tank temperatuur"
-      },
-      "heatupmode": {
-        "name": "Opwarmmodus"
-      },
-      "outdoortemperature": {
-        "name": "Buiten temperatuur"
-      },
-      "leavingwatertemperature": {
-        "name": "Vertrekkende water temperatuur"
-      },
-      "errorcode": {
-        "name": "Foutcode"
-      },
-      "setpointmode": {
-        "name": "Setpoint‑modus"
-      },
-      "powerfulmode": {
-        "name": "Powerful‑modus"
-      },
-      "roomtemperature": {
-        "name": "Ruimte temperatuur"
-      },
-      "onoffmode": {
-        "name": "Aan/uit‑modus"
-      },
-      "controlmode": {
-        "name": "Regelmodus"
-      },
-      "roomhumidity": {
-        "name": "Ruimtevochtigheid"
-      },
-      "pm1concentration": {
-        "name": "PM1‑concentratie"
-      },
-      "pm25concentration": {
-        "name": "PM2,5‑concentratie"
-      },
-      "operationmode": {
-        "name": "Bedrijfsmodus"
-      },
-      "airpurificationmode": {
-        "name": "Luchtreinigingsmodus"
-      },
-      "wificonnectionssid": {
-        "name": "WiFi‑verbinding SSID"
-      },
-      "wificonnectionstrength": {
-        "name": "WiFi‑signaalsterkte"
-      },
-      "ssid": {
-        "name": "SSID"
-      },
-      "pm10concentration": {
-        "name": "PM10‑concentratie"
-      },
-      "leavingwateroffset": {
-        "name": "Vertrekkende water‑offset"
-      },
-      "calculatedleavingwatertemperature": {
-        "name": "Berekende vertrekkende water temperatuur"
-      },
-      "heatexchangertemperature": {
-        "name": "Warmtewisselaar temperatuur"
-      },
-      "suctiontemperature": {
-        "name": "Aanzuig temperatuur"
-      },
-      "deltad": {
-        "name": "DeltaD"
-      },
-      "drykeepsetting": {
-        "name": "Dry‑keep‑instelling"
-      },
-      "fanmotorrotationspeed": {
-        "name": "Rotatiesnelheid ventilator motor"
-      },
-      "datetime": {
-        "name": "Datum/tijd"
-      },
-      "regioncode": {
-        "name": "Regiocode"
-      },
-      "timezone": {
-        "name": "Tijdzone"
-      }
-    },
     "binary_sensor": {
-      "isholidaymodeactive": {
-        "name": "Is vakantiemodus actief"
-      },
-      "isinerrorstate": {
-        "name": "Is in foutstatus"
-      },
-      "isinwarningstate": {
-        "name": "Is in waarschuwingstatus"
-      },
-      "isininstallerstate": {
-        "name": "Is in installateursmodus"
-      },
-      "isinemergencystate": {
-        "name": "Is in noodstatus"
-      },
-      "ispowerfulmodeactive": {
-        "name": "Is powerful‑modus actief"
+      "daylightsavingtimeenabled": {
+        "name": "Zomertijd ingeschakeld"
       },
       "iscoolheatmaster": {
-        "name": "Is koelen/verwarmen‑master"
-      },
-      "isinmodeconflict": {
-        "name": "Is in modusconflict"
-      },
-      "isincautionstate": {
-        "name": "Is in voorzichtigheidsstatus"
-      },
-      "islockfunctionenabled": {
-        "name": "Is vergrendelfunctie ingeschakeld"
-      },
-      "ledenabled": {
-        "name": "LED ingeschakeld"
+        "name": "Is koelen\/verwarmen‑master"
       },
       "isfirmwareupdatesupported": {
         "name": "Ondersteunt firmware‑update"
       },
-      "daylightsavingtimeenabled": {
-        "name": "Zomertijd ingeschakeld"
+      "isholidaymodeactive": {
+        "name": "Is vakantiemodus actief"
+      },
+      "isincautionstate": {
+        "name": "Is in voorzichtigheidsstatus"
+      },
+      "isinemergencystate": {
+        "name": "Is in noodstatus"
+      },
+      "isinerrorstate": {
+        "name": "Is in foutstatus"
+      },
+      "isininstallerstate": {
+        "name": "Is in installateursmodus"
+      },
+      "isinmodeconflict": {
+        "name": "Is in modusconflict"
+      },
+      "isinwarningstate": {
+        "name": "Is in waarschuwingstatus"
+      },
+      "islockfunctionenabled": {
+        "name": "Is vergrendelfunctie ingeschakeld"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Is powerful‑modus actief"
+      },
+      "ledenabled": {
+        "name": "LED ingeschakeld"
       }
     },
     "climate": {
@@ -255,20 +84,12 @@
         "state_attributes": {
           "fan_mode": {
             "state": {
-              "quiet": "Stil",
               "1": "1",
               "2": "2",
               "3": "3",
               "4": "4",
-              "5": "5"
-            }
-          },
-          "swing_mode": {
-            "state": {
-              "stop": "Stop",
-              "swing": "Swing",
-              "floorheatingairflow": "Vloerverwarming‑luchtstroom",
-              "windnice": "Comfort‑luchtstroom"
+              "5": "5",
+              "quiet": "Stil"
             }
           },
           "swing_horizontal_mode": {
@@ -276,32 +97,216 @@
               "stop": "Stop",
               "swing": "Swing"
             }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Vloerverwarming‑luchtstroom",
+              "stop": "Stop",
+              "swing": "Swing",
+              "windnice": "Comfort‑luchtstroom"
+            }
           }
         }
       }
+    },
+    "select": {
+      "schedule": {
+        "name": "Schema"
+      }
+    },
+    "sensor": {
+      "airpurificationmode": {
+        "name": "Luchtreinigingsmodus"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Berekende vertrekkende water temperatuur"
+      },
+      "controlmode": {
+        "name": "Regelmodus"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Dagelijks elektriciteitsverbruik koelen"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Dagelijks gasverbruik koelen"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Maandelijks elektriciteitsverbruik koelen"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Maandelijks gasverbruik koelen"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Wekelijks elektriciteitsverbruik koelen"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Wekelijks gasverbruik koelen"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Jaarlijks elektriciteitsverbruik koelen"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Jaarlijks gasverbruik koelen"
+      },
+      "datetime": {
+        "name": "Datum\/tijd"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Dry‑keep‑instelling"
+      },
+      "errorcode": {
+        "name": "Foutcode"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Rotatiesnelheid ventilator motor"
+      },
+      "heatexchangertemperature": {
+        "name": "Warmtewisselaar temperatuur"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Dagelijks elektriciteitsverbruik verwarmen"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Dagelijks gasverbruik verwarmen"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Maandelijks elektriciteitsverbruik verwarmen"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Maandelijks gasverbruik verwarmen"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Wekelijks elektriciteitsverbruik verwarmen"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Wekelijks gasverbruik verwarmen"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Jaarlijks elektriciteitsverbruik verwarmen"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Jaarlijks gasverbruik verwarmen"
+      },
+      "heatupmode": {
+        "name": "Opwarmmodus"
+      },
+      "ipaddress": {
+        "name": "IP‑adres"
+      },
+      "leavingwateroffset": {
+        "name": "Vertrekkende water‑offset"
+      },
+      "leavingwatertemperature": {
+        "name": "Vertrekkende water temperatuur"
+      },
+      "onoffmode": {
+        "name": "Aan\/uit‑modus"
+      },
+      "operationmode": {
+        "name": "Bedrijfsmodus"
+      },
+      "outdoortemperature": {
+        "name": "Buiten temperatuur"
+      },
+      "pm10concentration": {
+        "name": "PM10‑concentratie"
+      },
+      "pm1concentration": {
+        "name": "PM1‑concentratie"
+      },
+      "pm25concentration": {
+        "name": "PM2,5‑concentratie"
+      },
+      "powerfulmode": {
+        "name": "Powerful‑modus"
+      },
+      "ratelimitremainingday": {
+        "name": "Resterend per dag"
+      },
+      "regioncode": {
+        "name": "Regiocode"
+      },
+      "roomhumidity": {
+        "name": "Ruimtevochtigheid"
+      },
+      "roomtemperature": {
+        "name": "Ruimte temperatuur"
+      },
+      "setpointmode": {
+        "name": "Setpoint‑modus"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "suctiontemperature": {
+        "name": "Aanzuig temperatuur"
+      },
+      "tanktemperature": {
+        "name": "Tank temperatuur"
+      },
+      "timezone": {
+        "name": "Tijdzone"
+      },
+      "wificonnectionssid": {
+        "name": "WiFi‑verbinding SSID"
+      },
+      "wificonnectionstrength": {
+        "name": "WiFi‑signaalsterkte"
+      }
+    },
+    "switch": {
+      "economode": {
+        "name": "Econo‑modus"
+      },
+      "streamermode": {
+        "name": "Streamer‑modus"
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
     }
   },
   "issues": {
     "day_rate_limit": {
-      "title": "De dagelijkse limiet is bereikt",
-      "description": "Je hebt je dagelijkse limiet voor verzoeken naar de Daikin Cloud bereikt, controleer de poll‑frequentie in de Daikin Onecta‑configuratie."
+      "description": "Je hebt je dagelijkse limiet voor verzoeken naar de Daikin Cloud bereikt, controleer de poll‑frequentie in de Daikin Onecta‑configuratie.",
+      "title": "De dagelijkse limiet is bereikt"
     },
     "minute_rate_limit": {
-      "title": "De limiet per minuut is bereikt",
-      "description": "Je hebt je limiet per minuut voor verzoeken naar de Daikin Cloud bereikt, maak niet zoveel oproepen naar je Daikin‑apparaten binnen één minuut."
+      "description": "Je hebt je limiet per minuut voor verzoeken naar de Daikin Cloud bereikt, maak niet zoveel oproepen naar je Daikin‑apparaten binnen één minuut.",
+      "title": "De limiet per minuut is bereikt"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Update-interval hoge frequentieperiode (minuten)",
+          "high_scan_start": "Starttijd hoge frequentieperiode",
+          "low_scan_interval": "Update-interval lage frequentieperiode (minuten)",
+          "low_scan_start": "Starttijd lage frequentieperiode",
+          "scan_ignore": "Aantal seconden waarin een gegevensverversing wordt genegeerd na een opdracht"
+        },
+        "description": "Polling van Daikin Onecta Cloud configureren",
+        "title": "Daikin Onecta"
+      }
     }
   },
   "system_health": {
     "info": {
       "api_status": "API‑server",
-      "oauth2_status": "OAuth2‑server",
-      "max_minute": "Maximum per minuut",
       "max_day": "Maximum per dag",
-      "remaining_minute": "Resterend per minuut",
-      "remaining_day": "Resterend per dag",
-      "retry_after": "Opnieuw proberen na",
+      "max_minute": "Maximum per minuut",
+      "oauth2_status": "OAuth2‑server",
+      "oauth2_token_valid": "OAuth2‑token geldig",
       "ratelimit_reset": "Reset van snelheidslimiet",
-      "oauth2_token_valid": "OAuth2‑token geldig"
+      "remaining_day": "Resterend per dag",
+      "remaining_minute": "Resterend per minuut",
+      "retry_after": "Opnieuw proberen na"
     }
   }
 }
