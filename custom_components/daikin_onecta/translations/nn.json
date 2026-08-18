@@ -1,307 +1,307 @@
 {
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "high_scan_interval": "Oppdateringsintervall for høgfrekvens (minutt)",
-          "low_scan_interval": "Oppdateringsintervall for lågfrekvens (minutt)",
-          "high_scan_start": "Starttidspunkt for høgfrekvensperiode",
-          "low_scan_start": "Starttidspunkt for lågfrekvensperiode",
-          "scan_ignore": "Tal sekund som dataoppdateringar vert ignorert etter ein kommando"
+    "config": {
+        "abort": {
+            "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+            "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+            "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+            "invalid_token": "Ugyldig eller utløpt token; konfigurer integrasjonen på nytt.",
+            "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+            "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+            "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+            "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+            "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+            "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+            "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+            "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+            "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+            "unknown": "Mislyktest på grunn av ein uventa feil.",
+            "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+            "wrong_account": "Sørg for at du konfigurerer på nytt mot same konto."
         },
-        "description": "Konfigurer polling mot Daikin Onecta Cloud",
-        "title": "Daikin Onecta"
-      }
-    }
-  },
-  "config": {
-    "step": {
-      "pick_implementation": {
-        "data": {
-          "implementation": "[%key:common::config_flow::data::implementation%]"
+        "create_entry": {
+            "default": "[%key:common::config_flow::create_entry::authenticated%]"
         },
-        "data_description": {
-          "implementation": "[%key:common::config_flow::description::implementation%]"
-        },
-        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
-      },
-      "reauth_confirm": {
-        "title": "[%key:common::config_flow::title::reauth%]",
-        "description": "Daikin Onecta-integrasjonen må autentisere kontoen din på nytt"
-      }
-    },
-    "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
-      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
-      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
-      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
-      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
-      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
-      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
-      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
-      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
-      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
-      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
-      "invalid_token": "Ugyldig eller utløpt token; konfigurer integrasjonen på nytt.",
-      "wrong_account": "Sørg for at du konfigurerer på nytt mot same konto.",
-      "unknown": "Mislyktest på grunn av ein uventa feil."
-    },
-    "create_entry": {
-      "default": "[%key:common::config_flow::create_entry::authenticated%]"
-    }
-  },
-  "entity": {
-    "select": {
-      "schedule": {
-        "name": "Tidsplan"
-      }
-    },
-    "switch": {
-      "streamermode": {
-        "name": "Streamer-modus"
-      },
-      "economode": {
-        "name": "Økonomimodus"
-      }
-    },
-    "sensor": {
-      "ratelimitremainingday": {
-        "name": "Att i dag"
-      },
-      "coolingdailyelectricalconsumption": {
-        "name": "Dagleg straumforbruk kjøling"
-      },
-      "coolingweeklyelectricalconsumption": {
-        "name": "Vekeleg straumforbruk kjøling"
-      },
-      "coolingmonthlyelectricalconsumption": {
-        "name": "Månadleg straumforbruk kjøling"
-      },
-      "coolingyearlyelectricalconsumption": {
-        "name": "Årleg straumforbruk kjøling"
-      },
-      "heatingdailyelectricalconsumption": {
-        "name": "Dagleg straumforbruk oppvarming"
-      },
-      "heatingweeklyelectricalconsumption": {
-        "name": "Vekeleg straumforbruk oppvarming"
-      },
-      "heatingmonthlyelectricalconsumption": {
-        "name": "Månadleg straumforbruk oppvarming"
-      },
-      "heatingyearlyelectricalconsumption": {
-        "name": "Årleg straumforbruk oppvarming"
-      },
-      "coolingdailygasconsumption": {
-        "name": "Dagleg gassforbruk kjøling"
-      },
-      "coolingweeklygasconsumption": {
-        "name": "Vekeleg gassforbruk kjøling"
-      },
-      "coolingmonthlygasconsumption": {
-        "name": "Månadleg gassforbruk kjøling"
-      },
-      "coolingyearlygasconsumption": {
-        "name": "Årleg gassforbruk kjøling"
-      },
-      "heatingdailygasconsumption": {
-        "name": "Dagleg gassforbruk oppvarming"
-      },
-      "heatingweeklygasconsumption": {
-        "name": "Vekeleg gassforbruk oppvarming"
-      },
-      "heatingmonthlygasconsumption": {
-        "name": "Månadleg gassforbruk oppvarming"
-      },
-      "heatingyearlygasconsumption": {
-        "name": "Årleg gassforbruk oppvarming"
-      },
-      "ipaddress": {
-        "name": "IP-adresse"
-      },
-      "tanktemperature": {
-        "name": "Tanktemperatur"
-      },
-      "heatupmode": {
-        "name": "Oppvarmingsmodus"
-      },
-      "outdoortemperature": {
-        "name": "Utetemperatur"
-      },
-      "leavingwatertemperature": {
-        "name": "Utgåande vanntemperatur"
-      },
-      "errorcode": {
-        "name": "Feilkode"
-      },
-      "setpointmode": {
-        "name": "Setpunktmodus"
-      },
-      "powerfulmode": {
-        "name": "Kraftig modus"
-      },
-      "roomtemperature": {
-        "name": "Romtemperatur"
-      },
-      "onoffmode": {
-        "name": "Av/På-modus"
-      },
-      "controlmode": {
-        "name": "Kontrollmodus"
-      },
-      "roomhumidity": {
-        "name": "Romfuktigheit"
-      },
-      "pm1concentration": {
-        "name": "PM1-konsentrasjon"
-      },
-      "pm25concentration": {
-        "name": "PM2,5-konsentrasjon"
-      },
-      "operationmode": {
-        "name": "Driftsmodus"
-      },
-      "airpurificationmode": {
-        "name": "Luftrensemodus"
-      },
-      "wificonnectionssid": {
-        "name": "WiFi-tilkoblings-SSID"
-      },
-      "wificonnectionstrength": {
-        "name": "WiFi-tilkoblingsstyrke"
-      },
-      "ssid": {
-        "name": "SSID"
-      },
-      "pm10concentration": {
-        "name": "PM10-konsentrasjon"
-      },
-      "leavingwateroffset": {
-        "name": "Avvik for utgåande vatn"
-      },
-      "calculatedleavingwatertemperature": {
-        "name": "Berekna utgåande vanntemperatur"
-      },
-      "heatexchangertemperature": {
-        "name": "Varmevekslartemperatur"
-      },
-      "suctiontemperature": {
-        "name": "Sugetemperatur"
-      },
-      "deltad": {
-        "name": "DeltaD"
-      },
-      "drykeepsetting": {
-        "name": "Innstilling for tørking/oppbevaring"
-      },
-      "fanmotorrotationspeed": {
-        "name": "Rotasjonshastigheit for viftemotor"
-      },
-      "datetime": {
-        "name": "Dato/tid"
-      },
-      "regioncode": {
-        "name": "Regionkode"
-      },
-      "timezone": {
-        "name": "Tidssone"
-      }
-    },
-    "binary_sensor": {
-      "isholidaymodeactive": {
-        "name": "Feriemodus aktiv"
-      },
-      "isinerrorstate": {
-        "name": "Er i feiltilstand"
-      },
-      "isinwarningstate": {
-        "name": "Er i varseltilstand"
-      },
-      "isininstallerstate": {
-        "name": "Er i installasjonsmodus"
-      },
-      "isinemergencystate": {
-        "name": "Er i nødtilstand"
-      },
-      "ispowerfulmodeactive": {
-        "name": "Kraftig modus aktiv"
-      },
-      "iscoolheatmaster": {
-        "name": "Er kjøle-/varmemaster"
-      },
-      "isinmodeconflict": {
-        "name": "Er i moduskonflikt"
-      },
-      "isincautionstate": {
-        "name": "Er i føre-var-tilstand"
-      },
-      "islockfunctionenabled": {
-        "name": "Låsfunksjon aktivert"
-      },
-      "ledenabled": {
-        "name": "LED aktivert"
-      },
-      "isfirmwareupdatesupported": {
-        "name": "Støttar firmware-oppdatering"
-      },
-      "daylightsavingtimeenabled": {
-        "name": "Sommartid aktivert"
-      }
-    },
-    "climate": {
-      "roomtemperature": {
-        "state_attributes": {
-          "fan_mode": {
-            "state": {
-              "quiet": "Stille",
-              "1": "1",
-              "2": "2",
-              "3": "3",
-              "4": "4",
-              "5": "5"
+        "step": {
+            "pick_implementation": {
+                "data": {
+                    "implementation": "[%key:common::config_flow::data::implementation%]"
+                },
+                "data_description": {
+                    "implementation": "[%key:common::config_flow::description::implementation%]"
+                },
+                "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+            },
+            "reauth_confirm": {
+                "description": "Daikin Onecta-integrasjonen må autentisere kontoen din på nytt",
+                "title": "[%key:common::config_flow::title::reauth%]"
             }
-          },
-          "swing_mode": {
-            "state": {
-              "stop": "Stopp",
-              "swing": "Sving",
-              "floorheatingairflow": "Golvvarme-luftstraum",
-              "windnice": "Komfortabel luftstraum"
-            }
-          },
-          "swing_horizontal_mode": {
-            "state": {
-              "stop": "Stopp",
-              "swing": "Sving"
-            }
-          }
         }
-      }
-    }
-  },
-  "issues": {
-    "day_rate_limit": {
-      "title": "Dagleg grense for spørringar nådd",
-      "description": "Du har nådd den daglege grensa for kall til Daikin Cloud. Sjekk polingsfrekvensen i Daikin Onecta-konfigurasjonen."
     },
-    "minute_rate_limit": {
-      "title": "Minuttvis grense for spørringar nådd",
-      "description": "Du har nådd den minuttvise grensa for kall til Daikin Cloud. Ikkje utfør så mange kall mot Daikin-einingane på eitt minutt."
+    "entity": {
+        "binary_sensor": {
+            "daylightsavingtimeenabled": {
+                "name": "Sommartid aktivert"
+            },
+            "iscoolheatmaster": {
+                "name": "Er kjøle-\/varmemaster"
+            },
+            "isfirmwareupdatesupported": {
+                "name": "Støttar firmware-oppdatering"
+            },
+            "isholidaymodeactive": {
+                "name": "Feriemodus aktiv"
+            },
+            "isincautionstate": {
+                "name": "Er i føre-var-tilstand"
+            },
+            "isinemergencystate": {
+                "name": "Er i nødtilstand"
+            },
+            "isinerrorstate": {
+                "name": "Er i feiltilstand"
+            },
+            "isininstallerstate": {
+                "name": "Er i installasjonsmodus"
+            },
+            "isinmodeconflict": {
+                "name": "Er i moduskonflikt"
+            },
+            "isinwarningstate": {
+                "name": "Er i varseltilstand"
+            },
+            "islockfunctionenabled": {
+                "name": "Låsfunksjon aktivert"
+            },
+            "ispowerfulmodeactive": {
+                "name": "Kraftig modus aktiv"
+            },
+            "ledenabled": {
+                "name": "LED aktivert"
+            }
+        },
+        "climate": {
+            "roomtemperature": {
+                "state_attributes": {
+                    "fan_mode": {
+                        "state": {
+                            "1": "1",
+                            "2": "2",
+                            "3": "3",
+                            "4": "4",
+                            "5": "5",
+                            "quiet": "Stille"
+                        }
+                    },
+                    "swing_horizontal_mode": {
+                        "state": {
+                            "stop": "Stopp",
+                            "swing": "Sving"
+                        }
+                    },
+                    "swing_mode": {
+                        "state": {
+                            "floorheatingairflow": "Golvvarme-luftstraum",
+                            "stop": "Stopp",
+                            "swing": "Sving",
+                            "windnice": "Komfortabel luftstraum"
+                        }
+                    }
+                }
+            }
+        },
+        "select": {
+            "schedule": {
+                "name": "Tidsplan"
+            }
+        },
+        "sensor": {
+            "airpurificationmode": {
+                "name": "Luftrensemodus"
+            },
+            "calculatedleavingwatertemperature": {
+                "name": "Berekna utgåande vanntemperatur"
+            },
+            "controlmode": {
+                "name": "Kontrollmodus"
+            },
+            "coolingdailyelectricalconsumption": {
+                "name": "Dagleg straumforbruk kjøling"
+            },
+            "coolingdailygasconsumption": {
+                "name": "Dagleg gassforbruk kjøling"
+            },
+            "coolingmonthlyelectricalconsumption": {
+                "name": "Månadleg straumforbruk kjøling"
+            },
+            "coolingmonthlygasconsumption": {
+                "name": "Månadleg gassforbruk kjøling"
+            },
+            "coolingweeklyelectricalconsumption": {
+                "name": "Vekeleg straumforbruk kjøling"
+            },
+            "coolingweeklygasconsumption": {
+                "name": "Vekeleg gassforbruk kjøling"
+            },
+            "coolingyearlyelectricalconsumption": {
+                "name": "Årleg straumforbruk kjøling"
+            },
+            "coolingyearlygasconsumption": {
+                "name": "Årleg gassforbruk kjøling"
+            },
+            "datetime": {
+                "name": "Dato\/tid"
+            },
+            "deltad": {
+                "name": "DeltaD"
+            },
+            "drykeepsetting": {
+                "name": "Innstilling for tørking\/oppbevaring"
+            },
+            "errorcode": {
+                "name": "Feilkode"
+            },
+            "fanmotorrotationspeed": {
+                "name": "Rotasjonshastigheit for viftemotor"
+            },
+            "heatexchangertemperature": {
+                "name": "Varmevekslartemperatur"
+            },
+            "heatingdailyelectricalconsumption": {
+                "name": "Dagleg straumforbruk oppvarming"
+            },
+            "heatingdailygasconsumption": {
+                "name": "Dagleg gassforbruk oppvarming"
+            },
+            "heatingmonthlyelectricalconsumption": {
+                "name": "Månadleg straumforbruk oppvarming"
+            },
+            "heatingmonthlygasconsumption": {
+                "name": "Månadleg gassforbruk oppvarming"
+            },
+            "heatingweeklyelectricalconsumption": {
+                "name": "Vekeleg straumforbruk oppvarming"
+            },
+            "heatingweeklygasconsumption": {
+                "name": "Vekeleg gassforbruk oppvarming"
+            },
+            "heatingyearlyelectricalconsumption": {
+                "name": "Årleg straumforbruk oppvarming"
+            },
+            "heatingyearlygasconsumption": {
+                "name": "Årleg gassforbruk oppvarming"
+            },
+            "heatupmode": {
+                "name": "Oppvarmingsmodus"
+            },
+            "ipaddress": {
+                "name": "IP-adresse"
+            },
+            "leavingwateroffset": {
+                "name": "Avvik for utgåande vatn"
+            },
+            "leavingwatertemperature": {
+                "name": "Utgåande vanntemperatur"
+            },
+            "onoffmode": {
+                "name": "Av\/På-modus"
+            },
+            "operationmode": {
+                "name": "Driftsmodus"
+            },
+            "outdoortemperature": {
+                "name": "Utetemperatur"
+            },
+            "pm10concentration": {
+                "name": "PM10-konsentrasjon"
+            },
+            "pm1concentration": {
+                "name": "PM1-konsentrasjon"
+            },
+            "pm25concentration": {
+                "name": "PM2,5-konsentrasjon"
+            },
+            "powerfulmode": {
+                "name": "Kraftig modus"
+            },
+            "ratelimitremainingday": {
+                "name": "Att i dag"
+            },
+            "regioncode": {
+                "name": "Regionkode"
+            },
+            "roomhumidity": {
+                "name": "Romfuktigheit"
+            },
+            "roomtemperature": {
+                "name": "Romtemperatur"
+            },
+            "setpointmode": {
+                "name": "Setpunktmodus"
+            },
+            "ssid": {
+                "name": "SSID"
+            },
+            "suctiontemperature": {
+                "name": "Sugetemperatur"
+            },
+            "tanktemperature": {
+                "name": "Tanktemperatur"
+            },
+            "timezone": {
+                "name": "Tidssone"
+            },
+            "wificonnectionssid": {
+                "name": "WiFi-tilkoblings-SSID"
+            },
+            "wificonnectionstrength": {
+                "name": "WiFi-tilkoblingsstyrke"
+            }
+        },
+        "switch": {
+            "economode": {
+                "name": "Økonomimodus"
+            },
+            "streamermode": {
+                "name": "Streamer-modus"
+            }
+        }
+    },
+    "issues": {
+        "day_rate_limit": {
+            "description": "Du har nådd den daglege grensa for kall til Daikin Cloud. Sjekk polingsfrekvensen i Daikin Onecta-konfigurasjonen.",
+            "title": "Dagleg grense for spørringar nådd"
+        },
+        "minute_rate_limit": {
+            "description": "Du har nådd den minuttvise grensa for kall til Daikin Cloud. Ikkje utfør så mange kall mot Daikin-einingane på eitt minutt.",
+            "title": "Minuttvis grense for spørringar nådd"
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "high_scan_interval": "Oppdateringsintervall for høgfrekvens (minutt)",
+                    "high_scan_start": "Starttidspunkt for høgfrekvensperiode",
+                    "low_scan_interval": "Oppdateringsintervall for lågfrekvens (minutt)",
+                    "low_scan_start": "Starttidspunkt for lågfrekvensperiode",
+                    "scan_ignore": "Tal sekund som dataoppdateringar vert ignorert etter ein kommando"
+                },
+                "description": "Konfigurer polling mot Daikin Onecta Cloud",
+                "title": "Daikin Onecta"
+            }
+        }
+    },
+    "system_health": {
+        "info": {
+            "api_status": "API-tenar",
+            "max_day": "Maksimum per dag",
+            "max_minute": "Maksimum per minutt",
+            "oauth2_status": "OAuth2-tenar",
+            "oauth2_token_valid": "OAuth2-token gyldig",
+            "ratelimit_reset": "Tilbakestilling av frekvensgrense",
+            "remaining_day": "Att per dag",
+            "remaining_minute": "Att per minutt",
+            "retry_after": "Prøv på nytt etter"
+        }
     }
-  },
-  "system_health": {
-    "info": {
-      "api_status": "API-tenar",
-      "oauth2_status": "OAuth2-tenar",
-      "max_minute": "Maksimum per minutt",
-      "max_day": "Maksimum per dag",
-      "remaining_minute": "Att per minutt",
-      "remaining_day": "Att per dag",
-      "retry_after": "Prøv på nytt etter",
-      "ratelimit_reset": "Tilbakestilling av frekvensgrense",
-      "oauth2_token_valid": "OAuth2-token gyldig"
-    }
-  }
 }
