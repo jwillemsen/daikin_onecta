@@ -6,34 +6,34 @@ on:
       - master
     paths:
       - 'custom_components/daikin_onecta/translations/en.json'
-  # Dit vangt de automatische 100%-webhook van de Lokalise App op
   repository_dispatch:
     types: [lokalise_webhook]
   schedule:
-    - cron: '0 2 * * *' # Elke nacht om 02:00 UTC als vangnet
-  workflow_dispatch: # Handmatige startknop in GitHub Actions UI
+    - cron: '0 2 * * *'
+  workflow_dispatch:
 
 jobs:
   # TAAK 1: Engelse bronbestanden direct uploaden
   push-source:
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Push en.json naar Lokalise
-        uses: lokalise/lokalise-push-action@v5.4.2
+        uses: lokalise/lokalise-cli-action@v2
         with:
           api_token: ${{ secrets.LOKALISE_API_TOKEN }}
           project_id: ${{ secrets.LOKALISE_PROJECT_ID }}
-          translations_path: 'custom_components/daikin_onecta/translations'
-          file_ext: 'json'
+          action: "file/upload"
+          file: "custom_components/daikin_onecta/translations/en.json"
+          lang_iso: "en"
 
   # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -48,8 +48,7 @@ jobs:
           translations_path: 'custom_components/daikin_onecta/translations'
           file_format: 'json'
           flat_naming: true
-          override_base_branch: 'master' # Richt de PR altijd op jouw master branch
+          override_base_branch: 'master'
 
-      # Home Assistant validatie linter (Hassfest)
       - name: Run Hassfest Validation
         uses: home-assistant/actions/hassfest@master
