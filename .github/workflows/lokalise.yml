@@ -16,14 +16,14 @@ on:
 jobs:
   # TAAK 1: Engelse bronbestanden direct uploaden
   push-source:
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Push en.json naar Lokalise
-        uses: lokalise/lokalise-push-action@v2
+        uses: lokalise/lokalise-push-action@v5
         with:
           api_token: ${{ secrets.LOKALISE_API_TOKEN }}
           project_id: ${{ secrets.LOKALISE_PROJECT_ID }}
@@ -33,7 +33,7 @@ jobs:
   # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -41,7 +41,7 @@ jobs:
           fetch-depth: 0
 
       - name: Pull vertalingen uit Lokalise
-        uses: lokalise/lokalise-pull-action@v2
+        uses: lokalise/lokalise-pull-action@v5
         with:
           api_token: ${{ secrets.LOKALISE_API_TOKEN }}
           project_id: ${{ secrets.LOKALISE_PROJECT_ID }}
