@@ -43,19 +43,35 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 1
-          token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pull vertalingen uit Lokalise
-        uses: lokalise/lokalise-pull-action@v5.3.0
+      # Officiële installer die we ook bij de bulk-upload gebruikten
+      - name: Installeer Lokalise CLI v2
+        uses: lokalise/install-lokalise-cli-v2@v2.1.0
         with:
-          api_token: ${{ secrets.LOKALISE_API_TOKEN }}
-          project_id: ${{ secrets.LOKALISE_PROJECT_ID }}
-          translations_path: 'custom_components/daikin_onecta/translations'
-          file_format: 'json'
-          flat_naming: true
-          override_base_branch: 'master'
-          always_pull_base: true
-          additional_params: '--bundle-structure=%LANG_ISO%.%FORMAT%'
+          add-to-path: true
 
+      # Download de bestanden exact in het juiste Home Assistant formaat
+      - name: Download vertalingen uit Lokalise
+        run: |
+          lokalise2 file download \
+            --token "${{ secrets.LOKALISE_API_TOKEN }}" \
+            --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
+            --format "json" \
+            --directory-prefix "custom_components/daikin_onecta/translations/" \
+            --bundle-structure "%LANG_ISO%.%FORMAT%" \
+            --original-filenames=false \
+            --all-languages=true \
+            --replace-modified=1 \
+            --include-empty-translations=false
       - name: Run Hassfest Validation
         uses: home-assistant/actions/hassfest@master
+
+      - name: Create Pull Request met nieuwe vertalingen
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: "chore: update translation files van Lokalise"
+          title: "🤖 Translation updates van Lokalise"
+          body: "Deze automatische PR bevat de nieuwste vertalingen vanuit het Lokalise project."
+          branch: "lokalise-translations"
+          delete-branch: true
