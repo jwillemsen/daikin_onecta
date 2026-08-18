@@ -69,8 +69,6 @@ async def async_setup_entry(
 
 
 class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
-
-
     def __init__(
         self,
         device: DaikinOnectaDevice,
