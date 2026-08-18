@@ -80,6 +80,11 @@
       }
     },
     "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "off": "[%key:state::default::off%]"
+        }
+      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
@@ -263,6 +268,13 @@
       },
       "streamermode": {
         "name": "Streamer‑modus"
+      }
+    },
+    "water_heater": {
+      "hot_water_tank": {
+        "state": {
+          "off": "[%key:state::default::off%]"
+        }
       }
     }
   },

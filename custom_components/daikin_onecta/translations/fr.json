@@ -42,7 +42,7 @@
       "leavingwateroffset": {
         "state": {
           "cool": "Frais",
-          "off": "Arrêt"
+          "off": "[%key:state::default::off%]"
         }
       }
     },
@@ -50,7 +50,7 @@
       "hot_water_tank": {
         "state": {
           "heat_pump": "Normal",
-          "off": "Arrêt",
+          "off": "[%key:state::default::off%]",
           "performance": "Boost"
         }
       }

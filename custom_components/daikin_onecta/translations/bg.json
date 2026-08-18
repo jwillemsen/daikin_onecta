@@ -80,6 +80,11 @@
       }
     },
     "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "off": "[%key:state::default::off%]"
+        }
+      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
