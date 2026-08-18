@@ -312,7 +312,7 @@
       "leavingwateroffset": {
         "state": {
           "cool": "Cool",
-          "off": "Off"
+          "off": "[%key:state::default::off%]"
         }
       }
     },
@@ -320,7 +320,7 @@
       "hot_water_tank": {
         "state": {
           "heat_pump": "Normal",
-          "off": "Off",
+          "off": "[%key:state::default::off%]",
           "performance": "Boost"
         }
       }
