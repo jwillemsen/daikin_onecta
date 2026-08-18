@@ -35,7 +35,6 @@ jobs:
             --lang-iso "en" \
             --convert-placeholders=1
 
-  # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
@@ -43,7 +42,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          fetch-depth:
+          fetch-depth: 1
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Pull vertalingen uit Lokalise
@@ -55,6 +54,8 @@ jobs:
           file_format: 'json'
           flat_naming: true
           override_base_branch: 'master'
+          always_pull_base: true
+          filename_pattern: '%LANG_ISO%.%FORMAT%'
 
       # Home Assistant validatie linter (Hassfest)
       - name: Run Hassfest Validation
