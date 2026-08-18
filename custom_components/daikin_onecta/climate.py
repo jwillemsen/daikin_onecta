@@ -905,19 +905,21 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
     def get_preset_modes(self):
         supported_preset_modes = [PRESET_NONE]
         cc = self.climate_control()
-        for mode in PRESET_MODES:
-            daikin_mode = HA_PRESET_TO_DAIKIN[mode]
-            preset = cc.get(daikin_mode)
-            if preset is not None and preset.get("value") is not None:
-                supported_preset_modes.append(mode)
+        if cc is not None:
+            for mode in PRESET_MODES:
+                daikin_mode = HA_PRESET_TO_DAIKIN[mode]
+                preset = cc.get(daikin_mode)
+                if preset is not None and preset.get("value") is not None:
+                    supported_preset_modes.append(mode)
 
-        _LOGGER.debug(
-            "Device '%s' supports preset_modes %s",
-            self._device.name,
-            format(supported_preset_modes),
-        )
+            _LOGGER.debug(
+                "Device '%s' supports preset_modes %s",
+                self._device.name,
+                format(supported_preset_modes),
+            )
 
-        supported_preset_modes.sort()
+            supported_preset_modes.sort()
+
         return supported_preset_modes
 
     async def async_turn_on(self):
