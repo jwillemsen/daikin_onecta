@@ -1,21 +1,26 @@
 {
-  "options": {
-    "step": {
-      "init": {
-        "data": {
-          "high_scan_interval": "Yüksek frekanslı dönem güncelleme aralığı (dakika)",
-          "low_scan_interval": "Düşük frekanslı dönem güncelleme aralığı (dakika)",
-          "high_scan_start": "Yüksek frekanslı dönem başlangıç saati",
-          "low_scan_start": "Düşük frekanslı dönem başlangıç saati",
-          "scan_ignore": "Bir komuttan sonra veri yenilemenin yok sayılacağı saniye sayısı",
-          "homekit_fan_mode_aliases": "HomeKit uyumlu fan hızı takma adlarını sun"
-        },
-        "description": "Daikin Onecta bulut güncelleme sıklığını yapılandırın",
-        "title": "Daikin Onecta"
-      }
-    }
-  },
   "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Geçersiz veya süresi dolmuş erişim anahtarı; lütfen entegrasyonu yeniden yapılandırın.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Beklenmeyen bir hata nedeniyle başarısız oldu.",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Lütfen aynı hesap üzerinden yeniden yapılandırdığınızdan emin olun."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
     "step": {
       "pick_implementation": {
         "data": {
@@ -27,236 +32,51 @@
         "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       },
       "reauth_confirm": {
-        "title": "[%key:common::config_flow::title::reauth%]",
-        "description": "Daikin Onecta entegrasyonunun hesabınızın kimliğini yeniden doğrulaması gerekiyor"
+        "description": "Daikin Onecta entegrasyonunun hesabınızın kimliğini yeniden doğrulaması gerekiyor",
+        "title": "[%key:common::config_flow::title::reauth%]"
       }
-    },
-    "abort": {
-      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
-      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
-      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
-      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
-      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
-      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
-      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
-      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
-      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
-      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
-      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
-      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
-      "invalid_token": "Geçersiz veya süresi dolmuş erişim anahtarı; lütfen entegrasyonu yeniden yapılandırın.",
-      "wrong_account": "Lütfen aynı hesap üzerinden yeniden yapılandırdığınızdan emin olun.",
-      "unknown": "Beklenmeyen bir hata nedeniyle başarısız oldu."
-    },
-    "create_entry": {
-      "default": "[%key:common::config_flow::create_entry::authenticated%]"
     }
   },
   "entity": {
-    "update": {
-      "firmwareupdate": {
-        "name": "Ürün yazılımı güncellemesi"
-      }
-    },
-    "select": {
-      "schedule": {
-        "name": "Program"
-      }
-    },
-    "switch": {
-      "streamermode": {
-        "name": "Streamer modu"
-      },
-      "economode": {
-        "name": "Econo modu"
-      }
-    },
-    "sensor": {
-      "sgtin": {
-        "name": "SGTIN"
-      },
-      "ratelimitremainingday": {
-        "name": "Günlük kalan istek hakkı"
-      },
-      "coolingdailyelectricalconsumption": {
-        "name": "Soğutma günlük elektrik tüketimi"
-      },
-      "coolingweeklyelectricalconsumption": {
-        "name": "Soğutma haftalık elektrik tüketimi"
-      },
-      "coolingmonthlyelectricalconsumption": {
-        "name": "Soğutma aylık elektrik tüketimi"
-      },
-      "coolingyearlyelectricalconsumption": {
-        "name": "Soğutma yıllık elektrik tüketimi"
-      },
-      "heatingdailyelectricalconsumption": {
-        "name": "Isıtma günlük elektrik tüketimi"
-      },
-      "heatingweeklyelectricalconsumption": {
-        "name": "Isıtma haftalık elektrik tüketimi"
-      },
-      "heatingmonthlyelectricalconsumption": {
-        "name": "Isıtma aylık elektrik tüketimi"
-      },
-      "heatingyearlyelectricalconsumption": {
-        "name": "Isıtma yıllık elektrik tüketimi"
-      },
-      "coolingdailygasconsumption": {
-        "name": "Soğutma günlük gaz tüketimi"
-      },
-      "coolingweeklygasconsumption": {
-        "name": "Soğutma haftalık gaz tüketimi"
-      },
-      "coolingmonthlygasconsumption": {
-        "name": "Soğutma aylık gaz tüketimi"
-      },
-      "coolingyearlygasconsumption": {
-        "name": "Soğutma yıllık gaz tüketimi"
-      },
-      "heatingdailygasconsumption": {
-        "name": "Isıtma günlük gaz tüketimi"
-      },
-      "heatingweeklygasconsumption": {
-        "name": "Isıtma haftalık gaz tüketimi"
-      },
-      "heatingmonthlygasconsumption": {
-        "name": "Isıtma aylık gaz tüketimi"
-      },
-      "heatingyearlygasconsumption": {
-        "name": "Isıtma yıllık gaz tüketimi"
-      },
-      "ipaddress": {
-        "name": "IP adresi"
-      },
-      "tanktemperature": {
-        "name": "Depo sıcaklığı"
-      },
-      "heatupmode": {
-        "name": "Su ısıtma modu"
-      },
-      "outdoortemperature": {
-        "name": "Dış sıcaklık"
-      },
-      "leavingwatertemperature": {
-        "name": "Çıkış suyu sıcaklığı"
-      },
-      "errorcode": {
-        "name": "Hata kodu"
-      },
-      "setpointmode": {
-        "name": "Ayar noktası modu"
-      },
-      "powerfulmode": {
-        "name": "Güçlü mod"
-      },
-      "roomtemperature": {
-        "name": "Oda sıcaklığı"
-      },
-      "onoffmode": {
-        "name": "Açık/kapalı durumu"
-      },
-      "controlmode": {
-        "name": "Kontrol modu"
-      },
-      "roomhumidity": {
-        "name": "Oda nemi"
-      },
-      "pm1concentration": {
-        "name": "PM1 konsantrasyonu"
-      },
-      "pm25concentration": {
-        "name": "PM2.5 konsantrasyonu"
-      },
-      "operationmode": {
-        "name": "Çalışma modu"
-      },
-      "airpurificationmode": {
-        "name": "Hava temizleme modu"
-      },
-      "wificonnectionssid": {
-        "name": "Wi-Fi bağlantı SSID'si"
-      },
-      "wificonnectionstrength": {
-        "name": "Wi-Fi sinyal gücü"
-      },
-      "ssid": {
-        "name": "SSID"
-      },
-      "pm10concentration": {
-        "name": "PM10 konsantrasyonu"
-      },
-      "leavingwateroffset": {
-        "name": "Çıkış suyu sıcaklık ofseti"
-      },
-      "calculatedleavingwatertemperature": {
-        "name": "Hesaplanan çıkış suyu sıcaklığı"
-      },
-      "heatexchangertemperature": {
-        "name": "Eşanjör sıcaklığı"
-      },
-      "suctiontemperature": {
-        "name": "Emiş sıcaklığı"
-      },
-      "deltad": {
-        "name": "Delta D"
-      },
-      "drykeepsetting": {
-        "name": "Kuru tutma ayarı"
-      },
-      "fanmotorrotationspeed": {
-        "name": "Fan motoru dönüş hızı"
-      },
-      "datetime": {
-        "name": "Tarih/saat"
-      },
-      "regioncode": {
-        "name": "Bölge kodu"
-      },
-      "timezone": {
-        "name": "Saat dilimi"
-      }
-    },
     "binary_sensor": {
-      "isholidaymodeactive": {
-        "name": "Tatil modu etkin mi"
-      },
-      "isinerrorstate": {
-        "name": "Hata durumunda mı"
-      },
-      "isinwarningstate": {
-        "name": "Uyarı durumunda mı"
-      },
-      "isininstallerstate": {
-        "name": "Montör modunda mı"
-      },
-      "isinemergencystate": {
-        "name": "Acil durum modunda mı"
-      },
-      "ispowerfulmodeactive": {
-        "name": "Güçlü mod etkin mi"
+      "daylightsavingtimeenabled": {
+        "name": "Yaz saati uygulaması etkin"
       },
       "iscoolheatmaster": {
-        "name": "Soğutma/ısıtma ana ünitesi mi"
-      },
-      "isinmodeconflict": {
-        "name": "Mod çakışması var mı"
-      },
-      "isincautionstate": {
-        "name": "Dikkat durumunda mı"
-      },
-      "islockfunctionenabled": {
-        "name": "Kilit işlevi etkin mi"
-      },
-      "ledenabled": {
-        "name": "LED etkin"
+        "name": "Soğutma\/ısıtma ana ünitesi mi"
       },
       "isfirmwareupdatesupported": {
         "name": "Ürün yazılımı güncellemesi destekleniyor mu"
       },
-      "daylightsavingtimeenabled": {
-        "name": "Yaz saati uygulaması etkin"
+      "isholidaymodeactive": {
+        "name": "Tatil modu etkin mi"
+      },
+      "isincautionstate": {
+        "name": "Dikkat durumunda mı"
+      },
+      "isinemergencystate": {
+        "name": "Acil durum modunda mı"
+      },
+      "isinerrorstate": {
+        "name": "Hata durumunda mı"
+      },
+      "isininstallerstate": {
+        "name": "Montör modunda mı"
+      },
+      "isinmodeconflict": {
+        "name": "Mod çakışması var mı"
+      },
+      "isinwarningstate": {
+        "name": "Uyarı durumunda mı"
+      },
+      "islockfunctionenabled": {
+        "name": "Kilit işlevi etkin mi"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Güçlü mod etkin mi"
+      },
+      "ledenabled": {
+        "name": "LED etkin"
       }
     },
     "climate": {
@@ -264,20 +84,12 @@
         "state_attributes": {
           "fan_mode": {
             "state": {
-              "quiet": "Sessiz",
               "1": "1",
               "2": "2",
               "3": "3",
               "4": "4",
-              "5": "5"
-            }
-          },
-          "swing_mode": {
-            "state": {
-              "stop": "Salınım kapalı",
-              "swing": "Salınım",
-              "floorheatingairflow": "Yerden ısıtma hava akışı",
-              "windnice": "Konfor hava akışı"
+              "5": "5",
+              "quiet": "Sessiz"
             }
           },
           "swing_horizontal_mode": {
@@ -285,37 +97,225 @@
               "stop": "Salınım kapalı",
               "swing": "Salınım"
             }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Yerden ısıtma hava akışı",
+              "stop": "Salınım kapalı",
+              "swing": "Salınım",
+              "windnice": "Konfor hava akışı"
+            }
           }
         }
       }
-    }
-  },
-  "issues": {
-    "day_rate_limit": {
-      "title": "Günlük istek sınırına ulaşıldı",
-      "description": "Daikin Cloud için günlük istek sınırınıza ulaştınız, Daikin Onecta yapılandırmasındaki yoklama sıklığınızı gözden geçirin."
     },
-    "minute_rate_limit": {
-      "title": "Dakikalık istek sınırına ulaşıldı",
-      "description": "Daikin Cloud için dakikalık istek sınırınıza ulaştınız, Daikin cihazlarınıza bir dakika içinde bu kadar çok çağrı yapmayın."
-    }
-  },
-  "system_health": {
-    "info": {
-      "api_status": "API sunucusu",
-      "oauth2_status": "OAuth2 sunucusu",
-      "max_minute": "Dakikalık azami",
-      "max_day": "Günlük azami",
-      "remaining_minute": "Dakikalık kalan",
-      "remaining_day": "Günlük kalan",
-      "retry_after": "Yeniden deneme süresi",
-      "ratelimit_reset": "İstek sınırı sıfırlanması",
-      "oauth2_token_valid": "OAuth2 erişim anahtarı geçerli"
+    "select": {
+      "schedule": {
+        "name": "Program"
+      }
+    },
+    "sensor": {
+      "airpurificationmode": {
+        "name": "Hava temizleme modu"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Hesaplanan çıkış suyu sıcaklığı"
+      },
+      "controlmode": {
+        "name": "Kontrol modu"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Soğutma günlük elektrik tüketimi"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Soğutma günlük gaz tüketimi"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Soğutma aylık elektrik tüketimi"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Soğutma aylık gaz tüketimi"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Soğutma haftalık elektrik tüketimi"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Soğutma haftalık gaz tüketimi"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Soğutma yıllık elektrik tüketimi"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Soğutma yıllık gaz tüketimi"
+      },
+      "datetime": {
+        "name": "Tarih\/saat"
+      },
+      "deltad": {
+        "name": "Delta D"
+      },
+      "drykeepsetting": {
+        "name": "Kuru tutma ayarı"
+      },
+      "errorcode": {
+        "name": "Hata kodu"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Fan motoru dönüş hızı"
+      },
+      "heatexchangertemperature": {
+        "name": "Eşanjör sıcaklığı"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Isıtma günlük elektrik tüketimi"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Isıtma günlük gaz tüketimi"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Isıtma aylık elektrik tüketimi"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Isıtma aylık gaz tüketimi"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Isıtma haftalık elektrik tüketimi"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Isıtma haftalık gaz tüketimi"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Isıtma yıllık elektrik tüketimi"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Isıtma yıllık gaz tüketimi"
+      },
+      "heatupmode": {
+        "name": "Su ısıtma modu"
+      },
+      "ipaddress": {
+        "name": "IP adresi"
+      },
+      "leavingwateroffset": {
+        "name": "Çıkış suyu sıcaklık ofseti"
+      },
+      "leavingwatertemperature": {
+        "name": "Çıkış suyu sıcaklığı"
+      },
+      "onoffmode": {
+        "name": "Açık\/kapalı durumu"
+      },
+      "operationmode": {
+        "name": "Çalışma modu"
+      },
+      "outdoortemperature": {
+        "name": "Dış sıcaklık"
+      },
+      "pm10concentration": {
+        "name": "PM10 konsantrasyonu"
+      },
+      "pm1concentration": {
+        "name": "PM1 konsantrasyonu"
+      },
+      "pm25concentration": {
+        "name": "PM2.5 konsantrasyonu"
+      },
+      "powerfulmode": {
+        "name": "Güçlü mod"
+      },
+      "ratelimitremainingday": {
+        "name": "Günlük kalan istek hakkı"
+      },
+      "regioncode": {
+        "name": "Bölge kodu"
+      },
+      "roomhumidity": {
+        "name": "Oda nemi"
+      },
+      "roomtemperature": {
+        "name": "Oda sıcaklığı"
+      },
+      "setpointmode": {
+        "name": "Ayar noktası modu"
+      },
+      "sgtin": {
+        "name": "SGTIN"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "suctiontemperature": {
+        "name": "Emiş sıcaklığı"
+      },
+      "tanktemperature": {
+        "name": "Depo sıcaklığı"
+      },
+      "timezone": {
+        "name": "Saat dilimi"
+      },
+      "wificonnectionssid": {
+        "name": "Wi-Fi bağlantı SSID'si"
+      },
+      "wificonnectionstrength": {
+        "name": "Wi-Fi sinyal gücü"
+      }
+    },
+    "switch": {
+      "economode": {
+        "name": "Econo modu"
+      },
+      "streamermode": {
+        "name": "Streamer modu"
+      }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "Ürün yazılımı güncellemesi"
+      }
     }
   },
   "exceptions": {
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "description": "Daikin Cloud için günlük istek sınırınıza ulaştınız, Daikin Onecta yapılandırmasındaki yoklama sıklığınızı gözden geçirin.",
+      "title": "Günlük istek sınırına ulaşıldı"
+    },
+    "minute_rate_limit": {
+      "description": "Daikin Cloud için dakikalık istek sınırınıza ulaştınız, Daikin cihazlarınıza bir dakika içinde bu kadar çok çağrı yapmayın.",
+      "title": "Dakikalık istek sınırına ulaşıldı"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Yüksek frekanslı dönem güncelleme aralığı (dakika)",
+          "high_scan_start": "Yüksek frekanslı dönem başlangıç saati",
+          "homekit_fan_mode_aliases": "HomeKit uyumlu fan hızı takma adlarını sun",
+          "low_scan_interval": "Düşük frekanslı dönem güncelleme aralığı (dakika)",
+          "low_scan_start": "Düşük frekanslı dönem başlangıç saati",
+          "scan_ignore": "Bir komuttan sonra veri yenilemenin yok sayılacağı saniye sayısı"
+        },
+        "description": "Daikin Onecta bulut güncelleme sıklığını yapılandırın",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "API sunucusu",
+      "max_day": "Günlük azami",
+      "max_minute": "Dakikalık azami",
+      "oauth2_status": "OAuth2 sunucusu",
+      "oauth2_token_valid": "OAuth2 erişim anahtarı geçerli",
+      "ratelimit_reset": "İstek sınırı sıfırlanması",
+      "remaining_day": "Günlük kalan",
+      "remaining_minute": "Dakikalık kalan",
+      "retry_after": "Yeniden deneme süresi"
     }
   }
 }
