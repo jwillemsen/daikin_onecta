@@ -1,0 +1,34 @@
+name: Lokalise Bulk Upload Existing Translations
+
+on:
+  workflow_dispatch:
+
+jobs:
+  bulk-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Installeer Lokalise CLI v2 via curl
+        run: |
+          curl -sfL https://githubusercontent.com | sh
+          sudo mv ./bin/lokalise2 /usr/local/bin/lokalise2
+
+      - name: Push alle bestaande .json bestanden naar Lokalise
+        run: |
+          cd custom_components/daikin_onecta/translations/
+          
+          for file in *.json; do
+            # Haal de taalcode uit de bestandsnaam (bijv. nl uit nl.json)
+            lang="${file%.json}"
+            
+            echo "Uploading $file as language code: $lang ..."
+            
+            lokalise2 file upload \
+              --token "${{ secrets.LOKALISE_API_TOKEN }}" \
+              --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
+              --file "$file" \
+              --lang-iso "$lang" \
+              --convert-placeholders=1
+          done
