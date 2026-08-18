@@ -172,7 +172,7 @@
       "heatingdailygasconsumption": {
         "name": "Täglicher Gasverbrauch Heizung"
       },
-      "heatingmonthlyconsumption": {
+      "heatingmonthlygasconsumption": {
         "name": "Monatlicher Gasverbrauch Heizung"
       },
       "heatingmonthlyelectricalconsumption": {
