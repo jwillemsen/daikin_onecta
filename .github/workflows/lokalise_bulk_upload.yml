@@ -19,13 +19,13 @@ jobs:
       - name: Push alle bestaande .json bestanden naar Lokalise
         run: |
           cd custom_components/daikin_onecta/translations/
-          
+
           for file in *.json; do
             # Haal de taalcode uit de bestandsnaam (bijv. nl uit nl.json)
             lang="${file%.json}"
-            
+
             echo "Uploading $file als taalcode: $lang ..."
-            
+
             lokalise2 file upload \
               --token "${{ secrets.LOKALISE_API_TOKEN }}" \
               --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
