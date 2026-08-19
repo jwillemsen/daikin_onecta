@@ -1,4 +1,4 @@
-name: Lokalise Translation Sync
+name: Lokalise Translation Pull
 
 on:
   push:
