@@ -103,8 +103,8 @@ class FlowHandler(
         """Create an oauth config entry or update existing entry for reauth."""
         try:
             unique_id = jwt.decode(data["token"]["access_token"], options={"verify_signature": False})["sub"]
-        except (jwt.DecodeError, KeyError) as err:
-            _LOGGER.exception("Failed to decode JWT: %s", err)
+        except (jwt.DecodeError, KeyError):
+            _LOGGER.exception("Failed to decode JWT")
             return self.async_abort(reason="invalid_token")
 
         await self.async_set_unique_id(unique_id)
