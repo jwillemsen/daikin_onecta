@@ -13,30 +13,6 @@ on:
   workflow_dispatch: # Handmatige startknop in GitHub Actions UI
 
 jobs:
-  # TAAK 1: Engelse bronbestanden direct uploaden
-  push-source:
-    if: github.event_name == 'workflow_dispatch'
-    runs-on: ubuntu-slim
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Installeer Lokalise CLI v2 via curl
-        run: |
-          curl -sfL https://raw.githubusercontent.com/lokalise/lokalise-cli-2-go/master/install.sh | sh
-          sudo mv ./bin/lokalise2 /usr/local/bin/lokalise2
-
-      - name: Push en.json naar Lokalise
-        run: |
-          lokalise2 file upload \
-            --token "${{ secrets.LOKALISE_API_TOKEN }}" \
-            --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
-            --file "custom_components/daikin_onecta/translations/en.json" \
-            --lang-iso "en" \
-            --convert-placeholders=1 \
-            --replace-modified
-
-  # TAAK 2: Vertalingen binnenhalen via een Pull Request + Linter check
   pull-translations:
     if: github.event_name == 'repository_dispatch' || github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
