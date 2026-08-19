@@ -83,7 +83,7 @@
       "leavingwateroffset": {
         "state": {
           "cool": "Modalità Raffreddamento",
-          "off": "[%key:state::default::off%]"
+          "off": "[%key:common::state::off%]"
         }
       },
       "roomtemperature": {

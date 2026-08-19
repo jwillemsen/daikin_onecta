@@ -1,0 +1,11 @@
+{
+  "entity": {
+    "climate": {
+      "leavingwateroffset": {
+        "state": {
+          "off": "[%key:common::state::off%]"
+        }
+      }
+    }
+  }
+}
