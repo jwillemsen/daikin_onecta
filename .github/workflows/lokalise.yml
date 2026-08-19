@@ -15,7 +15,7 @@ on:
 jobs:
   # TAAK 1: Engelse bronbestanden direct uploaden
   push-source:
-    if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-slim
     steps:
       - name: Checkout code
