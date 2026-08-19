@@ -63,7 +63,8 @@ jobs:
             --bundle-structure "%LANG_ISO%.%FORMAT%" \
             --original-filenames=false \
             --export-empty-as "skip" \
-            --indentation "2sp"
+            --indentation "2sp" \
+            --add-newline-eof=false
 
       # Verwijder het binaire lokalise2 bestand handmatig voordat de PR gemaakt wordt
       - name: Clean up temporary files
