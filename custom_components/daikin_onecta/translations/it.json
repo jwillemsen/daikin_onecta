@@ -290,15 +290,6 @@
       "firmwareupdate": {
         "name": "Aggiornamento Firmware"
       }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "heat_pump": "Modalità Normale",
-          "off": "[%key:common::state::off%]",
-          "performance": "Modalità Turbo"
-        }
-      }
     }
   },
   "exceptions": {

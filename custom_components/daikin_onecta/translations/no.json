@@ -252,13 +252,6 @@
       "streamermode": {
         "name": "Streamer-modus"
       }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "off": "[%key:common::state::off%]"
-        }
-      }
     }
   },
   "exceptions": {
