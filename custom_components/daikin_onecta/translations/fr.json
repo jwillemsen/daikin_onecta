@@ -42,15 +42,6 @@
       "sgtin": {
         "name": "SGTIN"
       }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "heat_pump": "Normal",
-          "off": "[%key:common::state::off%]",
-          "performance": "Boost"
-        }
-      }
     }
   },
   "exceptions": {
