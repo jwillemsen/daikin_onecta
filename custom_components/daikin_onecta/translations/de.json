@@ -153,6 +153,9 @@
       "coolingyearlygasconsumption": {
         "name": "Jährlicher Gasverbrauch Kühlung"
       },
+      "currentpowerconsumption": {
+        "name": "Aktueller Stromverbrauch"
+      },
       "datetime": {
         "name": "Datum\/Uhrzeit"
       },
@@ -271,6 +274,11 @@
       },
       "streamermode": {
         "name": "Streamer-Modus"
+      }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "Firmware-Update"
       }
     },
     "water_heater": {
