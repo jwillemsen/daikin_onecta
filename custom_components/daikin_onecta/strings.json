@@ -307,25 +307,6 @@
       "title": "The minute rate limit has been reached"
     }
   },
-  "entity": {
-    "climate": {
-      "leavingwateroffset": {
-        "state": {
-          "cool": "Cool",
-          "off": "[%key:state::default::off%]"
-        }
-      }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "heat_pump": "Normal",
-          "off": "[%key:state::default::off%]",
-          "performance": "Boost"
-        }
-      }
-    }
-  },
   "options": {
     "step": {
       "init": {
