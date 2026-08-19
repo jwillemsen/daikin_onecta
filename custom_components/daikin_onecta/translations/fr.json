@@ -38,14 +38,6 @@
     }
   },
   "entity": {
-    "climate": {
-      "leavingwateroffset": {
-        "state": {
-          "cool": "Frais",
-          "off": "[%key:common::state::off%]"
-        }
-      }
-    },
     "sensor": {
       "sgtin": {
         "name": "SGTIN"
@@ -55,7 +47,7 @@
       "hot_water_tank": {
         "state": {
           "heat_pump": "Normal",
-          "off": "[%key:state::default::off%]",
+          "off": "[%key:common::state::off%]",
           "performance": "Boost"
         }
       }
