@@ -243,6 +243,9 @@
       "setpointmode": {
         "name": "Börvärdesläge"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },

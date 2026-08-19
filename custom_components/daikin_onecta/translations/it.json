@@ -82,6 +82,7 @@
     "climate": {
       "leavingwateroffset": {
         "state": {
+          "cool": "Modalità Raffreddamento",
           "off": "[%key:state::default::off%]"
         }
       },
@@ -141,6 +142,9 @@
       "coolingmonthlygasconsumption": {
         "name": "Consumo di gas mensile in raffrescamento"
       },
+      "coolingmonthlythermaloutput": {
+        "name": "Energia termica mensile fornita in raffreddamento"
+      },
       "coolingweeklyelectricalconsumption": {
         "name": "Consumo elettrico settimanale in raffrescamento"
       },
@@ -152,6 +156,15 @@
       },
       "coolingyearlygasconsumption": {
         "name": "Consumo di gas annuale in raffrescamento"
+      },
+      "coolingyearlythermaloutput": {
+        "name": "Energia termica annua fornita in raffreddamento"
+      },
+      "currentpowerconsumption": {
+        "name": "Consumo elettrico attuale"
+      },
+      "currentthermaloutput": {
+        "name": "Potenza termica erogata"
       },
       "datetime": {
         "name": "Data\/Ora"
@@ -183,6 +196,9 @@
       "heatingmonthlygasconsumption": {
         "name": "Consumo di gas mensile in riscaldamento"
       },
+      "heatingmonthlythermaloutput": {
+        "name": "Energia termica mesnile fornita in riscaldamento"
+      },
       "heatingweeklyelectricalconsumption": {
         "name": "Consumo elettrico settimanale in riscaldamento"
       },
@@ -194,6 +210,9 @@
       },
       "heatingyearlygasconsumption": {
         "name": "Consumo di gas annuale in riscaldamento"
+      },
+      "heatingyearlythermaloutput": {
+        "name": "Energia termica annua fornita in riscaldamento"
       },
       "heatupmode": {
         "name": "Modalità riscaldamento"
@@ -243,6 +262,9 @@
       "setpointmode": {
         "name": "Modalità setpoint"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },
@@ -270,10 +292,17 @@
         "name": "Streamer mode"
       }
     },
+    "update": {
+      "firmwareupdate": {
+        "name": "Aggiornamento Firmware"
+      }
+    },
     "water_heater": {
       "hot_water_tank": {
         "state": {
-          "off": "[%key:state::default::off%]"
+          "heat_pump": "Modalità Normale",
+          "off": "[%key:state::default::off%]",
+          "performance": "Modalità Turbo"
         }
       }
     }
@@ -299,6 +328,7 @@
         "data": {
           "high_scan_interval": "Intervallo di aggiornamento del periodo ad alta frequenza (minuti)",
           "high_scan_start": "Ora di inizio del periodo ad alta frequenza",
+          "homekit_fan_mode_aliases": "Rendi disponibili in HomeKit gli alias compatibili delle velocità della ventola",
           "low_scan_interval": "Intervallo di aggiornamento del periodo a bassa frequenza (minuti)",
           "low_scan_start": "Ora di inizio del periodo a bassa frequenza",
           "scan_ignore": "Numero di secondi per cui un aggiornamento dei dati viene ignorato dopo un comando"

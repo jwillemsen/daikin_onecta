@@ -243,6 +243,9 @@
       "setpointmode": {
         "name": "Λειτουργία σημείου ρύθμισης"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },

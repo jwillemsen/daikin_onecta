@@ -231,6 +231,9 @@
       "setpointmode": {
         "name": "Режим на зададена стойност"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },
