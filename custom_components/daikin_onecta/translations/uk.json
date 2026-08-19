@@ -80,11 +80,6 @@
       }
     },
     "climate": {
-      "leavingwateroffset": {
-        "state": {
-          "off": "[%key:common::state::off%]"
-        }
-      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
@@ -276,13 +271,6 @@
     "update": {
       "firmwareupdate": {
         "name": "Оновлення прошивки"
-      }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "off": "[%key:state::default::off%]"
-        }
       }
     }
   },

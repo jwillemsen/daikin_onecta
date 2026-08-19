@@ -80,12 +80,6 @@
       }
     },
     "climate": {
-      "leavingwateroffset": {
-        "state": {
-          "cool": "Modalità Raffreddamento",
-          "off": "[%key:common::state::off%]"
-        }
-      },
       "roomtemperature": {
         "state_attributes": {
           "fan_mode": {
@@ -295,15 +289,6 @@
     "update": {
       "firmwareupdate": {
         "name": "Aggiornamento Firmware"
-      }
-    },
-    "water_heater": {
-      "hot_water_tank": {
-        "state": {
-          "heat_pump": "Modalità Normale",
-          "off": "[%key:state::default::off%]",
-          "performance": "Modalità Turbo"
-        }
       }
     }
   },
