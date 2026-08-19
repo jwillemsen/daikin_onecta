@@ -1,4 +1,4 @@
-name: Lokalise Translation Pish
+name: Lokalise Translation Push
 
 on:
   push:
