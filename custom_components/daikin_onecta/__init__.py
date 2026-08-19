@@ -97,8 +97,8 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
                         config_entry.data["token"]["access_token"],
                         options={"verify_signature": False},
                     )["sub"]
-                except (jwt.DecodeError, KeyError) as err:
-                    _LOGGER.exception("Failed to decode JWT during migration: %s", err)
+                except (jwt.DecodeError, KeyError):
+                    _LOGGER.exception("Failed to decode JWT during migration")
                     return False
                 hass.config_entries.async_update_entry(
                     config_entry,
