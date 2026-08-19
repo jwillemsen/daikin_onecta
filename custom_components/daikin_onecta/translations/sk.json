@@ -243,6 +243,9 @@
       "setpointmode": {
         "name": "Režim nastavenej teploty"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },

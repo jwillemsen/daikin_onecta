@@ -82,6 +82,7 @@
     "climate": {
       "leavingwateroffset": {
         "state": {
+          "cool": "Koelen",
           "off": "[%key:state::default::off%]"
         }
       },
@@ -100,14 +101,14 @@
           "swing_horizontal_mode": {
             "state": {
               "stop": "Stop",
-              "swing": "Swing"
+              "swing": "Zwenken"
             }
           },
           "swing_mode": {
             "state": {
               "floorheatingairflow": "Vloerverwarming‑luchtstroom",
               "stop": "Stop",
-              "swing": "Swing",
+              "swing": "Zwenken",
               "windnice": "Comfort‑luchtstroom"
             }
           }
@@ -141,6 +142,9 @@
       "coolingmonthlygasconsumption": {
         "name": "Maandelijks gasverbruik koelen"
       },
+      "coolingmonthlythermaloutput": {
+        "name": "Maandelijks elektriciteitsverbruik koelen"
+      },
       "coolingweeklyelectricalconsumption": {
         "name": "Wekelijks elektriciteitsverbruik koelen"
       },
@@ -153,8 +157,14 @@
       "coolingyearlygasconsumption": {
         "name": "Jaarlijks gasverbruik koelen"
       },
+      "coolingyearlythermaloutput": {
+        "name": "Jaarlijks elektriciteitsverbruik koelen"
+      },
       "currentpowerconsumption": {
         "name": "Huidig ​​stroomverbruik"
+      },
+      "currentthermaloutput": {
+        "name": "Huidig verbruik"
       },
       "datetime": {
         "name": "Datum\/tijd"
@@ -186,6 +196,9 @@
       "heatingmonthlygasconsumption": {
         "name": "Maandelijks gasverbruik verwarmen"
       },
+      "heatingmonthlythermaloutput": {
+        "name": "Maandelijks elektriciteitsverbruik verwarmen"
+      },
       "heatingweeklyelectricalconsumption": {
         "name": "Wekelijks elektriciteitsverbruik verwarmen"
       },
@@ -197,6 +210,9 @@
       },
       "heatingyearlygasconsumption": {
         "name": "Jaarlijks gasverbruik verwarmen"
+      },
+      "heatingyearlythermaloutput": {
+        "name": "Jaarlijks elektriciteitsverbruik verwarmen"
       },
       "heatupmode": {
         "name": "Opwarmmodus"
@@ -284,7 +300,9 @@
     "water_heater": {
       "hot_water_tank": {
         "state": {
-          "off": "[%key:state::default::off%]"
+          "heat_pump": "Normaal",
+          "off": "[%key:state::default::off%]",
+          "performance": "Boost"
         }
       }
     }
@@ -310,6 +328,7 @@
         "data": {
           "high_scan_interval": "Update-interval hoge frequentieperiode (minuten)",
           "high_scan_start": "Starttijd hoge frequentieperiode",
+          "homekit_fan_mode_aliases": "toon homekit compatibele ventilator snelheidsaliassen",
           "low_scan_interval": "Update-interval lage frequentieperiode (minuten)",
           "low_scan_start": "Starttijd lage frequentieperiode",
           "scan_ignore": "Aantal seconden waarin een gegevensverversing wordt genegeerd na een opdracht"

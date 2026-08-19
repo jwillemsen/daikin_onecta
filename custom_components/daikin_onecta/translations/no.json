@@ -228,6 +228,9 @@
       "setpointmode": {
         "name": "Setpunkt-modus"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },

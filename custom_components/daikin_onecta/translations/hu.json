@@ -243,6 +243,9 @@
       "setpointmode": {
         "name": "Célérték mód"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },

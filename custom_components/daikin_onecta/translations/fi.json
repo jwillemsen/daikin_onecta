@@ -243,6 +243,9 @@
       "setpointmode": {
         "name": "Asetuspisteen tila"
       },
+      "sgtin": {
+        "name": "SGTIN"
+      },
       "ssid": {
         "name": "SSID"
       },
