@@ -4,6 +4,7 @@ import json
 import logging
 from datetime import datetime
 
+from aiohttp import ClientError
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
@@ -124,6 +125,10 @@ class DaikinApi:
                         self._last_patch_call = datetime.now()
                         return True
 
+            except (ClientError, asyncio.TimeoutError):
+                # Propagate transient network errors so Home Assistant marks the
+                # coordinator update as failed and retries it.
+                raise
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
 
