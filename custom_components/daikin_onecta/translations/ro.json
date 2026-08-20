@@ -1,0 +1,339 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Token invalid sau expirat; vă rugăm să reconfigurați integrarea.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Eroare neașteptată",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Asigurați-vă că reconfigurați pentru același cont."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
+    "step": {
+      "pick_implementation": {
+        "data": {
+          "implementation": "[%key:common::config_flow::data::implementation%]"
+        },
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "description": "Integrarea Daikin Onecta trebuie să vă reautentifice contul.",
+        "title": "[%key:common::config_flow::title::reauth%]"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "daylightsavingtimeenabled": {
+        "name": "Ora de vară a fost activată"
+      },
+      "iscoolheatmaster": {
+        "name": "Este master pentru cool\/heat"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Update de firmware suportat"
+      },
+      "isholidaymodeactive": {
+        "name": "Modul de vacanță activat"
+      },
+      "isincautionstate": {
+        "name": "În stare de precauție"
+      },
+      "isinemergencystate": {
+        "name": "În stare de alertă"
+      },
+      "isinerrorstate": {
+        "name": "În stare de eroare"
+      },
+      "isininstallerstate": {
+        "name": "În modul instalator"
+      },
+      "isinmodeconflict": {
+        "name": "În stare de conflict"
+      },
+      "isinwarningstate": {
+        "name": "În stare de avertizare"
+      },
+      "islockfunctionenabled": {
+        "name": "Opțiunea de blocare activată"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Modul puternic este activat"
+      },
+      "ledenabled": {
+        "name": "LED activat"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5",
+              "quiet": "Silențios"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Oprire oscilare",
+              "swing": "Oscilare orizontală"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Flux de aer prin pardoseală",
+              "stop": "Oprire oscilare",
+              "swing": "Oscilare",
+              "windnice": "Airflow confort"
+            }
+          }
+        }
+      }
+    },
+    "select": {
+      "schedule": {
+        "name": "Planificator"
+      }
+    },
+    "sensor": {
+      "airpurificationmode": {
+        "name": "Modul de purificare al aerului"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Temperatura calculată a apei la ieșire"
+      },
+      "controlmode": {
+        "name": "Modul de control"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Consumul zilnic de energie electrică pentru răcire"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Consumul zilnic de gaz pentru răcire"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Consumul lunar de energie electrică pentru răcire"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Consumul lunar de gaz pentru răcire"
+      },
+      "coolingmonthlythermaloutput": {
+        "name": "Puterea termică lunară de răcire"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Consumul săptămânal de energie electrică pentru răcire"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Consumul săptămânal de gaz pentru răcire"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Consumul anual de energie electrică pentru răcire"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Consumul anual de gaz pentru răcire"
+      },
+      "coolingyearlythermaloutput": {
+        "name": "Puterea termică anuală de răcire"
+      },
+      "currentpowerconsumption": {
+        "name": "Consumul actual de energie"
+      },
+      "currentthermaloutput": {
+        "name": "Puterea termică actuală"
+      },
+      "datetime": {
+        "name": "Data\/Ora"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Setare menținere uscat"
+      },
+      "errorcode": {
+        "name": "Codul de eroare"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Viteza de rotație a ventilatorului"
+      },
+      "heatexchangertemperature": {
+        "name": "Temperatura schimbătorului de căldură"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Consumul zilnic de energie electrică pentru încălzire"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Consumul zilnic de gaz pentru încălzire"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Consumul lunar de energie electrică pentru încălzire"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Consumul lunar de gaz pentru încălzire"
+      },
+      "heatingmonthlythermaloutput": {
+        "name": "Puterea termică lunară de încălzire"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Consumul săptămânal de energie electrică pentru încălzire"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Consumul săptămânal de gaz pentru încălzire"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Consumul anual de energie electrică pentru încălzire"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Consumul anual de gaze pentru încălzire"
+      },
+      "heatingyearlythermaloutput": {
+        "name": "Puterea termică anuală de încălzire"
+      },
+      "heatupmode": {
+        "name": "Mod de încălzire"
+      },
+      "ipaddress": {
+        "name": "Adresa IP"
+      },
+      "leavingwateroffset": {
+        "name": "Offset-ul apei de ieșire"
+      },
+      "leavingwatertemperature": {
+        "name": "Temperatura apei de ieșire"
+      },
+      "onoffmode": {
+        "name": "Modul On\/Off"
+      },
+      "operationmode": {
+        "name": "Modul de operare"
+      },
+      "outdoortemperature": {
+        "name": "Temperatura exterioară"
+      },
+      "pm10concentration": {
+        "name": "Concentrația PM10"
+      },
+      "pm1concentration": {
+        "name": "Concentrația PM1"
+      },
+      "pm25concentration": {
+        "name": "Concentrația PM2.5"
+      },
+      "powerfulmode": {
+        "name": "Modul puternic"
+      },
+      "ratelimitremainingday": {
+        "name": "Rate limit zilnic rămas"
+      },
+      "regioncode": {
+        "name": "Codul de regiune"
+      },
+      "roomhumidity": {
+        "name": "Umiditatea camerei"
+      },
+      "roomtemperature": {
+        "name": "Temperatura camerei"
+      },
+      "setpointmode": {
+        "name": "Modul setpoint"
+      },
+      "sgtin": {
+        "name": "SGTIN"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "suctiontemperature": {
+        "name": "Temperatura de aspirație"
+      },
+      "tanktemperature": {
+        "name": "Temperatura rezervorului"
+      },
+      "timezone": {
+        "name": "Fus orar"
+      },
+      "wificonnectionssid": {
+        "name": "SSID-ul conexiunii WiFi"
+      },
+      "wificonnectionstrength": {
+        "name": "Puterea conexiunii WiFi"
+      }
+    },
+    "switch": {
+      "economode": {
+        "name": "Modul econo"
+      },
+      "streamermode": {
+        "name": "Modul streamer"
+      }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "Update de firmware"
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "description": "Ai atins limita zilnică de request-uri către Daikin Cloud, verifică frecvența de apelări în configurațiile Daikin Onecta.",
+      "title": "Limita de request-uri per zi a fost atinsă"
+    },
+    "minute_rate_limit": {
+      "description": "Ai atins limita per minut către Daikin Cloud, rărește numărul de request-uri către dispozitivele tale Daikin într-un singur minut.",
+      "title": "Limita de request-uri per minut a fost atinsă"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Interval de actualizare a perioadei de înaltă frecvență (minute)",
+          "high_scan_start": "Ora de începere a perioadei de înaltă frecvență",
+          "homekit_fan_mode_aliases": "Expune aliasuri pentru viteza ventilatorului compatibile cu HomeKit",
+          "low_scan_interval": "Interval de actualizare a perioadei de joasă frecvență (minute)",
+          "low_scan_start": "Ora de începere a perioadei de frecvență joasă",
+          "scan_ignore": "Numărul de secunde în care refresh-ul de date este ignorat după o comandă"
+        },
+        "description": "Configurați Daikin Onecta Cloud polling",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "Statusul serverului API",
+      "max_day": "Ziua maximă",
+      "max_minute": "Minutul maxim",
+      "oauth2_status": "Statusul serverului OAuth2",
+      "oauth2_token_valid": "Token OAuth2 valid",
+      "ratelimit_reset": "Resetare rate limit",
+      "remaining_day": "Zi rămasă",
+      "remaining_minute": "Minut rămas",
+      "retry_after": "Reîncearcă după"
+    }
+  }
+}
