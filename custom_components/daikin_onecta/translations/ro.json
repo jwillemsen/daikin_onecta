@@ -1,0 +1,92 @@
+{
+  "config": {
+    "step": {
+      "pick_implementation": {
+        "data": {
+          "implementation": "[%key:common::config_flow::data::implementation%]"
+        },
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "title": "[%key:common::config_flow::title::reauth%]"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "daylightsavingtimeenabled": {
+        "name": "Ora de vară a fost activată"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Update de firmware suportat"
+      },
+      "islockfunctionenabled": {
+        "name": "Opțiunea de blocare activată"
+      },
+      "ledenabled": {
+        "name": "LED activat"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5",
+              "quiet": "Silențios"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Oprire oscilare",
+              "swing": "Oscilare orizontală"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Flux de aer prin pardoseală",
+              "stop": "Oprire oscilare",
+              "swing": "Oscilare",
+              "windnice": "Airflow confort"
+            }
+          }
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "description": "Ai atins limita zilnică de request-uri către Daikin Cloud, verifică frecvența de apelări în configurațiile Daikin Onecta.",
+      "title": "Limita de request-uri per zi a fost atinsă"
+    },
+    "minute_rate_limit": {
+      "description": "Ai atins limita per minut către Daikin Cloud, rărește numărul de request-uri către dispozitivele tale Daikin într-un singur minut.",
+      "title": "Limita de request-uri per minut a fost atinsă"
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "Statusul serverului API",
+      "max_day": "Ziua maximă",
+      "max_minute": "Minutul maxim",
+      "oauth2_status": "Statusul serverului OAuth2",
+      "oauth2_token_valid": "Token OAuth2 valid",
+      "ratelimit_reset": "Resetare rate limit",
+      "remaining_day": "Zi rămasă",
+      "remaining_minute": "Minut rămas",
+      "retry_after": "Reîncearcă după"
+    }
+  }
+}
