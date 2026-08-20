@@ -1,0 +1,339 @@
+{
+  "config": {
+    "abort": {
+      "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
+      "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
+      "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
+      "invalid_token": "Token jest nieprawidłowy lub wygasł. Skonfiguruj ponownie integrację.",
+      "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
+      "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
+      "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
+      "oauth_failed": "[%key:common::config_flow::abort::oauth2_failed%]",
+      "oauth_implementation_unavailable": "[%key:common::config_flow::abort::oauth2_implementation_unavailable%]",
+      "oauth_timeout": "[%key:common::config_flow::abort::oauth2_timeout%]",
+      "oauth_unauthorized": "[%key:common::config_flow::abort::oauth2_unauthorized%]",
+      "reauth_successful": "[%key:common::config_flow::abort::reauth_successful%]",
+      "single_instance_allowed": "[%key:common::config_flow::abort::single_instance_allowed%]",
+      "unknown": "Wystąpił nieoczekiwany błąd",
+      "user_rejected_authorize": "[%key:common::config_flow::abort::oauth2_user_rejected_authorize%]",
+      "wrong_account": "Upewnij się, że podczas ponownej konfiguracji używasz tego samego konta."
+    },
+    "create_entry": {
+      "default": "[%key:common::config_flow::create_entry::authenticated%]"
+    },
+    "step": {
+      "pick_implementation": {
+        "data": {
+          "implementation": "[%key:common::config_flow::data::implementation%]"
+        },
+        "data_description": {
+          "implementation": "[%key:common::config_flow::description::implementation%]"
+        },
+        "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
+      },
+      "reauth_confirm": {
+        "description": "Integracja Daikin Onecta wymaga ponownego uwierzytelnienia konta.",
+        "title": "[%key:common::config_flow::title::reauth%]"
+      }
+    }
+  },
+  "entity": {
+    "binary_sensor": {
+      "daylightsavingtimeenabled": {
+        "name": "Automatyczna zmiana na czas letni"
+      },
+      "iscoolheatmaster": {
+        "name": "Nadrzędne sterowanie chłodzeniem\/grzaniem"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "Czy aktualizacja oprogramowania jest obsługiwana"
+      },
+      "isholidaymodeactive": {
+        "name": "Tryb wakacyjny"
+      },
+      "isincautionstate": {
+        "name": "Stan ostrzeżenia"
+      },
+      "isinemergencystate": {
+        "name": "Tryb awaryjny"
+      },
+      "isinerrorstate": {
+        "name": "Błąd"
+      },
+      "isininstallerstate": {
+        "name": "Tryb instalatora"
+      },
+      "isinmodeconflict": {
+        "name": "Konflikt trybów"
+      },
+      "isinwarningstate": {
+        "name": "Stan ostrzegawczy"
+      },
+      "islockfunctionenabled": {
+        "name": "Funkcja blokady"
+      },
+      "ispowerfulmodeactive": {
+        "name": "Tryb mocny"
+      },
+      "ledenabled": {
+        "name": "Włączona dioda LED"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5",
+              "quiet": "Cichy"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Stop",
+              "swing": "Ruch żaluzji"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Nawiew na podłogę",
+              "stop": "Stop",
+              "swing": "Nawiew wahadłowy",
+              "windnice": "Komfortowy nawiew"
+            }
+          }
+        }
+      }
+    },
+    "select": {
+      "schedule": {
+        "name": "Harmonogram"
+      }
+    },
+    "sensor": {
+      "airpurificationmode": {
+        "name": "Tryb oczyszczania powietrza"
+      },
+      "calculatedleavingwatertemperature": {
+        "name": "Obliczona temperatura wody na wyjściu"
+      },
+      "controlmode": {
+        "name": "Tryb sterowania"
+      },
+      "coolingdailyelectricalconsumption": {
+        "name": "Dzienne zużycie energii elektrycznej na chłodzenie"
+      },
+      "coolingdailygasconsumption": {
+        "name": "Dzienne zużycie gazu na chłodzenie"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "Miesięczne zużycie energii elektrycznej na chłodzenie"
+      },
+      "coolingmonthlygasconsumption": {
+        "name": "Miesięczne zużycie gazu na chłodzenie"
+      },
+      "coolingmonthlythermaloutput": {
+        "name": "Miesięczna wydajność chłodnicza"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "Tygodniowe zużycie energii elektrycznej na chłodzenie"
+      },
+      "coolingweeklygasconsumption": {
+        "name": "Tygodniowe zużycie gazu na chłodzenie"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "Roczne zużycie energii elektrycznej na chłodzenie"
+      },
+      "coolingyearlygasconsumption": {
+        "name": "Roczne zużycie gazu na chłodzenie"
+      },
+      "coolingyearlythermaloutput": {
+        "name": "Roczna wydajność chłodnicza"
+      },
+      "currentpowerconsumption": {
+        "name": "Aktualne zużycie energii"
+      },
+      "currentthermaloutput": {
+        "name": "Aktualna moc cieplna"
+      },
+      "datetime": {
+        "name": "Data\/godzina"
+      },
+      "deltad": {
+        "name": "DeltaD"
+      },
+      "drykeepsetting": {
+        "name": "Utrzymywanie sychości"
+      },
+      "errorcode": {
+        "name": "Kod błędu"
+      },
+      "fanmotorrotationspeed": {
+        "name": "Prędkość obrotowa silnika wentylatora"
+      },
+      "heatexchangertemperature": {
+        "name": "Temperatura wymiennika ciepła"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "Dzienne zużycie energii elektrycznej na ogrzewanie"
+      },
+      "heatingdailygasconsumption": {
+        "name": "Dzienne zużycie gazu na ogrzewanie"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "Miesięczne zużycie energii elektrycznej na ogrzewanie"
+      },
+      "heatingmonthlygasconsumption": {
+        "name": "Miesięczne zużycie gazu na ogrzewanie"
+      },
+      "heatingmonthlythermaloutput": {
+        "name": "Miesięczna wydajność grzewcza"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "Tygodniowe zużycie energii elektrycznej na ogrzewanie"
+      },
+      "heatingweeklygasconsumption": {
+        "name": "Tygodniowe zużycie gazu na ogrzewanie"
+      },
+      "heatingyearlyelectricalconsumption": {
+        "name": "Roczne zużycie energii elektrycznej na ogrzewanie"
+      },
+      "heatingyearlygasconsumption": {
+        "name": "Roczne zużycie gazu na ogrzewanie"
+      },
+      "heatingyearlythermaloutput": {
+        "name": "Roczna wydajność grzewcza"
+      },
+      "heatupmode": {
+        "name": "Tryb nagrzewania"
+      },
+      "ipaddress": {
+        "name": "Adres IP"
+      },
+      "leavingwateroffset": {
+        "name": "Korekta temperatury wody na wyjściu"
+      },
+      "leavingwatertemperature": {
+        "name": "Temperatura wody na wyjściu"
+      },
+      "onoffmode": {
+        "name": "Tryb wł.\/wył."
+      },
+      "operationmode": {
+        "name": "Tryb pracy"
+      },
+      "outdoortemperature": {
+        "name": "Temperatura zewnętrzna"
+      },
+      "pm10concentration": {
+        "name": "Stężenie PM10"
+      },
+      "pm1concentration": {
+        "name": "Stężenie PM1"
+      },
+      "pm25concentration": {
+        "name": "Stężenie PM2.5"
+      },
+      "powerfulmode": {
+        "name": "Tryb intensywny"
+      },
+      "ratelimitremainingday": {
+        "name": "Pozostały dzienny limit zapytań"
+      },
+      "regioncode": {
+        "name": "Kod regionu"
+      },
+      "roomhumidity": {
+        "name": "Wilgotność w pomieszczeniu"
+      },
+      "roomtemperature": {
+        "name": "Temperatura w pomieszczeniu"
+      },
+      "setpointmode": {
+        "name": "Tryb nastawy"
+      },
+      "sgtin": {
+        "name": "SGTIN"
+      },
+      "ssid": {
+        "name": "SSID"
+      },
+      "suctiontemperature": {
+        "name": "Temperatura ssania"
+      },
+      "tanktemperature": {
+        "name": "Temperatura zbiornika"
+      },
+      "timezone": {
+        "name": "Strefa czasowa"
+      },
+      "wificonnectionssid": {
+        "name": "SSID połączenia Wi-Fi"
+      },
+      "wificonnectionstrength": {
+        "name": "Siła sygnału Wi-Fi"
+      }
+    },
+    "switch": {
+      "economode": {
+        "name": "Tryb ekonomiczny"
+      },
+      "streamermode": {
+        "name": "Tryb Streamer"
+      }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "Aktualizacja oprogramowania"
+      }
+    }
+  },
+  "exceptions": {
+    "oauth2_implementation_unavailable": {
+      "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "description": "Osiągnąłeś dzienny limit połączeń z chmurą Daikin. Sprawdź częstotliwość odpytywania w konfiguracji Daikin Onecta.",
+      "title": "Osiągnięto dzienny limit połączeń"
+    },
+    "minute_rate_limit": {
+      "description": "Osiągnąłeś limit minut na połączenia z chmurą Daikin. Nie wykonuj tak wielu połączeń do urządzenia Daikin w ciągu jednej minuty.",
+      "title": "Osiągnięto limit minut"
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "high_scan_interval": "Interwał aktualizacji w okresie wysokiej częstotliwości (minuty)",
+          "high_scan_start": "Godzina rozpoczęcia okresu częstego odpytywania",
+          "homekit_fan_mode_aliases": "Udostępnij aliasy prędkości wentylatora zgodne z HomeKit",
+          "low_scan_interval": "Interwał aktualizacji w okresie niskiej częstotliwości (minuty)",
+          "low_scan_start": "Godzina rozpoczęcia okresu rzadkiego odpytywania",
+          "scan_ignore": "Liczba sekund, przez które po wydaniu polecenia odświeżanie danych jest ignorowane"
+        },
+        "description": "Skonfiguruj odpytywanie chmury Daikin Onecta",
+        "title": "Daikin Onecta"
+      }
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "Serwer API",
+      "max_day": "Maksymalna ilość dni",
+      "max_minute": "Maksymalna ilość minut",
+      "oauth2_status": "Serwer OAuth2",
+      "oauth2_token_valid": "Token OAuth2 jest ważny",
+      "ratelimit_reset": "Resetowanie limitu szybkości",
+      "remaining_day": "Pozostałe dni",
+      "remaining_minute": "Pozostałe minuty",
+      "retry_after": "Spróbuj ponownie po"
+    }
+  }
+}
