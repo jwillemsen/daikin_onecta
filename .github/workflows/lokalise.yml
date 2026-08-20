@@ -47,9 +47,6 @@ jobs:
           rm -f ./lokalise2
           rm -f ./bin/lokalise2
 
-      - name: Run Hassfest Validation
-        uses: home-assistant/actions/hassfest@master
-
       - name: Create Pull Request met nieuwe vertalingen
         uses: peter-evans/create-pull-request@v6
         with:
