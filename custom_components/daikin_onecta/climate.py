@@ -452,7 +452,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if cc is not None:
             onoff = cc.get("onOffMode")
             if onoff is not None and onoff["value"] != "off" and operationmode is not None:
-              mode = operationmode["value"]
+                mode = operationmode["value"]
             _LOGGER.debug(
                 "Device '%s' %s hvac mode '%s'",
                 self._device.name,
