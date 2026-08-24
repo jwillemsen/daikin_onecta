@@ -451,9 +451,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         if cc is not None:
             onoff = cc.get("onOffMode")
-            if onoff is not None:
-                if onoff["value"] != "off" and operationmode is not None:
-                    mode = operationmode["value"]
+            if onoff is not None and onoff["value"] != "off" and operationmode is not None:
+                mode = operationmode["value"]
             _LOGGER.debug(
                 "Device '%s' %s hvac mode '%s'",
                 self._device.name,
@@ -513,25 +512,24 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             else:
                 cc["onOffMode"]["value"] = on_off_mode
 
-        if operation_mode is not None:
-            # Only set the operationMode when it has changed, also prevents setting it when
-            # it is readOnly
-            if operation_mode != cc["operationMode"]["value"]:
-                result &= await self._device.patch(
-                    self._device.id,
-                    self._embedded_id,
-                    "operationMode",
-                    "",
+        # Only set the operationMode when it has changed, also prevents setting it when
+        # it is readOnly
+        if operation_mode is not None and operation_mode != cc["operationMode"]["value"]:
+            result &= await self._device.patch(
+                self._device.id,
+                self._embedded_id,
+                "operationMode",
+                "",
+                operation_mode,
+            )
+            if result is False:
+                _LOGGER.warning(
+                    "Device '%s' problem setting operationMode to '%s'",
+                    self._device.name,
                     operation_mode,
                 )
-                if result is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting operationMode to '%s'",
-                        self._device.name,
-                        operation_mode,
-                    )
-                else:
-                    cc["operationMode"]["value"] = operation_mode
+            else:
+                cc["operationMode"]["value"] = operation_mode
 
         if result is True:
             # When switching hvac mode it could be that we can set min/max/target/etc
