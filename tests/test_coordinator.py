@@ -8,6 +8,7 @@ from unittest.mock import patch
 import pytest
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
+from homeassistant.util import dt as dt_util
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
@@ -73,7 +74,7 @@ class TestOnectaDataUpdateCoordinator:
     @patch("custom_components.daikin_onecta.coordinator.datetime")
     def test_high_scan_interval(self, mock_datetime, coordinator, mock_hass):
         """High scan interval should apply during high-frequency window."""
-        mock_now = datetime(2023, 1, 1, 10, 0, 0)
+        mock_now = dt_util.as_local(datetime(2023, 1, 1, 10, 0, 0))
         mock_datetime.now.return_value = mock_now
         mock_datetime.strptime.side_effect = datetime.strptime
 
