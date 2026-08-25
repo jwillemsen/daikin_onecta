@@ -71,7 +71,7 @@ class TestOnectaDataUpdateCoordinator:
         assert coordinator.in_between(time(22, 0, 0), start, end)
         assert coordinator.in_between(time(23, 0, 0), start, end)
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     def test_high_scan_interval(self, mock_datetime, coordinator, mock_hass):
         """High scan interval should apply during high-frequency window."""
         mock_now = dt_util.as_local(datetime(2023, 1, 1, 10, 0, 0))
@@ -82,7 +82,7 @@ class TestOnectaDataUpdateCoordinator:
         result = coordinator.determine_update_interval(mock_hass)
         assert result == expected
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     def test_low_scan_interval(self, mock_datetime, coordinator, mock_hass):
         """Low scan interval should apply outside transition windows."""
         mock_now = datetime(2023, 1, 1, 23, 0, 0)
@@ -94,7 +94,7 @@ class TestOnectaDataUpdateCoordinator:
             result = coordinator.determine_update_interval(mock_hass)
             assert result == expected
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     @patch("custom_components.daikin_onecta.coordinator.random")
     def test_transition_period_randomization(self, mock_random, mock_datetime, coordinator, mock_hass):
         """During transition, interval is randomized between floor and low interval."""
@@ -109,7 +109,7 @@ class TestOnectaDataUpdateCoordinator:
             assert result == expected
             mock_random.randint.assert_called_once_with(60, 1800)
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     def test_rate_limit_exceeded(self, mock_datetime, coordinator, mock_hass, mock_config_entry):
         """When rate limit is exceeded, interval = retry_after + fallback (60s)."""
         mock_now = datetime(2023, 1, 1, 23, 0, 0)
