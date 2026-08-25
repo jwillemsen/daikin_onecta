@@ -2,7 +2,6 @@
 import logging
 import random
 from dataclasses import dataclass
-from datetime import datetime
 from datetime import timedelta
 from typing import Any
 
@@ -98,7 +97,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             # poll so that we spread the load to daikin, so for example when we have a low start at
             # 22:00 and a high scan interval of 9 minutes we randomize the next poll when it is
             # between 22:00 and 22:09
-            end_time = (dt_util.start_of_local_day() + timedelta(hours=ls.hour, minutes=ls.minute, seconds= ls.second + high_scan_interval)).time()
+            end_time = (dt_util.start_of_local_day() + timedelta(hours=ls.hour, minutes=ls.minute, seconds=ls.second + high_scan_interval)).time()
             if self.in_between(dt_util.now().time(), ls, end_time):
                 scan_interval = random.randint(60, int(scan_interval))
 
