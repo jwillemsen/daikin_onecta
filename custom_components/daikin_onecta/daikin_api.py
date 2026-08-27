@@ -38,7 +38,8 @@ class DaikinApi:
         # immediately after a PATCH request. Se we use this attribute
         # to check when we had the last patch command, if it is less then
         # 10 seconds ago we skip the get
-        self._last_patch_call = dt_util.as_local(datetime.min)
+        # self._last_patch_call = dt_util.as_local(datetime.min)
+        self._last_patch_call: datetime | None = None
 
         # Store the limits as member so that we can add these to the diagnostics
         self.rate_limits = {
