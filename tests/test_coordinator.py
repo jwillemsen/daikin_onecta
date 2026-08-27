@@ -70,36 +70,30 @@ class TestOnectaDataUpdateCoordinator:
         assert coordinator.in_between(time(22, 0, 0), start, end)
         assert coordinator.in_between(time(23, 0, 0), start, end)
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
-    def test_high_scan_interval(self, mock_datetime, coordinator, mock_hass):
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
+    def test_high_scan_interval(self, mock_now, coordinator, mock_hass):
         """High scan interval should apply during high-frequency window."""
-        mock_now = datetime(2023, 1, 1, 10, 0, 0)
-        mock_datetime.now.return_value = mock_now
-        mock_datetime.strptime.side_effect = datetime.strptime
+        mock_now.return_value = datetime(2023, 1, 1, 10, 0, 0)
 
         expected = timedelta(minutes=10)
         result = coordinator.determine_update_interval(mock_hass)
         assert result == expected
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
-    def test_low_scan_interval(self, mock_datetime, coordinator, mock_hass):
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
+    def test_low_scan_interval(self, mock_now, coordinator, mock_hass):
         """Low scan interval should apply outside transition windows."""
-        mock_now = datetime(2023, 1, 1, 23, 0, 0)
-        mock_datetime.now.return_value = mock_now
-        mock_datetime.strptime.side_effect = datetime.strptime
+        mock_now.return_value = datetime(2023, 1, 1, 23, 0, 0)
 
         with patch.object(coordinator, "in_between", side_effect=[False, False]):
             expected = timedelta(minutes=30)
             result = coordinator.determine_update_interval(mock_hass)
             assert result == expected
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     @patch("custom_components.daikin_onecta.coordinator.random")
-    def test_transition_period_randomization(self, mock_random, mock_datetime, coordinator, mock_hass):
+    def test_transition_period_randomization(self, mock_random, mock_now, coordinator, mock_hass):
         """During transition, interval is randomized between floor and low interval."""
-        mock_now = datetime(2023, 1, 1, 22, 5, 0)
-        mock_datetime.now.return_value = mock_now
-        mock_datetime.strptime.side_effect = datetime.strptime
+        mock_now.return_value = datetime(2023, 1, 1, 22, 5, 0)
         mock_random.randint.return_value = 120  # 2 minutes
 
         with patch.object(coordinator, "in_between", side_effect=[False, True]):
@@ -108,12 +102,10 @@ class TestOnectaDataUpdateCoordinator:
             assert result == expected
             mock_random.randint.assert_called_once_with(60, 1800)
 
-    @patch("custom_components.daikin_onecta.coordinator.datetime")
-    def test_rate_limit_exceeded(self, mock_datetime, coordinator, mock_hass, mock_config_entry):
+    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
+    def test_rate_limit_exceeded(self, mock_now, coordinator, mock_hass, mock_config_entry):
         """When rate limit is exceeded, interval = retry_after + fallback (60s)."""
-        mock_now = datetime(2023, 1, 1, 23, 0, 0)
-        mock_datetime.now.return_value = mock_now
-        mock_datetime.strptime.side_effect = datetime.strptime
+        mock_now.return_value = datetime(2023, 1, 1, 23, 0, 0)
 
         # Simulate daily rate limit reached
         mock_config_entry.runtime_data.daikin_api.rate_limits = {"remaining_day": 0, "retry_after": 3000}

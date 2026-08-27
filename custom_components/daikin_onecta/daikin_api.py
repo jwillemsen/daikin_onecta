@@ -10,6 +10,7 @@ from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.util import dt as dt_util
 
 from .const import DAIKIN_API_URL
 from .const import DOMAIN
@@ -37,7 +38,8 @@ class DaikinApi:
         # immediately after a PATCH request. Se we use this attribute
         # to check when we had the last patch command, if it is less then
         # 10 seconds ago we skip the get
-        self._last_patch_call = datetime.min
+        # self._last_patch_call = dt_util.as_local(datetime.min)
+        self._last_patch_call: datetime | None = None
 
         # Store the limits as member so that we can add these to the diagnostics
         self.rate_limits = {
@@ -122,7 +124,7 @@ class DaikinApi:
                         else:
                             return False
                     elif resp.status == 204:
-                        self._last_patch_call = datetime.now()
+                        self._last_patch_call = dt_util.now()
                         return True
 
             except (ClientError, asyncio.TimeoutError):
