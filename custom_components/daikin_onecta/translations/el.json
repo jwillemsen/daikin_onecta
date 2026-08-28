@@ -136,6 +136,9 @@
       "coolingmonthlygasconsumption": {
         "name": "Μηνιαία κατανάλωση αερίου ψύξης"
       },
+      "coolingmonthlythermaloutput": {
+        "name": "Μηνιαία αποδιδόμενη θερμική ενέργεια ψύξης"
+      },
       "coolingweeklyelectricalconsumption": {
         "name": "Εβδομαδιαία ηλεκτρική κατανάλωση ψύξης"
       },
@@ -147,6 +150,15 @@
       },
       "coolingyearlygasconsumption": {
         "name": "Ετήσια κατανάλωση αερίου ψύξης"
+      },
+      "coolingyearlythermaloutput": {
+        "name": "Ετήσια αποδιδόμενη θερμική ενέργεια ψύξης"
+      },
+      "currentpowerconsumption": {
+        "name": "Τρέχουσα κατανάλωση ισχύος"
+      },
+      "currentthermaloutput": {
+        "name": "Τρέχουσα αποδιδόμενη θερμική ισχύς"
       },
       "datetime": {
         "name": "Ημερομηνία\/Ώρα"
@@ -178,6 +190,9 @@
       "heatingmonthlygasconsumption": {
         "name": "Μηνιαία κατανάλωση αερίου θέρμανσης"
       },
+      "heatingmonthlythermaloutput": {
+        "name": "Μηνιαία αποδιδόμενη θερμική ενέργεια θέρμανσης"
+      },
       "heatingweeklyelectricalconsumption": {
         "name": "Εβδομαδιαία ηλεκτρική κατανάλωση θέρμανσης"
       },
@@ -189,6 +204,9 @@
       },
       "heatingyearlygasconsumption": {
         "name": "Ετήσια κατανάλωση αερίου θέρμανσης"
+      },
+      "heatingyearlythermaloutput": {
+        "name": "Ετήσια αποδιδόμενη θερμική ενέργεια θέρμανσης"
       },
       "heatupmode": {
         "name": "Λειτουργία προθέρμανσης"
@@ -267,6 +285,11 @@
       "streamermode": {
         "name": "Λειτουργία Streamer"
       }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "Ενημέρωση υλικολογισμικού"
+      }
     }
   },
   "exceptions": {
@@ -290,6 +313,7 @@
         "data": {
           "high_scan_interval": "Διάστημα ενημέρωσης περιόδου υψηλής συχνότητας (λεπτά)",
           "high_scan_start": "Ώρα έναρξης περιόδου υψηλής συχνότητας",
+          "homekit_fan_mode_aliases": "Εμφάνιση ψευδωνύμων ταχύτητας ανεμιστήρα συμβατών με HomeKit",
           "low_scan_interval": "Διάστημα ενημέρωσης περιόδου χαμηλής συχνότητας (λεπτά)",
           "low_scan_start": "Ώρα έναρξης περιόδου χαμηλής συχνότητας",
           "scan_ignore": "Αριθμός δευτερολέπτων κατά τα οποία αγνοείται η ανανέωση δεδομένων μετά από εντολή"
