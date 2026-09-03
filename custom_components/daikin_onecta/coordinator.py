@@ -69,6 +69,10 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                     devices[dev_data["id"]].setJsonData(dev_data)
                 else:
                     device = DaikinOnectaDevice(dev_data, daikin_api)
+                    # Register the gateway device in the device registry now, before
+                    # this coordinator's first refresh returns and platforms are set
+                    # up, so every platform can link back to it via via_device_id.
+                    device.async_register_ha_device(self.hass, self._config_entry)
                     devices[dev_data["id"]] = device
 
             self.update_interval = self.determine_update_interval(self.hass)
