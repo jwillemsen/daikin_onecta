@@ -1,4 +1,5 @@
 # """Global fixtures for myenergi integration."""
+import asyncio
 import json
 import time
 from typing import Any
@@ -36,6 +37,22 @@ def load_fixture_json(name):
     with open(f"tests/fixtures/{name}.json") as json_file:
         data = json.load(json_file)
         return data
+
+
+async def resolve_system_health_coroutines(info: dict) -> dict:
+    """Await any coroutine values in a system_health info dict.
+
+    system_health_info() intentionally returns some values (e.g. from
+    system_health.async_check_can_reach_url) as unawaited coroutines: the real
+    system_health integration awaits these itself, concurrently, when
+    rendering the info page. Tests that call system_health_info() directly
+    need to await them too, or pytest emits "coroutine was never awaited"
+    RuntimeWarnings and the checks never actually run.
+    """
+    for key, value in info.items():
+        if asyncio.iscoroutine(value):
+            info[key] = await value
+    return info
 
 
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
