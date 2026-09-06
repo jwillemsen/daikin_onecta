@@ -38,15 +38,67 @@
     }
   },
   "entity": {
+    "binary_sensor": {
+      "daylightsavingtimeenabled": {
+        "name": "Heure d'été activée"
+      },
+      "isfirmwareupdatesupported": {
+        "name": "La mise à jour du firmware est-elle prise en charge ?"
+      },
+      "islockfunctionenabled": {
+        "name": "La fonction de verrouillage est-elle activée ?"
+      },
+      "ledenabled": {
+        "name": "LED activée"
+      }
+    },
+    "climate": {
+      "roomtemperature": {
+        "state_attributes": {
+          "fan_mode": {
+            "state": {
+              "quiet": "Silencieux"
+            }
+          },
+          "swing_horizontal_mode": {
+            "state": {
+              "stop": "Arrêt",
+              "swing": "Oscillation"
+            }
+          },
+          "swing_mode": {
+            "state": {
+              "floorheatingairflow": "Flux d'air chauffage au sol",
+              "stop": "Arrêt",
+              "swing": "Oscillation",
+              "windnice": "Flux d'air Confort"
+            }
+          }
+        }
+      }
+    },
     "sensor": {
       "sgtin": {
         "name": "SGTIN"
+      },
+      "timezone": {
+        "name": "Fuseau horaire"
       }
     }
   },
   "exceptions": {
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    }
+  },
+  "issues": {
+    "day_rate_limit": {
+      "description": "Vous avez atteint votre limite quotidienne d'accès au Cloud Daikin. Vérifiez la fréquence d'interrogation dans la configuration de Daikin Onecta.",
+      "title": "La limite quotidienne a été atteinte"
+    },
+    "minute_rate_limit": {
+      "description": "Vous avez atteint votre limite de requêtes par minute vers le Cloud Daikin. Réduisez le nombre d'appels à vos appareils Daikin.",
+      "title": "La limite de requêtes par minute a été atteinte"
     }
   },
   "options": {
@@ -62,6 +114,19 @@
         "description": "Configuration des requêtes du Cloud Daikin Onecta",
         "title": "Daikin Onecta"
       }
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "Serveur API",
+      "max_day": "Journée maximale",
+      "max_minute": "Minute maximale",
+      "oauth2_status": "Serveur OAuth2",
+      "oauth2_token_valid": "Token OAuth2 valide",
+      "ratelimit_reset": "Réinitialisation du quota",
+      "remaining_day": "Jour restant",
+      "remaining_minute": "Minute restante",
+      "retry_after": "Réessayer après"
     }
   }
 }
