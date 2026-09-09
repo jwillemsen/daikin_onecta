@@ -12,7 +12,8 @@ from .coordinator import OnectaRuntimeData
 REDACT_KEYS = {"serialNumber", "macAddress"}
 
 
-def get_entities(hass: HomeAssistant, config_entry: ConfigEntry):
+def get_entities(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, dict[str, Any]]:
+    """Return entity diagnostics for a config entry."""
     entity_registry = er.async_get(hass)
     entities_data: dict[str, dict[str, Any]] = {}
 
@@ -53,7 +54,7 @@ async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: 
 
 async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: ConfigEntry, device: DeviceEntry) -> dict[str, Any]:
     """Return diagnostics for a device entry."""
-    data = {}
+    data: dict[str, Any] = {}
     dev_id = next(iter(device.identifiers))[1]
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     daikin_api = onecta_data.daikin_api
