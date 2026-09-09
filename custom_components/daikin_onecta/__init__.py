@@ -12,6 +12,7 @@ from homeassistant.exceptions import OAuth2TokenRequestError
 from homeassistant.exceptions import OAuth2TokenRequestReauthError
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
+from homeassistant.helpers.typing import ConfigType
 
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
@@ -32,7 +33,7 @@ PLATFORMS = [
 ]
 
 
-async def async_setup(hass, config):
+async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
     """Setup the Daikin Onecta component."""
     return True
 
@@ -71,13 +72,13 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     return True
 
 
-async def async_unload_entry(hass, config_entry):
+async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     _LOGGER.debug("Unloading integration...")
     return await hass.config_entries.async_unload_platforms(config_entry, PLATFORMS)
 
 
-async def update_listener(hass, config_entry):
+async def update_listener(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
     """Handle options update."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
