@@ -2,6 +2,7 @@
 import logging
 import random
 from dataclasses import dataclass
+from dataclasses import field
 from datetime import time
 from datetime import timedelta
 
@@ -21,7 +22,7 @@ _LOGGER = logging.getLogger(__name__)
 class OnectaRuntimeData:
     """Runtime Data for Onecta integration."""
 
-    coordinator: "OnectaDataUpdateCoordinator"
+    coordinator: "OnectaDataUpdateCoordinator" = field(init=False)
     devices: dict[str, DaikinOnectaDevice]
     daikin_api: DaikinApi
 
@@ -98,6 +99,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         high_scan_interval = self.options.get("high_scan_interval", 10) * 60
         hs = dt_util.parse_time(self.options.get("high_scan_start", "07:00:00"))
         ls = dt_util.parse_time(self.options.get("low_scan_start", "22:00:00"))
+        assert hs is not None and ls is not None
         if self.in_between(dt_util.now().time(), hs, ls):
             scan_interval = high_scan_interval
         else:
