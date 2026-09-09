@@ -2,16 +2,19 @@
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
+from unittest.mock import AsyncMock
 from unittest.mock import MagicMock
 from unittest.mock import patch
 
 import pytest
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.update_coordinator import UpdateFailed
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
+from custom_components.daikin_onecta.daikin_api import DaikinRateLimitError
 
 
 @pytest.fixture
@@ -35,8 +38,8 @@ def coordinator(mock_hass, mock_config_entry):
     config_entry = mock_config_entry
     config_entry.add_to_hass(mock_hass)
     options = {
-        "low_scan_interval": 30,  # minutes
-        "high_scan_interval": 10,  # minutes
+        "low_scan_interval": 30,
+        "high_scan_interval": 10,
         "high_scan_start": "07:00:00",
         "low_scan_start": "22:00:00",
     }
@@ -74,43 +77,33 @@ class TestOnectaDataUpdateCoordinator:
     def test_high_scan_interval(self, mock_now, coordinator, mock_hass):
         """High scan interval should apply during high-frequency window."""
         mock_now.return_value = datetime(2023, 1, 1, 10, 0, 0)
-
-        expected = timedelta(minutes=10)
-        result = coordinator.determine_update_interval(mock_hass)
-        assert result == expected
+        assert coordinator.determine_update_interval(mock_hass) == timedelta(minutes=10)
 
     @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     def test_low_scan_interval(self, mock_now, coordinator, mock_hass):
         """Low scan interval should apply outside transition windows."""
         mock_now.return_value = datetime(2023, 1, 1, 23, 0, 0)
-
         with patch.object(coordinator, "in_between", side_effect=[False, False]):
-            expected = timedelta(minutes=30)
-            result = coordinator.determine_update_interval(mock_hass)
-            assert result == expected
+            assert coordinator.determine_update_interval(mock_hass) == timedelta(minutes=30)
 
     @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     @patch("custom_components.daikin_onecta.coordinator.random")
     def test_transition_period_randomization(self, mock_random, mock_now, coordinator, mock_hass):
         """During transition, interval is randomized between floor and low interval."""
         mock_now.return_value = datetime(2023, 1, 1, 22, 5, 0)
-        mock_random.randint.return_value = 120  # 2 minutes
-
+        mock_random.randint.return_value = 120
         with patch.object(coordinator, "in_between", side_effect=[False, True]):
-            expected = timedelta(seconds=120)
-            result = coordinator.determine_update_interval(mock_hass)
-            assert result == expected
+            assert coordinator.determine_update_interval(mock_hass) == timedelta(seconds=120)
             mock_random.randint.assert_called_once_with(60, 1800)
 
-    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
-    def test_rate_limit_exceeded(self, mock_now, coordinator, mock_hass, mock_config_entry):
-        """When rate limit is exceeded, interval = retry_after + fallback (60s)."""
-        mock_now.return_value = datetime(2023, 1, 1, 23, 0, 0)
+    async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
+        """A Daikin rate limit should use the coordinator retry-after mechanism."""
+        daikin_api = mock_config_entry.runtime_data.daikin_api
+        daikin_api._last_patch_call = None
+        daikin_api.getCloudDeviceDetails = AsyncMock(side_effect=DaikinRateLimitError(3060))
 
-        # Simulate daily rate limit reached
-        mock_config_entry.runtime_data.daikin_api.rate_limits = {"remaining_day": 0, "retry_after": 3000}
+        with pytest.raises(UpdateFailed) as exc_info:
+            await coordinator._async_update_data()
 
-        with patch.object(coordinator, "in_between", side_effect=[False, False]):
-            expected = timedelta(seconds=3060)  # 3000 + 60
-            result = coordinator.determine_update_interval(mock_hass)
-            assert result == expected
+        assert exc_info.value.retry_after == 3060
+        assert coordinator.update_interval == timedelta(minutes=30)
