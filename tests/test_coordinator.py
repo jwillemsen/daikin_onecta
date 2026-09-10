@@ -25,7 +25,8 @@ def mock_hass():
 def mock_config_entry() -> MockConfigEntry:
     """Mock a config entry."""
     entry = MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345")
-    entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator=MagicMock(), devices={})
+    entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
+    entry.runtime_data.coordinator = MagicMock()
     return entry
 
 
