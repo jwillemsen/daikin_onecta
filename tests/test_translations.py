@@ -27,12 +27,21 @@ REQUIRED_ABORT_KEYS = {
 }
 
 # These translations are currently incomplete in Lokalise. Keep the exact
-# expected missing keys here so the test fails as soon as the translations are
+# expected gaps here so the test fails as soon as the translations are
 # updated, reminding us to remove the temporary exception.
-TEMPORARY_MISSING_ABORT_KEYS = {
-    "da.json": {"invalid_token", "unknown", "wrong_account"},
-    "es.json": {"invalid_token", "unknown", "wrong_account"},
-    "pt.json": {"invalid_token", "unknown", "wrong_account"},
+TEMPORARY_TRANSLATION_GAPS = {
+    "da.json": {
+        "missing_abort_keys": {"invalid_token", "unknown", "wrong_account"},
+        "missing_reauth_description": True,
+    },
+    "es.json": {
+        "missing_abort_keys": {"invalid_token", "unknown", "wrong_account"},
+        "missing_reauth_description": True,
+    },
+    "pt.json": {
+        "missing_abort_keys": {"invalid_token", "unknown", "wrong_account"},
+        "missing_reauth_description": True,
+    },
 }
 
 REQUIRED_STEPS = {"pick_implementation", "reauth_confirm"}
@@ -56,10 +65,12 @@ def test_config_translations_are_oauth2(path: Path) -> None:
     assert REQUIRED_STEPS.issubset(steps), f"{path.name} missing steps: {REQUIRED_STEPS - steps}"
     assert "user" not in steps, f"{path.name} still has obsolete email/password user step"
 
+    gaps = TEMPORARY_TRANSLATION_GAPS.get(path.name)
+
     abort = set(config["abort"])
     missing = REQUIRED_ABORT_KEYS - abort
-    expected_missing = TEMPORARY_MISSING_ABORT_KEYS.get(path.name)
-    if expected_missing is not None:
+    if gaps is not None:
+        expected_missing = gaps["missing_abort_keys"]
         assert missing == expected_missing, (
             f"{path.name} temporary translation exception is outdated: "
             f"expected missing {expected_missing}, found {missing}; "
@@ -69,9 +80,16 @@ def test_config_translations_are_oauth2(path: Path) -> None:
         assert not missing, f"{path.name} missing abort keys: {missing}"
 
     reauth = config["step"]["reauth_confirm"]
-    assert "description" in reauth
+    if gaps is not None and gaps["missing_reauth_description"]:
+        assert "description" not in reauth, (
+            f"{path.name} now has a reauth description; remove the temporary "
+            "translation exception"
+        )
+    else:
+        assert "description" in reauth
+        assert "Daikin Onecta" in reauth["description"] or "daikin" in reauth["description"].lower()
+
     assert "title" in reauth
-    assert "Daikin Onecta" in reauth["description"] or "daikin" in reauth["description"].lower()
 
 
 def test_strings_json_config_is_oauth2() -> None:
