@@ -42,7 +42,15 @@ class DaikinApi:
         self._config_entry = entry
         self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
         self._daikin_session = async_get_clientsession(hass)
+
+        # The Daikin cloud returns old settings if queried with a GET
+        # immediately after a PATCH request. Se we use this attribute
+        # to check when we had the last patch command, if it is less then
+        # 10 seconds ago we skip the get
+        # self._last_patch_call = dt_util.as_local(datetime.min)
         self._last_patch_call: datetime | None = None
+
+        # Store the limits as member so that we can add these to the diagnostics
         self.rate_limits = {
             "minute": 0,
             "day": 0,
@@ -51,7 +59,11 @@ class DaikinApi:
             "retry_after": 0,
             "ratelimit_reset": 0,
         }
+
+        # The following lock is used to serialize http requests to Daikin cloud
+        # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
+
         _LOGGER.debug("Daikin Onecta API initialized.")
 
     async def async_get_access_token(self) -> str:
@@ -61,7 +73,9 @@ class DaikinApi:
     async def doBearerRequest(self, method, resource_url, options=None):
         async with self._cloud_lock:
             token = await self.async_get_access_token()
+
             headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
+
             _LOGGER.debug("Request URL: %s", resource_url)
             _LOGGER.debug("Request %s Options: %s", method, options)
 
@@ -69,6 +83,7 @@ class DaikinApi:
                 async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
                     response_data = await resp.text()
                     _LOGGER.debug("Response status: %s Text: %s Limit: %s", resp.status, response_data, self.rate_limits)
+
                     self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
                     self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
                     self.rate_limits["remaining_minutes"] = int(resp.headers.get("X-RateLimit-Remaining-minute", 0))
@@ -78,6 +93,7 @@ class DaikinApi:
 
                     if self.rate_limits["remaining_minutes"] > 0:
                         ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
+
                     if self.rate_limits["remaining_day"] > 0:
                         ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
@@ -100,6 +116,7 @@ class DaikinApi:
                                 learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
                                 translation_key="minute_rate_limit",
                             )
+
                         if self.rate_limits["remaining_day"] == 0:
                             ir.async_create_issue(
                                 self.hass,
@@ -123,6 +140,8 @@ class DaikinApi:
                         return True
 
             except (ClientError, asyncio.TimeoutError, DaikinRateLimitError):
+                # Propagate transient network errors so Home Assistant marks the
+                # coordinator update as failed and retries it.
                 raise
             except Exception as e:
                 _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
