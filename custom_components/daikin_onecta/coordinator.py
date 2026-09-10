@@ -9,10 +9,12 @@ from datetime import timedelta
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
+from homeassistant.helpers.update_coordinator import UpdateFailed
 from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
+from .daikin_api import DaikinRateLimitError
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -66,7 +68,14 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                 "API UPDATE skipped (just updated from UI)",
             )
         else:
-            daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
+            try:
+                daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
+            except DaikinRateLimitError as err:
+                raise UpdateFailed(
+                    "Daikin API rate limit exceeded",
+                    retry_after=err.retry_after,
+                ) from err
+
             for dev_data in daikin_api.json_data or []:
                 if dev_data["id"] in devices:
                     devices[dev_data["id"]].setJsonData(dev_data)
@@ -110,12 +119,6 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             end_time = (dt_util.start_of_local_day() + timedelta(hours=ls.hour, minutes=ls.minute, seconds=ls.second + high_scan_interval)).time()
             if self.in_between(dt_util.now().time(), ls, end_time):
                 scan_interval = random.randint(60, int(scan_interval))
-
-        # When we hit our daily rate limit we check the retry_after which is the amount of seconds
-        # we have to wait before we can make a call again
-        daikin_api = self._config_entry.runtime_data.daikin_api
-        if daikin_api.rate_limits["remaining_day"] == 0:
-            scan_interval = max(daikin_api.rate_limits["retry_after"] + 60, scan_interval)
 
         return timedelta(seconds=scan_interval)
 

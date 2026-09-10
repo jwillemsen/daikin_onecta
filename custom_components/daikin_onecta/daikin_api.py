@@ -18,6 +18,15 @@ from .const import DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 
+class DaikinRateLimitError(Exception):
+    """Raised when the Daikin API rate limit is exceeded."""
+
+    def __init__(self, retry_after: int) -> None:
+        """Initialize a rate limit error."""
+        super().__init__(f"Daikin API rate limit exceeded; retry after {retry_after} seconds")
+        self.retry_after = retry_after
+
+
 class DaikinApi:
     """Daikin Onecta API."""
 
@@ -95,7 +104,7 @@ class DaikinApi:
                             _LOGGER.exception("Retrieve JSON failed: %s", response_data)
                             return []
 
-                    elif resp.status == 429:
+                    if resp.status == 429:
                         if self.rate_limits["remaining_minutes"] == 0:
                             ir.async_create_issue(
                                 self.hass,
@@ -120,14 +129,17 @@ class DaikinApi:
                                 translation_key="day_rate_limit",
                             )
                         if method == "GET":
-                            return []
-                        else:
-                            return False
-                    elif resp.status == 204:
+                            retry_after = max(self.rate_limits["retry_after"], 60)
+                            if self.rate_limits["remaining_day"] == 0:
+                                retry_after += 60
+                            raise DaikinRateLimitError(retry_after)
+                        return False
+
+                    if resp.status == 204:
                         self._last_patch_call = dt_util.now()
                         return True
 
-            except (ClientError, asyncio.TimeoutError):
+            except (ClientError, asyncio.TimeoutError, DaikinRateLimitError):
                 # Propagate transient network errors so Home Assistant marks the
                 # coordinator update as failed and retries it.
                 raise
