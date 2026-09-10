@@ -1,12 +1,15 @@
 import json
 import logging
+from typing import Any
 
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC
 from homeassistant.helpers.device_registry import DeviceInfo
 
 from .const import DOMAIN
+from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -14,13 +17,13 @@ _LOGGER = logging.getLogger(__name__)
 class DaikinOnectaDevice:
     """Class to represent and control one Daikin Onecta Device."""
 
-    def __init__(self, jsonData, apiInstance):
+    def __init__(self, jsonData: dict[str, Any], apiInstance: DaikinApi) -> None:
         """Initialize a new Daikin Onecta Device."""
         self.api = apiInstance
         # get name from climateControl
         self.daikin_data = jsonData
-        self.id = self.daikin_data["id"]
-        self.name = self.daikin_data["deviceModel"]
+        self.id: str = self.daikin_data["id"]
+        self.name: str = self.daikin_data["deviceModel"]
 
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -46,7 +49,7 @@ class DaikinOnectaDevice:
             result = icu["value"]
         return result
 
-    def fill_device_info(self, device_info, management_point_type):
+    def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
         manufacturer = {"manufacturer": "Daikin"}
         device_info.update(**manufacturer)
         management_points = self.daikin_data.get("managementPoints", [])
@@ -100,7 +103,7 @@ class DaikinOnectaDevice:
 
         return info
 
-    def async_register_ha_device(self, hass: HomeAssistant, config_entry) -> None:
+    def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
         """Eagerly create/update this device in the device registry.
 
         Called once from the coordinator, before any entity platform is set up
@@ -116,12 +119,23 @@ class DaikinOnectaDevice:
         )
         self.ha_device_id = entry.id
 
-    def setJsonData(self, desc):
+    def setJsonData(self, desc: dict[str, Any]) -> None:
         """Overwrite the json data for this device."""
         self.daikin_data = desc
-        _LOGGER.debug("Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'", self.name, self.available)
+        _LOGGER.debug(
+            "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
+            self.name,
+            self.available,
+        )
 
-    async def patch(self, id, embeddedId, dataPoint, dataPointPath, value):
+    async def patch(
+        self,
+        id: str,
+        embeddedId: str,
+        dataPoint: str,
+        dataPointPath: str | None,
+        value: Any,
+    ) -> bool:
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
         setBody = {"value": value}
         if dataPointPath:
@@ -132,11 +146,11 @@ class DaikinOnectaDevice:
 
         res = await self.api.doBearerRequest("PATCH", setPath, setOptions)
 
-        _LOGGER.debug(f"Result: {res}")
+        _LOGGER.debug("Result: %s", res)
 
-        return res
+        return bool(res)
 
-    async def post(self, id, embeddedId, dataPoint, value):
+    async def post(self, id: str, embeddedId: str, dataPoint: str, value: Any) -> bool:
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
         setOptions = json.dumps(value)
 
@@ -144,11 +158,11 @@ class DaikinOnectaDevice:
 
         res = await self.api.doBearerRequest("POST", setPath, setOptions)
 
-        _LOGGER.debug(f"Result: {res}")
+        _LOGGER.debug("Result: %s", res)
 
-        return res
+        return bool(res)
 
-    async def put(self, id, embeddedId, dataPoint, value=None):
+    async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
         setOptions = None
         if value is not None:
@@ -158,6 +172,6 @@ class DaikinOnectaDevice:
 
         res = await self.api.doBearerRequest("PUT", setPath, setOptions)
 
-        _LOGGER.debug(f"Result: {res}")
+        _LOGGER.debug("Result: %s", res)
 
-        return res
+        return bool(res)
