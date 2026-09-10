@@ -3,6 +3,7 @@ import asyncio
 import json
 import logging
 from datetime import datetime
+from typing import Any
 
 from aiohttp import ClientError
 from homeassistant import config_entries
@@ -35,7 +36,7 @@ class DaikinApi:
         hass: core.HomeAssistant,
         entry: config_entries.ConfigEntry,
         implementation: config_entry_oauth2_flow.AbstractOAuth2Implementation,
-    ):
+    ) -> None:
         """Initialize a new Daikin Onecta API."""
         _LOGGER.debug("Initialing Daikin Onecta API...")
         self.hass = hass
@@ -51,7 +52,7 @@ class DaikinApi:
         self._last_patch_call: datetime | None = None
 
         # Store the limits as member so that we can add these to the diagnostics
-        self.rate_limits = {
+        self.rate_limits: dict[str, int] = {
             "minute": 0,
             "day": 0,
             "remaining_minutes": 0,
@@ -70,7 +71,9 @@ class DaikinApi:
         await self.session.async_ensure_token_valid()
         return self.session.token["access_token"]
 
-    async def doBearerRequest(self, method, resource_url, options=None):
+    async def doBearerRequest(
+        self, method: str, resource_url: str, options: str | None = None
+    ) -> Any:
         async with self._cloud_lock:
             token = await self.async_get_access_token()
 
@@ -150,6 +153,6 @@ class DaikinApi:
             return []
         return False
 
-    async def getCloudDeviceDetails(self):
+    async def getCloudDeviceDetails(self) -> list[dict[str, Any]]:
         """Get pure Device Data from the Daikin cloud devices."""
         return await self.doBearerRequest("GET", "/v1/gateway-devices")
