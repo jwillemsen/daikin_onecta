@@ -60,6 +60,7 @@ def mock_system_health_url_checks():
     """Prevent unit tests from starting external system health URL checks."""
     with patch(
         "custom_components.daikin_onecta.system_health.system_health.async_check_can_reach_url",
+        new_callable=MagicMock,
         return_value=True,
     ):
         yield
