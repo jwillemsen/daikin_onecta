@@ -80,7 +80,8 @@ async def snapshot_platform_entities(
     snapshot: SnapshotAssertion,
     fixture_device_json,
 ) -> None:
-    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), coordinator=MagicMock(), devices={})
+    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
+    config_entry.runtime_data.coordinator = MagicMock()
     """Snapshot entities and their states."""
     with (
         patch(

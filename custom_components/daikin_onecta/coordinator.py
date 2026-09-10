@@ -2,8 +2,9 @@
 import logging
 import random
 from dataclasses import dataclass
+from dataclasses import field
+from datetime import time
 from datetime import timedelta
-from typing import Any
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -21,8 +22,8 @@ _LOGGER = logging.getLogger(__name__)
 class OnectaRuntimeData:
     """Runtime Data for Onecta integration."""
 
-    coordinator: "OnectaDataUpdateCoordinator"
-    devices: dict[str, Any]
+    coordinator: "OnectaDataUpdateCoordinator" = field(init=False)
+    devices: dict[str, DaikinOnectaDevice]
     daikin_api: DaikinApi
 
 
@@ -46,10 +47,12 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             self.update_interval,
         )
 
-    def scan_ignore(self):
+    def scan_ignore(self) -> int:
+        """Return the delay after a write before polling resumes."""
         return self.options.get("scan_ignore", 30)
 
-    async def _async_update_data(self):
+    async def _async_update_data(self) -> None:
+        """Fetch the latest device state from Daikin."""
         _LOGGER.debug("Daikin coordinator start _async_update_data.")
 
         onecta_data: OnectaRuntimeData = self._config_entry.runtime_data
@@ -82,18 +85,21 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             self.update_interval,
         )
 
-    def update_settings(self, config_entry: ConfigEntry):
+    def update_settings(self, config_entry: ConfigEntry) -> None:
+        """Apply updated config entry options."""
         _LOGGER.debug("Daikin coordinator updating settings.")
         self.options = config_entry.options
         self.update_interval = self.determine_update_interval(self.hass)
         _LOGGER.info("Daikin coordinator changed interval to '%s'", self.update_interval)
 
-    def determine_update_interval(self, hass: HomeAssistant):
+    def determine_update_interval(self, hass: HomeAssistant) -> timedelta:
+        """Determine the next polling interval."""
         # Default of low scan minutes interval
         scan_interval = self.options.get("low_scan_interval", 30) * 60
         high_scan_interval = self.options.get("high_scan_interval", 10) * 60
         hs = dt_util.parse_time(self.options.get("high_scan_start", "07:00:00"))
         ls = dt_util.parse_time(self.options.get("low_scan_start", "22:00:00"))
+        assert hs is not None and ls is not None
         if self.in_between(dt_util.now().time(), hs, ls):
             scan_interval = high_scan_interval
         else:
@@ -113,8 +119,9 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
         return timedelta(seconds=scan_interval)
 
-    def in_between(self, now, start, end):
+    @staticmethod
+    def in_between(now: time, start: time, end: time) -> bool:
+        """Return whether now is between start and end, including overnight ranges."""
         if start <= end:
             return start <= now < end
-        else:
-            return start <= now or now < end
+        return start <= now or now < end
