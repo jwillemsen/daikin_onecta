@@ -71,9 +71,7 @@ class DaikinApi:
         await self.session.async_ensure_token_valid()
         return self.session.token["access_token"]
 
-    async def doBearerRequest(
-        self, method: str, resource_url: str, options: str | None = None
-    ) -> Any:
+    async def doBearerRequest(self, method: str, resource_url: str, options: str | None = None) -> Any:
         async with self._cloud_lock:
             token = await self.async_get_access_token()
 

@@ -49,9 +49,7 @@ class DaikinOnectaDevice:
             result = icu["value"]
         return result
 
-    def fill_device_info(
-        self, device_info: DeviceInfo, management_point_type: str
-    ) -> None:
+    def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
         manufacturer = {"manufacturer": "Daikin"}
         device_info.update(**manufacturer)
         management_points = self.daikin_data.get("managementPoints", [])
@@ -105,9 +103,7 @@ class DaikinOnectaDevice:
 
         return info
 
-    def async_register_ha_device(
-        self, hass: HomeAssistant, config_entry: ConfigEntry
-    ) -> None:
+    def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
         """Eagerly create/update this device in the device registry.
 
         Called once from the coordinator, before any entity platform is set up
@@ -154,9 +150,7 @@ class DaikinOnectaDevice:
 
         return bool(res)
 
-    async def post(
-        self, id: str, embeddedId: str, dataPoint: str, value: Any
-    ) -> bool:
+    async def post(self, id: str, embeddedId: str, dataPoint: str, value: Any) -> bool:
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
         setOptions = json.dumps(value)
 
@@ -168,9 +162,7 @@ class DaikinOnectaDevice:
 
         return bool(res)
 
-    async def put(
-        self, id: str, embeddedId: str, dataPoint: str, value: Any = None
-    ) -> bool:
+    async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
         setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
         setOptions = None
         if value is not None:

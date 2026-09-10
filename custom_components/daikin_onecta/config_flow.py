@@ -31,9 +31,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
-    async def async_step_init(
-        self, user_input: dict[str, Any] | None = None
-    ) -> FlowResult:
+    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> FlowResult:
         """Handle a flow initialized by the user."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
