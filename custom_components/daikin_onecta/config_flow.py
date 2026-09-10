@@ -27,7 +27,7 @@ _LOGGER = logging.getLogger(__name__)
 class OptionsFlowHandler(config_entries.OptionsFlow):
     """Config flow options handler for Daikin Onecta ."""
 
-    def __init__(self, config_entry):
+    def __init__(self, config_entry: ConfigEntry) -> None:
         """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
@@ -76,7 +76,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
             errors=errors,
         )
 
-    async def _update_options(self):
+    async def _update_options(self) -> FlowResult:
         """Update config entry options."""
         return self.async_create_entry(title="", data=self.options)
 
