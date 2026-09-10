@@ -39,8 +39,8 @@ def coordinator(mock_hass, mock_config_entry):
     config_entry = mock_config_entry
     config_entry.add_to_hass(mock_hass)
     options = {
-        "low_scan_interval": 30,
-        "high_scan_interval": 10,
+        "low_scan_interval": 30,  # minutes
+        "high_scan_interval": 10,  # minutes
         "high_scan_start": "07:00:00",
         "low_scan_start": "22:00:00",
     }
@@ -78,23 +78,32 @@ class TestOnectaDataUpdateCoordinator:
     def test_high_scan_interval(self, mock_now, coordinator, mock_hass):
         """High scan interval should apply during high-frequency window."""
         mock_now.return_value = datetime(2023, 1, 1, 10, 0, 0)
-        assert coordinator.determine_update_interval(mock_hass) == timedelta(minutes=10)
+
+        expected = timedelta(minutes=10)
+        result = coordinator.determine_update_interval(mock_hass)
+        assert result == expected
 
     @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     def test_low_scan_interval(self, mock_now, coordinator, mock_hass):
         """Low scan interval should apply outside transition windows."""
         mock_now.return_value = datetime(2023, 1, 1, 23, 0, 0)
+
         with patch.object(coordinator, "in_between", side_effect=[False, False]):
-            assert coordinator.determine_update_interval(mock_hass) == timedelta(minutes=30)
+            expected = timedelta(minutes=30)
+            result = coordinator.determine_update_interval(mock_hass)
+            assert result == expected
 
     @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     @patch("custom_components.daikin_onecta.coordinator.random")
     def test_transition_period_randomization(self, mock_random, mock_now, coordinator, mock_hass):
         """During transition, interval is randomized between floor and low interval."""
         mock_now.return_value = datetime(2023, 1, 1, 22, 5, 0)
-        mock_random.randint.return_value = 120
+        mock_random.randint.return_value = 120  # 2 minutes
+
         with patch.object(coordinator, "in_between", side_effect=[False, True]):
-            assert coordinator.determine_update_interval(mock_hass) == timedelta(seconds=120)
+            expected = timedelta(seconds=120)
+            result = coordinator.determine_update_interval(mock_hass)
+            assert result == expected
             mock_random.randint.assert_called_once_with(60, 1800)
 
     async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
@@ -103,6 +112,7 @@ class TestOnectaDataUpdateCoordinator:
         daikin_api._last_patch_call = None
         daikin_api.getCloudDeviceDetails = AsyncMock(side_effect=DaikinRateLimitError(3060))
 
+        # Simulate daily rate limit reached
         with pytest.raises(UpdateFailed) as exc_info:
             await coordinator._async_update_data()
 
