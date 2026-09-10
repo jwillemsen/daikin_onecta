@@ -2,16 +2,19 @@
 from datetime import datetime
 from datetime import time
 from datetime import timedelta
+from unittest.mock import AsyncMock
 from unittest.mock import MagicMock
 from unittest.mock import patch
 
 import pytest
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.update_coordinator import UpdateFailed
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
+from custom_components.daikin_onecta.daikin_api import DaikinRateLimitError
 
 
 @pytest.fixture
@@ -103,15 +106,15 @@ class TestOnectaDataUpdateCoordinator:
             assert result == expected
             mock_random.randint.assert_called_once_with(60, 1800)
 
-    @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
-    def test_rate_limit_exceeded(self, mock_now, coordinator, mock_hass, mock_config_entry):
-        """When rate limit is exceeded, interval = retry_after + fallback (60s)."""
-        mock_now.return_value = datetime(2023, 1, 1, 23, 0, 0)
+    async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
+        """A Daikin rate limit should use the coordinator retry-after mechanism."""
+        daikin_api = mock_config_entry.runtime_data.daikin_api
+        daikin_api._last_patch_call = None
+        daikin_api.getCloudDeviceDetails = AsyncMock(side_effect=DaikinRateLimitError(3060))
 
         # Simulate daily rate limit reached
-        mock_config_entry.runtime_data.daikin_api.rate_limits = {"remaining_day": 0, "retry_after": 3000}
+        with pytest.raises(UpdateFailed) as exc_info:
+            await coordinator._async_update_data()
 
-        with patch.object(coordinator, "in_between", side_effect=[False, False]):
-            expected = timedelta(seconds=3060)  # 3000 + 60
-            result = coordinator.determine_update_interval(mock_hass)
-            assert result == expected
+        assert exc_info.value.retry_after == 3060
+        assert coordinator.update_interval == timedelta(minutes=30)
