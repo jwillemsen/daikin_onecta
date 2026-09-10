@@ -57,5 +57,4 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
         self.async_write_ha_state()
 
     async def async_press(self) -> None:
-        await self.coordinator._async_update_data()
-        self.coordinator.async_update_listeners()
+        await self.coordinator.async_request_refresh()
