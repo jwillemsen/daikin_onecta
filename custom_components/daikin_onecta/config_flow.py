@@ -31,9 +31,10 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
-    async def async_step_init(self, user_input: dict[str, str] | None = None) -> FlowResult:
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         """Handle a flow initialized by the user."""
-        errors = {}
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
 
@@ -73,12 +74,8 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
                     ): BooleanSelector(),
                 }
             ),
-            errors=errors,
+            errors={},
         )
-
-    async def _update_options(self) -> FlowResult:
-        """Update config entry options."""
-        return self.async_create_entry(title="", data=self.options)
 
 
 class FlowHandler(
@@ -87,8 +84,8 @@ class FlowHandler(
 ):
     """Handle a config flow."""
 
-    """See https://developers.home-assistant.io/docs/core/platform/application_credentials/ """
-    """ https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started """
+    # See https://developers.home-assistant.io/docs/core/platform/application_credentials/
+    # and https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started
     VERSION = 1
     MINOR_VERSION = 2
     DOMAIN = DOMAIN
