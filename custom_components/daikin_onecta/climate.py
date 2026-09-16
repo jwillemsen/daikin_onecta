@@ -473,7 +473,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             currentmode = operationmode.get("value")
             ha_currentmode = DAIKIN_HVAC_TO_HA.get(currentmode)
         if ha_currentmode is not None and ha_currentmode not in modes:
-                modes.append(ha_currentmode)
+            modes.append(ha_currentmode)
         return modes
 
     async def async_set_hvac_mode(self, hvac_mode):
