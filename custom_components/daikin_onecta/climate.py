@@ -466,14 +466,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         modes = [HVACMode.OFF]
         operationmode = self.operation_mode()
         if operationmode is not None:
-            if operationmode["settable"] is True:
-                for mode in operationmode["values"]:
-                    ha_mode = DAIKIN_HVAC_TO_HA[mode]
-                    if ha_mode not in modes:
-                        modes.append(ha_mode)
-            currentmode = operationmode["value"]
-            ha_currentmode = DAIKIN_HVAC_TO_HA[currentmode]
-            if ha_currentmode not in modes:
+            for mode in operationmode.get("values", []):
+                ha_mode = DAIKIN_HVAC_TO_HA.get(mode)
+                if ha_mode is not None and ha_mode not in modes:
+                    modes.append(ha_mode)
+            currentmode = operationmode.get("value")
+            ha_currentmode = DAIKIN_HVAC_TO_HA.get(currentmode)
+        if ha_currentmode is not None and ha_currentmode not in modes:
                 modes.append(ha_currentmode)
         return modes
 
