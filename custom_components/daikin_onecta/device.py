@@ -22,6 +22,7 @@ class DaikinOnectaDevice:
         self.api = apiInstance
         # get name from climateControl
         self.daikin_data = jsonData
+        self._normalize_operation_mode_settable()
         self.id: str = self.daikin_data["id"]
         self.name: str = self.daikin_data["deviceModel"]
 
@@ -40,6 +41,21 @@ class DaikinOnectaDevice:
         self.ha_device_id: str | None = None
 
         _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id)
+
+    def _normalize_operation_mode_settable(self) -> None:
+        """Expose operation modes advertised by Daikin as selectable.
+
+        Some Daikin air conditioners report operationMode as not settable while
+        still advertising multiple supported values and accepting operation-mode
+        changes. Climate mode discovery historically used the settable flag and
+        therefore exposed only the current mode for these devices.
+        """
+        for management_point in self.daikin_data.get("managementPoints", []):
+            if management_point.get("managementPointType") != "climateControl":
+                continue
+            operation_mode = management_point.get("operationMode")
+            if operation_mode is not None and operation_mode.get("values"):
+                operation_mode["settable"] = True
 
     @property
     def available(self) -> bool:
@@ -122,6 +138,7 @@ class DaikinOnectaDevice:
     def setJsonData(self, desc: dict[str, Any]) -> None:
         """Overwrite the json data for this device."""
         self.daikin_data = desc
+        self._normalize_operation_mode_settable()
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
             self.name,
