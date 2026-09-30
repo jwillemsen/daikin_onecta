@@ -45,58 +45,60 @@ class DaikinOnectaDevice:
         """Return whether the device is connected to the Daikin cloud."""
         return self.device.available
 
+    def management_point(self, embedded_id: str):
+        """Return a management point by embedded id."""
+        return next((point for point in self.device.management_points if point.embedded_id == embedded_id), None)
+
     def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
-        manufacturer = {"manufacturer": "Daikin"}
-        device_info.update(**manufacturer)
-        management_points = self.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if management_point_type == management_point["managementPointType"]:
-                mp = management_point.get("eepromVersion")
-                if mp is not None:
-                    v = {"sw_version": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("modelInfo")
-                if mp is not None:
-                    v = {"model": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("firmwareVersion")
-                if mp is not None:
-                    v = {"sw_version": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("serialNumber")
-                if mp is not None:
-                    v = {"serial_number": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("softwareVersion")
-                if mp is not None:
-                    v = {"sw_version": mp["value"]}
-                    device_info.update(**v)
+        """Fill Home Assistant device information from a typed management point."""
+        device_info.update(manufacturer="Daikin")
+        point = next(
+            (
+                point
+                for point in self.device.management_points
+                if point.management_point_type == management_point_type
+            ),
+            None,
+        )
+        if point is None:
+            return
+        if point.eeprom_version is not None:
+            device_info.update(sw_version=point.eeprom_version.value)
+        if point.model_info is not None:
+            device_info.update(model=point.model_info.value)
+        if point.firmware_version is not None:
+            device_info.update(sw_version=point.firmware_version.value)
+        if point.serial_number is not None:
+            device_info.update(serial_number=point.serial_number.value)
+        if point.software_version is not None:
+            device_info.update(sw_version=point.software_version.value)
 
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
-        mac_add = ""
-        devicemodel = self.daikin_data.get("deviceModel")
-        supported_management_point_types = {"gateway"}
-        management_points = self.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
-                mp = management_point.get("macAddress")
-                if mp is not None:
-                    mac_add = mp["value"]
+        gateway = next(
+            (
+                point
+                for point in self.device.management_points
+                if point.management_point_type == "gateway"
+            ),
+            None,
+        )
+        mac_address = gateway.characteristic("macAddress") if gateway is not None else None
+        connections = set()
+        if mac_address is not None and mac_address.value:
+            connections.add((CONNECTION_NETWORK_MAC, mac_address.value))
 
         info = DeviceInfo(
             identifiers={
                 # Serial numbers are unique identifiers within a specific domain
                 (DOMAIN, self.id)
             },
-            connections={(CONNECTION_NETWORK_MAC, mac_add)},
+            connections=connections,
             name=self.name,
-            model_id=devicemodel,
+            model_id=self.device.device_model,
         )
 
         self.fill_device_info(info, "gateway")
-
         return info
 
     def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
