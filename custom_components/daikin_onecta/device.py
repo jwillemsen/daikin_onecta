@@ -22,7 +22,6 @@ class DaikinOnectaDevice:
         self.api = apiInstance
         # get name from climateControl
         self.device = device
-        self.daikin_data = device.to_dict(by_alias=True)
         self.id: str = device.id
         self.name: str = device.device_model
 
@@ -112,7 +111,6 @@ class DaikinOnectaDevice:
     def set_device_data(self, device: GatewayDevice) -> None:
         """Overwrite the typed and compatibility data for this device."""
         self.device = device
-        self.daikin_data = device.to_dict(by_alias=True)
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
             self.name,
