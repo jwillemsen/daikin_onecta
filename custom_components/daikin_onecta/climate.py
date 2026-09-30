@@ -258,7 +258,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         }.get(setpoint)
         return getattr(cc.sensory_data.value, attribute) if attribute is not None else None
 
-
     def get_supported_features(self):
         supported_features = 0
         if hasattr(ClimateEntityFeature, "TURN_OFF"):
