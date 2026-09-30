@@ -37,45 +37,54 @@ async def async_setup(hass, async_add_entities):
     """
 
 
-def handle_energy_sensors(coordinator, device, embedded_id, management_point_type, sensor_type, cdve, sensors, datatype):
-    _LOGGER.info("Device '%s' provides '%s'", device.name, sensor_type)
-    for mode in cdve:
-        _LOGGER.info(
-            "Device '%s' provides mode %s %s",
-            device.name,
-            management_point_type,
-            mode,
-        )
-        for period in cdve[mode]:
-            periodName = SENSOR_PERIODS.get(period)
-            # When we have the yearly sensor we also add a monthly
+def handle_energy_sensors(
+    coordinator,
+    device,
+    management_point,
+    sensor_type,
+    source,
+    sensors,
+    datatype,
+):
+    """Add energy sensors for the periods exposed by an energy source."""
+    for mode in ("heating", "cooling"):
+        series = getattr(source, mode)
+        if series is None:
+            continue
+        periods = {
+            "d": series.day,
+            "w": series.week,
+            "m": series.month,
+        }
+        for period, values in periods.items():
+            if values is None:
+                continue
             if period == SENSOR_PERIOD_YEARLY:
-                period_monthly = SENSOR_PERIOD_MONTHLY
-                _LOGGER.info(
-                    "Device '%s:%s' provides mode %s %s supports period %s",
-                    device.name,
-                    embedded_id,
-                    management_point_type,
-                    mode,
-                    period_monthly,
-                )
-                sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {SENSOR_PERIOD_MONTHLY}"
-                _LOGGER.info("Proposing sensor '%s'", sensor)
                 sensors.append(
-                    DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period_monthly, datatype)
+                    DaikinEnergySensor(
+                        device,
+                        coordinator,
+                        management_point.embedded_id,
+                        management_point.management_point_type,
+                        sensor_type,
+                        mode,
+                        SENSOR_PERIOD_MONTHLY,
+                        datatype,
+                    )
                 )
-            if periodName is not None:
-                _LOGGER.info(
-                    "Device '%s:%s' provides mode %s %s supports period %s",
-                    device.name,
-                    embedded_id,
-                    management_point_type,
-                    mode,
-                    period,
+            if period in SENSOR_PERIODS:
+                sensors.append(
+                    DaikinEnergySensor(
+                        device,
+                        coordinator,
+                        management_point.embedded_id,
+                        management_point.management_point_type,
+                        sensor_type,
+                        mode,
+                        period,
+                        datatype,
+                    )
                 )
-                sensor = f"{device.name} {sensor_type} {management_point_type} {mode} {periodName}"
-                _LOGGER.info("Proposing sensor '%s'", sensor)
-                sensors.append(DaikinEnergySensor(device, coordinator, embedded_id, management_point_type, sensor_type, mode, period, datatype))
 
 
 async def async_setup_entry(
@@ -83,7 +92,7 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    """Set up Daikin climate based on config_entry."""
+    """Set up Daikin sensors based on config_entry."""
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
     sensors = []
@@ -94,72 +103,87 @@ async def async_setup_entry(
         "climateControlMainZone",
     }
     for device in onecta_data.devices.values():
-        # For each device we provide a remaining day sensor
         sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day"))
-        management_points = device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            embedded_id = management_point["embeddedId"]
+        for management_point in device.device.management_points:
+            management_point_type = management_point.management_point_type
+            embedded_id = management_point.embedded_id
 
-            for value in management_point:
-                vv = management_point.get(value)
-                # Only when we have a value sensor mapping we create a sensor
-                sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-                # If sensor settings is set and there is a value dict
-                if sensor_settings is not None and isinstance(vv, dict):
-                    value_value = vv.get("value")
-                    settable = vv.get("settable", False)
-                    values = vv.get("values", [])
-                    if value_value is not None and settable is True and "on" in values and "off" in values:
-                        # Don't create when it is settable and values on/off, that is a switch
-                        pass
-                    elif len(values) == 0 and value_value is not None and isinstance(value_value, bool):
-                        # We don't have mutiple values and the value is a bool, this is a binary sensor
-                        pass
-                    elif value == "operationMode" and management_point_type in supported_management_point_types:
-                        # operationMode is handled by the HWT and ClimateControl directly, so don't create a separate sensor for that
-                        pass
-                    elif value_value is not None and not isinstance(value_value, dict):
+            for value, characteristic in management_point.simple_characteristics().items():
+                if value not in VALUE_SENSOR_MAPPING:
+                    continue
+                values = characteristic.values or []
+                if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
+                    continue
+                if not values and isinstance(characteristic.value, bool):
+                    continue
+                if value == "operationMode" and management_point_type in supported_management_point_types:
+                    continue
+                if characteristic.value is not None:
+                    sensors.append(
+                        DaikinValueSensor(
+                            device,
+                            coordinator,
+                            embedded_id,
+                            management_point_type,
+                            None,
+                            value,
+                        )
+                    )
+
+            if management_point.sensory_data is not None:
+                sensory_data = management_point.sensory_data.value
+                for sensor in (
+                    "roomTemperature",
+                    "outdoorTemperature",
+                    "leavingWaterTemperature",
+                    "tankTemperature",
+                    "roomHumidity",
+                    "pm1Concentration",
+                    "pm25Concentration",
+                    "pm10Concentration",
+                ):
+                    if sensor in VALUE_SENSOR_MAPPING and getattr(
+                        sensory_data,
+                        {
+                            "roomTemperature": "room_temperature",
+                            "outdoorTemperature": "outdoor_temperature",
+                            "leavingWaterTemperature": "leaving_water_temperature",
+                            "tankTemperature": "tank_temperature",
+                            "roomHumidity": "room_humidity",
+                            "pm1Concentration": "pm1_concentration",
+                            "pm25Concentration": "pm25_concentration",
+                            "pm10Concentration": "pm10_concentration",
+                        }[sensor],
+                    ) is not None:
                         sensors.append(
                             DaikinValueSensor(
                                 device,
                                 coordinator,
                                 embedded_id,
                                 management_point_type,
-                                None,
-                                value,
+                                "sensoryData",
+                                sensor,
                             )
                         )
 
-            sd = management_point.get("sensoryData")
-            if sd is not None:
-                sensory_data = sd.get("value")
-                _LOGGER.info("Device '%s' provides sensoryData '%s'", device.name, sensory_data)
-                if sensory_data is not None:
-                    for sensor in sensory_data:
-                        sensor_settings = VALUE_SENSOR_MAPPING.get(sensor)
-                        if sensor_settings is not None:
-                            _LOGGER.info("Device '%s' provides sensor '%s'", device.name, sensor)
-                            sensors.append(
-                                DaikinValueSensor(
-                                    device,
-                                    coordinator,
-                                    embedded_id,
-                                    management_point_type,
-                                    "sensoryData",
-                                    sensor,
-                                )
-                            )
-
-            for datatype in ["consumption", "output"]:
-                cd = management_point.get(f"{datatype}Data")
-                if cd is not None:
-                    cdv = cd.get("value")
-                    if cdv is not None:
-                        for energy_type in ["electrical", "gas", "thermal"]:
-                            cdve = cdv.get(energy_type)
-                            if cdve is not None:
-                                handle_energy_sensors(coordinator, device, embedded_id, management_point_type, energy_type, cdve, sensors, datatype)
+            for datatype, energy_data in (
+                ("consumption", management_point.consumption_data),
+                ("output", management_point.output_data),
+            ):
+                if energy_data is None:
+                    continue
+                for sensor_type in ("electrical", "gas", "thermal"):
+                    source = getattr(energy_data.value, sensor_type)
+                    if source is not None:
+                        handle_energy_sensors(
+                            coordinator,
+                            device,
+                            management_point,
+                            sensor_type,
+                            source,
+                            sensors,
+                            datatype,
+                        )
 
     async_add_entities(sensors)
 
