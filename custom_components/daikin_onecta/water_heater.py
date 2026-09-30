@@ -34,11 +34,12 @@ async def async_setup_entry(
             "domesticHotWaterFlowThrough",
         }
         """ When the device has a domesticHotWaterTank we add a water heater """
-        management_points = device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
+        for management_point in device.device.management_points:
+            management_point_type = management_point.management_point_type
             if management_point_type in supported_management_point_types:
-                async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point["embeddedId"])])
+                async_add_entities(
+                    [DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)]
+                )
             else:
                 _LOGGER.info(
                     "Device '%s' '%s' is not a tank management point, ignoring as water heater",
@@ -90,26 +91,20 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     @property
     def hotwatertank_data(self):
-        # Find the management point for the hot water tank
-        hwd = None
-        management_points = self._device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if management_point["managementPointType"] == self._management_point_type:
-                hwd = management_point
-        return hwd
+        """Return the typed hot-water management point."""
+        return self._device.management_point(self._embedded_id)
 
     @property
     def domestic_hotwater_temperature(self):
-        # Find the json dictionary for controlling the hot water temperature
-        dht = None
-        tc = self.hotwatertank_data.get("temperatureControl")
-        if tc is not None:
-            temp_control = tc["value"]
-            if temp_control:
-                heating_mode = temp_control["operationModes"]["heating"]
-                if heating_mode is not None:
-                    dht = heating_mode["setpoints"]["domesticHotWaterTemperature"]
-        return dht
+        """Return the domestic hot-water temperature setpoint."""
+        point = self.hotwatertank_data
+        if point is None or point.temperature_control is None:
+            return None
+        heating = point.temperature_control.value.operation_modes.get("heating")
+        if heating is None:
+            return None
+        return heating.setpoints.get("domesticHotWaterTemperature")
+
 
     def get_supported_features(self):
         sf = WaterHeaterEntityFeature.OPERATION_MODE | WaterHeaterEntityFeature.ON_OFF
@@ -117,7 +112,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         # temperature of the tank
         dht = self.domestic_hotwater_temperature
         if dht:
-            if dht["settable"] is True:
+            if dht.settable:
                 sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
         """Return the list of supported features."""
         return sf
@@ -126,10 +121,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         """Return tank temperature."""
         ret = None
         hwtd = self.hotwatertank_data
-        # Some Altherma versions don't provide a current temperature, there is no sensoryData
-        sensoryData = hwtd.get("sensoryData")
-        if sensoryData is not None:
-            ret = float(sensoryData["value"]["tankTemperature"]["value"])
+        sensory_data = hwtd.sensory_data if hwtd is not None else None
+        tank_temperature = sensory_data.value.tank_temperature if sensory_data is not None else None
+        if tank_temperature is not None:
+            ret = float(tank_temperature.value)
             _LOGGER.debug(
                 "Device '%s' hot water tank current_temperature '%s'",
                 self._device.name,
@@ -145,7 +140,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         ret = None
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            ret = float(dht["value"])
+            ret = float(dht.value)
         _LOGGER.debug("Device '%s' hot water tank target_temperature '%s'", self._device.name, ret)
         return ret
 
@@ -155,7 +150,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         dht = self.domestic_hotwater_temperature
         if dht is not None:
             """Return the optional device state attributes."""
-            data = {"target_temp_step": float(dht["stepValue"])}
+            data = {"target_temp_step": float(dht.step_value)}
         return data
 
     def get_min_temp(self):
@@ -163,7 +158,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         ret = None
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            ret = float(dht["minValue"])
+            ret = float(dht.min_value)
         _LOGGER.debug(
             "Device '%s' hot water tank minimum_temperature '%s'",
             self._device.name,
@@ -176,7 +171,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         ret = None
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            ret = float(dht["maxValue"])
+            ret = float(dht.max_value)
         _LOGGER.debug(
             "Device '%s' hot water tank maximum temperature '%s'",
             self._device.name,
@@ -195,7 +190,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             return
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            if dht["settable"] is False:
+            if not dht.settable:
                 _LOGGER.debug(
                     "Device '%s' set tank temperature ignored because tank temperature can't be set",
                     self._device.name,
