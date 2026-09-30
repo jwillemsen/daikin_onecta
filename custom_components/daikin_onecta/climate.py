@@ -138,14 +138,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self.update_state()
 
     def update_state(self) -> None:
-        # NOTE: after a successful PATCH, action handlers below (async_turn_on,
-        # async_set_hvac_mode, etc.) optimistically write the new value directly into
-        # self._device.daikin_data (the cached cloud JSON) *and* set the matching
-        # self._attr_* here/there, so that HA reflects the change immediately without
-        # waiting for the next poll. That means daikin_data and self._attr_* are two
-        # views of the same state that must be kept in sync by hand in every handler;
-        # a future handler that mutates one and forgets the other will only surface as
-        # a UI/state mismatch until the next coordinator refresh overwrites both.
+        # Successful writes update the typed model optimistically so Home
+        # Assistant reflects the new state without waiting for the next poll.
         self._attr_supported_features = self.get_supported_features()
         self._attr_current_temperature = self.get_current_temperature()
         self._attr_max_temp = self.get_max_temp()
