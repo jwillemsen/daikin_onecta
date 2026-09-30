@@ -27,12 +27,10 @@ class DaikinOnectaDevice:
         self.id: str = device.id
         self.name: str = device.device_model
 
-        management_points = self.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if management_point["managementPointType"] == "climateControl":
-                name = management_point["name"]["value"]
-                if name:
-                    self.name = name
+        for management_point in device.management_points:
+            if management_point.management_point_type == "climateControl" and management_point.name is not None:
+                if management_point.name.value:
+                    self.name = management_point.name.value
 
         # Populated by async_register_ha_device() before any entity platform is set
         # up. Sub-entities (per-management-point devices in sensor/water_heater/
@@ -45,11 +43,8 @@ class DaikinOnectaDevice:
 
     @property
     def available(self) -> bool:
-        result = False
-        icu = self.daikin_data.get("isCloudConnectionUp")
-        if icu is not None:
-            result = icu["value"]
-        return result
+        """Return whether the device is connected to the Daikin cloud."""
+        return self.device.available
 
     def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
         manufacturer = {"manufacturer": "Daikin"}
