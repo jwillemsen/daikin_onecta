@@ -139,42 +139,19 @@ class DaikinOnectaDevice:
         dataPointPath: str | None,
         value: Any,
     ) -> bool:
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
-        setBody = {"value": value}
-        if dataPointPath:
-            setBody["path"] = dataPointPath
-        setOptions = json.dumps(setBody)
-
-        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
-
-        res = await self.api.doBearerRequest("PATCH", setPath, setOptions)
-
-        _LOGGER.debug("Result: %s", res)
-
-        return bool(res)
+        """Patch a characteristic."""
+        return await self.api.patch_characteristic(
+            id,
+            embeddedId,
+            dataPoint,
+            value,
+            path=dataPointPath,
+        )
 
     async def post(self, id: str, embeddedId: str, dataPoint: str, value: Any) -> bool:
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = json.dumps(value)
-
-        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
-
-        res = await self.api.doBearerRequest("POST", setPath, setOptions)
-
-        _LOGGER.debug("Result: %s", res)
-
-        return bool(res)
+        """POST a management-point resource."""
+        return await self.api.post_management_point(id, embeddedId, dataPoint, value)
 
     async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = None
-        if value is not None:
-            setOptions = json.dumps(value)
-
-        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
-
-        res = await self.api.doBearerRequest("PUT", setPath, setOptions)
-
-        _LOGGER.debug("Result: %s", res)
-
-        return bool(res)
+        """PUT a management-point resource."""
+        return await self.api.put_management_point(id, embeddedId, dataPoint, value)
