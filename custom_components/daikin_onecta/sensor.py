@@ -142,19 +142,23 @@ async def async_setup_entry(
                     "pm25Concentration",
                     "pm10Concentration",
                 ):
-                    if sensor in VALUE_SENSOR_MAPPING and getattr(
-                        sensory_data,
-                        {
-                            "roomTemperature": "room_temperature",
-                            "outdoorTemperature": "outdoor_temperature",
-                            "leavingWaterTemperature": "leaving_water_temperature",
-                            "tankTemperature": "tank_temperature",
-                            "roomHumidity": "room_humidity",
-                            "pm1Concentration": "pm1_concentration",
-                            "pm25Concentration": "pm25_concentration",
-                            "pm10Concentration": "pm10_concentration",
-                        }[sensor],
-                    ) is not None:
+                    if (
+                        sensor in VALUE_SENSOR_MAPPING
+                        and getattr(
+                            sensory_data,
+                            {
+                                "roomTemperature": "room_temperature",
+                                "outdoorTemperature": "outdoor_temperature",
+                                "leavingWaterTemperature": "leaving_water_temperature",
+                                "tankTemperature": "tank_temperature",
+                                "roomHumidity": "room_humidity",
+                                "pm1Concentration": "pm1_concentration",
+                                "pm25Concentration": "pm25_concentration",
+                                "pm10Concentration": "pm10_concentration",
+                            }[sensor],
+                        )
+                        is not None
+                    ):
                         sensors.append(
                             DaikinValueSensor(
                                 device,
