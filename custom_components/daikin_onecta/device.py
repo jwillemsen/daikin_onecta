@@ -1,6 +1,7 @@
-import json
 import logging
 from typing import Any
+
+from daikin_onecta import GatewayDevice
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -17,13 +18,14 @@ _LOGGER = logging.getLogger(__name__)
 class DaikinOnectaDevice:
     """Class to represent and control one Daikin Onecta Device."""
 
-    def __init__(self, jsonData: dict[str, Any], apiInstance: DaikinApi) -> None:
+    def __init__(self, device: GatewayDevice, apiInstance: DaikinApi) -> None:
         """Initialize a new Daikin Onecta Device."""
         self.api = apiInstance
         # get name from climateControl
-        self.daikin_data = jsonData
-        self.id: str = self.daikin_data["id"]
-        self.name: str = self.daikin_data["deviceModel"]
+        self.device = device
+        self.daikin_data = device.to_dict(by_alias=True)
+        self.id: str = device.id
+        self.name: str = device.device_model
 
         management_points = self.daikin_data.get("managementPoints", [])
         for management_point in management_points:
@@ -119,9 +121,10 @@ class DaikinOnectaDevice:
         )
         self.ha_device_id = entry.id
 
-    def setJsonData(self, desc: dict[str, Any]) -> None:
-        """Overwrite the json data for this device."""
-        self.daikin_data = desc
+    def set_device_data(self, device: GatewayDevice) -> None:
+        """Overwrite the typed and compatibility data for this device."""
+        self.device = device
+        self.daikin_data = device.to_dict(by_alias=True)
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
             self.name,
