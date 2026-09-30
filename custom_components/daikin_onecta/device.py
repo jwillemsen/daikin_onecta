@@ -2,7 +2,6 @@ import logging
 from typing import Any
 
 from daikin_onecta import GatewayDevice
-
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr

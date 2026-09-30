@@ -1,8 +1,7 @@
 """Home Assistant adapter for the Daikin Onecta API client."""
-
 import asyncio
-from datetime import datetime
 import logging
+from datetime import datetime
 from typing import Any
 
 from daikin_onecta import GatewayDevice
