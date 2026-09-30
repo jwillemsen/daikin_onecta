@@ -517,68 +517,36 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return result
 
     def get_fan_mode(self):
-        fan_mode = None
-        cc = self.climate_control()
-        # Check if we have a fanControl
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            operation_mode = cc["operationMode"]["value"]
-            operationmodedict = fanControl["value"]["operationModes"].get(operation_mode)
-            if operationmodedict is not None:
-                fan_speed = operationmodedict.get("fanSpeed")
-                if fan_speed is not None:
-                    mode = fan_speed["currentMode"]["value"]
-                    if mode == FANMODE_FIXED:
-                        fsm = fan_speed.get("modes")
-                        if fsm is not None:
-                            fixedModes = fsm[mode]
-                            fan_mode = str(fixedModes["value"])
-                    else:
-                        fan_mode = mode
-                    fan_mode = self._get_homekit_fan_mode(fan_speed, fan_mode)
-
-        _LOGGER.debug(
-            "Device '%s' has fan mode '%s'",
-            self._device.name,
-            fan_mode,
-        )
-
-        return fan_mode
+        """Return the active fan mode."""
+        fan_operation = self.fan_operation()
+        if fan_operation is None or fan_operation.fan_speed is None:
+            return None
+        fan_speed = fan_operation.fan_speed
+        mode = fan_speed.current_mode.value
+        if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
+            mode = str(fan_speed.modes[FANMODE_FIXED].value)
+        return self._get_homekit_fan_mode(fan_speed, mode)
 
     def get_fan_modes(self):
+        """Return available fan modes."""
+        fan_operation = self.fan_operation()
+        if fan_operation is None or fan_operation.fan_speed is None:
+            return []
+        fan_speed = fan_operation.fan_speed
         fan_modes = []
-        cc = self.climate_control()
-        # Check if we have a fanControl
-        fan_control = cc.get("fanControl")
-        if fan_control is not None:
-            operation_mode = cc["operationMode"]["value"]
-            operationmodedict = fan_control["value"]["operationModes"].get(operation_mode)
-            if operationmodedict is not None:
-                fan_speed = operationmodedict.get("fanSpeed")
-                if fan_speed is not None:
-                    _LOGGER.debug("Device '%s' has fanspeed %s", self._device.name, fan_speed)
-                    for c in fan_speed["currentMode"]["values"]:
-                        if c == FANMODE_FIXED:
-                            fsm = fan_speed.get("modes")
-                            if fsm is not None:
-                                fixedModes = fsm[c]
-                                min_val = int(fixedModes["minValue"])
-                                max_val = int(fixedModes["maxValue"])
-                                step_value = int(fixedModes["stepValue"])
-                                for val in range(min_val, max_val + 1, step_value):
-                                    fan_modes.append(str(val))
-                        else:
-                            fan_modes.append(c)
-                    for alias in self._homekit_fan_mode_aliases(fan_speed):
-                        if alias not in fan_modes:
-                            fan_modes.append(alias)
-
-        _LOGGER.debug(
-            "Device '%s' has fan modes '%s'",
-            self._device.name,
-            fan_modes,
-        )
-
+        for mode in fan_speed.current_mode.values or []:
+            if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
+                fixed = fan_speed.modes[FANMODE_FIXED]
+                if fixed.min_value is not None and fixed.max_value is not None and fixed.step_value is not None:
+                    fan_modes.extend(
+                        str(value)
+                        for value in range(int(fixed.min_value), int(fixed.max_value) + 1, int(fixed.step_value))
+                    )
+            else:
+                fan_modes.append(mode)
+        for alias in self._homekit_fan_mode_aliases(fan_speed):
+            if alias not in fan_modes:
+                fan_modes.append(alias)
         return fan_modes
 
     async def async_set_fan_mode(self, fan_mode):
@@ -677,30 +645,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return res
 
     def __get_swing_mode(self, direction):
-        swingMode = ""
-        settable = False
-        cc = self.climate_control()
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            operationmode = cc["operationMode"]["value"]
-            operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
-            if operationmodedict is not None:
-                fan_direction = operationmodedict.get("fanDirection")
-                if fan_direction is not None:
-                    fd = fan_direction.get(direction)
-                    if fd is not None:
-                        settable = fd["currentMode"].get("settable", False)
-                        swingMode = fd["currentMode"]["value"].lower()
-
-        _LOGGER.debug(
-            "Device '%s' has %s swing mode '%s' and is settable %s",
-            self._device.name,
-            direction,
-            swingMode,
-            settable,
-        )
-
-        return swingMode
+        """Return current swing mode for an axis."""
+        fan_operation = self.fan_operation()
+        if fan_operation is None or fan_operation.fan_direction is None:
+            return ""
+        axis = getattr(fan_operation.fan_direction, direction)
+        return axis.current_mode.value.lower() if axis is not None else ""
 
     def get_swing_mode(self):
         return self.__get_swing_mode("vertical")
@@ -709,22 +659,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return self.__get_swing_mode("horizontal")
 
     def __get_swing_modes(self, direction):
-        swingModes = []
-        cc = self.climate_control()
-        fanControl = cc.get("fanControl")
-        if fanControl is not None:
-            swingModes = []
-            operationmode = cc["operationMode"]["value"]
-            operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
-            if operationmodedict is not None:
-                fanDirection = operationmodedict.get("fanDirection")
-                if fanDirection is not None:
-                    vertical = fanDirection.get(direction)
-                    if vertical is not None:
-                        for mode in vertical["currentMode"]["values"]:
-                            swingModes.append(mode.lower())
-        _LOGGER.debug("Device '%s' support %s swing modes %s", self._device.name, direction, swingModes)
-        return swingModes
+        """Return supported swing modes for an axis."""
+        fan_operation = self.fan_operation()
+        if fan_operation is None or fan_operation.fan_direction is None:
+            return []
+        axis = getattr(fan_operation.fan_direction, direction)
+        if axis is None:
+            return []
+        return [mode.lower() for mode in axis.current_mode.values or []]
 
     def get_swing_modes(self):
         return self.__get_swing_modes("vertical")
