@@ -120,7 +120,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                 option,
             )
 
-        result = await self._device.api._client.set_schedule(
+        result = await self._device.api.set_schedule(
             self._device.id,
             self._embedded_id,
             selection.mode,
