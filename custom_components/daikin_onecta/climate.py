@@ -696,7 +696,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 return mode
         return PRESET_NONE
 
-
     async def async_set_preset_mode(self, preset_mode):
         _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
         result = True
@@ -758,7 +757,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 supported.append(mode)
         supported.sort()
         return supported
-
 
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
