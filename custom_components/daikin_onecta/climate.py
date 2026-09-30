@@ -538,10 +538,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
                 fixed = fan_speed.modes[FANMODE_FIXED]
                 if fixed.min_value is not None and fixed.max_value is not None and fixed.step_value is not None:
-                    fan_modes.extend(
-                        str(value)
-                        for value in range(int(fixed.min_value), int(fixed.max_value) + 1, int(fixed.step_value))
-                    )
+                    fan_modes.extend(str(value) for value in range(int(fixed.min_value), int(fixed.max_value) + 1, int(fixed.step_value)))
             else:
                 fan_modes.append(mode)
         for alias in self._homekit_fan_mode_aliases(fan_speed):
