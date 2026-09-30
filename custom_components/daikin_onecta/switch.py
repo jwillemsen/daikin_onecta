@@ -46,12 +46,7 @@ async def async_setup_entry(
             management_point_type = management_point.management_point_type
             for value, characteristic in management_point.simple_characteristics().items():
                 values = characteristic.values or []
-                if (
-                    characteristic.value is not None
-                    and characteristic.settable
-                    and "on" in values
-                    and "off" in values
-                ):
+                if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
                     if value == "onOffMode" and management_point_type in supported_management_point_types:
                         continue
                     if value == "powerfulMode" and management_point_type in supported_management_point_types:
