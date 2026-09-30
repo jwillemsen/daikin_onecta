@@ -53,11 +53,7 @@ class DaikinOnectaDevice:
         """Fill Home Assistant device information from a typed management point."""
         device_info.update(manufacturer="Daikin")
         point = next(
-            (
-                point
-                for point in self.device.management_points
-                if point.management_point_type == management_point_type
-            ),
+            (point for point in self.device.management_points if point.management_point_type == management_point_type),
             None,
         )
         if point is None:
@@ -76,11 +72,7 @@ class DaikinOnectaDevice:
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
         gateway = next(
-            (
-                point
-                for point in self.device.management_points
-                if point.management_point_type == "gateway"
-            ),
+            (point for point in self.device.management_points if point.management_point_type == "gateway"),
             None,
         )
         mac_address = gateway.characteristic("macAddress") if gateway is not None else None
