@@ -219,11 +219,11 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         """Return current operation ie. heat, cool, idle."""
         state = STATE_OFF
         hwtd = self.hotwatertank_data
-        onoff = hwtd.get("onOffMode")
-        if onoff is not None and onoff["value"] == "on":
+        onoff = hwtd.on_off_mode if hwtd is not None else None
+        if onoff is not None and onoff.value == "on":
             state = STATE_HEAT_PUMP
-            pwf = hwtd.get("powerfulMode")
-            if pwf is not None and pwf["value"] == "on":
+            pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
+            if pwf is not None and pwf.value == "on":
                 state = STATE_PERFORMANCE
         _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
         return state
@@ -232,9 +232,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         """Return the list of available operation modes."""
         states = [STATE_OFF, STATE_HEAT_PUMP]
         hwtd = self.hotwatertank_data
-        pwf = hwtd.get("powerfulMode")
+        pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
         if pwf is not None:
-            if pwf["settable"] is True:
+            if pwf.settable:
                 states += [STATE_PERFORMANCE]
         _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
         return states
@@ -265,7 +265,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
             if result is True:
                 hwtd = self.hotwatertank_data
-                hwtd["onOffMode"]["value"] = on_off_mode
+                if hwtd is not None and hwtd.on_off_mode is not None:
+                    hwtd.on_off_mode.value = on_off_mode
 
         # Only set powerfulMode when it is set and supported by the device
         if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
@@ -278,10 +279,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             )
             if result is True:
                 hwtd = self.hotwatertank_data
-                pwf = hwtd.get("powerfulMode")
-                if pwf is not None:
-                    if pwf["settable"] is True:
-                        pwf["value"] = powerful_mode
+                pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
+                if pwf is not None and pwf.settable:
+                    pwf.value = powerful_mode
 
         if result is False:
             _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
@@ -303,7 +303,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
             else:
                 hwtd = self.hotwatertank_data
-                hwtd["onOffMode"]["value"] = "on"
+                if hwtd is not None and hwtd.on_off_mode is not None:
+                    hwtd.on_off_mode.value = "on"
                 self._attr_current_operation = self.get_current_operation()
                 self._attr_operation_list = self.get_operation_list()
                 self.async_write_ha_state()
@@ -325,7 +326,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
             else:
                 hwtd = self.hotwatertank_data
-                hwtd["onOffMode"]["value"] = "off"
+                if hwtd is not None and hwtd.on_off_mode is not None:
+                    hwtd.on_off_mode.value = "off"
                 self._attr_current_operation = self.get_current_operation()
                 self._attr_operation_list = self.get_operation_list()
                 self.async_write_ha_state()
