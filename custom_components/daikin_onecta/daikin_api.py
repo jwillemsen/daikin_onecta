@@ -1,11 +1,13 @@
-"""Platform for the Daikin AC."""
+"""Home Assistant adapter for the Daikin Onecta API client."""
+
 import asyncio
-import json
-import logging
 from datetime import datetime
+import logging
 from typing import Any
 
-from aiohttp import ClientError
+from daikin_onecta import GatewayDevice
+from daikin_onecta import OnectaClient
+from daikin_onecta import OnectaRateLimitError
 from homeassistant import config_entries
 from homeassistant import core
 from homeassistant.helpers import config_entry_oauth2_flow
@@ -13,23 +15,13 @@ from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.util import dt as dt_util
 
-from .const import DAIKIN_API_URL
 from .const import DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
 
-class DaikinRateLimitError(Exception):
-    """Raised when the Daikin API rate limit is exceeded."""
-
-    def __init__(self, retry_after: int) -> None:
-        """Initialize a rate limit error."""
-        super().__init__(f"Daikin API rate limit exceeded; retry after {retry_after} seconds")
-        self.retry_after = retry_after
-
-
 class DaikinApi:
-    """Daikin Onecta API."""
+    """Home Assistant adapter around the standalone Daikin Onecta client."""
 
     def __init__(
         self,
@@ -38,11 +30,10 @@ class DaikinApi:
         implementation: config_entry_oauth2_flow.AbstractOAuth2Implementation,
     ) -> None:
         """Initialize a new Daikin Onecta API."""
-        _LOGGER.debug("Initialing Daikin Onecta API...")
         self.hass = hass
         self._config_entry = entry
         self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
-        self._daikin_session = async_get_clientsession(hass)
+        self._client = OnectaClient(async_get_clientsession(hass), self.async_get_access_token)
 
         # The Daikin cloud returns old settings if queried with a GET
         # immediately after a PATCH request. Se we use this attribute
@@ -51,106 +42,136 @@ class DaikinApi:
         # self._last_patch_call = dt_util.as_local(datetime.min)
         self._last_patch_call: datetime | None = None
 
-        # Store the limits as member so that we can add these to the diagnostics
-        self.rate_limits: dict[str, int] = {
-            "minute": 0,
-            "day": 0,
-            "remaining_minutes": 0,
-            "remaining_day": 0,
-            "retry_after": 0,
-            "ratelimit_reset": 0,
-        }
-
         # The following lock is used to serialize http requests to Daikin cloud
         # to prevent receiving old settings while a PATCH is ongoing.
         self._cloud_lock = asyncio.Lock()
 
-        _LOGGER.debug("Daikin Onecta API initialized.")
+    @property
+    def rate_limits(self) -> dict[str, int]:
+        """Return rate limits using the existing diagnostics field names."""
+        rate_limit = self._client.rate_limit
+        return {
+            "minute": rate_limit.minute_limit or 0,
+            "day": rate_limit.day_limit or 0,
+            "remaining_minutes": rate_limit.minute_remaining or 0,
+            "remaining_day": rate_limit.day_remaining or 0,
+            "retry_after": rate_limit.retry_after or 0,
+            "ratelimit_reset": rate_limit.reset or 0,
+        }
 
     async def async_get_access_token(self) -> str:
+        """Return a valid OAuth access token."""
         await self.session.async_ensure_token_valid()
         return self.session.token["access_token"]
 
-    async def doBearerRequest(self, method: str, resource_url: str, options: str | None = None) -> Any:
+    def _update_rate_limit_issues(self) -> None:
+        """Update Home Assistant repair issues from the library rate-limit state."""
+        limits = self.rate_limits
+        if limits["remaining_minutes"] > 0:
+            ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
+        if limits["remaining_day"] > 0:
+            ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
+
+    def _create_rate_limit_issues(self) -> None:
+        """Create Home Assistant repair issues for exhausted rate limits."""
+        limits = self.rate_limits
+        learn_more_url = (
+            "https://developer.cloud.daikineurope.com/docs/"
+            "b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines"
+            "#doc-heading-rate-limitation"
+        )
+        if limits["remaining_minutes"] == 0:
+            ir.async_create_issue(
+                self.hass,
+                DOMAIN,
+                "minute_rate_limit",
+                is_fixable=False,
+                is_persistent=True,
+                severity=ir.IssueSeverity.ERROR,
+                learn_more_url=learn_more_url,
+                translation_key="minute_rate_limit",
+            )
+        if limits["remaining_day"] == 0:
+            ir.async_create_issue(
+                self.hass,
+                DOMAIN,
+                "day_rate_limit",
+                is_fixable=False,
+                is_persistent=True,
+                severity=ir.IssueSeverity.ERROR,
+                learn_more_url=learn_more_url,
+                translation_key="day_rate_limit",
+            )
+
+    async def get_cloud_device_details(self) -> list[GatewayDevice]:
+        """Get typed device data from the Daikin cloud."""
         async with self._cloud_lock:
-            token = await self.async_get_access_token()
-
-            headers = {"Accept-Encoding": "gzip", "Authorization": "Bearer " + token, "Content-Type": "application/json"}
-
-            _LOGGER.debug("Request URL: %s", resource_url)
-            _LOGGER.debug("Request %s Options: %s", method, options)
-
             try:
-                async with self._daikin_session.request(method=method, url=DAIKIN_API_URL + resource_url, headers=headers, data=options) as resp:
-                    response_data = await resp.text()
-                    _LOGGER.debug("Response status: %s Text: %s Limit: %s", resp.status, response_data, self.rate_limits)
-
-                    self.rate_limits["minute"] = int(resp.headers.get("X-RateLimit-Limit-minute", 0))
-                    self.rate_limits["day"] = int(resp.headers.get("X-RateLimit-Limit-day", 0))
-                    self.rate_limits["remaining_minutes"] = int(resp.headers.get("X-RateLimit-Remaining-minute", 0))
-                    self.rate_limits["remaining_day"] = int(resp.headers.get("X-RateLimit-Remaining-day", 0))
-                    self.rate_limits["retry_after"] = int(resp.headers.get("retry-after", 0))
-                    self.rate_limits["ratelimit_reset"] = int(resp.headers.get("ratelimit-reset", 0))
-
-                    if self.rate_limits["remaining_minutes"] > 0:
-                        ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
-
-                    if self.rate_limits["remaining_day"] > 0:
-                        ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
-
-                    if method == "GET" and resp.status == 200:
-                        try:
-                            return json.loads(response_data)
-                        except json.JSONDecodeError:
-                            _LOGGER.exception("Retrieve JSON failed: %s", response_data)
-                            return []
-
-                    if resp.status == 429:
-                        if self.rate_limits["remaining_minutes"] == 0:
-                            ir.async_create_issue(
-                                self.hass,
-                                DOMAIN,
-                                "minute_rate_limit",
-                                is_fixable=False,
-                                is_persistent=True,
-                                severity=ir.IssueSeverity.ERROR,
-                                learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
-                                translation_key="minute_rate_limit",
-                            )
-
-                        if self.rate_limits["remaining_day"] == 0:
-                            ir.async_create_issue(
-                                self.hass,
-                                DOMAIN,
-                                "day_rate_limit",
-                                is_fixable=False,
-                                is_persistent=True,
-                                severity=ir.IssueSeverity.ERROR,
-                                learn_more_url="https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation",
-                                translation_key="day_rate_limit",
-                            )
-                        if method == "GET":
-                            retry_after = max(self.rate_limits["retry_after"], 60)
-                            if self.rate_limits["remaining_day"] == 0:
-                                retry_after += 60
-                            raise DaikinRateLimitError(retry_after)
-                        return False
-
-                    if resp.status == 204:
-                        self._last_patch_call = dt_util.now()
-                        return True
-
-            except (ClientError, asyncio.TimeoutError, DaikinRateLimitError):
-                # Propagate transient network errors so Home Assistant marks the
-                # coordinator update as failed and retries it.
+                devices = await self._client.get_gateway_devices()
+            except OnectaRateLimitError:
+                self._create_rate_limit_issues()
                 raise
-            except Exception as e:
-                _LOGGER.error("REQUEST TYPE %s FAILED: %s", method, e)
+            self._update_rate_limit_issues()
+            return devices
 
-        if method == "GET":
-            return []
-        return False
+    async def patch_characteristic(
+        self,
+        gateway_id: str,
+        management_point_id: str,
+        characteristic: str,
+        value: Any,
+        *,
+        path: str | None = None,
+    ) -> bool:
+        """Patch a characteristic through the standalone library."""
+        async with self._cloud_lock:
+            try:
+                await self._client.patch_characteristic(
+                    gateway_id,
+                    management_point_id,
+                    characteristic,
+                    value,
+                    path=path,
+                )
+            except OnectaRateLimitError:
+                self._create_rate_limit_issues()
+                return False
+            self._last_patch_call = dt_util.now()
+            self._update_rate_limit_issues()
+            return True
 
-    async def getCloudDeviceDetails(self) -> list[dict[str, Any]]:
-        """Get pure Device Data from the Daikin cloud devices."""
-        return await self.doBearerRequest("GET", "/v1/gateway-devices")
+    async def post_management_point(
+        self,
+        gateway_id: str,
+        management_point_id: str,
+        resource: str,
+        value: Any,
+    ) -> bool:
+        """POST a management-point resource through the standalone library."""
+        async with self._cloud_lock:
+            try:
+                await self._client.post_management_point(gateway_id, management_point_id, resource, value)
+            except OnectaRateLimitError:
+                self._create_rate_limit_issues()
+                return False
+            self._last_patch_call = dt_util.now()
+            self._update_rate_limit_issues()
+            return True
+
+    async def put_management_point(
+        self,
+        gateway_id: str,
+        management_point_id: str,
+        resource: str,
+        value: Any = None,
+    ) -> bool:
+        """PUT a management-point resource through the standalone library."""
+        async with self._cloud_lock:
+            try:
+                await self._client.put_management_point(gateway_id, management_point_id, resource, value)
+            except OnectaRateLimitError:
+                self._create_rate_limit_issues()
+                return False
+            self._last_patch_call = dt_util.now()
+            self._update_rate_limit_issues()
+            return True
