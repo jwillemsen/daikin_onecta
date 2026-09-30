@@ -208,27 +208,31 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if not self._homekit_fan_mode_aliases_enabled:
             return aliases
 
-        current_mode = fan_speed.get("currentMode", {})
-        current_mode_values = current_mode.get("values", [])
+        current_mode_values = fan_speed.current_mode.values or []
         if DAIKIN_FAN_MODE_QUIET in current_mode_values:
             aliases[FAN_LOW] = DAIKIN_FAN_MODE_QUIET
 
-        if FANMODE_FIXED not in current_mode_values:
+        if FANMODE_FIXED not in current_mode_values or not fan_speed.modes:
             return aliases
-
-        fixed_mode = fan_speed.get("modes", {}).get(FANMODE_FIXED)
-        if fixed_mode is None:
+        fixed_mode = fan_speed.modes.get(FANMODE_FIXED)
+        if (
+            fixed_mode is None
+            or fixed_mode.min_value is None
+            or fixed_mode.max_value is None
+            or fixed_mode.step_value is None
+        ):
             return aliases
-
-        min_val = int(fixed_mode["minValue"])
-        max_val = int(fixed_mode["maxValue"])
-        step_value = int(fixed_mode["stepValue"])
-        fixed_values = {str(val) for val in range(min_val, max_val + 1, step_value)}
-
+        fixed_values = {
+            str(value)
+            for value in range(
+                int(fixed_mode.min_value),
+                int(fixed_mode.max_value) + 1,
+                int(fixed_mode.step_value),
+            )
+        }
         for alias, daikin_mode in HOMEKIT_FIXED_FAN_MODE_ALIASES.items():
             if daikin_mode in fixed_values:
                 aliases[alias] = daikin_mode
-
         return aliases
 
     def _get_homekit_fan_mode(self, fan_speed, fan_mode):
@@ -547,99 +551,55 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return fan_modes
 
     async def async_set_fan_mode(self, fan_mode):
-        """Set the fan mode"""
-        fan_mode = str(fan_mode)
-        _LOGGER.debug(
-            "Device '%s' request to set fan_mode to '%s'",
-            self._device.name,
-            fan_mode,
-        )
-
-        res = True
+        """Set the fan mode."""
+        requested_fan_mode = str(fan_mode)
+        fan_operation = self.fan_operation()
         cc = self.climate_control()
-        operationmode = cc["operationMode"]["value"]
-        fan_control = cc.get("fanControl")
-        if fan_control is None:
-            # Should not normally happen: HA only offers fan mode controls when
-            # get_supported_features() found a fanControl block. Guard against it
-            # anyway (e.g. a stale/forced service call) instead of raising.
-            _LOGGER.warning(
-                "Device '%s' request to set fan_mode ignored, device has no fanControl",
-                self._device.name,
-            )
+        if fan_operation is None or fan_operation.fan_speed is None or cc is None or cc.operation_mode is None:
             return False
-        fan_speed = fan_control["value"]["operationModes"][operationmode].get("fanSpeed")
-        requested_fan_mode = fan_mode
-        fan_mode = self._resolve_homekit_fan_mode_alias(fan_speed, fan_mode)
+        fan_speed = fan_operation.fan_speed
+        operation_mode = cc.operation_mode.value
+        fan_mode = self._resolve_homekit_fan_mode_alias(fan_speed, requested_fan_mode)
+        result = True
         if fan_mode.isnumeric():
-            if fan_speed["currentMode"]["value"] != FANMODE_FIXED:
-                # Only set currentMode to fixed when it isn't already fixed.
-                res = await self._device.patch(
+            if fan_speed.current_mode.value != FANMODE_FIXED:
+                result = await self._device.patch(
                     self._device.id,
                     self._embedded_id,
                     "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/currentMode",
+                    f"/operationModes/{operation_mode}/fanSpeed/currentMode",
                     FANMODE_FIXED,
                 )
-                if res is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting fan_mode to fixed",
-                        self._device.name,
-                    )
-
+            fixed = fan_speed.modes.get(FANMODE_FIXED) if fan_speed.modes else None
             new_fixed_mode = int(fan_mode)
-            if fan_speed["modes"]["fixed"]["value"] != new_fixed_mode:
-                res &= await self._device.patch(
+            if result and fixed is not None and fixed.value != new_fixed_mode:
+                result &= await self._device.patch(
                     self._device.id,
                     self._embedded_id,
                     "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/modes/fixed",
+                    f"/operationModes/{operation_mode}/fanSpeed/modes/fixed",
                     new_fixed_mode,
                 )
-                if res is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting fan_mode fixed to '%s'",
-                        self._device.name,
-                        new_fixed_mode,
-                    )
-            else:
-                _LOGGER.debug(
-                    "Device '%s' request to set fan mode '%s' ignored already set",
-                    self._device.name,
-                    fan_mode,
-                )
-        else:
-            if fan_speed["currentMode"]["value"] != fan_mode:
-                res = await self._device.patch(
-                    self._device.id,
-                    self._embedded_id,
-                    "fanControl",
-                    f"/operationModes/{operationmode}/fanSpeed/currentMode",
-                    fan_mode,
-                )
-                if res is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting fan_mode to '%s'",
-                        self._device.name,
-                        fan_mode,
-                    )
-            else:
-                _LOGGER.debug(
-                    "Device '%s' request to set fan mode '%s' ignored already set",
-                    self._device.name,
-                    fan_mode,
-                )
+            if result:
+                fan_speed.current_mode.value = FANMODE_FIXED
+                if fixed is not None:
+                    fixed.value = new_fixed_mode
+        elif fan_speed.current_mode.value != fan_mode:
+            result = await self._device.patch(
+                self._device.id,
+                self._embedded_id,
+                "fanControl",
+                f"/operationModes/{operation_mode}/fanSpeed/currentMode",
+                fan_mode,
+            )
+            if result:
+                fan_speed.current_mode.value = fan_mode
 
-        if res is True:
-            if fan_mode.isnumeric():
-                fan_speed["currentMode"]["value"] = FANMODE_FIXED
-                fan_speed["modes"][FANMODE_FIXED]["value"] = int(fan_mode)
-            else:
-                fan_speed["currentMode"]["value"] = fan_mode
+        if result:
             self._attr_fan_mode = requested_fan_mode
             self.async_write_ha_state()
+        return result
 
-        return res
 
     def __get_swing_mode(self, direction):
         """Return current swing mode for an axis."""
@@ -672,43 +632,29 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return self.__get_swing_modes("horizontal")
 
     async def __set_swing(self, direction, swing_mode):
-        _LOGGER.debug(
-            "Device '%s' request to set swing %s mode to '%s'",
-            self._device.name,
-            direction,
-            swing_mode,
-        )
-        res = True
+        """Set a fan-direction mode."""
+        fan_operation = self.fan_operation()
         cc = self.climate_control()
-        fan_control = cc.get("fanControl")
-        operation_mode = cc["operationMode"]["value"]
-        if fan_control is not None:
-            operation_mode = cc["operationMode"]["value"]
-            fan_direction = fan_control["value"]["operationModes"][operation_mode].get("fanDirection")
-            if fan_direction is not None:
-                fd = fan_direction.get(direction)
-                if fd is not None:
-                    new_mode = "stop"
-                    # For translation the current mode is always lower case, but we need to send
-                    # the daikin mixed case mode, so search that
-                    for mode in fd["currentMode"]["values"]:
-                        if swing_mode == mode.lower():
-                            new_mode = mode
-                    res = await self._device.patch(
-                        self._device.id,
-                        self._embedded_id,
-                        "fanControl",
-                        f"/operationModes/{operation_mode}/fanDirection/{direction}/currentMode",
-                        new_mode,
-                    )
-                    if res is False:
-                        _LOGGER.warning(
-                            "Device '%s' problem setting %s swing mode to '%s'",
-                            self._device.name,
-                            direction,
-                            new_mode,
-                        )
-        return res
+        if fan_operation is None or fan_operation.fan_direction is None or cc is None or cc.operation_mode is None:
+            return False
+        axis = getattr(fan_operation.fan_direction, direction)
+        if axis is None:
+            return False
+        new_mode = next(
+            (mode for mode in axis.current_mode.values or [] if swing_mode == mode.lower()),
+            "stop",
+        )
+        result = await self._device.patch(
+            self._device.id,
+            self._embedded_id,
+            "fanControl",
+            f"/operationModes/{cc.operation_mode.value}/fanDirection/{direction}/currentMode",
+            new_mode,
+        )
+        if result:
+            axis.current_mode.value = new_mode
+        return result
+
 
     async def async_set_swing_mode(self, swing_mode):
         res = True
