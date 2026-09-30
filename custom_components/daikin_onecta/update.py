@@ -2,6 +2,8 @@
 import logging
 from typing import Any
 
+from daikin_onecta.models import ManagementPoint
+
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.update import UpdateEntity
 from homeassistant.components.update import UpdateEntityFeature
@@ -28,14 +30,6 @@ _LOGGER = logging.getLogger(__name__)
 # The Daikin Onecta cloud API exposes firmware updates
 
 
-def _get_value(mp: dict, characteristic: str) -> Any:
-    """Safely read .value from a management point characteristic."""
-    char = mp.get(characteristic)
-    if not isinstance(char, dict):
-        return None
-    return char.get("value")
-
-
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
@@ -52,23 +46,19 @@ async def async_setup_entry(
     }
 
     for device in onecta_data.devices.values():
-        management_points = device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            for field in required_version_fields:
-                if _get_value(management_point, field) is not None:
-                    entities.append(DaikinFirmwareUpdateEntity(coordinator, device, management_point, management_point_type))
-                    break
+        for management_point in device.device.management_points:
+            if management_point.firmware_version is not None or management_point.software_version is not None:
+                entities.append(
+                    DaikinFirmwareUpdateEntity(
+                        coordinator,
+                        device,
+                        management_point,
+                        management_point.management_point_type,
+                    )
+                )
 
     async_add_entities(entities)
 
-
-def _get_management_point(device: DaikinOnectaDevice, mp_type: str) -> dict | None:
-    """Return the gateway management point dict, or None if absent."""
-    for mp in device.daikin_data.get("managementPoints", []):
-        if mp.get("managementPointType") == mp_type:
-            return mp
-    return None
 
 
 class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
@@ -78,7 +68,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self,
         coordinator: OnectaDataUpdateCoordinator,
         device: DaikinOnectaDevice,
-        gateway_mp: dict,
+        gateway_mp: ManagementPoint,
         management_point_type: str,
     ) -> None:
         """Initialise the update entity."""
@@ -135,12 +125,12 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     # Internal helpers
     # ------------------------------------------------------------------
 
-    def _update_from_management_point(self, management_point: dict) -> None:
-        """Pull the latest values out of a management point dict."""
-        self._attr_installed_version: str | None = _get_value(management_point, "firmwareVersion")
-        if self._attr_installed_version is None:
-            self._attr_installed_version = _get_value(management_point, "softwareVersion")
-        self._is_update_supported: bool = bool(_get_value(management_point, "isFirmwareUpdateSupported"))
+    def _update_from_management_point(self, management_point: ManagementPoint) -> None:
+        """Pull the latest values out of a typed management point."""
+        installed = management_point.firmware_version or management_point.software_version
+        self._attr_installed_version = installed.value if installed is not None else None
+        supported = management_point.is_firmware_update_supported
+        self._is_update_supported = bool(supported.value) if supported is not None else False
         self._attr_latest_version = self._attr_installed_version
         self._attr_release_url = None
         self._attr_release_summary = None
@@ -149,29 +139,22 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_supported_features = UpdateEntityFeature.INSTALL
         self._attr_extra_state_attributes = {}
 
-        firmwareUpdate = management_point.get("firmwareUpdate")
-        if firmwareUpdate is not None:
-            firmwareUpdateValue = firmwareUpdate.get("value")
-            if firmwareUpdateValue is not None:
-                firmware_update_version = firmwareUpdateValue.get("version")
-                if firmware_update_version is not None:
-                    self._attr_latest_version = firmware_update_version
-                self._attr_release_summary = firmwareUpdateValue.get("description")
-                self._firmware_id = firmwareUpdateValue.get("id")
-                firmware_update_type = firmwareUpdateValue.get("type")
-                if firmware_update_type is not None:
-                    self._attr_extra_state_attributes["firmware_update_type"] = firmware_update_type
-        firmwareUpdateStatus = management_point.get("firmwareUpdateStatus")
-        if firmwareUpdateStatus is not None:
-            firmwareUpdateStatusValue = firmwareUpdateStatus.get("value")
-            if firmwareUpdateStatusValue is not None:
-                self._attr_in_progress = firmwareUpdateStatusValue == "in-progress"
-                self._attr_supported_features |= UpdateEntityFeature.PROGRESS
+        if management_point.firmware_update is not None:
+            firmware_update = management_point.firmware_update.value
+            self._attr_latest_version = firmware_update.get("version", self._attr_latest_version)
+            self._attr_release_summary = firmware_update.get("description")
+            self._firmware_id = firmware_update.get("id")
+            if firmware_update_type := firmware_update.get("type"):
+                self._attr_extra_state_attributes["firmware_update_type"] = firmware_update_type
+
+        if management_point.firmware_update_status is not None:
+            self._attr_in_progress = management_point.firmware_update_status.value == "in-progress"
+            self._attr_supported_features |= UpdateEntityFeature.PROGRESS
 
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        mp = _get_management_point(self._device, self._management_point_type)
+        mp = next((point for point in self._device.device.management_points if point.management_point_type == self._management_point_type), None)
         if mp is not None:
             self._update_from_management_point(mp)
         self.async_write_ha_state()
