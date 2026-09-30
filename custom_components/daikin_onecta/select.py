@@ -131,7 +131,6 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self.async_write_ha_state()
         return result
 
-
     def get_options(self):
         """Return readable configured schedules."""
         selection = self._selection()

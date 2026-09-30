@@ -113,7 +113,6 @@ class DaikinApi:
             self._update_rate_limit_issues()
             return devices
 
-
     async def set_schedule(
         self,
         gateway_id: str,
