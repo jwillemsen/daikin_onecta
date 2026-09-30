@@ -20,7 +20,6 @@ from .const import SENSOR_PERIOD_MONTHLY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIOD_YEARLY
 from .const import SENSOR_PERIODS
-from .const import SENSOR_PERIODS_ARRAY
 from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
@@ -281,7 +280,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         return round(sum(energy_values[start_index:end_index]), 3)
 
 
-
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     def __init__(
         self,
@@ -363,7 +361,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         result = characteristic.value if characteristic is not None else None
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
         return result
-
 
 
 class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
