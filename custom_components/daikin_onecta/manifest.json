@@ -15,9 +15,7 @@
   "integration_type": "device",
   "iot_class": "cloud_polling",
   "issue_tracker": "https://github.com/jwillemsen/daikin_onecta/issues",
-  "requirements": [
-    "daikin-onecta @ git+https://github.com/jwillemsen/daikin-onecta.git@mashumaro-models"
-  ],
+  "requirements": [],
   "version": "4.6.20",
   "zeroconf": [
     {
