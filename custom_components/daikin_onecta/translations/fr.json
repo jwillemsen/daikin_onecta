@@ -42,11 +42,35 @@
       "daylightsavingtimeenabled": {
         "name": "Heure d'été activée"
       },
+      "iscoolheatmaster": {
+        "name": "est maître du chauffage\/refroidissement"
+      },
       "isfirmwareupdatesupported": {
         "name": "La mise à jour du firmware est-elle prise en charge ?"
       },
+      "isholidaymodeactive": {
+        "name": "est en mode Vacances actif"
+      },
+      "isinemergencystate": {
+        "name": "est en mode urgence"
+      },
+      "isinerrorstate": {
+        "name": "est en état erreur"
+      },
+      "isininstallerstate": {
+        "name": "est en état installateur"
+      },
+      "isinmodeconflict": {
+        "name": "Est en mode en conflit"
+      },
+      "isinwarningstate": {
+        "name": "est en état avertissement"
+      },
       "islockfunctionenabled": {
         "name": "La fonction de verrouillage est-elle activée ?"
+      },
+      "ispowerfulmodeactive": {
+        "name": "est en mode puissance actif"
       },
       "ledenabled": {
         "name": "LED activée"
@@ -57,6 +81,11 @@
         "state_attributes": {
           "fan_mode": {
             "state": {
+              "1": "1",
+              "2": "2",
+              "3": "3",
+              "4": "4",
+              "5": "5",
               "quiet": "Silencieux"
             }
           },
@@ -78,11 +107,72 @@
       }
     },
     "sensor": {
+      "coolingdailyelectricalconsumption": {
+        "name": "consommation électrique journalière de refroidissement"
+      },
+      "coolingmonthlyelectricalconsumption": {
+        "name": "consommation électrique mensuelle de refroidissement"
+      },
+      "coolingweeklyelectricalconsumption": {
+        "name": "consommation électrique hebdomadaire de refroidissement"
+      },
+      "coolingyearlyelectricalconsumption": {
+        "name": "consommation électrique annuelle de refroidissement"
+      },
+      "currentpowerconsumption": {
+        "name": "Puissance consommée courante"
+      },
+      "errorcode": {
+        "name": "Code d'erreur"
+      },
+      "heatingdailyelectricalconsumption": {
+        "name": "consommation électrique hebdomadaire de chauffage"
+      },
+      "heatingmonthlyelectricalconsumption": {
+        "name": "consommation électrique mensuelle de chauffage"
+      },
+      "heatingweeklyelectricalconsumption": {
+        "name": "consommation électrique hebdomadaire de chauffage"
+      },
+      "heatupmode": {
+        "name": "Mode chauffage"
+      },
+      "ipaddress": {
+        "name": "Adresse IP"
+      },
+      "leavingwatertemperature": {
+        "name": "Température de l'eau en sortie"
+      },
+      "outdoortemperature": {
+        "name": "Température extérieure"
+      },
+      "ratelimitremainingday": {
+        "name": "RateLimit restant aujourd'hui"
+      },
+      "setpointmode": {
+        "name": "Mode consigne"
+      },
       "sgtin": {
         "name": "SGTIN"
       },
+      "ssid": {
+        "name": "SSID"
+      },
+      "tanktemperature": {
+        "name": "température du réservoir"
+      },
       "timezone": {
         "name": "Fuseau horaire"
+      }
+    },
+    "switch": {
+      "economode": {
+        "name": "Mode Éco"
+      }
+    },
+    "update": {
+      "firmwareupdate": {
+        "name": "mise a jour du firmware"
       }
     }
   },
@@ -107,6 +197,7 @@
         "data": {
           "high_scan_interval": "Intervalle de mise à jour de haute fréquence (minutes)",
           "high_scan_start": "Heure de démarrage de la période de haute fréquence",
+          "homekit_fan_mode_aliases": "Afficher les alias de vitesse des ventilateurs compatibles HomeKit",
           "low_scan_interval": "Intervalle de mise à jour de basse fréquence (minutes)",
           "low_scan_start": "Heure de démarrage de la période de basse fréquence",
           "scan_ignore": "Nombre de secondes pendant lesquelles une actualisation des données est ignorée après une requête"
