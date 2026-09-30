@@ -246,45 +246,40 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
-        energy_value = None
-        for management_point in self._device.daikin_data["managementPoints"]:
-            if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
-                cd = management_point.get(f"{self._datatype}Data")
-                if cd is not None:
-                    # Retrieve the available operationModes, we can only provide energy data for
-                    # supported operation modes
-                    cdv = cd.get("value")
-                    if cdv is not None:
-                        cdve = cdv.get(self._sensor_type)
-                        if cdve is not None:
-                            for mode in cdve:
-                                # Only handle data for the operation mode supported by this sensor
-                                if mode == self._operation_mode:
-                                    period_data = cdve[mode].get(SENSOR_PERIODS_ARRAY[self._period])
-                                    if period_data is not None:
-                                        energy_values = [0 if v is None else v for v in period_data]
-                                        if self._period == SENSOR_PERIOD_WEEKLY:
-                                            start_index = 7
-                                            end_index = len(energy_values)
-                                        elif self._period == SENSOR_PERIOD_MONTHLY:
-                                            start_index = 11 + date.today().month
-                                            end_index = start_index + 1
-                                        else:
-                                            start_index = 12
-                                            end_index = len(energy_values)
-                                        energy_value = round(sum(energy_values[start_index:end_index]), 3)
-                                        _LOGGER.debug(
-                                            "Device '%s' has energy value '%s' for '%s' mode %s %s period %s",
-                                            self._device.name,
-                                            energy_value,
-                                            self._sensor_type,
-                                            management_point_type,
-                                            mode,
-                                            self._period,
-                                        )
+        """Return the aggregated energy value."""
+        point = self._device.management_point(self._embedded_id)
+        if point is None:
+            return None
+        energy = point.consumption_data if self._datatype == "consumption" else point.output_data
+        if energy is None:
+            return None
+        source = getattr(energy.value, self._sensor_type)
+        if source is None:
+            return None
+        series = getattr(source, self._operation_mode)
+        if series is None:
+            return None
+        period_data = {
+            "d": series.day,
+            "w": series.week,
+            "m": series.month,
+            SENSOR_PERIOD_MONTHLY: series.month,
+        }.get(self._period)
+        if period_data is None:
+            return None
 
-        return energy_value
+        energy_values = [0 if value is None else value for value in period_data]
+        if self._period == SENSOR_PERIOD_WEEKLY:
+            start_index = 7
+            end_index = len(energy_values)
+        elif self._period == SENSOR_PERIOD_MONTHLY:
+            start_index = 11 + date.today().month
+            end_index = start_index + 1
+        else:
+            start_index = 12
+            end_index = len(energy_values)
+        return round(sum(energy_values[start_index:end_index]), 3)
+
 
 
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
@@ -344,21 +339,31 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
-        res = None
-        managementPoints = self._device.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
-            if self._embedded_id == management_point["embeddedId"]:
-                if self._sub_type is not None:
-                    sub_type_data = management_point.get(self._sub_type)
-                    if sub_type_data is not None:
-                        management_point_v = sub_type_data.get("value")
-                        if management_point_v is not None:
-                            management_point = management_point_v
-                cd = management_point.get(self._value)
-                if cd is not None:
-                    res = cd.get("value")
-        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, res)
-        return res
+        """Return a typed characteristic or sensory value."""
+        point = self._device.management_point(self._embedded_id)
+        if point is None:
+            return None
+        if self._sub_type == "sensoryData":
+            sensory_data = point.sensory_data
+            if sensory_data is None:
+                return None
+            attribute = {
+                "roomTemperature": "room_temperature",
+                "outdoorTemperature": "outdoor_temperature",
+                "leavingWaterTemperature": "leaving_water_temperature",
+                "tankTemperature": "tank_temperature",
+                "roomHumidity": "room_humidity",
+                "pm1Concentration": "pm1_concentration",
+                "pm25Concentration": "pm25_concentration",
+                "pm10Concentration": "pm10_concentration",
+            }.get(self._value)
+            characteristic = getattr(sensory_data.value, attribute) if attribute is not None else None
+        else:
+            characteristic = point.characteristic(self._value)
+        result = characteristic.value if characteristic is not None else None
+        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
+        return result
+
 
 
 class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
