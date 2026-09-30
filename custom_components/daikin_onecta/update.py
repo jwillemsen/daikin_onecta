@@ -3,7 +3,6 @@ import logging
 from typing import Any
 
 from daikin_onecta.models import ManagementPoint
-
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.update import UpdateEntity
 from homeassistant.components.update import UpdateEntityFeature
@@ -58,7 +57,6 @@ async def async_setup_entry(
                 )
 
     async_add_entities(entities)
-
 
 
 class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
