@@ -390,7 +390,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             if self._attr_target_temperature != value:
                 operationmode = self.operation_mode()
                 if operationmode is not None:
-                    omv = operationmode["value"]
+                    omv = operationmode.value
                     res = await self._device.patch(
                         self._device.id,
                         self._embedded_id,
@@ -417,9 +417,9 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         operationmode = self.operation_mode()
         cc = self.climate_control()
         if cc is not None:
-            onoff = cc.get("onOffMode")
-            if onoff is not None and onoff["value"] != "off" and operationmode is not None:
-                mode = operationmode["value"]
+            onoff = cc.on_off_mode
+            if onoff is not None and onoff.value != "off" and operationmode is not None:
+                mode = operationmode.value
             _LOGGER.debug(
                 "Device '%s' %s hvac mode '%s'",
                 self._device.name,
@@ -433,12 +433,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         modes = [HVACMode.OFF]
         operationmode = self.operation_mode()
         if operationmode is not None:
-            if operationmode["settable"] is True:
-                for mode in operationmode["values"]:
+            if operationmode.settable:
+                for mode in operationmode.values or []:
                     ha_mode = DAIKIN_HVAC_TO_HA[mode]
                     if ha_mode not in modes:
                         modes.append(ha_mode)
-            currentmode = operationmode["value"]
+            currentmode = operationmode.value
             ha_currentmode = DAIKIN_HVAC_TO_HA[currentmode]
             if ha_currentmode not in modes:
                 modes.append(ha_currentmode)
@@ -477,11 +477,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     on_off_mode,
                 )
             else:
-                cc["onOffMode"]["value"] = on_off_mode
+                cc.on_off_mode.value = on_off_mode
 
         # Only set the operationMode when it has changed, also prevents setting it when
         # it is readOnly
-        if operation_mode is not None and operation_mode != cc["operationMode"]["value"]:
+        if operation_mode is not None and cc.operation_mode is not None and operation_mode != cc.operation_mode.value:
             result &= await self._device.patch(
                 self._device.id,
                 self._embedded_id,
@@ -496,7 +496,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     operation_mode,
                 )
             else:
-                cc["operationMode"]["value"] = operation_mode
+                cc.operation_mode.value = operation_mode
 
         if result is True:
             # When switching hvac mode it could be that we can set min/max/target/etc
@@ -892,12 +892,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
         cc = self.climate_control()
         result = True
-        if cc["onOffMode"]["value"] == "off":
+        if cc.on_off_mode is not None and cc.on_off_mode.value == "off":
             result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "on")
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
             else:
-                cc["onOffMode"]["value"] = "on"
+                cc.on_off_mode.value = "on"
                 self._attr_hvac_mode = self.get_hvac_mode()
                 self.async_write_ha_state()
         else:
@@ -912,12 +912,12 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
         cc = self.climate_control()
         result = True
-        if cc["onOffMode"]["value"] == "on":
+        if cc.on_off_mode is not None and cc.on_off_mode.value == "on":
             result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "off")
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
             else:
-                cc["onOffMode"]["value"] = "off"
+                cc.on_off_mode.value = "off"
                 self._attr_hvac_mode = self.get_hvac_mode()
                 self.async_write_ha_state()
         else:
