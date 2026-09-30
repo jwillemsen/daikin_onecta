@@ -215,12 +215,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if FANMODE_FIXED not in current_mode_values or not fan_speed.modes:
             return aliases
         fixed_mode = fan_speed.modes.get(FANMODE_FIXED)
-        if (
-            fixed_mode is None
-            or fixed_mode.min_value is None
-            or fixed_mode.max_value is None
-            or fixed_mode.step_value is None
-        ):
+        if fixed_mode is None or fixed_mode.min_value is None or fixed_mode.max_value is None or fixed_mode.step_value is None:
             return aliases
         fixed_values = {
             str(value)
@@ -600,7 +595,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             self.async_write_ha_state()
         return result
 
-
     def __get_swing_mode(self, direction):
         """Return current swing mode for an axis."""
         fan_operation = self.fan_operation()
@@ -654,7 +648,6 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if result:
             axis.current_mode.value = new_mode
         return result
-
 
     async def async_set_swing_mode(self, swing_mode):
         res = True
