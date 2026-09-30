@@ -91,7 +91,7 @@ async def async_setup_entry(
     coordinator = onecta_data.coordinator
     for device in onecta_data.devices.values():
         modes = []
-        device_model = device.daikin_data["deviceModel"]
+        device_model = device.device.device_model
         supported_management_point_types = {"climateControl"}
         embedded_id = ""
         for management_point in device.device.management_points:
@@ -181,6 +181,22 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         return cc.operation_mode if cc is not None else None
 
+    def fan_operation(self):
+        """Return fan controls for the active operation mode."""
+        cc = self.climate_control()
+        if cc is None or cc.fan_control is None or cc.operation_mode is None:
+            return None
+        return cc.fan_control.value.operation_modes.get(cc.operation_mode.value)
+
+    def preset_characteristic(self, daikin_mode):
+        """Return a preset characteristic by Daikin API name."""
+        cc = self.climate_control()
+        if cc is None:
+            return None
+        if daikin_mode == "holidayMode":
+            return cc.holiday_mode
+        return cc.characteristic(daikin_mode)
+
     @property
     def _homekit_fan_mode_aliases_enabled(self):
         """Return whether HomeKit fan mode aliases are enabled."""
@@ -269,21 +285,15 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             supported_features |= ClimateEntityFeature.PRESET_MODE
         cc = self.climate_control()
         if cc is not None:
-            fanControl = cc.get("fanControl")
-            if fanControl is not None:
-                operation_mode_data = cc.get("operationMode")
-                if operation_mode_data is not None:
-                    operationmode = operation_mode_data.get("value")
-                    operationmodedict = fanControl["value"]["operationModes"].get(operationmode)
-                    if operationmodedict is not None:
-                        if operationmodedict.get("fanSpeed") is not None:
-                            supported_features |= ClimateEntityFeature.FAN_MODE
-                        fan_direction = operationmodedict.get("fanDirection")
-                        if fan_direction is not None:
-                            if fan_direction.get("vertical") is not None:
-                                supported_features |= ClimateEntityFeature.SWING_MODE
-                            if fan_direction.get("horizontal") is not None:
-                                supported_features |= ClimateEntityFeature.SWING_HORIZONTAL_MODE
+            fan_operation = self.fan_operation()
+            if fan_operation is not None:
+                if fan_operation.fan_speed is not None:
+                    supported_features |= ClimateEntityFeature.FAN_MODE
+                if fan_operation.fan_direction is not None:
+                    if fan_operation.fan_direction.vertical is not None:
+                        supported_features |= ClimateEntityFeature.SWING_MODE
+                    if fan_operation.fan_direction.horizontal is not None:
+                        supported_features |= ClimateEntityFeature.SWING_HORIZONTAL_MODE
 
             _LOGGER.debug("Device '%s' supports features %s", self._device.name, supported_features)
 
