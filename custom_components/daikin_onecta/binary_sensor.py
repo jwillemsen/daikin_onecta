@@ -42,28 +42,18 @@ async def async_setup_entry(
     coordinator = onecta_data.coordinator
     sensors = []
     for device in onecta_data.devices.values():
-        management_points = device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            embedded_id = management_point["embeddedId"]
-
-            # For all values provide a "value" we provide a sensor
-            for value in management_point:
-                vv = management_point.get(value)
-                if isinstance(vv, dict):
-                    value_value = vv.get("value")
-                    values = vv.get("values")
-                    if values is None and value_value is not None and isinstance(value_value, bool):
-                        # We don't have multiple values and we do have a value which is a boolean
-                        sensors.append(
-                            DaikinBinarySensor(
-                                device,
-                                coordinator,
-                                embedded_id,
-                                management_point_type,
-                                value,
-                            )
+        for management_point in device.device.management_points:
+            for value, characteristic in management_point.simple_characteristics().items():
+                if characteristic.values is None and isinstance(characteristic.value, bool):
+                    sensors.append(
+                        DaikinBinarySensor(
+                            device,
+                            coordinator,
+                            management_point.embedded_id,
+                            management_point.management_point_type,
+                            value,
                         )
+                    )
 
     async_add_entities(sensors)
 
@@ -123,12 +113,9 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
-        res = None
-        managementPoints = self._device.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
-            if self._embedded_id == management_point["embeddedId"]:
-                cd = management_point.get(self._value)
-                if cd is not None:
-                    res = cd.get("value")
-        _LOGGER.debug("Device '%s' binary sensor '%s' value '%s'", self._device.name, self._value, res)
-        return res
+        """Return the binary characteristic value."""
+        point = self._device.management_point(self._embedded_id)
+        characteristic = point.characteristic(self._value) if point is not None else None
+        result = characteristic.value if characteristic is not None else None
+        _LOGGER.debug("Device '%s' binary sensor '%s' value '%s'", self._device.name, self._value, result)
+        return result
