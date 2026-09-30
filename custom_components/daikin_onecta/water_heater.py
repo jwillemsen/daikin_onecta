@@ -37,9 +37,7 @@ async def async_setup_entry(
         for management_point in device.device.management_points:
             management_point_type = management_point.management_point_type
             if management_point_type in supported_management_point_types:
-                async_add_entities(
-                    [DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)]
-                )
+                async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)])
             else:
                 _LOGGER.info(
                     "Device '%s' '%s' is not a tank management point, ignoring as water heater",
@@ -104,7 +102,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         if heating is None:
             return None
         return heating.setpoints.get("domesticHotWaterTemperature")
-
 
     def get_supported_features(self):
         sf = WaterHeaterEntityFeature.OPERATION_MODE | WaterHeaterEntityFeature.ON_OFF
