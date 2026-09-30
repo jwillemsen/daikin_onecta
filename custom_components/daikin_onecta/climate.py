@@ -93,19 +93,13 @@ async def async_setup_entry(
         modes = []
         device_model = device.daikin_data["deviceModel"]
         supported_management_point_types = {"climateControl"}
-        managementPoints = device.daikin_data.get("managementPoints", [])
         embedded_id = ""
-        for management_point in managementPoints:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
-                embedded_id = management_point.get("embeddedId")
-                # Check if we have a temperatureControl
-                temperatureControl = management_point.get("temperatureControl")
-                if temperatureControl is not None:
-                    for operationmode in temperatureControl["value"]["operationModes"]:
-                        # for modes in operationmode["setpoints"]:
-                        for c in temperatureControl["value"]["operationModes"][operationmode]["setpoints"]:
-                            modes.append(c)
+        for management_point in device.device.management_points:
+            if management_point.management_point_type in supported_management_point_types:
+                embedded_id = management_point.embedded_id
+                if management_point.temperature_control is not None:
+                    for operation_mode in management_point.temperature_control.value.operation_modes.values():
+                        modes.extend(operation_mode.setpoints)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)
@@ -179,21 +173,13 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return self._device.available
 
     def climate_control(self):
-        cc = None
-        supported_management_point_types = {"climateControl"}
-        management_points = self._device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
-                cc = management_point
-        return cc
+        """Return the typed climate-control management point."""
+        return self._device.management_point(self._embedded_id)
 
     def operation_mode(self):
-        om = None
+        """Return the operation-mode characteristic."""
         cc = self.climate_control()
-        if cc is not None:
-            om = cc.get("operationMode")
-        return om
+        return cc.operation_mode if cc is not None else None
 
     @property
     def _homekit_fan_mode_aliases_enabled(self):
@@ -246,56 +232,39 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         return self._homekit_fan_mode_aliases(fan_speed).get(fan_mode, fan_mode)
 
     def setpoint(self):
-        setpoint = None
+        """Return the active operation-mode setpoint."""
         cc = self.climate_control()
-        if cc is not None:
-            # Check if we have a temperatureControl
-            temperature_control = cc.get("temperatureControl")
-            if temperature_control is not None:
-                operation_mode_data = cc.get("operationMode")
-                if operation_mode_data is not None:
-                    operation_mode = operation_mode_data.get("value")
-                    # For not all operationModes there is a temperatureControl setpoint available
-                    oo = temperature_control["value"]["operationModes"].get(operation_mode)
-                    if oo is not None:
-                        setpoint = oo["setpoints"].get(self._setpoint)
-                    _LOGGER.debug(
-                        "Device '%s' %s operation mode %s has setpoint %s",
-                        self._device.name,
-                        self._setpoint,
-                        operation_mode,
-                        setpoint,
-                    )
-        return setpoint
+        if cc is None or cc.temperature_control is None or cc.operation_mode is None:
+            return None
+        operation_mode = cc.temperature_control.value.operation_modes.get(cc.operation_mode.value)
+        if operation_mode is None:
+            return None
+        return operation_mode.setpoints.get(self._setpoint)
 
     def sensory_data(self, setpoint):
-        sensoryData = None
-        supported_management_point_types = {"climateControl"}
-        management_points = self._device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
-                # Check if we have a sensoryData
-                sensoryData = management_point.get("sensoryData")
-                _LOGGER.debug("Climate: Device sensoryData %s", sensoryData)
-                if sensoryData is not None:
-                    value = sensoryData.get("value")
-                    if value is not None:
-                        sensoryData = value.get(setpoint)
-                        _LOGGER.debug(
-                            "Device '%s' %s sensoryData %s",
-                            self._device.name,
-                            setpoint,
-                            sensoryData,
-                        )
-        return sensoryData
+        """Return a sensory characteristic by Daikin API name."""
+        cc = self.climate_control()
+        if cc is None or cc.sensory_data is None:
+            return None
+        attribute = {
+            "roomTemperature": "room_temperature",
+            "outdoorTemperature": "outdoor_temperature",
+            "leavingWaterTemperature": "leaving_water_temperature",
+            "tankTemperature": "tank_temperature",
+            "roomHumidity": "room_humidity",
+            "pm1Concentration": "pm1_concentration",
+            "pm25Concentration": "pm25_concentration",
+            "pm10Concentration": "pm10_concentration",
+        }.get(setpoint)
+        return getattr(cc.sensory_data.value, attribute) if attribute is not None else None
+
 
     def get_supported_features(self):
         supported_features = 0
         if hasattr(ClimateEntityFeature, "TURN_OFF"):
             supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
         setpointdict = self.setpoint()
-        if setpointdict is not None and setpointdict["settable"] is True:
+        if setpointdict is not None and setpointdict.settable:
             supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
         if len(self.get_preset_modes()) > 1:
             supported_features |= ClimateEntityFeature.PRESET_MODE
@@ -332,14 +301,14 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         sensory_data = self.sensory_data(self._setpoint)
         # Check if there is a sensoryData which is for the same setpoint, if so, return that
         if sensory_data is not None:
-            current_temp = sensory_data["value"]
+            current_temp = sensory_data.value
         else:
             # There is no sensoryData with the same name as the setpoint we are using, see
             # if we are using leavingWaterOffset, at that moment see if we have a
             # leavingWaterTemperature temperature
             lwsensor = self.sensory_data("leavingWaterTemperature")
             if self._setpoint == "leavingWaterOffset" and lwsensor is not None:
-                current_temp = lwsensor["value"]
+                current_temp = lwsensor.value
         _LOGGER.debug(
             "Device '%s' %s current temperature '%s'",
             self._device.name,
@@ -352,7 +321,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         max_temp = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            max_temp = setpointdict["maxValue"]
+            max_temp = setpointdict.max_value
         else:
             max_temp = super().max_temp
         _LOGGER.debug(
@@ -367,7 +336,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         min_temp = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            min_temp = setpointdict["minValue"]
+            min_temp = setpointdict.min_value
         else:
             min_temp = super().min_temp
         _LOGGER.debug(
@@ -382,7 +351,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         value = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            value = setpointdict["value"]
+            value = setpointdict.value
         _LOGGER.debug(
             "Device '%s' %s target temperature '%s'",
             self._device.name,
@@ -395,9 +364,8 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         step_value = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            step = setpointdict.get("stepValue")
-            if step is not None:
-                step_value = setpointdict["stepValue"]
+            if setpointdict.step_value is not None:
+                step_value = setpointdict.step_value
             else:
                 step_value = super().target_temperature_step
         _LOGGER.debug(
