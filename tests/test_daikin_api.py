@@ -38,4 +38,4 @@ async def test_get_device_details_propagates_network_errors(
         pytest.raises(type(error)),
     ):
         api = DaikinApi(hass, config_entry, MagicMock())
-        await api.getCloudDeviceDetails()
+        await api.get_cloud_device_details()
