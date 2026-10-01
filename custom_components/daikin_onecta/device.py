@@ -25,10 +25,9 @@ class DaikinOnectaDevice:
         self.id: str = device.id
         self.name: str = device.device_model
 
-        for management_point in device.management_points:
-            if management_point.management_point_type == "climateControl" and management_point.name is not None:
-                if management_point.name.value:
-                    self.name = management_point.name.value
+        for management_point in device.management_points_by_type("climateControl"):
+            if management_point.name is not None and management_point.name.value:
+                self.name = management_point.name.value
 
         # Populated by async_register_ha_device() before any entity platform is set
         # up. Sub-entities (per-management-point devices in sensor/water_heater/
@@ -46,7 +45,7 @@ class DaikinOnectaDevice:
 
     def management_point(self, embedded_id: str):
         """Return a management point by embedded id."""
-        return next((point for point in self.device.management_points if point.embedded_id == embedded_id), None)
+        return self.device.management_point(embedded_id)
 
     def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
         """Fill Home Assistant device information from a typed management point."""
