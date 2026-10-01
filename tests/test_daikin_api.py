@@ -35,9 +35,8 @@ async def test_access_token(hass: HomeAssistant, config_entry: MockConfigEntry) 
     """Return the OAuth access token after ensuring it is valid."""
     api = DaikinApi(hass, config_entry, MagicMock())
     api.session.async_ensure_token_valid = AsyncMock()
-    api.session.token = {"access_token": "token"}
-
-    assert await api.async_get_access_token() == "token"
+    with patch.object(type(api.session), "token", new_callable=lambda: property(lambda self: {"access_token": "token"})):
+        assert await api.async_get_access_token() == "token"
     api.session.async_ensure_token_valid.assert_awaited_once()
 
 
@@ -140,7 +139,7 @@ async def test_write_rate_limit(
     assert api._last_patch_call is None
 
 
-def test_rate_limit_issue_updates(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+async def test_rate_limit_issue_updates(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
     """Create and remove Home Assistant rate-limit repair issues."""
     api = DaikinApi(hass, config_entry, MagicMock())
     api._client.rate_limit = RateLimit(minute_remaining=0, day_remaining=0)
