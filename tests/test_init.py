@@ -446,7 +446,7 @@ async def test_climate_homekit_fan_mode_aliases(
         )
         await hass.async_block_till_done()
 
-        assert aioclient_mock.mock_calls[-1][2] == '{"value": 3, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert aioclient_mock.mock_calls[-1][2] == {"value": 3, "path": "/operationModes/heating/fanSpeed/modes/fixed"}
     assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
 
 
@@ -467,7 +467,7 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     climate = DaikinClimate.__new__(DaikinClimate)
     climate.coordinator = MagicMock(options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
 
-    assert climate._homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"values": ["quiet", "auto"]}})) == {FAN_LOW: "quiet"}
+    assert climate._homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {FAN_LOW: "quiet"}
 
     assert climate._homekit_fan_mode_aliases(
         {
@@ -994,7 +994,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 5
-        assert aioclient_mock.mock_calls[4][2] == '{"value": "heating"}'
+        assert aioclient_mock.mock_calls[4][2] == {"value": "heating"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
 
         # Turn off the device through the hvac mode
