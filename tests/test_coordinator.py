@@ -119,7 +119,6 @@ class TestOnectaDataUpdateCoordinator:
         assert exc_info.value.retry_after == 3060
         assert coordinator.update_interval == timedelta(minutes=10)
 
-
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""
         options = {

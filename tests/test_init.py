@@ -11,7 +11,6 @@ import pytest
 from daikin_onecta import GatewayDevice
 from daikin_onecta.models import Characteristic
 from daikin_onecta.models import FanSpeed
-from daikin_onecta.models import ManagementPoint
 from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN
 from homeassistant.components.button import SERVICE_PRESS
 from homeassistant.components.climate import ATTR_FAN_MODE
@@ -66,19 +65,19 @@ from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
-from custom_components.daikin_onecta.device import DaikinOnectaDevice
-from custom_components.daikin_onecta.select import DaikinScheduleSelect
-from custom_components.daikin_onecta.switch import DaikinSwitch
-from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
-from custom_components.daikin_onecta.water_heater import DaikinWaterTank
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
 from custom_components.daikin_onecta.const import SCHEDULE_OFF
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
+from custom_components.daikin_onecta.device import DaikinOnectaDevice
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
 from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
+from custom_components.daikin_onecta.select import DaikinScheduleSelect
+from custom_components.daikin_onecta.switch import DaikinSwitch
 from custom_components.daikin_onecta.system_health import async_register
 from custom_components.daikin_onecta.system_health import system_health_info
+from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
+from custom_components.daikin_onecta.water_heater import DaikinWaterTank
 
 
 @pytest.mark.asyncio
