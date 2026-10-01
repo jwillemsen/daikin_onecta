@@ -33,16 +33,10 @@ async def async_setup_entry(
             "domesticHotWaterTank",
             "domesticHotWaterFlowThrough",
         }
-        """ When the device has a domesticHotWaterTank we add a water heater """
-        for management_point in device.device.management_points:
-            management_point_type = management_point.management_point_type
-            if management_point_type in supported_management_point_types:
-                async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)])
-            else:
-                _LOGGER.info(
-                    "Device '%s' '%s' is not a tank management point, ignoring as water heater",
-                    device.name,
-                    management_point_type,
+        for management_point_type in supported_management_point_types:
+            for management_point in device.device.management_points_by_type(management_point_type):
+                async_add_entities(
+                    [DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)]
                 )
 
 
