@@ -15,6 +15,7 @@ from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 from syrupy import SnapshotAssertion
+from syrupy.extensions.single_file import SingleFileAmberSnapshotExtension
 from syrupy.filters import props
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
@@ -108,11 +109,31 @@ async def snapshot_platform_entities(
     entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
 
     assert entity_entries
-    for entity_entry in entity_entries:
-        assert entity_entry == snapshot(name=f"{entity_entry.entity_id}-entry")
 
-        # Exclude attributes.friendly_name
-        assert hass.states.get(entity_entry.entity_id) == snapshot(name=f"{entity_entry.entity_id}-state", exclude=props("friendly_name"))
+    entity_snapshot = {}
+    for entity_entry in entity_entries:
+        registry_data = dict(entity_entry.as_partial_dict)
+        for key in ("config_entry_id", "created_at", "device_id", "id", "modified_at"):
+            registry_data.pop(key, None)
+
+        state = hass.states.get(entity_entry.entity_id)
+        assert state is not None
+        state_data = dict(state.as_dict())
+        state_data.pop("last_changed", None)
+        state_data.pop("last_reported", None)
+        state_data.pop("last_updated", None)
+        state_data.pop("context", None)
+
+        entity_snapshot[entity_entry.entity_id] = {
+            "entry": registry_data,
+            "state": state_data,
+        }
+
+    assert entity_snapshot == snapshot(
+        name=fixture_device_json,
+        exclude=props("friendly_name"),
+        extension_class=SingleFileAmberSnapshotExtension,
+    )
 
 
 @pytest.fixture(name="config_entry")
