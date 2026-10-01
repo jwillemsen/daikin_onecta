@@ -127,8 +127,9 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
             schedule_id,
             enabled=option != SCHEDULE_OFF,
         )
-        self._attr_current_option = option
-        self.async_write_ha_state()
+        if result:
+            self._attr_current_option = option
+            self.async_write_ha_state()
         return result
 
     def get_options(self):
