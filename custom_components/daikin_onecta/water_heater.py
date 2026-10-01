@@ -35,9 +35,7 @@ async def async_setup_entry(
         }
         for management_point_type in supported_management_point_types:
             for management_point in device.device.management_points_by_type(management_point_type):
-                async_add_entities(
-                    [DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)]
-                )
+                async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)])
 
 
 class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
