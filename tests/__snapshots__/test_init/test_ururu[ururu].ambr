@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.870251,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.daikinap95800_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.870282,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.87043,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.daikinap95800_climatecontrol_is_in_error_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.87046,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.870597,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.daikinap95800_climatecontrol_is_powerful_mode_active',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.870623,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -107,8 +98,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.870035,
-        'device_id': '8964563da04e4fde57891982dec74a9c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.daikinap95800_gateway_is_firmware_update_supported',
@@ -117,7 +106,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.870074,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -140,8 +128,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.874882,
-        'device_id': '0bb4b1f86cbd5ff8f7259f3d02ee041e',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.daikinap95800_refresh',
@@ -150,7 +136,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.874912,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -173,8 +158,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.858983,
-        'device_id': '0bb4b1f86cbd5ff8f7259f3d02ee041e',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.daikinap95800_room_temperature',
@@ -183,7 +166,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.859027,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -243,8 +225,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.868362,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.daikinap95800_climatecontrol_schedule',
@@ -253,7 +233,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.868398,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -282,8 +261,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.86139,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.daikinap95800_climatecontrol_error_code',
@@ -292,7 +269,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.861417,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -315,8 +291,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.862037,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.daikinap95800_climatecontrol_outdoor_temperature',
@@ -325,7 +299,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.862146,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -354,8 +327,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.861576,
-        'device_id': '20300af7d048a9c4b39801ca75609fd2',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.daikinap95800_climatecontrol_room_temperature',
@@ -364,7 +335,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.861684,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -393,8 +363,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.861134,
-        'device_id': '8964563da04e4fde57891982dec74a9c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.daikinap95800_gateway_ip_address',
@@ -403,7 +371,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.861167,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -426,8 +393,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.86088,
-        'device_id': '8964563da04e4fde57891982dec74a9c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.daikinap95800_gateway_ratelimit_remaining_day',
@@ -436,7 +401,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.860921,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -460,8 +424,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.872806,
-        'device_id': '8964563da04e4fde57891982dec74a9c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.daikinap95800_gateway_firmware_update',
@@ -470,7 +432,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.872843,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -506,8 +467,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.873072,
-        'device_id': '55ba3054d9f25310f4af4d0d03a76b00',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.daikinap95800_indoorunit_firmware_update',
@@ -516,7 +475,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.873099,
         'name': None,
         'options': ReadOnlyDict({
         }),

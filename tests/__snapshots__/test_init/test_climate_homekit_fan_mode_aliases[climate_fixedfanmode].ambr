@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.484911,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.484937,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.485068,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_caution_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.485093,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.485219,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.485243,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.485367,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_warning_state',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.485391,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -142,8 +130,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.485524,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active',
@@ -152,7 +138,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.485548,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.484516,
-        'device_id': '06182afedd7a46e144c2ac5e1ee7f109',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_is_firmware_update_supported',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.484552,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -208,8 +190,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.484733,
-        'device_id': '06182afedd7a46e144c2ac5e1ee7f109',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_is_in_error_state',
@@ -218,7 +198,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.484763,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.486002,
-        'device_id': '4b840d10b9e7f3ab7d39a793907c61b6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_caution_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.486025,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.485679,
-        'device_id': '4b840d10b9e7f3ab7d39a793907c61b6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_error_state',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.485729,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -310,8 +283,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.485856,
-        'device_id': '4b840d10b9e7f3ab7d39a793907c61b6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_warning_state',
@@ -320,7 +291,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.485879,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -344,8 +314,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.489074,
-        'device_id': 'd02f1a2797bffcfe13dd18348d13802f',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.werkkamer_refresh',
@@ -354,7 +322,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.489104,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -377,8 +344,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.468139,
-        'device_id': 'd02f1a2797bffcfe13dd18348d13802f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.werkkamer_room_temperature',
@@ -387,7 +352,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.468194,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -454,8 +418,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.482768,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.werkkamer_climatecontrol_schedule',
@@ -464,7 +426,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.482806,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -491,8 +452,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.474866,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption',
@@ -501,7 +460,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.474971,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -530,8 +488,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.47574,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
@@ -540,7 +496,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.475848,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -569,8 +524,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.475304,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption',
@@ -579,7 +532,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.475419,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -608,8 +560,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.476163,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption',
@@ -618,7 +568,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.476278,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -647,8 +596,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.471957,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_climatecontrol_error_code',
@@ -657,7 +604,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.471983,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -680,8 +626,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.473118,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
@@ -690,7 +634,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.473236,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -719,8 +662,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.473989,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
@@ -729,7 +670,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.474106,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -758,8 +698,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.473562,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption',
@@ -768,7 +706,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.473669,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -797,8 +734,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.474435,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption',
@@ -807,7 +742,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.474545,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -836,8 +770,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.472599,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_temperature',
@@ -846,7 +778,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.472742,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -875,8 +806,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.472134,
-        'device_id': 'aeab94cdd8dab32a1b793b2756359dc9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_room_temperature',
@@ -885,7 +814,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.472239,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -914,8 +842,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.471519,
-        'device_id': '06182afedd7a46e144c2ac5e1ee7f109',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_error_code',
@@ -924,7 +850,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.47155,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -947,8 +872,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.471735,
-        'device_id': '06182afedd7a46e144c2ac5e1ee7f109',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_ip_address',
@@ -957,7 +880,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.471763,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -980,8 +902,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.471262,
-        'device_id': '06182afedd7a46e144c2ac5e1ee7f109',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
@@ -990,7 +910,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.471304,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1014,8 +933,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.476645,
-        'device_id': '4b840d10b9e7f3ab7d39a793907c61b6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_outdoorunit_error_code',
@@ -1024,7 +941,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.476675,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1047,8 +963,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.491236,
-        'device_id': '06182afedd7a46e144c2ac5e1ee7f109',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.werkkamer_gateway_firmware_update',
@@ -1057,7 +971,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.491268,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1093,8 +1006,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.491498,
-        'device_id': '294a929c525be350aa29127a89862976',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.werkkamer_indoorunit_firmware_update',
@@ -1103,7 +1014,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.491524,
         'name': None,
         'options': ReadOnlyDict({
         }),

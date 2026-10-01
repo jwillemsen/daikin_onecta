@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.601085,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.601114,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.60126,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_climatecontrol_is_in_emergency_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.601287,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.601419,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.601444,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.601565,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_climatecontrol_is_in_installer_state',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.60159,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -141,8 +129,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.601708,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_climatecontrol_is_in_warning_state',
@@ -151,7 +137,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.601739,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.602083,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_domestichotwatertank_is_holiday_mode_active',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.602113,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -208,8 +190,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.602263,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_domestichotwatertank_is_in_emergency_state',
@@ -218,7 +198,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.60229,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.602423,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_domestichotwatertank_is_in_error_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.602448,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.602596,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_domestichotwatertank_is_in_installer_state',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.602622,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -309,8 +282,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.603498,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_domestichotwatertank_is_in_warning_state',
@@ -319,7 +290,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.603532,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -343,8 +313,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.600888,
-        'device_id': 'fee874f3d86142a7c3706eeccbd92c1e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.climate_control_getr422_gateway_is_firmware_update_supported',
@@ -353,7 +321,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.600927,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -376,8 +343,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.605422,
-        'device_id': 'af9568363db537d1fb098573c6ac60b4',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.climate_control_getr422_refresh',
@@ -386,7 +351,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.605453,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -409,8 +373,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.576121,
-        'device_id': 'af9568363db537d1fb098573c6ac60b4',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.climate_control_getr422_leaving_water_temperature',
@@ -419,7 +381,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.57618,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -455,8 +416,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.580431,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_control_mode',
@@ -465,7 +424,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.580466,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -488,8 +446,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.58762,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_cooling_daily_electrical_consumption',
@@ -498,7 +454,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.587731,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -527,8 +482,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.58848,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_cooling_monthly_electrical_consumption',
@@ -537,7 +490,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.588599,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -566,8 +518,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.588047,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_cooling_weekly_electrical_consumption',
@@ -576,7 +526,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.588151,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -605,8 +554,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.588941,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_cooling_yearly_electrical_consumption',
@@ -615,7 +562,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.589054,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -644,8 +590,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.58068,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_error_code',
@@ -654,7 +598,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.580716,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -677,8 +620,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.585731,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_heating_daily_electrical_consumption',
@@ -687,7 +628,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.58586,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -716,8 +656,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.586663,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_heating_monthly_electrical_consumption',
@@ -726,7 +664,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.586789,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -755,8 +692,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.586202,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_heating_weekly_electrical_consumption',
@@ -765,7 +700,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.586319,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -794,8 +728,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.58715,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_heating_yearly_electrical_consumption',
@@ -804,7 +736,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.58727,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -833,8 +764,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.584668,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_leaving_water_temperature',
@@ -843,7 +772,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.584792,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -872,8 +800,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.5809,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_on_off_mode',
@@ -882,7 +808,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.580931,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -905,8 +830,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.585211,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_outdoor_temperature',
@@ -915,7 +838,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.585345,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -944,8 +866,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.584414,
-        'device_id': '1217e0cd57a5c30116da2ba683e1fcb6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_climatecontrol_setpoint_mode',
@@ -954,7 +874,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.584461,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -977,8 +896,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.589415,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_error_code',
@@ -987,7 +904,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.589447,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1010,8 +926,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.589618,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_heat_up_mode',
@@ -1020,7 +934,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.589648,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1043,8 +956,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.59058,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_heating_daily_electrical_consumption',
@@ -1053,7 +964,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.590698,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1082,8 +992,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.591427,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_heating_monthly_electrical_consumption',
@@ -1092,7 +1000,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.591531,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1121,8 +1028,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.591015,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_heating_weekly_electrical_consumption',
@@ -1131,7 +1036,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.591124,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1160,8 +1064,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.591845,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_heating_yearly_electrical_consumption',
@@ -1170,7 +1072,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.591962,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1199,8 +1100,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.589799,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_on_off_mode',
@@ -1209,7 +1108,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.589826,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1232,8 +1130,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.58997,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_setpoint_mode',
@@ -1242,7 +1138,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.589997,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1265,8 +1160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.59014,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_domestichotwatertank_tank_temperature',
@@ -1275,7 +1168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.590238,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1304,8 +1196,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.580148,
-        'device_id': 'fee874f3d86142a7c3706eeccbd92c1e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.climate_control_getr422_gateway_ip_address',
@@ -1314,7 +1204,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.580187,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1337,8 +1226,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.579842,
-        'device_id': 'fee874f3d86142a7c3706eeccbd92c1e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.climate_control_getr422_gateway_ratelimit_remaining_day',
@@ -1347,7 +1234,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.579899,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1371,8 +1257,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.592325,
-        'device_id': '5abb0e2ccdd456dbdfd5a3bc99758ee9',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.climate_control_getr422_userinterface_sgtin',
@@ -1381,7 +1265,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.592354,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1404,8 +1287,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.607624,
-        'device_id': 'fee874f3d86142a7c3706eeccbd92c1e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.climate_control_getr422_gateway_firmware_update',
@@ -1414,7 +1295,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.607658,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1451,8 +1331,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.608051,
-        'device_id': '5ad82eb623ea91ed751ccb394f3e6a4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.climate_control_getr422_indoorunithydro_firmware_update',
@@ -1461,7 +1339,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.608081,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1497,8 +1374,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.608277,
-        'device_id': '47c4faae98d59d2738fd9f3894ba8aff',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.climate_control_getr422_outdoorunit_firmware_update',
@@ -1507,7 +1382,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.608304,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1543,8 +1417,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.608462,
-        'device_id': '5abb0e2ccdd456dbdfd5a3bc99758ee9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.climate_control_getr422_userinterface_firmware_update',
@@ -1553,7 +1425,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.608489,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1589,8 +1460,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.59553,
-        'device_id': 'f030f7a41d6d083261e9e49fb28bcae7',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.climate_control_getr422',
@@ -1599,7 +1468,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.595562,
         'name': None,
         'options': ReadOnlyDict({
         }),

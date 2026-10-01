@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.283903,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.28394,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.284113,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_powerful_mode_active',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.284144,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -73,8 +67,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.282232,
-        'device_id': 'a5d7990476d34ef39123846ee04866af',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.my_living_room_refresh',
@@ -83,7 +75,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.282266,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -106,8 +97,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.25823,
-        'device_id': 'a5d7990476d34ef39123846ee04866af',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
@@ -116,7 +105,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.258264,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -154,8 +142,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.257694,
-        'device_id': 'a5d7990476d34ef39123846ee04866af',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.my_living_room_leaving_water_temperature',
@@ -164,7 +150,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.257733,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -202,8 +187,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.256975,
-        'device_id': 'a5d7990476d34ef39123846ee04866af',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.my_living_room_room_temperature',
@@ -212,7 +195,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.257026,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -251,8 +233,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.278687,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.my_living_room_climatecontrol_schedule',
@@ -261,7 +241,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.278725,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -289,8 +268,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.261985,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_control_mode',
@@ -299,7 +276,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.262017,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -322,8 +298,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.265798,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption',
@@ -332,7 +306,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.26591,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -361,8 +334,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.269556,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_gas_consumption',
@@ -371,7 +342,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.269664,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -400,8 +370,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.266707,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_electrical_consumption',
@@ -410,7 +378,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.266823,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -439,8 +406,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.270501,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption',
@@ -449,7 +414,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.27062,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -478,8 +442,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.266253,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption',
@@ -488,7 +450,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.266374,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -517,8 +478,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.270012,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_gas_consumption',
@@ -527,7 +486,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.270141,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -556,8 +514,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.267162,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_electrical_consumption',
@@ -566,7 +522,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.267294,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -595,8 +550,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.270972,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_gas_consumption',
@@ -605,7 +558,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.271093,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -634,8 +586,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.262187,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heat_up_mode',
@@ -644,7 +594,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.262215,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -667,8 +616,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.263944,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_electrical_consumption',
@@ -677,7 +624,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.26407,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -706,8 +652,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.267667,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_gas_consumption',
@@ -716,7 +660,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.26779,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -745,8 +688,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.26488,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption',
@@ -755,7 +696,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.265007,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -784,8 +724,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.26861,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption',
@@ -794,7 +732,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.268744,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -823,8 +760,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.26441,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption',
@@ -833,7 +768,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.264525,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -862,8 +796,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.268146,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_gas_consumption',
@@ -872,7 +804,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.268263,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -901,8 +832,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.26535,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_electrical_consumption',
@@ -911,7 +840,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.265465,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -940,8 +868,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.269101,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_gas_consumption',
@@ -950,7 +876,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.269214,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -979,8 +904,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.263485,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_leaving_water_temperature',
@@ -989,7 +912,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.263595,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1018,8 +940,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.263027,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_outdoor_temperature',
@@ -1028,7 +948,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.263143,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1057,8 +976,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.262534,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_room_temperature',
@@ -1067,7 +984,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.262645,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1096,8 +1012,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.262361,
-        'device_id': '9b06ce64f2a72284dc5c183aaa3058e3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_setpoint_mode',
@@ -1106,7 +1020,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.262388,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1129,8 +1042,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.271507,
-        'device_id': '58a861bebeada2329c710958a28ec819',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_domestichotwatertank_tank_temperature',
@@ -1139,7 +1050,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.271633,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1168,8 +1078,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.261725,
-        'device_id': '00c7602948f07f71fd8ab4cdf02b8f99',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.my_living_room_gateway_ip_address',
@@ -1178,7 +1086,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.261758,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1201,8 +1108,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.26146,
-        'device_id': '00c7602948f07f71fd8ab4cdf02b8f99',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.my_living_room_gateway_ratelimit_remaining_day',
@@ -1211,7 +1116,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.261499,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1235,8 +1139,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.286402,
-        'device_id': '00c7602948f07f71fd8ab4cdf02b8f99',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.my_living_room_gateway_firmware_update',
@@ -1245,7 +1147,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.286436,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1282,8 +1183,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.286699,
-        'device_id': '2f161ee961fb162f55059d9f7baecd38',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.my_living_room_indoorunithydro_firmware_update',
@@ -1292,7 +1191,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.286729,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1328,8 +1226,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.286941,
-        'device_id': '3b28f9ed4b060c64a4cad46269fb7394',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.my_living_room_outdoorunit_firmware_update',
@@ -1338,7 +1234,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.286968,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1374,8 +1269,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.275862,
-        'device_id': '58a861bebeada2329c710958a28ec819',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.my_living_room',
@@ -1384,7 +1277,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.275898,
         'name': None,
         'options': ReadOnlyDict({
         }),

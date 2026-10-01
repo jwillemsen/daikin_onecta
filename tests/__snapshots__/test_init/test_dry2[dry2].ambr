@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708099,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.708121,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708231,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_in_caution_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.708252,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708358,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.708378,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708485,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_in_warning_state',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.708507,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -142,8 +130,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707833,
-        'device_id': 'f71473a54c5d4821f63e21e047dd5163',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_gateway_is_firmware_update_supported',
@@ -152,7 +138,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707855,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707967,
-        'device_id': 'f71473a54c5d4821f63e21e047dd5163',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_gateway_is_in_error_state',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707988,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -209,8 +191,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708919,
-        'device_id': 'e46231651f528ce1315b255a5ed54ac4',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_outdoorunit_is_in_caution_state',
@@ -219,7 +199,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70894,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -243,8 +222,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708622,
-        'device_id': 'e46231651f528ce1315b255a5ed54ac4',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_outdoorunit_is_in_error_state',
@@ -253,7 +230,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.708642,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -277,8 +253,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.708785,
-        'device_id': 'e46231651f528ce1315b255a5ed54ac4',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_outdoorunit_is_in_warning_state',
@@ -287,7 +261,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.708807,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -311,8 +284,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710593,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_holiday_mode_active',
@@ -321,7 +292,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710614,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -344,8 +314,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710724,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_in_caution_state',
@@ -354,7 +322,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710745,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -378,8 +345,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710851,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_in_error_state',
@@ -388,7 +353,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710872,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -412,8 +376,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710977,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_in_warning_state',
@@ -422,7 +384,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710997,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -446,8 +407,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710306,
-        'device_id': '94b1bd0b3d367aacc8a1fcb37ccfeada',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_gateway_is_firmware_update_supported',
@@ -456,7 +415,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.71033,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -479,8 +437,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710454,
-        'device_id': '94b1bd0b3d367aacc8a1fcb37ccfeada',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_gateway_is_in_error_state',
@@ -489,7 +445,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710477,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -513,8 +468,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.711378,
-        'device_id': '6a1b81ce7b1f390ee47193ca02301bf0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_outdoorunit_is_in_caution_state',
@@ -523,7 +476,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.711398,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -547,8 +499,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.711105,
-        'device_id': '6a1b81ce7b1f390ee47193ca02301bf0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_outdoorunit_is_in_error_state',
@@ -557,7 +507,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.711126,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -581,8 +530,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.711246,
-        'device_id': '6a1b81ce7b1f390ee47193ca02301bf0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_outdoorunit_is_in_warning_state',
@@ -591,7 +538,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.711267,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -615,8 +561,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705659,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_holiday_mode_active',
@@ -625,7 +569,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705681,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -648,8 +591,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705791,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_in_caution_state',
@@ -658,7 +599,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705812,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -682,8 +622,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705924,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_in_error_state',
@@ -692,7 +630,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705945,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -716,8 +653,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.706062,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_in_warning_state',
@@ -726,7 +661,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.706084,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -750,8 +684,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705393,
-        'device_id': '17ef9b0d66a099e3908971b8481effa7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_gateway_is_firmware_update_supported',
@@ -760,7 +692,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705416,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -783,8 +714,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705529,
-        'device_id': '17ef9b0d66a099e3908971b8481effa7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_gateway_is_in_error_state',
@@ -793,7 +722,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70555,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -817,8 +745,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.706456,
-        'device_id': 'a6268bb068e7db72c530bde459b74998',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_outdoorunit_is_in_caution_state',
@@ -827,7 +753,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.706477,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -851,8 +776,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.706199,
-        'device_id': 'a6268bb068e7db72c530bde459b74998',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_outdoorunit_is_in_error_state',
@@ -861,7 +784,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70622,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -885,8 +807,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.70633,
-        'device_id': 'a6268bb068e7db72c530bde459b74998',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_outdoorunit_is_in_warning_state',
@@ -895,7 +815,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70635,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -919,8 +838,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.706883,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_holiday_mode_active',
@@ -929,7 +846,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.706906,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -952,8 +868,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.70702,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_in_caution_state',
@@ -962,7 +876,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707042,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -986,8 +899,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707166,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_in_error_state',
@@ -996,7 +907,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707187,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1020,8 +930,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707299,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_in_warning_state',
@@ -1030,7 +938,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707319,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1054,8 +961,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.706601,
-        'device_id': 'dfda096a2a53f4b138e6ca987d8725cf',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_gateway_is_firmware_update_supported',
@@ -1064,7 +969,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.706624,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1087,8 +991,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.706746,
-        'device_id': 'dfda096a2a53f4b138e6ca987d8725cf',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_gateway_is_in_error_state',
@@ -1097,7 +999,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.706767,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1121,8 +1022,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707694,
-        'device_id': '898388651c61025b3e05c98075ae4018',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_outdoorunit_is_in_caution_state',
@@ -1131,7 +1030,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707715,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1155,8 +1053,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707432,
-        'device_id': '898388651c61025b3e05c98075ae4018',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_outdoorunit_is_in_error_state',
@@ -1165,7 +1061,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707454,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1189,8 +1084,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.707563,
-        'device_id': '898388651c61025b3e05c98075ae4018',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_outdoorunit_is_in_warning_state',
@@ -1199,7 +1092,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.707585,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1223,8 +1115,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704422,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_holiday_mode_active',
@@ -1233,7 +1123,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.704445,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1256,8 +1145,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704569,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_in_caution_state',
@@ -1266,7 +1153,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70459,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1290,8 +1176,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704712,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_in_error_state',
@@ -1300,7 +1184,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.704735,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1324,8 +1207,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704854,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_in_warning_state',
@@ -1334,7 +1215,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.704875,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1358,8 +1238,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704152,
-        'device_id': 'bf60bb1a92928a38c34c1c2b6ef773c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_gateway_is_firmware_update_supported',
@@ -1368,7 +1246,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.704174,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1391,8 +1268,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704289,
-        'device_id': 'bf60bb1a92928a38c34c1c2b6ef773c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_gateway_is_in_error_state',
@@ -1401,7 +1276,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70431,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1425,8 +1299,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705257,
-        'device_id': '8a8bc0739de42c6978e426343c7d05b1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_outdoorunit_is_in_caution_state',
@@ -1435,7 +1307,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705279,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1459,8 +1330,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704984,
-        'device_id': '8a8bc0739de42c6978e426343c7d05b1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_outdoorunit_is_in_error_state',
@@ -1469,7 +1338,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705006,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1493,8 +1361,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.705118,
-        'device_id': '8a8bc0739de42c6978e426343c7d05b1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_outdoorunit_is_in_warning_state',
@@ -1503,7 +1369,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.705138,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1527,8 +1392,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.703143,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_holiday_mode_active',
@@ -1537,7 +1400,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70317,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1560,8 +1422,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.7033,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_in_caution_state',
@@ -1570,7 +1430,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.703325,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1594,8 +1453,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.703447,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_in_error_state',
@@ -1604,7 +1461,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.703469,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1628,8 +1484,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.703587,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_in_warning_state',
@@ -1638,7 +1492,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.703609,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1662,8 +1515,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.702776,
-        'device_id': '81e981c434a999f9f9bd52f08e43efe8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_gateway_is_firmware_update_supported',
@@ -1672,7 +1523,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.702811,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1695,8 +1545,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.702972,
-        'device_id': '81e981c434a999f9f9bd52f08e43efe8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_gateway_is_in_error_state',
@@ -1705,7 +1553,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.702999,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1729,8 +1576,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.704009,
-        'device_id': '7a58b93df395b2e09d84fc9ac146b542',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_outdoorunit_is_in_caution_state',
@@ -1739,7 +1584,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70403,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1763,8 +1607,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.703728,
-        'device_id': '7a58b93df395b2e09d84fc9ac146b542',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_outdoorunit_is_in_error_state',
@@ -1773,7 +1615,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.703749,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1797,8 +1638,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.703862,
-        'device_id': '7a58b93df395b2e09d84fc9ac146b542',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_outdoorunit_is_in_warning_state',
@@ -1807,7 +1646,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.703885,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1831,8 +1669,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709326,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_holiday_mode_active',
@@ -1841,7 +1677,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.709348,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1864,8 +1699,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709457,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_in_caution_state',
@@ -1874,7 +1707,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.709478,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1898,8 +1730,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709588,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_in_error_state',
@@ -1908,7 +1738,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70961,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1932,8 +1761,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709726,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_in_warning_state',
@@ -1942,7 +1769,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.709748,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1966,8 +1792,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709058,
-        'device_id': '78ff2dca02e705c207f1c5d3d9344461',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_gateway_is_firmware_update_supported',
@@ -1976,7 +1800,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.70908,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1999,8 +1822,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709194,
-        'device_id': '78ff2dca02e705c207f1c5d3d9344461',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_gateway_is_in_error_state',
@@ -2009,7 +1830,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.709216,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2033,8 +1853,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.71016,
-        'device_id': 'f6618039235718dd1c47ad1e7cbff75c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_outdoorunit_is_in_caution_state',
@@ -2043,7 +1861,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710183,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2067,8 +1884,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.709862,
-        'device_id': 'f6618039235718dd1c47ad1e7cbff75c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_outdoorunit_is_in_error_state',
@@ -2077,7 +1892,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.709884,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2101,8 +1915,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.710021,
-        'device_id': 'f6618039235718dd1c47ad1e7cbff75c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_outdoorunit_is_in_warning_state',
@@ -2111,7 +1923,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.710043,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2135,8 +1946,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.714047,
-        'device_id': '55265bf79f5b7e35e9df5bb35189b0fd',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.bedroom_1_refresh',
@@ -2145,7 +1954,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.714069,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2168,8 +1976,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.714333,
-        'device_id': 'cc798cd4222b91e94a411e4594324f14',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.bedroom_2_refresh',
@@ -2178,7 +1984,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.714356,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2201,8 +2006,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.713739,
-        'device_id': '141ced8f27ab3c94f6035a8d9ecd9cce',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.bedroom_3_refresh',
@@ -2211,7 +2014,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.713762,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2234,8 +2036,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.713898,
-        'device_id': '685eb74b5e451465bc66f83abedf9920',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.kitchen_refresh',
@@ -2244,7 +2044,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.713918,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2267,8 +2066,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.713566,
-        'device_id': '284cad31dd06f1eda6b690921b94089c',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.lounge_refresh',
@@ -2277,7 +2074,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.713591,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2300,8 +2096,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.713367,
-        'device_id': '27830cce4b93bf3e6220fce5a8520203',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.master_bathroom_refresh',
@@ -2310,7 +2104,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.713399,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2333,8 +2126,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.714191,
-        'device_id': '63ed5eedccd27e85cbd04f195071e498',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.master_bedroom_refresh',
@@ -2343,7 +2134,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.714211,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2366,8 +2156,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.677209,
-        'device_id': '55265bf79f5b7e35e9df5bb35189b0fd',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.bedroom_1_room_temperature',
@@ -2376,7 +2164,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.677238,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2413,8 +2200,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.678269,
-        'device_id': 'cc798cd4222b91e94a411e4594324f14',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.bedroom_2_room_temperature',
@@ -2423,7 +2208,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.678298,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2460,8 +2244,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.676042,
-        'device_id': '141ced8f27ab3c94f6035a8d9ecd9cce',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.bedroom_3_room_temperature',
@@ -2470,7 +2252,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.676074,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2513,8 +2294,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.676607,
-        'device_id': '685eb74b5e451465bc66f83abedf9920',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.kitchen_room_temperature',
@@ -2523,7 +2302,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.676669,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2560,8 +2338,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.675457,
-        'device_id': '284cad31dd06f1eda6b690921b94089c',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.lounge_room_temperature',
@@ -2570,7 +2346,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.675493,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2607,8 +2382,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.674645,
-        'device_id': '27830cce4b93bf3e6220fce5a8520203',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.master_bathroom_room_temperature',
@@ -2617,7 +2390,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.674712,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2654,8 +2426,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.677749,
-        'device_id': '63ed5eedccd27e85cbd04f195071e498',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.master_bedroom_room_temperature',
@@ -2664,7 +2434,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.677779,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2701,8 +2470,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.697196,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.bedroom_1_climatecontrol_schedule',
@@ -2711,7 +2478,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.697218,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2740,8 +2506,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.697537,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.bedroom_2_climatecontrol_schedule',
@@ -2750,7 +2514,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.697563,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2779,8 +2542,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.696901,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.bedroom_3_climatecontrol_schedule',
@@ -2789,7 +2550,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.696924,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2816,8 +2576,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.697053,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.kitchen_climatecontrol_schedule',
@@ -2826,7 +2584,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.697075,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2855,8 +2612,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.696737,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.lounge_climatecontrol_schedule',
@@ -2865,7 +2620,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.696763,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2894,8 +2648,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.696501,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.master_bathroom_climatecontrol_schedule',
@@ -2904,7 +2656,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.696536,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2933,8 +2684,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.697359,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.master_bedroom_climatecontrol_schedule',
@@ -2943,7 +2692,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.697381,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2972,8 +2720,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.688202,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_climatecontrol_error_code',
@@ -2982,7 +2728,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.688226,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3005,8 +2750,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.688373,
-        'device_id': '551646b4a305b2758c27b1b3f2bbc16d',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.bedroom_1_climatecontrol_room_temperature',
@@ -3015,7 +2758,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.688469,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -3044,8 +2786,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.687852,
-        'device_id': 'f71473a54c5d4821f63e21e047dd5163',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_gateway_error_code',
@@ -3054,7 +2794,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.687876,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3077,8 +2816,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.688014,
-        'device_id': 'f71473a54c5d4821f63e21e047dd5163',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_gateway_ip_address',
@@ -3087,7 +2824,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.688038,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3110,8 +2846,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.687676,
-        'device_id': 'f71473a54c5d4821f63e21e047dd5163',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_gateway_ratelimit_remaining_day',
@@ -3120,7 +2854,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.687703,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3144,8 +2877,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.688862,
-        'device_id': 'e46231651f528ce1315b255a5ed54ac4',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_outdoorunit_error_code',
@@ -3154,7 +2885,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.688892,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3177,8 +2907,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.690977,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_climatecontrol_error_code',
@@ -3187,7 +2915,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.691002,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3210,8 +2937,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.691142,
-        'device_id': '8097e1a83b3ae8d1fabb78a516ef92d6',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.bedroom_2_climatecontrol_room_temperature',
@@ -3220,7 +2945,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.691234,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -3249,8 +2973,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.690617,
-        'device_id': '94b1bd0b3d367aacc8a1fcb37ccfeada',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_gateway_error_code',
@@ -3259,7 +2981,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.69064,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3282,8 +3003,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.690777,
-        'device_id': '94b1bd0b3d367aacc8a1fcb37ccfeada',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_gateway_ip_address',
@@ -3292,7 +3011,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.690801,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3315,8 +3033,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.690443,
-        'device_id': '94b1bd0b3d367aacc8a1fcb37ccfeada',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_gateway_ratelimit_remaining_day',
@@ -3325,7 +3041,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.690469,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3349,8 +3064,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.691595,
-        'device_id': '6a1b81ce7b1f390ee47193ca02301bf0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_outdoorunit_error_code',
@@ -3359,7 +3072,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.691623,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3382,8 +3094,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.68503,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_climatecontrol_error_code',
@@ -3392,7 +3102,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.685053,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3415,8 +3124,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.685184,
-        'device_id': 'a22a33a97828370e1ea4d0767ff6f275',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.bedroom_3_climatecontrol_room_temperature',
@@ -3425,7 +3132,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.685276,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -3454,8 +3160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.684647,
-        'device_id': '17ef9b0d66a099e3908971b8481effa7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_gateway_error_code',
@@ -3464,7 +3168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.684679,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3487,8 +3190,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.684842,
-        'device_id': '17ef9b0d66a099e3908971b8481effa7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_gateway_ip_address',
@@ -3497,7 +3198,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.684865,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3520,8 +3220,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.684467,
-        'device_id': '17ef9b0d66a099e3908971b8481effa7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_gateway_ratelimit_remaining_day',
@@ -3530,7 +3228,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.684495,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3554,8 +3251,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.686052,
-        'device_id': 'a6268bb068e7db72c530bde459b74998',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_outdoorunit_error_code',
@@ -3564,7 +3259,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.686082,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3587,8 +3281,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.68684,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_climatecontrol_error_code',
@@ -3597,7 +3289,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.686863,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3620,8 +3311,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.687001,
-        'device_id': '0f240ea2e856b858b0f7f727d151246c',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.kitchen_climatecontrol_room_temperature',
@@ -3630,7 +3319,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.68709,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -3659,8 +3347,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.686473,
-        'device_id': 'dfda096a2a53f4b138e6ca987d8725cf',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_gateway_error_code',
@@ -3669,7 +3355,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.686499,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3692,8 +3377,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.686645,
-        'device_id': 'dfda096a2a53f4b138e6ca987d8725cf',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_gateway_ip_address',
@@ -3702,7 +3385,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.686669,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3725,8 +3407,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.686282,
-        'device_id': 'dfda096a2a53f4b138e6ca987d8725cf',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_gateway_ratelimit_remaining_day',
@@ -3735,7 +3415,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.686309,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3759,8 +3438,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.687456,
-        'device_id': '898388651c61025b3e05c98075ae4018',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_outdoorunit_error_code',
@@ -3769,7 +3446,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.687483,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3792,8 +3468,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.683643,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_climatecontrol_error_code',
@@ -3802,7 +3476,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.683667,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3825,8 +3498,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.683815,
-        'device_id': '5f943232f1df5748fd842172bb3bd603',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.lounge_climatecontrol_room_temperature',
@@ -3835,7 +3506,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.683907,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -3864,8 +3534,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.683296,
-        'device_id': 'bf60bb1a92928a38c34c1c2b6ef773c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_gateway_error_code',
@@ -3874,7 +3542,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.683319,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3897,8 +3564,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.683454,
-        'device_id': 'bf60bb1a92928a38c34c1c2b6ef773c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_gateway_ip_address',
@@ -3907,7 +3572,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.683477,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3930,8 +3594,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.68312,
-        'device_id': 'bf60bb1a92928a38c34c1c2b6ef773c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_gateway_ratelimit_remaining_day',
@@ -3940,7 +3602,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.683146,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3964,8 +3625,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.684258,
-        'device_id': '8a8bc0739de42c6978e426343c7d05b1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_outdoorunit_error_code',
@@ -3974,7 +3633,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.684283,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -3997,8 +3655,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.68227,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_climatecontrol_error_code',
@@ -4007,7 +3663,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.682294,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4030,8 +3685,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.682433,
-        'device_id': '71b105d7c64098d40abcd14b662024bd',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.master_bathroom_climatecontrol_room_temperature',
@@ -4040,7 +3693,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.682525,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -4069,8 +3721,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.681893,
-        'device_id': '81e981c434a999f9f9bd52f08e43efe8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_gateway_error_code',
@@ -4079,7 +3729,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.68192,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4102,8 +3751,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.682074,
-        'device_id': '81e981c434a999f9f9bd52f08e43efe8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_gateway_ip_address',
@@ -4112,7 +3759,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.682098,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4135,8 +3781,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.681671,
-        'device_id': '81e981c434a999f9f9bd52f08e43efe8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_gateway_ratelimit_remaining_day',
@@ -4145,7 +3789,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.681705,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4169,8 +3812,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.682897,
-        'device_id': '7a58b93df395b2e09d84fc9ac146b542',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_outdoorunit_error_code',
@@ -4179,7 +3820,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.682925,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4202,8 +3842,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.689605,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_climatecontrol_error_code',
@@ -4212,7 +3850,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.689628,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4235,8 +3872,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.689767,
-        'device_id': '404356a2ca1e18e15d8cee3f7da6afb5',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.master_bedroom_climatecontrol_room_temperature',
@@ -4245,7 +3880,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.689857,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -4274,8 +3908,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.689238,
-        'device_id': '78ff2dca02e705c207f1c5d3d9344461',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_gateway_error_code',
@@ -4284,7 +3916,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.689263,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4307,8 +3938,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.689409,
-        'device_id': '78ff2dca02e705c207f1c5d3d9344461',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_gateway_ip_address',
@@ -4317,7 +3946,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.689433,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4340,8 +3968,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.689069,
-        'device_id': '78ff2dca02e705c207f1c5d3d9344461',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_gateway_ratelimit_remaining_day',
@@ -4350,7 +3976,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.689095,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4374,8 +3999,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.690222,
-        'device_id': 'f6618039235718dd1c47ad1e7cbff75c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_outdoorunit_error_code',
@@ -4384,7 +4007,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.69025,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4407,8 +4029,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.719114,
-        'device_id': 'f71473a54c5d4821f63e21e047dd5163',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_1_gateway_firmware_update',
@@ -4417,7 +4037,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.719138,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4453,8 +4072,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.719323,
-        'device_id': '5990e16d79dc0044d9529ce95d489bbd',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_1_indoorunit_firmware_update',
@@ -4463,7 +4080,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.719348,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4499,8 +4115,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.719884,
-        'device_id': '94b1bd0b3d367aacc8a1fcb37ccfeada',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_2_gateway_firmware_update',
@@ -4509,7 +4123,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.719907,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4545,8 +4158,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.72008,
-        'device_id': 'df0487305d0bf87909156334f3ed7d54',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_2_indoorunit_firmware_update',
@@ -4555,7 +4166,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.720103,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4591,8 +4201,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.717622,
-        'device_id': '17ef9b0d66a099e3908971b8481effa7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_3_gateway_firmware_update',
@@ -4601,7 +4209,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.717645,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4637,8 +4244,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.717822,
-        'device_id': 'bcd5158b9dde18b60bc3ca79b078d213',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_3_indoorunit_firmware_update',
@@ -4647,7 +4252,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.717845,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4683,8 +4287,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.7187,
-        'device_id': 'dfda096a2a53f4b138e6ca987d8725cf',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.kitchen_gateway_firmware_update',
@@ -4693,7 +4295,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.718728,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4729,8 +4330,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.718932,
-        'device_id': '8cabb47bfcce974cf286526f2a04d071',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.kitchen_indoorunit_firmware_update',
@@ -4739,7 +4338,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.718958,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4775,8 +4373,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.717202,
-        'device_id': 'bf60bb1a92928a38c34c1c2b6ef773c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.lounge_gateway_firmware_update',
@@ -4785,7 +4381,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.717227,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4821,8 +4416,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.717428,
-        'device_id': 'f1ba399365928cf0145409c26f97b3e2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.lounge_indoorunit_firmware_update',
@@ -4831,7 +4424,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.717452,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4867,8 +4459,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.716732,
-        'device_id': '81e981c434a999f9f9bd52f08e43efe8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bathroom_gateway_firmware_update',
@@ -4877,7 +4467,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.716767,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4913,8 +4502,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.717012,
-        'device_id': 'ce988e0de3dc5d2d3c7e97274c35e52c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bathroom_indoorunit_firmware_update',
@@ -4923,7 +4510,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.717039,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -4959,8 +4545,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.719508,
-        'device_id': '78ff2dca02e705c207f1c5d3d9344461',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bedroom_gateway_firmware_update',
@@ -4969,7 +4553,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.719532,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -5005,8 +4588,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.719714,
-        'device_id': 'e0d628471c893a737c8e15731827ec2f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bedroom_indoorunit_firmware_update',
@@ -5015,7 +4596,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.719738,
         'name': None,
         'options': ReadOnlyDict({
         }),

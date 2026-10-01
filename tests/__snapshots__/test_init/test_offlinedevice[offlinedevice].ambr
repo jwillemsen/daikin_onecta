@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.424324,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.42435,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.4245,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_climatecontrol_is_in_caution_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.424524,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.424648,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.424675,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.424805,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_climatecontrol_is_in_warning_state',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.424828,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -142,8 +130,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.424951,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_climatecontrol_is_powerful_mode_active',
@@ -152,7 +138,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.424974,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.423948,
-        'device_id': '97a4fa55eadb61b832af1a00b85c941a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_gateway_is_firmware_update_supported',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.423981,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -208,8 +190,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.42415,
-        'device_id': '97a4fa55eadb61b832af1a00b85c941a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_gateway_is_in_error_state',
@@ -218,7 +198,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.424177,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.425375,
-        'device_id': 'b7b63375a446ce5ecac7550a258c4a78',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_outdoorunit_is_in_caution_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.425398,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.425093,
-        'device_id': 'b7b63375a446ce5ecac7550a258c4a78',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_outdoorunit_is_in_error_state',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.425117,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -310,8 +283,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.425239,
-        'device_id': 'b7b63375a446ce5ecac7550a258c4a78',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.studio_outdoorunit_is_in_warning_state',
@@ -320,7 +291,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.425261,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -344,8 +314,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.422216,
-        'device_id': '6e32ad7dd2f457458fd484eae01aef2f',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.studio_refresh',
@@ -354,7 +322,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.422246,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -377,8 +344,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.401451,
-        'device_id': '6e32ad7dd2f457458fd484eae01aef2f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.studio_room_temperature',
@@ -387,7 +352,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.401496,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -440,8 +404,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.41797,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.studio_climatecontrol_schedule',
@@ -450,7 +412,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.418002,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -476,8 +437,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.409779,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_cooling_daily_electrical_consumption',
@@ -486,7 +445,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.409894,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -515,8 +473,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.410711,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_cooling_monthly_electrical_consumption',
@@ -525,7 +481,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.41083,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -554,8 +509,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.41024,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_cooling_weekly_electrical_consumption',
@@ -564,7 +517,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.410365,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -593,8 +545,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.411169,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_cooling_yearly_electrical_consumption',
@@ -603,7 +553,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.411283,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -632,8 +581,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.405185,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.studio_climatecontrol_error_code',
@@ -642,7 +589,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.405213,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -665,8 +611,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.407818,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_heating_daily_electrical_consumption',
@@ -675,7 +619,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.407954,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -704,8 +647,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.408801,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_heating_monthly_electrical_consumption',
@@ -714,7 +655,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.408937,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -743,8 +683,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.408322,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_heating_weekly_electrical_consumption',
@@ -753,7 +691,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.408446,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -782,8 +719,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.409314,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_heating_yearly_electrical_consumption',
@@ -792,7 +727,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.409435,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -821,8 +755,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.405365,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_on_off_mode',
@@ -831,7 +763,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.405392,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -854,8 +785,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.407281,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_outdoor_temperature',
@@ -864,7 +793,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.407424,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -893,8 +821,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.405537,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_powerful_mode',
@@ -903,7 +829,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.405564,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -926,8 +851,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.405711,
-        'device_id': '45e57df3f592947cc1206a8b2af11382',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.studio_climatecontrol_room_temperature',
@@ -936,7 +859,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.406606,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -965,8 +887,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.404736,
-        'device_id': '97a4fa55eadb61b832af1a00b85c941a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.studio_gateway_error_code',
@@ -975,7 +895,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.40477,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -998,8 +917,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.404955,
-        'device_id': '97a4fa55eadb61b832af1a00b85c941a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.studio_gateway_ip_address',
@@ -1008,7 +925,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.404984,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1031,8 +947,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.404451,
-        'device_id': '97a4fa55eadb61b832af1a00b85c941a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.studio_gateway_ratelimit_remaining_day',
@@ -1041,7 +955,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.404495,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1065,8 +978,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.411667,
-        'device_id': 'b7b63375a446ce5ecac7550a258c4a78',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.studio_outdoorunit_error_code',
@@ -1075,7 +986,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.411699,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1098,8 +1008,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.420104,
-        'device_id': '97a4fa55eadb61b832af1a00b85c941a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.studio_gateway_firmware_update',
@@ -1108,7 +1016,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.420136,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1144,8 +1051,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.420367,
-        'device_id': 'c71cef5f3821865d19123762430a4c5c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.studio_indoorunit_firmware_update',
@@ -1154,7 +1059,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.420396,
         'name': None,
         'options': ReadOnlyDict({
         }),

@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.709692,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.709718,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.709849,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_in_caution_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.709874,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710012,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710037,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710162,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_in_warning_state',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710185,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -142,8 +130,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.709337,
-        'device_id': '47d6d75df17b8abfb616636e322049c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_gateway_is_firmware_update_supported',
@@ -152,7 +138,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.709371,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.709531,
-        'device_id': '47d6d75df17b8abfb616636e322049c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_gateway_is_in_error_state',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.709558,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -209,8 +191,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710592,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_holiday_mode_active',
@@ -219,7 +199,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710615,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.711173,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_emergency_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.711196,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710732,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_error_state',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710756,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -310,8 +283,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.711037,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_installer_state',
@@ -320,7 +291,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.711059,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -343,8 +313,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710878,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_warning_state',
@@ -353,7 +321,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710901,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -377,8 +344,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.711308,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_holiday_mode_active',
@@ -387,7 +352,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.711331,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -410,8 +374,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.712357,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_emergency_state',
@@ -420,7 +382,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.712386,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -444,8 +405,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.711442,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_error_state',
@@ -454,7 +413,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.711466,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -478,8 +436,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.712166,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_installer_state',
@@ -488,7 +444,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.712199,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -511,8 +466,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.711596,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_warning_state',
@@ -521,7 +474,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.71162,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -545,8 +497,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.71253,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_powerful_mode_active',
@@ -555,7 +505,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.712558,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -578,8 +527,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710313,
-        'device_id': 'c1cc87993e6072ec1920912f5d62895e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_gateway_is_firmware_update_supported',
@@ -588,7 +535,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710336,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -611,8 +557,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.710455,
-        'device_id': 'c1cc87993e6072ec1920912f5d62895e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_gateway_is_in_error_state',
@@ -621,7 +565,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.710477,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -645,8 +588,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.703757,
-        'device_id': 'e25a5c5a8d59fbcabebd9b91b8773baa',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.air_purifier_refresh',
@@ -655,7 +596,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.70379,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -678,8 +618,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.703971,
-        'device_id': 'c2479f28365764f408f09c422d7cfa5e',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.vloerverwarming_refresh',
@@ -688,7 +626,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.703997,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -711,8 +648,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.677331,
-        'device_id': 'c2479f28365764f408f09c422d7cfa5e',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.vloerverwarming_leaving_water_offset',
@@ -721,7 +656,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.677386,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -760,8 +694,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.699798,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.air_purifier_climatecontrol_schedule',
@@ -770,7 +702,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.699833,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -799,8 +730,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.700234,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.vloerverwarming_domestichotwatertank_schedule',
@@ -809,7 +738,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.700265,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -835,8 +763,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.682107,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_air_purification_mode',
@@ -845,7 +771,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.682136,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -868,8 +793,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.682302,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_climatecontrol_error_code',
@@ -878,7 +801,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.682331,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -901,8 +823,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.683568,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_pm10_concentration',
@@ -911,7 +831,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.683596,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -937,8 +856,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.683175,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_pm1_concentration',
@@ -947,7 +864,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.683203,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -973,8 +889,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.683375,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_pm2_5_concentration',
@@ -983,7 +897,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.683404,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1009,8 +922,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.682965,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_room_humidity',
@@ -1019,7 +930,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.682996,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1045,8 +955,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.682484,
-        'device_id': '898ec546bf749f05dc30497a553d5694',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_room_temperature',
@@ -1055,7 +963,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.682589,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1084,8 +991,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.681662,
-        'device_id': '47d6d75df17b8abfb616636e322049c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_gateway_error_code',
@@ -1094,7 +999,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.681693,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1117,8 +1021,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.681865,
-        'device_id': '47d6d75df17b8abfb616636e322049c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_gateway_ip_address',
@@ -1127,7 +1029,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.681894,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1150,8 +1051,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.681374,
-        'device_id': '47d6d75df17b8abfb616636e322049c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_gateway_ratelimit_remaining_day',
@@ -1160,7 +1059,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.681425,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1184,8 +1082,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.684821,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_control_mode',
@@ -1194,7 +1090,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.684849,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1217,8 +1112,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.687901,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_daily_electrical_consumption',
@@ -1227,7 +1120,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.688022,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1256,8 +1148,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.688825,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_monthly_electrical_consumption',
@@ -1266,7 +1156,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.688947,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1295,8 +1184,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.688371,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_weekly_electrical_consumption',
@@ -1305,7 +1192,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.688484,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1334,8 +1220,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.689286,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_yearly_electrical_consumption',
@@ -1344,7 +1228,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.6894,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1373,8 +1256,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.684449,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_error_code',
@@ -1383,7 +1264,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.684476,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1406,8 +1286,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.685959,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_daily_electrical_consumption',
@@ -1416,7 +1294,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.686084,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1445,8 +1322,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.68693,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_monthly_electrical_consumption',
@@ -1455,7 +1330,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.687051,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1484,8 +1358,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.686448,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_weekly_electrical_consumption',
@@ -1494,7 +1366,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.686574,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1523,8 +1394,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.68741,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_yearly_electrical_consumption',
@@ -1533,7 +1402,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.687539,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1562,8 +1430,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.685464,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_leaving_water_temperature',
@@ -1572,7 +1438,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.685576,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1601,8 +1466,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.685004,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_outdoor_temperature',
@@ -1611,7 +1474,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.685105,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1640,8 +1502,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.684632,
-        'device_id': '11e9523002cc4afe124dad92b3fdc8aa',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_setpoint_mode',
@@ -1650,7 +1510,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.684668,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1673,8 +1532,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.689781,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_error_code',
@@ -1683,7 +1540,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.689813,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1706,8 +1562,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.689977,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heat_up_mode',
@@ -1716,7 +1570,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.690006,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1739,8 +1592,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.692404,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_daily_electrical_consumption',
@@ -1749,7 +1600,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.692527,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1778,8 +1628,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.693357,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_monthly_electrical_consumption',
@@ -1788,7 +1636,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.693475,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1817,8 +1664,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.692886,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_weekly_electrical_consumption',
@@ -1827,7 +1672,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.693011,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1856,8 +1700,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.693808,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_yearly_electrical_consumption',
@@ -1866,7 +1708,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.69392,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1895,8 +1736,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.690156,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_setpoint_mode',
@@ -1905,7 +1744,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.690184,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1928,8 +1766,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.691902,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_tank_temperature',
@@ -1938,7 +1774,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.692038,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1967,8 +1802,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.684223,
-        'device_id': 'c1cc87993e6072ec1920912f5d62895e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_gateway_error_code',
@@ -1977,7 +1810,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.68425,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2000,8 +1832,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.684027,
-        'device_id': 'c1cc87993e6072ec1920912f5d62895e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_gateway_ip_address',
@@ -2010,7 +1840,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.684057,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2033,8 +1862,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.683808,
-        'device_id': 'c1cc87993e6072ec1920912f5d62895e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_gateway_ratelimit_remaining_day',
@@ -2043,7 +1870,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.683839,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2067,8 +1893,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.706214,
-        'device_id': '47d6d75df17b8abfb616636e322049c9',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.air_purifier_gateway_firmware_update',
@@ -2077,7 +1901,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.706246,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2113,8 +1936,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.706476,
-        'device_id': 'c08ef13cc84b7b554a532d53ab76361e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.air_purifier_indoorunit_firmware_update',
@@ -2123,7 +1944,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.706503,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2159,8 +1979,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.706667,
-        'device_id': 'c1cc87993e6072ec1920912f5d62895e',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_gateway_firmware_update',
@@ -2169,7 +1987,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.706693,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2205,8 +2022,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.70689,
-        'device_id': '4864f0343871c126d85245e17b49dde8',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_indoorunithydro_firmware_update',
@@ -2215,7 +2030,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.706915,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2251,8 +2065,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.707117,
-        'device_id': 'ec969c6977896b977b03db1ab24ee5e7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_outdoorunit_firmware_update',
@@ -2261,7 +2073,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.707143,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2297,8 +2108,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.707321,
-        'device_id': 'c39d7918a67b7ee6c9b5c5b9abf1f389',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_userinterface_firmware_update',
@@ -2307,7 +2116,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.707345,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -2343,8 +2151,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.697159,
-        'device_id': '4967fc1577b53ce405f864716cc4ffab',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.vloerverwarming',
@@ -2353,7 +2159,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.697189,
         'name': None,
         'options': ReadOnlyDict({
         }),

@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.811586,
-        'device_id': '5287bd2be52d1e9fd8bc48cd3396c27c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.811617,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.811769,
-        'device_id': '5287bd2be52d1e9fd8bc48cd3396c27c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_climatecontrol_is_in_error_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.811796,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.811941,
-        'device_id': '5287bd2be52d1e9fd8bc48cd3396c27c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_climatecontrol_is_powerful_mode_active',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.811969,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -107,8 +98,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.811373,
-        'device_id': '65b35766ac6ec6789cdc0045c89c84c7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_gateway_is_firmware_update_supported',
@@ -117,7 +106,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.811411,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -140,8 +128,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.809728,
-        'device_id': '5f458fb99efe7e92863d3d9fa85213d4',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.master_refresh',
@@ -150,7 +136,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.809787,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -173,8 +158,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.797333,
-        'device_id': '5f458fb99efe7e92863d3d9fa85213d4',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.master_room_temperature',
@@ -183,7 +166,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.797377,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -231,8 +213,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.807408,
-        'device_id': '5287bd2be52d1e9fd8bc48cd3396c27c',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.master_climatecontrol_schedule',
@@ -241,7 +221,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.807445,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -270,8 +249,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.802178,
-        'device_id': '5287bd2be52d1e9fd8bc48cd3396c27c',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_climatecontrol_error_code',
@@ -280,7 +257,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.80221,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -303,8 +279,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.802391,
-        'device_id': '5287bd2be52d1e9fd8bc48cd3396c27c',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.master_climatecontrol_room_temperature',
@@ -313,7 +287,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.802861,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -342,8 +315,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.80192,
-        'device_id': '65b35766ac6ec6789cdc0045c89c84c7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_gateway_ip_address',
@@ -352,7 +323,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.801952,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -375,8 +345,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.801665,
-        'device_id': '65b35766ac6ec6789cdc0045c89c84c7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_gateway_ratelimit_remaining_day',
@@ -385,7 +353,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.801707,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -409,8 +376,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.81415,
-        'device_id': '65b35766ac6ec6789cdc0045c89c84c7',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_gateway_firmware_update',
@@ -419,7 +384,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.814182,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -455,8 +419,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.814403,
-        'device_id': 'a94bd01d479a78c0522569c0bd3764ce',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_indoorunit_firmware_update',
@@ -465,7 +427,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.81443,
         'name': None,
         'options': ReadOnlyDict({
         }),

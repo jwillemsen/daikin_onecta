@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.678157,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.678202,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.678338,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_caution_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.678365,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.678513,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.678542,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.678673,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.678699,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -142,8 +130,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.678827,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_warning_state',
@@ -152,7 +138,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.67885,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -176,8 +161,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.678967,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active',
@@ -186,7 +169,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.67899,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -209,8 +191,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.677771,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_gateway_is_firmware_update_supported',
@@ -219,7 +199,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.677808,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.677981,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_gateway_is_in_error_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.678011,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.679103,
-        'device_id': '068795af02d71189f9c0f32bcec67cb0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.679126,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -310,8 +283,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.67924,
-        'device_id': '068795af02d71189f9c0f32bcec67cb0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_error_state',
@@ -320,7 +291,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.679262,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -344,8 +314,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.679383,
-        'device_id': '068795af02d71189f9c0f32bcec67cb0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_warning_state',
@@ -354,7 +322,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.679408,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -378,8 +345,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.681451,
-        'device_id': '690157b5ab2e706e9ccbc0849c900468',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.johnny_maaike_refresh',
@@ -388,7 +353,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.681482,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -411,8 +375,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.661644,
-        'device_id': '690157b5ab2e706e9ccbc0849c900468',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.johnny_maaike_room_temperature',
@@ -421,7 +383,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.661698,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -484,8 +445,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.68386,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
@@ -494,7 +453,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.683895,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -521,8 +479,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.670494,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_daily_electrical_consumption',
@@ -531,7 +487,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.67061,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -560,8 +515,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.671401,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
@@ -570,7 +523,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.671526,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -599,8 +551,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.67095,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption',
@@ -609,7 +559,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.671068,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -638,8 +587,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.671885,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption',
@@ -648,7 +595,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.672004,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -677,8 +623,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.666004,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_error_code',
@@ -687,7 +631,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.666032,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -710,8 +653,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.668528,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
@@ -720,7 +661,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.668675,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -749,8 +689,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.669532,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
@@ -759,7 +697,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.66966,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -788,8 +725,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.669051,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption',
@@ -798,7 +733,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.669177,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -827,8 +761,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.670025,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_yearly_electrical_consumption',
@@ -837,7 +769,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.670146,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -866,8 +797,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.668002,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_temperature',
@@ -876,7 +805,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.66815,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -905,8 +833,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.666185,
-        'device_id': 'a72af8b77f7ca4d744155e16a35f9b4a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_room_temperature',
@@ -915,7 +841,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.666291,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -944,8 +869,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.665201,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_error_code',
@@ -954,7 +877,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.665232,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -977,8 +899,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.665405,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_ip_address',
@@ -987,7 +907,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.665436,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1010,8 +929,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.664866,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_ratelimit_remaining_day',
@@ -1020,7 +937,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.664936,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1044,8 +960,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.665599,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_ssid',
@@ -1054,7 +968,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.665628,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1077,8 +990,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.665783,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
@@ -1087,7 +998,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.66581,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1110,8 +1020,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.67239,
-        'device_id': '068795af02d71189f9c0f32bcec67cb0',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_outdoorunit_error_code',
@@ -1120,7 +1028,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.672421,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1143,8 +1050,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.686086,
-        'device_id': 'a80bfbb37062597025d45406e568a025',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.johnny_maaike_gateway_firmware_update',
@@ -1153,7 +1058,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.68612,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1190,8 +1094,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.686382,
-        'device_id': '34ad654790776d41024c4ea644c19c1d',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.johnny_maaike_indoorunit_firmware_update',
@@ -1200,7 +1102,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.68641,
         'name': None,
         'options': ReadOnlyDict({
         }),

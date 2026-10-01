@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.786892,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.786919,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.787051,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_climatecontrol_is_in_error_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.787075,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.7872,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_climatecontrol_is_in_warning_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.787223,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.787498,
-        'device_id': '77358d4b1565ab012482ae86653448f2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_domestichotwaterflowthrough_is_holiday_mode_active',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.787526,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -141,8 +129,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.787675,
-        'device_id': '77358d4b1565ab012482ae86653448f2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_domestichotwaterflowthrough_is_in_error_state',
@@ -151,7 +137,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.787701,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.787833,
-        'device_id': '77358d4b1565ab012482ae86653448f2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_domestichotwaterflowthrough_is_in_warning_state',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.787857,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -209,8 +191,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.78651,
-        'device_id': '1ac88e2da5c9861d1dc73971e048d6e1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_gateway_is_firmware_update_supported',
@@ -219,7 +199,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.786544,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.786721,
-        'device_id': '1ac88e2da5c9861d1dc73971e048d6e1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.ndj_gateway_is_in_error_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.786751,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.789796,
-        'device_id': '17fd5c8583bf0f1c9eb18dd4c0bdea80',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.ndj_refresh',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.789827,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -309,8 +282,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.772827,
-        'device_id': '17fd5c8583bf0f1c9eb18dd4c0bdea80',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.ndj_room_temperature',
@@ -319,7 +290,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.772874,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -355,8 +325,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.784763,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.ndj_climatecontrol_schedule',
@@ -365,7 +333,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.784801,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -392,8 +359,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.775906,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.ndj_climatecontrol_control_mode',
@@ -402,7 +367,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.775931,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -425,8 +389,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.775559,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.ndj_climatecontrol_error_code',
@@ -435,7 +397,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.775585,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -458,8 +419,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.775735,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.ndj_climatecontrol_on_off_mode',
@@ -468,7 +427,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.775761,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -491,8 +449,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.776084,
-        'device_id': '71f8690fd8642d31f0b1643146eebe9f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.ndj_climatecontrol_room_temperature',
@@ -501,7 +457,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.777435,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -530,8 +485,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.777874,
-        'device_id': '77358d4b1565ab012482ae86653448f2',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.ndj_domestichotwaterflowthrough_error_code',
@@ -540,7 +493,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.777909,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -563,8 +515,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.778086,
-        'device_id': '77358d4b1565ab012482ae86653448f2',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.ndj_domestichotwaterflowthrough_on_off_mode',
@@ -573,7 +523,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.778116,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -596,8 +545,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.775341,
-        'device_id': '1ac88e2da5c9861d1dc73971e048d6e1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.ndj_gateway_error_code',
@@ -606,7 +553,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.775368,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -629,8 +575,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.775143,
-        'device_id': '1ac88e2da5c9861d1dc73971e048d6e1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.ndj_gateway_ip_address',
@@ -639,7 +583,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.775173,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -662,8 +605,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.774892,
-        'device_id': '1ac88e2da5c9861d1dc73971e048d6e1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.ndj_gateway_ratelimit_remaining_day',
@@ -672,7 +613,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.774932,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -696,8 +636,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.792007,
-        'device_id': '1ac88e2da5c9861d1dc73971e048d6e1',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.ndj_gateway_firmware_update',
@@ -706,7 +644,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.792039,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -742,8 +679,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.792274,
-        'device_id': '81fa70fe85c1dbef1e050f74554920fe',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.ndj_indoorunithydro_firmware_update',
@@ -752,7 +687,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.792301,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -788,8 +722,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.792504,
-        'device_id': '6fd550e03295215a14738e84a707ba6a',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.ndj_outdoorunit_firmware_update',
@@ -798,7 +730,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.792529,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -834,8 +765,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.792747,
-        'device_id': '9dbd0cd5a84ea87fcfa0ec5adc8c3107',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.ndj_userinterface_firmware_update',
@@ -844,7 +773,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.792775,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -880,8 +808,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854698.780699,
-        'device_id': '77358d4b1565ab012482ae86653448f2',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.ndj',
@@ -890,7 +816,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854698.780732,
         'name': None,
         'options': ReadOnlyDict({
         }),

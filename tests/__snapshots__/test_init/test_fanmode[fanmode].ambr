@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.612641,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.612675,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.612829,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_climatecontrol_is_in_error_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.612861,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.612999,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_climatecontrol_is_powerful_mode_active',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.613025,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -107,8 +98,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.612419,
-        'device_id': '45af6488e70206d599016226e20170ec',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_gateway_is_firmware_update_supported',
@@ -117,7 +106,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.612454,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -140,8 +128,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.619196,
-        'device_id': '432ed3bdc31f5ad482e5d94a408d0c72',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.sala_refresh',
@@ -150,7 +136,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.619227,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -173,8 +158,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.600378,
-        'device_id': '432ed3bdc31f5ad482e5d94a408d0c72',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.sala_room_temperature',
@@ -183,7 +166,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.600422,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -245,8 +227,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.615484,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.sala_climatecontrol_schedule',
@@ -255,7 +235,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.615518,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -284,8 +263,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.607324,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_daily_electrical_consumption',
@@ -294,7 +271,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.60744,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -323,8 +299,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.608247,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_monthly_electrical_consumption',
@@ -333,7 +307,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.608371,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -362,8 +335,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.607778,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_weekly_electrical_consumption',
@@ -372,7 +343,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.60789,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -401,8 +371,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.608721,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_yearly_electrical_consumption',
@@ -411,7 +379,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.608842,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -440,8 +407,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.603763,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sala_climatecontrol_error_code',
@@ -450,7 +415,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.603791,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -473,8 +437,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.60537,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_daily_electrical_consumption',
@@ -483,7 +445,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.605509,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -512,8 +473,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.606378,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_monthly_electrical_consumption',
@@ -522,7 +481,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.606507,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -551,8 +509,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.605883,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_weekly_electrical_consumption',
@@ -561,7 +517,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.60601,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -590,8 +545,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.60686,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_yearly_electrical_consumption',
@@ -600,7 +553,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.606979,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -629,8 +581,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.604447,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_outdoor_temperature',
@@ -639,7 +589,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.604571,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -668,8 +617,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.603955,
-        'device_id': 'ca791e03338814ba4cab754ab84ab0c3',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_room_temperature',
@@ -678,7 +625,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.604063,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -707,8 +653,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.603513,
-        'device_id': '45af6488e70206d599016226e20170ec',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sala_gateway_ip_address',
@@ -717,7 +661,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.603545,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -740,8 +683,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.603253,
-        'device_id': '45af6488e70206d599016226e20170ec',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sala_gateway_ratelimit_remaining_day',
@@ -750,7 +691,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.603295,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -774,8 +714,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.621368,
-        'device_id': '45af6488e70206d599016226e20170ec',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.sala_gateway_firmware_update',
@@ -784,7 +722,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.6214,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -820,8 +757,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854697.62163,
-        'device_id': 'b2ee2621bb8108f1e3a90fae2a6ad851',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.sala_indoorunit_firmware_update',
@@ -830,7 +765,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854697.621657,
         'name': None,
         'options': ReadOnlyDict({
         }),

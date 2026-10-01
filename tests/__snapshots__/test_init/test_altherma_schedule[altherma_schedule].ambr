@@ -7,8 +7,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.506303,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_holiday_mode_active',
@@ -17,7 +15,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.506334,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -40,8 +37,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.506477,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_emergency_state',
@@ -50,7 +45,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.506505,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -74,8 +68,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.506657,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_error_state',
@@ -84,7 +76,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.506684,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -108,8 +99,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.50682,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_installer_state',
@@ -118,7 +107,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.506845,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -141,8 +129,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.506977,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_warning_state',
@@ -151,7 +137,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.507002,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -175,8 +160,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.507451,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active',
@@ -185,7 +168,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.507482,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -208,8 +190,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.507639,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_emergency_state',
@@ -218,7 +198,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.507666,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -242,8 +221,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.507804,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_error_state',
@@ -252,7 +229,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.50783,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -276,8 +252,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.50796,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_installer_state',
@@ -286,7 +260,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.507984,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -309,8 +282,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.508122,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_warning_state',
@@ -319,7 +290,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.508149,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -343,8 +313,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.508282,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active',
@@ -353,7 +321,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.508309,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -376,8 +343,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.50602,
-        'device_id': 'fdc141f864b8eda502e68c234881acd3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_gateway_is_firmware_update_supported',
@@ -386,7 +351,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.506084,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -409,8 +373,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.503851,
-        'device_id': '8d45a8d07c475a026a7ed5b8416ee63a',
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.altherma_refresh',
@@ -419,7 +381,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.503907,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -442,8 +403,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.483843,
-        'device_id': '8d45a8d07c475a026a7ed5b8416ee63a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_leaving_water_offset',
@@ -452,7 +411,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.483901,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -491,8 +449,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.485277,
-        'device_id': '8d45a8d07c475a026a7ed5b8416ee63a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_leaving_water_temperature',
@@ -501,7 +457,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.48531,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -538,8 +493,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.484661,
-        'device_id': '8d45a8d07c475a026a7ed5b8416ee63a',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_room_temperature',
@@ -548,7 +501,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.484702,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -587,8 +539,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.511202,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.altherma_climatecontrol_schedule',
@@ -597,7 +547,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.511239,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -626,8 +575,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.51141,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.altherma_domestichotwatertank_schedule',
@@ -636,7 +583,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.511438,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -662,8 +608,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.489252,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_control_mode',
@@ -672,7 +616,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.489282,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -695,8 +638,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.49325,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_daily_electrical_consumption',
@@ -705,7 +646,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.493371,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -734,8 +674,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.494191,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
@@ -744,7 +682,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.494317,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -773,8 +710,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.493724,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption',
@@ -783,7 +718,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.493839,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -812,8 +746,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.494664,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_yearly_electrical_consumption',
@@ -822,7 +754,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.494775,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -851,8 +782,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.489448,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_climatecontrol_error_code',
@@ -861,7 +790,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.489475,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -884,8 +812,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.49131,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
@@ -894,7 +820,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.491434,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -923,8 +848,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.492292,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
@@ -933,7 +856,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.492404,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -962,8 +884,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.491812,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_weekly_electrical_consumption',
@@ -972,7 +892,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.491937,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1001,8 +920,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.492754,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_yearly_electrical_consumption',
@@ -1011,7 +928,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.492885,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1040,8 +956,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.489815,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_leaving_water_temperature',
@@ -1050,7 +964,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.489926,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1079,8 +992,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.490337,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_outdoor_temperature',
@@ -1089,7 +1000,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.490465,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1118,8 +1028,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.490836,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_room_temperature',
@@ -1128,7 +1036,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.490951,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1157,8 +1064,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.489633,
-        'device_id': '261d172317bcfc39920fa21d60dc3b6f',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_setpoint_mode',
@@ -1167,7 +1072,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.489659,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1190,8 +1094,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.495154,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_domestichotwatertank_error_code',
@@ -1200,7 +1102,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.495182,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1223,8 +1124,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.49534,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
@@ -1233,7 +1132,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.495369,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1256,8 +1154,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.496162,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
@@ -1266,7 +1162,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.496278,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1295,8 +1190,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.497116,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
@@ -1305,7 +1198,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.497228,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1334,8 +1226,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.496647,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption',
@@ -1344,7 +1234,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.49678,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1373,8 +1262,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.49755,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption',
@@ -1383,7 +1270,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.497659,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1412,8 +1298,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.495525,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_setpoint_mode',
@@ -1422,7 +1306,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.495552,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1445,8 +1328,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.4957,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_tank_temperature',
@@ -1455,7 +1336,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.495799,
         'name': None,
         'options': ReadOnlyDict({
           'sensor': ReadOnlyDict({
@@ -1484,8 +1364,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.488989,
-        'device_id': 'fdc141f864b8eda502e68c234881acd3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ip_address',
@@ -1494,7 +1372,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.489023,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1517,8 +1394,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.488687,
-        'device_id': 'fdc141f864b8eda502e68c234881acd3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ratelimit_remaining_day',
@@ -1527,7 +1402,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.488738,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1551,8 +1425,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.515477,
-        'device_id': 'fdc141f864b8eda502e68c234881acd3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_gateway_firmware_update',
@@ -1561,7 +1433,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.515512,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1597,8 +1468,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.515765,
-        'device_id': 'c0f9f79c5d8998b8828701051d56e837',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_indoorunithydro_firmware_update',
@@ -1607,7 +1476,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.515794,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1643,8 +1511,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.515999,
-        'device_id': 'ab9e7e5391d40945f1df70f1dd20acf3',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_outdoorunit_firmware_update',
@@ -1653,7 +1519,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.516024,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1689,8 +1554,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.516218,
-        'device_id': '2785e8431808311e6efc346c525da595',
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_userinterface_firmware_update',
@@ -1699,7 +1562,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.516243,
         'name': None,
         'options': ReadOnlyDict({
         }),
@@ -1735,8 +1597,6 @@
         'categories': dict({
         }),
         'config_subentry_id': None,
-        'created_at': 1790854699.501476,
-        'device_id': 'bb4bf2200654c6c856c239467eff9234',
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.altherma',
@@ -1745,7 +1605,6 @@
         'icon': None,
         'labels': list([
         ]),
-        'modified_at': 1790854699.50151,
         'name': None,
         'options': ReadOnlyDict({
         }),
