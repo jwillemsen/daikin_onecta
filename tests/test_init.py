@@ -472,26 +472,33 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     }
 
     assert climate._homekit_fan_mode_aliases(
-        {
-            "currentMode": {
-                "values": ["quiet", "auto", "fixed"],
-            },
-            "modes": {},
-        }
+        FanSpeed.from_dict(
+            {
+                "currentMode": {
+                    "value": "auto",
+                    "values": ["quiet", "auto", "fixed"],
+                },
+                "modes": {},
+            }
+        )
     ) == {FAN_LOW: "quiet"}
 
-    fan_speed = {
-        "currentMode": {
-            "values": ["quiet", "auto", "fixed"],
-        },
-        "modes": {
-            "fixed": {
-                "minValue": 1,
-                "maxValue": 5,
-                "stepValue": 1,
+    fan_speed = FanSpeed.from_dict(
+        {
+            "currentMode": {
+                "value": "fixed",
+                "values": ["quiet", "auto", "fixed"],
             },
-        },
-    }
+            "modes": {
+                "fixed": {
+                    "value": 4,
+                    "minValue": 1,
+                    "maxValue": 5,
+                    "stepValue": 1,
+                },
+            },
+        }
+    )
     assert climate._get_homekit_fan_mode(fan_speed, "4") == "4"
     assert climate._resolve_homekit_fan_mode_alias(fan_speed, FAN_HIGH) == "5"
 
@@ -1059,7 +1066,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 10
-        assert aioclient_mock.mock_calls[9][2] == '{"value": 3, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert aioclient_mock.mock_calls[9][2] == {"value": 3, "path": "/operationModes/heating/fanSpeed/modes/fixed"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "3"
 
         # Set the fan mode to auto, should result in 1 call
