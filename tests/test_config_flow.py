@@ -275,3 +275,46 @@ async def test_zeroconf_without_hostname(hass: HomeAssistant) -> None:
 
     assert result["type"] == "abort"
     assert result["reason"] == "unknown"
+
+
+async def test_reauth_oauth_create_entry(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+) -> None:
+    """Update the existing entry after successful reauthentication."""
+    hass.config_entries.async_update_entry(config_entry, unique_id="1234567890")
+    flow = config_entries.HANDLERS[DOMAIN]()
+    flow.hass = hass
+    flow.context = {
+        "source": config_entries.SOURCE_REAUTH,
+        "entry_id": config_entry.entry_id,
+    }
+    data = {
+        "auth_implementation": "cloud",
+        "token": {
+            "access_token": FAKE_ACCESS_TOKEN,
+            "refresh_token": "new-refresh-token",
+        },
+    }
+
+    with patch.object(hass.config_entries, "async_reload") as reload_entry:
+        result = await flow.async_oauth_create_entry(data)
+
+    assert result["type"] == "abort"
+    assert result["reason"] == "reauth_successful"
+    assert config_entry.data == data
+    reload_entry.assert_called_once_with(config_entry.entry_id)
+
+
+async def test_reauth_confirm_continue(
+    hass: HomeAssistant,
+) -> None:
+    """Continue reauthentication through the user OAuth step."""
+    flow = config_entries.HANDLERS[DOMAIN]()
+    flow.hass = hass
+
+    with patch.object(flow, "async_step_user", return_value={"type": "external"}) as step_user:
+        result = await flow.async_step_reauth_confirm({})
+
+    assert result == {"type": "external"}
+    step_user.assert_awaited_once()
