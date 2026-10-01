@@ -53766,7 +53766,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '4.1',
+    'state': '1.1',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -54048,7 +54048,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '2',
+    'state': '4.8',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -55136,7 +55136,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '25.7',
+    'state': '54.1',
   })
 # ---
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -75636,7 +75636,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.7',
+    'state': '0.1',
   })
 # ---
 # name: test_fanmode[sensor.sala_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -75918,7 +75918,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '0.1',
+    'state': '0',
   })
 # ---
 # name: test_fanmode[sensor.sala_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -84358,7 +84358,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '45',
+    'state': '0',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption-entry]
@@ -84590,7 +84590,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '15',
+    'state': '20',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_climatecontrol_heating_weekly_electrical_consumption-entry]
@@ -85096,7 +85096,7 @@
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
-    'state': '149',
+    'state': '58',
   })
 # ---
 # name: test_minimal_data[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-entry]
