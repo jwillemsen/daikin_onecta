@@ -50,6 +50,7 @@ ENABLED_DEFAULT = "Enabled"
 STATE_CLASS = "STATE"
 ENTITY_CATEGORY = "ENTITY_CATEGORY"
 TRANSLATION_KEY = "TranslationKey"
+MODEL_ATTRIBUTE = "ModelAttribute"
 
 # This maps the NAME as listed in the Daikin JSON data to:
 # - DEVICE_CLASS: home assistant device class, see
@@ -283,6 +284,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "roomtemperature",
+        MODEL_ATTRIBUTE: "room_temperature",
     },
     "outdoorTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
@@ -292,6 +294,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "outdoortemperature",
+        MODEL_ATTRIBUTE: "outdoor_temperature",
     },
     "leavingWaterTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
@@ -301,6 +304,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "leavingwatertemperature",
+        MODEL_ATTRIBUTE: "leaving_water_temperature",
     },
     "leavingWaterOffset": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
@@ -328,6 +332,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "tanktemperature",
+        MODEL_ATTRIBUTE: "tank_temperature",
     },
     "heatExchangerTemperature": {
         CONF_DEVICE_CLASS: SensorDeviceClass.TEMPERATURE,
@@ -454,6 +459,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "roomhumidity",
+        MODEL_ATTRIBUTE: "room_humidity",
     },
     "pm1Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM1,
@@ -463,6 +469,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "pm1concentration",
+        MODEL_ATTRIBUTE: "pm1_concentration",
     },
     "pm25Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM25,
@@ -472,6 +479,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "pm25concentration",
+        MODEL_ATTRIBUTE: "pm25_concentration",
     },
     "pm10Concentration": {
         CONF_DEVICE_CLASS: SensorDeviceClass.PM10,
@@ -481,6 +489,7 @@ VALUE_SENSOR_MAPPING = {
         ENABLED_DEFAULT: True,
         ENTITY_CATEGORY: None,
         TRANSLATION_KEY: "pm10concentration",
+        MODEL_ATTRIBUTE: "pm10_concentration",
     },
     "CoolingDailyElectricalConsumption": {
         CONF_DEVICE_CLASS: SensorDeviceClass.ENERGY,
