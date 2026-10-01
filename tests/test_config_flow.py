@@ -14,7 +14,6 @@ from homeassistant.setup import async_setup_component
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from .conftest import FAKE_ACCESS_TOKEN
-from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.const import OAUTH2_AUTHORIZE
 from custom_components.daikin_onecta.const import OAUTH2_TOKEN
