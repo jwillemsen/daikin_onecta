@@ -147,7 +147,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        mp = next((point for point in self._device.device.management_points if point.management_point_type == self._management_point_type), None)
+        mp = self._device.device.management_point_by_type(self._management_point_type)
         if mp is not None:
             self._update_from_management_point(mp)
         self.async_write_ha_state()
