@@ -42,41 +42,24 @@ async def async_setup_entry(
     }
 
     for device in onecta_data.devices.values():
-        management_points = device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            embedded_id = management_point["embeddedId"]
-
-            # For all values provide a "value" we provide a sensor
-            for value in management_point:
-                vv = management_point.get(value)
-                if isinstance(vv, dict):
-                    value_value = vv.get("value")
-                    settable = vv.get("settable", False)
-                    values = vv.get("values", [])
-                    # When the following check changes also update this in sensor.py
-                    if value_value is not None and settable is True and "on" in values and "off" in values:
-                        if value == "onOffMode" and management_point_type in supported_management_point_types:
-                            # On/off is handled by the HWT and ClimateControl directly, so don't create a separate switch
-                            pass
-                        elif value == "powerfulMode" and management_point_type in supported_management_point_types:
-                            # Powerful is handled by the HWT and ClimateControl directly, so don't create a separate switch
-                            pass
-                        else:
-                            _LOGGER.info(
-                                "Device '%s' provides switch on/off '%s'",
-                                device.name,
-                                value,
-                            )
-                            sensors.append(
-                                DaikinSwitch(
-                                    device,
-                                    coordinator,
-                                    embedded_id,
-                                    management_point_type,
-                                    value,
-                                )
-                            )
+        for management_point in device.device.management_points:
+            management_point_type = management_point.management_point_type
+            for value, characteristic in management_point.simple_characteristics().items():
+                values = characteristic.values or []
+                if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
+                    if value == "onOffMode" and management_point_type in supported_management_point_types:
+                        continue
+                    if value == "powerfulMode" and management_point_type in supported_management_point_types:
+                        continue
+                    sensors.append(
+                        DaikinSwitch(
+                            device,
+                            coordinator,
+                            management_point.embedded_id,
+                            management_point_type,
+                            value,
+                        )
+                    )
 
     async_add_entities(sensors)
 
@@ -136,15 +119,9 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     def sensor_value(self):
         """Return the state of the switch."""
-        result = ""
-        managementPoints = self._device.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
-            if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
-                if self._management_point_type == management_point_type:
-                    cd = management_point.get(self._value)
-                    if cd is not None:
-                        result = cd.get("value")
+        point = self._device.management_point(self._embedded_id)
+        characteristic = point.characteristic(self._value) if point is not None else None
+        result = characteristic.value if characteristic is not None else ""
         _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result
 

@@ -1,7 +1,7 @@
-import json
 import logging
 from typing import Any
 
+from daikin_onecta import GatewayDevice
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr
@@ -17,20 +17,17 @@ _LOGGER = logging.getLogger(__name__)
 class DaikinOnectaDevice:
     """Class to represent and control one Daikin Onecta Device."""
 
-    def __init__(self, jsonData: dict[str, Any], apiInstance: DaikinApi) -> None:
+    def __init__(self, device: GatewayDevice, apiInstance: DaikinApi) -> None:
         """Initialize a new Daikin Onecta Device."""
         self.api = apiInstance
         # get name from climateControl
-        self.daikin_data = jsonData
-        self.id: str = self.daikin_data["id"]
-        self.name: str = self.daikin_data["deviceModel"]
+        self.device = device
+        self.id: str = device.id
+        self.name: str = device.device_model
 
-        management_points = self.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if management_point["managementPointType"] == "climateControl":
-                name = management_point["name"]["value"]
-                if name:
-                    self.name = name
+        for management_point in device.management_points_by_type("climateControl"):
+            if management_point.name is not None and management_point.name.value:
+                self.name = management_point.name.value
 
         # Populated by async_register_ha_device() before any entity platform is set
         # up. Sub-entities (per-management-point devices in sensor/water_heater/
@@ -43,64 +40,49 @@ class DaikinOnectaDevice:
 
     @property
     def available(self) -> bool:
-        result = False
-        icu = self.daikin_data.get("isCloudConnectionUp")
-        if icu is not None:
-            result = icu["value"]
-        return result
+        """Return whether the device is connected to the Daikin cloud."""
+        return self.device.available
+
+    def management_point(self, embedded_id: str):
+        """Return a management point by embedded id."""
+        return self.device.management_point(embedded_id)
 
     def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
-        manufacturer = {"manufacturer": "Daikin"}
-        device_info.update(**manufacturer)
-        management_points = self.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if management_point_type == management_point["managementPointType"]:
-                mp = management_point.get("eepromVersion")
-                if mp is not None:
-                    v = {"sw_version": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("modelInfo")
-                if mp is not None:
-                    v = {"model": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("firmwareVersion")
-                if mp is not None:
-                    v = {"sw_version": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("serialNumber")
-                if mp is not None:
-                    v = {"serial_number": mp["value"]}
-                    device_info.update(**v)
-                mp = management_point.get("softwareVersion")
-                if mp is not None:
-                    v = {"sw_version": mp["value"]}
-                    device_info.update(**v)
+        """Fill Home Assistant device information from a typed management point."""
+        device_info.update(manufacturer="Daikin")
+        point = self.device.management_point_by_type(management_point_type)
+        if point is None:
+            return
+        if point.eeprom_version is not None:
+            device_info.update(sw_version=point.eeprom_version.value)
+        if point.model_info is not None:
+            device_info.update(model=point.model_info.value)
+        if point.firmware_version is not None:
+            device_info.update(sw_version=point.firmware_version.value)
+        if point.serial_number is not None:
+            device_info.update(serial_number=point.serial_number.value)
+        if point.software_version is not None:
+            device_info.update(sw_version=point.software_version.value)
 
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
-        mac_add = ""
-        devicemodel = self.daikin_data.get("deviceModel")
-        supported_management_point_types = {"gateway"}
-        management_points = self.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            management_point_type = management_point["managementPointType"]
-            if management_point_type in supported_management_point_types:
-                mp = management_point.get("macAddress")
-                if mp is not None:
-                    mac_add = mp["value"]
+        gateway = self.device.management_point_by_type("gateway")
+        mac_address = gateway.characteristic("macAddress") if gateway is not None else None
+        connections = set()
+        if mac_address is not None and mac_address.value:
+            connections.add((CONNECTION_NETWORK_MAC, mac_address.value))
 
         info = DeviceInfo(
             identifiers={
                 # Serial numbers are unique identifiers within a specific domain
                 (DOMAIN, self.id)
             },
-            connections={(CONNECTION_NETWORK_MAC, mac_add)},
+            connections=connections,
             name=self.name,
-            model_id=devicemodel,
+            model_id=self.device.device_model,
         )
 
         self.fill_device_info(info, "gateway")
-
         return info
 
     def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
@@ -119,9 +101,9 @@ class DaikinOnectaDevice:
         )
         self.ha_device_id = entry.id
 
-    def setJsonData(self, desc: dict[str, Any]) -> None:
-        """Overwrite the json data for this device."""
-        self.daikin_data = desc
+    def set_device_data(self, device: GatewayDevice) -> None:
+        """Overwrite the typed and compatibility data for this device."""
+        self.device = device
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
             self.name,
@@ -136,42 +118,19 @@ class DaikinOnectaDevice:
         dataPointPath: str | None,
         value: Any,
     ) -> bool:
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/characteristics/" + dataPoint
-        setBody = {"value": value}
-        if dataPointPath:
-            setBody["path"] = dataPointPath
-        setOptions = json.dumps(setBody)
-
-        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
-
-        res = await self.api.doBearerRequest("PATCH", setPath, setOptions)
-
-        _LOGGER.debug("Result: %s", res)
-
-        return bool(res)
+        """Patch a characteristic."""
+        return await self.api.patch_characteristic(
+            id,
+            embeddedId,
+            dataPoint,
+            value,
+            path=dataPointPath,
+        )
 
     async def post(self, id: str, embeddedId: str, dataPoint: str, value: Any) -> bool:
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = json.dumps(value)
-
-        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
-
-        res = await self.api.doBearerRequest("POST", setPath, setOptions)
-
-        _LOGGER.debug("Result: %s", res)
-
-        return bool(res)
+        """POST a management-point resource."""
+        return await self.api.post_management_point(id, embeddedId, dataPoint, value)
 
     async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
-        setPath = "/v1/gateway-devices/" + id + "/management-points/" + embeddedId + "/" + dataPoint
-        setOptions = None
-        if value is not None:
-            setOptions = json.dumps(value)
-
-        _LOGGER.debug("Path: %s , options: %s", setPath, setOptions)
-
-        res = await self.api.doBearerRequest("PUT", setPath, setOptions)
-
-        _LOGGER.debug("Result: %s", res)
-
-        return bool(res)
+        """PUT a management-point resource."""
+        return await self.api.put_management_point(id, embeddedId, dataPoint, value)

@@ -44,7 +44,10 @@ async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: 
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     daikin_api = onecta_data.daikin_api
     return {
-        "json_data": async_redact_data(daikin_api.json_data, REDACT_KEYS),
+        "json_data": async_redact_data(
+            [device.device.to_dict() for device in onecta_data.devices.values()],
+            REDACT_KEYS,
+        ),
         "rate_limits": daikin_api.rate_limits,
         "options": config_entry.options,
         "oauth2_token_valid": daikin_api.session.valid_token,
@@ -60,7 +63,7 @@ async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: Config
     daikin_api = onecta_data.daikin_api
     daikin_device = onecta_data.devices.get(dev_id)
     if daikin_device is not None:
-        data["device_json_data"] = async_redact_data(daikin_device.daikin_data, REDACT_KEYS)
+        data["device_json_data"] = async_redact_data(daikin_device.device.to_dict(), REDACT_KEYS)
     data["rate_limits"] = daikin_api.rate_limits
     data["options"] = config_entry.options
     data["oauth2_token_valid"] = daikin_api.session.valid_token

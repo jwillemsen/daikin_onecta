@@ -29,15 +29,18 @@ async def async_setup_entry(
     coordinator = onecta_data.coordinator
     sensors = []
     for device in onecta_data.devices.values():
-        managementPoints = device.daikin_data.get("managementPoints", [])
-        for management_point in managementPoints:
-            # When we have a schedule we provide a select sensor
-            schedule = management_point.get("schedule")
-            if schedule is not None:
-                management_point_type = management_point["managementPointType"]
-                embedded_id = management_point["embeddedId"]
+        for management_point in device.device.management_points:
+            if management_point.schedule is not None:
                 _LOGGER.info("Device '%s' provides schedule", device.name)
-                sensors.append(DaikinScheduleSelect(device, coordinator, embedded_id, management_point_type, "schedule"))
+                sensors.append(
+                    DaikinScheduleSelect(
+                        device,
+                        coordinator,
+                        management_point.embedded_id,
+                        management_point.management_point_type,
+                        "schedule",
+                    )
+                )
 
     async_add_entities(sensors)
 
@@ -87,89 +90,56 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self.update_state()
         self.async_write_ha_state()
 
+    def _selection(self):
+        """Return the schedule selection for the current schedule mode."""
+        point = self._device.management_point(self._embedded_id)
+        if point is None or point.schedule is None:
+            return None
+        schedule = point.schedule.value
+        current_mode = schedule.current_mode.value if schedule.current_mode is not None else None
+        return next((selection for selection in schedule.selections if selection.mode == current_mode), None)
+
     def get_current_option(self):
-        """Return the state of the sensor."""
-        res = None
-        management_points = self._device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
-                if self._management_point_type == management_point_type:
-                    scheduledict = management_point.get(self._value)
-                    if scheduledict is not None:
-                        currentMode = scheduledict["value"]["currentMode"]["value"]
-                        # When there is no schedule enabled we return none
-                        if not scheduledict["value"]["modes"][currentMode]["enabled"]["value"]:
-                            res = SCHEDULE_OFF
-                        else:
-                            currentSchedule = scheduledict["value"]["modes"][currentMode]["currentSchedule"]["value"]
-                            res = scheduledict["value"]["modes"][currentMode]["schedules"][currentSchedule]["name"]["value"]
-                            if not res:
-                                res = currentSchedule
-        return res
+        """Return the selected schedule name."""
+        selection = self._selection()
+        if selection is None or not selection.enabled:
+            return SCHEDULE_OFF
+        return selection.current_option
 
     async def async_select_option(self, option: str) -> None:
+        """Select or disable a configured schedule."""
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
-        currentMode = ""
-        scheduleid = option
-        management_points = self._device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
-                if self._management_point_type == management_point_type:
-                    scheduledict = management_point.get(self._value)
-                    if scheduledict is not None:
-                        currentMode = scheduledict["value"]["currentMode"]["value"]
-                        # Look for a schedule with the user selected readable name, when we find it, we use the schedule id
-                        # related to that name
-                        for scheduleName in scheduledict["value"]["modes"][currentMode]["currentSchedule"]["values"]:
-                            readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"]["value"]
-                            if not readableName:
-                                readableName = scheduleName
-                            if option == SCHEDULE_OFF:
-                                if readableName == self._attr_current_option:
-                                    scheduleid = scheduleName
-                                    break
-                            else:
-                                if readableName == option:
-                                    scheduleid = scheduleName
-                                    break
+        selection = self._selection()
+        if selection is None:
+            return False
 
-        value = {"scheduleId": scheduleid, "enabled": option != SCHEDULE_OFF}
-        result = await self._device.put(self._device.id, self._embedded_id, f"schedule/{currentMode}/current", value)
-        if result is False:
-            _LOGGER.warning(
-                "Device '%s' problem selecting schedule %s",
-                self._device.name,
-                scheduleid,
+        schedule_id = selection.selected
+        if option != SCHEDULE_OFF:
+            schedule_id = next(
+                (schedule.id for schedule in selection.options if schedule.name == option),
+                option,
             )
-        else:
+
+        result = await self._device.put(
+            self._device.id,
+            self._embedded_id,
+            f"schedule/{selection.mode}/current",
+            {
+                "scheduleId": schedule_id,
+                "enabled": option != SCHEDULE_OFF,
+            },
+        )
+        if result:
             self._attr_current_option = option
             self.async_write_ha_state()
-
         return result
 
     def get_options(self):
-        opt = []
-        management_points = self._device.daikin_data.get("managementPoints", [])
-        for management_point in management_points:
-            if self._embedded_id == management_point["embeddedId"]:
-                management_point_type = management_point["managementPointType"]
-                if self._management_point_type == management_point_type:
-                    scheduledict = management_point.get(self._value)
-                    if scheduledict is not None:
-                        currentMode = scheduledict["value"]["currentMode"]["value"]
-                        for scheduleName in scheduledict["value"]["modes"][currentMode]["currentSchedule"]["values"]:
-                            readableName = scheduledict["value"]["modes"][currentMode]["schedules"][scheduleName]["name"].get("value")
-                            # The schedule can maybe have an empty name set, use at that moment the internal ID
-                            if not readableName:
-                                readableName = scheduleName
-                            opt.append(readableName)
-
-                        # Only add off when the schedule current mode enabled settable is true
-                        if scheduledict["value"]["modes"][currentMode]["enabled"]["settable"]:
-                            _LOGGER.info("Device '%s:%s' enabled can be set, so providing %s", self._device.name, self._embedded_id, SCHEDULE_OFF)
-
-                            opt.append(SCHEDULE_OFF)
-
-        return opt
+        """Return readable configured schedules."""
+        selection = self._selection()
+        if selection is None:
+            return []
+        options = [schedule.name for schedule in selection.options]
+        if selection.enabled_settable:
+            options.append(SCHEDULE_OFF)
+        return options

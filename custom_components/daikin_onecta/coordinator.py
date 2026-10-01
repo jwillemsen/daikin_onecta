@@ -6,6 +6,7 @@ from dataclasses import field
 from datetime import time
 from datetime import timedelta
 
+from daikin_onecta import OnectaRateLimitError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
@@ -14,7 +15,6 @@ from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
-from .daikin_api import DaikinRateLimitError
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -69,23 +69,23 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             )
         else:
             try:
-                daikin_api.json_data = await daikin_api.getCloudDeviceDetails()
-            except DaikinRateLimitError as err:
+                cloud_devices = await daikin_api.get_cloud_device_details()
+            except OnectaRateLimitError as err:
                 raise UpdateFailed(
                     "Daikin API rate limit exceeded",
                     retry_after=err.retry_after,
                 ) from err
 
-            for dev_data in daikin_api.json_data or []:
-                if dev_data["id"] in devices:
-                    devices[dev_data["id"]].setJsonData(dev_data)
+            for dev_data in cloud_devices:
+                if dev_data.id in devices:
+                    devices[dev_data.id].set_device_data(dev_data)
                 else:
                     device = DaikinOnectaDevice(dev_data, daikin_api)
                     # Register the gateway device in the device registry now, before
                     # this coordinator's first refresh returns and platforms are set
                     # up, so every platform can link back to it via via_device_id.
                     device.async_register_ha_device(self.hass, self._config_entry)
-                    devices[dev_data["id"]] = device
+                    devices[dev_data.id] = device
 
             self.update_interval = self.determine_update_interval(self.hass)
 

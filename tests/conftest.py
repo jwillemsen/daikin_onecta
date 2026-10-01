@@ -85,21 +85,8 @@ async def snapshot_platform_entities(
     config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
     config_entry.runtime_data.coordinator = MagicMock()
     """Snapshot entities and their states."""
-    with (
-        patch(
-            "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
-        ),
-        patch(
-            "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.valid_token",
-            False,
-        ),
-        patch(
-            "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
-        ),
-        patch(
-            "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.token",
-            {"access_token": FAKE_ACCESS_TOKEN},
-        ),
+    with patch(
+        "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ):
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
         assert await hass.config_entries.async_setup(config_entry.entry_id)
@@ -148,7 +135,7 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
                 "access_token": FAKE_ACCESS_TOKEN,
                 "type": "Bearer",
                 "expires_in": 60,
-                "expires_at": 1000,
+                "expires_at": 4102444800,
                 "scope": 1,
             },
         },

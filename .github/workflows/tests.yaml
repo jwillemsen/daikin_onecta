@@ -29,7 +29,7 @@ jobs:
       - name: Install requirements
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
-          pip install -r requirements_test.txt
+          python scripts/install_test_requirements.py
       - name: Tests suite
         run: |
           pytest \
