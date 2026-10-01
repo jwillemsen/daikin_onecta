@@ -114,34 +114,6 @@ class DaikinApi:
             self._update_rate_limit_issues()
             return devices
 
-    async def set_schedule(
-        self,
-        gateway_id: str,
-        management_point_id: str,
-        mode: str,
-        schedule: str,
-        *,
-        enabled: bool = True,
-    ) -> bool:
-        """Select or disable a configured schedule."""
-        async with self._cloud_lock:
-            try:
-                await self._client.set_schedule(
-                    gateway_id,
-                    management_point_id,
-                    mode,
-                    schedule,
-                    enabled=enabled,
-                )
-            except OnectaRateLimitError:
-                self._create_rate_limit_issues()
-                return False
-            except OnectaApiError:
-                return False
-            self._last_patch_call = dt_util.now()
-            self._update_rate_limit_issues()
-            return True
-
     async def patch_characteristic(
         self,
         gateway_id: str,
