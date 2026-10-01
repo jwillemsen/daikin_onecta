@@ -146,16 +146,7 @@ async def async_setup_entry(
                         sensor in VALUE_SENSOR_MAPPING
                         and getattr(
                             sensory_data,
-                            {
-                                "roomTemperature": "room_temperature",
-                                "outdoorTemperature": "outdoor_temperature",
-                                "leavingWaterTemperature": "leaving_water_temperature",
-                                "tankTemperature": "tank_temperature",
-                                "roomHumidity": "room_humidity",
-                                "pm1Concentration": "pm1_concentration",
-                                "pm25Concentration": "pm25_concentration",
-                                "pm10Concentration": "pm10_concentration",
-                            }[sensor],
+                            VALUE_SENSOR_MAPPING[sensor][MODEL_ATTRIBUTE],
                         )
                         is not None
                     ):
