@@ -5,6 +5,7 @@ from datetime import datetime
 from typing import Any
 
 from daikin_onecta import GatewayDevice
+from daikin_onecta import OnectaApiError
 from daikin_onecta import OnectaClient
 from daikin_onecta import OnectaRateLimitError
 from homeassistant import config_entries
@@ -135,6 +136,8 @@ class DaikinApi:
             except OnectaRateLimitError:
                 self._create_rate_limit_issues()
                 return False
+            except OnectaApiError:
+                return False
             self._last_patch_call = dt_util.now()
             self._update_rate_limit_issues()
             return True
@@ -161,6 +164,8 @@ class DaikinApi:
             except OnectaRateLimitError:
                 self._create_rate_limit_issues()
                 return False
+            except OnectaApiError:
+                return False
             self._last_patch_call = dt_util.now()
             self._update_rate_limit_issues()
             return True
@@ -179,6 +184,8 @@ class DaikinApi:
             except OnectaRateLimitError:
                 self._create_rate_limit_issues()
                 return False
+            except OnectaApiError:
+                return False
             self._last_patch_call = dt_util.now()
             self._update_rate_limit_issues()
             return True
@@ -196,6 +203,8 @@ class DaikinApi:
                 await self._client.put_management_point(gateway_id, management_point_id, resource, value)
             except OnectaRateLimitError:
                 self._create_rate_limit_issues()
+                return False
+            except OnectaApiError:
                 return False
             self._last_patch_call = dt_util.now()
             self._update_rate_limit_issues()
