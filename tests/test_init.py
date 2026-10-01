@@ -467,7 +467,9 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     climate = DaikinClimate.__new__(DaikinClimate)
     climate.coordinator = MagicMock(options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
 
-    assert climate._homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {FAN_LOW: "quiet"}
+    assert climate._homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {
+        FAN_LOW: "quiet"
+    }
 
     assert climate._homekit_fan_mode_aliases(
         {
