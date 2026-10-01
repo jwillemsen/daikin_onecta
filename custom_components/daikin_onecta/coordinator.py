@@ -24,7 +24,7 @@ _LOGGER = logging.getLogger(__name__)
 class OnectaRuntimeData:
     """Runtime Data for Onecta integration."""
 
-    coordinator: "OnectaDataUpdateCoordinator" = field(init=False)
+    coordinator: OnectaDataUpdateCoordinator = field(init=False)
     devices: dict[str, DaikinOnectaDevice]
     daikin_api: DaikinApi
 
