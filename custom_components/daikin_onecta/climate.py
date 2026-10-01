@@ -679,7 +679,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     def get_preset_mode(self):
         """Return the active preset mode."""
-        for mode in self.preset_modes:
+        for mode in PRESET_MODES:
             preset = self.preset_characteristic(HA_PRESET_TO_DAIKIN[mode])
             if preset is None:
                 continue
