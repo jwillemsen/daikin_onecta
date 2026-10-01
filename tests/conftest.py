@@ -110,13 +110,24 @@ async def snapshot_platform_entities(
 
     assert entity_entries
 
-    entity_snapshot = {
-        entity_entry.entity_id: {
-            "entry": entity_entry,
-            "state": hass.states.get(entity_entry.entity_id),
+    entity_snapshot = {}
+    for entity_entry in entity_entries:
+        registry_data = dict(entity_entry.as_partial_dict)
+        registry_data.pop("config_entry_id", None)
+        registry_data.pop("id", None)
+
+        state = hass.states.get(entity_entry.entity_id)
+        assert state is not None
+        state_data = dict(state.as_dict())
+        state_data.pop("last_changed", None)
+        state_data.pop("last_reported", None)
+        state_data.pop("last_updated", None)
+        state_data.pop("context", None)
+
+        entity_snapshot[entity_entry.entity_id] = {
+            "entry": registry_data,
+            "state": state_data,
         }
-        for entity_entry in entity_entries
-    }
 
     assert entity_snapshot == snapshot(
         name=fixture_device_json,
