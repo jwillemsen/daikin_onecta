@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_holidaymode[sensor.ndj_domestichotwaterflowthrough_error_code-state]
+  <state sensor.ndj_domestichotwaterflowthrough_error_code=; icon=mdi:information-outline, friendly_name=NDJ DomesticHotWaterFlowThrough Error code @ 2026-10-01T04:22:26.628594-07:00>
+# ---

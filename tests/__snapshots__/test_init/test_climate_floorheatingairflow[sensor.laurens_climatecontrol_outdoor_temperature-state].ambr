@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_outdoor_temperature-state]
+  <state sensor.laurens_climatecontrol_outdoor_temperature=9.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Laurens ClimateControl Outdoor temperature @ 2026-10-01T04:22:26.367186-07:00>
+# ---

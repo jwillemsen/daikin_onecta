@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_offlinedevice[binary_sensor.studio_gateway_is_firmware_update_supported-state]
+  <state binary_sensor.studio_gateway_is_firmware_update_supported=unavailable; icon=mdi:information-outline, friendly_name=Studio Gateway Is firmware update supported @ 2026-10-01T04:22:24.865415-07:00>
+# ---

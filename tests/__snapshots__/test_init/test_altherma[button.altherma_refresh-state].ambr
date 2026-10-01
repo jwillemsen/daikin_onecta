@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[button.altherma_refresh-state]
+  <state button.altherma_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:22:25.567773-07:00>
+# ---

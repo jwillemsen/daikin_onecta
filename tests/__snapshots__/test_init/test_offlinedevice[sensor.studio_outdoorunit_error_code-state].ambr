@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_offlinedevice[sensor.studio_outdoorunit_error_code-state]
+  <state sensor.studio_outdoorunit_error_code=unavailable; icon=mdi:information-outline, friendly_name=Studio OutdoorUnit Error code @ 2026-10-01T04:22:24.857432-07:00>
+# ---

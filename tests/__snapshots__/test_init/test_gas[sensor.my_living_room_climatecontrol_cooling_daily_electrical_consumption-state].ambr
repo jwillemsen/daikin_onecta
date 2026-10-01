@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_gas[sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption-state]
+  <state sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption=26; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=My Living Room ClimateControl Cooling daily electrical consumption @ 2026-10-01T04:22:27.209994-07:00>
+# ---

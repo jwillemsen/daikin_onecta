@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_fixedfanmode[select.werkkamer_climatecontrol_schedule-state]
+  <state select.werkkamer_climatecontrol_schedule=off; options=['0', 'off'], icon=mdi:calendar-clock, friendly_name=Werkkamer ClimateControl Schedule @ 2026-10-01T04:22:26.167340-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[climate.laurens_room_temperature-state]
+  <state climate.laurens_room_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.FAN_ONLY: 'fan_only'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>, <HVACMode.DRY: 'dry'>], min_temp=10, max_temp=31, target_temp_step=0.5, fan_modes=['auto', 'quiet', '1', '2', '3', '4', '5'], preset_modes=['away', 'boost', 'eco', 'none'], swing_modes=['stop', 'swing', 'windnice'], swing_horizontal_modes=['stop', 'swing'], current_temperature=16, temperature=23, fan_mode=auto, preset_mode=none, swing_mode=windnice, swing_horizontal_mode=stop, friendly_name=Laurens Room Temperature, supported_features=953 @ 2026-10-01T04:22:26.353896-07:00>
+# ---

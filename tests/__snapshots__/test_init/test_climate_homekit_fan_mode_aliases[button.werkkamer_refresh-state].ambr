@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_homekit_fan_mode_aliases[button.werkkamer_refresh-state]
+  <state button.werkkamer_refresh=unknown; icon=mdi:refresh, friendly_name=Werkkamer Refresh @ 2026-10-01T04:22:26.257969-07:00>
+# ---

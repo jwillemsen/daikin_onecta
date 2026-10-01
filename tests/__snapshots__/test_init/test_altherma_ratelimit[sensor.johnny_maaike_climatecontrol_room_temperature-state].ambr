@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_room_temperature-state]
+  <state sensor.johnny_maaike_climatecontrol_room_temperature=19; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Room temperature @ 2026-10-01T04:22:25.895381-07:00>
+# ---

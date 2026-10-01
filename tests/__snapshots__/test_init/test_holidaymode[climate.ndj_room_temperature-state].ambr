@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_holidaymode[climate.ndj_room_temperature-state]
+  <state climate.ndj_room_temperature=heat; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>], min_temp=10, max_temp=30, target_temp_step=0.5, preset_modes=['away', 'none'], current_temperature=23, preset_mode=away, friendly_name=NDJ Room Temperature, supported_features=400 @ 2026-10-01T04:22:26.621177-07:00>
+# ---

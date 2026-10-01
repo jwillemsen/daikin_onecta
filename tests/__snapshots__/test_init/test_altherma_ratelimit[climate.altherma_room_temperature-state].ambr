@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[climate.altherma_room_temperature-state]
+  <state climate.altherma_room_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>], min_temp=23, max_temp=28, target_temp_step=0.5, preset_modes=['away', 'none'], current_temperature=21, temperature=24.5, preset_mode=none, friendly_name=Sanne Room Temperature, supported_features=401 @ 2026-10-01T04:22:25.871195-07:00>
+# ---

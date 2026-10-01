@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[sensor.laurens_gateway_ssid-state]
+  <state sensor.laurens_gateway_ssid=DaikinAP31731; icon=mdi:access-point-network, friendly_name=Laurens Gateway SSID @ 2026-10-01T04:22:26.365677-07:00>
+# ---

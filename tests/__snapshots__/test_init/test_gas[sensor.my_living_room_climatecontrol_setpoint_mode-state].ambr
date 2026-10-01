@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_gas[sensor.my_living_room_climatecontrol_setpoint_mode-state]
+  <state sensor.my_living_room_climatecontrol_setpoint_mode=weatherDependent; icon=mdi:alphabetical, friendly_name=My Living Room ClimateControl Setpoint mode @ 2026-10-01T04:22:27.206430-07:00>
+# ---

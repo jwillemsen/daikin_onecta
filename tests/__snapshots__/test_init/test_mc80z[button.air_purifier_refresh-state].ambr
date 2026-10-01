@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[button.air_purifier_refresh-state]
+  <state button.air_purifier_refresh=unknown; icon=mdi:refresh, friendly_name=air-purifier Refresh @ 2026-10-01T04:22:26.526487-07:00>
+# ---

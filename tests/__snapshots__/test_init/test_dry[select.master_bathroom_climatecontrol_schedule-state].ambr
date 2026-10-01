@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry[select.master_bathroom_climatecontrol_schedule-state]
+  <state select.master_bathroom_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Master Bathroom ClimateControl Schedule @ 2026-10-01T04:22:24.961366-07:00>
+# ---

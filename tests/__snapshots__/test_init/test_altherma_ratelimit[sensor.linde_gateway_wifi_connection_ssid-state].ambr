@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[sensor.linde_gateway_wifi_connection_ssid-state]
+  <state sensor.linde_gateway_wifi_connection_ssid=WILLEMSEN; icon=mdi:access-point-network, friendly_name=Linde Gateway WiFi connection SSID @ 2026-10-01T04:22:25.907468-07:00>
+# ---

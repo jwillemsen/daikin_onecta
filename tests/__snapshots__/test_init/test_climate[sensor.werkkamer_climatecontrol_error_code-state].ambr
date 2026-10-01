@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.werkkamer_climatecontrol_error_code-state]
+  <state sensor.werkkamer_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Werkkamer ClimateControl Error code @ 2026-10-01T04:22:26.843495-07:00>
+# ---

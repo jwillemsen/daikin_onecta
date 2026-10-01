@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_room_temperature-state]
+  <state sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_room_temperature=36; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=третий блок/Спальня второй этаж ClimateControl Room temperature @ 2026-10-01T04:22:27.797315-07:00>
+# ---

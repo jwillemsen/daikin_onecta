@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[binary_sensor.altherma_domestichotwatertank_is_in_error_state-state]
+  <state binary_sensor.altherma_domestichotwatertank_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Altherma DomesticHotWaterTank Is in error state @ 2026-10-01T04:22:26.876833-07:00>
+# ---

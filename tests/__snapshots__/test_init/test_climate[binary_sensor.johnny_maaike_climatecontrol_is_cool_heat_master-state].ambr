@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[binary_sensor.johnny_maaike_climatecontrol_is_cool_heat_master-state]
+  <state binary_sensor.johnny_maaike_climatecontrol_is_cool_heat_master=on; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is cool/heat master @ 2026-10-01T04:22:26.880946-07:00>
+# ---

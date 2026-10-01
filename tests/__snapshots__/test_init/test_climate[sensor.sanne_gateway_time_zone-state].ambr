@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.sanne_gateway_time_zone-state]
+  <state sensor.sanne_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Sanne Gateway Time zone @ 2026-10-01T04:22:26.855421-07:00>
+# ---

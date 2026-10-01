@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_gas[select.my_living_room_climatecontrol_schedule-state]
+  <state select.my_living_room_climatecontrol_schedule=unknown; options=['althermaClimateControl0', 'althermaClimateControl1', 'althermaClimateControl2'], icon=mdi:calendar-clock, friendly_name=My Living Room ClimateControl Schedule @ 2026-10-01T04:22:27.224727-07:00>
+# ---

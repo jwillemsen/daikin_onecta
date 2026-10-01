@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[button.johnny_maaike_refresh-state]
+  <state button.johnny_maaike_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:22:26.894007-07:00>
+# ---

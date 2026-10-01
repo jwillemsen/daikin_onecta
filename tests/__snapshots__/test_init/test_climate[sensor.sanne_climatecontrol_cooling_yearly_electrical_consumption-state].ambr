@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.sanne_climatecontrol_cooling_yearly_electrical_consumption-state]
+  <state sensor.sanne_climatecontrol_cooling_yearly_electrical_consumption=1.6; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Sanne ClimateControl Cooling yearly electrical consumption @ 2026-10-01T04:22:26.860055-07:00>
+# ---

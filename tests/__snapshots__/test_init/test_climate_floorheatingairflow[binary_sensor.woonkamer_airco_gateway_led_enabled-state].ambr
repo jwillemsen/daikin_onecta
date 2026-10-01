@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[binary_sensor.woonkamer_airco_gateway_led_enabled-state]
+  <state binary_sensor.woonkamer_airco_gateway_led_enabled=on; icon=mdi:information-outline, friendly_name=Woonkamer airco Gateway LED enabled @ 2026-10-01T04:22:26.382877-07:00>
+# ---

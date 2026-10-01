@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[water_heater.altherma-state]
+  <state water_heater.altherma=heat_pump; min_temp=30.0, max_temp=60.0, operation_list=['off', 'heat_pump', 'performance'], current_temperature=48.0, temperature=48.0, target_temp_high=None, target_temp_low=None, operation_mode=heat_pump, target_temp_step=1.0, friendly_name=Altherma DomesticHotWaterTank, supported_features=11 @ 2026-10-01T04:22:26.863215-07:00>
+# ---

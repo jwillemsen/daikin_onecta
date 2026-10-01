@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_climatecontrol_setpoint_mode-state]
+  <state sensor.climate_control_getr422_climatecontrol_setpoint_mode=fixed; icon=mdi:alphabetical, friendly_name=Climate control getr422 ClimateControl Setpoint mode @ 2026-10-01T04:22:27.589953-07:00>
+# ---

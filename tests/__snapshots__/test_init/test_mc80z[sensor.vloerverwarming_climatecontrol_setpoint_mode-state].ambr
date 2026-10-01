@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.vloerverwarming_climatecontrol_setpoint_mode-state]
+  <state sensor.vloerverwarming_climatecontrol_setpoint_mode=weatherDependent; icon=mdi:alphabetical, friendly_name=Vloerverwarming ClimateControl Setpoint mode @ 2026-10-01T04:22:26.503851-07:00>
+# ---

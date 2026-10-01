@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption-state]
+  <state sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption=0.3; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Werkkamer ClimateControl Heating weekly electrical consumption @ 2026-10-01T04:22:26.243672-07:00>
+# ---

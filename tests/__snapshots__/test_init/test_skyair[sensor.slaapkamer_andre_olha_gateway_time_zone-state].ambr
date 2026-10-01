@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[sensor.slaapkamer_andre_olha_gateway_time_zone-state]
+  <state sensor.slaapkamer_andre_olha_gateway_time_zone=Europe/Kiev; icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha Gateway Time zone @ 2026-10-01T04:22:27.789571-07:00>
+# ---

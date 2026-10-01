@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_error_code-state]
+  <state sensor.vloerverwarming_domestichotwatertank_error_code=; icon=mdi:information-outline, friendly_name=Vloerverwarming DomesticHotWaterTank Error code @ 2026-10-01T04:22:26.509007-07:00>
+# ---

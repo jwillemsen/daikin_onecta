@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.vloerverwarming_domestichotwatertank_heat_up_mode-state]
+  <state sensor.vloerverwarming_domestichotwatertank_heat_up_mode=scheduleOnly; icon=mdi:alphabetical, friendly_name=Vloerverwarming DomesticHotWaterTank Heat up mode @ 2026-10-01T04:22:26.509207-07:00>
+# ---

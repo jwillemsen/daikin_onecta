@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_fanmode[binary_sensor.sala_gateway_is_firmware_update_supported-state]
+  <state binary_sensor.sala_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Sala Gateway Is firmware update supported @ 2026-10-01T04:22:25.130090-07:00>
+# ---

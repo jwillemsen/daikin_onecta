@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_button[button.bedroom_3_refresh-state]
+  <state button.bedroom_3_refresh=unknown; icon=mdi:refresh, friendly_name=Bedroom 3 Refresh @ 2026-10-01T04:22:27.342849-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_wifi_connection_ssid-state]
+  <state sensor.woonkamer_airco_gateway_wifi_connection_ssid=SSIDPLOEG24; icon=mdi:access-point-network, friendly_name=Woonkamer airco Gateway WiFi connection SSID @ 2026-10-01T04:22:26.359016-07:00>
+# ---

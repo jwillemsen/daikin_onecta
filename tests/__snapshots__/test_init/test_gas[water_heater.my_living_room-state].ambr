@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_gas[water_heater.my_living_room-state]
+  <state water_heater.my_living_room=off; min_temp=None, max_temp=None, operation_list=['off', 'heat_pump'], current_temperature=40.0, temperature=None, target_temp_high=None, target_temp_low=None, operation_mode=off, friendly_name=My Living Room, supported_features=10 @ 2026-10-01T04:22:27.219262-07:00>
+# ---

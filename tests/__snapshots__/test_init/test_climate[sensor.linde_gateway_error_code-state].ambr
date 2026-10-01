@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.linde_gateway_error_code-state]
+  <state sensor.linde_gateway_error_code=; icon=mdi:information-outline, friendly_name=Linde Gateway Error code @ 2026-10-01T04:22:26.848416-07:00>
+# ---

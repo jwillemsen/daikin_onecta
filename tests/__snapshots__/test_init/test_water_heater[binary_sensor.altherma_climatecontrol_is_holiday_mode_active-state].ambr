@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_water_heater[binary_sensor.altherma_climatecontrol_is_holiday_mode_active-state]
+  <state binary_sensor.altherma_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Altherma ClimateControl Is holiday mode active @ 2026-10-01T04:22:26.719328-07:00>
+# ---

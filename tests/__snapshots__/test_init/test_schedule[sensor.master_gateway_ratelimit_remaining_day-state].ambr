@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_schedule[sensor.master_gateway_ratelimit_remaining_day-state]
+  <state sensor.master_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Master Gateway Ratelimit remaining day @ 2026-10-01T04:22:25.379444-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_climatecontrol_leaving_water_temperature-state]
+  <state sensor.climate_control_getr422_climatecontrol_leaving_water_temperature=23.9; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Climate control getr422 ClimateControl Leaving water temperature @ 2026-10-01T04:22:27.590668-07:00>
+# ---

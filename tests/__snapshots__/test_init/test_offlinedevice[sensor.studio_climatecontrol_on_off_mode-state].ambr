@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_offlinedevice[sensor.studio_climatecontrol_on_off_mode-state]
+  <state sensor.studio_climatecontrol_on_off_mode=unavailable; icon=mdi:toggle-switch-variant, friendly_name=Studio ClimateControl On/Off mode @ 2026-10-01T04:22:24.852493-07:00>
+# ---

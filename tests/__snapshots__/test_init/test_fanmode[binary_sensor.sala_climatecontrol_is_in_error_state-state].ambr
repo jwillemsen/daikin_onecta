@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_fanmode[binary_sensor.sala_climatecontrol_is_in_error_state-state]
+  <state binary_sensor.sala_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Sala ClimateControl Is in error state @ 2026-10-01T04:22:25.130429-07:00>
+# ---

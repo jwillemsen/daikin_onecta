@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_holidaymode[sensor.ndj_climatecontrol_on_off_mode-state]
+  <state sensor.ndj_climatecontrol_on_off_mode=on; icon=mdi:toggle-switch-variant, friendly_name=NDJ ClimateControl On/Off mode @ 2026-10-01T04:22:26.627592-07:00>
+# ---

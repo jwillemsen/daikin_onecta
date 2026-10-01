@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_outdoor_temperature-state]
+  <state sensor.johnny_maaike_climatecontrol_outdoor_temperature=12; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Outdoor temperature @ 2026-10-01T04:22:27.690898-07:00>
+# ---

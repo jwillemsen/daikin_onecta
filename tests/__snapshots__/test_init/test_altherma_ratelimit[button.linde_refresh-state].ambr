@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[button.linde_refresh-state]
+  <state button.linde_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:22:25.947206-07:00>
+# ---

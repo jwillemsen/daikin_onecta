@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_offlinedevice[sensor.studio_gateway_error_code-state]
+  <state sensor.studio_gateway_error_code=unavailable; icon=mdi:information-outline, friendly_name=Studio Gateway Error code @ 2026-10-01T04:22:24.851907-07:00>
+# ---

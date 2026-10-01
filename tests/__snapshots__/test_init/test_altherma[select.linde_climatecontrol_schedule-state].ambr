@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[select.linde_climatecontrol_schedule-state]
+  <state select.linde_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Linde ClimateControl Schedule @ 2026-10-01T04:22:25.561316-07:00>
+# ---

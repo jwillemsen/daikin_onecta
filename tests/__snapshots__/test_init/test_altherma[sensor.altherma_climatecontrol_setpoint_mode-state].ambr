@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.altherma_climatecontrol_setpoint_mode-state]
+  <state sensor.altherma_climatecontrol_setpoint_mode=weatherDependentHeatingFixedCooling; icon=mdi:alphabetical, friendly_name=Altherma ClimateControl Setpoint mode @ 2026-10-01T04:22:25.520501-07:00>
+# ---

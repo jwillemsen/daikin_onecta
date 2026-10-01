@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.sanne_outdoorunit_error_code-state]
+  <state sensor.sanne_outdoorunit_error_code=00-; icon=mdi:information-outline, friendly_name=Sanne OutdoorUnit Error code @ 2026-10-01T04:22:25.554161-07:00>
+# ---

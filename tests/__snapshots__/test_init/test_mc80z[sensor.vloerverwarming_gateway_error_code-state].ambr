@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.vloerverwarming_gateway_error_code-state]
+  <state sensor.vloerverwarming_gateway_error_code=; icon=mdi:information-outline, friendly_name=Vloerverwarming Gateway Error code @ 2026-10-01T04:22:26.503453-07:00>
+# ---

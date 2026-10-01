@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_button[sensor.lounge_climatecontrol_error_code-state]
+  <state sensor.lounge_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Lounge ClimateControl Error code @ 2026-10-01T04:22:27.309862-07:00>
+# ---

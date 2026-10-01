@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.johnny_maaike_indoorunit_dry_keep_setting-state]
+  <state sensor.johnny_maaike_indoorunit_dry_keep_setting=on; icon=mdi:water-percent, friendly_name=Johnny&Maaike IndoorUnit Dry keep setting @ 2026-10-01T04:22:25.534321-07:00>
+# ---

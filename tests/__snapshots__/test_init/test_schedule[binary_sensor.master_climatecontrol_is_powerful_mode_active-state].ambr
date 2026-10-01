@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_schedule[binary_sensor.master_climatecontrol_is_powerful_mode_active-state]
+  <state binary_sensor.master_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Master ClimateControl Is powerful mode active @ 2026-10-01T04:22:25.386010-07:00>
+# ---

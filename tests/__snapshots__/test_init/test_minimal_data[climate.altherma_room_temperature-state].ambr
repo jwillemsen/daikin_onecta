@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_minimal_data[climate.altherma_room_temperature-state]
+  <state climate.altherma_room_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>], min_temp=12, max_temp=30, target_temp_step=0.5, current_temperature=21.2, temperature=22, friendly_name=Altherma Room Temperature, supported_features=385 @ 2026-10-01T04:22:27.110176-07:00>
+# ---

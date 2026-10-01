@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_water_heater[sensor.altherma_climatecontrol_cooling_daily_electrical_consumption-state]
+  <state sensor.altherma_climatecontrol_cooling_daily_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Altherma ClimateControl Cooling daily electrical consumption @ 2026-10-01T04:22:26.706582-07:00>
+# ---

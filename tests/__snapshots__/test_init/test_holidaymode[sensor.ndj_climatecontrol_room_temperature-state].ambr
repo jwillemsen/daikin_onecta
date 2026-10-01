@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_holidaymode[sensor.ndj_climatecontrol_room_temperature-state]
+  <state sensor.ndj_climatecontrol_room_temperature=23; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=NDJ ClimateControl Room temperature @ 2026-10-01T04:22:26.628297-07:00>
+# ---

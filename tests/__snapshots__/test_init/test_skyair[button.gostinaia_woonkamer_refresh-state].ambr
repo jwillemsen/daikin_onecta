@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[button.gostinaia_woonkamer_refresh-state]
+  <state button.gostinaia_woonkamer_refresh=unknown; icon=mdi:refresh, friendly_name=Гостиная / Woonkamer Refresh @ 2026-10-01T04:22:27.815920-07:00>
+# ---

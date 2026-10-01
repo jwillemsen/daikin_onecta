@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[binary_sensor.werkkamer_gateway_daylight_saving_time_enabled-state]
+  <state binary_sensor.werkkamer_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Daylight saving time enabled @ 2026-10-01T04:22:25.938334-07:00>
+# ---

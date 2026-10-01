@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.air_purifier_climatecontrol_room_humidity-state]
+  <state sensor.air_purifier_climatecontrol_room_humidity=56; state_class=measurement, unit_of_measurement=%, device_class=humidity, icon=mdi:water-percent, friendly_name=air-purifier ClimateControl Room humidity @ 2026-10-01T04:22:26.502227-07:00>
+# ---

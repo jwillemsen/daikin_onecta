@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[select.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_schedule-state]
+  <state select.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_schedule=off; options=['0', 'undefined', 'undefined', 'off'], icon=mdi:calendar-clock, friendly_name=третий блок/Спальня второй этаж ClimateControl Schedule @ 2026-10-01T04:22:27.808512-07:00>
+# ---

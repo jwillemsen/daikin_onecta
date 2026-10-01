@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_fanmode[sensor.sala_climatecontrol_cooling_monthly_electrical_consumption-state]
+  <state sensor.sala_climatecontrol_cooling_monthly_electrical_consumption=0.1; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Sala ClimateControl Cooling monthly electrical consumption @ 2026-10-01T04:22:25.126618-07:00>
+# ---

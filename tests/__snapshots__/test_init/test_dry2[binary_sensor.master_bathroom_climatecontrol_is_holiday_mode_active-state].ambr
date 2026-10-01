@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry2[binary_sensor.master_bathroom_climatecontrol_is_holiday_mode_active-state]
+  <state binary_sensor.master_bathroom_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Master Bathroom ClimateControl Is holiday mode active @ 2026-10-01T04:22:25.223163-07:00>
+# ---

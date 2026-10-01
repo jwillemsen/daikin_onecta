@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[binary_sensor.linde_climatecontrol_is_lock_function_enabled-state]
+  <state binary_sensor.linde_climatecontrol_is_lock_function_enabled=off; icon=mdi:information-outline, friendly_name=Linde ClimateControl Is lock function enabled @ 2026-10-01T04:22:26.884876-07:00>
+# ---

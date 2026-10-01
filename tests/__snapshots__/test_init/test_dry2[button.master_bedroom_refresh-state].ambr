@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry2[button.master_bedroom_refresh-state]
+  <state button.master_bedroom_refresh=unknown; icon=mdi:refresh, friendly_name=Master Bedroom Refresh @ 2026-10-01T04:22:25.238636-07:00>
+# ---

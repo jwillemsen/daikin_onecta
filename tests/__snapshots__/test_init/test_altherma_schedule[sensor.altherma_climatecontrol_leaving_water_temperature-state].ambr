@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_schedule[sensor.altherma_climatecontrol_leaving_water_temperature-state]
+  <state sensor.altherma_climatecontrol_leaving_water_temperature=36; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Altherma ClimateControl Leaving water temperature @ 2026-10-01T04:22:27.496025-07:00>
+# ---

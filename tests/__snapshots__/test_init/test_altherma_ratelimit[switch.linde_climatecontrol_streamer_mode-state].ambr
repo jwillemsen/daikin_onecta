@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[switch.linde_climatecontrol_streamer_mode-state]
+  <state switch.linde_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Linde ClimateControl Streamer mode @ 2026-10-01T04:22:25.929157-07:00>
+# ---

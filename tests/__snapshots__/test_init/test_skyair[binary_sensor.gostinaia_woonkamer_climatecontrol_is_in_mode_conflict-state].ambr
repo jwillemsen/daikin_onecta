@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[binary_sensor.gostinaia_woonkamer_climatecontrol_is_in_mode_conflict-state]
+  <state binary_sensor.gostinaia_woonkamer_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Гостиная / Woonkamer ClimateControl Is in mode conflict @ 2026-10-01T04:22:27.811797-07:00>
+# ---

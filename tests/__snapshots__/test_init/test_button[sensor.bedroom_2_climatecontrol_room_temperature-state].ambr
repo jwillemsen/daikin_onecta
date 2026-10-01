@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_button[sensor.bedroom_2_climatecontrol_room_temperature-state]
+  <state sensor.bedroom_2_climatecontrol_room_temperature=24.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Bedroom 2 ClimateControl Room temperature @ 2026-10-01T04:22:27.318758-07:00>
+# ---

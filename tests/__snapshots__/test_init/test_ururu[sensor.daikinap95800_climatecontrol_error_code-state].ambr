@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_ururu[sensor.daikinap95800_climatecontrol_error_code-state]
+  <state sensor.daikinap95800_climatecontrol_error_code=00; icon=mdi:information-outline, friendly_name=DaikinAP95800 ClimateControl Error code @ 2026-10-01T04:22:25.442159-07:00>
+# ---

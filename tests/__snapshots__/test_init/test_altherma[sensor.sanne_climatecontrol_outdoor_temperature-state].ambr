@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.sanne_climatecontrol_outdoor_temperature-state]
+  <state sensor.sanne_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Sanne ClimateControl Outdoor temperature @ 2026-10-01T04:22:25.550431-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.linde_gateway_ratelimit_remaining_day-state]
+  <state sensor.linde_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Linde Gateway Ratelimit remaining day @ 2026-10-01T04:22:26.848251-07:00>
+# ---

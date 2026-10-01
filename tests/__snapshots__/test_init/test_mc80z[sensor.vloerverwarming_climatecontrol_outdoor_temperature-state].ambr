@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.vloerverwarming_climatecontrol_outdoor_temperature-state]
+  <state sensor.vloerverwarming_climatecontrol_outdoor_temperature=12; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Vloerverwarming ClimateControl Outdoor temperature @ 2026-10-01T04:22:26.504498-07:00>
+# ---

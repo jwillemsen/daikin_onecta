@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_button[sensor.bedroom_2_gateway_ip_address-state]
+  <state sensor.bedroom_2_gateway_ip_address=192.168.87.58; icon=mdi:ip-network, friendly_name=Bedroom 2 Gateway IP address @ 2026-10-01T04:22:27.318157-07:00>
+# ---

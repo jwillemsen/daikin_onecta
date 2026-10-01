@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_gateway_ip_address-state]
+  <state sensor.climate_control_getr422_gateway_ip_address=192.168.1.104; icon=mdi:ip-network, friendly_name=Climate control getr422 Gateway IP address @ 2026-10-01T04:22:27.589268-07:00>
+# ---

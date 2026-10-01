@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[sensor.werkkamer_gateway_time_zone-state]
+  <state sensor.werkkamer_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Time zone @ 2026-10-01T04:22:25.901457-07:00>
+# ---

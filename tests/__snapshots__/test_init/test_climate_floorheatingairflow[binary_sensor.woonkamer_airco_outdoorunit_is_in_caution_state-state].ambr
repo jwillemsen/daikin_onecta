@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[binary_sensor.woonkamer_airco_outdoorunit_is_in_caution_state-state]
+  <state binary_sensor.woonkamer_airco_outdoorunit_is_in_caution_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Woonkamer airco OutdoorUnit Is in caution state @ 2026-10-01T04:22:26.384282-07:00>
+# ---

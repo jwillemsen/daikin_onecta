@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[binary_sensor.slaapkamer_andre_olha_gateway_led_enabled-state]
+  <state binary_sensor.slaapkamer_andre_olha_gateway_led_enabled=on; icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha Gateway LED enabled @ 2026-10-01T04:22:27.812132-07:00>
+# ---

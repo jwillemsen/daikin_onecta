@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry2[button.kitchen_refresh-state]
+  <state button.kitchen_refresh=unknown; icon=mdi:refresh, friendly_name=Kitchen Refresh @ 2026-10-01T04:22:25.238314-07:00>
+# ---

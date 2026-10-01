@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[switch.johnny_maaike_climatecontrol_streamer_mode-state]
+  <state switch.johnny_maaike_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Johnny&Maaike ClimateControl Streamer mode @ 2026-10-01T04:22:26.866277-07:00>
+# ---

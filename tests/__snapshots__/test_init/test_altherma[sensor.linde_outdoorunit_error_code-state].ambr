@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.linde_outdoorunit_error_code-state]
+  <state sensor.linde_outdoorunit_error_code=00-; icon=mdi:information-outline, friendly_name=Linde OutdoorUnit Error code @ 2026-10-01T04:22:25.548198-07:00>
+# ---

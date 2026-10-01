@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[binary_sensor.woonkamer_airco_climatecontrol_is_in_error_state-state]
+  <state binary_sensor.woonkamer_airco_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Woonkamer airco ClimateControl Is in error state @ 2026-10-01T04:22:26.383467-07:00>
+# ---

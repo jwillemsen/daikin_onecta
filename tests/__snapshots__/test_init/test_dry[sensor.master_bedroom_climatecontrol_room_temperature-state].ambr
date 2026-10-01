@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry[sensor.master_bedroom_climatecontrol_room_temperature-state]
+  <state sensor.master_bedroom_climatecontrol_room_temperature=25.1; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Master Bedroom ClimateControl Room temperature @ 2026-10-01T04:22:24.952391-07:00>
+# ---

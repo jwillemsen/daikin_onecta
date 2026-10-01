@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_tank_temperature-state]
+  <state sensor.climate_control_getr422_domestichotwatertank_tank_temperature=60.6; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=mdi:bathtub-outline, friendly_name=Climate control getr422 DomesticHotWaterTank Tank temperature @ 2026-10-01T04:22:27.595597-07:00>
+# ---

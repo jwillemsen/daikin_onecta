@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[sensor.gostinaia_woonkamer_outdoorunit_heating_yearly_thermal_output-state]
+  <state sensor.gostinaia_woonkamer_outdoorunit_heating_yearly_thermal_output=196.4; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Гостиная / Woonkamer OutdoorUnit Heating yearly thermal output @ 2026-10-01T04:22:27.788153-07:00>
+# ---

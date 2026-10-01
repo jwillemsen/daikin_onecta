@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_water_heater[sensor.altherma_climatecontrol_control_mode-state]
+  <state sensor.altherma_climatecontrol_control_mode=roomTemperature; icon=mdi:alphabetical, friendly_name=Altherma ClimateControl Control mode @ 2026-10-01T04:22:26.702725-07:00>
+# ---

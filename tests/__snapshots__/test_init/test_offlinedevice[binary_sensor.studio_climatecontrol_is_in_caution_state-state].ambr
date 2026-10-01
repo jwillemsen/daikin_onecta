@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_offlinedevice[binary_sensor.studio_climatecontrol_is_in_caution_state-state]
+  <state binary_sensor.studio_climatecontrol_is_in_caution_state=unavailable; device_class=problem, icon=mdi:information-outline, friendly_name=Studio ClimateControl Is in caution state @ 2026-10-01T04:22:24.865911-07:00>
+# ---

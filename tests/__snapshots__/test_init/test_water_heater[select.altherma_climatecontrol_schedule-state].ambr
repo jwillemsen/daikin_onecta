@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_water_heater[select.altherma_climatecontrol_schedule-state]
+  <state select.altherma_climatecontrol_schedule=off; options=['User defined 1', 'User defined 2', 'User defined 3', 'off'], icon=mdi:calendar-clock, friendly_name=Altherma ClimateControl Schedule @ 2026-10-01T04:22:26.715903-07:00>
+# ---

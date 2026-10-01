@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[sensor.laurens_gateway_time_zone-state]
+  <state sensor.laurens_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Laurens Gateway Time zone @ 2026-10-01T04:22:26.365834-07:00>
+# ---

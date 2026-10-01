@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_mc80z[sensor.air_purifier_climatecontrol_error_code-state]
+  <state sensor.air_purifier_climatecontrol_error_code=00-00; icon=mdi:information-outline, friendly_name=air-purifier ClimateControl Error code @ 2026-10-01T04:22:26.501503-07:00>
+# ---

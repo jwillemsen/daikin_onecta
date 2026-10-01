@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.sanne_climatecontrol_room_temperature-state]
+  <state sensor.sanne_climatecontrol_room_temperature=19; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Sanne ClimateControl Room temperature @ 2026-10-01T04:22:26.856358-07:00>
+# ---

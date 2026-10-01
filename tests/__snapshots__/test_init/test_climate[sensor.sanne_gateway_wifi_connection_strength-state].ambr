@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[sensor.sanne_gateway_wifi_connection_strength-state]
+  <state sensor.sanne_gateway_wifi_connection_strength=-35; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Sanne Gateway WiFi connection strength @ 2026-10-01T04:22:26.855721-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_button[select.bedroom_3_climatecontrol_schedule-state]
+  <state select.bedroom_3_climatecontrol_schedule=off; options=['0', 'off'], icon=mdi:calendar-clock, friendly_name=Bedroom 3 ClimateControl Schedule @ 2026-10-01T04:22:27.326519-07:00>
+# ---

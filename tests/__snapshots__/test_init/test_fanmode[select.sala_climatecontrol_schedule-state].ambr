@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_fanmode[select.sala_climatecontrol_schedule-state]
+  <state select.sala_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Sala ClimateControl Schedule @ 2026-10-01T04:22:25.132954-07:00>
+# ---

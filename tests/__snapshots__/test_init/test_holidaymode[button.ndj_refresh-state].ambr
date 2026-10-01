@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_holidaymode[button.ndj_refresh-state]
+  <state button.ndj_refresh=unknown; icon=mdi:refresh, friendly_name=NDJ Refresh @ 2026-10-01T04:22:26.637942-07:00>
+# ---

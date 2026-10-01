@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_ururu[select.daikinap95800_climatecontrol_schedule-state]
+  <state select.daikinap95800_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=DaikinAP95800 ClimateControl Schedule @ 2026-10-01T04:22:25.449066-07:00>
+# ---

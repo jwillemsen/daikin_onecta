@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[switch.linde_climatecontrol_econo_mode-state]
+  <state switch.linde_climatecontrol_econo_mode=off; icon=mdi:leaf, friendly_name=Linde ClimateControl Econo mode @ 2026-10-01T04:22:25.929020-07:00>
+# ---

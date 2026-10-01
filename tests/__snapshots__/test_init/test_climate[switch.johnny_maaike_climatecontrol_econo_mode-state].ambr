@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[switch.johnny_maaike_climatecontrol_econo_mode-state]
+  <state switch.johnny_maaike_climatecontrol_econo_mode=on; icon=mdi:leaf, friendly_name=Johnny&Maaike ClimateControl Econo mode @ 2026-10-01T04:22:26.866112-07:00>
+# ---

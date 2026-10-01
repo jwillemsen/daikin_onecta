@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma3m[sensor.altherma_domestichotwatertank_tank_temperature-state]
+  <state sensor.altherma_domestichotwatertank_tank_temperature=46; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=mdi:bathtub-outline, friendly_name=Altherma DomesticHotWaterTank Tank temperature @ 2026-10-01T04:22:25.787105-07:00>
+# ---

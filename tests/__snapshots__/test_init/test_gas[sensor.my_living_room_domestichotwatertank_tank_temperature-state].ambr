@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_gas[sensor.my_living_room_domestichotwatertank_tank_temperature-state]
+  <state sensor.my_living_room_domestichotwatertank_tank_temperature=40; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=mdi:bathtub-outline, friendly_name=My Living Room Tank temperature @ 2026-10-01T04:22:27.216809-07:00>
+# ---

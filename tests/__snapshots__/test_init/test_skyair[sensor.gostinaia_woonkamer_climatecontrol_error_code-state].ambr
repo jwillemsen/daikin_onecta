@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_skyair[sensor.gostinaia_woonkamer_climatecontrol_error_code-state]
+  <state sensor.gostinaia_woonkamer_climatecontrol_error_code=00; icon=mdi:information-outline, friendly_name=Гостиная / Woonkamer ClimateControl Error code @ 2026-10-01T04:22:27.782931-07:00>
+# ---

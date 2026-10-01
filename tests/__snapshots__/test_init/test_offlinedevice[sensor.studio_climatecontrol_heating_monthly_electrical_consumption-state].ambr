@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_offlinedevice[sensor.studio_climatecontrol_heating_monthly_electrical_consumption-state]
+  <state sensor.studio_climatecontrol_heating_monthly_electrical_consumption=unavailable; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Studio ClimateControl Heating monthly electrical consumption @ 2026-10-01T04:22:24.855185-07:00>
+# ---

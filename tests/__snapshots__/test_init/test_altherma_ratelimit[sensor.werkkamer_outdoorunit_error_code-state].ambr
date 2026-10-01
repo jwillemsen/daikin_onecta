@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[sensor.werkkamer_outdoorunit_error_code-state]
+  <state sensor.werkkamer_outdoorunit_error_code=00-; icon=mdi:information-outline, friendly_name=Werkkamer OutdoorUnit Error code @ 2026-10-01T04:22:25.906490-07:00>
+# ---

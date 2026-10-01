@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_fixedfanmode[sensor.werkkamer_climatecontrol_outdoor_temperature-state]
+  <state sensor.werkkamer_climatecontrol_outdoor_temperature=14.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Werkkamer ClimateControl Outdoor temperature @ 2026-10-01T04:22:26.160982-07:00>
+# ---

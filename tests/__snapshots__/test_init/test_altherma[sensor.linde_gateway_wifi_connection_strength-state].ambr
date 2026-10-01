@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.linde_gateway_wifi_connection_strength-state]
+  <state sensor.linde_gateway_wifi_connection_strength=-48; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Linde Gateway WiFi connection strength @ 2026-10-01T04:22:25.541816-07:00>
+# ---

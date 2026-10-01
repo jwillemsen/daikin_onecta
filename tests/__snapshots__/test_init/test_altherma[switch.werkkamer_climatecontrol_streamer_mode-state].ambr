@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[switch.werkkamer_climatecontrol_streamer_mode-state]
+  <state switch.werkkamer_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Werkkamer ClimateControl Streamer mode @ 2026-10-01T04:22:25.565070-07:00>
+# ---

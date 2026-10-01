@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry[binary_sensor.master_bedroom_outdoorunit_is_in_caution_state-state]
+  <state binary_sensor.master_bedroom_outdoorunit_is_in_caution_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Master Bedroom OutdoorUnit Is in caution state @ 2026-10-01T04:22:24.975000-07:00>
+# ---

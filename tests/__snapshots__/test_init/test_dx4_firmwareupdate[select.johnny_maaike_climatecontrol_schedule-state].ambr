@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dx4_firmwareupdate[select.johnny_maaike_climatecontrol_schedule-state]
+  <state select.johnny_maaike_climatecontrol_schedule=off; options=['0', 'off'], icon=mdi:calendar-clock, friendly_name=Johnny&Maaike ClimateControl Schedule @ 2026-10-01T04:22:27.700994-07:00>
+# ---

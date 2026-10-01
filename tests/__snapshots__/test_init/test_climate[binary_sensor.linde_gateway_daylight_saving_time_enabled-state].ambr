@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[binary_sensor.linde_gateway_daylight_saving_time_enabled-state]
+  <state binary_sensor.linde_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Linde Gateway Daylight saving time enabled @ 2026-10-01T04:22:26.883793-07:00>
+# ---

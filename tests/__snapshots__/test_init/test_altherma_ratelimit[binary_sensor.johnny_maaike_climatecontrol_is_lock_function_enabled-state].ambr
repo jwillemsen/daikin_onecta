@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma_ratelimit[binary_sensor.johnny_maaike_climatecontrol_is_lock_function_enabled-state]
+  <state binary_sensor.johnny_maaike_climatecontrol_is_lock_function_enabled=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is lock function enabled @ 2026-10-01T04:22:25.937474-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dry2[sensor.bedroom_1_gateway_error_code-state]
+  <state sensor.bedroom_1_gateway_error_code=; icon=mdi:information-outline, friendly_name=Bedroom 1 Gateway Error code @ 2026-10-01T04:22:25.210692-07:00>
+# ---

@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate_floorheatingairflow[binary_sensor.laurens_climatecontrol_is_powerful_mode_active-state]
+  <state binary_sensor.laurens_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Laurens ClimateControl Is powerful mode active @ 2026-10-01T04:22:26.385755-07:00>
+# ---

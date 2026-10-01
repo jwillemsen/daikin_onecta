@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_climate[binary_sensor.johnny_maaike_gateway_led_enabled-state]
+  <state binary_sensor.johnny_maaike_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike Gateway LED enabled @ 2026-10-01T04:22:26.877547-07:00>
+# ---

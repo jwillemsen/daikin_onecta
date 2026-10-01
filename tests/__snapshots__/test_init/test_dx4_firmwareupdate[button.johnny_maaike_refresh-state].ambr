@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_dx4_firmwareupdate[button.johnny_maaike_refresh-state]
+  <state button.johnny_maaike_refresh=unknown; icon=mdi:refresh, friendly_name=Johnny&Maaike Refresh @ 2026-10-01T04:22:27.709791-07:00>
+# ---

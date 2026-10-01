@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_altherma[sensor.altherma_gateway_wifi_connection_strength-state]
+  <state sensor.altherma_gateway_wifi_connection_strength=-81; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Altherma Gateway WiFi connection strength @ 2026-10-01T04:22:25.519858-07:00>
+# ---

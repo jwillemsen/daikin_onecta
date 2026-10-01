@@ -1,0 +1,4 @@
+# serializer version: 1
+# name: test_schedule[sensor.master_climatecontrol_error_code-state]
+  <state sensor.master_climatecontrol_error_code=00; icon=mdi:information-outline, friendly_name=Master ClimateControl Error code @ 2026-10-01T04:22:25.379928-07:00>
+# ---
