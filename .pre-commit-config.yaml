@@ -53,7 +53,7 @@ repos:
         files: ^custom_components/daikin_onecta/.+\.(py|pyi)$
       - id: pylint
         name: pylint
-        entry: pylint --ignore-missing-annotations=y
+        entry: env PYTHONPATH=tools/pylint pylint --ignore-missing-annotations=y
         language: system
         require_serial: true
         types_or: [python, pyi]
