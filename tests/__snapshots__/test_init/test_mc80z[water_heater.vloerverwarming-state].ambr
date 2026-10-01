@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[water_heater.vloerverwarming-state]
-  <state water_heater.vloerverwarming=heat_pump; min_temp=30.0, max_temp=60.0, operation_list=['off', 'heat_pump', 'performance'], current_temperature=41.0, temperature=43.0, target_temp_high=None, target_temp_low=None, operation_mode=heat_pump, target_temp_step=1.0, friendly_name=Vloerverwarming DomesticHotWaterTank, supported_features=10 @ 2026-10-01T04:25:25.887911-07:00>
-# ---

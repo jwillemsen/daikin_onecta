@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_heat_up_mode-state]
-  <state sensor.climate_control_getr422_domestichotwatertank_heat_up_mode=reheatOnly; icon=mdi:alphabetical, friendly_name=Climate control getr422 DomesticHotWaterTank Heat up mode @ 2026-10-01T04:25:26.986162-07:00>
-# ---

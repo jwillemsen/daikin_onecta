@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption-state]
-  <state sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption=1.6; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Werkkamer ClimateControl Cooling yearly electrical consumption @ 2026-10-01T04:25:24.910481-07:00>
-# ---

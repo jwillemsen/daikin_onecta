@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_holidaymode[binary_sensor.ndj_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.ndj_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=NDJ Gateway Is firmware update supported @ 2026-10-01T04:25:26.005339-07:00>
-# ---

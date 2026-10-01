@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[update.slaapkamer_andre_olha_gateway_firmware_update-state]
-  <state update.slaapkamer_andre_olha_gateway_firmware_update=off; auto_update=False, display_precision=0, installed_version=2_6_2, in_progress=False, latest_version=2_6_2, release_summary=None, release_url=None, skipped_version=None, title=None, update_percentage=None, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=Slaapkamer André / Olha Gateway Firmware update, supported_features=1 @ 2026-10-01T04:25:27.214025-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_climatecontrol_error_code-state]
-  <state sensor.climate_control_getr422_climatecontrol_error_code=; icon=mdi:information-outline, friendly_name=Climate control getr422 ClimateControl Error code @ 2026-10-01T04:25:26.981020-07:00>
-# ---

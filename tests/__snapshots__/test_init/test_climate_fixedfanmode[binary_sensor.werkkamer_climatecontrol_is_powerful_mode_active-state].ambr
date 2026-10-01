@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_fixedfanmode[binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active-state]
-  <state binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Werkkamer ClimateControl Is powerful mode active @ 2026-10-01T04:25:25.547525-07:00>
-# ---

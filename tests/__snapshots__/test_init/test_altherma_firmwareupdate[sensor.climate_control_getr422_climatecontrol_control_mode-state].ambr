@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_climatecontrol_control_mode-state]
-  <state sensor.climate_control_getr422_climatecontrol_control_mode=leavingWaterTemperature; icon=mdi:alphabetical, friendly_name=Climate control getr422 ClimateControl Control mode @ 2026-10-01T04:25:26.980792-07:00>
-# ---

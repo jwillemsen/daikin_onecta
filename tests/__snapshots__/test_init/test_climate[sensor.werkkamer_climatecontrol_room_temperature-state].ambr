@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.werkkamer_climatecontrol_room_temperature-state]
-  <state sensor.werkkamer_climatecontrol_room_temperature=19; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Werkkamer ClimateControl Room temperature @ 2026-10-01T04:25:26.229710-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_gas[button.my_living_room_refresh-state]
-  <state button.my_living_room_refresh=unknown; icon=mdi:refresh, friendly_name=My Living Room Refresh @ 2026-10-01T04:25:26.619256-07:00>
-# ---

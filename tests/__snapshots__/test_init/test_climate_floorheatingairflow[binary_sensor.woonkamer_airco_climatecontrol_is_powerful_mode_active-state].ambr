@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[binary_sensor.woonkamer_airco_climatecontrol_is_powerful_mode_active-state]
-  <state binary_sensor.woonkamer_airco_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Woonkamer airco ClimateControl Is powerful mode active @ 2026-10-01T04:25:25.758071-07:00>
-# ---

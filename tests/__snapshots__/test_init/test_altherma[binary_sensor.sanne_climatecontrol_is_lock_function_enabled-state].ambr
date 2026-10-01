@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[binary_sensor.sanne_climatecontrol_is_lock_function_enabled-state]
-  <state binary_sensor.sanne_climatecontrol_is_lock_function_enabled=off; icon=mdi:information-outline, friendly_name=Sanne ClimateControl Is lock function enabled @ 2026-10-01T04:25:24.951626-07:00>
-# ---

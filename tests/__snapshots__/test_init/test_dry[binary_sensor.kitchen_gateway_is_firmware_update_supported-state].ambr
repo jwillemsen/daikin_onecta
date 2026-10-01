@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[binary_sensor.kitchen_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.kitchen_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Kitchen Gateway Is firmware update supported @ 2026-10-01T04:25:24.331737-07:00>
-# ---

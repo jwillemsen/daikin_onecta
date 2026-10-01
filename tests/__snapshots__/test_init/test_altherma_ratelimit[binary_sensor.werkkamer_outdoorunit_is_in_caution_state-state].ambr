@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[binary_sensor.werkkamer_outdoorunit_is_in_caution_state-state]
-  <state binary_sensor.werkkamer_outdoorunit_is_in_caution_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Werkkamer OutdoorUnit Is in caution state @ 2026-10-01T04:25:25.321568-07:00>
-# ---

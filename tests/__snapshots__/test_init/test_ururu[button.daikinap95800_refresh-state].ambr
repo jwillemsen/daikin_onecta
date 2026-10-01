@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_ururu[button.daikinap95800_refresh-state]
-  <state button.daikinap95800_refresh=unknown; icon=mdi:refresh, friendly_name=DaikinAP95800 Refresh @ 2026-10-01T04:25:24.815553-07:00>
-# ---

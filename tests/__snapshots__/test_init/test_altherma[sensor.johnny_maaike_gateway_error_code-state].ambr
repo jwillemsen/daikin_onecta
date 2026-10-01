@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.johnny_maaike_gateway_error_code-state]
-  <state sensor.johnny_maaike_gateway_error_code=; icon=mdi:information-outline, friendly_name=Johnny&Maaike Gateway Error code @ 2026-10-01T04:25:24.897925-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_fixedfanmode[sensor.werkkamer_gateway_ratelimit_remaining_day-state]
-  <state sensor.werkkamer_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Werkkamer Gateway Ratelimit remaining day @ 2026-10-01T04:25:25.532991-07:00>
-# ---

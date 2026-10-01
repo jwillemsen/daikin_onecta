@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[climate.climate_control_getr422_leaving_water_temperature-state]
-  <state climate.climate_control_getr422_leaving_water_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>], min_temp=20, max_temp=75, target_temp_step=1, preset_modes=['away', 'none'], current_temperature=23.9, preset_mode=none, friendly_name=Climate control getr422 Leaving Water Temperature, supported_features=400 @ 2026-10-01T04:25:26.975982-07:00>
-# ---

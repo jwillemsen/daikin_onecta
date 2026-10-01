@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.johnny_maaike_gateway_wifi_connection_strength-state]
-  <state sensor.johnny_maaike_gateway_wifi_connection_strength=-47; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Johnny&Maaike Gateway WiFi connection strength @ 2026-10-01T04:25:25.270998-07:00>
-# ---

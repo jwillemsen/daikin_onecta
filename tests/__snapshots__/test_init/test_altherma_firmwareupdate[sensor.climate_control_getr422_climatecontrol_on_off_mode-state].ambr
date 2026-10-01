@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_climatecontrol_on_off_mode-state]
-  <state sensor.climate_control_getr422_climatecontrol_on_off_mode=off; icon=mdi:toggle-switch-variant, friendly_name=Climate control getr422 ClimateControl On/Off mode @ 2026-10-01T04:25:26.981218-07:00>
-# ---

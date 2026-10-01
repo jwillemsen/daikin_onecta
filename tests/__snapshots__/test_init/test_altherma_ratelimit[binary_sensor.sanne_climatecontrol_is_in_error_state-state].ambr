@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[binary_sensor.sanne_climatecontrol_is_in_error_state-state]
-  <state binary_sensor.sanne_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Sanne ClimateControl Is in error state @ 2026-10-01T04:25:25.324131-07:00>
-# ---

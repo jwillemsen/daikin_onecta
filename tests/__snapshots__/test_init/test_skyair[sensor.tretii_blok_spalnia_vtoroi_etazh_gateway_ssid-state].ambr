@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ssid-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ssid=**REDACTED**; icon=mdi:access-point-network, friendly_name=третий блок/Спальня второй этаж Gateway SSID @ 2026-10-01T04:25:27.193807-07:00>
-# ---

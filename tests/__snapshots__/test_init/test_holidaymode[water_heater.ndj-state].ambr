@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_holidaymode[water_heater.ndj-state]
-  <state water_heater.ndj=heat_pump; min_temp=35.0, max_temp=60.0, operation_list=['off', 'heat_pump'], current_temperature=None, temperature=49.0, target_temp_high=None, target_temp_low=None, operation_mode=heat_pump, target_temp_step=1.0, friendly_name=NDJ DomesticHotWaterFlowThrough, supported_features=10 @ 2026-10-01T04:25:26.001827-07:00>
-# ---

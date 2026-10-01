@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[binary_sensor.woonkamer_airco_gateway_is_in_error_state-state]
-  <state binary_sensor.woonkamer_airco_gateway_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Woonkamer airco Gateway Is in error state @ 2026-10-01T04:25:25.756914-07:00>
-# ---

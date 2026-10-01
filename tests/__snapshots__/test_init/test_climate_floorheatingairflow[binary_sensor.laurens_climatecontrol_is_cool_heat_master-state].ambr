@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[binary_sensor.laurens_climatecontrol_is_cool_heat_master-state]
-  <state binary_sensor.laurens_climatecontrol_is_cool_heat_master=on; icon=mdi:information-outline, friendly_name=Laurens ClimateControl Is cool/heat master @ 2026-10-01T04:25:25.759027-07:00>
-# ---

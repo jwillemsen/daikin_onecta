@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[binary_sensor.linde_outdoorunit_is_in_error_state-state]
-  <state binary_sensor.linde_outdoorunit_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Linde OutdoorUnit Is in error state @ 2026-10-01T04:25:24.948689-07:00>
-# ---

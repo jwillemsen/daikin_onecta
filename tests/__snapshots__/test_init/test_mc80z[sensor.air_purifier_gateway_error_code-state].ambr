@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[sensor.air_purifier_gateway_error_code-state]
-  <state sensor.air_purifier_gateway_error_code=; icon=mdi:information-outline, friendly_name=air-purifier Gateway Error code @ 2026-10-01T04:25:25.873865-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_indoorunit_dry_keep_setting-state]
-  <state sensor.woonkamer_airco_indoorunit_dry_keep_setting=on; icon=mdi:water-percent, friendly_name=Woonkamer airco IndoorUnit Dry keep setting @ 2026-10-01T04:25:25.741038-07:00>
-# ---

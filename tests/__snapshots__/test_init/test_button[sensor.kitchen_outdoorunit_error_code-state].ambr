@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_button[sensor.kitchen_outdoorunit_error_code-state]
-  <state sensor.kitchen_outdoorunit_error_code=-; icon=mdi:information-outline, friendly_name=Kitchen OutdoorUnit Error code @ 2026-10-01T04:25:26.706074-07:00>
-# ---

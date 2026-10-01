@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma3m[sensor.altherma_domestichotwatertank_heat_up_mode-state]
-  <state sensor.altherma_domestichotwatertank_heat_up_mode=reheatSchedule; icon=mdi:alphabetical, friendly_name=Altherma DomesticHotWaterTank Heat up mode @ 2026-10-01T04:25:25.157820-07:00>
-# ---

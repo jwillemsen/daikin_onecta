@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_error_code-state]
-  <state sensor.woonkamer_airco_gateway_error_code=; icon=mdi:information-outline, friendly_name=Woonkamer airco Gateway Error code @ 2026-10-01T04:25:25.733971-07:00>
-# ---

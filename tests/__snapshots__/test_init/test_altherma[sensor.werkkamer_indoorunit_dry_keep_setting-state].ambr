@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.werkkamer_indoorunit_dry_keep_setting-state]
-  <state sensor.werkkamer_indoorunit_dry_keep_setting=on; icon=mdi:water-percent, friendly_name=Werkkamer IndoorUnit Dry keep setting @ 2026-10-01T04:25:24.910738-07:00>
-# ---

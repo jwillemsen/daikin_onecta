@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_gateway_ratelimit_remaining_day-state]
-  <state sensor.climate_control_getr422_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Climate control getr422 Gateway Ratelimit remaining day @ 2026-10-01T04:25:26.979073-07:00>
-# ---

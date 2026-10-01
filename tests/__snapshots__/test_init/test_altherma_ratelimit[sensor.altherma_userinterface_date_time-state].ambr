@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.altherma_userinterface_date_time-state]
-  <state sensor.altherma_userinterface_date_time=2022-06-01T09:17:49; icon=mdi:information-outline, friendly_name=Altherma UserInterface Date/time @ 2026-10-01T04:25:25.269689-07:00>
-# ---

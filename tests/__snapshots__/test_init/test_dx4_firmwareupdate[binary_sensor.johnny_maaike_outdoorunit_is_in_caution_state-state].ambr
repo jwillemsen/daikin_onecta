@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state-state]
-  <state binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Johnny&Maaike OutdoorUnit Is in caution state @ 2026-10-01T04:25:27.101665-07:00>
-# ---

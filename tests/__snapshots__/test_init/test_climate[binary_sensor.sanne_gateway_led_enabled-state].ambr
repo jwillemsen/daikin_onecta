@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[binary_sensor.sanne_gateway_led_enabled-state]
-  <state binary_sensor.sanne_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Sanne Gateway LED enabled @ 2026-10-01T04:25:26.271957-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_current_power_consumption-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_current_power_consumption=0; state_class=measurement, unit_of_measurement=W, device_class=power, icon=mdi:lightning-bolt, friendly_name=третий блок/Спальня второй этаж OutdoorUnit Current power consumption @ 2026-10-01T04:25:27.195235-07:00>
-# ---

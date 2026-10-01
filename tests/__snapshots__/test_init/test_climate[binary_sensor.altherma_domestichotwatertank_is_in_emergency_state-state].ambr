@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[binary_sensor.altherma_domestichotwatertank_is_in_emergency_state-state]
-  <state binary_sensor.altherma_domestichotwatertank_is_in_emergency_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Altherma DomesticHotWaterTank Is in emergency state @ 2026-10-01T04:25:26.263933-07:00>
-# ---

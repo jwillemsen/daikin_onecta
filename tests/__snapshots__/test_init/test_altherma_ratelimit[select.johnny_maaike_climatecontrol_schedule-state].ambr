@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[select.johnny_maaike_climatecontrol_schedule-state]
-  <state select.johnny_maaike_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Johnny&Maaike ClimateControl Schedule @ 2026-10-01T04:25:25.306761-07:00>
-# ---

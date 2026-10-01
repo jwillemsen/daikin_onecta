@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption-state]
-  <state sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption=0.1; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Johnny&Maaike ClimateControl Heating weekly electrical consumption @ 2026-10-01T04:25:27.085404-07:00>
-# ---

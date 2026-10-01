@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[binary_sensor.slaapkamer_andre_olha_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.slaapkamer_andre_olha_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha Gateway Is firmware update supported @ 2026-10-01T04:25:27.207191-07:00>
-# ---

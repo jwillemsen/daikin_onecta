@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.werkkamer_gateway_wifi_connection_strength-state]
-  <state sensor.werkkamer_gateway_wifi_connection_strength=-46; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Werkkamer Gateway WiFi connection strength @ 2026-10-01T04:25:25.278753-07:00>
-# ---

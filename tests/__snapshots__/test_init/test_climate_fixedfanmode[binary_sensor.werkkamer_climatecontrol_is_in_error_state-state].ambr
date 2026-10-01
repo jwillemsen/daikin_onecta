@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_fixedfanmode[binary_sensor.werkkamer_climatecontrol_is_in_error_state-state]
-  <state binary_sensor.werkkamer_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Werkkamer ClimateControl Is in error state @ 2026-10-01T04:25:25.547258-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma3m[sensor.altherma_climatecontrol_outdoor_temperature-state]
-  <state sensor.altherma_climatecontrol_outdoor_temperature=10; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Altherma ClimateControl Outdoor temperature @ 2026-10-01T04:25:25.155500-07:00>
-# ---

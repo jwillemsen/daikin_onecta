@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[sensor.air_purifier_climatecontrol_room_temperature-state]
-  <state sensor.air_purifier_climatecontrol_room_temperature=21; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=air-purifier ClimateControl Room temperature @ 2026-10-01T04:25:25.875005-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_fanmode[binary_sensor.sala_climatecontrol_is_powerful_mode_active-state]
-  <state binary_sensor.sala_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Sala ClimateControl Is powerful mode active @ 2026-10-01T04:25:24.490369-07:00>
-# ---

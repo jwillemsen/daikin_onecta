@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_schedule[climate.altherma_leaving_water_offset-state]
-  <state climate.altherma_leaving_water_offset=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>], min_temp=-10, max_temp=10, target_temp_step=1, preset_modes=['away', 'none'], current_temperature=36, temperature=0, preset_mode=none, friendly_name=Altherma Leaving Water Offset, supported_features=401 @ 2026-10-01T04:25:26.873788-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_outdoor_temperature-state]
-  <state sensor.woonkamer_airco_climatecontrol_outdoor_temperature=9.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Woonkamer airco ClimateControl Outdoor temperature @ 2026-10-01T04:25:25.736224-07:00>
-# ---

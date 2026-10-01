@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[sensor.master_bedroom_gateway_ip_address-state]
-  <state sensor.master_bedroom_gateway_ip_address=192.168.87.59; icon=mdi:ip-network, friendly_name=Master Bedroom Gateway IP address @ 2026-10-01T04:25:24.308642-07:00>
-# ---

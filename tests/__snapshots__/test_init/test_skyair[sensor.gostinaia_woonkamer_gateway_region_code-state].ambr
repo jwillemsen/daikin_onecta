@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.gostinaia_woonkamer_gateway_region_code-state]
-  <state sensor.gostinaia_woonkamer_gateway_region_code=eu; icon=mdi:information-outline, friendly_name=Гостиная / Woonkamer Gateway Region code @ 2026-10-01T04:25:27.180876-07:00>
-# ---

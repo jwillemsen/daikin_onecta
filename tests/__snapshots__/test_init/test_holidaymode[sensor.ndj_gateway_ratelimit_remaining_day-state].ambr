@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_holidaymode[sensor.ndj_gateway_ratelimit_remaining_day-state]
-  <state sensor.ndj_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=NDJ Gateway Ratelimit remaining day @ 2026-10-01T04:25:25.995848-07:00>
-# ---

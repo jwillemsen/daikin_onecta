@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[binary_sensor.slaapkamer_andre_olha_climatecontrol_is_in_mode_conflict-state]
-  <state binary_sensor.slaapkamer_andre_olha_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha ClimateControl Is in mode conflict @ 2026-10-01T04:25:27.207776-07:00>
-# ---

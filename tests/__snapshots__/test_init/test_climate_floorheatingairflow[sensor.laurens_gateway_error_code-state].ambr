@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_error_code-state]
-  <state sensor.laurens_gateway_error_code=; icon=mdi:information-outline, friendly_name=Laurens Gateway Error code @ 2026-10-01T04:25:25.741659-07:00>
-# ---

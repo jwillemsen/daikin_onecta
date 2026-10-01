@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[sensor.vloerverwarming_climatecontrol_error_code-state]
-  <state sensor.vloerverwarming_climatecontrol_error_code=; icon=mdi:information-outline, friendly_name=Vloerverwarming ClimateControl Error code @ 2026-10-01T04:25:25.876668-07:00>
-# ---

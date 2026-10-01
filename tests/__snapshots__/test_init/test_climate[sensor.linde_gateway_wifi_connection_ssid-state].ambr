@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.linde_gateway_wifi_connection_ssid-state]
-  <state sensor.linde_gateway_wifi_connection_ssid=WILLEMSEN; icon=mdi:access-point-network, friendly_name=Linde Gateway WiFi connection SSID @ 2026-10-01T04:25:26.234918-07:00>
-# ---

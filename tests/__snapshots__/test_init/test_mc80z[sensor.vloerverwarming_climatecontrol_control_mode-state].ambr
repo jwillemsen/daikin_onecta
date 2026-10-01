@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[sensor.vloerverwarming_climatecontrol_control_mode-state]
-  <state sensor.vloerverwarming_climatecontrol_control_mode=externalRoomTemperature; icon=mdi:alphabetical, friendly_name=Vloerverwarming ClimateControl Control mode @ 2026-10-01T04:25:25.877056-07:00>
-# ---

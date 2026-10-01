@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[select.laurens_climatecontrol_schedule-state]
-  <state select.laurens_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Laurens ClimateControl Schedule @ 2026-10-01T04:25:25.749924-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[switch.woonkamer_airco_climatecontrol_econo_mode-state]
-  <state switch.woonkamer_airco_climatecontrol_econo_mode=off; icon=mdi:leaf, friendly_name=Woonkamer airco ClimateControl Econo mode @ 2026-10-01T04:25:25.752194-07:00>
-# ---

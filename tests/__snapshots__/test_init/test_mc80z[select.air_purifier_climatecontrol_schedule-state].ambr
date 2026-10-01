@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[select.air_purifier_climatecontrol_schedule-state]
-  <state select.air_purifier_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=air-purifier ClimateControl Schedule @ 2026-10-01T04:25:25.890416-07:00>
-# ---

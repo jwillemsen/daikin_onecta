@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.slaapkamer_andre_olha_outdoorunit_cooling_yearly_thermal_output-state]
-  <state sensor.slaapkamer_andre_olha_outdoorunit_cooling_yearly_thermal_output=297.1; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Slaapkamer André / Olha OutdoorUnit Cooling yearly thermal output @ 2026-10-01T04:25:27.192890-07:00>
-# ---

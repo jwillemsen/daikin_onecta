@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.sanne_gateway_ratelimit_remaining_day-state]
-  <state sensor.sanne_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Sanne Gateway Ratelimit remaining day @ 2026-10-01T04:25:25.290819-07:00>
-# ---

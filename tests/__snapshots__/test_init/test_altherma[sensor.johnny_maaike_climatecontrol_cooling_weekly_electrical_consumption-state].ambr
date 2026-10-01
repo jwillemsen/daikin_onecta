@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption-state]
-  <state sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption=0.2; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Johnny&Maaike ClimateControl Cooling weekly electrical consumption @ 2026-10-01T04:25:24.902595-07:00>
-# ---

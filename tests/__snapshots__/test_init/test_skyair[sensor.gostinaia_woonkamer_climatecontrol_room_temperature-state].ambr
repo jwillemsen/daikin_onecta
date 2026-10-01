@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.gostinaia_woonkamer_climatecontrol_room_temperature-state]
-  <state sensor.gostinaia_woonkamer_climatecontrol_room_temperature=36; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Гостиная / Woonkamer ClimateControl Room temperature @ 2026-10-01T04:25:27.182024-07:00>
-# ---

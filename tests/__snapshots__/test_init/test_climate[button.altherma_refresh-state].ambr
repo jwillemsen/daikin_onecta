@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[button.altherma_refresh-state]
-  <state button.altherma_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:25:26.277046-07:00>
-# ---

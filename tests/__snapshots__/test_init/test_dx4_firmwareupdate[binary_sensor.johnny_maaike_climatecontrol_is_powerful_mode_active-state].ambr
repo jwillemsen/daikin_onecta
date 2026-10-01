@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active-state]
-  <state binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is powerful mode active @ 2026-10-01T04:25:27.101484-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_button[sensor.master_bathroom_gateway_ratelimit_remaining_day-state]
-  <state sensor.master_bathroom_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Master Bathroom Gateway Ratelimit remaining day @ 2026-10-01T04:25:26.699973-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.johnny_maaike_climatecontrol_outdoor_temperature-state]
-  <state sensor.johnny_maaike_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Outdoor temperature @ 2026-10-01T04:25:26.223316-07:00>
-# ---

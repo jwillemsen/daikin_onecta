@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[binary_sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж ClimateControl Is holiday mode active @ 2026-10-01T04:25:27.208522-07:00>
-# ---

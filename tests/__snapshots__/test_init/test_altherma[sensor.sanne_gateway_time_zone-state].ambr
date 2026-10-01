@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.sanne_gateway_time_zone-state]
-  <state sensor.sanne_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Sanne Gateway Time zone @ 2026-10-01T04:25:24.919936-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.johnny_maaike_gateway_ssid-state]
-  <state sensor.johnny_maaike_gateway_ssid=DaikinAP83731; icon=mdi:access-point-network, friendly_name=Johnny&Maaike Gateway SSID @ 2026-10-01T04:25:26.221484-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_ururu[sensor.daikinap95800_climatecontrol_room_temperature-state]
-  <state sensor.daikinap95800_climatecontrol_room_temperature=23; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=DaikinAP95800 ClimateControl Room temperature @ 2026-10-01T04:25:24.807615-07:00>
-# ---

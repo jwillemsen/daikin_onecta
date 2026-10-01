@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_offlinedevice[sensor.studio_climatecontrol_powerful_mode-state]
-  <state sensor.studio_climatecontrol_powerful_mode=unavailable; icon=mdi:rocket-launch, friendly_name=Studio ClimateControl Powerful mode @ 2026-10-01T04:25:24.207917-07:00>
-# ---

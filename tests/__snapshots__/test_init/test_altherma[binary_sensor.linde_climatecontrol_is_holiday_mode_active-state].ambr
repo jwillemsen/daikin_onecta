@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[binary_sensor.linde_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.linde_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Linde ClimateControl Is holiday mode active @ 2026-10-01T04:25:24.947598-07:00>
-# ---

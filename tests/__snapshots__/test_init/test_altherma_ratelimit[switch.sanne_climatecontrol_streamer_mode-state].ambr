@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[switch.sanne_climatecontrol_streamer_mode-state]
-  <state switch.sanne_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Sanne ClimateControl Streamer mode @ 2026-10-01T04:25:25.300494-07:00>
-# ---

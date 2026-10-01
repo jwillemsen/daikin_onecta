@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.sanne_gateway_ssid-state]
-  <state sensor.sanne_gateway_ssid=DaikinAP22483; icon=mdi:access-point-network, friendly_name=Sanne Gateway SSID @ 2026-10-01T04:25:24.919608-07:00>
-# ---

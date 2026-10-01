@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[binary_sensor.kitchen_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.kitchen_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Kitchen ClimateControl Is holiday mode active @ 2026-10-01T04:25:24.332065-07:00>
-# ---

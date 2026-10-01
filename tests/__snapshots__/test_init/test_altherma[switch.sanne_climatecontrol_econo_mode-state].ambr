@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[switch.sanne_climatecontrol_econo_mode-state]
-  <state switch.sanne_climatecontrol_econo_mode=off; icon=mdi:leaf, friendly_name=Sanne ClimateControl Econo mode @ 2026-10-01T04:25:24.929250-07:00>
-# ---

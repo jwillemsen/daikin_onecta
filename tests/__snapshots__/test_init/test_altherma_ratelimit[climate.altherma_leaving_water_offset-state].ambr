@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[climate.altherma_leaving_water_offset-state]
-  <state climate.altherma_leaving_water_offset=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>], min_temp=7, max_temp=35, preset_modes=['away', 'none'], current_temperature=27, preset_mode=none, friendly_name=Sanne Leaving Water Offset, supported_features=400 @ 2026-10-01T04:25:25.248493-07:00>
-# ---

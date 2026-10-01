@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[select.kitchen_climatecontrol_schedule-state]
-  <state select.kitchen_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Kitchen ClimateControl Schedule @ 2026-10-01T04:25:24.317040-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_holidaymode[binary_sensor.ndj_domestichotwaterflowthrough_is_in_error_state-state]
-  <state binary_sensor.ndj_domestichotwaterflowthrough_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=NDJ DomesticHotWaterFlowThrough Is in error state @ 2026-10-01T04:25:26.006564-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[binary_sensor.air_purifier_climatecontrol_is_in_error_state-state]
-  <state binary_sensor.air_purifier_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=air-purifier ClimateControl Is in error state @ 2026-10-01T04:25:25.893759-07:00>
-# ---

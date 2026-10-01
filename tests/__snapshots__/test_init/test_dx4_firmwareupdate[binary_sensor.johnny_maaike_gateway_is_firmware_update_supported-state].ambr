@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dx4_firmwareupdate[binary_sensor.johnny_maaike_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.johnny_maaike_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Johnny&Maaike Gateway Is firmware update supported @ 2026-10-01T04:25:27.100018-07:00>
-# ---

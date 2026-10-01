@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.slaapkamer_andre_olha_outdoorunit_current_power_consumption-state]
-  <state sensor.slaapkamer_andre_olha_outdoorunit_current_power_consumption=0; state_class=measurement, unit_of_measurement=W, device_class=power, icon=mdi:lightning-bolt, friendly_name=Slaapkamer André / Olha OutdoorUnit Current power consumption @ 2026-10-01T04:25:27.189097-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.laurens_outdoorunit_error_code-state]
-  <state sensor.laurens_outdoorunit_error_code=00-; icon=mdi:information-outline, friendly_name=Laurens OutdoorUnit Error code @ 2026-10-01T04:25:25.747288-07:00>
-# ---

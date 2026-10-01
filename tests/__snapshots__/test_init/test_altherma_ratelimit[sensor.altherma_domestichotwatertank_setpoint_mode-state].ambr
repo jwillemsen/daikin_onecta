@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_setpoint_mode-state]
-  <state sensor.altherma_domestichotwatertank_setpoint_mode=fixed; icon=mdi:alphabetical, friendly_name=Altherma DomesticHotWaterTank Setpoint mode @ 2026-10-01T04:25:25.267193-07:00>
-# ---

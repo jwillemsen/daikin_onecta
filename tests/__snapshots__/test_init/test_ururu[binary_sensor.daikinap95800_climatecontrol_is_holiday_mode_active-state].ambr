@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_ururu[binary_sensor.daikinap95800_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.daikinap95800_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=DaikinAP95800 ClimateControl Is holiday mode active @ 2026-10-01T04:25:24.813325-07:00>
-# ---

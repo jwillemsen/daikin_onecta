@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_schedule[select.altherma_domestichotwatertank_schedule-state]
-  <state select.altherma_domestichotwatertank_schedule=User defined; options=['User defined'], icon=mdi:calendar-clock, friendly_name=Altherma DomesticHotWaterTank Schedule @ 2026-10-01T04:25:26.892033-07:00>
-# ---

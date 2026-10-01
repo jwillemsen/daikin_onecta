@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_gas[sensor.my_living_room_climatecontrol_heat_up_mode-state]
-  <state sensor.my_living_room_climatecontrol_heat_up_mode=reheatOnly; icon=mdi:alphabetical, friendly_name=My Living Room ClimateControl Heat up mode @ 2026-10-01T04:25:26.597963-07:00>
-# ---

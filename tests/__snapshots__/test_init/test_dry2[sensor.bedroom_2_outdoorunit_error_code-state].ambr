@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry2[sensor.bedroom_2_outdoorunit_error_code-state]
-  <state sensor.bedroom_2_outdoorunit_error_code=-; icon=mdi:information-outline, friendly_name=Bedroom 2 OutdoorUnit Error code @ 2026-10-01T04:25:24.574714-07:00>
-# ---

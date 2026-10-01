@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[sensor.sanne_gateway_wifi_connection_strength-state]
-  <state sensor.sanne_gateway_wifi_connection_strength=-35; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Sanne Gateway WiFi connection strength @ 2026-10-01T04:25:24.920274-07:00>
-# ---

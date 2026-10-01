@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_schedule[sensor.altherma_climatecontrol_control_mode-state]
-  <state sensor.altherma_climatecontrol_control_mode=roomTemperature; icon=mdi:alphabetical, friendly_name=Altherma ClimateControl Control mode @ 2026-10-01T04:25:26.878204-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_fanmode[sensor.sala_gateway_ip_address-state]
-  <state sensor.sala_gateway_ip_address=192.168.1.2; icon=mdi:ip-network, friendly_name=Sala Gateway IP address @ 2026-10-01T04:25:24.478935-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_gas[update.my_living_room_gateway_firmware_update-state]
-  <state update.my_living_room_gateway_firmware_update=off; auto_update=False, display_precision=0, installed_version=436CC038000, in_progress=True, latest_version=436CC038000, release_summary=Lorem ipsum, release_url=None, skipped_version=None, title=None, update_percentage=None, firmware_update_type=blocking, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=My Living Room Gateway Firmware update, supported_features=5 @ 2026-10-01T04:25:26.617021-07:00>
-# ---

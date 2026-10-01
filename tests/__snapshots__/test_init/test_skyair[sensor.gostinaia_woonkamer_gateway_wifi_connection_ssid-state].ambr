@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.gostinaia_woonkamer_gateway_wifi_connection_ssid-state]
-  <state sensor.gostinaia_woonkamer_gateway_wifi_connection_ssid=**REDACTED**; icon=mdi:access-point-network, friendly_name=Гостиная / Woonkamer Gateway WiFi connection SSID @ 2026-10-01T04:25:27.181201-07:00>
-# ---

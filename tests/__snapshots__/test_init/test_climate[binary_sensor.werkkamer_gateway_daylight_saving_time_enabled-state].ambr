@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[binary_sensor.werkkamer_gateway_daylight_saving_time_enabled-state]
-  <state binary_sensor.werkkamer_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Daylight saving time enabled @ 2026-10-01T04:25:26.268100-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_button[button.master_bathroom_refresh-state]
-  <state button.master_bathroom_refresh=unknown; icon=mdi:refresh, friendly_name=Master Bathroom Refresh @ 2026-10-01T04:25:26.732842-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.altherma_climatecontrol_room_temperature-state]
-  <state sensor.altherma_climatecontrol_room_temperature=21; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Altherma ClimateControl Room temperature @ 2026-10-01T04:25:26.213948-07:00>
-# ---

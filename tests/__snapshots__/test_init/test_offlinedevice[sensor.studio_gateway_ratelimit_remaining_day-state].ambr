@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_offlinedevice[sensor.studio_gateway_ratelimit_remaining_day-state]
-  <state sensor.studio_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Studio Gateway Ratelimit remaining day @ 2026-10-01T04:25:24.206850-07:00>
-# ---

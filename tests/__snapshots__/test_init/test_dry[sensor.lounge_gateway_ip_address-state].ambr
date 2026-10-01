@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[sensor.lounge_gateway_ip_address-state]
-  <state sensor.lounge_gateway_ip_address=192.168.87.56; icon=mdi:ip-network, friendly_name=Lounge Gateway IP address @ 2026-10-01T04:25:24.302290-07:00>
-# ---

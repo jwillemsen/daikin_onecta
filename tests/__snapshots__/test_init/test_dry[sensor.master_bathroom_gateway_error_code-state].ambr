@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[sensor.master_bathroom_gateway_error_code-state]
-  <state sensor.master_bathroom_gateway_error_code=; icon=mdi:information-outline, friendly_name=Master Bathroom Gateway Error code @ 2026-10-01T04:25:24.300661-07:00>
-# ---

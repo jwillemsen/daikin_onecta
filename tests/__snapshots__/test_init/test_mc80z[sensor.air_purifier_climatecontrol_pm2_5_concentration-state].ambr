@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_mc80z[sensor.air_purifier_climatecontrol_pm2_5_concentration-state]
-  <state sensor.air_purifier_climatecontrol_pm2_5_concentration=2; state_class=measurement, unit_of_measurement=μg/m³, device_class=pm25, icon=mdi:blur, friendly_name=air-purifier ClimateControl PM2.5 concentration @ 2026-10-01T04:25:25.875610-07:00>
-# ---

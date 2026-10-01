@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_gas[sensor.my_living_room_climatecontrol_leaving_water_temperature-state]
-  <state sensor.my_living_room_climatecontrol_leaving_water_temperature=12; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=My Living Room ClimateControl Leaving water temperature @ 2026-10-01T04:25:26.599566-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.linde_climatecontrol_room_temperature-state]
-  <state sensor.linde_climatecontrol_room_temperature=18; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Linde ClimateControl Room temperature @ 2026-10-01T04:25:26.235710-07:00>
-# ---

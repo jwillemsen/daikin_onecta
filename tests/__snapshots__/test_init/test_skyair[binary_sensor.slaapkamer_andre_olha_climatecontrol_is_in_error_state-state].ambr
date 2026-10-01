@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[binary_sensor.slaapkamer_andre_olha_climatecontrol_is_in_error_state-state]
-  <state binary_sensor.slaapkamer_andre_olha_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha ClimateControl Is in error state @ 2026-10-01T04:25:27.207619-07:00>
-# ---

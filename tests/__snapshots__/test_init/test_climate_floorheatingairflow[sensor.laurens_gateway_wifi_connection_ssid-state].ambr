@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_wifi_connection_ssid-state]
-  <state sensor.laurens_gateway_wifi_connection_ssid=SSIDPLOEG24; icon=mdi:access-point-network, friendly_name=Laurens Gateway WiFi connection SSID @ 2026-10-01T04:25:25.742331-07:00>
-# ---

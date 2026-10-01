@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_button[binary_sensor.master_bedroom_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.master_bedroom_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Master Bedroom Gateway Is firmware update supported @ 2026-10-01T04:25:26.724605-07:00>
-# ---

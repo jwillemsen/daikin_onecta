@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[binary_sensor.bedroom_1_climatecontrol_is_in_warning_state-state]
-  <state binary_sensor.bedroom_1_climatecontrol_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Bedroom 1 ClimateControl Is in warning state @ 2026-10-01T04:25:24.333779-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_error_code-state]
-  <state sensor.werkkamer_gateway_error_code=; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Error code @ 2026-10-01T04:25:25.621701-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[binary_sensor.werkkamer_gateway_led_enabled-state]
-  <state binary_sensor.werkkamer_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Werkkamer Gateway LED enabled @ 2026-10-01T04:25:24.945399-07:00>
-# ---

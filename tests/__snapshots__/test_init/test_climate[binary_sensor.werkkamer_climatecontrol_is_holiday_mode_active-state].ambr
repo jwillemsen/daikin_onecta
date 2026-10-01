@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Werkkamer ClimateControl Is holiday mode active @ 2026-10-01T04:25:26.268249-07:00>
-# ---

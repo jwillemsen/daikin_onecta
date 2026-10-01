@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.gostinaia_woonkamer_outdoorunit_cooling_monthly_electrical_consumption-state]
-  <state sensor.gostinaia_woonkamer_outdoorunit_cooling_monthly_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Гостиная / Woonkamer OutdoorUnit Cooling monthly electrical consumption @ 2026-10-01T04:25:27.184621-07:00>
-# ---

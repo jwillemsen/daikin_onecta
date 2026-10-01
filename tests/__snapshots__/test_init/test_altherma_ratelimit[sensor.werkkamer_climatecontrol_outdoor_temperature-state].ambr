@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.werkkamer_climatecontrol_outdoor_temperature-state]
-  <state sensor.werkkamer_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Werkkamer ClimateControl Outdoor temperature @ 2026-10-01T04:25:25.279772-07:00>
-# ---

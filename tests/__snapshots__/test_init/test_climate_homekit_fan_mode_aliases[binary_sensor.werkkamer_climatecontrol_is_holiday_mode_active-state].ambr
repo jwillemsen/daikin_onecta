@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_homekit_fan_mode_aliases[binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Werkkamer ClimateControl Is holiday mode active @ 2026-10-01T04:25:25.637692-07:00>
-# ---

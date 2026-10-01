@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_firmwareupdate[sensor.climate_control_getr422_userinterface_sgtin-state]
-  <state sensor.climate_control_getr422_userinterface_sgtin=30F54A78620000BA77FA6750; icon=mdi:information-outline, friendly_name=Climate control getr422 UserInterface SGTIN @ 2026-10-01T04:25:26.988908-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.laurens_climatecontrol_heating_monthly_electrical_consumption-state]
-  <state sensor.laurens_climatecontrol_heating_monthly_electrical_consumption=4.8; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Laurens ClimateControl Heating monthly electrical consumption @ 2026-10-01T04:25:25.744820-07:00>
-# ---

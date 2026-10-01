@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry2[select.bedroom_2_climatecontrol_schedule-state]
-  <state select.bedroom_2_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Bedroom 2 ClimateControl Schedule @ 2026-10-01T04:25:24.582628-07:00>
-# ---

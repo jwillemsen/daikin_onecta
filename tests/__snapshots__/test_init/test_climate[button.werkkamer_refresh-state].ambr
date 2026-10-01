@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[button.werkkamer_refresh-state]
-  <state button.werkkamer_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:25:26.277931-07:00>
-# ---

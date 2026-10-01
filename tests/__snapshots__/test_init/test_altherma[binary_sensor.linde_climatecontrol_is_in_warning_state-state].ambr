@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma[binary_sensor.linde_climatecontrol_is_in_warning_state-state]
-  <state binary_sensor.linde_climatecontrol_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Linde ClimateControl Is in warning state @ 2026-10-01T04:25:24.947881-07:00>
-# ---

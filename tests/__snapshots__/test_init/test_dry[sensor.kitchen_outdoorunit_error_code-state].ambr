@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dry[sensor.kitchen_outdoorunit_error_code-state]
-  <state sensor.kitchen_outdoorunit_error_code=-; icon=mdi:information-outline, friendly_name=Kitchen OutdoorUnit Error code @ 2026-10-01T04:25:24.306670-07:00>
-# ---

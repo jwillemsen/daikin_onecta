@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_time_zone-state]
-  <state sensor.johnny_maaike_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Johnny&Maaike Gateway Time zone @ 2026-10-01T04:25:27.083273-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_button[binary_sensor.bedroom_1_outdoorunit_is_in_warning_state-state]
-  <state binary_sensor.bedroom_1_outdoorunit_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Bedroom 1 OutdoorUnit Is in warning state @ 2026-10-01T04:25:26.724334-07:00>
-# ---

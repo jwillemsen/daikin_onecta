@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_button[climate.master_bathroom_room_temperature-state]
-  <state climate.master_bathroom_room_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.FAN_ONLY: 'fan_only'>, <HVACMode.COOL: 'cool'>, <HVACMode.DRY: 'dry'>], min_temp=7, max_temp=35, preset_modes=['away', 'none'], current_temperature=25.6, preset_mode=none, friendly_name=Master Bathroom Room Temperature, supported_features=400 @ 2026-10-01T04:25:26.692791-07:00>
-# ---

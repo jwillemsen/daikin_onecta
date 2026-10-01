@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_error_code-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_error_code=00; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж ClimateControl Error code @ 2026-10-01T04:25:27.194351-07:00>
-# ---

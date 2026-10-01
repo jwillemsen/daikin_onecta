@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma3m[sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption-state]
-  <state sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption=4; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Altherma DomesticHotWaterTank Heating weekly electrical consumption @ 2026-10-01T04:25:25.159305-07:00>
-# ---

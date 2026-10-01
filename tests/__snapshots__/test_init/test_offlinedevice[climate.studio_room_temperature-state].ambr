@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_offlinedevice[climate.studio_room_temperature-state]
-  <state climate.studio_room_temperature=unavailable; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>], min_temp=10, max_temp=31, target_temp_step=0.5, fan_modes=['auto', 'quiet', '1', '2', '3', '4', '5'], preset_modes=['away', 'boost', 'none'], swing_modes=['stop', 'swing', 'windnice'], swing_horizontal_modes=['stop', 'swing'], friendly_name=Studio Room Temperature, supported_features=952 @ 2026-10-01T04:25:24.202034-07:00>
-# ---

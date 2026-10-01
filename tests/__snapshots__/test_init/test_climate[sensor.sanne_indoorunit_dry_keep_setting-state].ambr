@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.sanne_indoorunit_dry_keep_setting-state]
-  <state sensor.sanne_indoorunit_dry_keep_setting=on; icon=mdi:water-percent, friendly_name=Sanne IndoorUnit Dry keep setting @ 2026-10-01T04:25:26.247308-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.altherma_gateway_ip_address-state]
-  <state sensor.altherma_gateway_ip_address=192.168.1.207; icon=mdi:ip-network, friendly_name=Altherma Gateway IP address @ 2026-10-01T04:25:26.211412-07:00>
-# ---

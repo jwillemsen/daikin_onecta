@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.linde_gateway_time_zone-state]
-  <state sensor.linde_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Linde Gateway Time zone @ 2026-10-01T04:25:26.234766-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[sensor.laurens_gateway_ratelimit_remaining_day-state]
-  <state sensor.laurens_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Laurens Gateway Ratelimit remaining day @ 2026-10-01T04:25:25.741486-07:00>
-# ---

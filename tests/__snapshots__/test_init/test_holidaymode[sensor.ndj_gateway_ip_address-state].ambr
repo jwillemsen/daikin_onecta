@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_holidaymode[sensor.ndj_gateway_ip_address-state]
-  <state sensor.ndj_gateway_ip_address=192.168.45.16; icon=mdi:ip-network, friendly_name=NDJ Gateway IP address @ 2026-10-01T04:25:25.996070-07:00>
-# ---

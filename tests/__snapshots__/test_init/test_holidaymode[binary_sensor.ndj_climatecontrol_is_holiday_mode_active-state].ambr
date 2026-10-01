@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_holidaymode[binary_sensor.ndj_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.ndj_climatecontrol_is_holiday_mode_active=on; icon=mdi:information-outline, friendly_name=NDJ ClimateControl Is holiday mode active @ 2026-10-01T04:25:26.005704-07:00>
-# ---

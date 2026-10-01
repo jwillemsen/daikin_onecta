@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_homekit_fan_mode_aliases[sensor.werkkamer_gateway_ip_address-state]
-  <state sensor.werkkamer_gateway_ip_address=192.168.1.200; icon=mdi:ip-network, friendly_name=Werkkamer Gateway IP address @ 2026-10-01T04:25:25.621911-07:00>
-# ---

@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate_floorheatingairflow[switch.woonkamer_airco_climatecontrol_streamer_mode-state]
-  <state switch.woonkamer_airco_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Woonkamer airco ClimateControl Streamer mode @ 2026-10-01T04:25:25.752360-07:00>
-# ---

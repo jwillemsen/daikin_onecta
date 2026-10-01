@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_offlinedevice[select.studio_climatecontrol_schedule-state]
-  <state select.studio_climatecontrol_schedule=unavailable; options=['0'], icon=mdi:calendar-clock, friendly_name=Studio ClimateControl Schedule @ 2026-10-01T04:25:24.217528-07:00>
-# ---

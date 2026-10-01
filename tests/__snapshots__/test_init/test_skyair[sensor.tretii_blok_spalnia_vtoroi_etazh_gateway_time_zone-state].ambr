@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_time_zone-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_time_zone=Europe/Kiev; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж Gateway Time zone @ 2026-10-01T04:25:27.193310-07:00>
-# ---

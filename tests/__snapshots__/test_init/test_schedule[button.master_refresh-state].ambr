@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_schedule[button.master_refresh-state]
-  <state button.master_refresh=unknown; icon=mdi:refresh, friendly_name=Master Refresh @ 2026-10-01T04:25:24.748665-07:00>
-# ---

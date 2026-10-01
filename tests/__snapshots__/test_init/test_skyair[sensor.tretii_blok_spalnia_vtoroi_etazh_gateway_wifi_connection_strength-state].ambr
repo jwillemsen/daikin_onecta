@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_wifi_connection_strength-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_wifi_connection_strength=-54; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=третий блок/Спальня второй этаж Gateway WiFi connection strength @ 2026-10-01T04:25:27.194139-07:00>
-# ---

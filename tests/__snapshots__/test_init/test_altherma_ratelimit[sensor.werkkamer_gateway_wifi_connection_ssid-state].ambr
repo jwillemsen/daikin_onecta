@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_altherma_ratelimit[sensor.werkkamer_gateway_wifi_connection_ssid-state]
-  <state sensor.werkkamer_gateway_wifi_connection_ssid=WILLEMSEN; icon=mdi:access-point-network, friendly_name=Werkkamer Gateway WiFi connection SSID @ 2026-10-01T04:25:25.278583-07:00>
-# ---

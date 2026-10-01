@@ -1,4 +1,0 @@
-# serializer version: 1
-# name: test_climate[sensor.werkkamer_gateway_ssid-state]
-  <state sensor.werkkamer_gateway_ssid=DaikinAP32931; icon=mdi:access-point-network, friendly_name=Werkkamer Gateway SSID @ 2026-10-01T04:25:26.228401-07:00>
-# ---
