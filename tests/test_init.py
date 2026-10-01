@@ -338,7 +338,7 @@ async def test_altherma_ratelimit(
 
         assert len(aioclient_mock.mock_calls) == 2
 
-        assert aioclient_mock.mock_calls[1][2] == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
+        assert aioclient_mock.mock_calls[1][2] == {"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == temp
 
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=429)
@@ -411,7 +411,7 @@ async def test_climate_homekit_fan_mode_aliases(
         )
         await hass.async_block_till_done()
 
-        assert aioclient_mock.mock_calls[-1][2] == '{"value": "quiet", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "quiet", "path": "/operationModes/heating/fanSpeed/currentMode"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == FAN_LOW
 
         await hass.services.async_call(
@@ -422,8 +422,8 @@ async def test_climate_homekit_fan_mode_aliases(
         )
         await hass.async_block_till_done()
 
-        assert aioclient_mock.mock_calls[-2][2] == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
-        assert aioclient_mock.mock_calls[-1][2] == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert aioclient_mock.mock_calls[-2][2] == {"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}
+        assert aioclient_mock.mock_calls[-1][2] == {"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == FAN_MIDDLE
 
         await hass.services.async_call(
@@ -434,7 +434,7 @@ async def test_climate_homekit_fan_mode_aliases(
         )
         await hass.async_block_till_done()
 
-        assert aioclient_mock.mock_calls[-1][2] == '{"value": 5, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert aioclient_mock.mock_calls[-1][2] == {"value": 5, "path": "/operationModes/heating/fanSpeed/modes/fixed"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == FAN_HIGH
 
         await hass.services.async_call(
@@ -600,7 +600,7 @@ async def test_water_heater(
         assert info["remaining_day"] == 10
 
         assert len(aioclient_mock.mock_calls) == 2
-        assert aioclient_mock.mock_calls[1][2] == '{"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}'
+        assert aioclient_mock.mock_calls[1][2] == {"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}
         assert hass.states.get("water_heater.altherma").attributes["temperature"] == 58
 
         # Set the tank temperature to 58, this should not result in a call as it is already 58
@@ -630,7 +630,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 3
-        assert aioclient_mock.mock_calls[2][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[2][2] == {"value": "off"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # Set the tank temperature to 54, because the tank is off no call should be done to Daikin
@@ -667,8 +667,8 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 5
-        assert aioclient_mock.mock_calls[3][2] == '{"value": "on"}'
-        assert aioclient_mock.mock_calls[4][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[3][2] == {"value": "on"}
+        assert aioclient_mock.mock_calls[4][2] == {"value": "on"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
 
         # aioclient_mock.patch(
@@ -687,7 +687,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 6
-        assert aioclient_mock.mock_calls[5][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[5][2] == {"value": "off"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         # aioclient_mock.patch(
@@ -706,7 +706,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 7
-        assert aioclient_mock.mock_calls[6][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[6][2] == {"value": "off"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # aioclient_mock.patch(
@@ -725,7 +725,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 8
-        assert aioclient_mock.mock_calls[7][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[7][2] == {"value": "on"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         # aioclient_mock.patch(
@@ -744,7 +744,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 9
-        assert aioclient_mock.mock_calls[8][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[8][2] == {"value": "off"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         # Turn the tank again off using turn_off, will be a noop
@@ -774,7 +774,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 10
-        assert aioclient_mock.mock_calls[9][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[9][2] == {"value": "on"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         # Turn the tank again on using turn_on, will be a noop
@@ -824,7 +824,7 @@ async def test_water_heater(
             assert len(aioclient_mock.mock_calls) == 1
 
         assert len(aioclient_mock.mock_calls) == 1
-        assert aioclient_mock.mock_calls[0][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[0][2] == {"value": "off"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_HEAT_PUMP
 
         aioclient_mock.clear_requests()
@@ -844,7 +844,7 @@ async def test_water_heater(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 1
-        assert aioclient_mock.mock_calls[0][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[0][2] == {"value": "off"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
         aioclient_mock.clear_requests()
@@ -868,7 +868,7 @@ async def test_water_heater(
             assert len(aioclient_mock.mock_calls) == 1
 
         assert len(aioclient_mock.mock_calls) == 1
-        assert aioclient_mock.mock_calls[0][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[0][2] == {"value": "on"}
         assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_OFF
 
 
@@ -938,7 +938,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 2
-        assert aioclient_mock.mock_calls[1][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[1][2] == {"value": "on"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
         # Turn on the device another time, this shouldn't result in a call to Daikin
@@ -962,7 +962,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 3
-        assert aioclient_mock.mock_calls[2][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[2][2] == {"value": "off"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Turn off the device another time, this shouldn't result in a call to Daikin
@@ -986,7 +986,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 4
-        assert aioclient_mock.mock_calls[3][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[3][2] == {"value": "on"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
         # Change the device to heating
@@ -1012,7 +1012,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 6
-        assert aioclient_mock.mock_calls[5][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[5][2] == {"value": "off"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Turn on the device, it was in heat mode
@@ -1025,7 +1025,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 7
-        assert aioclient_mock.mock_calls[6][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[6][2] == {"value": "on"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.HEAT
 
         # Set the fan mode to 2, will first set the fanControl to fixed, after that the value to 2
@@ -1038,8 +1038,8 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 9
-        assert aioclient_mock.mock_calls[7][2] == '{"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}'
-        assert aioclient_mock.mock_calls[8][2] == '{"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}'
+        assert aioclient_mock.mock_calls[7][2] == {"value": "fixed", "path": "/operationModes/heating/fanSpeed/currentMode"}
+        assert aioclient_mock.mock_calls[8][2] == {"value": 2, "path": "/operationModes/heating/fanSpeed/modes/fixed"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "2"
 
         # Set the fan mode again to 2, shouldn't result in any calls
@@ -1182,7 +1182,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 17
-        assert aioclient_mock.mock_calls[16][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[16][2] == {"value": "on"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
 
         # Disable the preset mode boost again
@@ -1195,7 +1195,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 18
-        assert aioclient_mock.mock_calls[17][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[17][2] == {"value": "off"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
 
         # Turn off the device through the hvac mode
@@ -1208,7 +1208,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 19
-        assert aioclient_mock.mock_calls[18][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[18][2] == {"value": "off"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Set the preset mode boost, this should result in two calls, power on the device
@@ -1222,8 +1222,8 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 21
-        assert aioclient_mock.mock_calls[19][2] == '{"value": "on"}'
-        assert aioclient_mock.mock_calls[20][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[19][2] == {"value": "on"}
+        assert aioclient_mock.mock_calls[20][2] == {"value": "on"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_BOOST
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
@@ -1240,7 +1240,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 22
-        assert aioclient_mock.mock_calls[21][2] == '{"value": "on"}'
+        assert aioclient_mock.mock_calls[21][2] == {"value": "on"}
         assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_ON
 
         # Set the streamer mode on a second time shouldn't result in a call to daikin
@@ -1264,7 +1264,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 23
-        assert aioclient_mock.mock_calls[22][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[22][2] == {"value": "off"}
         assert hass.states.get("switch.werkkamer_climatecontrol_streamer_mode").state == STATE_OFF
 
         # Set the streamer mode off a second time shouldn't result in a call to daikin
@@ -1308,7 +1308,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 26
-        assert aioclient_mock.mock_calls[25][2] == '{"enabled": false}'
+        assert aioclient_mock.mock_calls[25][2] == {"enabled": False}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_NONE
 
         # Set the device with schedule 0 enabled
@@ -1321,7 +1321,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 27
-        assert aioclient_mock.mock_calls[26][2] == '{"scheduleId": "0", "enabled": true}'
+        assert aioclient_mock.mock_calls[26][2] == {"scheduleId": "0", "enabled": True}
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == "0"
 
         # Set the device with no schedule
@@ -1334,7 +1334,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 28
-        assert aioclient_mock.mock_calls[27][2] == '{"scheduleId": "0", "enabled": false}'
+        assert aioclient_mock.mock_calls[27][2] == {"scheduleId": "0", "enabled": False}
         assert hass.states.get("select.werkkamer_climatecontrol_schedule").state == SCHEDULE_OFF
 
         aioclient_mock.put(
@@ -1353,7 +1353,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 29
-        assert aioclient_mock.mock_calls[28][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert aioclient_mock.mock_calls[28][2] == {"scheduleId": "scheduleCoolingRT1", "enabled": True}
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == "User defined"
 
         # Set the device with no schedule
@@ -1366,7 +1366,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 30
-        assert aioclient_mock.mock_calls[29][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": false}'
+        assert aioclient_mock.mock_calls[29][2] == {"scheduleId": "scheduleCoolingRT1", "enabled": False}
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
         # Turn off the device through the hvac mode
@@ -1379,7 +1379,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 31
-        assert aioclient_mock.mock_calls[30][2] == '{"value": "off"}'
+        assert aioclient_mock.mock_calls[30][2] == {"value": "off"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
 
         # Turn off the device through the hvac mode, because it is already off it shouldn't result
@@ -1438,7 +1438,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 35
-        assert aioclient_mock.mock_calls[34][2] == '{"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
+        assert aioclient_mock.mock_calls[34][2] == {"value": "windNice", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "windnice"
 
         aioclient_mock.clear_requests()
@@ -1463,7 +1463,7 @@ async def test_climate(
         assert info["remaining_day"] == 0
 
         assert len(aioclient_mock.mock_calls) == 1
-        assert aioclient_mock.mock_calls[0][2] == '{"scheduleId": "scheduleCoolingRT1", "enabled": true}'
+        assert aioclient_mock.mock_calls[0][2] == {"scheduleId": "scheduleCoolingRT1", "enabled": True}
         assert hass.states.get("select.altherma_climatecontrol_schedule").state == SCHEDULE_OFF
 
         aioclient_mock.clear_requests()
