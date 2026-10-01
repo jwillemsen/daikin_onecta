@@ -1,19 +1,60 @@
 repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.16.9
+    hooks:
+      - id: ruff-check
+        args:
+          - --fix
+      - id: ruff-format
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.3
+    hooks:
+      - id: codespell
+        args:
+          - --ignore-words-list=aiport,astroid,checkin,currenty,hass,iif,incomfort,lookin,nam,NotIn
+          - --skip="./.*,*.csv,*.json,*.ambr"
+          - --quiet-level=2
+        exclude_types: [csv, json, html]
+        exclude: ^tests/fixtures/|tests/snapshots/
+  - repo: https://github.com/zizmorcore/zizmor-pre-commit
+    rev: v1.30.1
+    hooks:
+      - id: zizmor
+        args:
+          - --pedantic
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v6.0.0
     hooks:
-      - id: check-added-large-files
-      - id: check-yaml
-        exclude: ^blueprints/
-      - id: end-of-file-fixer
-      - id: trailing-whitespace
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.2.0
+      - id: check-executables-have-shebangs
+        stages: [manual]
+      - id: check-json
+      - id: no-commit-to-branch
+        args:
+          - --branch=master
+  - repo: https://github.com/adrienverge/yamllint.git
+    rev: v1.38.0
     hooks:
-      - id: ruff
-        args: [--fix]
-      - id: ruff-format
-  - repo: https://github.com/asottile/reorder-python-imports
-    rev: v3.17.0
+      - id: yamllint
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.6.2
     hooks:
-    -   id: reorder-python-imports
+      - id: prettier
+        additional_dependencies:
+          - prettier@3.6.2
+          - prettier-plugin-sort-json@4.2.0
+  - repo: local
+    hooks:
+      - id: mypy
+        name: mypy
+        entry: mypy
+        language: system
+        require_serial: true
+        types_or: [python, pyi]
+        files: ^custom_components/daikin_onecta/.+\.(py|pyi)$
+      - id: pylint
+        name: pylint
+        entry: pylint --ignore-missing-annotations=y
+        language: system
+        require_serial: true
+        types_or: [python, pyi]
+        files: ^(custom_components/daikin_onecta|tests)/.+\.(py|pyi)$

@@ -1,4 +1,4 @@
-name: Validate with pre-commit
+name: Validate with prek
 
 on:
   push:
@@ -12,23 +12,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  precommit:
+  prek:
     runs-on: "ubuntu-slim"
-    name: Pre-commit
+    name: Prek
     steps:
       - name: Check out the repository
         uses: actions/checkout@v7
       - name: Setup Python
-        uses: "actions/setup-python@v7"
+        uses: actions/setup-python@v7
         with:
           python-version: "3.14"
       - name: Upgrade pip
         run: |
           pip install --constraint=.github/workflows/constraints.txt pip
           pip --version
-      - name: Install Python modules
+      - name: Install development tools
         run: |
-          pip install --constraint=.github/workflows/constraints.txt pre-commit black flake8 reorder-python-imports
-      - name: Run pre-commit on all files
+          pip install --constraint=.github/workflows/constraints.txt -r requirements_dev.txt
+      - name: Run prek on all files
         run: |
-          pre-commit run --all-files --show-diff-on-failure --color=always
+          prek run --all-files --show-diff-on-failure --color=always
