@@ -124,6 +124,7 @@ async def snapshot_platform_entities(
         extension_class=SingleFileAmberSnapshotExtension,
     )
 
+
 @pytest.fixture(name="config_entry")
 def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
     """Mock a config entry."""
