@@ -1079,7 +1079,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 11
-        assert aioclient_mock.mock_calls[10][2] == '{"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}'
+        assert aioclient_mock.mock_calls[10][2] == {"value": "auto", "path": "/operationModes/heating/fanSpeed/currentMode"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["fan_mode"] == "auto"
 
         # Set the fan mode again to auto, should result in 0 call
