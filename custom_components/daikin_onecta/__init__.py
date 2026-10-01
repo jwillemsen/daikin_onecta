@@ -21,16 +21,7 @@ from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORMS = [
-    Platform.CLIMATE,
-    Platform.SENSOR,
-    Platform.WATER_HEATER,
-    Platform.SWITCH,
-    Platform.SELECT,
-    Platform.BINARY_SENSOR,
-    Platform.BUTTON,
-    Platform.UPDATE,
-]
+PLATFORMS = [Platform.SENSOR]
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
