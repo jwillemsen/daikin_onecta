@@ -113,8 +113,8 @@ async def snapshot_platform_entities(
     entity_snapshot = {}
     for entity_entry in entity_entries:
         registry_data = dict(entity_entry.as_partial_dict)
-        registry_data.pop("config_entry_id", None)
-        registry_data.pop("id", None)
+        for key in ("config_entry_id", "created_at", "device_id", "id", "modified_at"):
+            registry_data.pop(key, None)
 
         state = hass.states.get(entity_entry.entity_id)
         assert state is not None
