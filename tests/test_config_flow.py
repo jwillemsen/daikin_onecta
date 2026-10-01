@@ -206,3 +206,72 @@ async def test_zeroconf_flow(
     await hass.async_block_till_done()
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1
     assert len(mock_setup.mock_calls) == 1
+
+
+async def test_invalid_oauth_token(
+    hass: HomeAssistant,
+) -> None:
+    """Abort when the OAuth access token is not a valid JWT."""
+    flow = config_entries.HANDLERS[DOMAIN]()
+    flow.hass = hass
+
+    result = await flow.async_oauth_create_entry({"token": {"access_token": "invalid"}})
+
+    assert result["type"] == "abort"
+    assert result["reason"] == "invalid_token"
+
+
+async def test_reauth_confirm_form(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+) -> None:
+    """Show the reauthentication confirmation form."""
+    config_entry.add_to_hass(hass)
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": config_entries.SOURCE_REAUTH, "entry_id": config_entry.entry_id},
+        data=config_entry.data,
+    )
+
+    assert result["type"] == "form"
+    assert result["step_id"] == "reauth_confirm"
+
+
+async def test_zeroconf_already_configured(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+) -> None:
+    """Ignore zeroconf discovery when the integration is already configured."""
+    config_entry.add_to_hass(hass)
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": SOURCE_ZEROCONF},
+        data=ZEROCONF_DISCOVERY,
+    )
+
+    assert result["type"] == "abort"
+    assert result["reason"] == "already_configured"
+
+
+async def test_zeroconf_without_hostname(hass: HomeAssistant) -> None:
+    """Ignore zeroconf discovery without a hostname."""
+    discovery = ZeroconfServiceInfo(
+        ip_address=ZEROCONF_DISCOVERY.ip_address,
+        ip_addresses=ZEROCONF_DISCOVERY.ip_addresses,
+        hostname=None,
+        name=ZEROCONF_DISCOVERY.name,
+        port=ZEROCONF_DISCOVERY.port,
+        type=ZEROCONF_DISCOVERY.type,
+        properties=ZEROCONF_DISCOVERY.properties,
+    )
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN,
+        context={"source": SOURCE_ZEROCONF},
+        data=discovery,
+    )
+
+    assert result["type"] == "abort"
+    assert result["reason"] == "unknown"
