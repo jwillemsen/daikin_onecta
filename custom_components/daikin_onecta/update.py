@@ -39,11 +39,6 @@ async def async_setup_entry(
     coordinator = onecta_data.coordinator
 
     entities: list[DaikinFirmwareUpdateEntity] = []
-    required_version_fields = {
-        "firmwareVersion",
-        "softwareVersion",
-    }
-
     for device in onecta_data.devices.values():
         for management_point in device.device.management_points:
             if management_point.firmware_version is not None or management_point.software_version is not None:
