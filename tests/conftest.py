@@ -91,7 +91,7 @@ async def snapshot_platform_entities(
         ),
         patch(
             "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.valid_token",
-            False,
+            True,
         ),
         patch(
             "homeassistant.helpers.config_entry_oauth2_flow.OAuth2Session.async_ensure_token_valid",
