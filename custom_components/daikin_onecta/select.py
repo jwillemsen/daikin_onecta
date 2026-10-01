@@ -120,12 +120,14 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                 option,
             )
 
-        result = await self._device.api.set_schedule(
+        result = await self._device.put(
             self._device.id,
             self._embedded_id,
-            selection.mode,
-            schedule_id,
-            enabled=option != SCHEDULE_OFF,
+            f"schedule/{selection.mode}/current",
+            {
+                "scheduleId": schedule_id,
+                "enabled": option != SCHEDULE_OFF,
+            },
         )
         if result:
             self._attr_current_option = option
