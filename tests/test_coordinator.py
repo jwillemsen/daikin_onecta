@@ -7,6 +7,7 @@ from unittest.mock import MagicMock
 from unittest.mock import patch
 
 import pytest
+from daikin_onecta import OnectaRateLimitError
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import UpdateFailed
 from pytest_homeassistant_custom_component.common import MockConfigEntry
@@ -14,7 +15,6 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
-from custom_components.daikin_onecta.daikin_api import DaikinRateLimitError
 
 
 @pytest.fixture
@@ -110,7 +110,7 @@ class TestOnectaDataUpdateCoordinator:
         """A Daikin rate limit should use the coordinator retry-after mechanism."""
         daikin_api = mock_config_entry.runtime_data.daikin_api
         daikin_api._last_patch_call = None
-        daikin_api.getCloudDeviceDetails = AsyncMock(side_effect=DaikinRateLimitError(3060))
+        daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
 
         # Simulate daily rate limit reached
         with pytest.raises(UpdateFailed) as exc_info:
