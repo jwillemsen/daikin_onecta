@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[binary_sensor.woonkamer_airco_climatecontrol_is_lock_function_enabled-state]
-  <state binary_sensor.woonkamer_airco_climatecontrol_is_lock_function_enabled=off; icon=mdi:information-outline, friendly_name=Woonkamer airco ClimateControl Is lock function enabled @ 2026-10-01T04:22:26.383749-07:00>
+  <state binary_sensor.woonkamer_airco_climatecontrol_is_lock_function_enabled=off; icon=mdi:information-outline, friendly_name=Woonkamer airco ClimateControl Is lock function enabled @ 2026-10-01T04:25:25.757930-07:00>
 # ---

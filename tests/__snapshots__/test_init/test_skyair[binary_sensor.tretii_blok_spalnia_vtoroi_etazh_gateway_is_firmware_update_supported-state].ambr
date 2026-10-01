@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[binary_sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж Gateway Is firmware update supported @ 2026-10-01T04:22:27.813295-07:00>
+  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж Gateway Is firmware update supported @ 2026-10-01T04:25:27.208234-07:00>
 # ---

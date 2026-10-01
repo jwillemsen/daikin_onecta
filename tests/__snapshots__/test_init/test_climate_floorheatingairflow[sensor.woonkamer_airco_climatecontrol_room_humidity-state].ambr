@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_room_humidity-state]
-  <state sensor.woonkamer_airco_climatecontrol_room_humidity=55; state_class=measurement, unit_of_measurement=%, device_class=humidity, icon=mdi:water-percent, friendly_name=Woonkamer airco ClimateControl Room humidity @ 2026-10-01T04:22:26.360088-07:00>
+  <state sensor.woonkamer_airco_climatecontrol_room_humidity=55; state_class=measurement, unit_of_measurement=%, device_class=humidity, icon=mdi:water-percent, friendly_name=Woonkamer airco ClimateControl Room humidity @ 2026-10-01T04:25:25.735782-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_ratelimit[binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is holiday mode active @ 2026-10-01T04:22:25.935633-07:00>
+  <state binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is holiday mode active @ 2026-10-01T04:25:25.318131-07:00>
 # ---

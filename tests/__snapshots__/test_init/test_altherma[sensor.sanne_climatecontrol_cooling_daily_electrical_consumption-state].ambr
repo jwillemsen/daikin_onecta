@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.sanne_climatecontrol_cooling_daily_electrical_consumption-state]
-  <state sensor.sanne_climatecontrol_cooling_daily_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Sanne ClimateControl Cooling daily electrical consumption @ 2026-10-01T04:22:25.552469-07:00>
+  <state sensor.sanne_climatecontrol_cooling_daily_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Sanne ClimateControl Cooling daily electrical consumption @ 2026-10-01T04:25:24.923597-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_offlinedevice[button.studio_refresh-state]
-  <state button.studio_refresh=unavailable; icon=mdi:refresh, friendly_name=Studio Refresh @ 2026-10-01T04:22:24.869270-07:00>
+  <state button.studio_refresh=unavailable; icon=mdi:refresh, friendly_name=Studio Refresh @ 2026-10-01T04:25:24.223357-07:00>
 # ---

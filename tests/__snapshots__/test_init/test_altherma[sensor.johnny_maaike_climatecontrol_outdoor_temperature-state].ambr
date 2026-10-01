@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.johnny_maaike_climatecontrol_outdoor_temperature-state]
-  <state sensor.johnny_maaike_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Outdoor temperature @ 2026-10-01T04:22:25.530260-07:00>
+  <state sensor.johnny_maaike_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Outdoor temperature @ 2026-10-01T04:25:24.899903-07:00>
 # ---

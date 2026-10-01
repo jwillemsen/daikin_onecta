@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_offlinedevice[sensor.studio_climatecontrol_outdoor_temperature-state]
-  <state sensor.studio_climatecontrol_outdoor_temperature=unavailable; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Studio ClimateControl Outdoor temperature @ 2026-10-01T04:22:24.853900-07:00>
+  <state sensor.studio_climatecontrol_outdoor_temperature=unavailable; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Studio ClimateControl Outdoor temperature @ 2026-10-01T04:25:24.209298-07:00>
 # ---

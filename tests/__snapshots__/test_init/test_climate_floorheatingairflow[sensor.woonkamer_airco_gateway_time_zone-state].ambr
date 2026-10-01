@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_time_zone-state]
-  <state sensor.woonkamer_airco_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Woonkamer airco Gateway Time zone @ 2026-10-01T04:22:26.358850-07:00>
+  <state sensor.woonkamer_airco_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Woonkamer airco Gateway Time zone @ 2026-10-01T04:25:25.734500-07:00>
 # ---

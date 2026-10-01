@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[sensor.slaapkamer_andre_olha_climatecontrol_error_code-state]
-  <state sensor.slaapkamer_andre_olha_climatecontrol_error_code=00; icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha ClimateControl Error code @ 2026-10-01T04:22:27.790700-07:00>
+  <state sensor.slaapkamer_andre_olha_climatecontrol_error_code=00; icon=mdi:information-outline, friendly_name=Slaapkamer André / Olha ClimateControl Error code @ 2026-10-01T04:25:27.188189-07:00>
 # ---

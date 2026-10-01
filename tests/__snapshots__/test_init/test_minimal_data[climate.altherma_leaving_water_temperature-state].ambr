@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_minimal_data[climate.altherma_leaving_water_temperature-state]
-  <state climate.altherma_leaving_water_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>], min_temp=7, max_temp=35, current_temperature=26, friendly_name=Altherma Leaving Water Temperature, supported_features=384 @ 2026-10-01T04:22:27.110732-07:00>
+  <state climate.altherma_leaving_water_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT: 'heat'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT_COOL: 'heat_cool'>], min_temp=7, max_temp=35, current_temperature=26, friendly_name=Altherma Leaving Water Temperature, supported_features=384 @ 2026-10-01T04:25:26.502049-07:00>
 # ---

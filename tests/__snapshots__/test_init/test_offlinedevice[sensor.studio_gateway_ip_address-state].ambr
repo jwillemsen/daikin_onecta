@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_offlinedevice[sensor.studio_gateway_ip_address-state]
-  <state sensor.studio_gateway_ip_address=unavailable; icon=mdi:ip-network, friendly_name=Studio Gateway IP address @ 2026-10-01T04:22:24.852104-07:00>
+  <state sensor.studio_gateway_ip_address=unavailable; icon=mdi:ip-network, friendly_name=Studio Gateway IP address @ 2026-10-01T04:25:24.207294-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dx4_firmwareupdate[sensor.johnny_maaike_gateway_ip_address-state]
-  <state sensor.johnny_maaike_gateway_ip_address=192.168.1.193; icon=mdi:ip-network, friendly_name=Johnny&Maaike Gateway IP address @ 2026-10-01T04:22:27.689395-07:00>
+  <state sensor.johnny_maaike_gateway_ip_address=192.168.1.193; icon=mdi:ip-network, friendly_name=Johnny&Maaike Gateway IP address @ 2026-10-01T04:25:27.082907-07:00>
 # ---

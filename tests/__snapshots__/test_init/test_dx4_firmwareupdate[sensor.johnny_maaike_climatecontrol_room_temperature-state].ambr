@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_room_temperature-state]
-  <state sensor.johnny_maaike_climatecontrol_room_temperature=18; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Room temperature @ 2026-10-01T04:22:27.690449-07:00>
+  <state sensor.johnny_maaike_climatecontrol_room_temperature=18; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Johnny&Maaike ClimateControl Room temperature @ 2026-10-01T04:25:27.084003-07:00>
 # ---

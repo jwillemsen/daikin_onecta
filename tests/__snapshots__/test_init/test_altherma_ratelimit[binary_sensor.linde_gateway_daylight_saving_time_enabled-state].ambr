@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_ratelimit[binary_sensor.linde_gateway_daylight_saving_time_enabled-state]
-  <state binary_sensor.linde_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Linde Gateway Daylight saving time enabled @ 2026-10-01T04:22:25.940212-07:00>
+  <state binary_sensor.linde_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Linde Gateway Daylight saving time enabled @ 2026-10-01T04:25:25.321981-07:00>
 # ---

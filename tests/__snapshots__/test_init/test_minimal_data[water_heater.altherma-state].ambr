@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_minimal_data[water_heater.altherma-state]
-  <state water_heater.altherma=heat_pump; min_temp=None, max_temp=None, operation_list=['off', 'heat_pump'], current_temperature=53.0, temperature=None, target_temp_high=None, target_temp_low=None, operation_mode=heat_pump, friendly_name=Altherma DomesticHotWaterTank, supported_features=10 @ 2026-10-01T04:22:27.124877-07:00>
+  <state water_heater.altherma=heat_pump; min_temp=None, max_temp=None, operation_list=['off', 'heat_pump'], current_temperature=53.0, temperature=None, target_temp_high=None, target_temp_low=None, operation_mode=heat_pump, friendly_name=Altherma DomesticHotWaterTank, supported_features=10 @ 2026-10-01T04:25:26.515614-07:00>
 # ---

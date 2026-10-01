@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry[sensor.kitchen_gateway_error_code-state]
-  <state sensor.kitchen_gateway_error_code=; icon=mdi:information-outline, friendly_name=Kitchen Gateway Error code @ 2026-10-01T04:22:24.948728-07:00>
+  <state sensor.kitchen_gateway_error_code=; icon=mdi:information-outline, friendly_name=Kitchen Gateway Error code @ 2026-10-01T04:25:24.305623-07:00>
 # ---

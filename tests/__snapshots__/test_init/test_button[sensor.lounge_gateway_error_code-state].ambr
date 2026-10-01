@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[sensor.lounge_gateway_error_code-state]
-  <state sensor.lounge_gateway_error_code=; icon=mdi:information-outline, friendly_name=Lounge Gateway Error code @ 2026-10-01T04:22:27.309472-07:00>
+  <state sensor.lounge_gateway_error_code=; icon=mdi:information-outline, friendly_name=Lounge Gateway Error code @ 2026-10-01T04:25:26.701643-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[select.gostinaia_woonkamer_climatecontrol_schedule-state]
-  <state select.gostinaia_woonkamer_climatecontrol_schedule=off; options=['0', 'undefined', 'undefined', 'off'], icon=mdi:calendar-clock, friendly_name=Гостиная / Woonkamer ClimateControl Schedule @ 2026-10-01T04:22:27.808174-07:00>
+  <state select.gostinaia_woonkamer_climatecontrol_schedule=off; options=['0', 'undefined', 'undefined', 'off'], icon=mdi:calendar-clock, friendly_name=Гостиная / Woonkamer ClimateControl Schedule @ 2026-10-01T04:25:27.203489-07:00>
 # ---

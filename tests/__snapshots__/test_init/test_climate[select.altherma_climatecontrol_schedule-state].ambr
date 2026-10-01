@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[select.altherma_climatecontrol_schedule-state]
-  <state select.altherma_climatecontrol_schedule=off; options=['User defined', 'off'], icon=mdi:calendar-clock, friendly_name=Altherma ClimateControl Schedule @ 2026-10-01T04:22:26.870979-07:00>
+  <state select.altherma_climatecontrol_schedule=off; options=['User defined', 'off'], icon=mdi:calendar-clock, friendly_name=Altherma ClimateControl Schedule @ 2026-10-01T04:25:26.258279-07:00>
 # ---

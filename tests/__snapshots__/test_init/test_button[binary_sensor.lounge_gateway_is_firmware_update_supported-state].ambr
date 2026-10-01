@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[binary_sensor.lounge_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.lounge_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Lounge Gateway Is firmware update supported @ 2026-10-01T04:22:27.332319-07:00>
+  <state binary_sensor.lounge_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Lounge Gateway Is firmware update supported @ 2026-10-01T04:25:26.719657-07:00>
 # ---

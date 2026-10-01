@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_climatecontrol_heating_weekly_electrical_consumption-state]
-  <state sensor.climate_control_getr422_climatecontrol_heating_weekly_electrical_consumption=0.01; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Climate control getr422 ClimateControl Heating weekly electrical consumption @ 2026-10-01T04:22:27.591986-07:00>
+  <state sensor.climate_control_getr422_climatecontrol_heating_weekly_electrical_consumption=0.01; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Climate control getr422 ClimateControl Heating weekly electrical consumption @ 2026-10-01T04:25:26.983212-07:00>
 # ---

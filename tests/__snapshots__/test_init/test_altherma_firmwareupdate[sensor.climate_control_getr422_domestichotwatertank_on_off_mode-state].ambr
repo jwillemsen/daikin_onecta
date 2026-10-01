@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_firmwareupdate[sensor.climate_control_getr422_domestichotwatertank_on_off_mode-state]
-  <state sensor.climate_control_getr422_domestichotwatertank_on_off_mode=off; icon=mdi:toggle-switch-variant, friendly_name=Climate control getr422 DomesticHotWaterTank On/Off mode @ 2026-10-01T04:22:27.595041-07:00>
+  <state sensor.climate_control_getr422_domestichotwatertank_on_off_mode=off; icon=mdi:toggle-switch-variant, friendly_name=Climate control getr422 DomesticHotWaterTank On/Off mode @ 2026-10-01T04:25:26.986335-07:00>
 # ---

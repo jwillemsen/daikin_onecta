@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[select.linde_climatecontrol_schedule-state]
-  <state select.linde_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Linde ClimateControl Schedule @ 2026-10-01T04:22:26.871455-07:00>
+  <state select.linde_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Linde ClimateControl Schedule @ 2026-10-01T04:25:26.258811-07:00>
 # ---

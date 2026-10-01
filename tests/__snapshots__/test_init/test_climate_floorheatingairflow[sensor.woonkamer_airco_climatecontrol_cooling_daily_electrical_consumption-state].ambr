@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_cooling_daily_electrical_consumption-state]
-  <state sensor.woonkamer_airco_climatecontrol_cooling_daily_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Woonkamer airco ClimateControl Cooling daily electrical consumption @ 2026-10-01T04:22:26.362739-07:00>
+  <state sensor.woonkamer_airco_climatecontrol_cooling_daily_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Woonkamer airco ClimateControl Cooling daily electrical consumption @ 2026-10-01T04:25:25.738872-07:00>
 # ---

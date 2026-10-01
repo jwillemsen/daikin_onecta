@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.werkkamer_gateway_time_zone-state]
-  <state sensor.werkkamer_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Time zone @ 2026-10-01T04:22:25.535388-07:00>
+  <state sensor.werkkamer_gateway_time_zone=Europe/Amsterdam; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Time zone @ 2026-10-01T04:25:24.905396-07:00>
 # ---

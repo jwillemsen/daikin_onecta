@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[binary_sensor.kitchen_outdoorunit_is_in_warning_state-state]
-  <state binary_sensor.kitchen_outdoorunit_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Kitchen OutdoorUnit Is in warning state @ 2026-10-01T04:22:27.336609-07:00>
+  <state binary_sensor.kitchen_outdoorunit_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Kitchen OutdoorUnit Is in warning state @ 2026-10-01T04:25:26.723070-07:00>
 # ---

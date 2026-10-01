@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[sensor.master_bedroom_climatecontrol_error_code-state]
-  <state sensor.master_bedroom_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Master Bedroom ClimateControl Error code @ 2026-10-01T04:22:27.316987-07:00>
+  <state sensor.master_bedroom_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Master Bedroom ClimateControl Error code @ 2026-10-01T04:25:26.708175-07:00>
 # ---

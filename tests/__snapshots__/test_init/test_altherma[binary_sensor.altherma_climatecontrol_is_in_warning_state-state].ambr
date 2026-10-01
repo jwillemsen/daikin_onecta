@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[binary_sensor.altherma_climatecontrol_is_in_warning_state-state]
-  <state binary_sensor.altherma_climatecontrol_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Altherma ClimateControl Is in warning state @ 2026-10-01T04:22:25.578340-07:00>
+  <state binary_sensor.altherma_climatecontrol_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Altherma ClimateControl Is in warning state @ 2026-10-01T04:25:24.941432-07:00>
 # ---

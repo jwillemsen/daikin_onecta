@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_mc80z[binary_sensor.air_purifier_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.air_purifier_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=air-purifier ClimateControl Is holiday mode active @ 2026-10-01T04:22:26.517642-07:00>
+  <state binary_sensor.air_purifier_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=air-purifier ClimateControl Is holiday mode active @ 2026-10-01T04:25:25.893468-07:00>
 # ---

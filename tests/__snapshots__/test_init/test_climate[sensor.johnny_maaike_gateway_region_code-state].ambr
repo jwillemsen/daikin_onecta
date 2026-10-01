@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[sensor.johnny_maaike_gateway_region_code-state]
-  <state sensor.johnny_maaike_gateway_region_code=eu; icon=mdi:information-outline, friendly_name=Johnny&Maaike Gateway Region code @ 2026-10-01T04:22:26.835985-07:00>
+  <state sensor.johnny_maaike_gateway_region_code=eu; icon=mdi:information-outline, friendly_name=Johnny&Maaike Gateway Region code @ 2026-10-01T04:25:26.221653-07:00>
 # ---

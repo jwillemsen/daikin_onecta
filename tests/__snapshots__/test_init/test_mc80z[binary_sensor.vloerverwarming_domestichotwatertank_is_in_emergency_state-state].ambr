@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_mc80z[binary_sensor.vloerverwarming_domestichotwatertank_is_in_emergency_state-state]
-  <state binary_sensor.vloerverwarming_domestichotwatertank_is_in_emergency_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Vloerverwarming DomesticHotWaterTank Is in emergency state @ 2026-10-01T04:22:26.520039-07:00>
+  <state binary_sensor.vloerverwarming_domestichotwatertank_is_in_emergency_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Vloerverwarming DomesticHotWaterTank Is in emergency state @ 2026-10-01T04:25:25.895544-07:00>
 # ---

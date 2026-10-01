@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[sensor.kitchen_climatecontrol_error_code-state]
-  <state sensor.kitchen_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Kitchen ClimateControl Error code @ 2026-10-01T04:22:27.314110-07:00>
+  <state sensor.kitchen_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Kitchen ClimateControl Error code @ 2026-10-01T04:25:26.705442-07:00>
 # ---

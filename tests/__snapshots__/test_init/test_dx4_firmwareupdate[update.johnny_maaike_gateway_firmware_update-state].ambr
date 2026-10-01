@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dx4_firmwareupdate[update.johnny_maaike_gateway_firmware_update-state]
-  <state update.johnny_maaike_gateway_firmware_update=on; auto_update=False, display_precision=0, installed_version=2_0_0, in_progress=False, latest_version=2_3_0, release_summary=DX4 WLAN security update 2_3_0, release_url=None, skipped_version=None, title=None, update_percentage=None, firmware_update_type=optional, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=Johnny&Maaike Gateway Firmware update, supported_features=1 @ 2026-10-01T04:22:27.707681-07:00>
+  <state update.johnny_maaike_gateway_firmware_update=on; auto_update=False, display_precision=0, installed_version=2_0_0, in_progress=False, latest_version=2_3_0, release_summary=DX4 WLAN security update 2_3_0, release_url=None, skipped_version=None, title=None, update_percentage=None, firmware_update_type=optional, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=Johnny&Maaike Gateway Firmware update, supported_features=1 @ 2026-10-01T04:25:27.096137-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[button.laurens_refresh-state]
-  <state button.laurens_refresh=unknown; icon=mdi:refresh, friendly_name=Laurens Refresh @ 2026-10-01T04:22:26.388403-07:00>
+  <state button.laurens_refresh=unknown; icon=mdi:refresh, friendly_name=Laurens Refresh @ 2026-10-01T04:25:25.765331-07:00>
 # ---

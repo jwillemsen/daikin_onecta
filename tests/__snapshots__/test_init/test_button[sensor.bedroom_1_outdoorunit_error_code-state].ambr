@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[sensor.bedroom_1_outdoorunit_error_code-state]
-  <state sensor.bedroom_1_outdoorunit_error_code=-; icon=mdi:information-outline, friendly_name=Bedroom 1 OutdoorUnit Error code @ 2026-10-01T04:22:27.316195-07:00>
+  <state sensor.bedroom_1_outdoorunit_error_code=-; icon=mdi:information-outline, friendly_name=Bedroom 1 OutdoorUnit Error code @ 2026-10-01T04:25:26.707435-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_firmwareupdate[button.climate_control_getr422_refresh-state]
-  <state button.climate_control_getr422_refresh=unknown; icon=mdi:refresh, friendly_name=Climate control getr422 Refresh @ 2026-10-01T04:22:27.608604-07:00>
+  <state button.climate_control_getr422_refresh=unknown; icon=mdi:refresh, friendly_name=Climate control getr422 Refresh @ 2026-10-01T04:25:27.000424-07:00>
 # ---

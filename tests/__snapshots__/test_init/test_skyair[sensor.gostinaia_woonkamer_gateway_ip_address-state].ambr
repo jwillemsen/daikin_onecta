@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[sensor.gostinaia_woonkamer_gateway_ip_address-state]
-  <state sensor.gostinaia_woonkamer_gateway_ip_address=10.20.26.51; icon=mdi:ip-network, friendly_name=Гостиная / Woonkamer Gateway IP address @ 2026-10-01T04:22:27.781927-07:00>
+  <state sensor.gostinaia_woonkamer_gateway_ip_address=10.20.26.51; icon=mdi:ip-network, friendly_name=Гостиная / Woonkamer Gateway IP address @ 2026-10-01T04:25:27.180688-07:00>
 # ---

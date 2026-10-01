@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[sensor.slaapkamer_andre_olha_outdoorunit_cooling_monthly_electrical_consumption-state]
-  <state sensor.slaapkamer_andre_olha_outdoorunit_cooling_monthly_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Slaapkamer André / Olha OutdoorUnit Cooling monthly electrical consumption @ 2026-10-01T04:22:27.793355-07:00>
+  <state sensor.slaapkamer_andre_olha_outdoorunit_cooling_monthly_electrical_consumption=0; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Slaapkamer André / Olha OutdoorUnit Cooling monthly electrical consumption @ 2026-10-01T04:25:27.190767-07:00>
 # ---

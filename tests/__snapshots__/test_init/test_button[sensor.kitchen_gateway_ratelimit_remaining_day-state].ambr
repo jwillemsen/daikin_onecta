@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[sensor.kitchen_gateway_ratelimit_remaining_day-state]
-  <state sensor.kitchen_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Kitchen Gateway Ratelimit remaining day @ 2026-10-01T04:22:27.313541-07:00>
+  <state sensor.kitchen_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Kitchen Gateway Ratelimit remaining day @ 2026-10-01T04:25:26.704895-07:00>
 # ---

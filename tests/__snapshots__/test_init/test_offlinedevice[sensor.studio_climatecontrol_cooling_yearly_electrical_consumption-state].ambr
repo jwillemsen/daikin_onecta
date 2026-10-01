@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_offlinedevice[sensor.studio_climatecontrol_cooling_yearly_electrical_consumption-state]
-  <state sensor.studio_climatecontrol_cooling_yearly_electrical_consumption=unavailable; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Studio ClimateControl Cooling yearly electrical consumption @ 2026-10-01T04:22:24.857219-07:00>
+  <state sensor.studio_climatecontrol_cooling_yearly_electrical_consumption=unavailable; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Studio ClimateControl Cooling yearly electrical consumption @ 2026-10-01T04:25:24.212827-07:00>
 # ---

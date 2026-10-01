@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[button.tretii_blok_spalnia_vtoroi_etazh_refresh-state]
-  <state button.tretii_blok_spalnia_vtoroi_etazh_refresh=unknown; icon=mdi:refresh, friendly_name=третий блок/Спальня второй этаж Refresh @ 2026-10-01T04:22:27.816279-07:00>
+  <state button.tretii_blok_spalnia_vtoroi_etazh_refresh=unknown; icon=mdi:refresh, friendly_name=третий блок/Спальня второй этаж Refresh @ 2026-10-01T04:25:27.211271-07:00>
 # ---

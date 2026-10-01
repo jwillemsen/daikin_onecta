@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[climate.gostinaia_woonkamer_room_temperature-state]
-  <state climate.gostinaia_woonkamer_room_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT_COOL: 'heat_cool'>, <HVACMode.DRY: 'dry'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT: 'heat'>, <HVACMode.FAN_ONLY: 'fan_only'>], min_temp=16, max_temp=32, target_temp_step=0.5, fan_modes=['auto', '1', '2', '3'], preset_modes=['away', 'none'], current_temperature=36, temperature=20, fan_mode=auto, preset_mode=none, friendly_name=Гостиная / Woonkamer Room Temperature, supported_features=409 @ 2026-10-01T04:22:27.774708-07:00>
+  <state climate.gostinaia_woonkamer_room_temperature=off; hvac_modes=[<HVACMode.OFF: 'off'>, <HVACMode.HEAT_COOL: 'heat_cool'>, <HVACMode.DRY: 'dry'>, <HVACMode.COOL: 'cool'>, <HVACMode.HEAT: 'heat'>, <HVACMode.FAN_ONLY: 'fan_only'>], min_temp=16, max_temp=32, target_temp_step=0.5, fan_modes=['auto', '1', '2', '3'], preset_modes=['away', 'none'], current_temperature=36, temperature=20, fan_mode=auto, preset_mode=none, friendly_name=Гостиная / Woonkamer Room Temperature, supported_features=409 @ 2026-10-01T04:25:27.172360-07:00>
 # ---

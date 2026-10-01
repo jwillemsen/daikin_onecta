@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_gateway_ssid-state]
-  <state sensor.woonkamer_airco_gateway_ssid=DaikinAP79283; icon=mdi:access-point-network, friendly_name=Woonkamer airco Gateway SSID @ 2026-10-01T04:22:26.358684-07:00>
+  <state sensor.woonkamer_airco_gateway_ssid=DaikinAP79283; icon=mdi:access-point-network, friendly_name=Woonkamer airco Gateway SSID @ 2026-10-01T04:25:25.734332-07:00>
 # ---

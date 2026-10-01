@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_minimal_data[sensor.altherma_climatecontrol_outdoor_temperature-state]
-  <state sensor.altherma_climatecontrol_outdoor_temperature=9; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Altherma ClimateControl Outdoor temperature @ 2026-10-01T04:22:27.115679-07:00>
+  <state sensor.altherma_climatecontrol_outdoor_temperature=9; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Altherma ClimateControl Outdoor temperature @ 2026-10-01T04:25:26.506756-07:00>
 # ---

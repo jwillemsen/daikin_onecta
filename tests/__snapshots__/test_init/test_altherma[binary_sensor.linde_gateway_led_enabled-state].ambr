@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[binary_sensor.linde_gateway_led_enabled-state]
-  <state binary_sensor.linde_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Linde Gateway LED enabled @ 2026-10-01T04:22:25.583607-07:00>
+  <state binary_sensor.linde_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Linde Gateway LED enabled @ 2026-10-01T04:25:24.947321-07:00>
 # ---

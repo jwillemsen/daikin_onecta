@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_ururu[update.daikinap95800_gateway_firmware_update-state]
-  <state update.daikinap95800_gateway_firmware_update=off; auto_update=False, display_precision=0, installed_version=1_14_88, in_progress=False, latest_version=1_14_88, release_summary=None, release_url=None, skipped_version=None, title=None, update_percentage=None, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=DaikinAP95800 Gateway Firmware update, supported_features=1 @ 2026-10-01T04:22:25.453382-07:00>
+  <state update.daikinap95800_gateway_firmware_update=off; auto_update=False, display_precision=0, installed_version=1_14_88, in_progress=False, latest_version=1_14_88, release_summary=None, release_url=None, skipped_version=None, title=None, update_percentage=None, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=DaikinAP95800 Gateway Firmware update, supported_features=1 @ 2026-10-01T04:25:24.820667-07:00>
 # ---

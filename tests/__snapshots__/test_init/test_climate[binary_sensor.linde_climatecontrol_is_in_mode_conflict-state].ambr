@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[binary_sensor.linde_climatecontrol_is_in_mode_conflict-state]
-  <state binary_sensor.linde_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Linde ClimateControl Is in mode conflict @ 2026-10-01T04:22:26.884344-07:00>
+  <state binary_sensor.linde_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Linde ClimateControl Is in mode conflict @ 2026-10-01T04:25:26.270664-07:00>
 # ---

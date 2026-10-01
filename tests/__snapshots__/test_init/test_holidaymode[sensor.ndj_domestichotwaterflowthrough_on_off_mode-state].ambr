@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_holidaymode[sensor.ndj_domestichotwaterflowthrough_on_off_mode-state]
-  <state sensor.ndj_domestichotwaterflowthrough_on_off_mode=on; icon=mdi:toggle-switch-variant, friendly_name=NDJ DomesticHotWaterFlowThrough On/Off mode @ 2026-10-01T04:22:26.628798-07:00>
+  <state sensor.ndj_domestichotwaterflowthrough_on_off_mode=on; icon=mdi:toggle-switch-variant, friendly_name=NDJ DomesticHotWaterFlowThrough On/Off mode @ 2026-10-01T04:25:25.999047-07:00>
 # ---

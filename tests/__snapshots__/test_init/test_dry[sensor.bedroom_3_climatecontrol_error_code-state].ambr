@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry[sensor.bedroom_3_climatecontrol_error_code-state]
-  <state sensor.bedroom_3_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Bedroom 3 ClimateControl Error code @ 2026-10-01T04:22:24.947247-07:00>
+  <state sensor.bedroom_3_climatecontrol_error_code=-; icon=mdi:information-outline, friendly_name=Bedroom 3 ClimateControl Error code @ 2026-10-01T04:25:24.304063-07:00>
 # ---

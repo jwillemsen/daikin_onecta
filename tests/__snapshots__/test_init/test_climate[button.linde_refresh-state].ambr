@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[button.linde_refresh-state]
-  <state button.linde_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:22:26.894792-07:00>
+  <state button.linde_refresh=unknown; icon=mdi:refresh, friendly_name=Sanne Refresh @ 2026-10-01T04:25:26.278335-07:00>
 # ---

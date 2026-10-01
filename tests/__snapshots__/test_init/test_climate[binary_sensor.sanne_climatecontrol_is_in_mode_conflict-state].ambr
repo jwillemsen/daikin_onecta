@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[binary_sensor.sanne_climatecontrol_is_in_mode_conflict-state]
-  <state binary_sensor.sanne_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Sanne ClimateControl Is in mode conflict @ 2026-10-01T04:22:26.886175-07:00>
+  <state binary_sensor.sanne_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Sanne ClimateControl Is in mode conflict @ 2026-10-01T04:25:26.272719-07:00>
 # ---

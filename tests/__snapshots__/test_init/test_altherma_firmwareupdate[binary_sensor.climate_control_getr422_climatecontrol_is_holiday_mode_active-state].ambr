@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_firmwareupdate[binary_sensor.climate_control_getr422_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.climate_control_getr422_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Climate control getr422 ClimateControl Is holiday mode active @ 2026-10-01T04:22:27.603496-07:00>
+  <state binary_sensor.climate_control_getr422_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Climate control getr422 ClimateControl Is holiday mode active @ 2026-10-01T04:25:26.996615-07:00>
 # ---

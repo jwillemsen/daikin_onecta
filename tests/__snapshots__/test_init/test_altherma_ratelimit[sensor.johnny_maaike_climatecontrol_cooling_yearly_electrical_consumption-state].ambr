@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_ratelimit[sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption-state]
-  <state sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption=6.6; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Johnny&Maaike ClimateControl Cooling yearly electrical consumption @ 2026-10-01T04:22:25.900170-07:00>
+  <state sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption=6.6; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=Johnny&Maaike ClimateControl Cooling yearly electrical consumption @ 2026-10-01T04:25:25.277112-07:00>
 # ---

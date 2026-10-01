@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active-state]
-  <state binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is powerful mode active @ 2026-10-01T04:22:26.880796-07:00>
+  <state binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is powerful mode active @ 2026-10-01T04:25:26.266919-07:00>
 # ---

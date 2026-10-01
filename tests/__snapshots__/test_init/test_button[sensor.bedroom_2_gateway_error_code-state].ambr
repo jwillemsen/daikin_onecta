@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[sensor.bedroom_2_gateway_error_code-state]
-  <state sensor.bedroom_2_gateway_error_code=; icon=mdi:information-outline, friendly_name=Bedroom 2 Gateway Error code @ 2026-10-01T04:22:27.318003-07:00>
+  <state sensor.bedroom_2_gateway_error_code=; icon=mdi:information-outline, friendly_name=Bedroom 2 Gateway Error code @ 2026-10-01T04:25:26.709208-07:00>
 # ---

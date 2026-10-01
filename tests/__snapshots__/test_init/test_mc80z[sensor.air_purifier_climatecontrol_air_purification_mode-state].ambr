@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_mc80z[sensor.air_purifier_climatecontrol_air_purification_mode-state]
-  <state sensor.air_purifier_climatecontrol_air_purification_mode=econo; icon=mdi:alphabetical, friendly_name=air-purifier ClimateControl Air purification mode @ 2026-10-01T04:22:26.501300-07:00>
+  <state sensor.air_purifier_climatecontrol_air_purification_mode=econo; icon=mdi:alphabetical, friendly_name=air-purifier ClimateControl Air purification mode @ 2026-10-01T04:25:25.874317-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry[binary_sensor.master_bathroom_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.master_bathroom_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Master Bathroom Gateway Is firmware update supported @ 2026-10-01T04:22:24.966599-07:00>
+  <state binary_sensor.master_bathroom_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Master Bathroom Gateway Is firmware update supported @ 2026-10-01T04:25:24.326159-07:00>
 # ---

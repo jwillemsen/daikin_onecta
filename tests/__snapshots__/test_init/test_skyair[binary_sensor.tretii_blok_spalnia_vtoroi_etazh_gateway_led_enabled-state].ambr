@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[binary_sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_led_enabled-state]
-  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_led_enabled=on; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж Gateway LED enabled @ 2026-10-01T04:22:27.813155-07:00>
+  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_led_enabled=on; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж Gateway LED enabled @ 2026-10-01T04:25:27.208090-07:00>
 # ---

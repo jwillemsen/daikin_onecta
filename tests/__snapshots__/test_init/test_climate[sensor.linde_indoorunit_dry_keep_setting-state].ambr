@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[sensor.linde_indoorunit_dry_keep_setting-state]
-  <state sensor.linde_indoorunit_dry_keep_setting=on; icon=mdi:water-percent, friendly_name=Linde IndoorUnit Dry keep setting @ 2026-10-01T04:22:26.854367-07:00>
+  <state sensor.linde_indoorunit_dry_keep_setting=on; icon=mdi:water-percent, friendly_name=Linde IndoorUnit Dry keep setting @ 2026-10-01T04:25:26.241171-07:00>
 # ---

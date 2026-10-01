@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[button.woonkamer_airco_refresh-state]
-  <state button.woonkamer_airco_refresh=unknown; icon=mdi:refresh, friendly_name=Woonkamer airco Refresh @ 2026-10-01T04:22:26.388205-07:00>
+  <state button.woonkamer_airco_refresh=unknown; icon=mdi:refresh, friendly_name=Woonkamer airco Refresh @ 2026-10-01T04:25:25.765161-07:00>
 # ---

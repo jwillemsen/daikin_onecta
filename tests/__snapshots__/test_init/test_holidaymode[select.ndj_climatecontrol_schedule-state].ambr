@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_holidaymode[select.ndj_climatecontrol_schedule-state]
-  <state select.ndj_climatecontrol_schedule=Automatic 1; options=['Automatic 1', 'Automatic 2'], icon=mdi:calendar-clock, friendly_name=NDJ ClimateControl Schedule @ 2026-10-01T04:22:26.631341-07:00>
+  <state select.ndj_climatecontrol_schedule=Automatic 1; options=['Automatic 1', 'Automatic 2'], icon=mdi:calendar-clock, friendly_name=NDJ ClimateControl Schedule @ 2026-10-01T04:25:26.011213-07:00>
 # ---

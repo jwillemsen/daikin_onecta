@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.altherma_gateway_ssid-state]
-  <state sensor.altherma_gateway_ssid=daikin-ap; icon=mdi:access-point-network, friendly_name=Altherma Gateway SSID @ 2026-10-01T04:22:25.518715-07:00>
+  <state sensor.altherma_gateway_ssid=daikin-ap; icon=mdi:access-point-network, friendly_name=Altherma Gateway SSID @ 2026-10-01T04:25:24.887914-07:00>
 # ---

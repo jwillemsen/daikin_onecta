@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_mc80z[button.vloerverwarming_refresh-state]
-  <state button.vloerverwarming_refresh=unknown; icon=mdi:refresh, friendly_name=Vloerverwarming Refresh @ 2026-10-01T04:22:26.526692-07:00>
+  <state button.vloerverwarming_refresh=unknown; icon=mdi:refresh, friendly_name=Vloerverwarming Refresh @ 2026-10-01T04:25:25.901220-07:00>
 # ---

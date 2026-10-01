@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_ratelimit[switch.johnny_maaike_climatecontrol_econo_mode-state]
-  <state switch.johnny_maaike_climatecontrol_econo_mode=on; icon=mdi:leaf, friendly_name=Johnny&Maaike ClimateControl Econo mode @ 2026-10-01T04:22:25.928369-07:00>
+  <state switch.johnny_maaike_climatecontrol_econo_mode=on; icon=mdi:leaf, friendly_name=Johnny&Maaike ClimateControl Econo mode @ 2026-10-01T04:25:25.299466-07:00>
 # ---

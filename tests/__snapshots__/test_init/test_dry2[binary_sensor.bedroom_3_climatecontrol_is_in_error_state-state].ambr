@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry2[binary_sensor.bedroom_3_climatecontrol_is_in_error_state-state]
-  <state binary_sensor.bedroom_3_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Bedroom 3 ClimateControl Is in error state @ 2026-10-01T04:22:25.226022-07:00>
+  <state binary_sensor.bedroom_3_climatecontrol_is_in_error_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Bedroom 3 ClimateControl Is in error state @ 2026-10-01T04:25:24.589454-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_schedule[sensor.master_climatecontrol_room_temperature-state]
-  <state sensor.master_climatecontrol_room_temperature=21; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Master ClimateControl Room temperature @ 2026-10-01T04:22:25.380761-07:00>
+  <state sensor.master_climatecontrol_room_temperature=21; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Master ClimateControl Room temperature @ 2026-10-01T04:25:24.738082-07:00>
 # ---

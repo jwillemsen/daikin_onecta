@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_water_heater[binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active-state]
-  <state binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active=on; icon=mdi:information-outline, friendly_name=Altherma DomesticHotWaterTank Is powerful mode active @ 2026-10-01T04:22:26.721060-07:00>
+  <state binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active=on; icon=mdi:information-outline, friendly_name=Altherma DomesticHotWaterTank Is powerful mode active @ 2026-10-01T04:25:26.098627-07:00>
 # ---

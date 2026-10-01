@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_ratelimit[sensor.sanne_outdoorunit_error_code-state]
-  <state sensor.sanne_outdoorunit_error_code=00-; icon=mdi:information-outline, friendly_name=Sanne OutdoorUnit Error code @ 2026-10-01T04:22:25.918489-07:00>
+  <state sensor.sanne_outdoorunit_error_code=00-; icon=mdi:information-outline, friendly_name=Sanne OutdoorUnit Error code @ 2026-10-01T04:25:25.296664-07:00>
 # ---

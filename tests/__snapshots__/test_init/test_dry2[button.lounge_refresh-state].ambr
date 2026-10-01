@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry2[button.lounge_refresh-state]
-  <state button.lounge_refresh=unknown; icon=mdi:refresh, friendly_name=Lounge Refresh @ 2026-10-01T04:22:25.238000-07:00>
+  <state button.lounge_refresh=unknown; icon=mdi:refresh, friendly_name=Lounge Refresh @ 2026-10-01T04:25:24.599739-07:00>
 # ---

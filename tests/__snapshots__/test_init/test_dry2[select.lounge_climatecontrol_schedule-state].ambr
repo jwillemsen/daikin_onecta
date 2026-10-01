@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry2[select.lounge_climatecontrol_schedule-state]
-  <state select.lounge_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Lounge ClimateControl Schedule @ 2026-10-01T04:22:25.235101-07:00>
+  <state select.lounge_climatecontrol_schedule=off; options=['0', '1', '2', 'off'], icon=mdi:calendar-clock, friendly_name=Lounge ClimateControl Schedule @ 2026-10-01T04:25:24.581864-07:00>
 # ---

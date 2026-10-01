@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_mc80z[sensor.air_purifier_gateway_ip_address-state]
-  <state sensor.air_purifier_gateway_ip_address=192.168.1.31; icon=mdi:ip-network, friendly_name=air-purifier Gateway IP address @ 2026-10-01T04:22:26.501016-07:00>
+  <state sensor.air_purifier_gateway_ip_address=192.168.1.31; icon=mdi:ip-network, friendly_name=air-purifier Gateway IP address @ 2026-10-01T04:25:25.874068-07:00>
 # ---

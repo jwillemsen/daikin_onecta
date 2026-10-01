@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_holidaymode[binary_sensor.ndj_domestichotwaterflowthrough_is_holiday_mode_active-state]
-  <state binary_sensor.ndj_domestichotwaterflowthrough_is_holiday_mode_active=on; icon=mdi:information-outline, friendly_name=NDJ DomesticHotWaterFlowThrough Is holiday mode active @ 2026-10-01T04:22:26.635461-07:00>
+  <state binary_sensor.ndj_domestichotwaterflowthrough_is_holiday_mode_active=on; icon=mdi:information-outline, friendly_name=NDJ DomesticHotWaterFlowThrough Is holiday mode active @ 2026-10-01T04:25:26.006391-07:00>
 # ---

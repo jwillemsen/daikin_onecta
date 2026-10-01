@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[sensor.sanne_climatecontrol_outdoor_temperature-state]
-  <state sensor.sanne_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Sanne ClimateControl Outdoor temperature @ 2026-10-01T04:22:26.856776-07:00>
+  <state sensor.sanne_climatecontrol_outdoor_temperature=13.5; state_class=measurement, unit_of_measurement=°C, device_class=temperature, icon=, friendly_name=Sanne ClimateControl Outdoor temperature @ 2026-10-01T04:25:26.243578-07:00>
 # ---

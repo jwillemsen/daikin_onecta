@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry[update.bedroom_3_indoorunit_firmware_update-state]
-  <state update.bedroom_3_indoorunit_firmware_update=off; auto_update=False, display_precision=0, installed_version=18013303, in_progress=False, latest_version=18013303, release_summary=None, release_url=None, skipped_version=None, title=None, update_percentage=None, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=Bedroom 3 IndoorUnit Firmware update, supported_features=1 @ 2026-10-01T04:22:24.983222-07:00>
+  <state update.bedroom_3_indoorunit_firmware_update=off; auto_update=False, display_precision=0, installed_version=18013303, in_progress=False, latest_version=18013303, release_summary=None, release_url=None, skipped_version=None, title=None, update_percentage=None, device_class=firmware, entity_picture=/api/brands/integration/daikin_onecta/icon.png, icon=mdi:update, friendly_name=Bedroom 3 IndoorUnit Firmware update, supported_features=1 @ 2026-10-01T04:25:24.341127-07:00>
 # ---

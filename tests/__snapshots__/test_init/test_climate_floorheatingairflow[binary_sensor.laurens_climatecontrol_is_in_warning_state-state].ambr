@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[binary_sensor.laurens_climatecontrol_is_in_warning_state-state]
-  <state binary_sensor.laurens_climatecontrol_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Laurens ClimateControl Is in warning state @ 2026-10-01T04:22:26.385497-07:00>
+  <state binary_sensor.laurens_climatecontrol_is_in_warning_state=off; device_class=problem, icon=mdi:information-outline, friendly_name=Laurens ClimateControl Is in warning state @ 2026-10-01T04:25:25.759697-07:00>
 # ---

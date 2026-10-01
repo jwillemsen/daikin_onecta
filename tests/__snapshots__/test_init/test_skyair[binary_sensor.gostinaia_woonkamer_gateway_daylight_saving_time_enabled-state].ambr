@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[binary_sensor.gostinaia_woonkamer_gateway_daylight_saving_time_enabled-state]
-  <state binary_sensor.gostinaia_woonkamer_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Гостиная / Woonkamer Gateway Daylight saving time enabled @ 2026-10-01T04:22:27.811349-07:00>
+  <state binary_sensor.gostinaia_woonkamer_gateway_daylight_saving_time_enabled=on; icon=mdi:information-outline, friendly_name=Гостиная / Woonkamer Gateway Daylight saving time enabled @ 2026-10-01T04:25:27.206312-07:00>
 # ---

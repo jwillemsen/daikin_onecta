@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[binary_sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_is_powerful_mode_active-state]
-  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж ClimateControl Is powerful mode active @ 2026-10-01T04:22:27.814015-07:00>
+  <state binary_sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_is_powerful_mode_active=off; icon=mdi:information-outline, friendly_name=третий блок/Спальня второй этаж ClimateControl Is powerful mode active @ 2026-10-01T04:25:27.208984-07:00>
 # ---

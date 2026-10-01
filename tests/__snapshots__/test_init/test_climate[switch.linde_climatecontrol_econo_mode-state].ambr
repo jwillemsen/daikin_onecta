@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[switch.linde_climatecontrol_econo_mode-state]
-  <state switch.linde_climatecontrol_econo_mode=off; icon=mdi:leaf, friendly_name=Linde ClimateControl Econo mode @ 2026-10-01T04:22:26.866726-07:00>
+  <state switch.linde_climatecontrol_econo_mode=off; icon=mdi:leaf, friendly_name=Linde ClimateControl Econo mode @ 2026-10-01T04:25:26.254126-07:00>
 # ---

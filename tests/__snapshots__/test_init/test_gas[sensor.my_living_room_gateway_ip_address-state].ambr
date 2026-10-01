@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_gas[sensor.my_living_room_gateway_ip_address-state]
-  <state sensor.my_living_room_gateway_ip_address=192.168.0.1; icon=mdi:ip-network, friendly_name=My Living Room Gateway IP address @ 2026-10-01T04:22:27.205863-07:00>
+  <state sensor.my_living_room_gateway_ip_address=192.168.0.1; icon=mdi:ip-network, friendly_name=My Living Room Gateway IP address @ 2026-10-01T04:25:26.597287-07:00>
 # ---

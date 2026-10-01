@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_gas[sensor.my_living_room_climatecontrol_heating_daily_gas_consumption-state]
-  <state sensor.my_living_room_climatecontrol_heating_daily_gas_consumption=26; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=My Living Room ClimateControl Heating daily gas consumption @ 2026-10-01T04:22:27.211657-07:00>
+  <state sensor.my_living_room_climatecontrol_heating_daily_gas_consumption=26; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=My Living Room ClimateControl Heating daily gas consumption @ 2026-10-01T04:25:26.603477-07:00>
 # ---

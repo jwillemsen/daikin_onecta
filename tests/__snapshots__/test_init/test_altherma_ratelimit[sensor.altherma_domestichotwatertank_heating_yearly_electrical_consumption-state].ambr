@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma_ratelimit[sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption-state]
-  <state sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption=515; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Altherma DomesticHotWaterTank Heating yearly electrical consumption @ 2026-10-01T04:22:25.893389-07:00>
+  <state sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption=515; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:fire, friendly_name=Altherma DomesticHotWaterTank Heating yearly electrical consumption @ 2026-10-01T04:25:25.269456-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[switch.laurens_climatecontrol_streamer_mode-state]
-  <state switch.laurens_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Laurens ClimateControl Streamer mode @ 2026-10-01T04:22:26.378089-07:00>
+  <state switch.laurens_climatecontrol_streamer_mode=off; icon=hass:air-filter, friendly_name=Laurens ClimateControl Streamer mode @ 2026-10-01T04:25:25.752651-07:00>
 # ---

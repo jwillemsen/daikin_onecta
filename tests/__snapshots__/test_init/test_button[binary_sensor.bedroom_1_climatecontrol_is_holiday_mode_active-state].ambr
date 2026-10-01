@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_button[binary_sensor.bedroom_1_climatecontrol_is_holiday_mode_active-state]
-  <state binary_sensor.bedroom_1_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Bedroom 1 ClimateControl Is holiday mode active @ 2026-10-01T04:22:27.337184-07:00>
+  <state binary_sensor.bedroom_1_climatecontrol_is_holiday_mode_active=off; icon=mdi:information-outline, friendly_name=Bedroom 1 ClimateControl Is holiday mode active @ 2026-10-01T04:25:26.723622-07:00>
 # ---

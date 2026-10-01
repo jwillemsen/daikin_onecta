@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.altherma_gateway_wifi_connection_ssid-state]
-  <state sensor.altherma_gateway_wifi_connection_ssid=WILLEMSEN; icon=mdi:access-point-network, friendly_name=Altherma Gateway WiFi connection SSID @ 2026-10-01T04:22:25.518904-07:00>
+  <state sensor.altherma_gateway_wifi_connection_ssid=WILLEMSEN; icon=mdi:access-point-network, friendly_name=Altherma Gateway WiFi connection SSID @ 2026-10-01T04:25:24.888107-07:00>
 # ---

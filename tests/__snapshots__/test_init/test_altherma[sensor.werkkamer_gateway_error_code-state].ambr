@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.werkkamer_gateway_error_code-state]
-  <state sensor.werkkamer_gateway_error_code=; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Error code @ 2026-10-01T04:22:25.534912-07:00>
+  <state sensor.werkkamer_gateway_error_code=; icon=mdi:information-outline, friendly_name=Werkkamer Gateway Error code @ 2026-10-01T04:25:24.904899-07:00>
 # ---

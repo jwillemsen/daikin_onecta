@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ip_address-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ip_address=10.20.26.53; icon=mdi:ip-network, friendly_name=третий блок/Спальня второй этаж Gateway IP address @ 2026-10-01T04:22:27.796006-07:00>
+  <state sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ip_address=10.20.26.53; icon=mdi:ip-network, friendly_name=третий блок/Спальня второй этаж Gateway IP address @ 2026-10-01T04:25:27.193483-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_ururu[sensor.daikinap95800_gateway_ip_address-state]
-  <state sensor.daikinap95800_gateway_ip_address=192.168.2.42; icon=mdi:ip-network, friendly_name=DaikinAP95800 Gateway IP address @ 2026-10-01T04:22:25.441932-07:00>
+  <state sensor.daikinap95800_gateway_ip_address=192.168.2.42; icon=mdi:ip-network, friendly_name=DaikinAP95800 Gateway IP address @ 2026-10-01T04:25:24.806901-07:00>
 # ---

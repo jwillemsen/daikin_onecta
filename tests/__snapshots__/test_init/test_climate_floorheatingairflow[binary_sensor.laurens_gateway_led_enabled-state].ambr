@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[binary_sensor.laurens_gateway_led_enabled-state]
-  <state binary_sensor.laurens_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Laurens Gateway LED enabled @ 2026-10-01T04:22:26.384697-07:00>
+  <state binary_sensor.laurens_gateway_led_enabled=off; icon=mdi:information-outline, friendly_name=Laurens Gateway LED enabled @ 2026-10-01T04:25:25.758892-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.altherma_domestichotwatertank_error_code-state]
-  <state sensor.altherma_domestichotwatertank_error_code=-00; icon=mdi:information-outline, friendly_name=Altherma DomesticHotWaterTank Error code @ 2026-10-01T04:22:25.525468-07:00>
+  <state sensor.altherma_domestichotwatertank_error_code=-00; icon=mdi:information-outline, friendly_name=Altherma DomesticHotWaterTank Error code @ 2026-10-01T04:25:24.894863-07:00>
 # ---

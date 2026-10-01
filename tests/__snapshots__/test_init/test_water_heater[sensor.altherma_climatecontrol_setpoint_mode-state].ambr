@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_water_heater[sensor.altherma_climatecontrol_setpoint_mode-state]
-  <state sensor.altherma_climatecontrol_setpoint_mode=weatherDependentHeatingFixedCooling; icon=mdi:alphabetical, friendly_name=Altherma ClimateControl Setpoint mode @ 2026-10-01T04:22:26.703072-07:00>
+  <state sensor.altherma_climatecontrol_setpoint_mode=weatherDependentHeatingFixedCooling; icon=mdi:alphabetical, friendly_name=Altherma ClimateControl Setpoint mode @ 2026-10-01T04:25:26.080492-07:00>
 # ---

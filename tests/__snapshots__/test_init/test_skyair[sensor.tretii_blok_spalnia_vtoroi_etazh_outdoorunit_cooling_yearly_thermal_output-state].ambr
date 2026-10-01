@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_skyair[sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_cooling_yearly_thermal_output-state]
-  <state sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_cooling_yearly_thermal_output=228.7; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=третий блок/Спальня второй этаж OutdoorUnit Cooling yearly thermal output @ 2026-10-01T04:22:27.802126-07:00>
+  <state sensor.tretii_blok_spalnia_vtoroi_etazh_outdoorunit_cooling_yearly_thermal_output=228.7; state_class=total_increasing, unit_of_measurement=kWh, device_class=energy, icon=mdi:snowflake, friendly_name=третий блок/Спальня второй этаж OutdoorUnit Cooling yearly thermal output @ 2026-10-01T04:25:27.199416-07:00>
 # ---

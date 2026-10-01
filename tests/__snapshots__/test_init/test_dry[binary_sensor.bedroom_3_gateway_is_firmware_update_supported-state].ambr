@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry[binary_sensor.bedroom_3_gateway_is_firmware_update_supported-state]
-  <state binary_sensor.bedroom_3_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Bedroom 3 Gateway Is firmware update supported @ 2026-10-01T04:22:24.969184-07:00>
+  <state binary_sensor.bedroom_3_gateway_is_firmware_update_supported=on; icon=mdi:information-outline, friendly_name=Bedroom 3 Gateway Is firmware update supported @ 2026-10-01T04:25:24.328976-07:00>
 # ---

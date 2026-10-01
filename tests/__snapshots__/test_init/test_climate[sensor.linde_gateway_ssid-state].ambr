@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[sensor.linde_gateway_ssid-state]
-  <state sensor.linde_gateway_ssid=DaikinAP66051; icon=mdi:access-point-network, friendly_name=Linde Gateway SSID @ 2026-10-01T04:22:26.848572-07:00>
+  <state sensor.linde_gateway_ssid=DaikinAP66051; icon=mdi:access-point-network, friendly_name=Linde Gateway SSID @ 2026-10-01T04:25:26.234445-07:00>
 # ---

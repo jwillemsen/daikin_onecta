@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict-state]
-  <state binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is in mode conflict @ 2026-10-01T04:22:25.580441-07:00>
+  <state binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict=off; device_class=problem, icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Is in mode conflict @ 2026-10-01T04:25:24.944027-07:00>
 # ---

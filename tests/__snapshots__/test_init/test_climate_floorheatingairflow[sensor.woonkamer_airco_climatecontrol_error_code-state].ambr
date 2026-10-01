@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate_floorheatingairflow[sensor.woonkamer_airco_climatecontrol_error_code-state]
-  <state sensor.woonkamer_airco_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Woonkamer airco ClimateControl Error code @ 2026-10-01T04:22:26.359417-07:00>
+  <state sensor.woonkamer_airco_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Woonkamer airco ClimateControl Error code @ 2026-10-01T04:25:25.735109-07:00>
 # ---

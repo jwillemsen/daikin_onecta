@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_climate[sensor.johnny_maaike_gateway_wifi_connection_strength-state]
-  <state sensor.johnny_maaike_gateway_wifi_connection_strength=-47; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Johnny&Maaike Gateway WiFi connection strength @ 2026-10-01T04:22:26.836455-07:00>
+  <state sensor.johnny_maaike_gateway_wifi_connection_strength=-47; state_class=measurement, unit_of_measurement=dBm, device_class=signal_strength, icon=mdi:wifi, friendly_name=Johnny&Maaike Gateway WiFi connection strength @ 2026-10-01T04:25:26.222195-07:00>
 # ---

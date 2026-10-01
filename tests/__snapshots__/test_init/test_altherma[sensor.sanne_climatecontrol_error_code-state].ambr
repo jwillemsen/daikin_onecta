@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_altherma[sensor.sanne_climatecontrol_error_code-state]
-  <state sensor.sanne_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Sanne ClimateControl Error code @ 2026-10-01T04:22:25.549590-07:00>
+  <state sensor.sanne_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Sanne ClimateControl Error code @ 2026-10-01T04:25:24.920475-07:00>
 # ---

@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dry2[sensor.bedroom_1_gateway_ratelimit_remaining_day-state]
-  <state sensor.bedroom_1_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Bedroom 1 Gateway Ratelimit remaining day @ 2026-10-01T04:22:25.210529-07:00>
+  <state sensor.bedroom_1_gateway_ratelimit_remaining_day=0; state_class=measurement, icon=mdi:information-outline, friendly_name=Bedroom 1 Gateway Ratelimit remaining day @ 2026-10-01T04:25:24.570651-07:00>
 # ---

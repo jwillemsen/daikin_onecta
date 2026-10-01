@@ -1,4 +1,4 @@
 # serializer version: 1
 # name: test_dx4_firmwareupdate[sensor.johnny_maaike_climatecontrol_error_code-state]
-  <state sensor.johnny_maaike_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Error code @ 2026-10-01T04:22:27.689978-07:00>
+  <state sensor.johnny_maaike_climatecontrol_error_code=00-; icon=mdi:information-outline, friendly_name=Johnny&Maaike ClimateControl Error code @ 2026-10-01T04:25:27.083516-07:00>
 # ---
