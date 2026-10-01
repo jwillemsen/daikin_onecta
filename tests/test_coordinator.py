@@ -128,10 +128,10 @@ class TestOnectaDataUpdateCoordinator:
             "high_scan_start": "07:00:00",
             "low_scan_start": "22:00:00",
         }
-        mock_hass.config_entries.async_update_entry(mock_config_entry, options=options)
+        updated_entry = MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345", options=options)
 
         with patch.object(coordinator, "determine_update_interval", return_value=timedelta(minutes=45)) as determine:
-            coordinator.update_settings(mock_config_entry)
+            coordinator.update_settings(updated_entry)
 
         assert coordinator.options == options
         assert coordinator.update_interval == timedelta(minutes=45)
