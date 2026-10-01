@@ -1103,7 +1103,7 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 12
-        assert aioclient_mock.mock_calls[11][2] == '{"value": 25.0, "path": "/operationModes/heating/setpoints/roomTemperature"}'
+        assert aioclient_mock.mock_calls[11][2] == {"value": 25.0, "path": "/operationModes/heating/setpoints/roomTemperature"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 25
 
         # Set the target temperature another time to 25, should not result in a call to Daikin
@@ -1127,8 +1127,8 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 14
-        assert aioclient_mock.mock_calls[12][2] == '{"value": "cooling"}'
-        assert aioclient_mock.mock_calls[13][2] == '{"value": 20.0, "path": "/operationModes/cooling/setpoints/roomTemperature"}'
+        assert aioclient_mock.mock_calls[12][2] == {"value": "cooling"}
+        assert aioclient_mock.mock_calls[13][2] == {"value": 20.0, "path": "/operationModes/cooling/setpoints/roomTemperature"}
         assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["temperature"] == 20
 
@@ -1151,8 +1151,8 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 16
-        assert aioclient_mock.mock_calls[14][2] == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/horizontal/currentMode"}'
-        assert aioclient_mock.mock_calls[15][2] == '{"value": "swing", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}'
+        assert aioclient_mock.mock_calls[14][2] == {"value": "swing", "path": "/operationModes/cooling/fanDirection/horizontal/currentMode"}
+        assert aioclient_mock.mock_calls[15][2] == {"value": "swing", "path": "/operationModes/cooling/fanDirection/vertical/currentMode"}
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_horizontal_mode"] == "swing"
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["swing_mode"] == "swing"
 
