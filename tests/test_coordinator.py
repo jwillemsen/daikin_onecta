@@ -117,21 +117,22 @@ class TestOnectaDataUpdateCoordinator:
             await coordinator._async_update_data()
 
         assert exc_info.value.retry_after == 3060
-        assert coordinator.update_interval == timedelta(minutes=30)
+        assert coordinator.update_interval == timedelta(minutes=10)
 
 
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""
-        mock_config_entry.options = {
+        options = {
             "low_scan_interval": 45,
             "high_scan_interval": 15,
             "high_scan_start": "07:00:00",
             "low_scan_start": "22:00:00",
         }
+        mock_hass.config_entries.async_update_entry(mock_config_entry, options=options)
 
         with patch.object(coordinator, "determine_update_interval", return_value=timedelta(minutes=45)) as determine:
             coordinator.update_settings(mock_config_entry)
 
-        assert coordinator.options == mock_config_entry.options
+        assert coordinator.options == options
         assert coordinator.update_interval == timedelta(minutes=45)
         determine.assert_called_once_with(mock_hass)
