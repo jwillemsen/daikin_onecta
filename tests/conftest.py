@@ -109,19 +109,20 @@ async def snapshot_platform_entities(
     entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
 
     assert entity_entries
-    for entity_entry in entity_entries:
-        assert entity_entry == snapshot(
-            name=f"{entity_entry.entity_id}-entry",
-            extension_class=SingleFileAmberSnapshotExtension,
-        )
 
-        # Exclude attributes.friendly_name
-        assert hass.states.get(entity_entry.entity_id) == snapshot(
-            name=f"{entity_entry.entity_id}-state",
-            exclude=props("friendly_name"),
-            extension_class=SingleFileAmberSnapshotExtension,
-        )
+    entity_snapshot = {
+        entity_entry.entity_id: {
+            "entry": entity_entry,
+            "state": hass.states.get(entity_entry.entity_id),
+        }
+        for entity_entry in entity_entries
+    }
 
+    assert entity_snapshot == snapshot(
+        name=fixture_device_json,
+        exclude=props("friendly_name"),
+        extension_class=SingleFileAmberSnapshotExtension,
+    )
 
 @pytest.fixture(name="config_entry")
 def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
