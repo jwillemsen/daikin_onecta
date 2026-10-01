@@ -93,14 +93,12 @@ async def async_setup_entry(
     for device in onecta_data.devices.values():
         modes = []
         device_model = device.device.device_model
-        supported_management_point_types = {"climateControl"}
         embedded_id = ""
-        for management_point in device.device.management_points:
-            if management_point.management_point_type in supported_management_point_types:
-                embedded_id = management_point.embedded_id
-                if management_point.temperature_control is not None:
-                    for operation_mode in management_point.temperature_control.value.operation_modes.values():
-                        modes.extend(operation_mode.setpoints)
+        for management_point in device.device.management_points_by_type("climateControl"):
+            embedded_id = management_point.embedded_id
+            if management_point.temperature_control is not None:
+                for operation_mode in management_point.temperature_control.value.operation_modes.values():
+                    modes.extend(operation_mode.setpoints)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)
