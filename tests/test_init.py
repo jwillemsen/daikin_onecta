@@ -1292,14 +1292,11 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 25
-        assert (
-            aioclient_mock.mock_calls[24][2]
-            == '{"enabled": true, "startDate": "'
-            + date.today().isoformat()
-            + '", "endDate": "'
-            + (date.today() + timedelta(days=60)).isoformat()
-            + '"}'
-        )
+        assert aioclient_mock.mock_calls[24][2] == {
+            "enabled": True,
+            "startDate": date.today().isoformat(),
+            "endDate": (date.today() + timedelta(days=60)).isoformat(),
+        }
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
         # Set the device in preset mode none again
