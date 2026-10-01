@@ -187,7 +187,15 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     """Representation of a power/energy sensor."""
 
     def __init__(
-        self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, sensor_type, operation_mode, period, datatype
+        self,
+        device: DaikinOnectaDevice,
+        coordinator,
+        embedded_id,
+        management_point_type,
+        sensor_type,
+        operation_mode,
+        period,
+        datatype,
     ) -> None:
         super().__init__(coordinator)
         self._device = device
@@ -233,6 +241,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
+        """Handle updated data from the coordinator."""
         self.update_state()
         self.async_write_ha_state()
 
@@ -325,6 +334,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
+        """Handle updated data from the coordinator."""
         self.update_state()
         self.async_write_ha_state()
 
@@ -390,6 +400,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
 
     @callback
     def _handle_coordinator_update(self) -> None:
+        """Handle updated data from the coordinator."""
         self.update_state()
         self.async_write_ha_state()
 
