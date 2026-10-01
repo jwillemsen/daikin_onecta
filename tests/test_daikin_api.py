@@ -7,6 +7,7 @@ import pytest
 from daikin_onecta import OnectaApiError
 from daikin_onecta import OnectaConnectionError
 from daikin_onecta import OnectaRateLimitError
+from daikin_onecta.rate_limit import RateLimit
 from homeassistant.core import HomeAssistant
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
@@ -142,16 +143,14 @@ async def test_write_rate_limit(
 def test_rate_limit_issue_updates(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
     """Create and remove Home Assistant rate-limit repair issues."""
     api = DaikinApi(hass, config_entry, MagicMock())
-    api._client.rate_limit.minute_remaining = 0
-    api._client.rate_limit.day_remaining = 0
+    api._client.rate_limit = RateLimit(minute_remaining=0, day_remaining=0)
 
     with patch("custom_components.daikin_onecta.daikin_api.ir.async_create_issue") as create_issue:
         api._create_rate_limit_issues()
 
     assert create_issue.call_count == 2
 
-    api._client.rate_limit.minute_remaining = 1
-    api._client.rate_limit.day_remaining = 1
+    api._client.rate_limit = RateLimit(minute_remaining=1, day_remaining=1)
     with patch("custom_components.daikin_onecta.daikin_api.ir.async_delete_issue") as delete_issue:
         api._update_rate_limit_issues()
 
