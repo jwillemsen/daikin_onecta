@@ -16,6 +16,7 @@ from homeassistant.util import dt as dt_util
 from .const import DOMAIN
 from .const import ENABLED_DEFAULT
 from .const import ENTITY_CATEGORY
+from .const import MODEL_ATTRIBUTE
 from .const import SENSOR_PERIOD_MONTHLY
 from .const import SENSOR_PERIOD_WEEKLY
 from .const import SENSOR_PERIOD_YEARLY
@@ -345,16 +346,8 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             sensory_data = point.sensory_data
             if sensory_data is None:
                 return None
-            attribute = {
-                "roomTemperature": "room_temperature",
-                "outdoorTemperature": "outdoor_temperature",
-                "leavingWaterTemperature": "leaving_water_temperature",
-                "tankTemperature": "tank_temperature",
-                "roomHumidity": "room_humidity",
-                "pm1Concentration": "pm1_concentration",
-                "pm25Concentration": "pm25_concentration",
-                "pm10Concentration": "pm10_concentration",
-            }.get(self._value)
+            sensor_settings = VALUE_SENSOR_MAPPING.get(self._value)
+            attribute = sensor_settings.get(MODEL_ATTRIBUTE) if sensor_settings is not None else None
             characteristic = getattr(sensory_data.value, attribute) if attribute is not None else None
         else:
             characteristic = point.characteristic(self._value)
