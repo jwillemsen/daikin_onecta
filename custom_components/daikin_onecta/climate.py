@@ -33,6 +33,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from .const import DOMAIN
 from .const import FANMODE_FIXED
+from .const import MODEL_ATTRIBUTE
 from .const import TRANSLATION_KEY
 from .const import VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
@@ -255,16 +256,10 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         cc = self.climate_control()
         if cc is None or cc.sensory_data is None:
             return None
-        attribute = {
-            "roomTemperature": "room_temperature",
-            "outdoorTemperature": "outdoor_temperature",
-            "leavingWaterTemperature": "leaving_water_temperature",
-            "tankTemperature": "tank_temperature",
-            "roomHumidity": "room_humidity",
-            "pm1Concentration": "pm1_concentration",
-            "pm25Concentration": "pm25_concentration",
-            "pm10Concentration": "pm10_concentration",
-        }.get(setpoint)
+        sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
+        if sensor_settings is None:
+            return None
+        attribute = sensor_settings.get(MODEL_ATTRIBUTE)
         return getattr(cc.sensory_data.value, attribute) if attribute is not None else None
 
     def get_supported_features(self):
