@@ -8,6 +8,7 @@ from unittest.mock import patch
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
 import pytest
+from daikin_onecta.models import FanSpeed
 from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN
 from homeassistant.components.button import SERVICE_PRESS
 from homeassistant.components.climate import ATTR_FAN_MODE
@@ -61,8 +62,6 @@ from .conftest import FAKE_ACCESS_TOKEN
 from .conftest import load_fixture_json
 from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta import update_listener
-from daikin_onecta.models import FanSpeed
-
 from custom_components.daikin_onecta.climate import DaikinClimate
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES
 from custom_components.daikin_onecta.const import DAIKIN_API_URL
@@ -468,9 +467,7 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     climate = DaikinClimate.__new__(DaikinClimate)
     climate.coordinator = MagicMock(options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
 
-    assert climate._homekit_fan_mode_aliases(
-        FanSpeed.from_dict({"currentMode": {"values": ["quiet", "auto"]}})
-    ) == {FAN_LOW: "quiet"}
+    assert climate._homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"values": ["quiet", "auto"]}})) == {FAN_LOW: "quiet"}
 
     assert climate._homekit_fan_mode_aliases(
         {
