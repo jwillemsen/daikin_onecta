@@ -1,5 +1,4 @@
 """Install test and integration requirements."""
-
 import json
 import subprocess
 import sys
