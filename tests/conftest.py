@@ -35,7 +35,7 @@ FAKE_AUTH_IMPL = "conftest-imported-cred"
 
 
 def load_fixture_json(name):
-    with open(f"tests/fixtures/{name}.json") as json_file:
+    with open(f"tests/components/daikin_onecta/fixtures/{name}.json") as json_file:
         data = json.load(json_file)
         return data
 
