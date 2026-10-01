@@ -472,7 +472,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     self._device.name,
                     on_off_mode,
                 )
-            else:
+            elif cc.on_off_mode is not None:
                 cc.on_off_mode.value = on_off_mode
 
         # Only set the operationMode when it has changed, also prevents setting it when
