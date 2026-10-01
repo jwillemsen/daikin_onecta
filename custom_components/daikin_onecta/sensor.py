@@ -1,6 +1,5 @@
 """Support for Daikin AC sensors."""
 import logging
-from datetime import date
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.components.sensor import SensorEntity
@@ -12,6 +11,7 @@ from homeassistant.core import callback
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.util import dt as dt_util
 
 from .const import DOMAIN
 from .const import ENABLED_DEFAULT
@@ -272,7 +272,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
             start_index = 7
             end_index = len(energy_values)
         elif self._period == SENSOR_PERIOD_MONTHLY:
-            start_index = 11 + date.today().month
+            start_index = 11 + dt_util.now().month
             end_index = start_index + 1
         else:
             start_index = 12
