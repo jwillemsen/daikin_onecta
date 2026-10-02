@@ -72,8 +72,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_has_entity_name = True
         self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 
-        # Unique ID: <device_id>_firmware_update
-        self._attr_unique_id = f"{device.id}_{management_point_type}_firmware_update"
+        self._attr_unique_id = f"{device.id}_{self._embedded_id}_firmware_update"
 
         # Populate initial state
         self._update_from_management_point(gateway_mp)

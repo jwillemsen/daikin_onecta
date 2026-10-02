@@ -747,7 +747,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_roomTemperature',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -802,7 +802,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_roomTemperature',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -857,7 +857,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_roomTemperature',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1339,7 +1339,7 @@
         'original_name': 'Cooling monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlyelectricalconsumption',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_cooling_monthly',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_cooling_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1375,7 +1375,7 @@
         'original_name': 'Cooling monthly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlythermaloutput',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_cooling_monthly',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_cooling_monthly_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1411,7 +1411,7 @@
         'original_name': 'Cooling yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlyelectricalconsumption',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_cooling_m',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_cooling_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1447,7 +1447,7 @@
         'original_name': 'Cooling yearly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlythermaloutput',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_cooling_m',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_cooling_m_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1555,7 +1555,7 @@
         'original_name': 'Heating monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlyelectricalconsumption',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_heating_monthly',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_heating_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1591,7 +1591,7 @@
         'original_name': 'Heating monthly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlythermaloutput',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_heating_monthly',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_heating_monthly_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1627,7 +1627,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_heating_m',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_electrical_heating_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1663,7 +1663,7 @@
         'original_name': 'Heating yearly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlythermaloutput',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_heating_m',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_thermal_heating_m_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1979,7 +1979,7 @@
         'original_name': 'Cooling monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlyelectricalconsumption',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_cooling_monthly',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_cooling_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2015,7 +2015,7 @@
         'original_name': 'Cooling monthly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlythermaloutput',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_cooling_monthly',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_cooling_monthly_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2051,7 +2051,7 @@
         'original_name': 'Cooling yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlyelectricalconsumption',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_cooling_m',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_cooling_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2087,7 +2087,7 @@
         'original_name': 'Cooling yearly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlythermaloutput',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_cooling_m',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_cooling_m_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2195,7 +2195,7 @@
         'original_name': 'Heating monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlyelectricalconsumption',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_heating_monthly',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_heating_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2231,7 +2231,7 @@
         'original_name': 'Heating monthly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlythermaloutput',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_heating_monthly',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_heating_monthly_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2267,7 +2267,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_heating_m',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_electrical_heating_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2303,7 +2303,7 @@
         'original_name': 'Heating yearly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlythermaloutput',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_heating_m',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_thermal_heating_m_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2619,7 +2619,7 @@
         'original_name': 'Cooling monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlyelectricalconsumption',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_cooling_monthly',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_cooling_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2655,7 +2655,7 @@
         'original_name': 'Cooling monthly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlythermaloutput',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_cooling_monthly',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_cooling_monthly_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2691,7 +2691,7 @@
         'original_name': 'Cooling yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlyelectricalconsumption',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_cooling_m',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_cooling_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2727,7 +2727,7 @@
         'original_name': 'Cooling yearly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlythermaloutput',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_cooling_m',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_cooling_m_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2835,7 +2835,7 @@
         'original_name': 'Heating monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlyelectricalconsumption',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_heating_monthly',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_heating_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2871,7 +2871,7 @@
         'original_name': 'Heating monthly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlythermaloutput',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_heating_monthly',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_heating_monthly_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2907,7 +2907,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_heating_m',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_electrical_heating_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2943,7 +2943,7 @@
         'original_name': 'Heating yearly thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlythermaloutput',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_heating_m',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_thermal_heating_m_output',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

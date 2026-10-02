@@ -2170,7 +2170,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_roomTemperature',
+        'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2214,7 +2214,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_roomTemperature',
+        'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2258,7 +2258,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_roomTemperature',
+        'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2308,7 +2308,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_roomTemperature',
+        'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2352,7 +2352,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_roomTemperature',
+        'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2396,7 +2396,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_roomTemperature',
+        'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2440,7 +2440,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_roomTemperature',
+        'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

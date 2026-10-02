@@ -15,7 +15,8 @@ import jwt
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .daikin_api import DaikinApi
-from .device import migrate_legacy_subdevice_identifiers
+from .device import migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
+from .sensor import migrate_legacy_sensor_unique_ids
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -59,6 +60,8 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
     await config_entry.runtime_data.async_config_entry_first_refresh()
     migrate_legacy_subdevice_identifiers(hass, config_entry, config_entry.runtime_data.data or {})
+    migrate_legacy_entity_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
+    migrate_legacy_sensor_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 

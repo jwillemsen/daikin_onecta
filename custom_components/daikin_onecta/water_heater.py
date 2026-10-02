@@ -26,10 +26,10 @@ async def async_setup_entry(
     """Set up Daikin water tank entities."""
     coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
     for device in (coordinator.data or {}).values():
-        supported_management_point_types = {
+        supported_management_point_types = (
             "domesticHotWaterTank",
             "domesticHotWaterFlowThrough",
-        }
+        )
         for management_point_type in supported_management_point_types:
             for management_point in device.device.management_points_by_type(management_point_type):
                 async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)])
@@ -45,7 +45,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._device = device
         self._embedded_id = embedded_id
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
-        self._attr_unique_id = f"{self._device.id}"
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}"
         self._management_point_type = management_point_type
         self._attr_device_info = {
             "identifiers": {(DOMAIN, self._device.id + embedded_id)},

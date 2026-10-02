@@ -75,7 +75,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         self._value = value
         self._attr_has_entity_name = True
         self.entity_description = SWITCH_DESCRIPTIONS.get(value, SwitchEntityDescription(key=value))
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._value}"
         mpt = management_point_type[0].upper() + management_point_type[1:]
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {

@@ -124,7 +124,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         self._embedded_id = embedded_id
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
-        self._attr_unique_id = f"{self._device.id}_{self._setpoint}"
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._setpoint}"
         self._attr_device_info: DeviceInfo = {"identifiers": {(DOMAIN, self._device.id)}, "name": self._device.name}
         self._attr_has_entity_name = True
         self._device.fill_device_info(self._attr_device_info, "gateway")

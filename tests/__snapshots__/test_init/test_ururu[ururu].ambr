@@ -172,7 +172,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '95c2f177-dd7a-4bdc-ad48-1a7f47f34a01_roomTemperature',
+        'unique_id': '95c2f177-dd7a-4bdc-ad48-1a7f47f34a01_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

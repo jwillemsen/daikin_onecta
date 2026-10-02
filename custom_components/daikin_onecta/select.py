@@ -68,7 +68,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._embedded_id = embedded_id
         self._value = value
         self._attr_has_entity_name = True
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._value}"
         self.entity_description = SELECT_DESCRIPTIONS[value]
         self.update_state()
         _LOGGER.info(

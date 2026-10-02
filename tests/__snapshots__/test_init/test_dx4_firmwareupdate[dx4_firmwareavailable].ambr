@@ -389,7 +389,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_roomTemperature',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -496,7 +496,7 @@
         'original_name': 'Cooling daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingdailyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_d',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_d_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -532,7 +532,7 @@
         'original_name': 'Cooling monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_monthly',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -568,7 +568,7 @@
         'original_name': 'Cooling weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingweeklyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_w',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_w_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -604,7 +604,7 @@
         'original_name': 'Cooling yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_m',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_cooling_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -670,7 +670,7 @@
         'original_name': 'Heating daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingdailyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_d',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_d_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -706,7 +706,7 @@
         'original_name': 'Heating monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_monthly',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -742,7 +742,7 @@
         'original_name': 'Heating weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingweeklyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_w',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_w_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -778,7 +778,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_m',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_electrical_heating_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

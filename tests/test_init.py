@@ -56,9 +56,10 @@ from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, DOMAIN, SCHEDULE_OFF
-from custom_components.daikin_onecta.device import DaikinOnectaDevice, migrate_legacy_subdevice_identifiers
+from custom_components.daikin_onecta.device import DaikinOnectaDevice, migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics, async_get_device_diagnostics
 from custom_components.daikin_onecta.select import DaikinScheduleSelect
+from custom_components.daikin_onecta.sensor import migrate_legacy_sensor_unique_ids
 from custom_components.daikin_onecta.switch import DaikinSwitch
 from custom_components.daikin_onecta.system_health import async_register, system_health_info
 from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
@@ -1752,6 +1753,64 @@ def test_migrate_legacy_subdevice_identifier(hass: HomeAssistant, config_entry: 
     assert migrated_entry is not None
     assert migrated_entry.id == legacy_entry.id
     assert device_registry.async_get_device(identifiers={(DOMAIN, "deviceclimateControl")}) is None
+
+
+def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Preserve existing entities while adding management-point details to IDs."""
+    config_entry.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    value_entry = entity_registry.async_get_or_create(
+        domain="sensor",
+        platform=DOMAIN,
+        unique_id="device_climateControl_None_roomTemperature",
+        config_entry=config_entry,
+    )
+    energy_entry = entity_registry.async_get_or_create(
+        domain="sensor",
+        platform=DOMAIN,
+        unique_id="device_climateControl_electrical_heating_d",
+        config_entry=config_entry,
+    )
+    management_point = MagicMock(management_point_type="climateControl", embedded_id="zone1")
+    device = MagicMock(id="device")
+    device.device.management_points = [management_point]
+
+    migrate_legacy_sensor_unique_ids(hass, config_entry, {"device": device})
+
+    assert entity_registry.async_get(value_entry.entity_id).unique_id == "device_zone1_None_roomTemperature"
+    assert entity_registry.async_get(energy_entry.entity_id).unique_id == "device_zone1_electrical_heating_d_consumption"
+
+
+def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Preserve entities while replacing management-point types with IDs."""
+    config_entry.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    legacy_entries = [
+        entity_registry.async_get_or_create(domain, DOMAIN, unique_id, config_entry=config_entry)
+        for domain, unique_id in (
+            ("binary_sensor", "device_climateControl_None_isInErrorState"),
+            ("select", "device_climateControl_schedule"),
+            ("switch", "device_climateControl_testMode"),
+            ("update", "device_climateControl_firmware_update"),
+            ("climate", "device_roomTemperature"),
+            ("water_heater", "device"),
+        )
+    ]
+    climate_control = MagicMock(management_point_type="climateControl", embedded_id="zone1")
+    water_tank = MagicMock(management_point_type="domesticHotWaterTank", embedded_id="tank")
+    device = MagicMock(id="device")
+    device.device.management_points = [climate_control, water_tank]
+
+    migrate_legacy_entity_unique_ids(hass, config_entry, {"device": device})
+
+    assert [entity_registry.async_get(entry.entity_id).unique_id for entry in legacy_entries] == [
+        "device_zone1_None_isInErrorState",
+        "device_zone1_schedule",
+        "device_zone1_testMode",
+        "device_zone1_firmware_update",
+        "device_zone1_roomTemperature",
+        "device_tank",
+    ]
 
 
 def test_schedule_select_missing_selection() -> None:

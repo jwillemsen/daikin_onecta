@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
@@ -193,6 +194,59 @@ def add_management_point_sensors(coordinator, device, management_point, sensors)
                 )
 
 
+def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
+    """Return legacy-to-current value sensor IDs for a device."""
+    migrations: dict[str, str] = {}
+    for management_point in device.device.management_points:
+        for value in SENSOR_DESCRIPTIONS:
+            for sub_type in (None, "sensoryData"):
+                old_unique_id = f"{device.id}_{management_point.management_point_type}_{sub_type}_{value}"
+                migrations.setdefault(
+                    old_unique_id,
+                    f"{device.id}_{management_point.embedded_id}_{sub_type}_{value}",
+                )
+    return migrations
+
+
+def _legacy_energy_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
+    """Return legacy-to-current energy sensor IDs for a device."""
+    migrations: dict[str, str] = {}
+    for management_point in device.device.management_points:
+        for datatype in ("consumption", "output"):
+            for sensor_type in ("electrical", "gas", "thermal"):
+                for operation_mode in ("heating", "cooling"):
+                    for period in SENSOR_PERIODS:
+                        old_unique_id = f"{device.id}_{management_point.management_point_type}_{sensor_type}_{operation_mode}_{period}"
+                        migrations.setdefault(
+                            old_unique_id,
+                            f"{device.id}_{management_point.embedded_id}_{sensor_type}_{operation_mode}_{period}_{datatype}",
+                        )
+    return migrations
+
+
+def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry, devices: dict[str, DaikinOnectaDevice]) -> None:
+    """Use embedded management-point IDs for existing sensor unique IDs.
+
+    The previous IDs did not distinguish management points of the same type or
+    energy consumption from output. Update registry entries before platforms
+    are loaded so existing entity IDs, customizations, and history are kept.
+    """
+    entity_registry = er.async_get(hass)
+    migrations: dict[str, str] = {}
+
+    for device in devices.values():
+        migrations.update(_legacy_value_sensor_id_migrations(device))
+        migrations.update(_legacy_energy_sensor_id_migrations(device))
+
+    for entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
+        if entry.domain != "sensor" or entry.platform != DOMAIN:
+            continue
+        new_unique_id = migrations.get(entry.unique_id)
+        if new_unique_id is None or entity_registry.async_get_entity_id("sensor", DOMAIN, new_unique_id) is not None:
+            continue
+        entity_registry.async_update_entity(entry.entity_id, new_unique_id=new_unique_id)
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
@@ -234,7 +288,9 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         buildname = f"{details.operation_mode.capitalize()}{period_name}{details.sensor_type.capitalize()}{details.datatype.capitalize()}"
         self.entity_description = SENSOR_DESCRIPTIONS[buildname]
         self._sensor_type = details.sensor_type
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{details.sensor_type}_{self._operation_mode}_{self._period}"
+        self._attr_unique_id = (
+            f"{self._device.id}_{details.embedded_id}_{details.sensor_type}_{self._operation_mode}_{self._period}_{self._datatype}"
+        )
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -332,7 +388,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._value = details.value
         self._attr_has_entity_name = True
         self.entity_description = SENSOR_DESCRIPTIONS[details.value]
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._sub_type}_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{details.embedded_id}_{self._sub_type}_{self._value}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",

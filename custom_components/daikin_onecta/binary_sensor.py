@@ -82,7 +82,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._device.fill_device_info(self._attr_device_info, embedded_id)
         self._embedded_id = embedded_id
         self._value = value
-        self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_None_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_None_{self._value}"
         self._attr_has_entity_name = True
         self.entity_description = BINARY_SENSOR_DESCRIPTIONS[value]
         self.update_state()
