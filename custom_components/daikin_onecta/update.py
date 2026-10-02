@@ -1,4 +1,5 @@
 """Support for Daikin firmware update entities."""
+
 import logging
 from typing import TYPE_CHECKING, Any, override
 

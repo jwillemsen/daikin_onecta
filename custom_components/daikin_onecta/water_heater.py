@@ -1,4 +1,5 @@
 """Support for the Daikin BRP069A62."""
+
 import logging
 from typing import TYPE_CHECKING, Any, override
 

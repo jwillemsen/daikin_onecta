@@ -1,4 +1,5 @@
 """Support for Daikin AirBase zones."""
+
 import logging
 from typing import TYPE_CHECKING, override
 

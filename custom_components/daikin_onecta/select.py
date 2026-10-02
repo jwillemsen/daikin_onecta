@@ -1,4 +1,5 @@
 """Provide Daikin schedule selection entities."""
+
 import logging
 from typing import TYPE_CHECKING, override
 
