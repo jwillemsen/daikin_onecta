@@ -1,7 +1,6 @@
 """Support for the Daikin BRP069A62."""
-
 import logging
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, override
 
 from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
 from homeassistant.config_entries import ConfigEntry
@@ -69,11 +68,13 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_current_operation = self.get_current_operation()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
@@ -132,6 +133,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         return ret
 
     @property
+    @override
     def extra_state_attributes(self):
         """Return optional device state attributes."""
         data = {}
@@ -197,6 +199,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 self._attr_target_temperature = int_value
                 self.async_write_ha_state()
 
+    @override
     async def async_set_temperature(self, **kwargs):
         """Set new target temperature."""
         # The service climate.set_temperature can set the hvac_mode too, see
@@ -241,6 +244,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             on_off_mode = "on" if self.current_operation == STATE_OFF else ""
         return on_off_mode, powerful_mode
 
+    @override
     async def async_set_operation_mode(self, operation_mode):
         """Set new tank state."""
         _LOGGER.debug("Set tank operation mode: %s", operation_mode)
@@ -283,6 +287,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         return result
 
+    @override
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn water heater on."""
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
@@ -304,6 +309,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 self._device.name,
             )
 
+    @override
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn water heater off."""
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
