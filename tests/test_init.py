@@ -1914,6 +1914,16 @@ async def test_system_health_without_config_entry(hass: HomeAssistant) -> None:
 
 
 @pytest.mark.asyncio
+async def test_system_health_ignores_unloaded_config_entry(
+    hass: HomeAssistant, config_entry: MockConfigEntry
+) -> None:
+    """Do not access runtime data for an entry that is not loaded."""
+    config_entry.add_to_hass(hass)
+
+    assert await system_health_info(hass) == {}
+
+
+@pytest.mark.asyncio
 async def test_firmware_install_without_id() -> None:
     """Do not issue a firmware update request without a firmware ID."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
