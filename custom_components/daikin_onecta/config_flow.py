@@ -16,6 +16,11 @@ import voluptuous as vol
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
+OAUTH_SCOPES = (
+    "openid",
+    "onecta:basic.integration",
+    "offline_access",
+)
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
@@ -77,7 +82,6 @@ class FlowHandler(
     """Handle a config flow."""
 
     # See https://developers.home-assistant.io/docs/core/platform/application_credentials/
-    # and https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started
     VERSION = 1
     MINOR_VERSION = 2
     DOMAIN = DOMAIN
@@ -86,7 +90,7 @@ class FlowHandler(
     @property
     def extra_authorize_data(self) -> dict[str, str]:
         """Extra data that needs to be appended to the authorize url."""
-        return {"scope": "openid onecta:basic.integration offline_access"}
+        return {"scope": " ".join(OAUTH_SCOPES)}
 
     async def async_oauth_create_entry(self, data: dict) -> ConfigFlowResult:
         """Create an oauth config entry or update existing entry for reauth."""

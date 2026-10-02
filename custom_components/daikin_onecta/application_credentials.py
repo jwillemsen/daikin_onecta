@@ -1,4 +1,7 @@
-"""Provide OAuth application credentials for Daikin Onecta."""
+"""Provide OAuth application credentials for Daikin Onecta.
+
+See https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started.
+"""
 
 from homeassistant.components.application_credentials import AuthorizationServer
 from homeassistant.core import HomeAssistant
