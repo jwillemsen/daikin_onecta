@@ -389,6 +389,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
                     if res:
                         setpointdict = self.setpoint()
                         if setpointdict is not None:
+                            setpointdict.value = value
                             self._attr_target_temperature = value
                             self.async_write_ha_state()
                     else:

@@ -5,7 +5,7 @@ from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import GatewayDevice
-from daikin_onecta.models import Characteristic, FanSpeed
+from daikin_onecta.models import Characteristic, FanSpeed, Schedule
 from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN, SERVICE_PRESS
 from homeassistant.components.climate import (
     ATTR_FAN_MODE,
@@ -2022,6 +2022,67 @@ async def test_switch_write_failures() -> None:
     on_entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
     assert await on_entity.async_turn_off() is False
     assert on_entity.is_on is True
+
+
+@pytest.mark.asyncio
+async def test_successful_writes_update_cached_models() -> None:
+    """Keep the cached model in sync while coordinator polling is deferred."""
+    climate = object.__new__(DaikinClimate)
+    climate_device = MagicMock(id="device", name="Device")
+    climate_device.patch = AsyncMock(return_value=True)
+    object.__setattr__(climate, "_device", climate_device)
+    object.__setattr__(climate, "_embedded_id", "zone")
+    object.__setattr__(climate, "_setpoint", "roomTemperature")
+    object.__setattr__(climate, "_attr_target_temperature", 20)
+    climate.operation_mode = MagicMock(return_value=MagicMock(value="heating"))
+    climate_setpoint = MagicMock(value=20)
+    climate.setpoint = MagicMock(return_value=climate_setpoint)
+    climate.async_write_ha_state = MagicMock()
+
+    await climate.async_set_temperature(temperature=21)
+
+    assert climate_setpoint.value == 21
+
+    switch = object.__new__(DaikinSwitch)
+    switch_device = MagicMock(id="device", name="Device")
+    switch_device.patch = AsyncMock(return_value=True)
+    object.__setattr__(switch, "_device", switch_device)
+    object.__setattr__(switch, "_embedded_id", "zone")
+    object.__setattr__(switch, "_value", "testMode")
+    object.__setattr__(switch, "_switch_state", "off")
+    characteristic = MagicMock(value="off")
+    switch_device.management_point.return_value.characteristic.return_value = characteristic
+    switch.async_write_ha_state = MagicMock()
+
+    assert await switch.async_turn_on()
+    assert characteristic.value == "on"
+
+    schedule = object.__new__(DaikinScheduleSelect)
+    schedule_device = MagicMock(id="device", name="Device")
+    schedule_device.put = AsyncMock(return_value=True)
+    object.__setattr__(schedule, "_device", schedule_device)
+    object.__setattr__(schedule, "_embedded_id", "zone")
+    schedule_data = Schedule(
+        current_mode=Characteristic(value="weekly"),
+        modes={
+            "weekly": {
+                "currentSchedule": {"value": "old", "values": ["old", "new"]},
+                "enabled": {"value": True, "settable": True},
+                "schedules": {
+                    "old": {"name": {"value": "Old schedule"}},
+                    "new": {"name": {"value": "New schedule"}},
+                },
+            }
+        },
+    )
+    schedule_point = MagicMock()
+    schedule_point.schedule = Characteristic(value=schedule_data)
+    schedule_device.management_point.return_value = schedule_point
+    schedule.async_write_ha_state = MagicMock()
+
+    assert await schedule.async_select_option("New schedule")
+    assert schedule_data.modes["weekly"]["currentSchedule"]["value"] == "new"
+    assert schedule_data.modes["weekly"]["enabled"]["value"] is True
 
 
 @pytest.mark.asyncio
