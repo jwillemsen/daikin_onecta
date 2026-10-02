@@ -1,7 +1,6 @@
 """Support for Daikin firmware update entities."""
-
 import logging
-from typing import TYPE_CHECKING, Any
+from typing import TYPE_CHECKING, Any, override
 
 from daikin_onecta.models import ManagementPoint
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
@@ -80,6 +79,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         # Populate initial state
         self._update_from_management_point(gateway_mp)
 
+    @override
     async def async_install(
         self, version: str | None, backup: bool, **kwargs: Any
     ) -> None:
@@ -151,6 +151,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             self._attr_supported_features |= UpdateEntityFeature.PROGRESS
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
         mp = self._device.management_point(self._embedded_id)

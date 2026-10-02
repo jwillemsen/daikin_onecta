@@ -1,7 +1,6 @@
 """Provide Daikin schedule selection entities."""
-
 import logging
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, override
 
 from homeassistant.components.select import SelectEntity
 from homeassistant.config_entries import ConfigEntry
@@ -89,11 +88,13 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._attr_current_option = self.get_current_option()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
@@ -123,6 +124,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
             return SCHEDULE_OFF
         return selection.current_option
 
+    @override
     async def async_select_option(self, option: str) -> None:
         """Select or disable a configured schedule."""
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)

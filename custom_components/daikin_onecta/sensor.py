@@ -1,8 +1,7 @@
 """Support for Daikin AC sensors."""
-
 from dataclasses import dataclass
 import logging
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, override
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
@@ -345,11 +344,13 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = self.sensor_value()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
@@ -458,11 +459,13 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = self.sensor_value()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
@@ -531,6 +534,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = self.sensor_value()
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
