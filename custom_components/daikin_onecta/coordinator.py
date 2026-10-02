@@ -44,7 +44,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         )
 
         _LOGGER.info(
-            "Daikin coordinator initialized with %s interval.",
+            "Daikin coordinator initialized with %s interval",
             self.update_interval,
         )
 
@@ -54,7 +54,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
 
     async def _async_update_data(self) -> None:
         """Fetch the latest device state from Daikin."""
-        _LOGGER.debug("Daikin coordinator start _async_update_data.")
+        _LOGGER.debug("Daikin coordinator start _async_update_data")
 
         onecta_data: OnectaRuntimeData = self._config_entry.runtime_data
         devices = onecta_data.devices
@@ -89,13 +89,13 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             self.update_interval = self.determine_update_interval(self.hass)
 
         _LOGGER.debug(
-            "Daikin coordinator finished _async_update_data, next interval %s.",
+            "Daikin coordinator finished _async_update_data, next interval %s",
             self.update_interval,
         )
 
     def update_settings(self, config_entry: ConfigEntry) -> None:
         """Apply updated config entry options."""
-        _LOGGER.debug("Daikin coordinator updating settings.")
+        _LOGGER.debug("Daikin coordinator updating settings")
         self.options = config_entry.options
         self.update_interval = self.determine_update_interval(self.hass)
         _LOGGER.info("Daikin coordinator changed interval to '%s'", self.update_interval)

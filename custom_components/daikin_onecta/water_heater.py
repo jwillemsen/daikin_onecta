@@ -38,7 +38,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     def __init__(self, device, coordinator, management_point_type, embedded_id):
         """Initialize the Water device."""
-        _LOGGER.info("Initializing Daiking Altherma HotWaterTank...")
+        _LOGGER.info("Initializing Daiking Altherma HotWaterTank")
         super().__init__(coordinator)
         self._device = device
         self._embedded_id = embedded_id

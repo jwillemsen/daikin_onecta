@@ -108,7 +108,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         """Initialize the climate device."""
         super().__init__(coordinator)
         _LOGGER.info(
-            "Device '%s' initializing Daikin Climate for controlling %s...",
+            "Device '%s' initializing Daikin Climate for controlling %s",
             device.name,
             setpoint,
         )
