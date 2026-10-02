@@ -3,7 +3,7 @@
 from datetime import timedelta
 import logging
 import re
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, override
 
 from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, PLATFORM_SCHEMA as CLIMATE_PLATFORM_SCHEMA, ClimateEntity
 from homeassistant.components.climate.const import (
@@ -151,11 +151,13 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         self._attr_fan_mode = self.get_fan_mode()
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
@@ -280,6 +282,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         return supported_features
 
     @property
+    @override
     def name(self):
         """Return the readable setpoint name."""
         myname = self._setpoint[0].upper() + self._setpoint[1:]
@@ -362,6 +365,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         )
         return step_value
 
+    @override
     async def async_set_temperature(self, **kwargs):
         """Set the HVAC mode and/or target temperature."""
         if ATTR_HVAC_MODE in kwargs:
@@ -431,6 +435,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
                 modes.append(ha_currentmode)
         return modes
 
+    @override
     async def async_set_hvac_mode(self, hvac_mode):
         """Set HVAC mode."""
         _LOGGER.debug(
@@ -523,6 +528,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
                 fan_modes.append(alias)
         return fan_modes
 
+    @override
     async def async_set_fan_mode(self, fan_mode):
         """Set the fan mode."""
         requested_fan_mode = str(fan_mode)
@@ -631,6 +637,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
             axis.current_mode.value = new_mode
         return result
 
+    @override
     async def async_set_swing_mode(self, swing_mode):
         """Set the vertical swing mode."""
         res = True
@@ -649,6 +656,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
 
         return res
 
+    @override
     async def async_set_swing_horizontal_mode(self, swing_mode):
         """Set the horizontal swing mode."""
         res = True
@@ -707,6 +715,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
             _LOGGER.warning("Device '%s' problem setting %s to on", self._device.name, daikin_mode)
         return turned_on and result
 
+    @override
     async def async_set_preset_mode(self, preset_mode):
         """Set the active preset mode."""
         _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
@@ -731,6 +740,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         supported.sort()
         return supported
 
+    @override
     async def async_turn_on(self):
         """Turn device CLIMATE on."""
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
@@ -752,6 +762,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
 
         return result
 
+    @override
     async def async_turn_off(self):
         """Turn the climate entity off."""
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)

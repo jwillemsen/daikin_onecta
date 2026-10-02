@@ -1,7 +1,7 @@
 """Support for Daikin binary sensor sensors."""
 
 import logging
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, override
 
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
@@ -96,11 +96,13 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._attr_is_on = self.sensor_value()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()

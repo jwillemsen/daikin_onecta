@@ -1,11 +1,12 @@
 """Button platform for the Daikin Onecta integration."""
 
 import logging
+from typing import override
 
 from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -53,11 +54,13 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
         _LOGGER.info("Device '%s' has refresh button", self._device.name)
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.async_write_ha_state()
 
