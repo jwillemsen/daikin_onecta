@@ -46,6 +46,7 @@ from homeassistant.components.water_heater import (
 from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.device_registry as dr
+import homeassistant.helpers.entity_registry as er
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 import pytest
@@ -306,6 +307,16 @@ async def test_altherma(
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "altherma")
 
     await snapshot_context.hass.async_block_till_done()
+
+    assert snapshot_context.hass.states.get("sensor.altherma_climatecontrol_room_temperature").state == "21"
+    assert snapshot_context.hass.states.get("sensor.altherma_climatecontrol_heating_yearly_electrical_consumption").state == "1252"
+
+    sensor_entries = [
+        entry
+        for entry in er.async_entries_for_config_entry(snapshot_context.entity_registry, snapshot_context.config_entry.entry_id)
+        if entry.entity_id.startswith("sensor.")
+    ]
+    assert len(sensor_entries) == len({entry.unique_id for entry in sensor_entries})
 
 
 @pytest.mark.asyncio
