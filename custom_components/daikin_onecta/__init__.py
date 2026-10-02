@@ -57,9 +57,6 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     config_entry.runtime_data = OnectaRuntimeData(daikin_api=daikin_api, devices={})
     config_entry.runtime_data.coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
 
-    # Let the coordinator raise ConfigEntryAuthFailed / ConfigEntryNotReady directly.
-    # Do not wrap first_refresh in a broad Exception handler: that would convert
-    # reauth failures into ConfigEntryNotReady and skip the reauth flow.
     await config_entry.runtime_data.coordinator.async_config_entry_first_refresh()
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
