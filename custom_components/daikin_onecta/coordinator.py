@@ -9,7 +9,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
-from daikin_onecta.exceptions import OnectaRateLimitError
+from daikin_onecta.exceptions import OnectaConnectionError, OnectaRateLimitError
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
@@ -17,6 +17,7 @@ from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 RATE_LIMIT_EXCEEDED = "Daikin API rate limit exceeded"
+CONNECTION_FAILED = "Unable to connect to the Daikin API"
 
 
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDevice]]):
@@ -69,6 +70,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
                     RATE_LIMIT_EXCEEDED,
                     retry_after=err.retry_after,
                 ) from err
+            except OnectaConnectionError as err:
+                raise UpdateFailed(CONNECTION_FAILED) from err
 
             for dev_data in cloud_devices:
                 if dev_data.id in devices:
