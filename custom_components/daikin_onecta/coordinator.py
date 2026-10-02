@@ -3,6 +3,7 @@
 from datetime import time, timedelta
 import logging
 import random
+from typing import override
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -92,6 +93,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
         )
         return devices
 
+    @override
     async def _async_update_data(self) -> dict[str, DaikinOnectaDevice]:
         """Fetch data for the Home Assistant coordinator interface."""
         return await self.async_update_data()

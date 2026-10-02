@@ -1,7 +1,7 @@
 """Support for Daikin AirBase zones."""
 
 import logging
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, override
 
 from homeassistant.components.switch import SwitchEntityDescription
 from homeassistant.config_entries import ConfigEntry
@@ -95,16 +95,19 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         self._switch_state = self.sensor_value()
 
     @property
+    @override
     def available(self) -> bool:
         """Return whether the source device is available."""
         return super().available and self._device.available
 
     @callback
+    @override
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
 
     @property
+    @override
     def is_on(self):
         """Return whether the switch is on."""
         return self._switch_state == "on"
@@ -117,6 +120,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result
 
+    @override
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
         result = True
@@ -132,6 +136,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
         return result
 
+    @override
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
         result = True

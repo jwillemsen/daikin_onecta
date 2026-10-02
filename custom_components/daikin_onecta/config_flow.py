@@ -2,7 +2,7 @@
 
 from collections.abc import Mapping
 import logging
-from typing import Any
+from typing import Any, override
 
 from homeassistant import config_entries
 from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
@@ -88,10 +88,12 @@ class FlowHandler(
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     @property
+    @override
     def extra_authorize_data(self) -> dict[str, str]:
         """Extra data that needs to be appended to the authorize url."""
         return {"scope": " ".join(OAUTH_SCOPES)}
 
+    @override
     async def async_oauth_create_entry(self, data: dict) -> ConfigFlowResult:
         """Create an oauth config entry or update existing entry for reauth."""
         try:
@@ -122,16 +124,19 @@ class FlowHandler(
         return await self.async_step_user()
 
     @property
+    @override
     def logger(self) -> logging.Logger:
         """Return logger."""
         return logging.getLogger(__name__)
 
     @staticmethod
     @callback
+    @override
     def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlowHandler:
         """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
 
+    @override
     async def async_step_zeroconf(self, _discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
         """Handle a discovered Daikin device via mDNS."""
         _LOGGER.info("Daikin device discovered via mDNS")
