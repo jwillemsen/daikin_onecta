@@ -30,10 +30,11 @@ from homeassistant.components.climate import (
     SERVICE_TURN_ON,
 )
 from homeassistant.components.climate.const import HVACMode
+from homeassistant.components.diagnostics import REDACTED
 from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN, SERVICE_UPDATE_ENTITY
 from homeassistant.components.select import ATTR_OPTION, DOMAIN as SELECT_DOMAIN, SERVICE_SELECT_OPTION
 from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
-from homeassistant.components.update import DOMAIN as UPDATE_DOMAIN, SERVICE_INSTALL
+from homeassistant.components.update import DOMAIN as UPDATE_DOMAIN, SERVICE_INSTALL, UpdateEntityFeature
 from homeassistant.components.water_heater import (
     ATTR_OPERATION_MODE,
     ATTR_TEMPERATURE,
@@ -57,7 +58,12 @@ from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, DOMAIN, SCHEDULE_OFF
 from custom_components.daikin_onecta.device import DaikinOnectaDevice, migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
-from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics, async_get_device_diagnostics
+from custom_components.daikin_onecta.diagnostics import (
+    _find_daikin_device,
+    async_get_config_entry_diagnostics,
+    async_get_device_diagnostics,
+    get_entities,
+)
 from custom_components.daikin_onecta.select import DaikinScheduleSelect
 from custom_components.daikin_onecta.sensor import migrate_legacy_sensor_unique_ids
 from custom_components.daikin_onecta.switch import DaikinSwitch
@@ -1735,6 +1741,58 @@ def test_device_fill_info_uses_embedded_management_point_id() -> None:
     assert info == {"manufacturer": "Daikin", "model": "Second zone model"}
 
 
+def test_device_info_uses_gateway_embedded_id() -> None:
+    """Use gateway metadata when its embedded ID differs from its type."""
+    gateway = MagicMock(
+        embedded_id="0",
+        eeprom_version=None,
+        firmware_version=None,
+        serial_number=None,
+        software_version=None,
+    )
+    gateway.characteristic.return_value = None
+    gateway.model_info.value = "Gateway model"
+    device = object.__new__(DaikinOnectaDevice)
+    device.id = "device"
+    device.name = "Device"
+    device.device = MagicMock(device_model="Device model")
+    device.device.management_point_by_type.return_value = gateway
+    device.device.management_point.return_value = gateway
+
+    info = device.device_info()
+
+    device.device.management_point.assert_called_once_with("0")
+    assert info["model"] == "Gateway model"
+
+
+def test_entity_diagnostics_redact_sensitive_sensor_state(
+    hass: HomeAssistant, config_entry: MockConfigEntry
+) -> None:
+    """Redact sensitive identifiers exposed as sensor states."""
+    config_entry.add_to_hass(hass)
+    entity_entry = er.async_get(hass).async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "device_ssid",
+        config_entry=config_entry,
+        translation_key="ssid",
+    )
+    hass.states.async_set(entity_entry.entity_id, "Private network")
+
+    diagnostics = get_entities(hass, config_entry)
+
+    assert diagnostics[entity_entry.entity_id]["state"] == REDACTED
+
+
+def test_device_diagnostics_resolve_subdevice_to_gateway() -> None:
+    """Resolve a management-point device identifier to its gateway data."""
+    daikin_device = MagicMock()
+    daikin_device.device.management_points = [MagicMock(embedded_id="0")]
+    device_entry = MagicMock(identifiers={(DOMAIN, "gateway0"), ("other", "ignored")})
+
+    assert _find_daikin_device(device_entry, {"gateway": daikin_device}) is daikin_device
+
+
 def test_migrate_legacy_subdevice_identifier(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
     """Preserve the existing subdevice record when moving to an embedded ID."""
     config_entry.add_to_hass(hass)
@@ -1860,6 +1918,7 @@ async def test_firmware_install_without_id() -> None:
     """Do not issue a firmware update request without a firmware ID."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
     management_point = MagicMock(
+        embedded_id="gateway",
         firmware_version=None,
         software_version=None,
         is_firmware_update_supported=None,
@@ -1880,6 +1939,7 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
     device.name = "Device"
     device.put = AsyncMock(return_value=False)
     management_point = MagicMock(
+        embedded_id="0",
         firmware_version=MagicMock(value="1.0"),
         software_version=None,
         is_firmware_update_supported=MagicMock(value=True),
@@ -1891,8 +1951,41 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
 
     await entity.async_install(None, False)
 
-    device.put.assert_awaited_once_with("device", "gateway", "firmware/firmware-id")
+    device.put.assert_awaited_once_with("device", "0", "firmware/firmware-id")
     assert "Failed to trigger firmware update for Device" in caplog.text
+
+
+def test_firmware_update_entity_is_unavailable_when_device_is_offline() -> None:
+    """Do not expose firmware controls for an offline device."""
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device", available=False)
+    management_point = MagicMock(
+        embedded_id="gateway",
+        firmware_version=MagicMock(value="1.0"),
+        software_version=None,
+        is_firmware_update_supported=MagicMock(value=True),
+        firmware_update=None,
+        firmware_update_status=None,
+    )
+    coordinator = MagicMock(last_update_success=True)
+    entity = DaikinFirmwareUpdateEntity(coordinator, device, management_point, "gateway")
+
+    assert entity.available is False
+
+
+def test_read_only_firmware_entity_does_not_advertise_install() -> None:
+    """Only expose install for management points that support updates."""
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    management_point = MagicMock(
+        embedded_id="gateway",
+        firmware_version=None,
+        software_version=MagicMock(value="1.0"),
+        is_firmware_update_supported=MagicMock(value=False),
+        firmware_update=None,
+        firmware_update_status=None,
+    )
+    entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
+
+    assert entity.supported_features == UpdateEntityFeature(0)
 
 
 @pytest.mark.asyncio
