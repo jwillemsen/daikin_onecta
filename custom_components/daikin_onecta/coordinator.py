@@ -1,4 +1,5 @@
 """Coordinator for Daikin Onecta integration."""
+
 from datetime import time, timedelta
 import logging
 import random

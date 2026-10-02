@@ -1,4 +1,5 @@
 """Support for Daikin AC sensors."""
+
 from dataclasses import dataclass
 import logging
 from typing import TYPE_CHECKING, override

@@ -1,4 +1,5 @@
 """Button platform for the Daikin Onecta integration."""
+
 import logging
 from typing import override
 

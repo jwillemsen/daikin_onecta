@@ -1,4 +1,5 @@
 """Support for Daikin binary sensor sensors."""
+
 import logging
 from typing import TYPE_CHECKING, override
 
