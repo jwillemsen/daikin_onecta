@@ -5,13 +5,13 @@ from __future__ import annotations
 import logging
 from typing import TYPE_CHECKING
 
-from homeassistant.components.sensor import CONF_STATE_CLASS
-from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
+from homeassistant.components.switch import SwitchEntityDescription
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN, ENABLED_DEFAULT, ENTITY_CATEGORY, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
+from .const import DOMAIN
+from .entity_descriptions import SWITCH_DESCRIPTIONS
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
@@ -73,19 +73,8 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         self._embedded_id = embedded_id
         self._management_point_type = management_point_type
         self._value = value
-        self._unit_of_measurement = None
-        self._device_class = None
-        self._state_class = None
         self._attr_has_entity_name = True
-        sensor_settings = VALUE_SENSOR_MAPPING.get(value)
-        if sensor_settings is not None:
-            self._attr_icon = sensor_settings[CONF_ICON]
-            self._device_class = sensor_settings[CONF_DEVICE_CLASS]
-            self._unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-            self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-            self._state_class = sensor_settings[CONF_STATE_CLASS]
-            self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-            self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
+        self.entity_description = SWITCH_DESCRIPTIONS.get(value, SwitchEntityDescription(key=value))
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         mpt = management_point_type[0].upper() + management_point_type[1:]
         assert self._device.ha_device_id is not None

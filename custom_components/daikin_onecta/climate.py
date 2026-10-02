@@ -25,8 +25,9 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 import voluptuous as vol
 
-from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED, MODEL_ATTRIBUTE, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
+from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator
+from .entity_descriptions import CLIMATE_DESCRIPTIONS, SENSOR_DESCRIPTIONS
 
 if TYPE_CHECKING:
     from homeassistant.config_entries import ConfigEntry
@@ -127,9 +128,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         self._attr_device_info: DeviceInfo = {"identifiers": {(DOMAIN, self._device.id)}, "name": self._device.name}
         self._attr_has_entity_name = True
         self._device.fill_device_info(self._attr_device_info, "gateway")
-        sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
-        assert sensor_settings is not None
-        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
+        self.entity_description = CLIMATE_DESCRIPTIONS[setpoint]
         self.update_state()
 
     def update_state(self) -> None:
@@ -250,10 +249,10 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         cc = self.climate_control()
         if cc is None or cc.sensory_data is None:
             return None
-        sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
-        if sensor_settings is None:
+        description = SENSOR_DESCRIPTIONS.get(setpoint)
+        if description is None:
             return None
-        attribute = sensor_settings.get(MODEL_ATTRIBUTE)
+        attribute = description.model_attribute
         return getattr(cc.sensory_data.value, attribute) if attribute is not None else None
 
     def get_supported_features(self):
