@@ -132,22 +132,11 @@ class FlowHandler(
         """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
 
-    async def async_step_zeroconf(self, discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
+    async def async_step_zeroconf(self, _discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
         """Handle a discovered Daikin device via mDNS."""
         _LOGGER.info("Daikin device discovered via mDNS")
 
         if self._async_current_entries():
             return self.async_abort(reason="already_configured")
-
-        hostname = discovery_info.hostname
-        if not hostname:
-            return self.async_abort(reason="unknown")
-
-        # Strip trailing dot and .local suffix for a clean display name.
-        # e.g. "altherma4-a1b2-c3d4.local." -> "altherma4-a1b2-c3d4"
-        hostname = hostname.rstrip(".")
-        hostname = hostname.removesuffix(".local")
-
-        self.context["title_placeholders"] = {"name": hostname}
 
         return await self.async_step_user()

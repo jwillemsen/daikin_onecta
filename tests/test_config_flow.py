@@ -248,28 +248,6 @@ async def test_zeroconf_already_configured(
     assert result["reason"] == "already_configured"
 
 
-async def test_zeroconf_without_hostname(hass: HomeAssistant) -> None:
-    """Ignore zeroconf discovery without a hostname."""
-    discovery = ZeroconfServiceInfo(
-        ip_address=ZEROCONF_DISCOVERY.ip_address,
-        ip_addresses=ZEROCONF_DISCOVERY.ip_addresses,
-        hostname=None,
-        name=ZEROCONF_DISCOVERY.name,
-        port=ZEROCONF_DISCOVERY.port,
-        type=ZEROCONF_DISCOVERY.type,
-        properties=ZEROCONF_DISCOVERY.properties,
-    )
-
-    result = await hass.config_entries.flow.async_init(
-        DOMAIN,
-        context={"source": SOURCE_ZEROCONF},
-        data=discovery,
-    )
-
-    assert result["type"] == "abort"
-    assert result["reason"] == "unknown"
-
-
 async def test_reauth_oauth_create_entry(
     hass: HomeAssistant,
     config_entry: MockConfigEntry,
