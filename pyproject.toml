@@ -82,6 +82,9 @@ known-first-party = ["custom_components"]
 combine-as-imports = true
 split-on-trailing-comma = false
 
+[tool.ruff.lint.pylint]
+max-statements = 250
+
 [tool.mypy]
 python_version = "3.14"
 show_error_codes = true
