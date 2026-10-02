@@ -1,7 +1,7 @@
 """Test daikin_onecta sensor."""
 
 from datetime import timedelta
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import GatewayDevice
@@ -46,13 +46,10 @@ from homeassistant.components.water_heater import (
 from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.device_registry as dr
-import homeassistant.helpers.entity_registry as er
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import URL, AiohttpClientMocker
-from syrupy import SnapshotAssertion
+from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
@@ -77,6 +74,7 @@ def _assert_initial_climate_state(hass: HomeAssistant) -> None:
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_cool_heat_master").state == STATE_ON
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_caution_state").state == STATE_OFF
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_warning_state").state == STATE_OFF
+
 
 EXPECTED_INITIAL_CLIMATE_CALLS = 3
 EXPECTED_DRY_MODE_CALLS = 4
@@ -181,7 +179,6 @@ async def test_fanmode(
 ) -> None:
     """Test entities."""
     hass = snapshot_context.hass
-    config_entry = snapshot_context.config_entry
     aioclient_mock = snapshot_context.aioclient_mock
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "fanmode")
 
@@ -553,7 +550,10 @@ async def test_mc80z(
         snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"]
         == EXPECTED_FLOOR_HEATING_CURRENT_TEMPERATURE
     )
-    assert snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"] == EXPECTED_FLOOR_HEATING_OFFSET_TEMPERATURE
+    assert (
+        snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"]
+        == EXPECTED_FLOOR_HEATING_OFFSET_TEMPERATURE
+    )
 
 
 @pytest.mark.asyncio
@@ -565,6 +565,44 @@ async def test_holidaymode(
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "holidaymode")
 
     assert snapshot_context.hass.states.get("climate.ndj_room_temperature").attributes["preset_mode"] == PRESET_AWAY
+
+
+async def _assert_water_heater_diagnostics(hass: HomeAssistant, config_entry: Any) -> None:
+    """Assert expected diagnostic data for the water-heater fixture."""
+    config_diagnostics = await async_get_config_entry_diagnostics(hass, config_entry)
+    device = dr.async_get(hass).async_get_device(identifiers={("daikin_onecta", "1ece521b-5401-4a42-acce-6f76fba246aa")})
+    assert device is not None
+    device_diagnostics = await async_get_device_diagnostics(hass, config_entry, device)
+    for diagnostics in (config_diagnostics, device_diagnostics):
+        assert diagnostics["rate_limits"] != ""
+        assert diagnostics["options"] != ""
+        assert diagnostics["oauth2_token_valid"] != ""
+
+
+async def _exercise_initial_tank_temperature(hass: HomeAssistant, aioclient_mock: Any) -> None:
+    """Exercise a successful tank-temperature write and its no-op repeat."""
+    for _ in range(2):
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_SET_TEMPERATURE,
+            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+    info = await system_health_info(hass)
+    assert info["remaining_minute"] == EXPECTED_REMAINING_MINUTE_RATE_LIMIT
+    assert info["remaining_day"] == EXPECTED_REMAINING_DAY_RATE_LIMIT
+    assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TEMPERATURE
+    assert aioclient_mock.mock_calls[1][2] == {"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}
+    assert hass.states.get("water_heater.altherma").attributes["temperature"] == EXPECTED_TANK_TEMPERATURE
+
+
+async def _assert_water_heater_update_noop(hass: HomeAssistant, aioclient_mock: Any) -> None:
+    """Assert that an update request is ignored directly after a write."""
+    await async_setup_component(hass, "homeassistant", {})
+    await hass.services.async_call(HA_DOMAIN, SERVICE_UPDATE_ENTITY, {ATTR_ENTITY_ID: "water_heater.altherma"}, blocking=True)
+    await hass.async_block_till_done()
+    assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TURN_ON
 
 
 @pytest.mark.asyncio
@@ -579,21 +617,7 @@ async def test_water_heater(
     # Altherma with boost enabled
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "altherma_boost")
 
-    ce_diag = await async_get_config_entry_diagnostics(hass, config_entry)
-    device_registry = dr.async_get(hass)
-    device = device_registry.async_get_device(identifiers={("daikin_onecta", "1ece521b-5401-4a42-acce-6f76fba246aa")})
-    assert device is not None
-    device_diag = await async_get_device_diagnostics(hass, config_entry, device)
-
-    assert ce_diag["json_data"] != ""
-    assert ce_diag["rate_limits"] != ""
-    assert ce_diag["options"] != ""
-    assert ce_diag["oauth2_token_valid"] != ""
-
-    assert device_diag["device_json_data"] != ""
-    assert device_diag["rate_limits"] != ""
-    assert device_diag["options"] != ""
-    assert device_diag["oauth2_token_valid"] != ""
+    await _assert_water_heater_diagnostics(hass, config_entry)
 
     assert hass.states.get("water_heater.altherma").attributes["operation_mode"] == STATE_PERFORMANCE
 
@@ -608,34 +632,7 @@ async def test_water_heater(
             headers={"X-RateLimit-Remaining-minute": "4", "X-RateLimit-Remaining-day": "10"},
         )
 
-        # Set the tank temperature to 58, this should just work
-        await hass.services.async_call(
-            WATER_HEATER_DOMAIN,
-            SERVICE_SET_TEMPERATURE,
-            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
-            blocking=True,
-        )
-        await hass.async_block_till_done()
-
-        info = await system_health_info(hass)
-
-        assert info["remaining_minute"] == EXPECTED_REMAINING_MINUTE_RATE_LIMIT
-        assert info["remaining_day"] == EXPECTED_REMAINING_DAY_RATE_LIMIT
-
-        assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TEMPERATURE
-        assert aioclient_mock.mock_calls[1][2] == {"value": 58, "path": "/operationModes/heating/setpoints/domesticHotWaterTemperature"}
-        assert hass.states.get("water_heater.altherma").attributes["temperature"] == EXPECTED_TANK_TEMPERATURE
-
-        # Set the tank temperature to 58, this should not result in a call as it is already 58
-        await hass.services.async_call(
-            WATER_HEATER_DOMAIN,
-            SERVICE_SET_TEMPERATURE,
-            {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
-            blocking=True,
-        )
-        await hass.async_block_till_done()
-
-        assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TEMPERATURE
+        await _exercise_initial_tank_temperature(hass, aioclient_mock)
 
         aioclient_mock.patch(
             DAIKIN_API_URL
@@ -811,20 +808,7 @@ async def test_water_heater(
 
         assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TURN_ON
 
-        # In order to call update_entity we need to setup the HA core
-        await async_setup_component(hass, "homeassistant", {})
-
-        # Try to call update_entity service to trigger an update but because we just did patches
-        # this is a noop
-        await hass.services.async_call(
-            HA_DOMAIN,
-            SERVICE_UPDATE_ENTITY,
-            {ATTR_ENTITY_ID: "water_heater.altherma"},
-            blocking=True,
-        )
-        await hass.async_block_till_done()
-
-        assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TURN_ON
+        await _assert_water_heater_update_noop(hass, aioclient_mock)
 
         aioclient_mock.clear_requests()
         aioclient_mock.patch(
@@ -1638,7 +1622,6 @@ async def test_altherma_schedule(
 ) -> None:
     """Test entities."""
     hass = snapshot_context.hass
-    aioclient_mock = snapshot_context.aioclient_mock
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "altherma_schedule")
 
     assert hass.states.get("select.altherma_domestichotwatertank_schedule").state == "User defined"
@@ -1651,7 +1634,6 @@ async def test_altherma_firmwareupdate(
 ) -> None:
     """Test entities."""
     hass = snapshot_context.hass
-    aioclient_mock = snapshot_context.aioclient_mock
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "altherma_firmwareupdate")
     await hass.async_block_till_done()
 
@@ -1706,8 +1688,6 @@ async def test_skyair(
     snapshot_context: SnapshotTestContext,
 ) -> None:
     """Test entities."""
-    hass = snapshot_context.hass
-    aioclient_mock = snapshot_context.aioclient_mock
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "skyair")
 
 
