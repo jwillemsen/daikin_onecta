@@ -16,11 +16,11 @@ import voluptuous as vol
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
-OAUTH_SCOPES = (
+OAUTH_SCOPES = [
     "openid",
     "onecta:basic.integration",
     "offline_access",
-)
+]
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
