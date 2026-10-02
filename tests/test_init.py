@@ -62,7 +62,7 @@ from custom_components.daikin_onecta.select import DaikinScheduleSelect
 from custom_components.daikin_onecta.sensor import migrate_legacy_sensor_unique_ids
 from custom_components.daikin_onecta.switch import DaikinSwitch
 from custom_components.daikin_onecta.system_health import async_register, system_health_info
-from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
+from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity, migrate_legacy_update_unique_ids
 from custom_components.daikin_onecta.water_heater import DaikinWaterTank
 
 from .conftest import FAKE_ACCESS_TOKEN, SnapshotTestContext, load_fixture_json, snapshot_platform_entities
@@ -1811,6 +1811,10 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
         "device_zone1_roomTemperature",
         "device_tank",
     ]
+
+    migrate_legacy_update_unique_ids(hass, config_entry)
+
+    assert entity_registry.async_get(legacy_entries[3].entity_id).unique_id == "device_zone1_firmware"
 
 
 def test_schedule_select_missing_selection() -> None:

@@ -6,6 +6,7 @@ from typing import TYPE_CHECKING, Any
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -23,6 +24,20 @@ if TYPE_CHECKING:
 _LOGGER = logging.getLogger(__name__)
 
 # The Daikin Onecta cloud API exposes firmware updates
+
+
+def migrate_legacy_update_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    """Remove the redundant update suffix from existing firmware update IDs."""
+    entity_registry = er.async_get(hass)
+    for entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
+        if entry.domain != "update" or entry.platform != DOMAIN:
+            continue
+        if not entry.unique_id.endswith("_firmware_update"):
+            continue
+        new_unique_id = entry.unique_id.removesuffix("_update")
+        if entity_registry.async_get_entity_id("update", DOMAIN, new_unique_id):
+            continue
+        entity_registry.async_update_entity(entry.entity_id, new_unique_id=new_unique_id)
 
 
 async def async_setup_entry(
