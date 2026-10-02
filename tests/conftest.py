@@ -153,7 +153,6 @@ def onecta_auth() -> AsyncMock:
 @pytest.fixture(name="access_token")
 def async_get_access_token() -> AsyncMock:
     """Restrict loaded platforms to list given."""
-
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value=FAKE_ACCESS_TOKEN,

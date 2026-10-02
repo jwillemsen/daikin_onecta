@@ -1,12 +1,14 @@
 """Provide info to system health."""
 
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.components import system_health
 from homeassistant.core import HomeAssistant, callback
 
 from .const import DAIKIN_API_URL, DOMAIN, OAUTH2_AUTHORIZE
-from .coordinator import OnectaRuntimeData
+
+if TYPE_CHECKING:
+    from .coordinator import OnectaRuntimeData
 
 
 @callback

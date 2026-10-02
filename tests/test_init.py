@@ -1,6 +1,7 @@
 """Test daikin_onecta sensor."""
 
 from datetime import timedelta
+from typing import TYPE_CHECKING
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import GatewayDevice
@@ -46,8 +47,8 @@ from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
-from homeassistant.util import dt as dt_util
 from homeassistant.setup import async_setup_component
+from homeassistant.util import dt as dt_util
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import URL, AiohttpClientMocker
@@ -56,7 +57,6 @@ from syrupy import SnapshotAssertion
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, SCHEDULE_OFF
-from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 from custom_components.daikin_onecta.device import DaikinOnectaDevice
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics, async_get_device_diagnostics
 from custom_components.daikin_onecta.select import DaikinScheduleSelect
@@ -66,6 +66,9 @@ from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
 from custom_components.daikin_onecta.water_heater import DaikinWaterTank
 
 from .conftest import FAKE_ACCESS_TOKEN, load_fixture_json, snapshot_platform_entities
+
+if TYPE_CHECKING:
+    from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 
 
 @pytest.mark.asyncio
@@ -463,9 +466,7 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     climate = DaikinClimate.__new__(DaikinClimate)
     climate.coordinator = MagicMock(options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
 
-    assert climate.homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {
-        FAN_LOW: "quiet"
-    }
+    assert climate.homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {FAN_LOW: "quiet"}
 
     assert climate.homekit_fan_mode_aliases(
         FanSpeed.from_dict(
@@ -1727,10 +1728,9 @@ def test_device_fill_info_missing_management_point() -> None:
 
 def test_schedule_select_missing_selection() -> None:
     """Handle a schedule entity whose management point is no longer available."""
-    entity = object.__new__(DaikinScheduleSelect)
-    entity._device = MagicMock()
-    entity._device.management_point.return_value = None
-    entity._embedded_id = "missing"
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    device.management_point.return_value = None
+    entity = DaikinScheduleSelect(device, MagicMock(), "missing", "climateControl", "schedule")
 
     assert entity.selection() is None
     assert entity.get_options() == []
@@ -1740,12 +1740,13 @@ def test_schedule_select_missing_selection() -> None:
 @pytest.mark.asyncio
 async def test_schedule_select_missing_selection_on_write() -> None:
     """Ignore schedule writes when no selection is available."""
-    entity = object.__new__(DaikinScheduleSelect)
-    entity._device = MagicMock()
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    device.management_point.return_value = None
+    entity = DaikinScheduleSelect(device, MagicMock(), "missing", "climateControl", "schedule")
     entity.selection = MagicMock(return_value=None)
 
     assert await entity.async_select_option("Weekday") is False
-    entity._device.put.assert_not_called()
+    device.put.assert_not_called()
 
 
 def test_system_health_register() -> None:
@@ -1760,33 +1761,37 @@ def test_system_health_register() -> None:
 @pytest.mark.asyncio
 async def test_firmware_install_without_id() -> None:
     """Do not issue a firmware update request without a firmware ID."""
-    entity = object.__new__(DaikinFirmwareUpdateEntity)
-    entity._firmware_id = None
-    entity._device = MagicMock()
-    entity._device.name = "Device"
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    management_point = MagicMock(
+        firmware_version=None,
+        software_version=None,
+        is_firmware_update_supported=None,
+        firmware_update=None,
+        firmware_update_status=None,
+    )
+    entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
 
     await entity.async_install(None, False)
 
-    entity._device.put.assert_not_called()
+    device.put.assert_not_called()
 
 
 @pytest.mark.asyncio
 async def test_switch_write_failures() -> None:
     """Keep switch state unchanged when cloud writes fail."""
-    entity = object.__new__(DaikinSwitch)
-    entity._device = MagicMock()
-    entity._device.id = "device"
-    entity._embedded_id = "point"
-    entity._value = "testMode"
-    entity._switch_state = "off"
-    entity._device.patch = AsyncMock(return_value=False)
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    device.management_point.return_value = None
+    device.patch = AsyncMock(return_value=False)
+    entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
 
     assert await entity.async_turn_on() is False
-    assert entity._switch_state == "off"
+    assert entity.is_on is False
 
-    entity._switch_state = "on"
-    assert await entity.async_turn_off() is False
-    assert entity._switch_state == "on"
+    on_characteristic = MagicMock(value="on")
+    device.management_point.return_value.characteristic.return_value = on_characteristic
+    on_entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
+    assert await on_entity.async_turn_off() is False
+    assert on_entity.is_on is True
 
 
 @pytest.mark.asyncio

@@ -1,6 +1,7 @@
 """Support for the Daikin BRP069A62."""
 
 import logging
+from typing import TYPE_CHECKING
 
 from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
 from homeassistant.config_entries import ConfigEntry
@@ -10,7 +11,9 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
-from .coordinator import OnectaRuntimeData
+
+if TYPE_CHECKING:
+    from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -98,9 +101,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
         dht = self.domestic_hotwater_temperature
-        if dht:
-            if dht.settable:
-                sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
+        if dht and dht.settable:
+            sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
         return sf
 
     def get_current_temperature(self):
@@ -175,13 +177,12 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             )
             return
         dht = self.domestic_hotwater_temperature
-        if dht is not None:
-            if not dht.settable:
-                _LOGGER.debug(
-                    "Device '%s' set tank temperature ignored because tank temperature can't be set",
-                    self._device.name,
-                )
-                return
+        if dht is not None and not dht.settable:
+            _LOGGER.debug(
+                "Device '%s' set tank temperature ignored because tank temperature can't be set",
+                self._device.name,
+            )
+            return
 
         int_value = int(value)
         if int_value != self._attr_target_temperature:
@@ -222,9 +223,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         states = [STATE_OFF, STATE_HEAT_PUMP]
         hwtd = self.hotwatertank_data
         pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
-        if pwf is not None:
-            if pwf.settable:
-                states += [STATE_PERFORMANCE]
+        if pwf is not None and pwf.settable:
+            states += [STATE_PERFORMANCE]
         _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
         return states
 

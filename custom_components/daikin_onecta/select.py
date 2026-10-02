@@ -1,6 +1,7 @@
 """Provide Daikin schedule selection entities."""
 
 import logging
+from typing import TYPE_CHECKING
 
 from homeassistant.components.select import SelectEntity
 from homeassistant.config_entries import ConfigEntry
@@ -10,8 +11,10 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN, ENABLED_DEFAULT, SCHEDULE_OFF, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
-from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
+
+if TYPE_CHECKING:
+    from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
 

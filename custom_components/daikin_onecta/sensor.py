@@ -1,6 +1,7 @@
 """Support for Daikin AC sensors."""
 
 import logging
+from typing import TYPE_CHECKING
 
 from homeassistant.components.sensor import CONF_STATE_CLASS, SensorEntity
 from homeassistant.config_entries import ConfigEntry
@@ -22,8 +23,10 @@ from .const import (
     TRANSLATION_KEY,
     VALUE_SENSOR_MAPPING,
 )
-from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
+
+if TYPE_CHECKING:
+    from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
 

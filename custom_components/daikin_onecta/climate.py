@@ -3,6 +3,7 @@
 from datetime import timedelta
 import logging
 import re
+from typing import TYPE_CHECKING
 
 from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, PLATFORM_SCHEMA, ClimateEntity
 from homeassistant.components.climate.const import (
@@ -25,7 +26,9 @@ from homeassistant.util import dt as dt_util
 import voluptuous as vol
 
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED, MODEL_ATTRIBUTE, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
-from .coordinator import OnectaRuntimeData
+
+if TYPE_CHECKING:
+    from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -308,10 +311,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         """Return the maximum configurable temperature."""
         max_temp = None
         setpointdict = self.setpoint()
-        if setpointdict is not None:
-            max_temp = setpointdict.max_value
-        else:
-            max_temp = super().max_temp
+        max_temp = setpointdict.max_value if setpointdict is not None else super().max_temp
         _LOGGER.debug(
             "Device '%s' %s max temperature '%s'",
             self._device.name,
@@ -324,10 +324,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         """Return the minimum configurable temperature."""
         min_temp = None
         setpointdict = self.setpoint()
-        if setpointdict is not None:
-            min_temp = setpointdict.min_value
-        else:
-            min_temp = super().min_temp
+        min_temp = setpointdict.min_value if setpointdict is not None else super().min_temp
         _LOGGER.debug(
             "Device '%s' %s min temperature '%s'",
             self._device.name,
@@ -355,10 +352,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         step_value = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            if setpointdict.step_value is not None:
-                step_value = setpointdict.step_value
-            else:
-                step_value = super().target_temperature_step
+            step_value = setpointdict.step_value if setpointdict.step_value is not None else super().target_temperature_step
         _LOGGER.debug(
             "Device '%s' %s target temperature step '%s'",
             self._device.name,

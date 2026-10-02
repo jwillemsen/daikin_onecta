@@ -1,6 +1,6 @@
 """Diagnostics support for Daikin Diagnostics."""
 
-from typing import Any
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.components.diagnostics import async_redact_data
 from homeassistant.config_entries import ConfigEntry
@@ -8,7 +8,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.device_registry import DeviceEntry
 
-from .coordinator import OnectaRuntimeData
+if TYPE_CHECKING:
+    from .coordinator import OnectaRuntimeData
 
 REDACT_KEYS = {"serialNumber", "macAddress"}
 
