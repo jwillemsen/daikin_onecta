@@ -12,6 +12,8 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
 
+EXPECTED_RATE_LIMIT_RETRY_AFTER = 3060
+
 
 @pytest.fixture
 def mock_hass():
@@ -112,7 +114,7 @@ class TestOnectaDataUpdateCoordinator:
         with pytest.raises(UpdateFailed) as exc_info:
             await coordinator.async_update_data()
 
-        assert exc_info.value.retry_after == 3060
+        assert exc_info.value.retry_after == EXPECTED_RATE_LIMIT_RETRY_AFTER
         assert coordinator.update_interval == initial_interval
 
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):

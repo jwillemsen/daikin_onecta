@@ -1,6 +1,7 @@
 """Shared fixtures for the Daikin Onecta integration."""
 
 import asyncio
+from dataclasses import dataclass
 import json
 from pathlib import Path
 import time
@@ -31,6 +32,29 @@ FAKE_ACCESS_TOKEN = (
     ".SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
 )
 FAKE_AUTH_IMPL = "conftest-imported-cred"
+
+
+@dataclass(frozen=True)
+class SnapshotTestContext:
+    """Shared Home Assistant state required by platform snapshot tests."""
+
+    hass: HomeAssistant
+    aioclient_mock: AiohttpClientMocker
+    config_entry: MockConfigEntry
+    entity_registry: er.EntityRegistry
+    snapshot: SnapshotAssertion
+
+
+@pytest.fixture
+def snapshot_context(
+    hass: HomeAssistant,
+    aioclient_mock: AiohttpClientMocker,
+    config_entry: MockConfigEntry,
+    entity_registry: er.EntityRegistry,
+    snapshot: SnapshotAssertion,
+) -> SnapshotTestContext:
+    """Provide the shared dependencies for a platform snapshot test."""
+    return SnapshotTestContext(hass, aioclient_mock, config_entry, entity_registry, snapshot)
 
 
 def load_fixture_json(name):
@@ -73,15 +97,16 @@ def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) 
 
 @pytest.mark.freeze_time("2026-01-01 12:00:00+00:00")
 async def snapshot_platform_entities(
-    hass: HomeAssistant,
-    aioclient_mock: AiohttpClientMocker,
-    config_entry: MockConfigEntry,
+    context: SnapshotTestContext,
     platform: Platform,
-    entity_registry: er.EntityRegistry,
-    snapshot: SnapshotAssertion,
     fixture_device_json,
 ) -> None:
     """Set up a platform and snapshot its entities."""
+    hass = context.hass
+    aioclient_mock = context.aioclient_mock
+    config_entry = context.config_entry
+    entity_registry = context.entity_registry
+    snapshot = context.snapshot
     config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
     config_entry.runtime_data.coordinator = MagicMock()
     with patch(

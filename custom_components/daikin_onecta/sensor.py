@@ -222,9 +222,7 @@ async def async_setup_entry(
 class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     """Representation of a power/energy sensor."""
 
-    def __init__(
-        self, device: DaikinOnectaDevice, coordinator, details: EnergySensorDetails
-    ) -> None:
+    def __init__(self, device: DaikinOnectaDevice, coordinator, details: EnergySensorDetails) -> None:
         """Initialize an energy sensor for a management point."""
         super().__init__(coordinator)
         self._device = device
@@ -316,10 +314,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     """Represent a Daikin characteristic or sensory-data value."""
 
-    def __init__(
-        self,
-        device: DaikinOnectaDevice, coordinator, details: ValueSensorDetails
-    ) -> None:
+    def __init__(self, device: DaikinOnectaDevice, coordinator, details: ValueSensorDetails) -> None:
         """Initialize the sensor from a device value."""
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", details.management_point_type, details.sub_type, details.value)
         super().__init__(coordinator)

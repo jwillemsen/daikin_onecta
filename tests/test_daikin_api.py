@@ -11,6 +11,8 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.daikin_api import DaikinApi
 
+EXPECTED_RATE_LIMIT_ISSUES = 2
+
 
 async def test_get_device_details_propagates_connection_error(
     hass: HomeAssistant,
@@ -142,7 +144,7 @@ async def test_rate_limit_issue_updates(hass: HomeAssistant, config_entry: MockC
     with patch("custom_components.daikin_onecta.daikin_api.ir.async_create_issue") as create_issue:
         api.create_rate_limit_issues()
 
-    assert create_issue.call_count == 2
+    assert create_issue.call_count == EXPECTED_RATE_LIMIT_ISSUES
 
     api.client.rate_limit = RateLimit(minute_remaining=1, day_remaining=1)
     with patch("custom_components.daikin_onecta.daikin_api.ir.async_delete_issue") as delete_issue:
