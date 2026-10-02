@@ -10,7 +10,7 @@ import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
-from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
+from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
 
 EXPECTED_RATE_LIMIT_RETRY_AFTER = 3060
 
@@ -24,10 +24,7 @@ def mock_hass():
 @pytest.fixture
 def mock_config_entry() -> MockConfigEntry:
     """Mock a config entry."""
-    entry = MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345")
-    entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
-    entry.runtime_data.coordinator = MagicMock()
-    return entry
+    return MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345")
 
 
 @pytest.fixture
@@ -45,7 +42,7 @@ def coordinator(mock_hass, mock_config_entry):
         config_entry,
         data={**config_entry.data, **options},
     )
-    return OnectaDataUpdateCoordinator(mock_hass, config_entry)
+    return OnectaDataUpdateCoordinator(mock_hass, config_entry, MagicMock())
 
 
 class TestOnectaDataUpdateCoordinator:
@@ -105,7 +102,7 @@ class TestOnectaDataUpdateCoordinator:
 
     async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
         """A Daikin rate limit should use the coordinator retry-after mechanism."""
-        daikin_api = mock_config_entry.runtime_data.daikin_api
+        daikin_api = coordinator.api
         daikin_api.last_patch_call = None
         daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
         initial_interval = coordinator.update_interval

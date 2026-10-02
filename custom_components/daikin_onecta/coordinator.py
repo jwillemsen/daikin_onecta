@@ -1,6 +1,5 @@
 """Coordinator for Daikin Onecta integration."""
 
-from dataclasses import dataclass, field
 from datetime import time, timedelta
 import logging
 import random
@@ -20,22 +19,14 @@ _LOGGER = logging.getLogger(__name__)
 RATE_LIMIT_EXCEEDED = "Daikin API rate limit exceeded"
 
 
-@dataclass
-class OnectaRuntimeData:
-    """Runtime Data for Onecta integration."""
-
-    coordinator: "OnectaDataUpdateCoordinator" = field(init=False)
-    devices: dict[str, DaikinOnectaDevice]
-    daikin_api: DaikinApi
-
-
-class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
+class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDevice]]):
     """Class to manage fetching data from the API."""
 
-    def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry, daikin_api: DaikinApi) -> None:
         """Initialize."""
         self.options = config_entry.options
         self._config_entry = config_entry
+        self._daikin_api = daikin_api
 
         super().__init__(
             hass,
@@ -49,6 +40,11 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             self.update_interval,
         )
 
+    @property
+    def api(self) -> DaikinApi:
+        """Return the Daikin API client."""
+        return self._daikin_api
+
     def scan_ignore(self) -> int:
         """Return the delay after a write before polling resumes."""
         return self.options.get("scan_ignore", 30)
@@ -57,19 +53,17 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Fetch the latest device state from Daikin."""
         _LOGGER.debug("Daikin coordinator start _async_update_data")
 
-        onecta_data: OnectaRuntimeData = self._config_entry.runtime_data
-        devices = onecta_data.devices
-        daikin_api = onecta_data.daikin_api
+        devices = self.data or {}
         scan_ignore_value = self.scan_ignore()
 
-        if daikin_api.last_patch_call is not None and (dt_util.now() - daikin_api.last_patch_call).total_seconds() < scan_ignore_value:
+        if self.api.last_patch_call is not None and (dt_util.now() - self.api.last_patch_call).total_seconds() < scan_ignore_value:
             self.update_interval = timedelta(seconds=scan_ignore_value)
             _LOGGER.debug(
                 "API UPDATE skipped (just updated from UI)",
             )
         else:
             try:
-                cloud_devices = await daikin_api.get_cloud_device_details()
+                cloud_devices = await self.api.get_cloud_device_details()
             except OnectaRateLimitError as err:
                 raise UpdateFailed(
                     RATE_LIMIT_EXCEEDED,
@@ -80,7 +74,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
                 if dev_data.id in devices:
                     devices[dev_data.id].set_device_data(dev_data)
                 else:
-                    device = DaikinOnectaDevice(dev_data, daikin_api)
+                    device = DaikinOnectaDevice(dev_data, self.api)
                     # Register the gateway device in the device registry now, before
                     # this coordinator's first refresh returns and platforms are set
                     # up, so every platform can link back to it via via_device_id.

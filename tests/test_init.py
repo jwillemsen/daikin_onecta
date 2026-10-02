@@ -1,7 +1,7 @@
 """Test daikin_onecta sensor."""
 
 from datetime import timedelta
-from typing import TYPE_CHECKING, Any
+from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import GatewayDevice
@@ -63,9 +63,6 @@ from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
 from custom_components.daikin_onecta.water_heater import DaikinWaterTank
 
 from .conftest import FAKE_ACCESS_TOKEN, SnapshotTestContext, load_fixture_json, snapshot_platform_entities
-
-if TYPE_CHECKING:
-    from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 
 
 def _assert_initial_climate_state(hass: HomeAssistant) -> None:
@@ -377,15 +374,13 @@ async def test_altherma_ratelimit(
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=429)
 
         # Test that updating the data through with a 429 doesn't crash
-        onecta_data: OnectaRuntimeData = config_entry.runtime_data
-        coordinator = onecta_data.coordinator
+        coordinator = config_entry.runtime_data
         await coordinator.async_update_data()
 
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
 
         # Test that updating the data through with a status 200 works
-        onecta_data: OnectaRuntimeData = config_entry.runtime_data
-        coordinator = onecta_data.coordinator
+        coordinator = config_entry.runtime_data
         await coordinator.async_update_data()
 
 
@@ -482,7 +477,7 @@ async def test_update_listener_notifies_entities() -> None:
     """Test options updates notify coordinator listeners."""
     coordinator = MagicMock()
     config_entry = MagicMock()
-    config_entry.runtime_data = MagicMock(coordinator=coordinator)
+    config_entry.runtime_data = coordinator
 
     await update_listener(None, config_entry)
 

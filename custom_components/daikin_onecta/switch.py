@@ -18,7 +18,7 @@ if TYPE_CHECKING:
     from homeassistant.helpers.device_registry import DeviceInfo
     from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-    from .coordinator import OnectaRuntimeData
+    from .coordinator import OnectaDataUpdateCoordinator
     from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -30,8 +30,7 @@ async def async_setup_entry(
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
     """Set up Daikin switches based on config_entry."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
     sensors = []
     supported_management_point_types = {
         "domesticHotWaterTank",
@@ -40,7 +39,7 @@ async def async_setup_entry(
         "climateControlMainZone",
     }
 
-    for device in onecta_data.devices.values():
+    for device in (coordinator.data or {}).values():
         for management_point in device.device.management_points:
             management_point_type = management_point.management_point_type
             for value, characteristic in management_point.simple_characteristics().items():

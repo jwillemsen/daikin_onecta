@@ -13,7 +13,7 @@ from homeassistant.helpers.typing import ConfigType
 import jwt
 
 from .const import DOMAIN
-from .coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
+from .coordinator import OnectaDataUpdateCoordinator
 from .daikin_api import DaikinApi
 
 _LOGGER = logging.getLogger(__name__)
@@ -54,10 +54,9 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     except (OAuth2TokenRequestError, aiohttp.ClientError) as err:
         raise ConfigEntryNotReady from err
 
-    config_entry.runtime_data = OnectaRuntimeData(daikin_api=daikin_api, devices={})
-    config_entry.runtime_data.coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
+    config_entry.runtime_data = OnectaDataUpdateCoordinator(hass, config_entry, daikin_api)
 
-    await config_entry.runtime_data.coordinator.async_config_entry_first_refresh()
+    await config_entry.runtime_data.async_config_entry_first_refresh()
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
@@ -74,8 +73,7 @@ async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> 
 
 async def update_listener(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
     """Handle options update."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
     coordinator.update_settings(config_entry)
     coordinator.async_update_listeners()
 

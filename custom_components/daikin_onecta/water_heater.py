@@ -13,7 +13,7 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from .const import DOMAIN
 
 if TYPE_CHECKING:
-    from .coordinator import OnectaRuntimeData
+    from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -24,9 +24,8 @@ async def async_setup_entry(
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
     """Set up Daikin water tank entities."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
-    for device in onecta_data.devices.values():
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+    for device in (coordinator.data or {}).values():
         supported_management_point_types = {
             "domesticHotWaterTank",
             "domesticHotWaterFlowThrough",

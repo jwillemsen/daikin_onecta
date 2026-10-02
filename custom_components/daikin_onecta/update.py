@@ -20,7 +20,7 @@ if TYPE_CHECKING:
 
     from daikin_onecta.models import ManagementPoint
 
-    from .coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
+    from .coordinator import OnectaDataUpdateCoordinator
     from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -34,12 +34,11 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Daikin update entities from a config entry."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
 
     entities = [
         DaikinFirmwareUpdateEntity(coordinator, device, management_point, management_point.management_point_type)
-        for device in onecta_data.devices.values()
+        for device in (coordinator.data or {}).values()
         for management_point in device.device.management_points
         if management_point.firmware_version is not None or management_point.software_version is not None
     ]

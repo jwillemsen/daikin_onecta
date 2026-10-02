@@ -8,7 +8,7 @@ from homeassistant.core import HomeAssistant, callback
 from .const import DAIKIN_API_URL, DOMAIN, OAUTH2_AUTHORIZE
 
 if TYPE_CHECKING:
-    from .coordinator import OnectaRuntimeData
+    from .coordinator import OnectaDataUpdateCoordinator
 
 
 @callback
@@ -22,8 +22,8 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
     entries = hass.config_entries.async_entries(DOMAIN)
     if entries:
         config_entry = entries[0]
-        onecta_data: OnectaRuntimeData = config_entry.runtime_data
-        daikin_api = onecta_data.daikin_api
+        coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+        daikin_api = coordinator.api
         return {
             "api_status": system_health.async_check_can_reach_url(hass, DAIKIN_API_URL + "/v1/gateway-devices"),
             "oauth2_status": system_health.async_check_can_reach_url(hass, OAUTH2_AUTHORIZE),

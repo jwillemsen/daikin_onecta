@@ -9,7 +9,7 @@ from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
+from .coordinator import OnectaDataUpdateCoordinator
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -21,10 +21,9 @@ async def async_setup_entry(
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
     """Set up refresh buttons for configured Daikin devices."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
 
-    entities = [DaikinRefreshButton(device, config_entry, coordinator) for device in onecta_data.devices.values()]
+    entities = [DaikinRefreshButton(device, config_entry, coordinator) for device in (coordinator.data or {}).values()]
 
     if entities:
         async_add_entities(entities)

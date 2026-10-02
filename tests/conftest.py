@@ -20,7 +20,6 @@ from syrupy.extensions.single_file import SingleFileAmberSnapshotExtension
 from syrupy.filters import props
 
 from custom_components.daikin_onecta.const import DAIKIN_API_URL, DOMAIN
-from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
@@ -107,8 +106,6 @@ async def snapshot_platform_entities(
     config_entry = context.config_entry
     entity_registry = context.entity_registry
     snapshot = context.snapshot
-    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
-    config_entry.runtime_data.coordinator = MagicMock()
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ):

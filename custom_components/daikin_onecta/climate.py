@@ -33,7 +33,6 @@ if TYPE_CHECKING:
     from homeassistant.helpers.device_registry import DeviceInfo
     from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
-    from .coordinator import OnectaRuntimeData
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -85,9 +84,8 @@ async def async_setup_entry(
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
     """Set up Daikin climate based on config_entry."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
-    for device in onecta_data.devices.values():
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+    for device in (coordinator.data or {}).values():
         modes: list[str] = []
         device_model = device.device.device_model
         embedded_id = ""
