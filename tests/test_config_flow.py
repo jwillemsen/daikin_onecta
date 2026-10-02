@@ -17,8 +17,8 @@ from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES,
 
 from .conftest import FAKE_ACCESS_TOKEN
 
-CLIENT_ID = "emU20GdJDiiUxI_HnFGz69dD"
-CLIENT_SECRET = "TNL1ePwnOkf6o2gKiI8InS8nVwTz2G__VYkv6WznzJGUnwLHLTmKYp-7RZc6FA3yS6D0Wgj_snvqsU5H_LPHQA"
+TEST_CLIENT_ID = "test-client-id"
+TEST_CLIENT_SECRET = "test-client-secret"
 HTTP_OK = 200
 CURRENT_MINOR_VERSION = 2
 
@@ -35,7 +35,7 @@ async def setup_credentials(hass: HomeAssistant) -> None:
     await async_import_client_credential(
         hass,
         DOMAIN,
-        ClientCredential(CLIENT_ID, CLIENT_SECRET),
+        ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET),
         DOMAIN,
     )
 
@@ -50,13 +50,13 @@ async def test_full_flow(
     """Check full flow."""
     assert await async_setup_component(hass, "daikin_onecta", {})
 
-    await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
+    await async_import_client_credential(hass, DOMAIN, ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET))
 
     result = await hass.config_entries.flow.async_init("daikin_onecta", context={"source": config_entries.SOURCE_USER})
     state = oauth_state(result)
 
     assert result["url"] == (
-        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}"
+        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={TEST_CLIENT_ID}"
         "&redirect_uri=https://example.com/auth/external/callback"
         f"&state={state}"
         f"&scope=openid+onecta:basic.integration+offline_access"
@@ -155,7 +155,7 @@ async def test_zeroconf_flow(
     """Test zeroconf flow."""
     assert await async_setup_component(hass, "daikin_onecta", {})
 
-    await async_import_client_credential(hass, DOMAIN, ClientCredential(CLIENT_ID, CLIENT_SECRET))
+    await async_import_client_credential(hass, DOMAIN, ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET))
 
     result = await hass.config_entries.flow.async_init(
         DOMAIN,
@@ -165,7 +165,7 @@ async def test_zeroconf_flow(
     state = oauth_state(result)
 
     assert result["url"] == (
-        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={CLIENT_ID}"
+        f"{OAUTH2_AUTHORIZE}?response_type=code&client_id={TEST_CLIENT_ID}"
         "&redirect_uri=https://example.com/auth/external/callback"
         f"&state={state}"
         f"&scope=openid+onecta:basic.integration+offline_access"
