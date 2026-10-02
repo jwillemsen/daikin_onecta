@@ -37,13 +37,14 @@ class DaikinOnectaDevice:
         # to this gateway device: the older via_device=(DOMAIN, identifier) form is
         # deprecated because identifiers are no longer guaranteed globally unique.
         self.ha_device_id: str | None = None
+        self._is_present_in_cloud = True
 
         _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id)
 
     @property
     def available(self) -> bool:
         """Return whether the device is connected to the Daikin cloud."""
-        return self.device.available
+        return self._is_present_in_cloud and self.device.available
 
     def management_point(self, embedded_id: str):
         """Return a management point by embedded id."""
@@ -118,11 +119,16 @@ class DaikinOnectaDevice:
     def set_device_data(self, device: GatewayDevice) -> None:
         """Overwrite the typed and compatibility data for this device."""
         self.device = device
+        self._is_present_in_cloud = True
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
             self.name,
             self.available,
         )
+
+    def mark_unavailable(self) -> None:
+        """Mark the device unavailable after it is absent from a cloud response."""
+        self._is_present_in_cloud = False
 
     async def patch(
         self,
