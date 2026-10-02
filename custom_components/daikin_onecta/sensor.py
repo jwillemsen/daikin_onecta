@@ -258,7 +258,19 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
-        """Return the aggregated energy value."""
+        """Return energy aggregated for the current day, week, month, or year.
+
+        Daikin returns rolling windows for each aggregation period. The first
+        half of the daily, weekly, and yearly arrays represents the preceding
+        period; the second half represents the current period. Consequently,
+        the current day starts at ``d[12]``, the current week at ``w[7]``,
+        and the current year at ``m[12]``. The current month is a single slot
+        in the monthly array.
+
+        Daikin publishes consumption data on its own schedule. ``None`` means
+        that a time slot is not available yet and contributes no consumption
+        until a later update supplies its value.
+        """
         point = self._device.management_point(self._embedded_id)
         if point is None:
             return None
@@ -280,14 +292,19 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         if period_data is None:
             return None
 
+        # Treat not-yet-published time slots as zero until Daikin provides the
+        # corresponding consumption value in a later coordinator update.
         energy_values = [0 if value is None else value for value in period_data]
         if self._period == SENSOR_PERIOD_WEEKLY:
+            # w[0:7] is last week; w[7:14] is this week.
             start_index = 7
             end_index = len(energy_values)
         elif self._period == SENSOR_PERIOD_MONTHLY:
+            # m[12] is January of this year, so select this calendar month.
             start_index = 11 + dt_util.now().month
             end_index = start_index + 1
         else:
+            # d[0:12] and m[0:12] are the preceding day/year respectively.
             start_index = 12
             end_index = len(energy_values)
         return round(sum(energy_values[start_index:end_index]), 3)
