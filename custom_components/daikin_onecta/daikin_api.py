@@ -34,10 +34,9 @@ class DaikinApi:
         self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
         self._client = OnectaClient(async_get_clientsession(hass), self.async_get_access_token)
 
-        # The Daikin cloud returns old settings if queried with a GET
-        # immediately after a PATCH request. Se we use this attribute
-        # to check when we had the last patch command, if it is less then
-        # 10 seconds ago we skip the get
+        # The Daikin cloud can return stale settings immediately after a PATCH.
+        # The coordinator uses this timestamp to delay refreshes for its
+        # configured scan-ignore period after a successful command.
         self._last_patch_call: datetime | None = None
 
         # The following lock is used to serialize http requests to Daikin cloud
