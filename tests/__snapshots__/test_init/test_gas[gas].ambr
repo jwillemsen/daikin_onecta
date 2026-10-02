@@ -1298,7 +1298,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <WaterHeaterEntityFeature.OPERATION_MODE|ON_OFF: 10>,
           <WaterHeaterStateAttribute.TARGET_TEMP_HIGH: 'target_temp_high'>: None,
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
-          <WaterHeaterStateAttribute.TEMPERATURE: 'temperature'>: None,
+          <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: None,
         }),
         'entity_id': 'water_heater.my_living_room',
         'state': 'off',

@@ -1628,7 +1628,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_HIGH: 'target_temp_high'>: None,
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           'target_temp_step': 1.0,
-          <WaterHeaterStateAttribute.TEMPERATURE: 'temperature'>: 45.0,
+          <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 45.0,
         }),
         'entity_id': 'water_heater.altherma',
         'state': 'heat_pump',

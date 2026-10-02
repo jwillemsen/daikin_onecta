@@ -1490,7 +1490,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_HIGH: 'target_temp_high'>: None,
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           'target_temp_step': 0.5,
-          <WaterHeaterStateAttribute.TEMPERATURE: 'temperature'>: 20.0,
+          <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20.0,
         }),
         'entity_id': 'water_heater.climate_control_getr422',
         'state': 'off',
