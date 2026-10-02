@@ -117,9 +117,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_release_summary = None
         self._firmware_id = None
         self._attr_in_progress = False
-        self._attr_supported_features = (
-            UpdateEntityFeature.INSTALL if self._is_update_supported else UpdateEntityFeature(0)
-        )
+        self._attr_supported_features = UpdateEntityFeature.INSTALL if self._is_update_supported else UpdateEntityFeature(0)
         self._attr_extra_state_attributes = {}
 
         if management_point.firmware_update is not None:

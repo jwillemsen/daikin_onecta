@@ -1765,9 +1765,7 @@ def test_device_info_uses_gateway_embedded_id() -> None:
     assert info["model"] == "Gateway model"
 
 
-def test_entity_diagnostics_redact_sensitive_sensor_state(
-    hass: HomeAssistant, config_entry: MockConfigEntry
-) -> None:
+def test_entity_diagnostics_redact_sensitive_sensor_state(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
     """Redact sensitive identifiers exposed as sensor states."""
     config_entry.add_to_hass(hass)
     entity_entry = er.async_get(hass).async_get_or_create(
@@ -1875,10 +1873,7 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
         "device_zone1_roomTemperature",
         "device_tank",
     ]
-    assert (
-        entity_registry.async_get(current_climate_entry.entity_id).unique_id
-        == "device_zone1_leavingWaterOffset"
-    )
+    assert entity_registry.async_get(current_climate_entry.entity_id).unique_id == "device_zone1_leavingWaterOffset"
 
 
 def test_schedule_select_missing_selection() -> None:
@@ -1920,9 +1915,7 @@ async def test_system_health_without_config_entry(hass: HomeAssistant) -> None:
 
 
 @pytest.mark.asyncio
-async def test_system_health_ignores_unloaded_config_entry(
-    hass: HomeAssistant, config_entry: MockConfigEntry
-) -> None:
+async def test_system_health_ignores_unloaded_config_entry(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
     """Do not access runtime data for an entry that is not loaded."""
     config_entry.add_to_hass(hass)
 

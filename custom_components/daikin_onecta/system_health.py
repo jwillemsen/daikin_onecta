@@ -23,9 +23,7 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
     for config_entry in hass.config_entries.async_entries(DOMAIN):
         if config_entry.state is not ConfigEntryState.LOADED:
             continue
-        coordinator: OnectaDataUpdateCoordinator | None = getattr(
-            config_entry, "runtime_data", None
-        )
+        coordinator: OnectaDataUpdateCoordinator | None = getattr(config_entry, "runtime_data", None)
         if coordinator is None:
             continue
 

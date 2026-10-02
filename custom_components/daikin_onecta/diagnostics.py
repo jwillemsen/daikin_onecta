@@ -37,11 +37,7 @@ def get_entities(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, di
         }
 
         if state:
-            entity_info["state"] = (
-                REDACTED
-                if entity_entry.translation_key in REDACTED_SENSOR_TRANSLATION_KEYS
-                else state.state
-            )
+            entity_info["state"] = REDACTED if entity_entry.translation_key in REDACTED_SENSOR_TRANSLATION_KEYS else state.state
             entity_info["attributes"] = async_redact_data(dict(state.attributes), REDACT_KEYS)
 
         entities_data[entity_id] = entity_info
@@ -65,18 +61,13 @@ async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: 
     }
 
 
-def _find_daikin_device(
-    device: DeviceEntry, devices: dict[str, DaikinOnectaDevice]
-) -> DaikinOnectaDevice | None:
+def _find_daikin_device(device: DeviceEntry, devices: dict[str, DaikinOnectaDevice]) -> DaikinOnectaDevice | None:
     """Return the Onecta gateway that owns a Home Assistant device."""
     identifiers = {identifier for domain, identifier in device.identifiers if domain == DOMAIN}
     for gateway_id, daikin_device in devices.items():
         if gateway_id in identifiers:
             return daikin_device
-        if any(
-            gateway_id + management_point.embedded_id in identifiers
-            for management_point in daikin_device.device.management_points
-        ):
+        if any(gateway_id + management_point.embedded_id in identifiers for management_point in daikin_device.device.management_points):
             return daikin_device
     return None
 
