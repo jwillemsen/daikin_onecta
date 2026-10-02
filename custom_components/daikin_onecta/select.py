@@ -3,16 +3,11 @@ import logging
 from homeassistant.components.select import SelectEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ICON
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import SCHEDULE_OFF
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
+from .const import DOMAIN, ENABLED_DEFAULT, SCHEDULE_OFF, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 

@@ -5,11 +5,11 @@ on:
     branches:
       - master
     paths:
-      - 'custom_components/daikin_onecta/translations/en.json'
+      - "custom_components/daikin_onecta/translations/en.json"
   repository_dispatch:
     types: [lokalise_webhook]
   schedule:
-    - cron: '0 2 * * *' # Elke nacht om 02:00 UTC als vangnet
+    - cron: "0 2 * * *" # Elke nacht om 02:00 UTC als vangnet
   workflow_dispatch: # Handmatige startknop in GitHub Actions UI
 
 jobs:

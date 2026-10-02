@@ -1,16 +1,11 @@
 """Support for the Daikin BRP069A62."""
+
 import logging
 
-from homeassistant.components.water_heater import STATE_HEAT_PUMP
-from homeassistant.components.water_heater import STATE_OFF
-from homeassistant.components.water_heater import STATE_PERFORMANCE
-from homeassistant.components.water_heater import WaterHeaterEntity
-from homeassistant.components.water_heater import WaterHeaterEntityFeature
+from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_TEMPERATURE
-from homeassistant.const import UnitOfTemperature
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 

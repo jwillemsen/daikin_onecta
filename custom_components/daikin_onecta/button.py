@@ -1,16 +1,15 @@
 """Button platform for the Daikin Onecta integration."""
+
 import logging
 
 from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .coordinator import OnectaDataUpdateCoordinator
-from .coordinator import OnectaRuntimeData
+from .coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)

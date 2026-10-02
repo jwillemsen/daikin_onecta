@@ -1,8 +1,9 @@
 """Install test and integration requirements."""
+
 import json
+from pathlib import Path
 import subprocess
 import sys
-from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 MANIFEST = ROOT / "custom_components" / "daikin_onecta" / "manifest.json"

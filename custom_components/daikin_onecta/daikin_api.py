@@ -1,19 +1,16 @@
 """Home Assistant adapter for the Daikin Onecta API client."""
+
 import asyncio
-import logging
 from datetime import datetime
+import logging
 from typing import Any
 
-from daikin_onecta import GatewayDevice
-from daikin_onecta import OnectaApiError
-from daikin_onecta import OnectaClient
-from daikin_onecta import OnectaRateLimitError
-from homeassistant import config_entries
-from homeassistant import core
-from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers import issue_registry as ir
+from homeassistant import config_entries, core
+from homeassistant.helpers import config_entry_oauth2_flow, issue_registry as ir
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.util import dt as dt_util
+
+from daikin_onecta import GatewayDevice, OnectaApiError, OnectaClient, OnectaRateLimitError
 
 from .const import DOMAIN
 
@@ -76,9 +73,7 @@ class DaikinApi:
         """Create Home Assistant repair issues for exhausted rate limits."""
         limits = self.rate_limits
         learn_more_url = (
-            "https://developer.cloud.daikineurope.com/docs/"
-            "b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines"
-            "#doc-heading-rate-limitation"
+            "https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation"
         )
         if limits["remaining_minutes"] == 0:
             ir.async_create_issue(

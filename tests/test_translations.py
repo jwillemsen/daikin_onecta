@@ -1,4 +1,5 @@
 """Tests that setup translations match the OAuth2 config flow."""
+
 import json
 from pathlib import Path
 

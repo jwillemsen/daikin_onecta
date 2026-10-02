@@ -1,23 +1,16 @@
 """Support for Daikin binary sensor sensors."""
+
 import logging
 
-from homeassistant.components.binary_sensor import (
-    BinarySensorEntity,
-)
+from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_DEVICE_CLASS
-from homeassistant.const import CONF_ICON
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import ENTITY_CATEGORY
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
+from .const import DOMAIN, ENABLED_DEFAULT, ENTITY_CATEGORY, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 

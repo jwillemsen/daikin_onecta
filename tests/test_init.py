@@ -1,83 +1,70 @@
 """Test daikin_onecta sensor."""
-from datetime import date
-from datetime import timedelta
-from unittest.mock import AsyncMock
-from unittest.mock import MagicMock
-from unittest.mock import patch
 
+from datetime import date, timedelta
+from unittest.mock import AsyncMock, MagicMock, patch
+
+from daikin_onecta import GatewayDevice
+from daikin_onecta.models import Characteristic, FanSpeed
+from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN, SERVICE_PRESS
+from homeassistant.components.climate import (
+    ATTR_FAN_MODE,
+    ATTR_HVAC_MODE,
+    ATTR_PRESET_MODE,
+    ATTR_SWING_HORIZONTAL_MODE,
+    ATTR_SWING_MODE,
+    DOMAIN as CLIMATE_DOMAIN,
+    FAN_HIGH,
+    FAN_LOW,
+    FAN_MEDIUM,
+    FAN_MIDDLE,
+    PRESET_AWAY,
+    PRESET_BOOST,
+    PRESET_NONE,
+    SERVICE_SET_FAN_MODE,
+    SERVICE_SET_HVAC_MODE,
+    SERVICE_SET_PRESET_MODE,
+    SERVICE_SET_SWING_HORIZONTAL_MODE,
+    SERVICE_SET_SWING_MODE,
+    SERVICE_TURN_OFF,
+    SERVICE_TURN_ON,
+)
+from homeassistant.components.climate.const import HVACMode
+from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN, SERVICE_UPDATE_ENTITY
+from homeassistant.components.select import ATTR_OPTION, DOMAIN as SELECT_DOMAIN, SERVICE_SELECT_OPTION
+from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
+from homeassistant.components.update import DOMAIN as UPDATE_DOMAIN, SERVICE_INSTALL
+from homeassistant.components.water_heater import (
+    ATTR_OPERATION_MODE,
+    ATTR_TEMPERATURE,
+    DOMAIN as WATER_HEATER_DOMAIN,
+    SERVICE_SET_OPERATION_MODE,
+    SERVICE_SET_TEMPERATURE,
+    STATE_HEAT_PUMP,
+    STATE_PERFORMANCE,
+)
+from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
+from homeassistant.core import HomeAssistant
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
-import pytest
-from daikin_onecta import GatewayDevice
-from daikin_onecta.models import Characteristic
-from daikin_onecta.models import FanSpeed
-from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN
-from homeassistant.components.button import SERVICE_PRESS
-from homeassistant.components.climate import ATTR_FAN_MODE
-from homeassistant.components.climate import ATTR_HVAC_MODE
-from homeassistant.components.climate import ATTR_PRESET_MODE
-from homeassistant.components.climate import ATTR_SWING_HORIZONTAL_MODE
-from homeassistant.components.climate import ATTR_SWING_MODE
-from homeassistant.components.climate import DOMAIN as CLIMATE_DOMAIN
-from homeassistant.components.climate import FAN_HIGH
-from homeassistant.components.climate import FAN_LOW
-from homeassistant.components.climate import FAN_MEDIUM
-from homeassistant.components.climate import FAN_MIDDLE
-from homeassistant.components.climate import PRESET_AWAY
-from homeassistant.components.climate import PRESET_BOOST
-from homeassistant.components.climate import PRESET_NONE
-from homeassistant.components.climate import SERVICE_SET_FAN_MODE
-from homeassistant.components.climate import SERVICE_SET_HVAC_MODE
-from homeassistant.components.climate import SERVICE_SET_PRESET_MODE
-from homeassistant.components.climate import SERVICE_SET_SWING_HORIZONTAL_MODE
-from homeassistant.components.climate import SERVICE_SET_SWING_MODE
-from homeassistant.components.climate import SERVICE_TURN_OFF
-from homeassistant.components.climate import SERVICE_TURN_ON
-from homeassistant.components.climate.const import HVACMode
-from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN
-from homeassistant.components.homeassistant import SERVICE_UPDATE_ENTITY
-from homeassistant.components.select import ATTR_OPTION
-from homeassistant.components.select import DOMAIN as SELECT_DOMAIN
-from homeassistant.components.select import SERVICE_SELECT_OPTION
-from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
-from homeassistant.components.update import DOMAIN as UPDATE_DOMAIN
-from homeassistant.components.update import SERVICE_INSTALL
-from homeassistant.components.water_heater import ATTR_OPERATION_MODE
-from homeassistant.components.water_heater import ATTR_TEMPERATURE
-from homeassistant.components.water_heater import DOMAIN as WATER_HEATER_DOMAIN
-from homeassistant.components.water_heater import SERVICE_SET_OPERATION_MODE
-from homeassistant.components.water_heater import SERVICE_SET_TEMPERATURE
-from homeassistant.components.water_heater import STATE_HEAT_PUMP
-from homeassistant.components.water_heater import STATE_PERFORMANCE
-from homeassistant.const import ATTR_ENTITY_ID
-from homeassistant.const import Platform
-from homeassistant.const import STATE_OFF
-from homeassistant.const import STATE_ON
-from homeassistant.core import HomeAssistant
 from homeassistant.setup import async_setup_component
+import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
-from pytest_homeassistant_custom_component.test_util.aiohttp import URL
+from pytest_homeassistant_custom_component.test_util.aiohttp import URL, AiohttpClientMocker
 from syrupy import SnapshotAssertion
 
-from .conftest import FAKE_ACCESS_TOKEN
-from .conftest import load_fixture_json
-from .conftest import snapshot_platform_entities
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
-from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES
-from custom_components.daikin_onecta.const import DAIKIN_API_URL
-from custom_components.daikin_onecta.const import SCHEDULE_OFF
+from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, SCHEDULE_OFF
 from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
 from custom_components.daikin_onecta.device import DaikinOnectaDevice
-from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics
-from custom_components.daikin_onecta.diagnostics import async_get_device_diagnostics
+from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics, async_get_device_diagnostics
 from custom_components.daikin_onecta.select import DaikinScheduleSelect
 from custom_components.daikin_onecta.switch import DaikinSwitch
-from custom_components.daikin_onecta.system_health import async_register
-from custom_components.daikin_onecta.system_health import system_health_info
+from custom_components.daikin_onecta.system_health import async_register, system_health_info
 from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
 from custom_components.daikin_onecta.water_heater import DaikinWaterTank
+
+from .conftest import FAKE_ACCESS_TOKEN, load_fixture_json, snapshot_platform_entities
 
 
 @pytest.mark.asyncio

@@ -5,7 +5,7 @@ on:
     branches:
       - master
     paths:
-      - 'custom_components/daikin_onecta/translations/en.json'
+      - "custom_components/daikin_onecta/translations/en.json"
   repository_dispatch:
     types: [lokalise_webhook]
   workflow_dispatch:

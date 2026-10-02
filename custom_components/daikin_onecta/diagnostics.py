@@ -1,4 +1,5 @@
 """Diagnostics support for Daikin Diagnostics."""
+
 from typing import Any
 
 from homeassistant.components.diagnostics import async_redact_data

@@ -1,13 +1,11 @@
 """Provide info to system health."""
+
 from typing import Any
 
 from homeassistant.components import system_health
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 
-from .const import DAIKIN_API_URL
-from .const import DOMAIN
-from .const import OAUTH2_AUTHORIZE
+from .const import DAIKIN_API_URL, DOMAIN, OAUTH2_AUTHORIZE
 from .coordinator import OnectaRuntimeData
 
 
