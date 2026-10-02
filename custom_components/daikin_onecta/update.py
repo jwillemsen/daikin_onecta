@@ -1,26 +1,25 @@
 """Support for Daikin firmware update entities."""
 
-from __future__ import annotations
-
 import logging
 from typing import TYPE_CHECKING, Any
 
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from daikin_onecta.models import ManagementPoint
+
 from .const import DOMAIN
+from .coordinator import OnectaDataUpdateCoordinator
+from .device import DaikinOnectaDevice
 from .entity_descriptions import UPDATE_DESCRIPTIONS
 
 if TYPE_CHECKING:
-    from homeassistant.config_entries import ConfigEntry
     from homeassistant.helpers.device_registry import DeviceInfo
-    from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
-    from daikin_onecta.models import ManagementPoint
 
-    from .coordinator import OnectaDataUpdateCoordinator
-    from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 

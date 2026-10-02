@@ -24,7 +24,6 @@ select = [
   "INP",
   "ISC",
   "ICN001",
-  "ICN002",
   "LOG",
   "N804",
   "N805",
@@ -72,9 +71,77 @@ select = [
   "UP032",
   "W",
 ]
+
+ignore = [
+  "ASYNC109",
+  "ASYNC110",
+  "ASYNC240",
+  "B008",
+  "B019",
+  "D202",
+  "D203",
+  "D213",
+  "D406",
+  "D407",
+  "D417",
+  "E501",
+  "PLC1901",
+  "PLR0911",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+  "PLR2004",
+  "PLW0108",
+  "PLW1641",
+  "PLW2901",
+  "PT011",
+  "PT018",
+  "RUF001",
+  "RUF012",
+  "RUF015",
+  "RUF043",
+  "SIM102",
+  "SIM103",
+  "SIM108",
+  "SIM115",
+  "TC001",
+  "TC002",
+  "TC003",
+  "TC006",
+  "TRY003",
+  "TRY400",
+  "UP047",
+  "UP049",
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "Q",
+  "COM812",
+  "COM819",
+  "PLE0605",
+  "FURB116",
+]
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+voluptuous = "vol"
+"homeassistant.components.climate.PLATFORM_SCHEMA" = "CLIMATE_PLATFORM_SCHEMA"
+"homeassistant.helpers.config_validation" = "cv"
+"homeassistant.helpers.device_registry" = "dr"
+"homeassistant.helpers.entity_registry" = "er"
+"homeassistant.helpers.issue_registry" = "ir"
+"homeassistant.util.dt" = "dt_util"
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false
+
+[tool.ruff.lint.flake8-tidy-imports.banned-api]
+"async_timeout".msg = "use asyncio.timeout instead"
+"pytz".msg = "use zoneinfo instead"
+"tests".msg = "You should not import tests"
+"__future__.annotations".msg = "It should not be needed because Home Assistant requires Python 3.14+"
 
 [tool.ruff.lint.isort]
 force-sort-within-sections = true
@@ -82,8 +149,19 @@ known-first-party = ["custom_components"]
 combine-as-imports = true
 split-on-trailing-comma = false
 
+[tool.ruff.lint.per-file-ignores]
+# Test modules import shared fixtures from their local conftest module.
+"tests/**" = ["TID251"]
+
 [tool.ruff.lint.pylint]
 max-statements = 250
+
+[tool.ruff.lint.mccabe]
+max-complexity = 25
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+property-decorators = ["propcache.api.cached_property"]
 
 [tool.mypy]
 python_version = "3.14"
