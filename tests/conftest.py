@@ -109,7 +109,16 @@ async def snapshot_platform_entities(
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ):
-        aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
+        aioclient_mock.get(
+            DAIKIN_API_URL + "/v1/gateway-devices",
+            status=200,
+            json=load_fixture_json(fixture_device_json),
+            headers={
+                "X-RateLimit-Limit-minute": "0",
+                "X-RateLimit-Limit-day": "0",
+                "X-RateLimit-Remaining-day": "0",
+            },
+        )
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
