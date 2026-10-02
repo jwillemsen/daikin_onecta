@@ -13,6 +13,8 @@ concurrency:
 
 jobs:
   tests:
+    permissions:
+      contents: read
     runs-on: "ubuntu-slim"
     name: Run tests
     strategy:
@@ -21,9 +23,11 @@ jobs:
         python-version: ["3.14"]
     steps:
       - name: Check out code from GitHub
-        uses: "actions/checkout@v7"
+        uses: "actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1" # v7
+        with:
+          persist-credentials: false
       - name: Setup Python ${{ matrix.python-version }}
-        uses: "actions/setup-python@v7"
+        uses: "actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97" # v7
         with:
           python-version: ${{ matrix.python-version }}
       - name: Install requirements
@@ -40,7 +44,7 @@ jobs:
             --cov-report=xml \
             tests
       - name: Upload coverage reports to Codecov with GitHub Action
-        uses: codecov/codecov-action@v7
+        uses: codecov/codecov-action@f9fe539f5290016afa014f8ef31597d3a61c2dea # v7
         if: always()
         with:
           token: ${{ secrets.CODECOV_TOKEN }}

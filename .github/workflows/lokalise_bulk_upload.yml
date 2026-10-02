@@ -5,14 +5,18 @@ on:
 
 jobs:
   bulk-upload:
+    permissions:
+      contents: read
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       # Officiële installer met het juiste, volledige versienummer
       - name: Installeer Lokalise CLI v2
-        uses: lokalise/install-lokalise-cli-v2@v2.1.0
+        uses: lokalise/install-lokalise-cli-v2@b8b035d2928bc66e1c8654eb69956cffd7d336e1 # v2.1.0
         with:
           add-to-path: true
 
