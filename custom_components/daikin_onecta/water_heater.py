@@ -71,7 +71,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     @property
     def available(self) -> bool:
         """Return whether the source device is available."""
-        return self._device.available
+        return super().available and self._device.available
 
     @callback
     def _handle_coordinator_update(self) -> None:

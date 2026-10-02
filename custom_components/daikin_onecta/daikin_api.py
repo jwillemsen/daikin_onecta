@@ -44,16 +44,16 @@ class DaikinApi:
         self._cloud_lock = asyncio.Lock()
 
     @property
-    def rate_limits(self) -> dict[str, int]:
+    def rate_limits(self) -> dict[str, int | None]:
         """Return rate limits using the existing diagnostics field names."""
         rate_limit = self._client.rate_limit
         return {
-            "minute": rate_limit.minute_limit or 0,
-            "day": rate_limit.day_limit or 0,
-            "remaining_minutes": rate_limit.minute_remaining or 0,
-            "remaining_day": rate_limit.day_remaining or 0,
-            "retry_after": rate_limit.retry_after or 0,
-            "ratelimit_reset": rate_limit.reset or 0,
+            "minute": rate_limit.minute_limit,
+            "day": rate_limit.day_limit,
+            "remaining_minutes": rate_limit.minute_remaining,
+            "remaining_day": rate_limit.day_remaining,
+            "retry_after": rate_limit.retry_after,
+            "ratelimit_reset": rate_limit.reset,
         }
 
     @property
@@ -74,9 +74,9 @@ class DaikinApi:
     def update_rate_limit_issues(self) -> None:
         """Update Home Assistant repair issues from the library rate-limit state."""
         limits = self.rate_limits
-        if limits["remaining_minutes"] > 0:
+        if limits["remaining_minutes"] is not None and limits["remaining_minutes"] > 0:
             ir.async_delete_issue(self.hass, DOMAIN, "minute_rate_limit")
-        if limits["remaining_day"] > 0:
+        if limits["remaining_day"] is not None and limits["remaining_day"] > 0:
             ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
     def create_rate_limit_issues(self) -> None:

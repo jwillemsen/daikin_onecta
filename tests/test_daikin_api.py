@@ -152,3 +152,23 @@ async def test_rate_limit_issue_updates(hass: HomeAssistant, config_entry: MockC
 
     delete_issue.assert_any_call(hass, DOMAIN, "minute_rate_limit")
     delete_issue.assert_any_call(hass, DOMAIN, "day_rate_limit")
+
+
+async def test_rate_limits_preserve_unknown_values(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Keep rate-limit values unavailable when Daikin did not send them."""
+    api = DaikinApi(hass, config_entry, MagicMock())
+    api.client.rate_limit = RateLimit()
+
+    assert api.rate_limits == {
+        "minute": None,
+        "day": None,
+        "remaining_minutes": None,
+        "remaining_day": None,
+        "retry_after": None,
+        "ratelimit_reset": None,
+    }
+
+    with patch("custom_components.daikin_onecta.daikin_api.ir.async_create_issue") as create_issue:
+        api.create_rate_limit_issues()
+
+    create_issue.assert_not_called()
