@@ -53,7 +53,9 @@ def snapshot_context(
     snapshot: SnapshotAssertion,
 ) -> SnapshotTestContext:
     """Provide the shared dependencies for a platform snapshot test."""
-    return SnapshotTestContext(hass, aioclient_mock, config_entry, entity_registry, snapshot)
+    return SnapshotTestContext(
+        hass, aioclient_mock, config_entry, entity_registry, snapshot
+    )
 
 
 def load_fixture_json(name):
@@ -123,7 +125,9 @@ async def snapshot_platform_entities(
 
         await hass.async_block_till_done()
 
-    entity_entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
+    entity_entries = er.async_entries_for_config_entry(
+        entity_registry, config_entry.entry_id
+    )
 
     assert entity_entries
 

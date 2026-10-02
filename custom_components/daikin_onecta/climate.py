@@ -48,7 +48,9 @@ if TYPE_CHECKING:
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORM_SCHEMA = CLIMATE_PLATFORM_SCHEMA.extend({vol.Required(CONF_HOST): cv.string, vol.Optional(CONF_NAME): cv.string})
+PLATFORM_SCHEMA = CLIMATE_PLATFORM_SCHEMA.extend(
+    {vol.Required(CONF_HOST): cv.string, vol.Optional(CONF_NAME): cv.string}
+)
 
 PRESET_MODES = (PRESET_BOOST, PRESET_AWAY, PRESET_COMFORT, PRESET_ECO)
 
@@ -101,10 +103,14 @@ async def async_setup_entry(
         modes: list[str] = []
         device_model = device.device.device_model
         embedded_id = ""
-        for management_point in device.device.management_points_by_type("climateControl"):
+        for management_point in device.device.management_points_by_type(
+            "climateControl"
+        ):
             embedded_id = management_point.embedded_id
             if management_point.temperature_control is not None:
-                for operation_mode in management_point.temperature_control.value.operation_modes.values():
+                for operation_mode in (
+                    management_point.temperature_control.value.operation_modes.values()
+                ):
                     modes.extend(operation_mode.setpoints)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
@@ -123,7 +129,9 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
 
     # Setpoint is the setpoint string under
     # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id):
+    def __init__(
+        self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id
+    ):
         """Initialize the climate device."""
         super().__init__(coordinator)
         _LOGGER.info(
@@ -136,7 +144,10 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._setpoint}"
-        self._attr_device_info: DeviceInfo = {"identifiers": {(DOMAIN, self._device.id)}, "name": self._device.name}
+        self._attr_device_info: DeviceInfo = {
+            "identifiers": {(DOMAIN, self._device.id)},
+            "name": self._device.name,
+        }
         self._attr_has_entity_name = True
         self._device.fill_device_info(self._attr_device_info, "gateway")
         self.entity_description = CLIMATE_DESCRIPTIONS[setpoint]
@@ -216,7 +227,12 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         if FANMODE_FIXED not in current_mode_values or not fan_speed.modes:
             return aliases
         fixed_mode = fan_speed.modes.get(FANMODE_FIXED)
-        if fixed_mode is None or fixed_mode.min_value is None or fixed_mode.max_value is None or fixed_mode.step_value is None:
+        if (
+            fixed_mode is None
+            or fixed_mode.min_value is None
+            or fixed_mode.max_value is None
+            or fixed_mode.step_value is None
+        ):
             return aliases
         fixed_values = {
             str(value)
@@ -226,7 +242,13 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
                 int(fixed_mode.step_value),
             )
         }
-        aliases.update({alias: daikin_mode for alias, daikin_mode in HOMEKIT_FIXED_FAN_MODE_ALIASES.items() if daikin_mode in fixed_values})
+        aliases.update(
+            {
+                alias: daikin_mode
+                for alias, daikin_mode in HOMEKIT_FIXED_FAN_MODE_ALIASES.items()
+                if daikin_mode in fixed_values
+            }
+        )
         return aliases
 
     def get_homekit_fan_mode(self, fan_speed, fan_mode):
@@ -250,7 +272,9 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         cc = self.climate_control()
         if cc is None or cc.temperature_control is None or cc.operation_mode is None:
             return None
-        operation_mode = cc.temperature_control.value.operation_modes.get(cc.operation_mode.value)
+        operation_mode = cc.temperature_control.value.operation_modes.get(
+            cc.operation_mode.value
+        )
         if operation_mode is None:
             return None
         return operation_mode.setpoints.get(self._setpoint)
@@ -264,13 +288,17 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         if description is None:
             return None
         attribute = description.model_attribute
-        return getattr(cc.sensory_data.value, attribute) if attribute is not None else None
+        return (
+            getattr(cc.sensory_data.value, attribute) if attribute is not None else None
+        )
 
     def get_supported_features(self):
         """Return the features supported by this climate entity."""
         supported_features = 0
         if hasattr(ClimateEntityFeature, "TURN_OFF"):
-            supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
+            supported_features = (
+                ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
+            )
         setpointdict = self.setpoint()
         if setpointdict is not None and setpointdict.settable:
             supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
@@ -288,7 +316,11 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
                     if fan_operation.fan_direction.horizontal is not None:
                         supported_features |= ClimateEntityFeature.SWING_HORIZONTAL_MODE
 
-            _LOGGER.debug("Device '%s' supports features %s", self._device.name, supported_features)
+            _LOGGER.debug(
+                "Device '%s' supports features %s",
+                self._device.name,
+                supported_features,
+            )
 
         return supported_features
 
@@ -325,7 +357,9 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         """Return the maximum configurable temperature."""
         max_temp = None
         setpointdict = self.setpoint()
-        max_temp = setpointdict.max_value if setpointdict is not None else super().max_temp
+        max_temp = (
+            setpointdict.max_value if setpointdict is not None else super().max_temp
+        )
         _LOGGER.debug(
             "Device '%s' %s max temperature '%s'",
             self._device.name,
@@ -338,7 +372,9 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         """Return the minimum configurable temperature."""
         min_temp = None
         setpointdict = self.setpoint()
-        min_temp = setpointdict.min_value if setpointdict is not None else super().min_temp
+        min_temp = (
+            setpointdict.min_value if setpointdict is not None else super().min_temp
+        )
         _LOGGER.debug(
             "Device '%s' %s min temperature '%s'",
             self._device.name,
@@ -366,7 +402,11 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         step_value = None
         setpointdict = self.setpoint()
         if setpointdict is not None:
-            step_value = setpointdict.step_value if setpointdict.step_value is not None else super().target_temperature_step
+            step_value = (
+                setpointdict.step_value
+                if setpointdict.step_value is not None
+                else super().target_temperature_step
+            )
         _LOGGER.debug(
             "Device '%s' %s target temperature step '%s'",
             self._device.name,
@@ -469,7 +509,9 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode is not None:
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.patch(
+                self._device.id, self._embedded_id, "onOffMode", "", on_off_mode
+            )
             if result is False:
                 _LOGGER.warning(
                     "Device '%s' problem setting onOffMode to '%s'",
@@ -481,7 +523,11 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
 
         # Only set the operationMode when it has changed, also prevents setting it when
         # it is readOnly
-        if operation_mode is not None and cc.operation_mode is not None and operation_mode != cc.operation_mode.value:
+        if (
+            operation_mode is not None
+            and cc.operation_mode is not None
+            and operation_mode != cc.operation_mode.value
+        ):
             result &= await self._device.patch(
                 self._device.id,
                 self._embedded_id,
@@ -513,7 +559,11 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
             return None
         fan_speed = fan_operation.fan_speed
         mode = fan_speed.current_mode.value
-        if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
+        if (
+            mode == FANMODE_FIXED
+            and fan_speed.modes
+            and FANMODE_FIXED in fan_speed.modes
+        ):
             mode = str(fan_speed.modes[FANMODE_FIXED].value)
         return self.get_homekit_fan_mode(fan_speed, mode)
 
@@ -525,10 +575,25 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         fan_speed = fan_operation.fan_speed
         fan_modes: list[str] = []
         for mode in fan_speed.current_mode.values or []:
-            if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
+            if (
+                mode == FANMODE_FIXED
+                and fan_speed.modes
+                and FANMODE_FIXED in fan_speed.modes
+            ):
                 fixed = fan_speed.modes[FANMODE_FIXED]
-                if fixed.min_value is not None and fixed.max_value is not None and fixed.step_value is not None:
-                    fan_modes.extend(str(value) for value in range(int(fixed.min_value), int(fixed.max_value) + 1, int(fixed.step_value)))
+                if (
+                    fixed.min_value is not None
+                    and fixed.max_value is not None
+                    and fixed.step_value is not None
+                ):
+                    fan_modes.extend(
+                        str(value)
+                        for value in range(
+                            int(fixed.min_value),
+                            int(fixed.max_value) + 1,
+                            int(fixed.step_value),
+                        )
+                    )
             else:
                 fan_modes.append(mode)
         for alias in self.homekit_fan_mode_aliases(fan_speed):
@@ -541,7 +606,12 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         requested_fan_mode = str(fan_mode)
         fan_operation = self.fan_operation()
         cc = self.climate_control()
-        if fan_operation is None or fan_operation.fan_speed is None or cc is None or cc.operation_mode is None:
+        if (
+            fan_operation is None
+            or fan_operation.fan_speed is None
+            or cc is None
+            or cc.operation_mode is None
+        ):
             return False
         fan_speed = fan_operation.fan_speed
         operation_mode = cc.operation_mode.value
@@ -624,13 +694,22 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         """Set a fan-direction mode."""
         fan_operation = self.fan_operation()
         cc = self.climate_control()
-        if fan_operation is None or fan_operation.fan_direction is None or cc is None or cc.operation_mode is None:
+        if (
+            fan_operation is None
+            or fan_operation.fan_direction is None
+            or cc is None
+            or cc.operation_mode is None
+        ):
             return False
         axis = getattr(fan_operation.fan_direction, direction)
         if axis is None:
             return False
         new_mode = next(
-            (mode for mode in axis.current_mode.values or [] if swing_mode == mode.lower()),
+            (
+                mode
+                for mode in axis.current_mode.values or []
+                if swing_mode == mode.lower()
+            ),
             "stop",
         )
         result = await self._device.patch(
@@ -697,11 +776,17 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         """Disable the current Daikin preset mode."""
         daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
         if preset_mode == PRESET_AWAY:
-            result = await self._device.post(self._device.id, self._embedded_id, "holiday-mode", {"enabled": False})
+            result = await self._device.post(
+                self._device.id, self._embedded_id, "holiday-mode", {"enabled": False}
+            )
         else:
-            result = await self._device.patch(self._device.id, self._embedded_id, daikin_mode, "", "off")
+            result = await self._device.patch(
+                self._device.id, self._embedded_id, daikin_mode, "", "off"
+            )
         if not result:
-            _LOGGER.warning("Device '%s' problem setting %s to off", self._device.name, daikin_mode)
+            _LOGGER.warning(
+                "Device '%s' problem setting %s to off", self._device.name, daikin_mode
+            )
         return result
 
     async def _async_enable_preset_mode(self, preset_mode) -> bool:
@@ -712,17 +797,29 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
             turned_on = await self.async_turn_on()
         if preset_mode == PRESET_AWAY:
             today = dt_util.now().date()
-            value = {"enabled": True, "startDate": today.isoformat(), "endDate": (today + timedelta(days=60)).isoformat()}
-            result = await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
+            value = {
+                "enabled": True,
+                "startDate": today.isoformat(),
+                "endDate": (today + timedelta(days=60)).isoformat(),
+            }
+            result = await self._device.post(
+                self._device.id, self._embedded_id, "holiday-mode", value
+            )
         else:
-            result = await self._device.patch(self._device.id, self._embedded_id, daikin_mode, "", "on")
+            result = await self._device.patch(
+                self._device.id, self._embedded_id, daikin_mode, "", "on"
+            )
         if not result:
-            _LOGGER.warning("Device '%s' problem setting %s to on", self._device.name, daikin_mode)
+            _LOGGER.warning(
+                "Device '%s' problem setting %s to on", self._device.name, daikin_mode
+            )
         return turned_on and result
 
     async def async_set_preset_mode(self, preset_mode):
         """Set the active preset mode."""
-        _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
+        _LOGGER.debug(
+            "Device '%s' request set preset mode %s", self._device.name, preset_mode
+        )
         result = True
 
         if self.preset_mode != PRESET_NONE:
@@ -740,7 +837,11 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
     def get_preset_modes(self):
         """Return supported preset modes."""
         supported = [PRESET_NONE]
-        supported.extend(mode for mode in PRESET_MODES if self.preset_characteristic(HA_PRESET_TO_DAIKIN[mode]) is not None)
+        supported.extend(
+            mode
+            for mode in PRESET_MODES
+            if self.preset_characteristic(HA_PRESET_TO_DAIKIN[mode]) is not None
+        )
         supported.sort()
         return supported
 
@@ -750,9 +851,13 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         cc = self.climate_control()
         result = True
         if cc.on_off_mode is not None and cc.on_off_mode.value == "off":
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "on")
+            result &= await self._device.patch(
+                self._device.id, self._embedded_id, "onOffMode", "", "on"
+            )
             if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
+                _LOGGER.error(
+                    "Device '%s' problem setting onOffMode to on", self._device.name
+                )
             else:
                 cc.on_off_mode.value = "on"
                 self._attr_hvac_mode = self.get_hvac_mode()
@@ -771,9 +876,13 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         cc = self.climate_control()
         result = True
         if cc.on_off_mode is not None and cc.on_off_mode.value == "on":
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "off")
+            result &= await self._device.patch(
+                self._device.id, self._embedded_id, "onOffMode", "", "off"
+            )
             if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
+                _LOGGER.error(
+                    "Device '%s' problem setting onOffMode to off", self._device.name
+                )
             else:
                 cc.on_off_mode.value = "off"
                 self._attr_hvac_mode = self.get_hvac_mode()

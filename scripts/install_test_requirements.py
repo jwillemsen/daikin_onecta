@@ -12,7 +12,14 @@ MANIFEST = ROOT / "custom_components" / "daikin_onecta" / "manifest.json"
 def main() -> None:
     """Install requirements needed to test the integration."""
     subprocess.run(
-        [sys.executable, "-m", "pip", "install", "-r", str(ROOT / "requirements_test.txt")],
+        [
+            sys.executable,
+            "-m",
+            "pip",
+            "install",
+            "-r",
+            str(ROOT / "requirements_test.txt"),
+        ],
         check=True,
     )
 

@@ -37,8 +37,19 @@ async def async_setup_entry(
             "domesticHotWaterFlowThrough",
         )
         for management_point_type in supported_management_point_types:
-            for management_point in device.device.management_points_by_type(management_point_type):
-                async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)])
+            for management_point in device.device.management_points_by_type(
+                management_point_type
+            ):
+                async_add_entities(
+                    [
+                        DaikinWaterTank(
+                            device,
+                            coordinator,
+                            management_point_type,
+                            management_point.embedded_id,
+                        )
+                    ]
+                )
 
 
 class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
@@ -115,7 +126,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         ret = None
         hwtd = self.hotwatertank_data
         sensory_data = hwtd.sensory_data if hwtd is not None else None
-        tank_temperature = sensory_data.value.tank_temperature if sensory_data is not None else None
+        tank_temperature = (
+            sensory_data.value.tank_temperature if sensory_data is not None else None
+        )
         if tank_temperature is not None:
             ret = float(tank_temperature.value)
             _LOGGER.debug(
@@ -124,7 +137,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 ret,
             )
         else:
-            _LOGGER.debug("Device '%s' doesn't provide a current temperature", self._device.name)
+            _LOGGER.debug(
+                "Device '%s' doesn't provide a current temperature", self._device.name
+            )
 
         return ret
 
@@ -134,7 +149,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         dht = self.domestic_hotwater_temperature
         if dht is not None:
             ret = float(dht.value)
-        _LOGGER.debug("Device '%s' hot water tank target_temperature '%s'", self._device.name, ret)
+        _LOGGER.debug(
+            "Device '%s' hot water tank target_temperature '%s'", self._device.name, ret
+        )
         return ret
 
     @property
@@ -220,7 +237,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
             if pwf is not None and pwf.value == "on":
                 state = STATE_PERFORMANCE
-        _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
+        _LOGGER.debug(
+            "Device '%s' hot water tank current mode '%s'", self._device.name, state
+        )
         return state
 
     def get_operation_list(self):
@@ -230,7 +249,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
         if pwf is not None and pwf.settable:
             states += [STATE_PERFORMANCE]
-        _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
+        _LOGGER.debug(
+            "Device '%s' hot water tank supports modes %s", self._device.name, states
+        )
         return states
 
     def _requested_modes(self, operation_mode: str) -> tuple[str, str]:
@@ -258,7 +279,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._device.patch(
+                self._device.id, self._embedded_id, "onOffMode", "", on_off_mode
+            )
             if result is True:
                 hwtd = self.hotwatertank_data
                 if hwtd is not None and hwtd.on_off_mode is not None:
@@ -280,7 +303,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                     pwf.value = powerful_mode
 
         if result is False:
-            _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
+            _LOGGER.warning(
+                "Device '%s' invalid tank state: %s", self._device.name, operation_mode
+            )
         else:
             # Update local cached version
             self._attr_current_operation = operation_mode
@@ -294,9 +319,13 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
         result = True
         if self.current_operation == STATE_OFF:
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "on")
+            result &= await self._device.patch(
+                self._device.id, self._embedded_id, "onOffMode", "", "on"
+            )
             if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
+                _LOGGER.error(
+                    "Device '%s' problem setting onOffMode to on", self._device.name
+                )
             else:
                 hwtd = self.hotwatertank_data
                 if hwtd is not None and hwtd.on_off_mode is not None:
@@ -315,9 +344,13 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
         result = True
         if self.current_operation != STATE_OFF:
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "off")
+            result &= await self._device.patch(
+                self._device.id, self._embedded_id, "onOffMode", "", "off"
+            )
             if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
+                _LOGGER.error(
+                    "Device '%s' problem setting onOffMode to off", self._device.name
+                )
             else:
                 hwtd = self.hotwatertank_data
                 if hwtd is not None and hwtd.on_off_mode is not None:

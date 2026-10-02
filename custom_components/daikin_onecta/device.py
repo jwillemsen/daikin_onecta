@@ -37,7 +37,9 @@ class DaikinOnectaDevice:
         # deprecated because identifiers are no longer guaranteed globally unique.
         self.ha_device_id: str | None = None
 
-        _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id)
+        _LOGGER.info(
+            "Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id
+        )
 
     @property
     def available(self) -> bool:
@@ -68,7 +70,9 @@ class DaikinOnectaDevice:
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
         gateway = self.device.management_point_by_type("gateway")
-        mac_address = gateway.characteristic("macAddress") if gateway is not None else None
+        mac_address = (
+            gateway.characteristic("macAddress") if gateway is not None else None
+        )
         connections = set()
         if mac_address is not None and mac_address.value:
             connections.add((CONNECTION_NETWORK_MAC, mac_address.value))
@@ -86,7 +90,9 @@ class DaikinOnectaDevice:
         self.fill_device_info(info, "gateway")
         return info
 
-    def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    def async_register_ha_device(
+        self, hass: HomeAssistant, config_entry: ConfigEntry
+    ) -> None:
         """Eagerly create/update this device in the device registry.
 
         Called once from the coordinator, before any entity platform is set up
@@ -132,7 +138,9 @@ class DaikinOnectaDevice:
         """POST a management-point resource."""
         return await self.api.post_management_point(id, embeddedId, dataPoint, value)
 
-    async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
+    async def put(
+        self, id: str, embeddedId: str, dataPoint: str, value: Any = None
+    ) -> bool:
         """PUT a management-point resource."""
         return await self.api.put_management_point(id, embeddedId, dataPoint, value)
 
@@ -153,19 +161,31 @@ def migrate_legacy_subdevice_identifiers(
     for device in devices.values():
         management_points_by_type: dict[str, list[Any]] = {}
         for management_point in device.device.management_points:
-            management_points_by_type.setdefault(management_point.management_point_type, []).append(management_point)
+            management_points_by_type.setdefault(
+                management_point.management_point_type, []
+            ).append(management_point)
 
-        for management_point_type, management_points in management_points_by_type.items():
+        for (
+            management_point_type,
+            management_points,
+        ) in management_points_by_type.items():
             legacy_identifier = (DOMAIN, device.id + management_point_type)
-            registry_entry = device_registry.async_get_device(identifiers={legacy_identifier})
-            if registry_entry is None or config_entry.entry_id not in registry_entry.config_entries:
+            registry_entry = device_registry.async_get_device(
+                identifiers={legacy_identifier}
+            )
+            if (
+                registry_entry is None
+                or config_entry.entry_id not in registry_entry.config_entries
+            ):
                 continue
 
             embedded_identifier = (DOMAIN, device.id + management_points[0].embedded_id)
             identifiers = set(registry_entry.identifiers)
             identifiers.discard(legacy_identifier)
             identifiers.add(embedded_identifier)
-            device_registry.async_update_device(registry_entry.id, new_identifiers=identifiers)
+            device_registry.async_update_device(
+                registry_entry.id, new_identifiers=identifiers
+            )
 
 
 def _migrate_type_based_entity_unique_id(
@@ -188,7 +208,9 @@ def _legacy_entity_unique_id(
 ) -> str | None:
     """Return the embedded-ID equivalent of a legacy entity unique ID."""
     if entry.domain in {"binary_sensor", "select", "switch", "update"}:
-        return _migrate_type_based_entity_unique_id(device, entry.unique_id, points_by_type)
+        return _migrate_type_based_entity_unique_id(
+            device, entry.unique_id, points_by_type
+        )
 
     if entry.domain == "climate":
         climate_points = points_by_type.get("climateControl", [])
@@ -197,7 +219,10 @@ def _legacy_entity_unique_id(
             return f"{device.id}_{climate_points[-1].embedded_id}_{entry.unique_id.removeprefix(old_prefix)}"
 
     if entry.domain == "water_heater" and entry.unique_id == device.id:
-        for management_point_type in ("domesticHotWaterTank", "domesticHotWaterFlowThrough"):
+        for management_point_type in (
+            "domesticHotWaterTank",
+            "domesticHotWaterFlowThrough",
+        ):
             if points := points_by_type.get(management_point_type):
                 return f"{device.id}_{points[0].embedded_id}"
 
@@ -222,13 +247,23 @@ def migrate_legacy_entity_unique_ids(
     for device in devices.values():
         points_by_type: dict[str, list[Any]] = {}
         for management_point in device.device.management_points:
-            points_by_type.setdefault(management_point.management_point_type, []).append(management_point)
+            points_by_type.setdefault(
+                management_point.management_point_type, []
+            ).append(management_point)
 
         for entry in entries:
             if entry.platform != DOMAIN:
                 continue
             new_unique_id = _legacy_entity_unique_id(device, entry, points_by_type)
 
-            if new_unique_id is None or entity_registry.async_get_entity_id(entry.domain, DOMAIN, new_unique_id) is not None:
+            if (
+                new_unique_id is None
+                or entity_registry.async_get_entity_id(
+                    entry.domain, DOMAIN, new_unique_id
+                )
+                is not None
+            ):
                 continue
-            entity_registry.async_update_entity(entry.entity_id, new_unique_id=new_unique_id)
+            entity_registry.async_update_entity(
+                entry.entity_id, new_unique_id=new_unique_id
+            )

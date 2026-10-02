@@ -855,24 +855,33 @@ SENSOR_DESCRIPTIONS: dict[str, DaikinSensorEntityDescription] = {
         **_entity_description_kwargs(metadata),
     )
     for metadata in ENTITY_METADATA
-    if not isinstance(metadata.device_class, BinarySensorDeviceClass) and not isinstance(metadata.device_class, UpdateDeviceClass)
+    if not isinstance(metadata.device_class, BinarySensorDeviceClass)
+    and not isinstance(metadata.device_class, UpdateDeviceClass)
 }
 
 BINARY_SENSOR_DESCRIPTIONS = {
     metadata.key: BinarySensorEntityDescription(
         key=metadata.key,
-        device_class=metadata.device_class if isinstance(metadata.device_class, BinarySensorDeviceClass) else None,
+        device_class=metadata.device_class
+        if isinstance(metadata.device_class, BinarySensorDeviceClass)
+        else None,
         **_entity_description_kwargs(metadata),
     )
     for metadata in ENTITY_METADATA
 }
 
 SWITCH_DESCRIPTIONS = {
-    metadata.key: SwitchEntityDescription(key=metadata.key, **_entity_description_kwargs(metadata)) for metadata in ENTITY_METADATA
+    metadata.key: SwitchEntityDescription(
+        key=metadata.key, **_entity_description_kwargs(metadata)
+    )
+    for metadata in ENTITY_METADATA
 }
 
 SELECT_DESCRIPTIONS = {
-    metadata.key: SelectEntityDescription(key=metadata.key, **_entity_description_kwargs(metadata)) for metadata in ENTITY_METADATA
+    metadata.key: SelectEntityDescription(
+        key=metadata.key, **_entity_description_kwargs(metadata)
+    )
+    for metadata in ENTITY_METADATA
 }
 
 UPDATE_DESCRIPTIONS = {
@@ -886,5 +895,8 @@ UPDATE_DESCRIPTIONS = {
 }
 
 CLIMATE_DESCRIPTIONS: dict[str, ClimateEntityDescription] = {
-    metadata.key: ClimateEntityDescription(key=metadata.key, translation_key=metadata.translation_key) for metadata in ENTITY_METADATA
+    metadata.key: ClimateEntityDescription(
+        key=metadata.key, translation_key=metadata.translation_key
+    )
+    for metadata in ENTITY_METADATA
 }

@@ -133,18 +133,32 @@ def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
         if value not in SENSOR_DESCRIPTIONS:
             continue
         values = characteristic.values or []
-        if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
+        if (
+            characteristic.value is not None
+            and characteristic.settable
+            and "on" in values
+            and "off" in values
+        ):
             continue
         if not values and isinstance(characteristic.value, bool):
             continue
-        if value == "operationMode" and management_point.management_point_type in supported_management_point_types:
+        if (
+            value == "operationMode"
+            and management_point.management_point_type
+            in supported_management_point_types
+        ):
             continue
         if characteristic.value is not None:
             sensors.append(
                 DaikinValueSensor(
                     device,
                     coordinator,
-                    ValueSensorDetails(management_point.embedded_id, management_point.management_point_type, None, value),
+                    ValueSensorDetails(
+                        management_point.embedded_id,
+                        management_point.management_point_type,
+                        None,
+                        value,
+                    ),
                 )
             )
 
@@ -158,7 +172,12 @@ def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
         DaikinValueSensor(
             device,
             coordinator,
-            ValueSensorDetails(management_point.embedded_id, management_point.management_point_type, "sensoryData", sensor),
+            ValueSensorDetails(
+                management_point.embedded_id,
+                management_point.management_point_type,
+                "sensoryData",
+                sensor,
+            ),
         )
         for sensor in (
             "roomTemperature",
@@ -176,7 +195,9 @@ def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
     )
 
 
-def add_management_point_sensors(coordinator, device, management_point, sensors) -> None:
+def add_management_point_sensors(
+    coordinator, device, management_point, sensors
+) -> None:
     """Add all sensors exposed by a management point."""
     add_simple_sensors(coordinator, device, management_point, sensors)
     add_sensory_sensors(coordinator, device, management_point, sensors)
@@ -228,7 +249,11 @@ def _legacy_energy_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str,
     return migrations
 
 
-def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry, devices: dict[str, DaikinOnectaDevice]) -> None:
+def migrate_legacy_sensor_unique_ids(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    devices: dict[str, DaikinOnectaDevice],
+) -> None:
     """Use embedded management-point IDs for existing sensor unique IDs.
 
     The previous IDs did not distinguish management points of the same type or
@@ -242,13 +267,21 @@ def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEn
         migrations.update(_legacy_value_sensor_id_migrations(device))
         migrations.update(_legacy_energy_sensor_id_migrations(device))
 
-    for entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
+    for entry in er.async_entries_for_config_entry(
+        entity_registry, config_entry.entry_id
+    ):
         if entry.domain != "sensor" or entry.platform != DOMAIN:
             continue
         new_unique_id = migrations.get(entry.unique_id)
-        if new_unique_id is None or entity_registry.async_get_entity_id("sensor", DOMAIN, new_unique_id) is not None:
+        if (
+            new_unique_id is None
+            or entity_registry.async_get_entity_id("sensor", DOMAIN, new_unique_id)
+            is not None
+        ):
             continue
-        entity_registry.async_update_entity(entry.entity_id, new_unique_id=new_unique_id)
+        entity_registry.async_update_entity(
+            entry.entity_id, new_unique_id=new_unique_id
+        )
 
 
 async def async_setup_entry(
@@ -260,7 +293,9 @@ async def async_setup_entry(
     coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
     sensors = []
     for device in (coordinator.data or {}).values():
-        sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day"))
+        sensors.append(
+            DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day")
+        )
         for management_point in device.device.management_points:
             add_management_point_sensors(coordinator, device, management_point, sensors)
 
@@ -270,12 +305,16 @@ async def async_setup_entry(
 class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     """Representation of a power/energy sensor."""
 
-    def __init__(self, device: DaikinOnectaDevice, coordinator, details: EnergySensorDetails) -> None:
+    def __init__(
+        self, device: DaikinOnectaDevice, coordinator, details: EnergySensorDetails
+    ) -> None:
         """Initialize an energy sensor for a management point."""
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = details.management_point_type
-        mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
+        mpt = (
+            details.management_point_type[0].upper() + details.management_point_type[1:]
+        )
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
@@ -332,7 +371,11 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         point = self._device.management_point(self._embedded_id)
         if point is None:
             return None
-        energy = point.consumption_data if self._datatype == "consumption" else point.output_data
+        energy = (
+            point.consumption_data
+            if self._datatype == "consumption"
+            else point.output_data
+        )
         if energy is None:
             return None
         source = getattr(energy.value, self._sensor_type)
@@ -371,13 +414,22 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     """Represent a Daikin characteristic or sensory-data value."""
 
-    def __init__(self, device: DaikinOnectaDevice, coordinator, details: ValueSensorDetails) -> None:
+    def __init__(
+        self, device: DaikinOnectaDevice, coordinator, details: ValueSensorDetails
+    ) -> None:
         """Initialize the sensor from a device value."""
-        _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", details.management_point_type, details.sub_type, details.value)
+        _LOGGER.info(
+            "DaikinValueSensor '%s' '%s' '%s'",
+            details.management_point_type,
+            details.sub_type,
+            details.value,
+        )
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = details.management_point_type
-        mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
+        mpt = (
+            details.management_point_type[0].upper() + details.management_point_type[1:]
+        )
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
@@ -390,7 +442,9 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._value = details.value
         self._attr_has_entity_name = True
         self.entity_description = SENSOR_DESCRIPTIONS[details.value]
-        self._attr_unique_id = f"{self._device.id}_{details.embedded_id}_{self._sub_type}_{self._value}"
+        self._attr_unique_id = (
+            f"{self._device.id}_{details.embedded_id}_{self._sub_type}_{self._value}"
+        )
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -423,11 +477,17 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             if sensory_data is None:
                 return None
             attribute = SENSOR_DESCRIPTIONS[self._value].model_attribute
-            characteristic = getattr(sensory_data.value, attribute) if attribute is not None else None
+            characteristic = (
+                getattr(sensory_data.value, attribute)
+                if attribute is not None
+                else None
+            )
         else:
             characteristic = point.characteristic(self._value)
         result = characteristic.value if characteristic is not None else None
-        _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
+        _LOGGER.debug(
+            "Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result
+        )
         return result
 
 

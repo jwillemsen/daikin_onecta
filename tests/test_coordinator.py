@@ -90,7 +90,9 @@ class TestOnectaDataUpdateCoordinator:
 
     @patch("custom_components.daikin_onecta.coordinator.dt_util.now")
     @patch("custom_components.daikin_onecta.coordinator.random")
-    def test_transition_period_randomization(self, mock_random, mock_now, coordinator, mock_hass):
+    def test_transition_period_randomization(
+        self, mock_random, mock_now, coordinator, mock_hass
+    ):
         """During transition, interval is randomized between floor and low interval."""
         mock_now.return_value = datetime(2023, 1, 1, 22, 5, 0)
         mock_random.randint.return_value = 120  # 2 minutes
@@ -101,11 +103,15 @@ class TestOnectaDataUpdateCoordinator:
             assert result == expected
             mock_random.randint.assert_called_once_with(60, 1800)
 
-    async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
+    async def test_rate_limit_uses_update_failed_retry_after(
+        self, coordinator, mock_config_entry
+    ):
         """A Daikin rate limit should use the coordinator retry-after mechanism."""
         daikin_api = coordinator.api
         daikin_api.last_patch_call = None
-        daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
+        daikin_api.get_cloud_device_details = AsyncMock(
+            side_effect=OnectaRateLimitError(3060)
+        )
         initial_interval = coordinator.update_interval
 
         # Simulate daily rate limit reached
@@ -118,9 +124,13 @@ class TestOnectaDataUpdateCoordinator:
     async def test_connection_error_uses_update_failed(self, coordinator):
         """A connection error should mark the coordinator update as failed."""
         coordinator.api.last_patch_call = None
-        coordinator.api.get_cloud_device_details = AsyncMock(side_effect=OnectaConnectionError(EXPECTED_CONNECTION_ERROR))
+        coordinator.api.get_cloud_device_details = AsyncMock(
+            side_effect=OnectaConnectionError(EXPECTED_CONNECTION_ERROR)
+        )
 
-        with pytest.raises(UpdateFailed, match="Unable to connect to the Daikin API") as exc_info:
+        with pytest.raises(
+            UpdateFailed, match="Unable to connect to the Daikin API"
+        ) as exc_info:
             await coordinator.async_update_data()
 
         assert isinstance(exc_info.value.__cause__, OnectaConnectionError)
@@ -133,9 +143,13 @@ class TestOnectaDataUpdateCoordinator:
             "high_scan_start": "07:00:00",
             "low_scan_start": "22:00:00",
         }
-        updated_entry = MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345", options=options)
+        updated_entry = MockConfigEntry(
+            domain=DOMAIN, title="daikin_onecta", unique_id="12345", options=options
+        )
 
-        with patch.object(coordinator, "determine_update_interval", return_value=timedelta(minutes=45)) as determine:
+        with patch.object(
+            coordinator, "determine_update_interval", return_value=timedelta(minutes=45)
+        ) as determine:
             coordinator.update_settings(updated_entry)
 
         assert coordinator.options == options

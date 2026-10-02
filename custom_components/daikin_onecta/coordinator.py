@@ -22,7 +22,9 @@ CONNECTION_FAILED = "Unable to connect to the Daikin API"
 class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDevice]]):
     """Class to manage fetching data from the API."""
 
-    def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry, daikin_api: DaikinApi) -> None:
+    def __init__(
+        self, hass: HomeAssistant, config_entry: ConfigEntry, daikin_api: DaikinApi
+    ) -> None:
         """Initialize."""
         self.options = config_entry.options
         self._config_entry = config_entry
@@ -56,7 +58,11 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
         devices = self.data or {}
         scan_ignore_value = self.scan_ignore()
 
-        if self.api.last_patch_call is not None and (dt_util.now() - self.api.last_patch_call).total_seconds() < scan_ignore_value:
+        if (
+            self.api.last_patch_call is not None
+            and (dt_util.now() - self.api.last_patch_call).total_seconds()
+            < scan_ignore_value
+        ):
             self.update_interval = timedelta(seconds=scan_ignore_value)
             _LOGGER.debug(
                 "API UPDATE skipped (just updated from UI)",
@@ -100,7 +106,9 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
         _LOGGER.debug("Daikin coordinator updating settings")
         self.options = config_entry.options
         self.update_interval = self.determine_update_interval(self.hass)
-        _LOGGER.info("Daikin coordinator changed interval to '%s'", self.update_interval)
+        _LOGGER.info(
+            "Daikin coordinator changed interval to '%s'", self.update_interval
+        )
 
     def determine_update_interval(self, hass: HomeAssistant) -> timedelta:
         """Determine the next polling interval."""
@@ -118,7 +126,14 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
             # poll so that we spread the load to daikin, so for example when we have a low start at
             # 22:00 and a high scan interval of 9 minutes we randomize the next poll when it is
             # between 22:00 and 22:09
-            end_time = (dt_util.start_of_local_day() + timedelta(hours=ls.hour, minutes=ls.minute, seconds=ls.second + high_scan_interval)).time()
+            end_time = (
+                dt_util.start_of_local_day()
+                + timedelta(
+                    hours=ls.hour,
+                    minutes=ls.minute,
+                    seconds=ls.second + high_scan_interval,
+                )
+            ).time()
             if self.in_between(dt_util.now().time(), ls, end_time):
                 scan_interval = random.randint(60, int(scan_interval))
 

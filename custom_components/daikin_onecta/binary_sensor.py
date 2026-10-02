@@ -39,8 +39,13 @@ async def async_setup_entry(
     sensors = []
     for device in (coordinator.data or {}).values():
         for management_point in device.device.management_points:
-            for value, characteristic in management_point.simple_characteristics().items():
-                if characteristic.values is None and isinstance(characteristic.value, bool):
+            for (
+                value,
+                characteristic,
+            ) in management_point.simple_characteristics().items():
+                if characteristic.values is None and isinstance(
+                    characteristic.value, bool
+                ):
                     sensors.append(
                         DaikinBinarySensor(
                             device,
@@ -80,7 +85,9 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._device.fill_device_info(self._attr_device_info, embedded_id)
         self._embedded_id = embedded_id
         self._value = value
-        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_None_{self._value}"
+        self._attr_unique_id = (
+            f"{self._device.id}_{self._embedded_id}_None_{self._value}"
+        )
         self._attr_has_entity_name = True
         self.entity_description = BINARY_SENSOR_DESCRIPTIONS[value]
         self.update_state()
@@ -108,7 +115,14 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
     def sensor_value(self):
         """Return the binary characteristic value."""
         point = self._device.management_point(self._embedded_id)
-        characteristic = point.characteristic(self._value) if point is not None else None
+        characteristic = (
+            point.characteristic(self._value) if point is not None else None
+        )
         result = characteristic.value if characteristic is not None else None
-        _LOGGER.debug("Device '%s' binary sensor '%s' value '%s'", self._device.name, self._value, result)
+        _LOGGER.debug(
+            "Device '%s' binary sensor '%s' value '%s'",
+            self._device.name,
+            self._value,
+            result,
+        )
         return result

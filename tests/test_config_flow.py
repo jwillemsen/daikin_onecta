@@ -58,9 +58,13 @@ async def test_full_flow(
     """Check full flow."""
     assert await async_setup_component(hass, "daikin_onecta", {})
 
-    await async_import_client_credential(hass, DOMAIN, ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET))
+    await async_import_client_credential(
+        hass, DOMAIN, ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET)
+    )
 
-    result = await hass.config_entries.flow.async_init("daikin_onecta", context={"source": config_entries.SOURCE_USER})
+    result = await hass.config_entries.flow.async_init(
+        "daikin_onecta", context={"source": config_entries.SOURCE_USER}
+    )
     state = oauth_state(result)
 
     assert result["url"] == (
@@ -85,7 +89,9 @@ async def test_full_flow(
         },
     )
 
-    with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
+    with patch(
+        "custom_components.daikin_onecta.async_setup_entry", return_value=True
+    ) as mock_setup:
         await hass.config_entries.flow.async_configure(result["flow_id"])
 
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1
@@ -163,7 +169,9 @@ async def test_zeroconf_flow(
     """Test zeroconf flow."""
     assert await async_setup_component(hass, "daikin_onecta", {})
 
-    await async_import_client_credential(hass, DOMAIN, ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET))
+    await async_import_client_credential(
+        hass, DOMAIN, ClientCredential(TEST_CLIENT_ID, TEST_CLIENT_SECRET)
+    )
 
     result = await hass.config_entries.flow.async_init(
         DOMAIN,
@@ -198,7 +206,9 @@ async def test_zeroconf_flow(
     assert result["type"] == "external"
     assert result["url"].startswith(OAUTH2_AUTHORIZE)
 
-    with patch("custom_components.daikin_onecta.async_setup_entry", return_value=True) as mock_setup:
+    with patch(
+        "custom_components.daikin_onecta.async_setup_entry", return_value=True
+    ) as mock_setup:
         await hass.config_entries.flow.async_configure(
             result["flow_id"],
             {},
@@ -231,7 +241,10 @@ async def test_reauth_confirm_form(
 
     result = await hass.config_entries.flow.async_init(
         DOMAIN,
-        context={"source": config_entries.SOURCE_REAUTH, "entry_id": config_entry.entry_id},
+        context={
+            "source": config_entries.SOURCE_REAUTH,
+            "entry_id": config_entry.entry_id,
+        },
         data=config_entry.data,
     )
 
@@ -292,7 +305,9 @@ async def test_reauth_confirm_continue(
     flow = config_entries.HANDLERS[DOMAIN]()
     flow.hass = hass
 
-    with patch.object(flow, "async_step_user", return_value={"type": "external"}) as step_user:
+    with patch.object(
+        flow, "async_step_user", return_value={"type": "external"}
+    ) as step_user:
         result = await flow.async_step_reauth_confirm({})
 
     assert result == {"type": "external"}

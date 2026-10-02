@@ -15,7 +15,9 @@ EXPECTED_CURRENT_ROLLING_CONSUMPTION = 4
 EXPECTED_MARCH_CONSUMPTION = 5
 
 
-def _energy_sensor(period: str, day: list[int | None], week: list[int | None], month: list[int | None]) -> DaikinEnergySensor:
+def _energy_sensor(
+    period: str, day: list[int | None], week: list[int | None], month: list[int | None]
+) -> DaikinEnergySensor:
     """Build an energy sensor with one electrical heating series."""
     series = SimpleNamespace(day=day, week=week, month=month)
     source = SimpleNamespace(heating=series)

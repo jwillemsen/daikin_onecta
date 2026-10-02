@@ -30,8 +30,12 @@ class DaikinApi:
         """Initialize a new Daikin Onecta API."""
         self.hass = hass
         self._config_entry = entry
-        self.session = config_entry_oauth2_flow.OAuth2Session(hass, entry, implementation)
-        self._client = OnectaClient(async_get_clientsession(hass), self.async_get_access_token)
+        self.session = config_entry_oauth2_flow.OAuth2Session(
+            hass, entry, implementation
+        )
+        self._client = OnectaClient(
+            async_get_clientsession(hass), self.async_get_access_token
+        )
 
         # The Daikin cloud can return stale settings immediately after a PATCH.
         # The coordinator uses this timestamp to delay refreshes for its
@@ -81,9 +85,7 @@ class DaikinApi:
     def create_rate_limit_issues(self) -> None:
         """Create Home Assistant repair issues for exhausted rate limits."""
         limits = self.rate_limits
-        learn_more_url = (
-            "https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation"
-        )
+        learn_more_url = "https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/general_api_guidelines#doc-heading-rate-limitation"
         if limits["remaining_minutes"] == 0:
             ir.async_create_issue(
                 self.hass,
@@ -156,7 +158,9 @@ class DaikinApi:
         """POST a management-point resource through the standalone library."""
         async with self._cloud_lock:
             try:
-                await self._client.post_management_point(gateway_id, management_point_id, resource, value)
+                await self._client.post_management_point(
+                    gateway_id, management_point_id, resource, value
+                )
             except OnectaRateLimitError:
                 self.create_rate_limit_issues()
                 return False
@@ -176,7 +180,9 @@ class DaikinApi:
         """PUT a management-point resource through the standalone library."""
         async with self._cloud_lock:
             try:
-                await self._client.put_management_point(gateway_id, management_point_id, resource, value)
+                await self._client.put_management_point(
+                    gateway_id, management_point_id, resource, value
+                )
             except OnectaRateLimitError:
                 self.create_rate_limit_issues()
                 return False

@@ -23,7 +23,10 @@ async def async_setup_entry(
     """Set up refresh buttons for configured Daikin devices."""
     coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
 
-    entities = [DaikinRefreshButton(device, config_entry, coordinator) for device in (coordinator.data or {}).values()]
+    entities = [
+        DaikinRefreshButton(device, config_entry, coordinator)
+        for device in (coordinator.data or {}).values()
+    ]
 
     if entities:
         async_add_entities(entities)

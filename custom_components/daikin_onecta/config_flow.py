@@ -36,7 +36,9 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
-    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+    async def async_step_init(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Handle a flow initialized by the user."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
@@ -101,7 +103,9 @@ class FlowHandler(
     async def async_oauth_create_entry(self, data: dict) -> ConfigFlowResult:
         """Create an oauth config entry or update existing entry for reauth."""
         try:
-            unique_id = jwt.decode(data["token"]["access_token"], options={"verify_signature": False})["sub"]
+            unique_id = jwt.decode(
+                data["token"]["access_token"], options={"verify_signature": False}
+            )["sub"]
         except (jwt.DecodeError, KeyError):
             _LOGGER.exception("Failed to decode JWT")
             return self.async_abort(reason="invalid_token")
@@ -110,15 +114,21 @@ class FlowHandler(
 
         if self.source == SOURCE_REAUTH:
             self._abort_if_unique_id_mismatch(reason="wrong_account")
-            return self.async_update_reload_and_abort(self._get_reauth_entry(), data_updates=data)
+            return self.async_update_reload_and_abort(
+                self._get_reauth_entry(), data_updates=data
+            )
         self._abort_if_unique_id_configured()
         return await super().async_oauth_create_entry(data)
 
-    async def async_step_reauth(self, entry_data: Mapping[str, Any]) -> ConfigFlowResult:
+    async def async_step_reauth(
+        self, entry_data: Mapping[str, Any]
+    ) -> ConfigFlowResult:
         """Perform reauth upon an API authentication error."""
         return await self.async_step_reauth_confirm()
 
-    async def async_step_reauth_confirm(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
+    async def async_step_reauth_confirm(
+        self, user_input: dict[str, Any] | None = None
+    ) -> ConfigFlowResult:
         """Dialog that informs the user that reauth is required."""
         if user_input is None:
             return self.async_show_form(
@@ -138,7 +148,9 @@ class FlowHandler(
         """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
 
-    async def async_step_zeroconf(self, _discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
+    async def async_step_zeroconf(
+        self, _discovery_info: ZeroconfServiceInfo
+    ) -> ConfigFlowResult:
         """Handle a discovered Daikin device via mDNS."""
         _LOGGER.info("Daikin device discovered via mDNS")
 

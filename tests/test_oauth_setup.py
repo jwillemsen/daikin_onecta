@@ -102,7 +102,9 @@ async def test_setup_entry_not_ready_when_implementation_unavailable(
         await async_setup_entry(hass, config_entry)
 
     if exc_info.value.translation_domain != DOMAIN:
-        pytest.fail(f"unexpected translation_domain: {exc_info.value.translation_domain}")
+        pytest.fail(
+            f"unexpected translation_domain: {exc_info.value.translation_domain}"
+        )
     if exc_info.value.translation_key != "oauth2_implementation_unavailable":
         pytest.fail(f"unexpected translation_key: {exc_info.value.translation_key}")
 

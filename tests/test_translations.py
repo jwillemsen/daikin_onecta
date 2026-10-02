@@ -63,8 +63,12 @@ def test_config_translations_are_oauth2(path: Path) -> None:
     config = data["config"]
 
     steps = set(config["step"])
-    assert REQUIRED_STEPS.issubset(steps), f"{path.name} missing steps: {REQUIRED_STEPS - steps}"
-    assert "user" not in steps, f"{path.name} still has obsolete email/password user step"
+    assert REQUIRED_STEPS.issubset(steps), (
+        f"{path.name} missing steps: {REQUIRED_STEPS - steps}"
+    )
+    assert "user" not in steps, (
+        f"{path.name} still has obsolete email/password user step"
+    )
 
     gaps = TEMPORARY_TRANSLATION_GAPS.get(path.name)
 
@@ -82,10 +86,15 @@ def test_config_translations_are_oauth2(path: Path) -> None:
 
     reauth = config["step"]["reauth_confirm"]
     if gaps is not None and gaps["missing_reauth_description"]:
-        assert "description" not in reauth, f"{path.name} now has a reauth description; remove the temporary translation exception"
+        assert "description" not in reauth, (
+            f"{path.name} now has a reauth description; remove the temporary translation exception"
+        )
     else:
         assert "description" in reauth
-        assert "Daikin Onecta" in reauth["description"] or "daikin" in reauth["description"].lower()
+        assert (
+            "Daikin Onecta" in reauth["description"]
+            or "daikin" in reauth["description"].lower()
+        )
 
     assert "title" in reauth
 

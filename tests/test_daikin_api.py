@@ -32,7 +32,11 @@ async def test_access_token(hass: HomeAssistant, config_entry: MockConfigEntry) 
     """Return the OAuth access token after ensuring it is valid."""
     api = DaikinApi(hass, config_entry, MagicMock())
     api.session.async_ensure_token_valid = AsyncMock()
-    with patch.object(type(api.session), "token", new_callable=lambda: property(lambda self: {"access_token": "token"})):
+    with patch.object(
+        type(api.session),
+        "token",
+        new_callable=lambda: property(lambda self: {"access_token": "token"}),
+    ):
         assert await api.async_get_access_token() == "token"
     api.session.async_ensure_token_valid.assert_awaited_once()
 
@@ -69,8 +73,14 @@ async def test_get_device_details_updates_rate_limit_issues(
     ("method", "arguments"),
     [
         ("patch_characteristic", ("gateway", "point", "onOffMode", "on")),
-        ("post_management_point", ("gateway", "point", "holiday-mode", {"enabled": False})),
-        ("put_management_point", ("gateway", "point", "schedule/heating/current", {"enabled": False})),
+        (
+            "post_management_point",
+            ("gateway", "point", "holiday-mode", {"enabled": False}),
+        ),
+        (
+            "put_management_point",
+            ("gateway", "point", "schedule/heating/current", {"enabled": False}),
+        ),
     ],
 )
 async def test_write_success(
@@ -94,8 +104,14 @@ async def test_write_success(
     ("method", "arguments"),
     [
         ("patch_characteristic", ("gateway", "point", "onOffMode", "on")),
-        ("post_management_point", ("gateway", "point", "holiday-mode", {"enabled": False})),
-        ("put_management_point", ("gateway", "point", "schedule/heating/current", {"enabled": False})),
+        (
+            "post_management_point",
+            ("gateway", "point", "holiday-mode", {"enabled": False}),
+        ),
+        (
+            "put_management_point",
+            ("gateway", "point", "schedule/heating/current", {"enabled": False}),
+        ),
     ],
 )
 async def test_write_api_error(
@@ -116,8 +132,14 @@ async def test_write_api_error(
     ("method", "arguments"),
     [
         ("patch_characteristic", ("gateway", "point", "onOffMode", "on")),
-        ("post_management_point", ("gateway", "point", "holiday-mode", {"enabled": False})),
-        ("put_management_point", ("gateway", "point", "schedule/heating/current", {"enabled": False})),
+        (
+            "post_management_point",
+            ("gateway", "point", "holiday-mode", {"enabled": False}),
+        ),
+        (
+            "put_management_point",
+            ("gateway", "point", "schedule/heating/current", {"enabled": False}),
+        ),
     ],
 )
 async def test_write_rate_limit(
@@ -136,25 +158,33 @@ async def test_write_rate_limit(
     assert api.last_patch_call is None
 
 
-async def test_rate_limit_issue_updates(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+async def test_rate_limit_issue_updates(
+    hass: HomeAssistant, config_entry: MockConfigEntry
+) -> None:
     """Create and remove Home Assistant rate-limit repair issues."""
     api = DaikinApi(hass, config_entry, MagicMock())
     api.client.rate_limit = RateLimit(minute_remaining=0, day_remaining=0)
 
-    with patch("custom_components.daikin_onecta.daikin_api.ir.async_create_issue") as create_issue:
+    with patch(
+        "custom_components.daikin_onecta.daikin_api.ir.async_create_issue"
+    ) as create_issue:
         api.create_rate_limit_issues()
 
     assert create_issue.call_count == EXPECTED_RATE_LIMIT_ISSUES
 
     api.client.rate_limit = RateLimit(minute_remaining=1, day_remaining=1)
-    with patch("custom_components.daikin_onecta.daikin_api.ir.async_delete_issue") as delete_issue:
+    with patch(
+        "custom_components.daikin_onecta.daikin_api.ir.async_delete_issue"
+    ) as delete_issue:
         api.update_rate_limit_issues()
 
     delete_issue.assert_any_call(hass, DOMAIN, "minute_rate_limit")
     delete_issue.assert_any_call(hass, DOMAIN, "day_rate_limit")
 
 
-async def test_rate_limits_preserve_unknown_values(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+async def test_rate_limits_preserve_unknown_values(
+    hass: HomeAssistant, config_entry: MockConfigEntry
+) -> None:
     """Keep rate-limit values unavailable when Daikin did not send them."""
     api = DaikinApi(hass, config_entry, MagicMock())
     api.client.rate_limit = RateLimit()
@@ -168,7 +198,9 @@ async def test_rate_limits_preserve_unknown_values(hass: HomeAssistant, config_e
         "ratelimit_reset": None,
     }
 
-    with patch("custom_components.daikin_onecta.daikin_api.ir.async_create_issue") as create_issue:
+    with patch(
+        "custom_components.daikin_onecta.daikin_api.ir.async_create_issue"
+    ) as create_issue:
         api.create_rate_limit_issues()
 
     create_issue.assert_not_called()

@@ -49,7 +49,14 @@ async def async_setup_entry(
 class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     """Daikin Schedule Select class."""
 
-    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+    def __init__(
+        self,
+        device: DaikinOnectaDevice,
+        coordinator,
+        embedded_id,
+        management_point_type,
+        value,
+    ) -> None:
         """Initialize a schedule selection entity."""
         _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
@@ -97,8 +104,17 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         if point is None or point.schedule is None:
             return None
         schedule = point.schedule.value
-        current_mode = schedule.current_mode.value if schedule.current_mode is not None else None
-        return next((selection for selection in schedule.selections if selection.mode == current_mode), None)
+        current_mode = (
+            schedule.current_mode.value if schedule.current_mode is not None else None
+        )
+        return next(
+            (
+                selection
+                for selection in schedule.selections
+                if selection.mode == current_mode
+            ),
+            None,
+        )
 
     def get_current_option(self):
         """Return the selected schedule name."""
@@ -117,7 +133,11 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         schedule_id = selection.selected
         if option != SCHEDULE_OFF:
             schedule_id = next(
-                (schedule.id for schedule in selection.options if schedule.name == option),
+                (
+                    schedule.id
+                    for schedule in selection.options
+                    if schedule.name == option
+                ),
                 option,
             )
 
