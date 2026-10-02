@@ -288,9 +288,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         buildname = f"{details.operation_mode.capitalize()}{period_name}{details.sensor_type.capitalize()}{details.datatype.capitalize()}"
         self.entity_description = SENSOR_DESCRIPTIONS[buildname]
         self._sensor_type = details.sensor_type
-        self._attr_unique_id = (
-            f"{self._device.id}_{details.embedded_id}_{details.sensor_type}_{self._operation_mode}_{self._period}_{self._datatype}"
-        )
+        self._attr_unique_id = f"{self._device.id}_{details.embedded_id}_{details.sensor_type}_{self._operation_mode}_{self._period}_{self._datatype}"
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
