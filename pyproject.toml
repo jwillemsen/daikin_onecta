@@ -72,18 +72,6 @@ select = [
   "UP032",
   "W",
 ]
-ignore = [
-  # Home Assistant entity and fixture callbacks have framework-mandated signatures.
-  "PLR0913", "PLR0915", "PLR0917",
-  # Literal values in API assertions make the expected cloud payload explicit.
-  "PLR2004",
-  # Runtime annotations use Home Assistant's DeviceInfo TypedDict.
-  "TC002",
-]
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = ["SLF001"]
-
 [tool.ruff.lint.flake8-pytest-style]
 fixture-parentheses = false
 mark-parentheses = false

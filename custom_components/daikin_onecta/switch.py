@@ -1,22 +1,25 @@
 """Support for Daikin AirBase zones."""
 
+from __future__ import annotations
+
 import logging
 from typing import TYPE_CHECKING
 
 from homeassistant.components.sensor import CONF_STATE_CLASS
-from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import ToggleEntity
-from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN, ENABLED_DEFAULT, ENTITY_CATEGORY, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
-from .device import DaikinOnectaDevice
 
 if TYPE_CHECKING:
+    from homeassistant.config_entries import ConfigEntry
+    from homeassistant.helpers.device_registry import DeviceInfo
+    from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
+
     from .coordinator import OnectaRuntimeData
+    from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
