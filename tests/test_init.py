@@ -46,13 +46,10 @@ from homeassistant.components.water_heater import (
 from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.device_registry as dr
-import homeassistant.helpers.entity_registry as er
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import URL, AiohttpClientMocker
-from syrupy import SnapshotAssertion
+from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
@@ -77,6 +74,7 @@ def _assert_initial_climate_state(hass: HomeAssistant) -> None:
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_cool_heat_master").state == STATE_ON
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_caution_state").state == STATE_OFF
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_warning_state").state == STATE_OFF
+
 
 EXPECTED_INITIAL_CLIMATE_CALLS = 3
 EXPECTED_DRY_MODE_CALLS = 4
@@ -553,7 +551,10 @@ async def test_mc80z(
         snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"]
         == EXPECTED_FLOOR_HEATING_CURRENT_TEMPERATURE
     )
-    assert snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"] == EXPECTED_FLOOR_HEATING_OFFSET_TEMPERATURE
+    assert (
+        snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["temperature"]
+        == EXPECTED_FLOOR_HEATING_OFFSET_TEMPERATURE
+    )
 
 
 @pytest.mark.asyncio
