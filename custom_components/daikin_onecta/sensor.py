@@ -7,6 +7,7 @@ from homeassistant.components.sensor import CONF_STATE_CLASS, SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
@@ -192,7 +193,8 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._device = device
         self._management_point_type = management_point_type
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
@@ -206,6 +208,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         period_name = SENSOR_PERIODS[period]
         buildname = f"{operation_mode.capitalize()}{period_name}{sensor_type.capitalize()}{datatype.capitalize()}"
         sensor_settings = VALUE_SENSOR_MAPPING.get(buildname)
+        assert sensor_settings is not None
         self._attr_icon = sensor_settings[CONF_ICON]
         self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
         self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
@@ -291,7 +294,8 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._device = device
         self._management_point_type = management_point_type
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
@@ -304,6 +308,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         self._attr_state_class = None
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get(value)
+        assert sensor_settings is not None
         self._attr_icon = sensor_settings[CONF_ICON]
         self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
         self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
@@ -374,6 +379,8 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_has_entity_name = True
         self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
         sensor_settings = VALUE_SENSOR_MAPPING.get("RatelimitRemainingDay")
+        assert sensor_settings is not None
+        assert self._device.ha_device_id is not None
         self._attr_icon = sensor_settings[CONF_ICON]
         self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
         self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
@@ -381,7 +388,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
         self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
         self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
-        self._attr_device_info = {
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + "gateway")},
             "name": self._device.name + " " + "Gateway",
             "via_device_id": self._device.ha_device_id,

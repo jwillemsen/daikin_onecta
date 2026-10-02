@@ -8,6 +8,7 @@ from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -71,7 +72,8 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         self._device = device
         self._management_point_type = management_point_type
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,

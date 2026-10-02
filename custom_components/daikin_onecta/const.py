@@ -1,5 +1,7 @@
 """Constants for Daikin Onecta."""
 
+from typing import Any
+
 from homeassistant.components.binary_sensor import BinarySensorDeviceClass
 from homeassistant.components.sensor import CONF_STATE_CLASS, SensorDeviceClass, SensorStateClass
 from homeassistant.components.update import UpdateDeviceClass
@@ -60,7 +62,7 @@ MODEL_ATTRIBUTE = "ModelAttribute"
 # - ICON: Icon to be used
 # - ENABLED_DEFAULT: Is the sensor enabled by default or not
 # - TRANSLATION_KEY: Translation key
-VALUE_SENSOR_MAPPING = {
+VALUE_SENSOR_MAPPING: dict[str, dict[str, Any]] = {
     "sgtin": {
         CONF_DEVICE_CLASS: None,
         CONF_STATE_CLASS: None,

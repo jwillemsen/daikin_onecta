@@ -7,6 +7,7 @@ from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
@@ -85,7 +86,8 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self._attr_unique_id = f"{self._device.id}_{self._management_point_type}_{self._value}"
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,

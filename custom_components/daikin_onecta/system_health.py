@@ -35,4 +35,4 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
             "ratelimit_reset": daikin_api.rate_limits["ratelimit_reset"],
             "oauth2_token_valid": daikin_api.session.valid_token,
         }
-    return None
+    return {}

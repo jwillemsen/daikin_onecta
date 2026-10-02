@@ -7,6 +7,7 @@ from homeassistant.components.select import SelectEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_ICON
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -55,7 +56,8 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self._device = device
         self._management_point_type = management_point_type
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
@@ -114,7 +116,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
         selection = self.selection()
         if selection is None:
-            return False
+            return False  # type: ignore[return-value]
 
         schedule_id = selection.selected
         if option != SCHEDULE_OFF:
@@ -135,7 +137,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         if result:
             self._attr_current_option = option
             self.async_write_ha_state()
-        return result
+        return result  # type: ignore[return-value]
 
     def get_options(self):
         """Return readable configured schedules."""

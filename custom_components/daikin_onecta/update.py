@@ -8,6 +8,7 @@ from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -57,7 +58,8 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._coordinator = coordinator
         self._management_point_type = management_point_type
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
             "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
@@ -65,6 +67,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._device.fill_device_info(self._attr_device_info, management_point_type)
         self._attr_has_entity_name = True
         sensor_settings = VALUE_SENSOR_MAPPING.get("FirmwareUpdate")
+        assert sensor_settings is not None
         self._attr_icon = sensor_settings[CONF_ICON]
         self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
         self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]

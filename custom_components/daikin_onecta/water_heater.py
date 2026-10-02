@@ -1,7 +1,7 @@
 """Support for the Daikin BRP069A62."""
 
 import logging
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
 from homeassistant.config_entries import ConfigEntry
@@ -260,7 +260,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                     hwtd.on_off_mode.value = on_off_mode
 
         # Only set powerfulMode when it is set and supported by the device
-        if (powerful_mode != "") and (STATE_PERFORMANCE in self.operation_list):
+        if powerful_mode != "" and STATE_PERFORMANCE in (self.operation_list or []):
             result &= await self._device.patch(
                 self._device.id,
                 self._embedded_id,
@@ -284,7 +284,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         return result
 
-    async def async_turn_on(self):
+    async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn water heater on."""
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
         result = True
@@ -305,9 +305,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 self._device.name,
             )
 
-        return result
-
-    async def async_turn_off(self):
+    async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn water heater off."""
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
         result = True
@@ -327,5 +325,3 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
                 "Device '%s' request to turn off ignored because device is already off",
                 self._device.name,
             )
-
-        return result

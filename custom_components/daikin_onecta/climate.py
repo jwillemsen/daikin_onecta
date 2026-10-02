@@ -20,12 +20,14 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback
 import homeassistant.helpers.config_validation as cv
+from homeassistant.helpers.device_registry import DeviceInfo
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 import voluptuous as vol
 
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED, MODEL_ATTRIBUTE, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
+from .coordinator import OnectaDataUpdateCoordinator
 
 if TYPE_CHECKING:
     from .coordinator import OnectaRuntimeData
@@ -83,7 +85,7 @@ async def async_setup_entry(
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
     for device in onecta_data.devices.values():
-        modes = []
+        modes: list[str] = []
         device_model = device.device.device_model
         embedded_id = ""
         for management_point in device.device.management_points_by_type("climateControl"):
@@ -101,14 +103,14 @@ async def async_setup_entry(
             )
 
 
-class DaikinClimate(CoordinatorEntity, ClimateEntity):
+class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntity):
     """Representation of a Daikin HVAC."""
 
     _enable_turn_on_off_backwards_compatibility = False  # Remove with HA 2025.1
 
     # Setpoint is the setpoint string under
     # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint, coordinator, embedded_id):
+    def __init__(self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id):
         """Initialize the climate device."""
         super().__init__(coordinator)
         _LOGGER.info(
@@ -121,10 +123,11 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._setpoint}"
-        self._attr_device_info = {"identifiers": {(DOMAIN, self._device.id)}, "name": self._device.name}
+        self._attr_device_info: DeviceInfo = {"identifiers": {(DOMAIN, self._device.id)}, "name": self._device.name}
         self._attr_has_entity_name = True
         self._device.fill_device_info(self._attr_device_info, "gateway")
         sensor_settings = VALUE_SENSOR_MAPPING.get(setpoint)
+        assert sensor_settings is not None
         self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
         self.update_state()
 
@@ -191,7 +194,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
 
     def homekit_fan_mode_aliases(self, fan_speed):
         """Return HomeKit fan mode aliases available for the fan speed data."""
-        aliases = {}
+        aliases: dict[str, str] = {}
         if not self._homekit_fan_mode_aliases_enabled:
             return aliases
 
@@ -509,7 +512,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         if fan_operation is None or fan_operation.fan_speed is None:
             return []
         fan_speed = fan_operation.fan_speed
-        fan_modes = []
+        fan_modes: list[str] = []
         for mode in fan_speed.current_mode.values or []:
             if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
                 fixed = fan_speed.modes[FANMODE_FIXED]

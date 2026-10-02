@@ -7,7 +7,6 @@ from typing import Any
 from homeassistant import config_entries
 from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
 from homeassistant.core import callback
-from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.selector import BooleanSelector, NumberSelector, NumberSelectorConfig, TimeSelector
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
@@ -26,7 +25,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
-    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> FlowResult:
+    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Handle a flow initialized by the user."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
@@ -89,7 +88,7 @@ class FlowHandler(
         """Extra data that needs to be appended to the authorize url."""
         return {"scope": "openid onecta:basic.integration offline_access"}
 
-    async def async_oauth_create_entry(self, data: dict) -> FlowResult:
+    async def async_oauth_create_entry(self, data: dict) -> ConfigFlowResult:
         """Create an oauth config entry or update existing entry for reauth."""
         try:
             unique_id = jwt.decode(data["token"]["access_token"], options={"verify_signature": False})["sub"]

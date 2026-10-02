@@ -1788,7 +1788,9 @@ async def test_switch_write_failures() -> None:
     assert entity.is_on is False
 
     on_characteristic = MagicMock(value="on")
-    device.management_point.return_value.characteristic.return_value = on_characteristic
+    on_management_point = MagicMock()
+    on_management_point.characteristic.return_value = on_characteristic
+    device.management_point.return_value = on_management_point
     on_entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
     assert await on_entity.async_turn_off() is False
     assert on_entity.is_on is True

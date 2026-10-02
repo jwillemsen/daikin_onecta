@@ -10,7 +10,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
-from daikin_onecta import OnectaRateLimitError
+from daikin_onecta.exceptions import OnectaRateLimitError
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
@@ -53,7 +53,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Return the delay after a write before polling resumes."""
         return self.options.get("scan_ignore", 30)
 
-    async def async_update_data(self) -> None:
+    async def async_update_data(self) -> dict[str, DaikinOnectaDevice]:
         """Fetch the latest device state from Daikin."""
         _LOGGER.debug("Daikin coordinator start _async_update_data")
 
@@ -93,10 +93,11 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             "Daikin coordinator finished _async_update_data, next interval %s",
             self.update_interval,
         )
+        return devices
 
-    async def _async_update_data(self) -> None:
+    async def _async_update_data(self) -> dict[str, DaikinOnectaDevice]:
         """Fetch data for the Home Assistant coordinator interface."""
-        await self.async_update_data()
+        return await self.async_update_data()
 
     def update_settings(self, config_entry: ConfigEntry) -> None:
         """Apply updated config entry options."""
