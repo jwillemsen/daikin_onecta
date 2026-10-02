@@ -49,6 +49,12 @@ class DaikinOnectaDevice:
         """Return a management point by embedded id."""
         return self.device.management_point(embedded_id)
 
+    @property
+    def gateway_embedded_id(self) -> str | None:
+        """Return the embedded ID of the gateway management point."""
+        gateway = self.device.management_point_by_type("gateway")
+        return gateway.embedded_id if gateway is not None else None
+
     def fill_device_info(self, device_info: DeviceInfo, embedded_id: str) -> None:
         """Fill Home Assistant device information from an embedded management point ID."""
         device_info["manufacturer"] = "Daikin"
@@ -65,6 +71,12 @@ class DaikinOnectaDevice:
             device_info["serial_number"] = point.serial_number.value
         if point.software_version is not None:
             device_info["sw_version"] = point.software_version.value
+
+    def fill_gateway_device_info(self, device_info: DeviceInfo) -> None:
+        """Fill device information from the gateway management point."""
+        device_info["manufacturer"] = "Daikin"
+        if (embedded_id := self.gateway_embedded_id) is not None:
+            self.fill_device_info(device_info, embedded_id)
 
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
@@ -84,7 +96,7 @@ class DaikinOnectaDevice:
             model_id=self.device.device_model,
         )
 
-        self.fill_device_info(info, "gateway")
+        self.fill_gateway_device_info(info)
         return info
 
     def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
