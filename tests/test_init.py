@@ -49,12 +49,13 @@ import homeassistant.helpers.device_registry as dr
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 import pytest
+from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.climate import DaikinClimate
-from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, SCHEDULE_OFF
-from custom_components.daikin_onecta.device import DaikinOnectaDevice
+from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, DOMAIN, SCHEDULE_OFF
+from custom_components.daikin_onecta.device import DaikinOnectaDevice, migrate_legacy_subdevice_identifiers
 from custom_components.daikin_onecta.diagnostics import async_get_config_entry_diagnostics, async_get_device_diagnostics
 from custom_components.daikin_onecta.select import DaikinScheduleSelect
 from custom_components.daikin_onecta.switch import DaikinSwitch
@@ -1720,6 +1721,26 @@ def test_device_fill_info_uses_embedded_management_point_id() -> None:
 
     device.device.management_point.assert_called_once_with("climateControlZone2")
     assert info == {"manufacturer": "Daikin", "model": "Second zone model"}
+
+
+def test_migrate_legacy_subdevice_identifier(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Preserve the existing subdevice record when moving to an embedded ID."""
+    config_entry.add_to_hass(hass)
+    device_registry = dr.async_get(hass)
+    legacy_entry = device_registry.async_get_or_create(
+        config_entry_id=config_entry.entry_id,
+        identifiers={(DOMAIN, "deviceclimateControl")},
+    )
+    management_point = MagicMock(management_point_type="climateControl", embedded_id="zone1")
+    device = MagicMock(id="device")
+    device.device.management_points = [management_point]
+
+    migrate_legacy_subdevice_identifiers(hass, config_entry, {"device": device})
+
+    migrated_entry = device_registry.async_get_device(identifiers={(DOMAIN, "devicezone1")})
+    assert migrated_entry is not None
+    assert migrated_entry.id == legacy_entry.id
+    assert device_registry.async_get_device(identifiers={(DOMAIN, "deviceclimateControl")}) is None
 
 
 def test_schedule_select_missing_selection() -> None:

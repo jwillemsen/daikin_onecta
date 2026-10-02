@@ -136,3 +136,34 @@ class DaikinOnectaDevice:
     async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
         """PUT a management-point resource."""
         return await self.api.put_management_point(id, embeddedId, dataPoint, value)
+
+
+def migrate_legacy_subdevice_identifiers(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    devices: dict[str, DaikinOnectaDevice],
+) -> None:
+    """Migrate type-based subdevice identifiers to embedded management-point IDs.
+
+    Legacy versions could represent only one management point of a given type.
+    Preserve that device registry entry for the first matching point, while
+    later same-type points receive their own identifiers when entities are set
+    up.
+    """
+    device_registry = dr.async_get(hass)
+    for device in devices.values():
+        management_points_by_type: dict[str, list[Any]] = {}
+        for management_point in device.device.management_points:
+            management_points_by_type.setdefault(management_point.management_point_type, []).append(management_point)
+
+        for management_point_type, management_points in management_points_by_type.items():
+            legacy_identifier = (DOMAIN, device.id + management_point_type)
+            registry_entry = device_registry.async_get_device(identifiers={legacy_identifier})
+            if registry_entry is None or config_entry.entry_id not in registry_entry.config_entries:
+                continue
+
+            embedded_identifier = (DOMAIN, device.id + management_points[0].embedded_id)
+            identifiers = set(registry_entry.identifiers)
+            identifiers.discard(legacy_identifier)
+            identifiers.add(embedded_identifier)
+            device_registry.async_update_device(registry_entry.id, new_identifiers=identifiers)

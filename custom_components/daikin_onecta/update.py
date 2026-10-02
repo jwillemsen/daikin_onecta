@@ -64,7 +64,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         mpt = management_point_type[0].upper() + management_point_type[1:]
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "identifiers": {(DOMAIN, self._device.id + self._embedded_id)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }

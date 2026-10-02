@@ -220,7 +220,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }
@@ -322,7 +322,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }

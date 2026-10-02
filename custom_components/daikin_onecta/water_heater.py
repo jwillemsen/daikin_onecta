@@ -48,7 +48,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_unique_id = f"{self._device.id}"
         self._management_point_type = management_point_type
         self._attr_device_info = {
-            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+            "identifiers": {(DOMAIN, self._device.id + embedded_id)},
             "name": self._device.name,
             "via_device_id": self._device.ha_device_id,
         }
