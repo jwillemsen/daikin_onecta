@@ -20,7 +20,6 @@ if TYPE_CHECKING:
     from homeassistant.helpers.device_registry import DeviceInfo
 
 
-
 _LOGGER = logging.getLogger(__name__)
 
 # The Daikin Onecta cloud API exposes firmware updates
