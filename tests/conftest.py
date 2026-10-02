@@ -130,7 +130,14 @@ async def snapshot_platform_entities(
     entity_snapshot = {}
     for entity_entry in entity_entries:
         registry_data = dict(entity_entry.as_partial_dict)
-        for key in ("config_entry_id", "created_at", "device_id", "id", "modified_at"):
+        for key in (
+            "config_entry_id",
+            "created_at",
+            "device_id",
+            "id",
+            "modified_at",
+            "next_name_part",
+        ):
             registry_data.pop(key, None)
 
         state = hass.states.get(entity_entry.entity_id)

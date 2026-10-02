@@ -584,7 +584,7 @@ async def test_holidaymode(
 async def _assert_water_heater_diagnostics(hass: HomeAssistant, config_entry: Any) -> None:
     """Assert expected diagnostic data for the water-heater fixture."""
     config_diagnostics = await async_get_config_entry_diagnostics(hass, config_entry)
-    device = dr.async_get(hass).async_get_device(identifiers={("daikin_onecta", "1ece521b-5401-4a42-acce-6f76fba246aa")})
+    device = dr.async_get(hass).async_get_device_by_identifier(("daikin_onecta", "1ece521b-5401-4a42-acce-6f76fba246aa"), config_entry.entry_id)
     assert device is not None
     device_diagnostics = await async_get_device_diagnostics(hass, config_entry, device)
     for diagnostics in (config_diagnostics, device_diagnostics):
@@ -1805,10 +1805,10 @@ def test_migrate_legacy_subdevice_identifier(hass: HomeAssistant, config_entry: 
 
     migrate_legacy_subdevice_identifiers(hass, config_entry, {"device": device})
 
-    migrated_entry = device_registry.async_get_device(identifiers={(DOMAIN, "devicezone1")})
+    migrated_entry = device_registry.async_get_device_by_identifier((DOMAIN, "devicezone1"), config_entry.entry_id)
     assert migrated_entry is not None
     assert migrated_entry.id == legacy_entry.id
-    assert device_registry.async_get_device(identifiers={(DOMAIN, "deviceclimateControl")}) is None
+    assert device_registry.async_get_device_by_identifier((DOMAIN, "deviceclimateControl"), config_entry.entry_id) is None
 
 
 def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:

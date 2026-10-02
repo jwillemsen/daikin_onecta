@@ -176,8 +176,8 @@ def migrate_legacy_subdevice_identifiers(
 
         for management_point_type, management_points in management_points_by_type.items():
             legacy_identifier = (DOMAIN, device.id + management_point_type)
-            registry_entry = device_registry.async_get_device(identifiers={legacy_identifier})
-            if registry_entry is None or config_entry.entry_id not in registry_entry.config_entries:
+            registry_entry = device_registry.async_get_device_by_identifier(legacy_identifier, config_entry.entry_id)
+            if registry_entry is None:
                 continue
 
             embedded_identifier = (DOMAIN, device.id + management_points[0].embedded_id)
