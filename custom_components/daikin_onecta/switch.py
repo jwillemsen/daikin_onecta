@@ -57,7 +57,10 @@ async def async_setup_entry(
 
 
 class DaikinSwitch(CoordinatorEntity, ToggleEntity):
+    """Represent a switchable Daikin characteristic."""
+
     def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+        """Initialize the switch from a device characteristic."""
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -94,10 +97,12 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         )
 
     def update_state(self) -> None:
+        """Refresh the state from the current device data."""
         self._switch_state = self.sensor_value()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -107,6 +112,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     @property
     def is_on(self):
+        """Return whether the switch is on."""
         return self._switch_state == "on"
 
     def sensor_value(self):

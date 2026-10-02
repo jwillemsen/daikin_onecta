@@ -82,10 +82,6 @@ ignore = [
   "TRY400", "UP047", "UP049", "W191", "E111", "E114", "E117",
   "D206", "D300", "Q", "COM812", "COM819", "PLE0605", "FURB116",
   "ISC004", "LOG004",
-  # Existing integration and test-suite baseline; tracked separately from
-  # automated formatting and correctness rules.
-  "BLE001", "C901", "D", "DTZ011", "INP001", "N806", "PERF401",
-  "PERF403", "PTH123", "PT012", "PT022", "RET503", "RET504", "SLF001",
 ]
 
 [tool.ruff.lint.flake8-pytest-style]
@@ -103,15 +99,6 @@ python_version = "3.14"
 show_error_codes = true
 check_untyped_defs = true
 no_implicit_optional = true
-# The integration consumes dynamically-shaped Home Assistant state and an
-# untyped upstream client. Retain mypy for all supported diagnostics while
-# excluding the established baseline until those interfaces are typed.
-disable_error_code = [
-  "arg-type", "assignment", "attr-defined", "call-arg", "dict-item",
-  "import-untyped", "index", "misc", "operator", "override", "return",
-  "return-value", "var-annotated",
-]
-
 [tool.pylint.main]
 load-plugins = ["pylint_home_assistant"]
 

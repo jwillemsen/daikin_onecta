@@ -16,8 +16,7 @@ from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordina
 @pytest.fixture
 def mock_hass():
     """Return a mocked HomeAssistant instance."""
-    hass = MagicMock(spec=HomeAssistant)
-    return hass
+    return MagicMock(spec=HomeAssistant)
 
 
 @pytest.fixture

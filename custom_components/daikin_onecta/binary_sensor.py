@@ -52,6 +52,8 @@ async def async_setup_entry(
 
 
 class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
+    """Represent a boolean Daikin characteristic."""
+
     def __init__(
         self,
         device: DaikinOnectaDevice,
@@ -60,6 +62,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         management_point_type,
         value,
     ) -> None:
+        """Initialize the binary sensor from a device characteristic."""
         _LOGGER.info("DaikinBinarySensor '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -94,10 +97,12 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         )
 
     def update_state(self) -> None:
+        """Refresh the state from the current device data."""
         self._attr_is_on = self.sensor_value()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback

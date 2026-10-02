@@ -57,6 +57,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             _LOGGER.debug("Device '%s' tank temperature is settable", device.name)
 
     def update_state(self) -> None:
+        """Refresh all state attributes from the device."""
         self._attr_supported_features = self.get_supported_features()
         self._attr_current_temperature = self.get_current_temperature()
         self._attr_target_temperature = self.get_target_temperature()
@@ -67,6 +68,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -91,6 +93,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         return heating.setpoints.get("domesticHotWaterTemperature")
 
     def get_supported_features(self):
+        """Return the list of supported features."""
         sf = WaterHeaterEntityFeature.OPERATION_MODE | WaterHeaterEntityFeature.ON_OFF
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
@@ -98,7 +101,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         if dht:
             if dht.settable:
                 sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
-        """Return the list of supported features."""
         return sf
 
     def get_current_temperature(self):
@@ -130,10 +132,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     @property
     def extra_state_attributes(self):
+        """Return optional device state attributes."""
         data = {}
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            """Return the optional device state attributes."""
             data = {"target_temp_step": float(dht.step_value)}
         return data
 
@@ -226,6 +228,20 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
         return states
 
+    def _requested_modes(self, operation_mode: str) -> tuple[str, str]:
+        """Return the required on/off and powerful-mode values."""
+        on_off_mode = ""
+        powerful_mode = ""
+        if operation_mode == STATE_OFF:
+            on_off_mode = "off"
+        elif operation_mode == STATE_PERFORMANCE:
+            powerful_mode = "on"
+            on_off_mode = "on" if self.current_operation == STATE_OFF else ""
+        elif operation_mode == STATE_HEAT_PUMP:
+            powerful_mode = "off" if self.current_operation == STATE_PERFORMANCE else ""
+            on_off_mode = "on" if self.current_operation == STATE_OFF else ""
+        return on_off_mode, powerful_mode
+
     async def async_set_operation_mode(self, operation_mode):
         """Set new tank state."""
         _LOGGER.debug("Set tank operation mode: %s", operation_mode)
@@ -233,19 +249,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # First determine the new settings for onOffMode/powerfulMode, we need these to set them to Daikin
         # and update our local cached version when succeeded
-        on_off_mode = ""
-        powerful_mode = ""
-        if operation_mode == STATE_OFF:
-            on_off_mode = "off"
-        if operation_mode == STATE_PERFORMANCE:
-            powerful_mode = "on"
-            if self.current_operation == STATE_OFF:
-                on_off_mode = "on"
-        if operation_mode == STATE_HEAT_PUMP:
-            if self.current_operation == STATE_PERFORMANCE:
-                powerful_mode = "off"
-            if self.current_operation == STATE_OFF:
-                on_off_mode = "on"
+        on_off_mode, powerful_mode = self._requested_modes(operation_mode)
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":

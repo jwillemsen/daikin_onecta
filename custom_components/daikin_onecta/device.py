@@ -1,3 +1,5 @@
+"""Represent Daikin Onecta gateway devices."""
+
 import logging
 from typing import Any
 

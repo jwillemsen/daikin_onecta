@@ -31,18 +31,12 @@ async def async_setup_entry(
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
 
-    entities: list[DaikinFirmwareUpdateEntity] = []
-    for device in onecta_data.devices.values():
-        for management_point in device.device.management_points:
-            if management_point.firmware_version is not None or management_point.software_version is not None:
-                entities.append(
-                    DaikinFirmwareUpdateEntity(
-                        coordinator,
-                        device,
-                        management_point,
-                        management_point.management_point_type,
-                    )
-                )
+    entities = [
+        DaikinFirmwareUpdateEntity(coordinator, device, management_point, management_point.management_point_type)
+        for device in onecta_data.devices.values()
+        for management_point in device.device.management_points
+        if management_point.firmware_version is not None or management_point.software_version is not None
+    ]
 
     async_add_entities(entities)
 

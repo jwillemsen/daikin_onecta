@@ -1,3 +1,5 @@
+"""Provide Daikin schedule selection entities."""
+
 import logging
 
 from homeassistant.components.select import SelectEntity
@@ -44,6 +46,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     """Daikin Schedule Select class."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+        """Initialize a schedule selection entity."""
         _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -73,11 +76,13 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         )
 
     def update_state(self) -> None:
+        """Refresh the available and selected schedule options."""
         self._attr_options = self.get_options()
         self._attr_current_option = self.get_current_option()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback

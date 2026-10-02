@@ -1,6 +1,8 @@
-# """Global fixtures for myenergi integration."""
+"""Shared fixtures for the Daikin Onecta integration."""
+
 import asyncio
 import json
+from pathlib import Path
 import time
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
@@ -32,9 +34,9 @@ FAKE_AUTH_IMPL = "conftest-imported-cred"
 
 
 def load_fixture_json(name):
-    with open(f"tests/fixtures/{name}.json") as json_file:
-        data = json.load(json_file)
-        return data
+    """Load a JSON fixture by name."""
+    with Path(f"tests/fixtures/{name}.json").open() as json_file:
+        return json.load(json_file)
 
 
 async def resolve_system_health_coroutines(info: dict) -> dict:
@@ -79,9 +81,9 @@ async def snapshot_platform_entities(
     snapshot: SnapshotAssertion,
     fixture_device_json,
 ) -> None:
+    """Set up a platform and snapshot its entities."""
     config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
     config_entry.runtime_data.coordinator = MagicMock()
-    """Snapshot entities and their states."""
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ):
@@ -145,7 +147,7 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
 @pytest.fixture(name="onecta_auth")
 def onecta_auth() -> AsyncMock:
     """Restrict loaded platforms to list given."""
-    yield
+    return
 
 
 @pytest.fixture(name="access_token")
