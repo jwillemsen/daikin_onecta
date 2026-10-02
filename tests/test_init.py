@@ -1702,6 +1702,26 @@ def test_device_fill_info_missing_management_point() -> None:
     assert info == {"manufacturer": "Daikin"}
 
 
+def test_device_fill_info_uses_embedded_management_point_id() -> None:
+    """Use the selected zone's metadata when management-point types repeat."""
+    point = MagicMock(
+        eeprom_version=None,
+        firmware_version=None,
+        serial_number=None,
+        software_version=None,
+    )
+    point.model_info.value = "Second zone model"
+    device = object.__new__(DaikinOnectaDevice)
+    device.device = MagicMock()
+    device.device.management_point.return_value = point
+    info = {}
+
+    device.fill_device_info(info, "climateControlZone2")
+
+    device.device.management_point.assert_called_once_with("climateControlZone2")
+    assert info == {"manufacturer": "Daikin", "model": "Second zone model"}
+
+
 def test_schedule_select_missing_selection() -> None:
     """Handle a schedule entity whose management point is no longer available."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")

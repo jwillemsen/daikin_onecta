@@ -49,10 +49,10 @@ class DaikinOnectaDevice:
         """Return a management point by embedded id."""
         return self.device.management_point(embedded_id)
 
-    def fill_device_info(self, device_info: DeviceInfo, management_point_type: str) -> None:
-        """Fill Home Assistant device information from a typed management point."""
+    def fill_device_info(self, device_info: DeviceInfo, embedded_id: str) -> None:
+        """Fill Home Assistant device information from an embedded management point ID."""
         device_info["manufacturer"] = "Daikin"
-        point = self.device.management_point_by_type(management_point_type)
+        point = self.device.management_point(embedded_id)
         if point is None:
             return
         if point.eeprom_version is not None:

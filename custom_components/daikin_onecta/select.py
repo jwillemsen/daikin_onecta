@@ -64,7 +64,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }
-        self._device.fill_device_info(self._attr_device_info, management_point_type)
+        self._device.fill_device_info(self._attr_device_info, embedded_id)
         self._embedded_id = embedded_id
         self._value = value
         self._attr_has_entity_name = True

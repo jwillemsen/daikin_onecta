@@ -60,6 +60,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._device = device
         self._coordinator = coordinator
         self._management_point_type = management_point_type
+        self._embedded_id = gateway_mp.embedded_id
         mpt = management_point_type[0].upper() + management_point_type[1:]
         assert self._device.ha_device_id is not None
         self._attr_device_info: DeviceInfo = {
@@ -67,7 +68,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }
-        self._device.fill_device_info(self._attr_device_info, management_point_type)
+        self._device.fill_device_info(self._attr_device_info, self._embedded_id)
         self._attr_has_entity_name = True
         self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 
@@ -132,7 +133,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        mp = self._device.device.management_point_by_type(self._management_point_type)
+        mp = self._device.management_point(self._embedded_id)
         if mp is not None:
             self._update_from_management_point(mp)
         self.async_write_ha_state()

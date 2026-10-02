@@ -224,7 +224,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }
-        self._device.fill_device_info(self._attr_device_info, details.management_point_type)
+        self._device.fill_device_info(self._attr_device_info, details.embedded_id)
         self._embedded_id = details.embedded_id
         self._operation_mode = details.operation_mode
         self._attr_has_entity_name = True
@@ -326,7 +326,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }
-        self._device.fill_device_info(self._attr_device_info, details.management_point_type)
+        self._device.fill_device_info(self._attr_device_info, details.embedded_id)
         self._embedded_id = details.embedded_id
         self._sub_type = details.sub_type
         self._value = details.value
