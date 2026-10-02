@@ -1846,6 +1846,12 @@ def test_system_health_register() -> None:
 
 
 @pytest.mark.asyncio
+async def test_system_health_without_config_entry(hass: HomeAssistant) -> None:
+    """Return no system-health data when the integration is not configured."""
+    assert await system_health_info(hass) == {}
+
+
+@pytest.mark.asyncio
 async def test_firmware_install_without_id() -> None:
     """Do not issue a firmware update request without a firmware ID."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
@@ -1861,6 +1867,28 @@ async def test_firmware_install_without_id() -> None:
     await entity.async_install(None, False)
 
     device.put.assert_not_called()
+
+
+@pytest.mark.asyncio
+async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> None:
+    """Log a failed firmware update request."""
+    device = MagicMock(id="device", ha_device_id="ha-device")
+    device.name = "Device"
+    device.put = AsyncMock(return_value=False)
+    management_point = MagicMock(
+        firmware_version=MagicMock(value="1.0"),
+        software_version=None,
+        is_firmware_update_supported=MagicMock(value=True),
+        firmware_update=MagicMock(value={"id": "firmware-id"}),
+        firmware_update_status=None,
+    )
+    entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
+    entity.async_write_ha_state = MagicMock()
+
+    await entity.async_install(None, False)
+
+    device.put.assert_awaited_once_with("device", "gateway", "firmware/firmware-id")
+    assert "Failed to trigger firmware update for Device" in caplog.text
 
 
 @pytest.mark.asyncio
