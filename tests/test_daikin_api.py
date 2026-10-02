@@ -1,18 +1,14 @@
 """Tests for the Daikin Onecta API client."""
-from unittest.mock import AsyncMock
-from unittest.mock import MagicMock
-from unittest.mock import patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
-import pytest
-from daikin_onecta import OnectaApiError
-from daikin_onecta import OnectaConnectionError
-from daikin_onecta import OnectaRateLimitError
+from daikin_onecta import OnectaApiError, OnectaConnectionError, OnectaRateLimitError
 from daikin_onecta.rate_limit import RateLimit
-from homeassistant.core import HomeAssistant
+import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.daikin_api import DaikinApi
+from homeassistant.core import HomeAssistant
 
 
 async def test_get_device_details_propagates_connection_error(
@@ -20,6 +16,7 @@ async def test_get_device_details_propagates_connection_error(
     config_entry: MockConfigEntry,
 ) -> None:
     """Propagate library connection errors to the coordinator."""
+    api = DaikinApi(hass, config_entry, MagicMock())
     with (
         patch(
             "custom_components.daikin_onecta.daikin_api.OnectaClient.get_gateway_devices",
@@ -27,7 +24,6 @@ async def test_get_device_details_propagates_connection_error(
         ),
         pytest.raises(OnectaConnectionError, match="network unavailable"),
     ):
-        api = DaikinApi(hass, config_entry, MagicMock())
         await api.get_cloud_device_details()
 
 

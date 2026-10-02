@@ -6,18 +6,12 @@ from homeassistant.components.binary_sensor import (
 )
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_DEVICE_CLASS
-from homeassistant.const import CONF_ICON
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import ENTITY_CATEGORY
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
+from .const import DOMAIN, ENABLED_DEFAULT, ENTITY_CATEGORY, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -59,6 +53,8 @@ async def async_setup_entry(
 
 
 class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
+    """Represent a boolean Daikin characteristic."""
+
     def __init__(
         self,
         device: DaikinOnectaDevice,
@@ -67,6 +63,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         management_point_type,
         value,
     ) -> None:
+        """Initialize the binary sensor."""
         _LOGGER.info("DaikinBinarySensor '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -101,10 +98,12 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
         )
 
     def update_state(self) -> None:
+        """Update the entity state from the current device data."""
         self._attr_is_on = self.sensor_value()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback

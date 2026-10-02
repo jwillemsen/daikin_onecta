@@ -1,2 +1,100 @@
 [tool.ruff]
 line-length = 150
+
+[tool.ruff.lint]
+select = [
+  "ASYNC",
+  "B",
+  "BLE",
+  "C",
+  "D",
+  "DTZ003",
+  "DTZ004",
+  "DTZ011",
+  "E",
+  "F",
+  "FURB",
+  "I",
+  "ICN",
+  "INP",
+  "N804",
+  "N805",
+  "N806",
+  "N815",
+  "PERF",
+  "PGH",
+  "PIE",
+  "PL",
+  "PT",
+  "RET",
+  "RSE",
+  "RUF",
+  "SIM",
+  "SLOT",
+  "TID",
+  "TRY",
+  "UP",
+  "W",
+]
+ignore = [
+  "ASYNC109",
+  "ASYNC110",
+  "ASYNC240",
+  "B008",
+  "B019",
+  "D202",
+  "D203",
+  "D213",
+  "D406",
+  "D407",
+  "D417",
+  "E501",
+  "PLR0911",
+  "PLR0912",
+  "PLR0913",
+  "PLR0915",
+  "PLR0917",
+  "PLR2004",
+  "PLW2901",
+  "PT011",
+  "PT018",
+  "RUF001",
+  "RUF012",
+  "RUF015",
+  "SIM102",
+  "SIM103",
+  "SIM108",
+  "SIM115",
+  "TC001",
+  "TC002",
+  "TC003",
+  "TRY003",
+  "TRY400",
+  "UP047",
+  "W191",
+  "E111",
+  "E114",
+  "E117",
+  "D206",
+  "D300",
+  "COM812",
+  "COM819",
+]
+
+[tool.ruff.lint.flake8-import-conventions.extend-aliases]
+"homeassistant.helpers.config_validation" = "cv"
+"homeassistant.helpers.device_registry" = "dr"
+"homeassistant.helpers.entity_registry" = "er"
+"homeassistant.helpers.issue_registry" = "ir"
+"homeassistant.util.dt" = "dt_util"
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
+force-sort-within-sections = true
+known-first-party = ["homeassistant"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.mccabe]
+max-complexity = 25

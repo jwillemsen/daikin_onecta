@@ -2,12 +2,9 @@
 from typing import Any
 
 from homeassistant.components import system_health
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 
-from .const import DAIKIN_API_URL
-from .const import DOMAIN
-from .const import OAUTH2_AUTHORIZE
+from .const import DAIKIN_API_URL, DOMAIN, OAUTH2_AUTHORIZE
 from .coordinator import OnectaRuntimeData
 
 
@@ -35,3 +32,4 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
             "ratelimit_reset": daikin_api.rate_limits["ratelimit_reset"],
             "oauth2_token_valid": daikin_api.session.valid_token,
         }
+    return {}

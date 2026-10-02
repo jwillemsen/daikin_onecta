@@ -1,27 +1,21 @@
 """Test the Daikin Onecta coordinator."""
-from datetime import datetime
-from datetime import time
-from datetime import timedelta
-from unittest.mock import AsyncMock
-from unittest.mock import MagicMock
-from unittest.mock import patch
+from datetime import datetime, time, timedelta
+from unittest.mock import AsyncMock, MagicMock, patch
 
-import pytest
 from daikin_onecta import OnectaRateLimitError
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.update_coordinator import UpdateFailed
+import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
-from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
-from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
+from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator, OnectaRuntimeData
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.update_coordinator import UpdateFailed
 
 
 @pytest.fixture
 def mock_hass():
     """Return a mocked HomeAssistant instance."""
-    hass = MagicMock(spec=HomeAssistant)
-    return hass
+    return MagicMock(spec=HomeAssistant)
 
 
 @pytest.fixture
@@ -111,13 +105,14 @@ class TestOnectaDataUpdateCoordinator:
         daikin_api = mock_config_entry.runtime_data.daikin_api
         daikin_api._last_patch_call = None
         daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
+        initial_update_interval = coordinator.update_interval
 
         # Simulate daily rate limit reached
         with pytest.raises(UpdateFailed) as exc_info:
             await coordinator._async_update_data()
 
         assert exc_info.value.retry_after == 3060
-        assert coordinator.update_interval == timedelta(minutes=10)
+        assert coordinator.update_interval == initial_update_interval
 
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""

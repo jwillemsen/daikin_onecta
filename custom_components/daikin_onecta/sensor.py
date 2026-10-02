@@ -1,28 +1,26 @@
 """Support for Daikin AC sensors."""
 import logging
 
-from homeassistant.components.sensor import CONF_STATE_CLASS
-from homeassistant.components.sensor import SensorEntity
+from homeassistant.components.sensor import CONF_STATE_CLASS, SensorEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_DEVICE_CLASS
-from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
-from .const import DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import ENTITY_CATEGORY
-from .const import MODEL_ATTRIBUTE
-from .const import SENSOR_PERIOD_MONTHLY
-from .const import SENSOR_PERIOD_WEEKLY
-from .const import SENSOR_PERIOD_YEARLY
-from .const import SENSOR_PERIODS
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
+from .const import (
+    DOMAIN,
+    ENABLED_DEFAULT,
+    ENTITY_CATEGORY,
+    MODEL_ATTRIBUTE,
+    SENSOR_PERIOD_MONTHLY,
+    SENSOR_PERIOD_WEEKLY,
+    SENSOR_PERIOD_YEARLY,
+    SENSOR_PERIODS,
+    TRANSLATION_KEY,
+    VALUE_SENSOR_MAPPING,
+)
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -150,15 +148,17 @@ async def async_setup_entry(
                         )
                         is not None
                     ):
-                        sensors.append(
-                            DaikinValueSensor(
-                                device,
-                                coordinator,
-                                embedded_id,
-                                management_point_type,
-                                "sensoryData",
-                                sensor,
-                            )
+                        sensors.extend(
+                            [
+                                DaikinValueSensor(
+                                    device,
+                                    coordinator,
+                                    embedded_id,
+                                    management_point_type,
+                                    "sensoryData",
+                                    sensor,
+                                )
+                            ]
                         )
 
             for datatype, energy_data in (
@@ -189,6 +189,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     def __init__(
         self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, sensor_type, operation_mode, period, datatype
     ) -> None:
+        """Initialize an energy sensor."""
         super().__init__(coordinator)
         self._device = device
         self._management_point_type = management_point_type
@@ -204,8 +205,8 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         self._attr_has_entity_name = True
         self._period = period
         self._datatype = datatype
-        periodName = SENSOR_PERIODS[period]
-        buildname = f"{operation_mode.capitalize()}{periodName}{sensor_type.capitalize()}{datatype.capitalize()}"
+        period_name = SENSOR_PERIODS[period]
+        buildname = f"{operation_mode.capitalize()}{period_name}{sensor_type.capitalize()}{datatype.capitalize()}"
         sensor_settings = VALUE_SENSOR_MAPPING.get(buildname)
         self._attr_icon = sensor_settings[CONF_ICON]
         self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
@@ -225,10 +226,12 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         )
 
     def update_state(self) -> None:
+        """Update the entity state from current device data."""
         self._attr_native_value = self.sensor_value()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -273,6 +276,8 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
 
 
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
+    """Represent a Daikin value sensor."""
+
     def __init__(
         self,
         device: DaikinOnectaDevice,
@@ -282,6 +287,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         sub_type,
         value,
     ) -> None:
+        """Initialize a value sensor."""
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", management_point_type, sub_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -317,10 +323,12 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         )
 
     def update_state(self) -> None:
+        """Update the entity state from current device data."""
         self._attr_native_value = self.sensor_value()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -348,6 +356,8 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
 
 
 class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
+    """Represent an API rate-limit sensor."""
+
     def __init__(
         self,
         hass: HomeAssistant,
@@ -356,6 +366,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         coordinator,
         limit_key,
     ) -> None:
+        """Initialize a rate-limit sensor."""
         _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
         super().__init__(coordinator)
         self._hass = hass
@@ -386,6 +397,7 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         )
 
     def update_state(self) -> None:
+        """Update the entity state from current API data."""
         self._attr_native_value = self.sensor_value()
 
     @callback
@@ -394,5 +406,6 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     def sensor_value(self):
+        """Return the configured API rate-limit value."""
         daikin_api = self._config_entry.runtime_data.daikin_api
         return daikin_api.rate_limits[self._limit_key]

@@ -5,20 +5,13 @@ from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_DEVICE_CLASS
-from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.const import CONF_DEVICE_CLASS, CONF_ICON, CONF_UNIT_OF_MEASUREMENT
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import ENTITY_CATEGORY
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
+from .const import DOMAIN, ENABLED_DEFAULT, ENTITY_CATEGORY, TRANSLATION_KEY, VALUE_SENSOR_MAPPING
 from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
@@ -65,7 +58,10 @@ async def async_setup_entry(
 
 
 class DaikinSwitch(CoordinatorEntity, ToggleEntity):
+    """Represent a switchable Daikin characteristic."""
+
     def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+        """Initialize the switch."""
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(coordinator)
         self._device = device
@@ -102,10 +98,12 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
         )
 
     def update_state(self) -> None:
+        """Update the entity state from the current device data."""
         self._switch_state = self.sensor_value()
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -115,6 +113,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
 
     @property
     def is_on(self):
+        """Return whether the switch is on."""
         return self._switch_state == "on"
 
     def sensor_value(self):

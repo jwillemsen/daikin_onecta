@@ -1,16 +1,10 @@
 """Support for the Daikin BRP069A62."""
 import logging
 
-from homeassistant.components.water_heater import STATE_HEAT_PUMP
-from homeassistant.components.water_heater import STATE_OFF
-from homeassistant.components.water_heater import STATE_PERFORMANCE
-from homeassistant.components.water_heater import WaterHeaterEntity
-from homeassistant.components.water_heater import WaterHeaterEntityFeature
+from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_TEMPERATURE
-from homeassistant.const import UnitOfTemperature
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -62,6 +56,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             _LOGGER.debug("Device '%s' tank temperature is settable", device.name)
 
     def update_state(self) -> None:
+        """Update the entity state from the current device data."""
         self._attr_supported_features = self.get_supported_features()
         self._attr_current_temperature = self.get_current_temperature()
         self._attr_target_temperature = self.get_target_temperature()
@@ -72,6 +67,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -96,6 +92,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         return heating.setpoints.get("domesticHotWaterTemperature")
 
     def get_supported_features(self):
+        """Return the supported water-heater features."""
         sf = WaterHeaterEntityFeature.OPERATION_MODE | WaterHeaterEntityFeature.ON_OFF
         # Only when we have a fixed setpointMode we can control the target
         # temperature of the tank
@@ -103,7 +100,6 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         if dht:
             if dht.settable:
                 sf |= WaterHeaterEntityFeature.TARGET_TEMPERATURE
-        """Return the list of supported features."""
         return sf
 
     def get_current_temperature(self):
@@ -135,10 +131,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
     @property
     def extra_state_attributes(self):
+        """Return optional device state attributes."""
         data = {}
         dht = self.domestic_hotwater_temperature
         if dht is not None:
-            """Return the optional device state attributes."""
             data = {"target_temp_step": float(dht.step_value)}
         return data
 
