@@ -1854,6 +1854,12 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
             ("water_heater", "device"),
         )
     ]
+    current_climate_entry = entity_registry.async_get_or_create(
+        "climate",
+        DOMAIN,
+        "device_zone1_leavingWaterOffset",
+        config_entry=config_entry,
+    )
     climate_control = MagicMock(management_point_type="climateControl", embedded_id="zone1")
     water_tank = MagicMock(management_point_type="domesticHotWaterTank", embedded_id="tank")
     device = MagicMock(id="device")
@@ -1869,6 +1875,10 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
         "device_zone1_roomTemperature",
         "device_tank",
     ]
+    assert (
+        entity_registry.async_get(current_climate_entry.entity_id).unique_id
+        == "device_zone1_leavingWaterOffset"
+    )
 
     migrate_legacy_update_unique_ids(hass, config_entry)
 
