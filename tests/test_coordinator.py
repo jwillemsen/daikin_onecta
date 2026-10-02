@@ -125,6 +125,30 @@ class TestOnectaDataUpdateCoordinator:
 
         assert isinstance(exc_info.value.__cause__, OnectaConnectionError)
 
+    async def test_missing_gateway_is_marked_unavailable_after_successful_update(self, coordinator):
+        """Keep cached devices but mark those absent from cloud data unavailable."""
+        missing_device = MagicMock()
+        coordinator.data = {"missing": missing_device}
+        coordinator.api.last_patch_call = None
+        coordinator.api.get_cloud_device_details = AsyncMock(return_value=[])
+
+        result = await coordinator.async_update_data()
+
+        assert result == {"missing": missing_device}
+        missing_device.mark_unavailable.assert_called_once()
+
+    async def test_failed_update_does_not_mark_cached_gateway_unavailable(self, coordinator):
+        """Do not infer a missing device from a failed cloud request."""
+        missing_device = MagicMock()
+        coordinator.data = {"missing": missing_device}
+        coordinator.api.last_patch_call = None
+        coordinator.api.get_cloud_device_details = AsyncMock(side_effect=OnectaConnectionError("offline"))
+
+        with pytest.raises(UpdateFailed):
+            await coordinator.async_update_data()
+
+        missing_device.mark_unavailable.assert_not_called()
+
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""
         options = {

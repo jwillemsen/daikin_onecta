@@ -37,17 +37,24 @@ class DaikinOnectaDevice:
         # to this gateway device: the older via_device=(DOMAIN, identifier) form is
         # deprecated because identifiers are no longer guaranteed globally unique.
         self.ha_device_id: str | None = None
+        self._is_present_in_cloud = True
 
         _LOGGER.info("Initialized Daikin Onecta Device '%s' (id %s)", self.name, self.id)
 
     @property
     def available(self) -> bool:
         """Return whether the device is connected to the Daikin cloud."""
-        return self.device.available
+        return self._is_present_in_cloud and self.device.available
 
     def management_point(self, embedded_id: str):
         """Return a management point by embedded id."""
         return self.device.management_point(embedded_id)
+
+    @property
+    def gateway_embedded_id(self) -> str | None:
+        """Return the embedded ID of the gateway management point."""
+        gateway = self.device.management_point_by_type("gateway")
+        return gateway.embedded_id if gateway is not None else None
 
     def fill_device_info(self, device_info: DeviceInfo, embedded_id: str) -> None:
         """Fill Home Assistant device information from an embedded management point ID."""
@@ -65,6 +72,12 @@ class DaikinOnectaDevice:
             device_info["serial_number"] = point.serial_number.value
         if point.software_version is not None:
             device_info["sw_version"] = point.software_version.value
+
+    def fill_gateway_device_info(self, device_info: DeviceInfo) -> None:
+        """Fill device information from the gateway management point."""
+        device_info["manufacturer"] = "Daikin"
+        if (embedded_id := self.gateway_embedded_id) is not None:
+            self.fill_device_info(device_info, embedded_id)
 
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
@@ -84,7 +97,7 @@ class DaikinOnectaDevice:
             model_id=self.device.device_model,
         )
 
-        self.fill_device_info(info, "gateway")
+        self.fill_gateway_device_info(info)
         return info
 
     def async_register_ha_device(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
@@ -106,11 +119,16 @@ class DaikinOnectaDevice:
     def set_device_data(self, device: GatewayDevice) -> None:
         """Overwrite the typed and compatibility data for this device."""
         self.device = device
+        self._is_present_in_cloud = True
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
             self.name,
             self.available,
         )
+
+    def mark_unavailable(self) -> None:
+        """Mark the device unavailable after it is absent from a cloud response."""
+        self._is_present_in_cloud = False
 
     async def patch(
         self,
@@ -195,7 +213,10 @@ def _legacy_entity_unique_id(
         climate_points = points_by_type.get("climateControl", [])
         old_prefix = f"{device.id}_"
         if climate_points and entry.unique_id.startswith(old_prefix):
-            return f"{device.id}_{climate_points[-1].embedded_id}_{entry.unique_id.removeprefix(old_prefix)}"
+            suffix = entry.unique_id.removeprefix(old_prefix)
+            if any(suffix.startswith(f"{point.embedded_id}_") for point in climate_points):
+                return None
+            return f"{device.id}_{climate_points[-1].embedded_id}_{suffix}"
 
     if entry.domain == "water_heater" and entry.unique_id == device.id:
         for management_point_type in ("domesticHotWaterTank", "domesticHotWaterFlowThrough"):

@@ -78,9 +78,9 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @override
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
         """Trigger a firmware update via the Daikin Onecta cloud API."""
-        if self._firmware_id is None:
+        if not self._is_update_supported or self._firmware_id is None:
             _LOGGER.error(
-                "Cannot install firmware for %s: no firmware ID available",
+                "Cannot install firmware for %s: update is not supported or no firmware ID is available",
                 self._device.name,
             )
             return
@@ -91,7 +91,11 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             self._firmware_id,
         )
 
-        self._attr_in_progress = await self._device.put(self._device.id, self._management_point_type, f"firmware/{self._firmware_id}")
+        self._attr_in_progress = await self._device.put(
+            self._device.id,
+            self._embedded_id,
+            f"firmware/{self._firmware_id}",
+        )
 
         if not self._attr_in_progress:
             _LOGGER.error("Failed to trigger firmware update for %s", self._device.name)
@@ -113,7 +117,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_release_summary = None
         self._firmware_id = None
         self._attr_in_progress = False
-        self._attr_supported_features = UpdateEntityFeature.INSTALL
+        self._attr_supported_features = UpdateEntityFeature.INSTALL if self._is_update_supported else UpdateEntityFeature(0)
         self._attr_extra_state_attributes = {}
 
         if management_point.firmware_update is not None:
@@ -136,3 +140,9 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         if mp is not None:
             self._update_from_management_point(mp)
         self.async_write_ha_state()
+
+    @property
+    @override
+    def available(self) -> bool:
+        """Return whether the source device is available."""
+        return super().available and self._device.available
