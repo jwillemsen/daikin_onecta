@@ -93,12 +93,13 @@ logger:
 You can help translate this integration into your own language! We use **Lokalise** to manage all translation strings. You don't need any coding skills to help—just a free Lokalise account.
 
 ### How to contribute:
+
 1. Click the **Lokalise** badge above to join our translation project.
 2. Select your language (or request it if it's missing).
 3. Start translating the open strings.
 4. Once a language is 100% completed, it will automatically be pulled into this repository via a Pull Request.
 
-*A huge thank you to all community members helping to make this integration accessible to everyone!*
+_A huge thank you to all community members helping to make this integration accessible to everyone!_
 
 # Thanks to:
 

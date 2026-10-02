@@ -1,23 +1,22 @@
 """Platform for the Daikin AC."""
+
 import logging
 
 import aiohttp
-import jwt
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed
-from homeassistant.exceptions import ConfigEntryNotReady
-from homeassistant.exceptions import OAuth2TokenRequestError
-from homeassistant.exceptions import OAuth2TokenRequestReauthError
+from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady, OAuth2TokenRequestError, OAuth2TokenRequestReauthError
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
 from homeassistant.helpers.typing import ConfigType
+import jwt
 
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
-from .coordinator import OnectaRuntimeData
 from .daikin_api import DaikinApi
+from .device import migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
+from .sensor import migrate_legacy_sensor_unique_ids
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -34,7 +33,7 @@ PLATFORMS = [
 
 
 async def async_setup(hass: HomeAssistant, config: ConfigType) -> bool:
-    """Setup the Daikin Onecta component."""
+    """Set up the Daikin Onecta component."""
     return True
 
 
@@ -57,13 +56,12 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     except (OAuth2TokenRequestError, aiohttp.ClientError) as err:
         raise ConfigEntryNotReady from err
 
-    config_entry.runtime_data = OnectaRuntimeData(daikin_api=daikin_api, devices={})
-    config_entry.runtime_data.coordinator = OnectaDataUpdateCoordinator(hass, config_entry)
+    config_entry.runtime_data = OnectaDataUpdateCoordinator(hass, config_entry, daikin_api)
 
-    # Let the coordinator raise ConfigEntryAuthFailed / ConfigEntryNotReady directly.
-    # Do not wrap first_refresh in a broad Exception handler: that would convert
-    # reauth failures into ConfigEntryNotReady and skip the reauth flow.
-    await config_entry.runtime_data.coordinator.async_config_entry_first_refresh()
+    await config_entry.runtime_data.async_config_entry_first_refresh()
+    migrate_legacy_subdevice_identifiers(hass, config_entry, config_entry.runtime_data.data or {})
+    migrate_legacy_entity_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
+    migrate_legacy_sensor_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
 
     config_entry.async_on_unload(config_entry.add_update_listener(update_listener))
 
@@ -74,14 +72,13 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
 
 async def async_unload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Unload a config entry."""
-    _LOGGER.debug("Unloading integration...")
+    _LOGGER.debug("Unloading integration")
     return await hass.config_entries.async_unload_platforms(config_entry, PLATFORMS)
 
 
 async def update_listener(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
     """Handle options update."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
     coordinator.update_settings(config_entry)
     coordinator.async_update_listeners()
 

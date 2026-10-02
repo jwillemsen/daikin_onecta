@@ -5,22 +5,28 @@ on:
     branches:
       - master
     paths:
-      - 'custom_components/daikin_onecta/translations/en.json'
+      - "custom_components/daikin_onecta/translations/en.json"
   repository_dispatch:
     types: [lokalise_webhook]
   workflow_dispatch:
 
 jobs:
   push-source:
+    permissions:
+      contents: read
     if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-slim
     steps:
       - name: Checkout code
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
 
       - name: Installeer Lokalise CLI v2 via curl
         run: |
-          curl -sfL https://raw.githubusercontent.com/lokalise/lokalise-cli-2-go/master/install.sh | sh
+          url="https://raw.githubusercontent.com"
+          url+="/lokalise/lokalise-cli-2-go/master/install.sh"
+          curl -sfL "$url" | sh
           sudo mv ./bin/lokalise2 /usr/local/bin/lokalise2
 
       - name: Push en.json naar Lokalise
@@ -28,7 +34,8 @@ jobs:
           lokalise2 file upload \
             --token "${{ secrets.LOKALISE_API_TOKEN }}" \
             --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
-            --file "custom_components/daikin_onecta/translations/en.json" \
+            --file \
+            "custom_components/daikin_onecta/translations/en.json" \
             --lang-iso "en" \
             --convert-placeholders=1 \
             --replace-modified

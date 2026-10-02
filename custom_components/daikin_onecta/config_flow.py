@@ -1,27 +1,26 @@
 """Config flow for the Daikin platform."""
-import logging
+
 from collections.abc import Mapping
+import logging
 from typing import Any
 
+from homeassistant import config_entries
+from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
+from homeassistant.core import callback
+from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers.selector import BooleanSelector, NumberSelector, NumberSelectorConfig, TimeSelector
+from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 import jwt
 import voluptuous as vol
-from homeassistant import config_entries
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.config_entries import ConfigFlowResult
-from homeassistant.config_entries import SOURCE_REAUTH
-from homeassistant.core import callback
-from homeassistant.data_entry_flow import FlowResult
-from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers.selector import BooleanSelector
-from homeassistant.helpers.selector import NumberSelector
-from homeassistant.helpers.selector import NumberSelectorConfig
-from homeassistant.helpers.selector import TimeSelector
-from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 
-from .const import CONF_HOMEKIT_FAN_MODE_ALIASES
-from .const import DOMAIN
+from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
+OAUTH_SCOPES = [
+    "openid",
+    "onecta:basic.integration",
+    "offline_access",
+]
 
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
@@ -31,7 +30,7 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
         """Initialize Daikin Onecta options flow."""
         self.options = dict(config_entry.options)
 
-    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> FlowResult:
+    async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Handle a flow initialized by the user."""
         if user_input is not None:
             return self.async_create_entry(title="", data=user_input)
@@ -83,7 +82,6 @@ class FlowHandler(
     """Handle a config flow."""
 
     # See https://developers.home-assistant.io/docs/core/platform/application_credentials/
-    # and https://developer.cloud.daikineurope.com/docs/b0dffcaa-7b51-428a-bdff-a7c8a64195c0/getting_started
     VERSION = 1
     MINOR_VERSION = 2
     DOMAIN = DOMAIN
@@ -92,9 +90,9 @@ class FlowHandler(
     @property
     def extra_authorize_data(self) -> dict[str, str]:
         """Extra data that needs to be appended to the authorize url."""
-        return {"scope": "openid onecta:basic.integration offline_access"}
+        return {"scope": " ".join(OAUTH_SCOPES)}
 
-    async def async_oauth_create_entry(self, data: dict) -> FlowResult:
+    async def async_oauth_create_entry(self, data: dict) -> ConfigFlowResult:
         """Create an oauth config entry or update existing entry for reauth."""
         try:
             unique_id = jwt.decode(data["token"]["access_token"], options={"verify_signature": False})["sub"]
@@ -134,28 +132,11 @@ class FlowHandler(
         """Options callback for Daikin Onecta."""
         return OptionsFlowHandler(config_entry)
 
-    async def async_step_zeroconf(self, discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
+    async def async_step_zeroconf(self, _discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
         """Handle a discovered Daikin device via mDNS."""
-        _LOGGER.info(
-            "Daikin device discovered via mDNS: host=%s hostname=%s type=%s properties=%s",
-            discovery_info.host,
-            discovery_info.hostname,
-            discovery_info.type,
-            discovery_info.properties,
-        )
+        _LOGGER.info("Daikin device discovered via mDNS")
 
         if self._async_current_entries():
             return self.async_abort(reason="already_configured")
-
-        hostname = discovery_info.hostname
-        if not hostname:
-            return self.async_abort(reason="unknown")
-
-        # Strip trailing dot and .local suffix for a clean display name.
-        # e.g. "altherma4-a1b2-c3d4.local." -> "altherma4-a1b2-c3d4"
-        hostname = hostname.rstrip(".")
-        hostname = hostname.removesuffix(".local")
-
-        self.context["title_placeholders"] = {"name": hostname}
 
         return await self.async_step_user()

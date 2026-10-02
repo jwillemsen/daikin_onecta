@@ -1,36 +1,31 @@
 """Test the Daikin Onecta coordinator."""
-from datetime import datetime
-from datetime import time
-from datetime import timedelta
-from unittest.mock import AsyncMock
-from unittest.mock import MagicMock
-from unittest.mock import patch
 
-import pytest
-from daikin_onecta import OnectaRateLimitError
+from datetime import datetime, time, timedelta
+from unittest.mock import AsyncMock, MagicMock, patch
+
+from daikin_onecta import OnectaConnectionError, OnectaRateLimitError
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import UpdateFailed
+import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
-from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
+
+EXPECTED_RATE_LIMIT_RETRY_AFTER = 3060
+EXPECTED_CONNECTION_ERROR = "network unavailable"
 
 
 @pytest.fixture
 def mock_hass():
     """Return a mocked HomeAssistant instance."""
-    hass = MagicMock(spec=HomeAssistant)
-    return hass
+    return MagicMock(spec=HomeAssistant)
 
 
 @pytest.fixture
 def mock_config_entry() -> MockConfigEntry:
     """Mock a config entry."""
-    entry = MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345")
-    entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
-    entry.runtime_data.coordinator = MagicMock()
-    return entry
+    return MockConfigEntry(domain=DOMAIN, title="daikin_onecta", unique_id="12345")
 
 
 @pytest.fixture
@@ -48,7 +43,7 @@ def coordinator(mock_hass, mock_config_entry):
         config_entry,
         data={**config_entry.data, **options},
     )
-    return OnectaDataUpdateCoordinator(mock_hass, config_entry)
+    return OnectaDataUpdateCoordinator(mock_hass, config_entry, MagicMock())
 
 
 class TestOnectaDataUpdateCoordinator:
@@ -108,16 +103,27 @@ class TestOnectaDataUpdateCoordinator:
 
     async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
         """A Daikin rate limit should use the coordinator retry-after mechanism."""
-        daikin_api = mock_config_entry.runtime_data.daikin_api
-        daikin_api._last_patch_call = None
+        daikin_api = coordinator.api
+        daikin_api.last_patch_call = None
         daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
+        initial_interval = coordinator.update_interval
 
         # Simulate daily rate limit reached
         with pytest.raises(UpdateFailed) as exc_info:
-            await coordinator._async_update_data()
+            await coordinator.async_update_data()
 
-        assert exc_info.value.retry_after == 3060
-        assert coordinator.update_interval == timedelta(minutes=10)
+        assert exc_info.value.retry_after == EXPECTED_RATE_LIMIT_RETRY_AFTER
+        assert coordinator.update_interval == initial_interval
+
+    async def test_connection_error_uses_update_failed(self, coordinator):
+        """A connection error should mark the coordinator update as failed."""
+        coordinator.api.last_patch_call = None
+        coordinator.api.get_cloud_device_details = AsyncMock(side_effect=OnectaConnectionError(EXPECTED_CONNECTION_ERROR))
+
+        with pytest.raises(UpdateFailed, match="Unable to connect to the Daikin API") as exc_info:
+            await coordinator.async_update_data()
+
+        assert isinstance(exc_info.value.__cause__, OnectaConnectionError)
 
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""

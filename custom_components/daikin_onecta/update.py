@@ -1,28 +1,26 @@
 """Support for Daikin firmware update entities."""
-import logging
-from typing import Any
 
-from daikin_onecta.models import ManagementPoint
-from homeassistant.components.sensor import CONF_STATE_CLASS
-from homeassistant.components.update import UpdateEntity
-from homeassistant.components.update import UpdateEntityFeature
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_DEVICE_CLASS
-from homeassistant.const import CONF_ICON
-from homeassistant.const import CONF_UNIT_OF_MEASUREMENT
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from __future__ import annotations
+
+import logging
+from typing import TYPE_CHECKING, Any
+
+from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .const import DOMAIN
-from .const import ENABLED_DEFAULT
-from .const import ENTITY_CATEGORY
-from .const import TRANSLATION_KEY
-from .const import VALUE_SENSOR_MAPPING
-from .coordinator import OnectaDataUpdateCoordinator
-from .coordinator import OnectaRuntimeData
-from .device import DaikinOnectaDevice
+from .entity_descriptions import UPDATE_DESCRIPTIONS
+
+if TYPE_CHECKING:
+    from homeassistant.config_entries import ConfigEntry
+    from homeassistant.helpers.device_registry import DeviceInfo
+    from homeassistant.helpers.entity_platform import AddEntitiesCallback
+
+    from daikin_onecta.models import ManagementPoint
+
+    from .coordinator import OnectaDataUpdateCoordinator
+    from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -35,21 +33,14 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up Daikin update entities from a config entry."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
 
-    entities: list[DaikinFirmwareUpdateEntity] = []
-    for device in onecta_data.devices.values():
-        for management_point in device.device.management_points:
-            if management_point.firmware_version is not None or management_point.software_version is not None:
-                entities.append(
-                    DaikinFirmwareUpdateEntity(
-                        coordinator,
-                        device,
-                        management_point,
-                        management_point.management_point_type,
-                    )
-                )
+    entities = [
+        DaikinFirmwareUpdateEntity(coordinator, device, management_point, management_point.management_point_type)
+        for device in (coordinator.data or {}).values()
+        for management_point in device.device.management_points
+        if management_point.firmware_version is not None or management_point.software_version is not None
+    ]
 
     async_add_entities(entities)
 
@@ -69,25 +60,19 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._device = device
         self._coordinator = coordinator
         self._management_point_type = management_point_type
+        self._embedded_id = gateway_mp.embedded_id
         mpt = management_point_type[0].upper() + management_point_type[1:]
-        self._attr_device_info = {
-            "identifiers": {(DOMAIN, self._device.id + self._management_point_type)},
+        assert self._device.ha_device_id is not None
+        self._attr_device_info: DeviceInfo = {
+            "identifiers": {(DOMAIN, self._device.id + self._embedded_id)},
             "name": self._device.name + " " + mpt,
             "via_device_id": self._device.ha_device_id,
         }
-        self._device.fill_device_info(self._attr_device_info, management_point_type)
+        self._device.fill_device_info(self._attr_device_info, self._embedded_id)
         self._attr_has_entity_name = True
-        sensor_settings = VALUE_SENSOR_MAPPING.get("FirmwareUpdate")
-        self._attr_icon = sensor_settings[CONF_ICON]
-        self._attr_device_class = sensor_settings[CONF_DEVICE_CLASS]
-        self._attr_entity_registry_enabled_default = sensor_settings[ENABLED_DEFAULT]
-        self._attr_state_class = sensor_settings[CONF_STATE_CLASS]
-        self._attr_entity_category = sensor_settings[ENTITY_CATEGORY]
-        self._attr_native_unit_of_measurement = sensor_settings[CONF_UNIT_OF_MEASUREMENT]
-        self._attr_translation_key = sensor_settings[TRANSLATION_KEY]
+        self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 
-        # Unique ID: <device_id>_firmware_update
-        self._attr_unique_id = f"{device.id}_{management_point_type}_firmware_update"
+        self._attr_unique_id = f"{device.id}_{self._embedded_id}_firmware_update"
 
         # Populate initial state
         self._update_from_management_point(gateway_mp)
@@ -147,7 +132,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        mp = self._device.device.management_point_by_type(self._management_point_type)
+        mp = self._device.management_point(self._embedded_id)
         if mp is not None:
             self._update_from_management_point(mp)
         self.async_write_ha_state()

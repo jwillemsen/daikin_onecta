@@ -1,14 +1,14 @@
 """Provide info to system health."""
-from typing import Any
+
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.components import system_health
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 
-from .const import DAIKIN_API_URL
-from .const import DOMAIN
-from .const import OAUTH2_AUTHORIZE
-from .coordinator import OnectaRuntimeData
+from .const import DAIKIN_API_URL, DOMAIN, OAUTH2_AUTHORIZE
+
+if TYPE_CHECKING:
+    from .coordinator import OnectaDataUpdateCoordinator
 
 
 @callback
@@ -22,8 +22,8 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
     entries = hass.config_entries.async_entries(DOMAIN)
     if entries:
         config_entry = entries[0]
-        onecta_data: OnectaRuntimeData = config_entry.runtime_data
-        daikin_api = onecta_data.daikin_api
+        coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+        daikin_api = coordinator.api
         return {
             "api_status": system_health.async_check_can_reach_url(hass, DAIKIN_API_URL + "/v1/gateway-devices"),
             "oauth2_status": system_health.async_check_can_reach_url(hass, OAUTH2_AUTHORIZE),
@@ -35,3 +35,4 @@ async def system_health_info(hass: HomeAssistant) -> dict[str, Any]:
             "ratelimit_reset": daikin_api.rate_limits["ratelimit_reset"],
             "oauth2_token_valid": daikin_api.session.valid_token,
         }
+    return {}

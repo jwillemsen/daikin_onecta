@@ -1,4 +1,6 @@
 .HA_VERSION
+.cache/
+.codex/
 automations.yaml
 configuration.yaml
 daikin_data_DACARLO.json

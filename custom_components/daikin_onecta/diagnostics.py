@@ -1,5 +1,6 @@
 """Diagnostics support for Daikin Diagnostics."""
-from typing import Any
+
+from typing import TYPE_CHECKING, Any
 
 from homeassistant.components.diagnostics import async_redact_data
 from homeassistant.config_entries import ConfigEntry
@@ -7,7 +8,8 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.device_registry import DeviceEntry
 
-from .coordinator import OnectaRuntimeData
+if TYPE_CHECKING:
+    from .coordinator import OnectaDataUpdateCoordinator
 
 REDACT_KEYS = {"serialNumber", "macAddress"}
 
@@ -41,11 +43,11 @@ def get_entities(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, di
 
 async def async_get_config_entry_diagnostics(hass: HomeAssistant, config_entry: ConfigEntry) -> dict[str, Any]:
     """Return diagnostics for a config entry."""
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    daikin_api = onecta_data.daikin_api
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+    daikin_api = coordinator.api
     return {
         "json_data": async_redact_data(
-            [device.device.to_dict() for device in onecta_data.devices.values()],
+            [device.device.to_dict() for device in (coordinator.data or {}).values()],
             REDACT_KEYS,
         ),
         "rate_limits": daikin_api.rate_limits,
@@ -59,9 +61,9 @@ async def async_get_device_diagnostics(hass: HomeAssistant, config_entry: Config
     """Return diagnostics for a device entry."""
     data: dict[str, Any] = {}
     dev_id = next(iter(device.identifiers))[1]
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    daikin_api = onecta_data.daikin_api
-    daikin_device = onecta_data.devices.get(dev_id)
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+    daikin_api = coordinator.api
+    daikin_device = (coordinator.data or {}).get(dev_id)
     if daikin_device is not None:
         data["device_json_data"] = async_redact_data(daikin_device.device.to_dict(), REDACT_KEYS)
     data["rate_limits"] = daikin_api.rate_limits

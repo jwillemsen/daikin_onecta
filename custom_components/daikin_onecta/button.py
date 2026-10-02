@@ -1,16 +1,15 @@
 """Button platform for the Daikin Onecta integration."""
+
 import logging
 
 from homeassistant.components.button import ButtonEntity
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import callback
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import EntityCategory
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .coordinator import OnectaDataUpdateCoordinator
-from .coordinator import OnectaRuntimeData
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
@@ -21,13 +20,10 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    entities = []
+    """Set up refresh buttons for configured Daikin devices."""
+    coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
 
-    onecta_data: OnectaRuntimeData = config_entry.runtime_data
-    coordinator = onecta_data.coordinator
-
-    for device in onecta_data.devices.values():
-        entities.append(DaikinRefreshButton(device, config_entry, coordinator))
+    entities = [DaikinRefreshButton(device, config_entry, coordinator) for device in (coordinator.data or {}).values()]
 
     if entities:
         async_add_entities(entities)
@@ -42,6 +38,7 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
         config_entry: ConfigEntry,
         coordinator: OnectaDataUpdateCoordinator,
     ) -> None:
+        """Initialize a refresh button for a device."""
         super().__init__(coordinator)
         self._device = device
         self._attr_unique_id = f"{self._device.id}_refresh"
@@ -57,6 +54,7 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
 
     @property
     def available(self) -> bool:
+        """Return whether the source device is available."""
         return self._device.available
 
     @callback
@@ -64,4 +62,5 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
         self.async_write_ha_state()
 
     async def async_press(self) -> None:
+        """Request an immediate coordinator refresh."""
         await self.coordinator.async_refresh()

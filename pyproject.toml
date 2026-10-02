@@ -1,2 +1,102 @@
 [tool.ruff]
+required-version = ">=0.16.9"
 line-length = 150
+
+[tool.ruff.lint]
+select = [
+  "A001",
+  "ASYNC",
+  "B",
+  "BLE",
+  "C",
+  "COM818",
+  "D",
+  "DTZ003",
+  "DTZ004",
+  "DTZ011",
+  "E",
+  "F",
+  "F541",
+  "FLY",
+  "FURB",
+  "G",
+  "I",
+  "INP",
+  "ISC",
+  "ICN001",
+  "ICN002",
+  "LOG",
+  "N804",
+  "N805",
+  "N806",
+  "N815",
+  "PERF",
+  "PGH",
+  "PIE",
+  "PL",
+  "PT",
+  "PTH",
+  "PYI",
+  "RET",
+  "RSE",
+  "RUF",
+  "S107",
+  "S102",
+  "S103",
+  "S108",
+  "S301",
+  "S306",
+  "S307",
+  "S313",
+  "S314",
+  "S315",
+  "S316",
+  "S317",
+  "S318",
+  "S319",
+  "S601",
+  "S602",
+  "S604",
+  "S608",
+  "S609",
+  "SIM",
+  "SLF",
+  "SLOT",
+  "T100",
+  "T20",
+  "TC",
+  "TID",
+  "TRY",
+  "UP",
+  "UP031",
+  "UP032",
+  "W",
+]
+[tool.ruff.lint.flake8-pytest-style]
+fixture-parentheses = false
+mark-parentheses = false
+
+[tool.ruff.lint.isort]
+force-sort-within-sections = true
+known-first-party = ["custom_components"]
+combine-as-imports = true
+split-on-trailing-comma = false
+
+[tool.ruff.lint.pylint]
+max-statements = 250
+
+[tool.mypy]
+python_version = "3.14"
+show_error_codes = true
+check_untyped_defs = true
+no_implicit_optional = true
+[tool.pylint.main]
+load-plugins = ["pylint_home_assistant"]
+
+[tool.pylint.messages_control]
+disable = [
+  "all",
+]
+enable = [
+  "home-assistant-logger-period",
+]

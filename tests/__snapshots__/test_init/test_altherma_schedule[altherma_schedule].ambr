@@ -21,7 +21,7 @@
         'original_name': 'Is holiday mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'isholidaymodeactive',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_isHolidayModeActive',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_isHolidayModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -51,7 +51,7 @@
         'original_name': 'Is in emergency state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinemergencystate',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_isInEmergencyState',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_isInEmergencyState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -82,7 +82,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_isInErrorState',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -113,7 +113,7 @@
         'original_name': 'Is in installer state',
         'platform': 'daikin_onecta',
         'translation_key': 'isininstallerstate',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_isInInstallerState',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_isInInstallerState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -143,7 +143,7 @@
         'original_name': 'Is in warning state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinwarningstate',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_isInWarningState',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_isInWarningState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -417,7 +417,7 @@
         'original_name': 'Leaving Water Offset',
         'platform': 'daikin_onecta',
         'translation_key': 'leavingwateroffset',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterOffset',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_leavingWaterOffset',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -463,7 +463,7 @@
         'original_name': 'Leaving Water Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'leavingwatertemperature',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_leavingWaterTemperature',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_leavingWaterTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -507,7 +507,7 @@
         'original_name': 'Room Temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_roomTemperature',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -553,7 +553,7 @@
         'original_name': 'Schedule',
         'platform': 'daikin_onecta',
         'translation_key': 'schedule',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_schedule',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_schedule',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -622,7 +622,7 @@
         'original_name': 'Control mode',
         'platform': 'daikin_onecta',
         'translation_key': 'controlmode',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_controlMode',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_controlMode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -655,7 +655,7 @@
         'original_name': 'Cooling daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingdailyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_d',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_cooling_d_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -691,7 +691,7 @@
         'original_name': 'Cooling monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingmonthlyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_monthly',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_cooling_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -727,7 +727,7 @@
         'original_name': 'Cooling weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingweeklyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_w',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_cooling_w_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -763,7 +763,7 @@
         'original_name': 'Cooling yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'coolingyearlyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_cooling_m',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_cooling_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -796,7 +796,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_errorCode',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -829,7 +829,7 @@
         'original_name': 'Heating daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingdailyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_d',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_heating_d_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -865,7 +865,7 @@
         'original_name': 'Heating monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_monthly',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_heating_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -901,7 +901,7 @@
         'original_name': 'Heating weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingweeklyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_w',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_heating_w_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -937,7 +937,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_electrical_heating_m',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_electrical_heating_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -973,7 +973,7 @@
         'original_name': 'Leaving water temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'leavingwatertemperature',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_sensoryData_leavingWaterTemperature',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_sensoryData_leavingWaterTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1009,7 +1009,7 @@
         'original_name': 'Outdoor temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'outdoortemperature',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_sensoryData_outdoorTemperature',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_sensoryData_outdoorTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1045,7 +1045,7 @@
         'original_name': 'Room temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_sensoryData_roomTemperature',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_sensoryData_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1078,7 +1078,7 @@
         'original_name': 'Setpoint mode',
         'platform': 'daikin_onecta',
         'translation_key': 'setpointmode',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControl_None_setpointMode',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_None_setpointMode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1171,7 +1171,7 @@
         'original_name': 'Heating daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingdailyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_d',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_d_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1207,7 +1207,7 @@
         'original_name': 'Heating monthly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingmonthlyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_monthly',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_monthly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1243,7 +1243,7 @@
         'original_name': 'Heating weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingweeklyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_w',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_w_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1279,7 +1279,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_m',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank_electrical_heating_m_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1611,7 +1611,7 @@
         'original_name': None,
         'platform': 'daikin_onecta',
         'translation_key': None,
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_domesticHotWaterTank',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

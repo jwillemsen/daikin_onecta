@@ -1,41 +1,33 @@
 """Coordinator for Daikin Onecta integration."""
+
+from datetime import time, timedelta
 import logging
 import random
-from dataclasses import dataclass
-from dataclasses import field
-from datetime import time
-from datetime import timedelta
 
-from daikin_onecta import OnectaRateLimitError
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator
-from homeassistant.helpers.update_coordinator import UpdateFailed
+from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
+
+from daikin_onecta.exceptions import OnectaConnectionError, OnectaRateLimitError
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
 from .device import DaikinOnectaDevice
 
 _LOGGER = logging.getLogger(__name__)
+RATE_LIMIT_EXCEEDED = "Daikin API rate limit exceeded"
+CONNECTION_FAILED = "Unable to connect to the Daikin API"
 
 
-@dataclass
-class OnectaRuntimeData:
-    """Runtime Data for Onecta integration."""
-
-    coordinator: "OnectaDataUpdateCoordinator" = field(init=False)
-    devices: dict[str, DaikinOnectaDevice]
-    daikin_api: DaikinApi
-
-
-class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
+class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDevice]]):
     """Class to manage fetching data from the API."""
 
-    def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    def __init__(self, hass: HomeAssistant, config_entry: ConfigEntry, daikin_api: DaikinApi) -> None:
         """Initialize."""
         self.options = config_entry.options
         self._config_entry = config_entry
+        self._daikin_api = daikin_api
 
         super().__init__(
             hass,
@@ -45,42 +37,47 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         )
 
         _LOGGER.info(
-            "Daikin coordinator initialized with %s interval.",
+            "Daikin coordinator initialized with %s interval",
             self.update_interval,
         )
+
+    @property
+    def api(self) -> DaikinApi:
+        """Return the Daikin API client."""
+        return self._daikin_api
 
     def scan_ignore(self) -> int:
         """Return the delay after a write before polling resumes."""
         return self.options.get("scan_ignore", 30)
 
-    async def _async_update_data(self) -> None:
+    async def async_update_data(self) -> dict[str, DaikinOnectaDevice]:
         """Fetch the latest device state from Daikin."""
-        _LOGGER.debug("Daikin coordinator start _async_update_data.")
+        _LOGGER.debug("Daikin coordinator start _async_update_data")
 
-        onecta_data: OnectaRuntimeData = self._config_entry.runtime_data
-        devices = onecta_data.devices
-        daikin_api = onecta_data.daikin_api
+        devices = self.data or {}
         scan_ignore_value = self.scan_ignore()
 
-        if daikin_api._last_patch_call is not None and (dt_util.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore_value:
+        if self.api.last_patch_call is not None and (dt_util.now() - self.api.last_patch_call).total_seconds() < scan_ignore_value:
             self.update_interval = timedelta(seconds=scan_ignore_value)
             _LOGGER.debug(
                 "API UPDATE skipped (just updated from UI)",
             )
         else:
             try:
-                cloud_devices = await daikin_api.get_cloud_device_details()
+                cloud_devices = await self.api.get_cloud_device_details()
             except OnectaRateLimitError as err:
                 raise UpdateFailed(
-                    "Daikin API rate limit exceeded",
+                    RATE_LIMIT_EXCEEDED,
                     retry_after=err.retry_after,
                 ) from err
+            except OnectaConnectionError as err:
+                raise UpdateFailed(CONNECTION_FAILED) from err
 
             for dev_data in cloud_devices:
                 if dev_data.id in devices:
                     devices[dev_data.id].set_device_data(dev_data)
                 else:
-                    device = DaikinOnectaDevice(dev_data, daikin_api)
+                    device = DaikinOnectaDevice(dev_data, self.api)
                     # Register the gateway device in the device registry now, before
                     # this coordinator's first refresh returns and platforms are set
                     # up, so every platform can link back to it via via_device_id.
@@ -90,13 +87,18 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             self.update_interval = self.determine_update_interval(self.hass)
 
         _LOGGER.debug(
-            "Daikin coordinator finished _async_update_data, next interval %s.",
+            "Daikin coordinator finished _async_update_data, next interval %s",
             self.update_interval,
         )
+        return devices
+
+    async def _async_update_data(self) -> dict[str, DaikinOnectaDevice]:
+        """Fetch data for the Home Assistant coordinator interface."""
+        return await self.async_update_data()
 
     def update_settings(self, config_entry: ConfigEntry) -> None:
         """Apply updated config entry options."""
-        _LOGGER.debug("Daikin coordinator updating settings.")
+        _LOGGER.debug("Daikin coordinator updating settings")
         self.options = config_entry.options
         self.update_interval = self.determine_update_interval(self.hass)
         _LOGGER.info("Daikin coordinator changed interval to '%s'", self.update_interval)
@@ -108,7 +110,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         high_scan_interval = self.options.get("high_scan_interval", 10) * 60
         hs = dt_util.parse_time(self.options.get("high_scan_start", "07:00:00"))
         ls = dt_util.parse_time(self.options.get("low_scan_start", "22:00:00"))
-        assert hs is not None and ls is not None
+        assert hs is not None
+        assert ls is not None
         if self.in_between(dt_util.now().time(), hs, ls):
             scan_interval = high_scan_interval
         else:

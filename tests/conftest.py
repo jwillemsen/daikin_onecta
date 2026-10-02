@@ -1,26 +1,25 @@
-# """Global fixtures for myenergi integration."""
+"""Shared fixtures for the Daikin Onecta integration."""
+
 import asyncio
+from dataclasses import dataclass
 import json
+from pathlib import Path
 import time
 from typing import Any
-from unittest.mock import AsyncMock
-from unittest.mock import MagicMock
-from unittest.mock import patch
+from unittest.mock import AsyncMock, MagicMock, patch
 
-import homeassistant.helpers.entity_registry as er
-import pytest
 from _pytest.assertion import truncate
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
+import homeassistant.helpers.entity_registry as er
+import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
 from syrupy import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileAmberSnapshotExtension
 from syrupy.filters import props
 
-from custom_components.daikin_onecta.const import DAIKIN_API_URL
-from custom_components.daikin_onecta.const import DOMAIN
-from custom_components.daikin_onecta.coordinator import OnectaRuntimeData
+from custom_components.daikin_onecta.const import DAIKIN_API_URL, DOMAIN
 
 truncate.DEFAULT_MAX_LINES = 9999
 truncate.DEFAULT_MAX_CHARS = 9999
@@ -34,10 +33,33 @@ FAKE_ACCESS_TOKEN = (
 FAKE_AUTH_IMPL = "conftest-imported-cred"
 
 
+@dataclass(frozen=True)
+class SnapshotTestContext:
+    """Shared Home Assistant state required by platform snapshot tests."""
+
+    hass: HomeAssistant
+    aioclient_mock: AiohttpClientMocker
+    config_entry: MockConfigEntry
+    entity_registry: er.EntityRegistry
+    snapshot: SnapshotAssertion
+
+
+@pytest.fixture
+def snapshot_context(
+    hass: HomeAssistant,
+    aioclient_mock: AiohttpClientMocker,
+    config_entry: MockConfigEntry,
+    entity_registry: er.EntityRegistry,
+    snapshot: SnapshotAssertion,
+) -> SnapshotTestContext:
+    """Provide the shared dependencies for a platform snapshot test."""
+    return SnapshotTestContext(hass, aioclient_mock, config_entry, entity_registry, snapshot)
+
+
 def load_fixture_json(name):
-    with open(f"tests/fixtures/{name}.json") as json_file:
-        data = json.load(json_file)
-        return data
+    """Load a JSON fixture by name."""
+    with Path(f"tests/fixtures/{name}.json").open() as json_file:
+        return json.load(json_file)
 
 
 async def resolve_system_health_coroutines(info: dict) -> dict:
@@ -74,21 +96,29 @@ def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) 
 
 @pytest.mark.freeze_time("2026-01-01 12:00:00+00:00")
 async def snapshot_platform_entities(
-    hass: HomeAssistant,
-    aioclient_mock: AiohttpClientMocker,
-    config_entry: MockConfigEntry,
+    context: SnapshotTestContext,
     platform: Platform,
-    entity_registry: er.EntityRegistry,
-    snapshot: SnapshotAssertion,
     fixture_device_json,
 ) -> None:
-    config_entry.runtime_data = OnectaRuntimeData(daikin_api=MagicMock(), devices={})
-    config_entry.runtime_data.coordinator = MagicMock()
-    """Snapshot entities and their states."""
+    """Set up a platform and snapshot its entities."""
+    hass = context.hass
+    aioclient_mock = context.aioclient_mock
+    config_entry = context.config_entry
+    entity_registry = context.entity_registry
+    snapshot = context.snapshot
     with patch(
         "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
     ):
-        aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json(fixture_device_json))
+        aioclient_mock.get(
+            DAIKIN_API_URL + "/v1/gateway-devices",
+            status=200,
+            json=load_fixture_json(fixture_device_json),
+            headers={
+                "X-RateLimit-Limit-minute": "0",
+                "X-RateLimit-Limit-day": "0",
+                "X-RateLimit-Remaining-day": "0",
+            },
+        )
         assert await hass.config_entries.async_setup(config_entry.entry_id)
 
         await hass.async_block_till_done()
@@ -148,13 +178,12 @@ def mock_config_entry_fixture(hass: HomeAssistant) -> MockConfigEntry:
 @pytest.fixture(name="onecta_auth")
 def onecta_auth() -> AsyncMock:
     """Restrict loaded platforms to list given."""
-    yield
+    return
 
 
 @pytest.fixture(name="access_token")
 def async_get_access_token() -> AsyncMock:
     """Restrict loaded platforms to list given."""
-
     with patch(
         "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
         return_value=FAKE_ACCESS_TOKEN,
