@@ -186,7 +186,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         """Return whether HomeKit fan mode aliases are enabled."""
         return self.coordinator.options.get(CONF_HOMEKIT_FAN_MODE_ALIASES, False)
 
-    def _homekit_fan_mode_aliases(self, fan_speed):
+    def homekit_fan_mode_aliases(self, fan_speed):
         """Return HomeKit fan mode aliases available for the fan speed data."""
         aliases = {}
         if not self._homekit_fan_mode_aliases_enabled:
@@ -212,21 +212,21 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         aliases.update({alias: daikin_mode for alias, daikin_mode in HOMEKIT_FIXED_FAN_MODE_ALIASES.items() if daikin_mode in fixed_values})
         return aliases
 
-    def _get_homekit_fan_mode(self, fan_speed, fan_mode):
+    def get_homekit_fan_mode(self, fan_speed, fan_mode):
         """Return the HomeKit alias for a Daikin fan mode when available."""
         if not self._homekit_fan_mode_aliases_enabled:
             return fan_mode
 
-        aliases = self._homekit_fan_mode_aliases(fan_speed)
+        aliases = self.homekit_fan_mode_aliases(fan_speed)
         for alias, daikin_mode in aliases.items():
             if fan_mode == daikin_mode:
                 return alias
 
         return fan_mode
 
-    def _resolve_homekit_fan_mode_alias(self, fan_speed, fan_mode):
+    def resolve_homekit_fan_mode_alias(self, fan_speed, fan_mode):
         """Return the Daikin fan mode represented by a HomeKit alias."""
-        return self._homekit_fan_mode_aliases(fan_speed).get(fan_mode, fan_mode)
+        return self.homekit_fan_mode_aliases(fan_speed).get(fan_mode, fan_mode)
 
     def setpoint(self):
         """Return the active operation-mode setpoint."""
@@ -507,7 +507,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
         mode = fan_speed.current_mode.value
         if mode == FANMODE_FIXED and fan_speed.modes and FANMODE_FIXED in fan_speed.modes:
             mode = str(fan_speed.modes[FANMODE_FIXED].value)
-        return self._get_homekit_fan_mode(fan_speed, mode)
+        return self.get_homekit_fan_mode(fan_speed, mode)
 
     def get_fan_modes(self):
         """Return available fan modes."""
@@ -523,7 +523,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                     fan_modes.extend(str(value) for value in range(int(fixed.min_value), int(fixed.max_value) + 1, int(fixed.step_value)))
             else:
                 fan_modes.append(mode)
-        for alias in self._homekit_fan_mode_aliases(fan_speed):
+        for alias in self.homekit_fan_mode_aliases(fan_speed):
             if alias not in fan_modes:
                 fan_modes.append(alias)
         return fan_modes
@@ -537,7 +537,7 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
             return False
         fan_speed = fan_operation.fan_speed
         operation_mode = cc.operation_mode.value
-        fan_mode = self._resolve_homekit_fan_mode_alias(fan_speed, requested_fan_mode)
+        fan_mode = self.resolve_homekit_fan_mode_alias(fan_speed, requested_fan_mode)
         result = True
         if fan_mode.isnumeric():
             if fan_speed.current_mode.value != FANMODE_FIXED:
@@ -685,54 +685,43 @@ class DaikinClimate(CoordinatorEntity, ClimateEntity):
                 return mode
         return PRESET_NONE
 
+    async def _async_disable_preset_mode(self, preset_mode) -> bool:
+        """Disable the current Daikin preset mode."""
+        daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
+        if preset_mode == PRESET_AWAY:
+            result = await self._device.post(self._device.id, self._embedded_id, "holiday-mode", {"enabled": False})
+        else:
+            result = await self._device.patch(self._device.id, self._embedded_id, daikin_mode, "", "off")
+        if not result:
+            _LOGGER.warning("Device '%s' problem setting %s to off", self._device.name, daikin_mode)
+        return result
+
+    async def _async_enable_preset_mode(self, preset_mode) -> bool:
+        """Enable the requested Daikin preset mode."""
+        daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
+        turned_on = True
+        if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
+            turned_on = await self.async_turn_on()
+        if preset_mode == PRESET_AWAY:
+            today = dt_util.now().date()
+            value = {"enabled": True, "startDate": today.isoformat(), "endDate": (today + timedelta(days=60)).isoformat()}
+            result = await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
+        else:
+            result = await self._device.patch(self._device.id, self._embedded_id, daikin_mode, "", "on")
+        if not result:
+            _LOGGER.warning("Device '%s' problem setting %s to on", self._device.name, daikin_mode)
+        return turned_on and result
+
     async def async_set_preset_mode(self, preset_mode):
         """Set the active preset mode."""
         _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
         result = True
-        new_daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
 
         if self.preset_mode != PRESET_NONE:
-            current_mode = HA_PRESET_TO_DAIKIN[self.preset_mode]
-            if self.preset_mode == PRESET_AWAY:
-                value = {"enabled": False}
-                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
-                if result is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting %s to off",
-                        self._device.name,
-                        current_mode,
-                    )
-            else:
-                result &= await self._device.patch(self._device.id, self._embedded_id, current_mode, "", "off")
-                if result is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting %s to off",
-                        self._device.name,
-                        current_mode,
-                    )
+            result &= await self._async_disable_preset_mode(self.preset_mode)
 
         if preset_mode != PRESET_NONE:
-            if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
-                result &= await self.async_turn_on()
-
-            if preset_mode == PRESET_AWAY:
-                today = dt_util.now().date()
-                value = {"enabled": True, "startDate": today.isoformat(), "endDate": (today + timedelta(days=60)).isoformat()}
-                result &= await self._device.post(self._device.id, self._embedded_id, "holiday-mode", value)
-                if result is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting %s to on",
-                        self._device.name,
-                        new_daikin_mode,
-                    )
-            else:
-                result &= await self._device.patch(self._device.id, self._embedded_id, new_daikin_mode, "", "on")
-                if result is False:
-                    _LOGGER.warning(
-                        "Device '%s' problem setting %s to on",
-                        self._device.name,
-                        new_daikin_mode,
-                    )
+            result &= await self._async_enable_preset_mode(preset_mode)
 
         if result is True:
             self._attr_preset_mode = preset_mode

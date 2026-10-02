@@ -1,6 +1,6 @@
 """Test daikin_onecta sensor."""
 
-from datetime import date, timedelta
+from datetime import timedelta
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import GatewayDevice
@@ -46,6 +46,7 @@ from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
+from homeassistant.util import dt as dt_util
 from homeassistant.setup import async_setup_component
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
@@ -342,14 +343,14 @@ async def test_altherma_ratelimit(
         # Test that updating the data through with a 429 doesn't crash
         onecta_data: OnectaRuntimeData = config_entry.runtime_data
         coordinator = onecta_data.coordinator
-        await coordinator._async_update_data()
+        await coordinator.async_update_data()
 
         aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
 
         # Test that updating the data through with a status 200 works
         onecta_data: OnectaRuntimeData = config_entry.runtime_data
         coordinator = onecta_data.coordinator
-        await coordinator._async_update_data()
+        await coordinator.async_update_data()
 
 
 @pytest.mark.asyncio
@@ -462,11 +463,11 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     climate = DaikinClimate.__new__(DaikinClimate)
     climate.coordinator = MagicMock(options={CONF_HOMEKIT_FAN_MODE_ALIASES: True})
 
-    assert climate._homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {
+    assert climate.homekit_fan_mode_aliases(FanSpeed.from_dict({"currentMode": {"value": "auto", "values": ["quiet", "auto"]}})) == {
         FAN_LOW: "quiet"
     }
 
-    assert climate._homekit_fan_mode_aliases(
+    assert climate.homekit_fan_mode_aliases(
         FanSpeed.from_dict(
             {
                 "currentMode": {
@@ -494,8 +495,8 @@ def test_homekit_fan_mode_alias_helpers() -> None:
             },
         }
     )
-    assert climate._get_homekit_fan_mode(fan_speed, "4") == "4"
-    assert climate._resolve_homekit_fan_mode_alias(fan_speed, FAN_HIGH) == "5"
+    assert climate.get_homekit_fan_mode(fan_speed, "4") == "4"
+    assert climate.resolve_homekit_fan_mode_alias(fan_speed, FAN_HIGH) == "5"
 
 
 @pytest.mark.asyncio
@@ -811,16 +812,13 @@ async def test_water_heater(
         )
 
         # Turn the tank off, this should fail and not work due to the daily limit
-        try:
-            await hass.services.async_call(
-                WATER_HEATER_DOMAIN,
-                SERVICE_TURN_OFF,
-                {ATTR_ENTITY_ID: "water_heater.altherma"},
-                blocking=True,
-            )
-            await hass.async_block_till_done()
-        except Exception:
-            assert len(aioclient_mock.mock_calls) == 1
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "water_heater.altherma"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 1
         assert aioclient_mock.mock_calls[0][2] == {"value": "off"}
@@ -855,16 +853,13 @@ async def test_water_heater(
         )
 
         # Turn the tank on, this should fail and not work due to the daily limit
-        try:
-            await hass.services.async_call(
-                WATER_HEATER_DOMAIN,
-                SERVICE_TURN_ON,
-                {ATTR_ENTITY_ID: "water_heater.altherma"},
-                blocking=True,
-            )
-            await hass.async_block_till_done()
-        except Exception:
-            assert len(aioclient_mock.mock_calls) == 1
+        await hass.services.async_call(
+            WATER_HEATER_DOMAIN,
+            SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "water_heater.altherma"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 1
         assert aioclient_mock.mock_calls[0][2] == {"value": "on"}
@@ -1289,8 +1284,8 @@ async def test_climate(
         assert len(aioclient_mock.mock_calls) == 25
         assert aioclient_mock.mock_calls[24][2] == {
             "enabled": True,
-            "startDate": date.today().isoformat(),
-            "endDate": (date.today() + timedelta(days=60)).isoformat(),
+            "startDate": dt_util.now().date().isoformat(),
+            "endDate": (dt_util.now().date() + timedelta(days=60)).isoformat(),
         }
         assert hass.states.get("climate.werkkamer_room_temperature").attributes["preset_mode"] == PRESET_AWAY
 
@@ -1737,7 +1732,7 @@ def test_schedule_select_missing_selection() -> None:
     entity._device.management_point.return_value = None
     entity._embedded_id = "missing"
 
-    assert entity._selection() is None
+    assert entity.selection() is None
     assert entity.get_options() == []
     assert entity.get_current_option() == SCHEDULE_OFF
 
@@ -1747,7 +1742,7 @@ async def test_schedule_select_missing_selection_on_write() -> None:
     """Ignore schedule writes when no selection is available."""
     entity = object.__new__(DaikinScheduleSelect)
     entity._device = MagicMock()
-    entity._selection = MagicMock(return_value=None)
+    entity.selection = MagicMock(return_value=None)
 
     assert await entity.async_select_option("Weekday") is False
     entity._device.put.assert_not_called()

@@ -56,12 +56,22 @@ class DaikinApi:
             "ratelimit_reset": rate_limit.reset or 0,
         }
 
+    @property
+    def client(self) -> OnectaClient:
+        """Return the underlying Onecta client."""
+        return self._client
+
+    @property
+    def last_patch_call(self) -> datetime | None:
+        """Return when the last successful cloud write completed."""
+        return self._last_patch_call
+
     async def async_get_access_token(self) -> str:
         """Return a valid OAuth access token."""
         await self.session.async_ensure_token_valid()
         return self.session.token["access_token"]
 
-    def _update_rate_limit_issues(self) -> None:
+    def update_rate_limit_issues(self) -> None:
         """Update Home Assistant repair issues from the library rate-limit state."""
         limits = self.rate_limits
         if limits["remaining_minutes"] > 0:
@@ -69,7 +79,7 @@ class DaikinApi:
         if limits["remaining_day"] > 0:
             ir.async_delete_issue(self.hass, DOMAIN, "day_rate_limit")
 
-    def _create_rate_limit_issues(self) -> None:
+    def create_rate_limit_issues(self) -> None:
         """Create Home Assistant repair issues for exhausted rate limits."""
         limits = self.rate_limits
         learn_more_url = (
@@ -104,9 +114,9 @@ class DaikinApi:
             try:
                 devices = await self._client.get_gateway_devices()
             except OnectaRateLimitError:
-                self._create_rate_limit_issues()
+                self.create_rate_limit_issues()
                 raise
-            self._update_rate_limit_issues()
+            self.update_rate_limit_issues()
             return devices
 
     async def patch_characteristic(
@@ -129,12 +139,12 @@ class DaikinApi:
                     path=path,
                 )
             except OnectaRateLimitError:
-                self._create_rate_limit_issues()
+                self.create_rate_limit_issues()
                 return False
             except OnectaApiError:
                 return False
             self._last_patch_call = dt_util.now()
-            self._update_rate_limit_issues()
+            self.update_rate_limit_issues()
             return True
 
     async def post_management_point(
@@ -149,12 +159,12 @@ class DaikinApi:
             try:
                 await self._client.post_management_point(gateway_id, management_point_id, resource, value)
             except OnectaRateLimitError:
-                self._create_rate_limit_issues()
+                self.create_rate_limit_issues()
                 return False
             except OnectaApiError:
                 return False
             self._last_patch_call = dt_util.now()
-            self._update_rate_limit_issues()
+            self.update_rate_limit_issues()
             return True
 
     async def put_management_point(
@@ -169,10 +179,10 @@ class DaikinApi:
             try:
                 await self._client.put_management_point(gateway_id, management_point_id, resource, value)
             except OnectaRateLimitError:
-                self._create_rate_limit_issues()
+                self.create_rate_limit_issues()
                 return False
             except OnectaApiError:
                 return False
             self._last_patch_call = dt_util.now()
-            self._update_rate_limit_issues()
+            self.update_rate_limit_issues()
             return True

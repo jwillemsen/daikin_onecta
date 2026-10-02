@@ -86,6 +86,81 @@ def handle_energy_sensors(
                 )
 
 
+def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
+    """Add sensors for simple characteristics of one management point."""
+    supported_management_point_types = {
+        "domesticHotWaterTank",
+        "domesticHotWaterFlowThrough",
+        "climateControl",
+        "climateControlMainZone",
+    }
+    for value, characteristic in management_point.simple_characteristics().items():
+        if value not in VALUE_SENSOR_MAPPING:
+            continue
+        values = characteristic.values or []
+        if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
+            continue
+        if not values and isinstance(characteristic.value, bool):
+            continue
+        if value == "operationMode" and management_point.management_point_type in supported_management_point_types:
+            continue
+        if characteristic.value is not None:
+            sensors.append(
+                DaikinValueSensor(
+                    device,
+                    coordinator,
+                    management_point.embedded_id,
+                    management_point.management_point_type,
+                    None,
+                    value,
+                )
+            )
+
+
+def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
+    """Add sensors for sensory data exposed by one management point."""
+    if management_point.sensory_data is None:
+        return
+    sensory_data = management_point.sensory_data.value
+    sensors.extend(
+        DaikinValueSensor(
+            device,
+            coordinator,
+            management_point.embedded_id,
+            management_point.management_point_type,
+            "sensoryData",
+            sensor,
+        )
+        for sensor in (
+            "roomTemperature",
+            "outdoorTemperature",
+            "leavingWaterTemperature",
+            "tankTemperature",
+            "roomHumidity",
+            "pm1Concentration",
+            "pm25Concentration",
+            "pm10Concentration",
+        )
+        if sensor in VALUE_SENSOR_MAPPING and getattr(sensory_data, VALUE_SENSOR_MAPPING[sensor][MODEL_ATTRIBUTE]) is not None
+    )
+
+
+def add_management_point_sensors(coordinator, device, management_point, sensors) -> None:
+    """Add all sensors exposed by a management point."""
+    add_simple_sensors(coordinator, device, management_point, sensors)
+    add_sensory_sensors(coordinator, device, management_point, sensors)
+    for datatype, energy_data in (
+        ("consumption", management_point.consumption_data),
+        ("output", management_point.output_data),
+    ):
+        if energy_data is None:
+            continue
+        for sensor_type in ("electrical", "gas", "thermal"):
+            source = getattr(energy_data.value, sensor_type)
+            if source is not None:
+                handle_energy_sensors(coordinator, device, management_point, sensor_type, source, sensors, datatype)
+
+
 async def async_setup_entry(
     hass: HomeAssistant,
     config_entry: ConfigEntry,
@@ -95,89 +170,10 @@ async def async_setup_entry(
     onecta_data: OnectaRuntimeData = config_entry.runtime_data
     coordinator = onecta_data.coordinator
     sensors = []
-    supported_management_point_types = {
-        "domesticHotWaterTank",
-        "domesticHotWaterFlowThrough",
-        "climateControl",
-        "climateControlMainZone",
-    }
     for device in onecta_data.devices.values():
         sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day"))
         for management_point in device.device.management_points:
-            management_point_type = management_point.management_point_type
-            embedded_id = management_point.embedded_id
-
-            for value, characteristic in management_point.simple_characteristics().items():
-                if value not in VALUE_SENSOR_MAPPING:
-                    continue
-                values = characteristic.values or []
-                if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
-                    continue
-                if not values and isinstance(characteristic.value, bool):
-                    continue
-                if value == "operationMode" and management_point_type in supported_management_point_types:
-                    continue
-                if characteristic.value is not None:
-                    sensors.append(
-                        DaikinValueSensor(
-                            device,
-                            coordinator,
-                            embedded_id,
-                            management_point_type,
-                            None,
-                            value,
-                        )
-                    )
-
-            if management_point.sensory_data is not None:
-                sensory_data = management_point.sensory_data.value
-                sensors.extend(
-                    DaikinValueSensor(
-                        device,
-                        coordinator,
-                        embedded_id,
-                        management_point_type,
-                        "sensoryData",
-                        sensor,
-                    )
-                    for sensor in (
-                        "roomTemperature",
-                        "outdoorTemperature",
-                        "leavingWaterTemperature",
-                        "tankTemperature",
-                        "roomHumidity",
-                        "pm1Concentration",
-                        "pm25Concentration",
-                        "pm10Concentration",
-                    )
-                    if (
-                        sensor in VALUE_SENSOR_MAPPING
-                        and getattr(
-                            sensory_data,
-                            VALUE_SENSOR_MAPPING[sensor][MODEL_ATTRIBUTE],
-                        )
-                        is not None
-                    )
-                )
-
-            for datatype, energy_data in (
-                ("consumption", management_point.consumption_data),
-                ("output", management_point.output_data),
-            ):
-                if energy_data is None:
-                    continue
-                for sensor_type in ("electrical", "gas", "thermal"):
-                    source = getattr(energy_data.value, sensor_type)
-                    if source is not None:
-                        handle_energy_sensors(
-                            coordinator,
-                            device,
-                            management_point,
-                            sensor_type,
-                            source,
-                            sensors,
-                            datatype,
-                        )
+            add_management_point_sensors(coordinator, device, management_point, sensors)
 
     async_add_entities(sensors)
 

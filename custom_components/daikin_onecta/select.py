@@ -90,7 +90,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
         self.update_state()
         self.async_write_ha_state()
 
-    def _selection(self):
+    def selection(self):
         """Return the schedule selection for the current schedule mode."""
         point = self._device.management_point(self._embedded_id)
         if point is None or point.schedule is None:
@@ -101,7 +101,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
 
     def get_current_option(self):
         """Return the selected schedule name."""
-        selection = self._selection()
+        selection = self.selection()
         if selection is None or not selection.enabled:
             return SCHEDULE_OFF
         return selection.current_option
@@ -109,7 +109,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     async def async_select_option(self, option: str) -> None:
         """Select or disable a configured schedule."""
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
-        selection = self._selection()
+        selection = self.selection()
         if selection is None:
             return False
 
@@ -136,7 +136,7 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
 
     def get_options(self):
         """Return readable configured schedules."""
-        selection = self._selection()
+        selection = self.selection()
         if selection is None:
             return []
         options = [schedule.name for schedule in selection.options]

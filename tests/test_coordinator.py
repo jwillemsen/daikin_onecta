@@ -104,15 +104,16 @@ class TestOnectaDataUpdateCoordinator:
     async def test_rate_limit_uses_update_failed_retry_after(self, coordinator, mock_config_entry):
         """A Daikin rate limit should use the coordinator retry-after mechanism."""
         daikin_api = mock_config_entry.runtime_data.daikin_api
-        daikin_api._last_patch_call = None
+        daikin_api.last_patch_call = None
         daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
+        initial_interval = coordinator.update_interval
 
         # Simulate daily rate limit reached
         with pytest.raises(UpdateFailed) as exc_info:
-            await coordinator._async_update_data()
+            await coordinator.async_update_data()
 
         assert exc_info.value.retry_after == 3060
-        assert coordinator.update_interval == timedelta(minutes=10)
+        assert coordinator.update_interval == initial_interval
 
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""

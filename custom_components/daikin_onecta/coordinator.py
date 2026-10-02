@@ -52,7 +52,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         """Return the delay after a write before polling resumes."""
         return self.options.get("scan_ignore", 30)
 
-    async def _async_update_data(self) -> None:
+    async def async_update_data(self) -> None:
         """Fetch the latest device state from Daikin."""
         _LOGGER.debug("Daikin coordinator start _async_update_data")
 
@@ -61,7 +61,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
         daikin_api = onecta_data.daikin_api
         scan_ignore_value = self.scan_ignore()
 
-        if daikin_api._last_patch_call is not None and (dt_util.now() - daikin_api._last_patch_call).total_seconds() < scan_ignore_value:
+        if daikin_api.last_patch_call is not None and (dt_util.now() - daikin_api.last_patch_call).total_seconds() < scan_ignore_value:
             self.update_interval = timedelta(seconds=scan_ignore_value)
             _LOGGER.debug(
                 "API UPDATE skipped (just updated from UI)",
@@ -92,6 +92,10 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator):
             "Daikin coordinator finished _async_update_data, next interval %s",
             self.update_interval,
         )
+
+    async def _async_update_data(self) -> None:
+        """Fetch data for the Home Assistant coordinator interface."""
+        await self.async_update_data()
 
     def update_settings(self, config_entry: ConfigEntry) -> None:
         """Apply updated config entry options."""
