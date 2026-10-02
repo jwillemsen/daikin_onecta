@@ -4,13 +4,13 @@ from datetime import datetime, time, timedelta
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import OnectaConnectionError, OnectaRateLimitError
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.update_coordinator import UpdateFailed
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.update_coordinator import UpdateFailed
 
 EXPECTED_RATE_LIMIT_RETRY_AFTER = 3060
 EXPECTED_CONNECTION_ERROR = "network unavailable"

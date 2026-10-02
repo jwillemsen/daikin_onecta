@@ -3,10 +3,17 @@
 from dataclasses import dataclass
 from typing import Any
 
-from homeassistant.components.binary_sensor import BinarySensorDeviceClass, BinarySensorEntityDescription
+from homeassistant.components.binary_sensor import (
+    BinarySensorDeviceClass,
+    BinarySensorEntityDescription,
+)
 from homeassistant.components.climate import ClimateEntityDescription
 from homeassistant.components.select import SelectEntityDescription
-from homeassistant.components.sensor import SensorDeviceClass, SensorEntityDescription, SensorStateClass
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntityDescription,
+    SensorStateClass,
+)
 from homeassistant.components.switch import SwitchEntityDescription
 from homeassistant.components.update import UpdateDeviceClass, UpdateEntityDescription
 from homeassistant.const import (

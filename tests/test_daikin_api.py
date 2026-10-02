@@ -4,12 +4,12 @@ from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import OnectaApiError, OnectaConnectionError, OnectaRateLimitError
 from daikin_onecta.rate_limit import RateLimit
-from homeassistant.core import HomeAssistant
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.daikin_api import DaikinApi
+from homeassistant.core import HomeAssistant
 
 EXPECTED_RATE_LIMIT_ISSUES = 2
 

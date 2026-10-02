@@ -3,19 +3,30 @@
 import logging
 
 import aiohttp
+import jwt
+
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady, OAuth2TokenRequestError, OAuth2TokenRequestReauthError
+from homeassistant.exceptions import (
+    ConfigEntryAuthFailed,
+    ConfigEntryNotReady,
+    OAuth2TokenRequestError,
+    OAuth2TokenRequestReauthError,
+)
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
+from homeassistant.helpers.config_entry_oauth2_flow import (
+    ImplementationUnavailableError,
+)
 from homeassistant.helpers.typing import ConfigType
-import jwt
 
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .daikin_api import DaikinApi
-from .device import migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
+from .device import (
+    migrate_legacy_entity_unique_ids,
+    migrate_legacy_subdevice_identifiers,
+)
 from .sensor import migrate_legacy_sensor_unique_ids
 
 _LOGGER = logging.getLogger(__name__)

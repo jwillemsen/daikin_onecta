@@ -3,7 +3,13 @@
 import logging
 from typing import TYPE_CHECKING, Any
 
-from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
+from homeassistant.components.water_heater import (
+    STATE_HEAT_PUMP,
+    STATE_OFF,
+    STATE_PERFORMANCE,
+    WaterHeaterEntity,
+    WaterHeaterEntityFeature,
+)
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback

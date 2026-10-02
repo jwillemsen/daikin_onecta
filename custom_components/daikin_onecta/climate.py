@@ -5,7 +5,16 @@ import logging
 import re
 from typing import TYPE_CHECKING
 
-from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, PLATFORM_SCHEMA as CLIMATE_PLATFORM_SCHEMA, ClimateEntity
+import voluptuous as vol
+
+from homeassistant.components.climate import (
+    FAN_HIGH,
+    FAN_LOW,
+    FAN_MEDIUM,
+    FAN_MIDDLE,
+    PLATFORM_SCHEMA as CLIMATE_PLATFORM_SCHEMA,
+    ClimateEntity,
+)
 from homeassistant.components.climate.const import (
     ATTR_HVAC_MODE,
     PRESET_AWAY,
@@ -17,13 +26,17 @@ from homeassistant.components.climate.const import (
     HVACMode,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_TEMPERATURE, CONF_HOST, CONF_NAME, UnitOfTemperature
+from homeassistant.const import (
+    ATTR_TEMPERATURE,
+    CONF_HOST,
+    CONF_NAME,
+    UnitOfTemperature,
+)
 from homeassistant.core import HomeAssistant, callback
 import homeassistant.helpers.config_validation as cv
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
-import voluptuous as vol
 
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator

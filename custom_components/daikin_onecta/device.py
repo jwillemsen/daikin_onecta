@@ -3,12 +3,11 @@
 import logging
 from typing import Any
 
+from daikin_onecta.models import GatewayDevice
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers import device_registry as dr, entity_registry as er
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, DeviceInfo
-
-from daikin_onecta.models import GatewayDevice
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi

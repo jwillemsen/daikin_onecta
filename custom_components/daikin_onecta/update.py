@@ -3,13 +3,12 @@
 import logging
 from typing import TYPE_CHECKING, Any
 
+from daikin_onecta.models import ManagementPoint
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-
-from daikin_onecta.models import ManagementPoint
 
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator

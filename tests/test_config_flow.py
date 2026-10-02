@@ -4,16 +4,24 @@ from ipaddress import ip_address
 from unittest.mock import patch
 from urllib.parse import parse_qs, urlparse
 
+import pytest
+from pytest_homeassistant_custom_component.common import MockConfigEntry
+
+from custom_components.daikin_onecta.const import (
+    CONF_HOMEKIT_FAN_MODE_ALIASES,
+    DOMAIN,
+    OAUTH2_AUTHORIZE,
+    OAUTH2_TOKEN,
+)
 from homeassistant import config_entries
-from homeassistant.components.application_credentials import ClientCredential, async_import_client_credential
+from homeassistant.components.application_credentials import (
+    ClientCredential,
+    async_import_client_credential,
+)
 from homeassistant.config_entries import SOURCE_ZEROCONF
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 from homeassistant.setup import async_setup_component
-import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-
-from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, OAUTH2_AUTHORIZE, OAUTH2_TOKEN
 
 from .conftest import FAKE_ACCESS_TOKEN
 

@@ -12,7 +12,13 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
-from .const import DOMAIN, SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_WEEKLY, SENSOR_PERIOD_YEARLY, SENSOR_PERIODS
+from .const import (
+    DOMAIN,
+    SENSOR_PERIOD_MONTHLY,
+    SENSOR_PERIOD_WEEKLY,
+    SENSOR_PERIOD_YEARLY,
+    SENSOR_PERIODS,
+)
 from .device import DaikinOnectaDevice
 from .entity_descriptions import SENSOR_DESCRIPTIONS
 

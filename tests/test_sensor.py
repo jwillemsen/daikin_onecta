@@ -5,7 +5,10 @@ from unittest.mock import MagicMock
 
 import pytest
 
-from custom_components.daikin_onecta.const import SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_WEEKLY
+from custom_components.daikin_onecta.const import (
+    SENSOR_PERIOD_MONTHLY,
+    SENSOR_PERIOD_WEEKLY,
+)
 from custom_components.daikin_onecta.sensor import DaikinEnergySensor
 
 EXPECTED_CURRENT_ROLLING_CONSUMPTION = 4

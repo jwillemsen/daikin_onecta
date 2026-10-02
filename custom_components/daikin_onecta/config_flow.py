@@ -4,14 +4,20 @@ from collections.abc import Mapping
 import logging
 from typing import Any
 
+import jwt
+import voluptuous as vol
+
 from homeassistant import config_entries
 from homeassistant.config_entries import SOURCE_REAUTH, ConfigEntry, ConfigFlowResult
 from homeassistant.core import callback
 from homeassistant.helpers import config_entry_oauth2_flow
-from homeassistant.helpers.selector import BooleanSelector, NumberSelector, NumberSelectorConfig, TimeSelector
+from homeassistant.helpers.selector import (
+    BooleanSelector,
+    NumberSelector,
+    NumberSelectorConfig,
+    TimeSelector,
+)
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
-import jwt
-import voluptuous as vol
 
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN
 

@@ -3,10 +3,6 @@
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from aiohttp import RequestInfo
-from homeassistant.config_entries import ConfigEntryState
-from homeassistant.core import HomeAssistant
-from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady, OAuth2TokenRequestError, OAuth2TokenRequestReauthError
-from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
 import pytest
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 from yarl import URL
@@ -14,6 +10,17 @@ from yarl import URL
 from custom_components.daikin_onecta import async_setup_entry
 from custom_components.daikin_onecta.const import DOMAIN
 from custom_components.daikin_onecta.coordinator import OnectaDataUpdateCoordinator
+from homeassistant.config_entries import ConfigEntryState
+from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import (
+    ConfigEntryAuthFailed,
+    ConfigEntryNotReady,
+    OAuth2TokenRequestError,
+    OAuth2TokenRequestReauthError,
+)
+from homeassistant.helpers.config_entry_oauth2_flow import (
+    ImplementationUnavailableError,
+)
 
 
 def _token_request_info() -> RequestInfo:
