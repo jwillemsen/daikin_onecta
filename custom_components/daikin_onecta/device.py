@@ -213,7 +213,12 @@ def _legacy_entity_unique_id(
         climate_points = points_by_type.get("climateControl", [])
         old_prefix = f"{device.id}_"
         if climate_points and entry.unique_id.startswith(old_prefix):
-            return f"{device.id}_{climate_points[-1].embedded_id}_{entry.unique_id.removeprefix(old_prefix)}"
+            suffix = entry.unique_id.removeprefix(old_prefix)
+            if any(
+                suffix.startswith(f"{point.embedded_id}_") for point in climate_points
+            ):
+                return None
+            return f"{device.id}_{climate_points[-1].embedded_id}_{suffix}"
 
     if entry.domain == "water_heater" and entry.unique_id == device.id:
         for management_point_type in ("domesticHotWaterTank", "domesticHotWaterFlowThrough"):
