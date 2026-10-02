@@ -125,7 +125,11 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
             if result is False:
                 _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
             else:
-                self._switch_state = "on"
+                point = self._device.management_point(self._embedded_id)
+                characteristic = point.characteristic(self._value) if point is not None else None
+                if characteristic is not None:
+                    characteristic.value = "on"
+                self.update_state()
                 self.async_write_ha_state()
         else:
             _LOGGER.debug("Device '%s' switch '%s' request to turn on ignored because is already on", self._device.name, self._value)
@@ -144,7 +148,11 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                     self._value,
                 )
             else:
-                self._switch_state = "off"
+                point = self._device.management_point(self._embedded_id)
+                characteristic = point.characteristic(self._value) if point is not None else None
+                if characteristic is not None:
+                    characteristic.value = "off"
+                self.update_state()
                 self.async_write_ha_state()
         else:
             _LOGGER.debug("Device '%s' switch '%s' request to turn off ignored because is already off", self._device.name, self._value)
