@@ -130,13 +130,7 @@ class FlowHandler(
 
     async def async_step_zeroconf(self, discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
         """Handle a discovered Daikin device via mDNS."""
-        _LOGGER.info(
-            "Daikin device discovered via mDNS: host=%s hostname=%s type=%s properties=%s",
-            discovery_info.host,
-            discovery_info.hostname,
-            discovery_info.type,
-            discovery_info.properties,
-        )
+        _LOGGER.info("Daikin device discovered via mDNS")
 
         if self._async_current_entries():
             return self.async_abort(reason="already_configured")
