@@ -1,5 +1,6 @@
 """Support for the Daikin BRP069A62."""
 
+from collections.abc import Awaitable, Callable
 import logging
 from typing import TYPE_CHECKING, Any, override
 
@@ -9,6 +10,8 @@ from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+
+from daikin_onecta.client import DomesticHotWaterClient
 
 from .const import DOMAIN
 
@@ -67,6 +70,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         self._attr_max_temp = self.get_max_temp()
         self._attr_operation_list = self.get_operation_list()
         self._attr_current_operation = self.get_current_operation()
+
+    async def _async_execute_hot_water_command(self, command: Callable[[DomesticHotWaterClient], Awaitable[None]]) -> bool:
+        """Execute a typed hot-water command through the cloud adapter."""
+        return await self._device.api.async_execute_command(lambda client: command(client.domestic_hot_water(self._device.id, self._embedded_id)))
 
     @property
     @override
@@ -188,13 +195,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         int_value = int(value)
         if int_value != self._attr_target_temperature:
-            res = await self._device.patch(
-                self._device.id,
-                self._embedded_id,
-                "temperatureControl",
-                "/operationModes/heating/setpoints/domesticHotWaterTemperature",
-                int_value,
-            )
+            res = await self._async_execute_hot_water_command(lambda hot_water: hot_water.set_temperature(int_value))
             # When updating the value to the daikin cloud worked update our local cached version
             if res:
                 self._attr_target_temperature = int_value
@@ -257,7 +258,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", on_off_mode)
+            result &= await self._async_execute_hot_water_command(lambda hot_water: hot_water.set_power(on_off_mode == "on"))
             if result is True:
                 hwtd = self.hotwatertank_data
                 if hwtd is not None and hwtd.on_off_mode is not None:
@@ -265,13 +266,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
 
         # Only set powerfulMode when it is set and supported by the device
         if powerful_mode != "" and STATE_PERFORMANCE in (self.operation_list or []):
-            result &= await self._device.patch(
-                self._device.id,
-                self._embedded_id,
-                "powerfulMode",
-                "",
-                powerful_mode,
-            )
+            result &= await self._async_execute_hot_water_command(lambda hot_water: hot_water.set_powerful_mode(powerful_mode == "on"))
             if result is True:
                 hwtd = self.hotwatertank_data
                 pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
@@ -294,7 +289,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
         result = True
         if self.current_operation == STATE_OFF:
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "on")
+            result &= await self._async_execute_hot_water_command(lambda hot_water: hot_water.set_power(True))
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
             else:
@@ -316,7 +311,7 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
         result = True
         if self.current_operation != STATE_OFF:
-            result &= await self._device.patch(self._device.id, self._embedded_id, "onOffMode", "", "off")
+            result &= await self._async_execute_hot_water_command(lambda hot_water: hot_water.set_power(False))
             if result is False:
                 _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
             else:

@@ -1,6 +1,7 @@
 """Home Assistant adapter for the Daikin Onecta API client."""
 
 import asyncio
+from collections.abc import Awaitable, Callable
 from datetime import datetime
 import logging
 from typing import Any
@@ -11,7 +12,7 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.util import dt as dt_util
 
 from daikin_onecta.client import OnectaClient
-from daikin_onecta.exceptions import OnectaApiError, OnectaRateLimitError
+from daikin_onecta.exceptions import OnectaApiError, OnectaConnectionError, OnectaRateLimitError
 from daikin_onecta.models import GatewayDevice
 
 from .const import DOMAIN
@@ -129,23 +130,9 @@ class DaikinApi:
         path: str | None = None,
     ) -> bool:
         """Patch a characteristic through the standalone library."""
-        async with self._cloud_lock:
-            try:
-                await self._client.patch_characteristic(
-                    gateway_id,
-                    management_point_id,
-                    characteristic,
-                    value,
-                    path=path,
-                )
-            except OnectaRateLimitError:
-                self.create_rate_limit_issues()
-                return False
-            except OnectaApiError:
-                return False
-            self._last_patch_call = dt_util.now()
-            self.update_rate_limit_issues()
-            return True
+        return await self.async_execute_command(
+            lambda client: client.patch_characteristic(gateway_id, management_point_id, characteristic, value, path=path)
+        )
 
     async def post_management_point(
         self,
@@ -155,17 +142,7 @@ class DaikinApi:
         value: Any,
     ) -> bool:
         """POST a management-point resource through the standalone library."""
-        async with self._cloud_lock:
-            try:
-                await self._client.post_management_point(gateway_id, management_point_id, resource, value)
-            except OnectaRateLimitError:
-                self.create_rate_limit_issues()
-                return False
-            except OnectaApiError:
-                return False
-            self._last_patch_call = dt_util.now()
-            self.update_rate_limit_issues()
-            return True
+        return await self.async_execute_command(lambda client: client.post_management_point(gateway_id, management_point_id, resource, value))
 
     async def put_management_point(
         self,
@@ -175,14 +152,41 @@ class DaikinApi:
         value: Any = None,
     ) -> bool:
         """PUT a management-point resource through the standalone library."""
+        return await self.async_execute_command(lambda client: client.put_management_point(gateway_id, management_point_id, resource, value))
+
+    async def async_execute_command(self, command: Callable[[OnectaClient], Awaitable[None]]) -> bool:
+        """Execute a serialized cloud command and handle expected failures."""
         async with self._cloud_lock:
             try:
-                await self._client.put_management_point(gateway_id, management_point_id, resource, value)
-            except OnectaRateLimitError:
+                await command(self._client)
+            except OnectaRateLimitError as err:
                 self.create_rate_limit_issues()
+                _LOGGER.warning(
+                    "Daikin request %s %s was rate limited; retry after %s seconds",
+                    err.method,
+                    err.path,
+                    err.retry_after,
+                )
                 return False
-            except OnectaApiError:
+            except OnectaConnectionError as err:
+                _LOGGER.warning(
+                    "Daikin request %s %s failed to connect: %s",
+                    err.method,
+                    err.path,
+                    err,
+                )
                 return False
-            self._last_patch_call = dt_util.now()
+            except OnectaApiError as err:
+                _LOGGER.warning(
+                    "Daikin request %s %s failed with HTTP %s",
+                    err.method,
+                    err.path,
+                    err.status,
+                )
+                return False
+            except TimeoutError:
+                _LOGGER.warning("Daikin request timed out")
+                return False
+            self._last_patch_call = dt_util.utcnow()
             self.update_rate_limit_issues()
             return True

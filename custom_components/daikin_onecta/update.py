@@ -78,7 +78,8 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
     @override
     async def async_install(self, version: str | None, backup: bool, **kwargs: Any) -> None:
         """Trigger a firmware update via the Daikin Onecta cloud API."""
-        if not self._is_update_supported or self._firmware_id is None:
+        firmware_id = self._firmware_id
+        if not self._is_update_supported or firmware_id is None:
             _LOGGER.error(
                 "Cannot install firmware for %s: update is not supported or no firmware ID is available",
                 self._device.name,
@@ -88,13 +89,11 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         _LOGGER.debug(
             "Requesting firmware update for %s, firmware id %s",
             self._device.name,
-            self._firmware_id,
+            firmware_id,
         )
 
-        self._attr_in_progress = await self._device.put(
-            self._device.id,
-            self._embedded_id,
-            f"firmware/{self._firmware_id}",
+        self._attr_in_progress = await self._device.api.async_execute_command(
+            lambda client: client.firmware(self._device.id, self._embedded_id).install(firmware_id)
         )
 
         if not self._attr_in_progress:

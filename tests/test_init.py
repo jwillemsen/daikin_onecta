@@ -1946,7 +1946,7 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
     """Log a failed firmware update request."""
     device = MagicMock(id="device", ha_device_id="ha-device")
     device.name = "Device"
-    device.put = AsyncMock(return_value=False)
+    device.api.async_execute_command = AsyncMock(return_value=False)
     management_point = MagicMock(
         embedded_id="0",
         firmware_version=MagicMock(value="1.0"),
@@ -1960,7 +1960,7 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
 
     await entity.async_install(None, False)
 
-    device.put.assert_awaited_once_with("device", "0", "firmware/firmware-id")
+    device.api.async_execute_command.assert_awaited_once()
     assert "Failed to trigger firmware update for Device" in caplog.text
 
 
@@ -2022,7 +2022,16 @@ async def test_successful_writes_update_cached_models() -> None:
     """Keep the cached model in sync while coordinator polling is deferred."""
     climate = object.__new__(DaikinClimate)
     climate_device = MagicMock(id="device", name="Device")
-    climate_device.patch = AsyncMock(return_value=True)
+    climate_client = MagicMock()
+    climate_client.set_temperature = AsyncMock()
+    client = MagicMock()
+    client.climate_control.return_value = climate_client
+
+    async def execute_climate_command(command):
+        await command(client)
+        return True
+
+    climate_device.api.async_execute_command = AsyncMock(side_effect=execute_climate_command)
     object.__setattr__(climate, "_device", climate_device)
     object.__setattr__(climate, "_embedded_id", "zone")
     object.__setattr__(climate, "_setpoint", "roomTemperature")
@@ -2052,7 +2061,16 @@ async def test_successful_writes_update_cached_models() -> None:
 
     schedule = object.__new__(DaikinScheduleSelect)
     schedule_device = MagicMock(id="device", name="Device")
-    schedule_device.put = AsyncMock(return_value=True)
+    schedule_client = MagicMock()
+    schedule_client.set_current = AsyncMock()
+    client = MagicMock()
+    client.schedule.return_value = schedule_client
+
+    async def execute_schedule_command(command):
+        await command(client)
+        return True
+
+    schedule_device.api.async_execute_command = AsyncMock(side_effect=execute_schedule_command)
     object.__setattr__(schedule, "_device", schedule_device)
     object.__setattr__(schedule, "_embedded_id", "zone")
     schedule_data = Schedule(

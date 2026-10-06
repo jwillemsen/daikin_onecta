@@ -124,14 +124,12 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
                 option,
             )
 
-        result = await self._device.put(
-            self._device.id,
-            self._embedded_id,
-            f"schedule/{selection.mode}/current",
-            {
-                "scheduleId": schedule_id,
-                "enabled": option != SCHEDULE_OFF,
-            },
+        result = await self._device.api.async_execute_command(
+            lambda client: client.schedule(self._device.id, self._embedded_id).set_current(
+                selection.mode,
+                schedule_id,
+                enabled=option != SCHEDULE_OFF,
+            )
         )
         if result:
             point = self._device.management_point(self._embedded_id)
