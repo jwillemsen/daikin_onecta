@@ -390,13 +390,14 @@ async def test_altherma_ratelimit(
         assert info["max_day"] == 0
 
         # Set the tank temperature to 58, but this should fail because of a rate limit
-        with pytest.raises(HomeAssistantError, match="water_heater_set_temperature_failed"):
+        with pytest.raises(HomeAssistantError) as exc_info:
             await hass.services.async_call(
                 WATER_HEATER_DOMAIN,
                 SERVICE_SET_TEMPERATURE,
                 {ATTR_ENTITY_ID: "water_heater.altherma", ATTR_TEMPERATURE: 58},
                 blocking=True,
             )
+        assert exc_info.value.translation_key == "water_heater_set_temperature_failed"
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == EXPECTED_TANK_CALLS_AFTER_TEMPERATURE
@@ -635,26 +636,32 @@ async def test_mc80z(
         assert aioclient_mock.mock_calls[-1][2] == {"value": "econo"}
         assert hass.states.get("fan.air_purifier_climatecontrol").attributes["preset_mode"] == "econo"
 
+        aioclient_mock.patch(endpoint + "onOffMode", status=204)
         await hass.services.async_call(
             FAN_DOMAIN,
-            FAN_SERVICE_SET_PRESET_MODE,
-            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", FAN_ATTR_PRESET_MODE: "manualFan"},
+            FAN_SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
             blocking=True,
         )
-        assert hass.states.get("fan.air_purifier_climatecontrol").attributes["preset_mode"] == "manualFan"
 
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(endpoint + "onOffMode", status=204)
+        aioclient_mock.patch(endpoint + "airPurificationMode", status=204)
         aioclient_mock.patch(endpoint + "fanControl", status=204)
         await hass.services.async_call(
             FAN_DOMAIN,
-            SERVICE_SET_PERCENTAGE,
+            FAN_SERVICE_TURN_ON,
             {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", ATTR_PERCENTAGE: 50},
             blocking=True,
         )
+        assert aioclient_mock.mock_calls[-3][2] == {"value": "on"}
+        assert aioclient_mock.mock_calls[-2][2] == {"value": "manualFan"}
         assert aioclient_mock.mock_calls[-1][2] == {
             "value": 2,
             "path": "/airPurificationModes/manualFan/fanSpeed/modes/fixed",
         }
         assert hass.states.get("fan.air_purifier_climatecontrol").attributes["percentage"] == 50
+        assert hass.states.get("fan.air_purifier_climatecontrol").attributes["percentage_step"] == 25
 
         aioclient_mock.clear_requests()
         aioclient_mock.patch(endpoint + "onOffMode", status=204)
@@ -1090,13 +1097,14 @@ async def test_water_heater(
         )
 
         # Turn the tank off, this should fail and not work due to the daily limit
-        with pytest.raises(HomeAssistantError, match="water_heater_turn_off_failed"):
+        with pytest.raises(HomeAssistantError) as exc_info:
             await hass.services.async_call(
                 WATER_HEATER_DOMAIN,
                 SERVICE_TURN_OFF,
                 {ATTR_ENTITY_ID: "water_heater.altherma"},
                 blocking=True,
             )
+        assert exc_info.value.translation_key == "water_heater_turn_off_failed"
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == EXPECTED_FAILED_TANK_WRITE_CALLS
@@ -1132,13 +1140,14 @@ async def test_water_heater(
         )
 
         # Turn the tank on, this should fail and not work due to the daily limit
-        with pytest.raises(HomeAssistantError, match="water_heater_turn_on_failed"):
+        with pytest.raises(HomeAssistantError) as exc_info:
             await hass.services.async_call(
                 WATER_HEATER_DOMAIN,
                 SERVICE_TURN_ON,
                 {ATTR_ENTITY_ID: "water_heater.altherma"},
                 blocking=True,
             )
+        assert exc_info.value.translation_key == "water_heater_turn_on_failed"
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 1
@@ -1715,13 +1724,14 @@ async def test_climate(
             headers={"X-RateLimit-Remaining-minute": "0", "X-RateLimit-Remaining-day": "0"},
         )
         # Set the device with schedule 'User defined' enabled, this should fail due to the rate limit
-        with pytest.raises(HomeAssistantError, match="schedule_select_failed"):
+        with pytest.raises(HomeAssistantError) as exc_info:
             await hass.services.async_call(
                 SELECT_DOMAIN,
                 SERVICE_SELECT_OPTION,
                 {ATTR_ENTITY_ID: "select.altherma_climatecontrol_schedule", ATTR_OPTION: "User defined"},
                 blocking=True,
             )
+        assert exc_info.value.translation_key == "schedule_select_failed"
         await hass.async_block_till_done()
 
         info = await system_health_info(hass)
@@ -1739,13 +1749,14 @@ async def test_climate(
             status=500,
         )
         # Try to enable cooling, this fails, so the device should stay off
-        with pytest.raises(HomeAssistantError, match="climate_set_hvac_mode_failed"):
+        with pytest.raises(HomeAssistantError) as exc_info:
             await hass.services.async_call(
                 CLIMATE_DOMAIN,
                 SERVICE_SET_HVAC_MODE,
                 {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.COOL},
                 blocking=True,
             )
+        assert exc_info.value.translation_key == "climate_set_hvac_mode_failed"
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == 1
@@ -1762,13 +1773,14 @@ async def test_climate(
             status=500,
         )
         # Try to enable heating, changing on/off works but setting operation mode now fails
-        with pytest.raises(HomeAssistantError, match="climate_set_hvac_mode_failed"):
+        with pytest.raises(HomeAssistantError) as exc_info:
             await hass.services.async_call(
                 CLIMATE_DOMAIN,
                 SERVICE_SET_HVAC_MODE,
                 {ATTR_ENTITY_ID: "climate.werkkamer_room_temperature", ATTR_HVAC_MODE: HVACMode.HEAT},
                 blocking=True,
             )
+        assert exc_info.value.translation_key == "climate_set_hvac_mode_failed"
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == EXPECTED_CLIMATE_WRITE_CALLS
@@ -2208,8 +2220,9 @@ async def test_firmware_install_without_id() -> None:
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
 
-    with pytest.raises(HomeAssistantError, match="firmware_install_failed"):
+    with pytest.raises(HomeAssistantError) as exc_info:
         await entity.async_install(None, False)
+    assert exc_info.value.translation_key == "firmware_install_failed"
 
     device.put.assert_not_called()
     device.api.async_execute_command.assert_not_awaited()
@@ -2239,8 +2252,9 @@ async def test_firmware_update_clears_removed_firmware_data() -> None:
     assert entity.release_summary is None
     assert entity.in_progress is False
     assert entity.supported_features == UpdateEntityFeature(0)
-    with pytest.raises(HomeAssistantError, match="firmware_install_failed"):
+    with pytest.raises(HomeAssistantError) as exc_info:
         await entity.async_install(None, False)
+    assert exc_info.value.translation_key == "firmware_install_failed"
     device.api.async_execute_command.assert_not_awaited()
 
 
@@ -2262,8 +2276,9 @@ async def test_firmware_install_failure() -> None:
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
     entity.async_write_ha_state = MagicMock()
 
-    with pytest.raises(HomeAssistantError, match="firmware_install_failed"):
+    with pytest.raises(HomeAssistantError) as exc_info:
         await entity.async_install(None, False)
+    assert exc_info.value.translation_key == "firmware_install_failed"
 
     device.api.async_execute_command.assert_awaited_once()
 
@@ -2311,8 +2326,9 @@ async def test_switch_write_failures() -> None:
     device.api.async_execute_command = AsyncMock(return_value=False)
     entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
 
-    with pytest.raises(HomeAssistantError, match="switch_turn_on_failed"):
+    with pytest.raises(HomeAssistantError) as exc_info:
         await entity.async_turn_on()
+    assert exc_info.value.translation_key == "switch_turn_on_failed"
     assert entity.is_on is False
 
     on_characteristic = MagicMock(value="on")
@@ -2320,8 +2336,9 @@ async def test_switch_write_failures() -> None:
     on_management_point.scalar_characteristic.return_value = on_characteristic
     device.management_point.return_value = on_management_point
     on_entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
-    with pytest.raises(HomeAssistantError, match="switch_turn_off_failed"):
+    with pytest.raises(HomeAssistantError) as exc_info:
         await on_entity.async_turn_off()
+    assert exc_info.value.translation_key == "switch_turn_off_failed"
     assert on_entity.is_on is True
 
 

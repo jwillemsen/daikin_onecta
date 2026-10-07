@@ -78,6 +78,15 @@ class DaikinAirPurifier(DaikinManagementPointEntity, FanEntity):
             return None
         return float(fixed.min_value), float(fixed.max_value)
 
+    def _fixed_speed_count(self) -> int | None:
+        """Return the number of discrete writable fixed speeds."""
+        purification = self._air_purification()
+        operation = purification.fan_operation() if purification is not None else None
+        fixed = operation.fan_speed.modes.get(FANMODE_FIXED) if operation and operation.fan_speed and operation.fan_speed.modes else None
+        if fixed is None or fixed.min_value is None or fixed.max_value is None or fixed.step_value is None or fixed.step_value <= 0:
+            return None
+        return int((fixed.max_value - fixed.min_value) / fixed.step_value) + 1
+
     def _update_state(self) -> None:
         """Refresh entity state from typed purifier data."""
         purification = self._air_purification()
@@ -95,8 +104,10 @@ class DaikinAirPurifier(DaikinManagementPointEntity, FanEntity):
             operation = purification.fan_operation()
             assert operation is not None and operation.fan_speed is not None and operation.fan_speed.modes is not None
             self._attr_percentage = ranged_value_to_percentage(speed_range, int(operation.fan_speed.modes[FANMODE_FIXED].value))
+            self._attr_speed_count = self._fixed_speed_count() or 100
         else:
             self._attr_percentage = None
+            self._attr_speed_count = 100
         self._attr_supported_features = features
 
     @override
@@ -160,9 +171,17 @@ class DaikinAirPurifier(DaikinManagementPointEntity, FanEntity):
         if percentage == 0:
             await self.async_turn_off()
             return
-        speed_range = self._fixed_speed_range()
         purification = self._air_purification()
-        if speed_range is None or purification is None or purification.mode is None:
+        if purification is None or purification.mode is None:
+            self._raise_command_failed("air_purifier_set_percentage_failed")
+        if self._fixed_speed_range() is None and "manualFan" in purification.modes:
+            await self._async_execute_air_purification_command(
+                lambda purifier: purifier.set_mode("manualFan"),
+                "air_purifier_set_percentage_failed",
+            )
+            purification.mode.value = "manualFan"
+        speed_range = self._fixed_speed_range()
+        if speed_range is None:
             self._raise_command_failed("air_purifier_set_percentage_failed")
         mode = purification.mode
         assert mode is not None
