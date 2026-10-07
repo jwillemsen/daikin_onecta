@@ -1,11 +1,14 @@
 """Constants for Daikin Onecta."""
 
+from daikin_onecta.client import ONECTA_API_URL
+
 DOMAIN = "daikin_onecta"
 
 OAUTH2_AUTHORIZE = "https://idp.onecta.daikineurope.com/v1/oidc/authorize"
 OAUTH2_TOKEN = "https://idp.onecta.daikineurope.com/v1/oidc/token"
 
-DAIKIN_API_URL = "https://api.onecta.daikineurope.com"
+# Kept as an integration alias for test fixtures and system health.
+DAIKIN_API_URL = ONECTA_API_URL
 
 SCHEDULE_OFF = "off"
 
