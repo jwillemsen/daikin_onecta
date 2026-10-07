@@ -377,6 +377,12 @@ class DaikinLimitSensor(DaikinEntity, SensorEntity):
         """Refresh the rate-limit value."""
         self._attr_native_value = self.sensor_value()
 
+    @property
+    @override
+    def available(self) -> bool:
+        """Return coordinator availability without gateway cloud availability."""
+        return self.coordinator.last_update_success
+
     @callback
     @override
     def _handle_coordinator_update(self) -> None:

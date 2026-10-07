@@ -50,6 +50,12 @@ class DaikinRefreshButton(DaikinEntity, ButtonEntity):
 
         _LOGGER.info("Device '%s' has refresh button", self._device.name)
 
+    @property
+    @override
+    def available(self) -> bool:
+        """Return whether the device can be refreshed."""
+        return self._device.available
+
     @callback
     @override
     def _handle_coordinator_update(self) -> None:

@@ -54,7 +54,13 @@ def _add_management_point_metadata(info: DeviceInfo, device: Any, embedded_id: s
 class DaikinEntity(CoordinatorEntity):
     """Base entity backed by a Daikin gateway device."""
 
-    def __init__(self, device: Any, coordinator, embedded_id: str | None = None, management_point_type: str | None = None) -> None:
+    def __init__(
+        self,
+        device: Any,
+        coordinator,
+        embedded_id: str | None = None,
+        management_point_type: str | None = None,
+    ) -> None:
         """Initialize shared coordinator and device state."""
         super().__init__(coordinator)
         self._device = device
