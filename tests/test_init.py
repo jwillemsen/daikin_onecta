@@ -2104,30 +2104,32 @@ async def test_successful_writes_update_cached_models() -> None:
     schedule_device.api.async_execute_command = AsyncMock(side_effect=execute_schedule_command)
     object.__setattr__(schedule, "_device", schedule_device)
     object.__setattr__(schedule, "_embedded_id", "zone")
-    schedule_data = Schedule(
-        current_mode=Characteristic(value="weekly"),
-        modes={
-            "weekly": {
-                "currentSchedule": {"value": "old", "values": ["old", "new"]},
-                "enabled": {"value": True, "settable": True},
-                "schedules": {
-                    "old": {"name": {"value": "Old schedule"}},
-                    "new": {"name": {"value": "New schedule"}},
-                },
-            }
-        },
+    schedule_data = Schedule.from_dict(
+        {
+            "currentMode": {"value": "weekly"},
+            "modes": {
+                "weekly": {
+                    "currentSchedule": {"value": "old", "values": ["old", "new"]},
+                    "enabled": {"value": True, "settable": True},
+                    "schedules": {
+                        "old": {"name": {"value": "Old schedule"}},
+                        "new": {"name": {"value": "New schedule"}},
+                    },
+                }
+            },
+        }
     )
     schedule_point = MagicMock()
-    schedule_point.schedule = Characteristic(value=schedule_data)
     schedule_point.schedule_state = SimpleNamespace(
-        active_selection=next(selection for selection in schedule_data.selections if selection.mode == "weekly")
+        active_selection=next(selection for selection in schedule_data.selections if selection.mode == "weekly"),
+        apply_selection=schedule_data.apply_selection,
     )
     schedule_device.management_point.return_value = schedule_point
     schedule.async_write_ha_state = MagicMock()
 
     assert await schedule.async_select_option("New schedule")
-    assert schedule_data.modes["weekly"]["currentSchedule"]["value"] == "new"
-    assert schedule_data.modes["weekly"]["enabled"]["value"] is True
+    assert schedule_data.modes["weekly"].current_schedule.value == "new"
+    assert schedule_data.modes["weekly"].enabled.value is True
 
 
 @pytest.mark.asyncio
