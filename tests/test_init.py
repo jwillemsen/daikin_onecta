@@ -1937,7 +1937,7 @@ async def test_firmware_install_without_id() -> None:
     management_point = MagicMock(embedded_id="gateway", firmware_update_status=None)
     management_point.firmware = SimpleNamespace(
         installed_version=None,
-        update_supported=False,
+        update_supported=True,
         offered_update=None,
         firmware_id=None,
         in_progress=False,
