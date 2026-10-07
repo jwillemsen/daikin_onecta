@@ -148,13 +148,12 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         self,
         command: Callable[[ClimateControlClient], Awaitable[None]],
         translation_key: str,
-    ) -> bool:
+    ) -> None:
         """Execute a typed climate command through the shared cloud adapter."""
         await self._async_execute_command(
             lambda client: command(client.climate_control(self._device.id, self._embedded_id)),
             translation_key,
         )
-        return True
 
     @callback
     @override
@@ -356,23 +355,15 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                 operationmode = self.operation_mode()
                 if operationmode is not None:
                     omv = operationmode.value
-                    res = await self._async_execute_climate_command(
+                    await self._async_execute_climate_command(
                         lambda climate: climate.set_temperature(omv, self._setpoint, value),
                         "climate_set_temperature_failed",
                     )
-                    # When updating the value to the daikin cloud worked update our local cached version
-                    if res:
-                        setpointdict = self.setpoint()
-                        if setpointdict is not None:
-                            setpointdict.value = value
-                            self._attr_target_temperature = value
-                            self.async_write_ha_state()
-                    else:
-                        _LOGGER.warning(
-                            "Device '%s' problem setting temperature to '%s'",
-                            self._device.name,
-                            value,
-                        )
+                    setpointdict = self.setpoint()
+                    if setpointdict is not None:
+                        setpointdict.value = value
+                        self._attr_target_temperature = value
+                        self.async_write_ha_state()
 
     def get_hvac_mode(self):
         """Return current HVAC mode."""
@@ -416,8 +407,6 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             hvac_mode,
         )
 
-        result = True
-
         # First determine the new settings for onOffMode/operationMode
         on_off_mode = None
         operation_mode = None
@@ -433,42 +422,26 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode is not None:
-            result &= await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_power(on_off_mode == "on"),
                 "climate_set_hvac_mode_failed",
             )
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting onOffMode to '%s'",
-                    self._device.name,
-                    on_off_mode,
-                )
-            elif cc is not None and cc.on_off_mode is not None:
+            if cc is not None and cc.on_off_mode is not None:
                 cc.on_off_mode.value = on_off_mode
 
         # Only set the operationMode when it has changed, also prevents setting it when
         # it is readOnly
         if operation_mode is not None and cc is not None and cc.operation_mode is not None and operation_mode != cc.operation_mode.value:
-            result &= await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_operation_mode(operation_mode),
                 "climate_set_hvac_mode_failed",
             )
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting operationMode to '%s'",
-                    self._device.name,
-                    operation_mode,
-                )
-            else:
-                cc.operation_mode.value = operation_mode
+            cc.operation_mode.value = operation_mode
 
-        if result is True:
-            # When switching hvac mode it could be that we can set min/max/target/etc
-            # which we couldn't set with a previous hvac mode
-            self.update_state()
-            self.async_write_ha_state()
-
-        return result
+        # When switching hvac mode it could be that we can set min/max/target/etc
+        # which we couldn't set with a previous hvac mode
+        self.update_state()
+        self.async_write_ha_state()
 
     def get_fan_mode(self):
         """Return the active fan mode."""
@@ -511,36 +484,32 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         fan_speed = fan_operation.fan_speed
         operation_mode = cc.operation_mode.value
         fan_mode = self.resolve_homekit_fan_mode_alias(fan_speed, requested_fan_mode)
-        result = True
         if fan_mode.isnumeric():
             if fan_speed.current_mode.value != FANMODE_FIXED:
-                result = await self._async_execute_climate_command(
+                await self._async_execute_climate_command(
                     lambda climate: climate.set_fan_mode(operation_mode, FANMODE_FIXED),
                     "climate_set_fan_mode_failed",
                 )
             fixed = fan_speed.modes.get(FANMODE_FIXED) if fan_speed.modes else None
             new_fixed_mode = int(fan_mode)
-            if result and fixed is not None and fixed.value != new_fixed_mode:
-                result &= await self._async_execute_climate_command(
+            if fixed is not None and fixed.value != new_fixed_mode:
+                await self._async_execute_climate_command(
                     lambda climate: climate.set_fixed_fan_speed(operation_mode, new_fixed_mode),
                     "climate_set_fan_mode_failed",
                 )
-            if result:
-                fan_speed.current_mode.value = FANMODE_FIXED
-                if fixed is not None:
-                    fixed.value = new_fixed_mode
+            fan_speed.current_mode.value = FANMODE_FIXED
+            if fixed is not None:
+                fixed.value = new_fixed_mode
         elif fan_speed.current_mode.value != fan_mode:
-            result = await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_fan_mode(operation_mode, fan_mode),
                 "climate_set_fan_mode_failed",
             )
-            if result:
-                fan_speed.current_mode.value = fan_mode
+            fan_speed.current_mode.value = fan_mode
 
-        if result:
-            self._attr_fan_mode = requested_fan_mode
-            self.async_write_ha_state()
-        return result
+        self._attr_fan_mode = requested_fan_mode
+        self.async_write_ha_state()
+        return True
 
     def __get_swing_mode(self, direction):
         """Return current swing mode for an axis."""
@@ -590,13 +559,12 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             "stop",
         )
         operation_mode = cc.operation_mode.value
-        result = await self._async_execute_climate_command(
+        await self._async_execute_climate_command(
             lambda climate: climate.set_fan_direction(operation_mode, direction, new_mode),
             "climate_set_swing_mode_failed",
         )
-        if result:
-            axis.current_mode.value = new_mode
-        return result
+        axis.current_mode.value = new_mode
+        return True
 
     @override
     async def async_set_swing_mode(self, swing_mode):
@@ -649,61 +617,49 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                 return mode
         return PRESET_NONE
 
-    async def _async_disable_preset_mode(self, preset_mode) -> bool:
+    async def _async_disable_preset_mode(self, preset_mode) -> None:
         """Disable the current Daikin preset mode."""
         daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
         if preset_mode == PRESET_AWAY:
-            result = await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_holiday_mode(False),
                 "climate_set_preset_mode_failed",
             )
         else:
-            result = await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_mode_characteristic(daikin_mode, False),
                 "climate_set_preset_mode_failed",
             )
-        if not result:
-            _LOGGER.warning("Device '%s' problem setting %s to off", self._device.name, daikin_mode)
-        return result
 
-    async def _async_enable_preset_mode(self, preset_mode) -> bool:
+    async def _async_enable_preset_mode(self, preset_mode) -> None:
         """Enable the requested Daikin preset mode."""
         daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
-        turned_on = True
         if self.hvac_mode == HVACMode.OFF and preset_mode == PRESET_BOOST:
-            turned_on = await self.async_turn_on()
+            await self.async_turn_on()
         if preset_mode == PRESET_AWAY:
             today: date = dt_util.now().date()
-            result = await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_holiday_mode(True, start_date=today, end_date=today + timedelta(days=60)),
                 "climate_set_preset_mode_failed",
             )
         else:
-            result = await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_mode_characteristic(daikin_mode, True),
                 "climate_set_preset_mode_failed",
             )
-        if not result:
-            _LOGGER.warning("Device '%s' problem setting %s to on", self._device.name, daikin_mode)
-        return turned_on and result
 
     @override
     async def async_set_preset_mode(self, preset_mode):
         """Set the active preset mode."""
         _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
-        result = True
-
         if self.preset_mode != PRESET_NONE:
-            result &= await self._async_disable_preset_mode(self.preset_mode)
+            await self._async_disable_preset_mode(self.preset_mode)
 
         if preset_mode != PRESET_NONE:
-            result &= await self._async_enable_preset_mode(preset_mode)
+            await self._async_enable_preset_mode(preset_mode)
 
-        if result is True:
-            self._attr_preset_mode = preset_mode
-            self.async_write_ha_state()
-
-        return result
+        self._attr_preset_mode = preset_mode
+        self.async_write_ha_state()
 
     def get_preset_modes(self):
         """Return supported preset modes."""
@@ -717,49 +673,37 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         """Turn device CLIMATE on."""
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
         cc = self.climate_control()
-        result = True
         on_off_mode = cc.on_off_mode if cc is not None else None
         if on_off_mode is not None and on_off_mode.value == "off":
-            result &= await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_power(True),
                 "climate_turn_on_failed",
             )
-            if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
-            else:
-                on_off_mode.value = "on"
-                self._attr_hvac_mode = self.get_hvac_mode()
-                self.async_write_ha_state()
+            on_off_mode.value = "on"
+            self._attr_hvac_mode = self.get_hvac_mode()
+            self.async_write_ha_state()
         else:
             _LOGGER.debug(
                 "Device '%s' request to turn on ignored because device is already on",
                 self._device.name,
             )
 
-        return result
-
     @override
     async def async_turn_off(self):
         """Turn the climate entity off."""
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
         cc = self.climate_control()
-        result = True
         on_off_mode = cc.on_off_mode if cc is not None else None
         if on_off_mode is not None and on_off_mode.value == "on":
-            result &= await self._async_execute_climate_command(
+            await self._async_execute_climate_command(
                 lambda climate: climate.set_power(False),
                 "climate_turn_off_failed",
             )
-            if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
-            else:
-                on_off_mode.value = "off"
-                self._attr_hvac_mode = self.get_hvac_mode()
-                self.async_write_ha_state()
+            on_off_mode.value = "off"
+            self._attr_hvac_mode = self.get_hvac_mode()
+            self.async_write_ha_state()
         else:
             _LOGGER.debug(
                 "Device '%s' request to turn off ignored because device is already off",
                 self._device.name,
             )
-
-        return result

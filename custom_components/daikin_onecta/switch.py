@@ -111,7 +111,6 @@ class DaikinSwitch(DaikinManagementPointEntity, ToggleEntity):
     @override
     async def async_turn_on(self, **kwargs):
         """Turn the zone on."""
-        result = True
         if not self.is_on:
             await self._async_execute_command(
                 lambda client: client.management_point(self._device.id, self._embedded_id).set_characteristic(
@@ -120,24 +119,20 @@ class DaikinSwitch(DaikinManagementPointEntity, ToggleEntity):
                 ),
                 "switch_turn_on_failed",
             )
-            if result is False:
-                _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
-            else:
-                point = self._device.management_point(self._embedded_id)
-                characteristic = point.scalar_characteristic(self._value) if point is not None else None
-                if characteristic is not None:
-                    characteristic.value = "on"
-                self.update_state()
-                self.async_write_ha_state()
+            point = self._device.management_point(self._embedded_id)
+            characteristic = point.scalar_characteristic(self._value) if point is not None else None
+            if characteristic is not None:
+                characteristic.value = "on"
+            self.update_state()
+            self.async_write_ha_state()
         else:
             _LOGGER.debug("Device '%s' switch '%s' request to turn on ignored because is already on", self._device.name, self._value)
 
-        return result
+        return True
 
     @override
     async def async_turn_off(self, **kwargs):
         """Turn the zone off."""
-        result = True
         if self.is_on:
             await self._async_execute_command(
                 lambda client: client.management_point(self._device.id, self._embedded_id).set_characteristic(
@@ -146,20 +141,13 @@ class DaikinSwitch(DaikinManagementPointEntity, ToggleEntity):
                 ),
                 "switch_turn_off_failed",
             )
-            if result is False:
-                _LOGGER.warning(
-                    "Device '%s' problem setting '%s' to off",
-                    self._device.name,
-                    self._value,
-                )
-            else:
-                point = self._device.management_point(self._embedded_id)
-                characteristic = point.scalar_characteristic(self._value) if point is not None else None
-                if characteristic is not None:
-                    characteristic.value = "off"
-                self.update_state()
-                self.async_write_ha_state()
+            point = self._device.management_point(self._embedded_id)
+            characteristic = point.scalar_characteristic(self._value) if point is not None else None
+            if characteristic is not None:
+                characteristic.value = "off"
+            self.update_state()
+            self.async_write_ha_state()
         else:
             _LOGGER.debug("Device '%s' switch '%s' request to turn off ignored because is already off", self._device.name, self._value)
 
-        return result
+        return True

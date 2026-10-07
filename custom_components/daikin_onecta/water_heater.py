@@ -68,13 +68,12 @@ class DaikinWaterTank(DaikinManagementPointEntity, WaterHeaterEntity):
         self,
         command: Callable[[DomesticHotWaterClient], Awaitable[None]],
         translation_key: str,
-    ) -> bool:
+    ) -> None:
         """Execute a typed hot-water command through the cloud adapter."""
         await self._async_execute_command(
             lambda client: command(client.domestic_hot_water(self._device.id, self._embedded_id)),
             translation_key,
         )
-        return True
 
     @callback
     @override
@@ -185,14 +184,12 @@ class DaikinWaterTank(DaikinManagementPointEntity, WaterHeaterEntity):
 
         int_value = int(value)
         if int_value != self._attr_target_temperature:
-            res = await self._async_execute_hot_water_command(
+            await self._async_execute_hot_water_command(
                 lambda hot_water: hot_water.set_temperature(int_value),
                 "water_heater_set_temperature_failed",
             )
-            # When updating the value to the daikin cloud worked update our local cached version
-            if res:
-                self._attr_target_temperature = int_value
-                self.async_write_ha_state()
+            self._attr_target_temperature = int_value
+            self.async_write_ha_state()
 
     @override
     async def async_set_temperature(self, **kwargs):
@@ -245,65 +242,52 @@ class DaikinWaterTank(DaikinManagementPointEntity, WaterHeaterEntity):
     async def async_set_operation_mode(self, operation_mode):
         """Set new tank state."""
         _LOGGER.debug("Set tank operation mode: %s", operation_mode)
-        result = True
-
         # First determine the new settings for onOffMode/powerfulMode, we need these to set them to Daikin
         # and update our local cached version when succeeded
         on_off_mode, powerful_mode = self._requested_modes(operation_mode)
 
         # Only set the on/off to Daikin when we need to change it
         if on_off_mode != "":
-            result &= await self._async_execute_hot_water_command(
+            await self._async_execute_hot_water_command(
                 lambda hot_water: hot_water.set_power(on_off_mode == "on"),
                 "water_heater_set_operation_mode_failed",
             )
-            if result is True:
-                hwtd = self.hot_water_management_point
-                if hwtd is not None and hwtd.on_off_mode is not None:
-                    hwtd.on_off_mode.value = on_off_mode
+            hwtd = self.hot_water_management_point
+            if hwtd is not None and hwtd.on_off_mode is not None:
+                hwtd.on_off_mode.value = on_off_mode
 
         # Only set powerfulMode when it is set and supported by the device
         if powerful_mode != "" and STATE_PERFORMANCE in (self.operation_list or []):
-            result &= await self._async_execute_hot_water_command(
+            await self._async_execute_hot_water_command(
                 lambda hot_water: hot_water.set_powerful_mode(powerful_mode == "on"),
                 "water_heater_set_operation_mode_failed",
             )
-            if result is True:
-                hwtd = self.hot_water_management_point
-                hot_water = hwtd.domestic_hot_water if hwtd is not None else None
-                pwf = hot_water.powerful_mode if hot_water is not None else None
-                if pwf is not None and pwf.settable:
-                    pwf.value = powerful_mode
+            hwtd = self.hot_water_management_point
+            hot_water = hwtd.domestic_hot_water if hwtd is not None else None
+            pwf = hot_water.powerful_mode if hot_water is not None else None
+            if pwf is not None and pwf.settable:
+                pwf.value = powerful_mode
 
-        if result is False:
-            _LOGGER.warning("Device '%s' invalid tank state: %s", self._device.name, operation_mode)
-        else:
-            # Update local cached version
-            self._attr_current_operation = operation_mode
-            self._attr_operation_list = self.get_operation_list()
-            self.async_write_ha_state()
-
-        return result
+        # Update local cached version
+        self._attr_current_operation = operation_mode
+        self._attr_operation_list = self.get_operation_list()
+        self.async_write_ha_state()
 
     @override
     async def async_turn_on(self, **kwargs: Any) -> None:
         """Turn water heater on."""
         _LOGGER.debug("Device '%s' request to turn on", self._device.name)
-        result = True
         if self.current_operation == STATE_OFF:
-            result &= await self._async_execute_hot_water_command(
+            await self._async_execute_hot_water_command(
                 lambda hot_water: hot_water.set_power(True),
                 "water_heater_turn_on_failed",
             )
-            if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to on", self._device.name)
-            else:
-                hwtd = self.hot_water_management_point
-                if hwtd is not None and hwtd.on_off_mode is not None:
-                    hwtd.on_off_mode.value = "on"
-                self._attr_current_operation = self.get_current_operation()
-                self._attr_operation_list = self.get_operation_list()
-                self.async_write_ha_state()
+            hwtd = self.hot_water_management_point
+            if hwtd is not None and hwtd.on_off_mode is not None:
+                hwtd.on_off_mode.value = "on"
+            self._attr_current_operation = self.get_current_operation()
+            self._attr_operation_list = self.get_operation_list()
+            self.async_write_ha_state()
         else:
             _LOGGER.debug(
                 "Device '%s' request to turn on ignored because device is already on",
@@ -314,21 +298,17 @@ class DaikinWaterTank(DaikinManagementPointEntity, WaterHeaterEntity):
     async def async_turn_off(self, **kwargs: Any) -> None:
         """Turn water heater off."""
         _LOGGER.debug("Device '%s' request to turn off", self._device.name)
-        result = True
         if self.current_operation != STATE_OFF:
-            result &= await self._async_execute_hot_water_command(
+            await self._async_execute_hot_water_command(
                 lambda hot_water: hot_water.set_power(False),
                 "water_heater_turn_off_failed",
             )
-            if result is False:
-                _LOGGER.error("Device '%s' problem setting onOffMode to off", self._device.name)
-            else:
-                hwtd = self.hot_water_management_point
-                if hwtd is not None and hwtd.on_off_mode is not None:
-                    hwtd.on_off_mode.value = "off"
-                self._attr_current_operation = self.get_current_operation()
-                self._attr_operation_list = self.get_operation_list()
-                self.async_write_ha_state()
+            hwtd = self.hot_water_management_point
+            if hwtd is not None and hwtd.on_off_mode is not None:
+                hwtd.on_off_mode.value = "off"
+            self._attr_current_operation = self.get_current_operation()
+            self._attr_operation_list = self.get_operation_list()
+            self.async_write_ha_state()
         else:
             _LOGGER.debug(
                 "Device '%s' request to turn off ignored because device is already off",
