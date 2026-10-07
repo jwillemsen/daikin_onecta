@@ -21,7 +21,7 @@ async def test_get_device_details_propagates_connection_error(
     """Propagate library connection errors to the coordinator."""
     with patch(
         "custom_components.daikin_onecta.daikin_api.OnectaClient.get_gateway_devices",
-        new=AsyncMock(side_effect=OnectaConnectionError("network unavailable")),
+        new=AsyncMock(side_effect=OnectaConnectionError("network unavailable", method="GET", path="/v1/gateway-devices")),
     ):
         api = DaikinApi(hass, config_entry, MagicMock())
         with pytest.raises(OnectaConnectionError, match="network unavailable"):
@@ -44,7 +44,7 @@ async def test_get_device_details_rate_limit(
     """Create rate-limit issues and propagate a library rate-limit error."""
     api = DaikinApi(hass, config_entry, MagicMock())
     api.create_rate_limit_issues = MagicMock()
-    api.client.get_gateway_devices = AsyncMock(side_effect=OnectaRateLimitError(60))
+    api.client.get_gateway_devices = AsyncMock(side_effect=OnectaRateLimitError(RateLimit(retry_after=60), method="GET", path="/v1/gateway-devices"))
 
     with pytest.raises(OnectaRateLimitError):
         await api.get_cloud_device_details()
@@ -84,7 +84,10 @@ async def test_write_success(
     setattr(api.client, method, AsyncMock())
     api.update_rate_limit_issues = MagicMock()
 
-    assert await getattr(api, method)(*arguments)
+    async def command(client) -> None:
+        await getattr(client, method)(*arguments)
+
+    assert await api.async_execute_command(command)
     getattr(api.client, method).assert_awaited_once()
     assert api.last_patch_call is not None
     api.update_rate_limit_issues.assert_called_once()
@@ -106,9 +109,16 @@ async def test_write_api_error(
 ) -> None:
     """Return false for API write failures."""
     api = DaikinApi(hass, config_entry, MagicMock())
-    setattr(api.client, method, AsyncMock(side_effect=OnectaApiError(500, "failed")))
+    setattr(
+        api.client,
+        method,
+        AsyncMock(side_effect=OnectaApiError(500, "failed", method="PATCH", path="/v1/test")),
+    )
 
-    assert not await getattr(api, method)(*arguments)
+    async def command(client) -> None:
+        await getattr(client, method)(*arguments)
+
+    assert not await api.async_execute_command(command)
     assert api.last_patch_call is None
 
 
@@ -128,10 +138,17 @@ async def test_write_rate_limit(
 ) -> None:
     """Create a repair issue and return false for rate-limited writes."""
     api = DaikinApi(hass, config_entry, MagicMock())
-    setattr(api.client, method, AsyncMock(side_effect=OnectaRateLimitError(60)))
+    setattr(
+        api.client,
+        method,
+        AsyncMock(side_effect=OnectaRateLimitError(RateLimit(retry_after=60), method="PATCH", path="/v1/test")),
+    )
     api.create_rate_limit_issues = MagicMock()
 
-    assert not await getattr(api, method)(*arguments)
+    async def command(client) -> None:
+        await getattr(client, method)(*arguments)
+
+    assert not await api.async_execute_command(command)
     api.create_rate_limit_issues.assert_called_once()
     assert api.last_patch_call is None
 

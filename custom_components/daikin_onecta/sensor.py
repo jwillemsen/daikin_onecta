@@ -9,16 +9,22 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
-from .const import DOMAIN, SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_WEEKLY, SENSOR_PERIOD_YEARLY, SENSOR_PERIODS
+from .const import (
+    DOMAIN,
+    SENSOR_PERIOD_DAILY,
+    SENSOR_PERIOD_MONTHLY,
+    SENSOR_PERIOD_UNIQUE_IDS,
+    SENSOR_PERIOD_WEEKLY,
+    SENSOR_PERIOD_YEARLY,
+    SENSOR_PERIODS,
+)
 from .device import DaikinOnectaDevice
+from .entity import DaikinEntity
 from .entity_descriptions import SENSOR_DESCRIPTIONS
 
 if TYPE_CHECKING:
-    from homeassistant.helpers.device_registry import DeviceInfo
-
     from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
@@ -46,15 +52,6 @@ class ValueSensorDetails:
     value: str
 
 
-@dataclass(frozen=True)
-class EnergySourceDetails:
-    """Energy source metadata used while creating sensors."""
-
-    sensor_type: str
-    source: object
-    datatype: str
-
-
 async def async_setup(hass, async_add_entities):
     """Old way of setting up the Daikin sensors.
 
@@ -63,56 +60,30 @@ async def async_setup(hass, async_add_entities):
     """
 
 
-def handle_energy_sensors(
-    coordinator,
-    device,
-    management_point,
-    source_details: EnergySourceDetails,
-    sensors,
-):
-    """Add energy sensors for the periods exposed by an energy source."""
-    for mode in ("heating", "cooling"):
-        series = getattr(source_details.source, mode)
-        if series is None:
-            continue
-        periods = {
-            "d": series.day,
-            "w": series.week,
-            "m": series.month,
-        }
-        for period, values in periods.items():
-            if values is None:
-                continue
-            if period == SENSOR_PERIOD_YEARLY:
-                sensors.append(
-                    DaikinEnergySensor(
-                        device,
-                        coordinator,
-                        EnergySensorDetails(
-                            management_point.embedded_id,
-                            management_point.management_point_type,
-                            source_details.sensor_type,
-                            mode,
-                            SENSOR_PERIOD_MONTHLY,
-                            source_details.datatype,
-                        ),
-                    )
-                )
-            if period in SENSOR_PERIODS:
-                sensors.append(
-                    DaikinEnergySensor(
-                        device,
-                        coordinator,
-                        EnergySensorDetails(
-                            management_point.embedded_id,
-                            management_point.management_point_type,
-                            source_details.sensor_type,
-                            mode,
-                            period,
-                            source_details.datatype,
-                        ),
-                    )
-                )
+def add_energy_sensors(coordinator, device, management_point, sensors) -> None:
+    """Add sensors for every typed energy aggregate exposed by a point."""
+    periods = {
+        "day": SENSOR_PERIOD_DAILY,
+        "week": SENSOR_PERIOD_WEEKLY,
+        "month": SENSOR_PERIOD_MONTHLY,
+        "year": SENSOR_PERIOD_YEARLY,
+    }
+    order = {"day": 0, "week": 1, "year": 2, "month": 3}
+    for aggregate in sorted(management_point.energy_aggregates, key=lambda aggregate: order[aggregate.period]):
+        sensors.append(
+            DaikinEnergySensor(
+                device,
+                coordinator,
+                EnergySensorDetails(
+                    management_point.embedded_id,
+                    management_point.management_point_type,
+                    aggregate.source,
+                    aggregate.operation_mode,
+                    periods[aggregate.period],
+                    aggregate.data_type,
+                ),
+            )
+        )
 
 
 def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
@@ -123,7 +94,7 @@ def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
         "climateControl",
         "climateControlMainZone",
     }
-    for value, characteristic in management_point.simple_characteristics().items():
+    for value, characteristic in management_point.scalar_characteristics().items():
         if value not in SENSOR_DESCRIPTIONS:
             continue
         values = characteristic.values or []
@@ -145,9 +116,6 @@ def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
 
 def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
     """Add sensors for sensory data exposed by one management point."""
-    if management_point.sensory_data is None:
-        return
-    sensory_data = management_point.sensory_data.value
     sensors.extend(
         DaikinValueSensor(
             device,
@@ -164,9 +132,7 @@ def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
             "pm25Concentration",
             "pm10Concentration",
         )
-        if sensor in SENSOR_DESCRIPTIONS
-        and (attribute := SENSOR_DESCRIPTIONS[sensor].model_attribute) is not None
-        and getattr(sensory_data, attribute) is not None
+        if sensor in SENSOR_DESCRIPTIONS and management_point.sensory_characteristic(sensor) is not None
     )
 
 
@@ -174,22 +140,7 @@ def add_management_point_sensors(coordinator, device, management_point, sensors)
     """Add all sensors exposed by a management point."""
     add_simple_sensors(coordinator, device, management_point, sensors)
     add_sensory_sensors(coordinator, device, management_point, sensors)
-    for datatype, energy_data in (
-        ("consumption", management_point.consumption_data),
-        ("output", management_point.output_data),
-    ):
-        if energy_data is None:
-            continue
-        for sensor_type in ("electrical", "gas", "thermal"):
-            source = getattr(energy_data.value, sensor_type)
-            if source is not None:
-                handle_energy_sensors(
-                    coordinator,
-                    device,
-                    management_point,
-                    EnergySourceDetails(sensor_type, source, datatype),
-                    sensors,
-                )
+    add_energy_sensors(coordinator, device, management_point, sensors)
 
 
 def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
@@ -207,27 +158,43 @@ def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, 
 
 
 def _legacy_energy_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
-    """Return legacy-to-current energy sensor IDs for a device."""
+    """Return older energy sensor unique IDs mapped to current IDs."""
     migrations: dict[str, str] = {}
     for management_point in device.device.management_points:
         for datatype in ("consumption", "output"):
             for sensor_type in ("electrical", "gas", "thermal"):
                 for operation_mode in ("heating", "cooling"):
                     for period in SENSOR_PERIODS:
-                        old_unique_id = f"{device.id}_{management_point.management_point_type}_{sensor_type}_{operation_mode}_{period}"
-                        migrations.setdefault(
-                            old_unique_id,
-                            f"{device.id}_{management_point.embedded_id}_{sensor_type}_{operation_mode}_{period}_{datatype}",
+                        details = EnergySensorDetails(
+                            management_point.embedded_id,
+                            management_point.management_point_type,
+                            sensor_type,
+                            operation_mode,
+                            period,
+                            datatype,
                         )
+                        old_unique_id = f"{device.id}_{management_point.management_point_type}_{sensor_type}_{operation_mode}_{period}"
+                        migrations.setdefault(old_unique_id, _energy_sensor_unique_id(device.id, details))
+                        old_current_unique_id = f"{device.id}_{management_point.embedded_id}_{sensor_type}_{operation_mode}_{period}_{datatype}"
+                        migrations[old_current_unique_id] = _energy_sensor_unique_id(device.id, details)
     return migrations
 
 
+def _energy_sensor_unique_id(device_id: str, details: EnergySensorDetails) -> str:
+    """Return the stable unique ID for an energy aggregate."""
+    return (
+        f"{device_id}_{details.embedded_id}_{details.sensor_type}_{details.operation_mode}_"
+        f"{SENSOR_PERIOD_UNIQUE_IDS[details.period]}_{details.datatype}"
+    )
+
+
 def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry, devices: dict[str, DaikinOnectaDevice]) -> None:
-    """Use embedded management-point IDs for existing sensor unique IDs.
+    """Migrate existing sensor unique IDs without replacing registry entries.
 
     The previous IDs did not distinguish management points of the same type or
-    energy consumption from output. Update registry entries before platforms
-    are loaded so existing entity IDs, customizations, and history are kept.
+    energy consumption from output. The former energy IDs also used API period
+    tokens, including ``m`` for yearly data. Update registry entries before
+    platforms are loaded so entity IDs, customizations, and history are kept.
     """
     entity_registry = er.async_get(hass)
     migrations: dict[str, str] = {}
@@ -261,23 +228,13 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
+class DaikinEnergySensor(DaikinEntity, SensorEntity):
     """Representation of a power/energy sensor."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, details: EnergySensorDetails) -> None:
         """Initialize an energy sensor for a management point."""
-        super().__init__(coordinator)
-        self._device = device
+        super().__init__(device, coordinator, details.embedded_id, details.management_point_type)
         self._management_point_type = details.management_point_type
-        mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
-        assert self._device.ha_device_id is not None
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
-            "name": self._device.name + " " + mpt,
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_device_info(self._attr_device_info, details.embedded_id)
-        self._embedded_id = details.embedded_id
         self._operation_mode = details.operation_mode
         self._attr_has_entity_name = True
         self._period = details.period
@@ -286,7 +243,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         buildname = f"{details.operation_mode.capitalize()}{period_name}{details.sensor_type.capitalize()}{details.datatype.capitalize()}"
         self.entity_description = SENSOR_DESCRIPTIONS[buildname]
         self._sensor_type = details.sensor_type
-        self._attr_unique_id = f"{self._device.id}_{details.embedded_id}_{details.sensor_type}_{self._operation_mode}_{self._period}_{self._datatype}"
+        self._attr_unique_id = _energy_sensor_unique_id(self._device.id, details)
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -298,12 +255,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     def update_state(self) -> None:
         """Refresh the state from the current device data."""
         self._attr_native_value = self.sensor_value()
-
-    @property
-    @override
-    def available(self) -> bool:
-        """Return whether the source device is available."""
-        return super().available and self._device.available
 
     @callback
     @override
@@ -328,60 +279,36 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         point = self._device.management_point(self._embedded_id)
         if point is None:
             return None
-        energy = point.consumption_data if self._datatype == "consumption" else point.output_data
-        if energy is None:
+        period = {
+            SENSOR_PERIOD_DAILY: "day",
+            SENSOR_PERIOD_WEEKLY: "week",
+            SENSOR_PERIOD_YEARLY: "year",
+            SENSOR_PERIOD_MONTHLY: "month",
+        }[self._period]
+        aggregate = next(
+            (
+                aggregate
+                for aggregate in point.energy_aggregates
+                if aggregate.data_type == self._datatype
+                and aggregate.source == self._sensor_type
+                and aggregate.operation_mode == self._operation_mode
+                and aggregate.period == period
+            ),
+            None,
+        )
+        if aggregate is None:
             return None
-        source = getattr(energy.value, self._sensor_type)
-        if source is None:
-            return None
-        series = getattr(source, self._operation_mode)
-        if series is None:
-            return None
-        period_data = {
-            "d": series.day,
-            "w": series.week,
-            "m": series.month,
-            SENSOR_PERIOD_MONTHLY: series.month,
-        }.get(self._period)
-        if period_data is None:
-            return None
-
-        # Treat not-yet-published time slots as zero until Daikin provides the
-        # corresponding consumption value in a later coordinator update.
-        energy_values = [0 if value is None else value for value in period_data]
-        if self._period == SENSOR_PERIOD_WEEKLY:
-            # w[0:7] is last week; w[7:14] is this week.
-            start_index = 7
-            end_index = len(energy_values)
-        elif self._period == SENSOR_PERIOD_MONTHLY:
-            # m[12] is January of this year, so select this calendar month.
-            start_index = 11 + dt_util.now().month
-            end_index = start_index + 1
-        else:
-            # d[0:12] and m[0:12] are the preceding day/year respectively.
-            start_index = 12
-            end_index = len(energy_values)
-        return round(sum(energy_values[start_index:end_index]), 3)
+        return aggregate.current_total(month=dt_util.now().month if period == "month" else None)
 
 
-class DaikinValueSensor(CoordinatorEntity, SensorEntity):
+class DaikinValueSensor(DaikinEntity, SensorEntity):
     """Represent a Daikin characteristic or sensory-data value."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, details: ValueSensorDetails) -> None:
         """Initialize the sensor from a device value."""
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", details.management_point_type, details.sub_type, details.value)
-        super().__init__(coordinator)
-        self._device = device
+        super().__init__(device, coordinator, details.embedded_id, details.management_point_type)
         self._management_point_type = details.management_point_type
-        mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
-        assert self._device.ha_device_id is not None
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
-            "name": self._device.name + " " + mpt,
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_device_info(self._attr_device_info, details.embedded_id)
-        self._embedded_id = details.embedded_id
         self._sub_type = details.sub_type
         self._value = details.value
         self._attr_has_entity_name = True
@@ -399,12 +326,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         """Refresh the state from the current device data."""
         self._attr_native_value = self.sensor_value()
 
-    @property
-    @override
-    def available(self) -> bool:
-        """Return whether the source device is available."""
-        return super().available and self._device.available
-
     @callback
     @override
     def _handle_coordinator_update(self) -> None:
@@ -417,19 +338,15 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         if point is None:
             return None
         if self._sub_type == "sensoryData":
-            sensory_data = point.sensory_data
-            if sensory_data is None:
-                return None
-            attribute = SENSOR_DESCRIPTIONS[self._value].model_attribute
-            characteristic = getattr(sensory_data.value, attribute) if attribute is not None else None
+            characteristic = point.sensory_characteristic(self._value)
         else:
-            characteristic = point.characteristic(self._value)
+            characteristic = point.scalar_characteristic(self._value)
         result = characteristic.value if characteristic is not None else None
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
         return result
 
 
-class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
+class DaikinLimitSensor(DaikinEntity, SensorEntity):
     """Represent a Daikin API rate-limit value."""
 
     def __init__(
@@ -442,21 +359,13 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
     ) -> None:
         """Initialize a rate-limit sensor."""
         _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
-        super().__init__(coordinator)
+        super().__init__(device, coordinator, device.gateway_embedded_id or "gateway", "Gateway")
         self._hass = hass
         self._config_entry = config_entry
-        self._device = device
         self._limit_key = limit_key
         self._attr_has_entity_name = True
         self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
-        assert self._device.ha_device_id is not None
         self.entity_description = SENSOR_DESCRIPTIONS["RatelimitRemainingDay"]
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + (self._device.gateway_embedded_id or "gateway"))},
-            "name": self._device.name + " " + "Gateway",
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_gateway_device_info(self._attr_device_info)
         self.update_state()
         _LOGGER.info(
             "Device '%s' supports sensor '%s'",
@@ -467,6 +376,12 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
     def update_state(self) -> None:
         """Refresh the rate-limit value."""
         self._attr_native_value = self.sensor_value()
+
+    @property
+    @override
+    def available(self) -> bool:
+        """Return coordinator availability without gateway cloud availability."""
+        return self.coordinator.last_update_success
 
     @callback
     @override

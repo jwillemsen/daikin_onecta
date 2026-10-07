@@ -557,7 +557,7 @@
         'original_name': 'Heating daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingdailyelectricalconsumption',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControlMainZone_electrical_heating_d_consumption',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControlMainZone_electrical_heating_daily_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -629,7 +629,7 @@
         'original_name': 'Heating weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingweeklyelectricalconsumption',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControlMainZone_electrical_heating_w_consumption',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControlMainZone_electrical_heating_weekly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -665,7 +665,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControlMainZone_electrical_heating_m_consumption',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_climateControlMainZone_electrical_heating_yearly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -863,7 +863,7 @@
         'original_name': 'Heating daily electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingdailyelectricalconsumption',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_d_consumption',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_daily_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -935,7 +935,7 @@
         'original_name': 'Heating weekly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingweeklyelectricalconsumption',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_w_consumption',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_weekly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -971,7 +971,7 @@
         'original_name': 'Heating yearly electrical consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'heatingyearlyelectricalconsumption',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_m_consumption',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_domesticHotWaterTank_electrical_heating_yearly_consumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

@@ -10,8 +10,10 @@ from homeassistant.core import callback
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.selector import BooleanSelector, NumberSelector, NumberSelectorConfig, TimeSelector
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
-import jwt
 import probatio
+
+from daikin_onecta.auth import get_account_id
+from daikin_onecta.exceptions import OnectaAccessTokenError
 
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN
 
@@ -97,9 +99,9 @@ class FlowHandler(
     async def async_oauth_create_entry(self, data: dict) -> ConfigFlowResult:
         """Create an oauth config entry or update existing entry for reauth."""
         try:
-            unique_id = jwt.decode(data["token"]["access_token"], options={"verify_signature": False})["sub"]
-        except (jwt.DecodeError, KeyError):
-            _LOGGER.exception("Failed to decode JWT")
+            unique_id = get_account_id(data["token"]["access_token"])
+        except (KeyError, OnectaAccessTokenError):
+            _LOGGER.exception("Failed to read the account ID from the OAuth token")
             return self.async_abort(reason="invalid_token")
 
         await self.async_set_unique_id(unique_id)

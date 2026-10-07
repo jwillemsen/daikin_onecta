@@ -4,6 +4,7 @@ from datetime import datetime, time, timedelta
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import OnectaConnectionError, OnectaRateLimitError
+from daikin_onecta.rate_limit import RateLimit
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import UpdateFailed
 import pytest
@@ -105,7 +106,13 @@ class TestOnectaDataUpdateCoordinator:
         """A Daikin rate limit should use the coordinator retry-after mechanism."""
         daikin_api = coordinator.api
         daikin_api.last_patch_call = None
-        daikin_api.get_cloud_device_details = AsyncMock(side_effect=OnectaRateLimitError(3060))
+        daikin_api.get_cloud_device_details = AsyncMock(
+            side_effect=OnectaRateLimitError(
+                RateLimit(retry_after=3060),
+                method="GET",
+                path="/v1/gateway-devices",
+            )
+        )
         initial_interval = coordinator.update_interval
 
         # Simulate daily rate limit reached
@@ -118,7 +125,13 @@ class TestOnectaDataUpdateCoordinator:
     async def test_connection_error_uses_update_failed(self, coordinator):
         """A connection error should mark the coordinator update as failed."""
         coordinator.api.last_patch_call = None
-        coordinator.api.get_cloud_device_details = AsyncMock(side_effect=OnectaConnectionError(EXPECTED_CONNECTION_ERROR))
+        coordinator.api.get_cloud_device_details = AsyncMock(
+            side_effect=OnectaConnectionError(
+                EXPECTED_CONNECTION_ERROR,
+                method="GET",
+                path="/v1/gateway-devices",
+            )
+        )
 
         with pytest.raises(UpdateFailed, match="Unable to connect to the Daikin API") as exc_info:
             await coordinator.async_update_data()
@@ -142,7 +155,7 @@ class TestOnectaDataUpdateCoordinator:
         missing_device = MagicMock()
         coordinator.data = {"missing": missing_device}
         coordinator.api.last_patch_call = None
-        coordinator.api.get_cloud_device_details = AsyncMock(side_effect=OnectaConnectionError("offline"))
+        coordinator.api.get_cloud_device_details = AsyncMock(side_effect=OnectaConnectionError("offline", method="GET", path="/v1/gateway-devices"))
 
         with pytest.raises(UpdateFailed):
             await coordinator.async_update_data()

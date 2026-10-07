@@ -10,7 +10,9 @@ from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady,
 from homeassistant.helpers import config_entry_oauth2_flow
 from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
 from homeassistant.helpers.typing import ConfigType
-import jwt
+
+from daikin_onecta.auth import get_account_id
+from daikin_onecta.exceptions import OnectaAccessTokenError
 
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
@@ -91,12 +93,9 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
         match config_entry.minor_version:
             case 1:
                 try:
-                    unique_id = jwt.decode(
-                        config_entry.data["token"]["access_token"],
-                        options={"verify_signature": False},
-                    )["sub"]
-                except (jwt.DecodeError, KeyError):
-                    _LOGGER.exception("Failed to decode JWT during migration")
+                    unique_id = get_account_id(config_entry.data["token"]["access_token"])
+                except (KeyError, OnectaAccessTokenError):
+                    _LOGGER.exception("Failed to read the account ID from the OAuth token during migration")
                     return False
                 hass.config_entries.async_update_entry(
                     config_entry,

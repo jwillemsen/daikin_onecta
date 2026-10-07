@@ -8,10 +8,10 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import EntityCategory
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from .coordinator import OnectaDataUpdateCoordinator
 from .device import DaikinOnectaDevice
+from .entity import DaikinEntity
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -30,7 +30,7 @@ async def async_setup_entry(
         async_add_entities(entities)
 
 
-class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
+class DaikinRefreshButton(DaikinEntity, ButtonEntity):
     """Button to request an immediate device data update."""
 
     def __init__(
@@ -40,14 +40,11 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
         coordinator: OnectaDataUpdateCoordinator,
     ) -> None:
         """Initialize a refresh button for a device."""
-        super().__init__(coordinator)
-        self._device = device
+        super().__init__(device, coordinator)
         self._attr_unique_id = f"{self._device.id}_refresh"
         self._attr_entity_category = EntityCategory.CONFIG
         self._attr_icon = "mdi:refresh"
         self._attr_name = "Refresh"
-        self._attr_device_info = self._device.device_info()
-        self._device.fill_gateway_device_info(self._attr_device_info)
         self._attr_has_entity_name = True
         self._config_entry = config_entry
 
@@ -56,7 +53,7 @@ class DaikinRefreshButton(CoordinatorEntity, ButtonEntity):
     @property
     @override
     def available(self) -> bool:
-        """Return whether the source device is available."""
+        """Return whether the device can be refreshed."""
         return self._device.available
 
     @callback
