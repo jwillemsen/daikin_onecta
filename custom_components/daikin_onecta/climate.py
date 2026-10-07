@@ -4,7 +4,7 @@ from collections.abc import Awaitable, Callable
 from datetime import date, timedelta
 import logging
 import re
-from typing import TYPE_CHECKING, override
+from typing import override
 
 from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, ClimateEntity
 from homeassistant.components.climate.const import (
@@ -21,19 +21,15 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
 from daikin_onecta.client import ClimateControlClient
 from daikin_onecta.models import ClimateControl
 
-from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED
+from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator
+from .entity import DaikinEntity
 from .entity_descriptions import CLIMATE_DESCRIPTIONS
-
-if TYPE_CHECKING:
-    from homeassistant.helpers.device_registry import DeviceInfo
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -103,8 +99,10 @@ async def async_setup_entry(
             )
 
 
-class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntity):
+class DaikinClimate(DaikinEntity, ClimateEntity):
     """Representation of a Daikin HVAC."""
+
+    coordinator: OnectaDataUpdateCoordinator
 
     _enable_turn_on_off_backwards_compatibility = False  # Remove with HA 2025.1
 
@@ -112,20 +110,17 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
     # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
     def __init__(self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id):
         """Initialize the climate device."""
-        super().__init__(coordinator)
+        super().__init__(device, coordinator)
         _LOGGER.info(
             "Device '%s' initializing Daikin Climate for controlling %s",
             device.name,
             setpoint,
         )
-        self._device = device
         self._embedded_id = embedded_id
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._setpoint}"
-        self._attr_device_info: DeviceInfo = {"identifiers": {(DOMAIN, self._device.id)}, "name": self._device.name}
         self._attr_has_entity_name = True
-        self._device.fill_gateway_device_info(self._attr_device_info)
         self.entity_description = CLIMATE_DESCRIPTIONS[setpoint]
         self.update_state()
 
@@ -159,12 +154,6 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
     def _handle_coordinator_update(self) -> None:
         self.update_state()
         self.async_write_ha_state()
-
-    @property
-    @override
-    def available(self) -> bool:
-        """Return whether the source device is available."""
-        return super().available and self._device.available
 
     def climate_control(self) -> ClimateControl | None:
         """Return the library's typed climate-control state view."""

@@ -9,7 +9,6 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
 from .const import (
@@ -22,11 +21,10 @@ from .const import (
     SENSOR_PERIODS,
 )
 from .device import DaikinOnectaDevice
+from .entity import DaikinEntity
 from .entity_descriptions import SENSOR_DESCRIPTIONS
 
 if TYPE_CHECKING:
-    from homeassistant.helpers.device_registry import DeviceInfo
-
     from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
@@ -230,23 +228,13 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
+class DaikinEnergySensor(DaikinEntity, SensorEntity):
     """Representation of a power/energy sensor."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, details: EnergySensorDetails) -> None:
         """Initialize an energy sensor for a management point."""
-        super().__init__(coordinator)
-        self._device = device
+        super().__init__(device, coordinator, details.embedded_id, details.management_point_type)
         self._management_point_type = details.management_point_type
-        mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
-        assert self._device.ha_device_id is not None
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
-            "name": self._device.name + " " + mpt,
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_device_info(self._attr_device_info, details.embedded_id)
-        self._embedded_id = details.embedded_id
         self._operation_mode = details.operation_mode
         self._attr_has_entity_name = True
         self._period = details.period
@@ -267,12 +255,6 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
     def update_state(self) -> None:
         """Refresh the state from the current device data."""
         self._attr_native_value = self.sensor_value()
-
-    @property
-    @override
-    def available(self) -> bool:
-        """Return whether the source device is available."""
-        return super().available and self._device.available
 
     @callback
     @override
@@ -319,24 +301,14 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         return aggregate.current_total(month=dt_util.now().month if period == "month" else None)
 
 
-class DaikinValueSensor(CoordinatorEntity, SensorEntity):
+class DaikinValueSensor(DaikinEntity, SensorEntity):
     """Represent a Daikin characteristic or sensory-data value."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, details: ValueSensorDetails) -> None:
         """Initialize the sensor from a device value."""
         _LOGGER.info("DaikinValueSensor '%s' '%s' '%s'", details.management_point_type, details.sub_type, details.value)
-        super().__init__(coordinator)
-        self._device = device
+        super().__init__(device, coordinator, details.embedded_id, details.management_point_type)
         self._management_point_type = details.management_point_type
-        mpt = details.management_point_type[0].upper() + details.management_point_type[1:]
-        assert self._device.ha_device_id is not None
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + details.embedded_id)},
-            "name": self._device.name + " " + mpt,
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_device_info(self._attr_device_info, details.embedded_id)
-        self._embedded_id = details.embedded_id
         self._sub_type = details.sub_type
         self._value = details.value
         self._attr_has_entity_name = True
@@ -353,12 +325,6 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
     def update_state(self) -> None:
         """Refresh the state from the current device data."""
         self._attr_native_value = self.sensor_value()
-
-    @property
-    @override
-    def available(self) -> bool:
-        """Return whether the source device is available."""
-        return super().available and self._device.available
 
     @callback
     @override
@@ -380,7 +346,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         return result
 
 
-class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
+class DaikinLimitSensor(DaikinEntity, SensorEntity):
     """Represent a Daikin API rate-limit value."""
 
     def __init__(
@@ -393,21 +359,13 @@ class DaikinLimitSensor(CoordinatorEntity, SensorEntity):
     ) -> None:
         """Initialize a rate-limit sensor."""
         _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
-        super().__init__(coordinator)
+        super().__init__(device, coordinator, device.gateway_embedded_id or "gateway", "Gateway")
         self._hass = hass
         self._config_entry = config_entry
-        self._device = device
         self._limit_key = limit_key
         self._attr_has_entity_name = True
         self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
-        assert self._device.ha_device_id is not None
         self.entity_description = SENSOR_DESCRIPTIONS["RatelimitRemainingDay"]
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + (self._device.gateway_embedded_id or "gateway"))},
-            "name": self._device.name + " " + "Gateway",
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_gateway_device_info(self._attr_device_info)
         self.update_state()
         _LOGGER.info(
             "Device '%s' supports sensor '%s'",

@@ -65,6 +65,7 @@ from custom_components.daikin_onecta.diagnostics import (
     async_get_device_diagnostics,
     get_entities,
 )
+from custom_components.daikin_onecta.entity import gateway_device_info, management_point_device_info
 from custom_components.daikin_onecta.select import DaikinScheduleSelect
 from custom_components.daikin_onecta.sensor import migrate_legacy_sensor_unique_ids
 from custom_components.daikin_onecta.switch import DaikinSwitch
@@ -1706,8 +1707,8 @@ async def test_skyair(
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "skyair")
 
 
-def test_device_fill_info_missing_management_point() -> None:
-    """Leave device info unchanged except manufacturer when the point type is absent."""
+def test_management_point_info_missing_management_point() -> None:
+    """Build management-point info when metadata is absent."""
     gateway = GatewayDevice(
         id="device",
         device_model="model",
@@ -1715,14 +1716,14 @@ def test_device_fill_info_missing_management_point() -> None:
         cloud_connection=Characteristic(value=True),
     )
     device = DaikinOnectaDevice(gateway, MagicMock())
-    info = {}
+    device.ha_device_id = "ha_device"
 
-    device.fill_device_info(info, "missing")
+    info = management_point_device_info(device, "missing", "climateControl")
 
-    assert info == {"manufacturer": "Daikin"}
+    assert info["manufacturer"] == "Daikin"
 
 
-def test_device_fill_info_uses_embedded_management_point_id() -> None:
+def test_management_point_info_uses_embedded_management_point_id() -> None:
     """Use the selected zone's metadata when management-point types repeat."""
     point = MagicMock(
         version=None,
@@ -1730,17 +1731,19 @@ def test_device_fill_info_uses_embedded_management_point_id() -> None:
         serial=None,
     )
     device = object.__new__(DaikinOnectaDevice)
+    device.id = "device"
+    device.name = "Device"
+    device.ha_device_id = "ha_device"
     device.device = MagicMock()
     device.device.management_point.return_value = point
-    info = {}
-
-    device.fill_device_info(info, "climateControlZone2")
+    info = management_point_device_info(device, "climateControlZone2", "climateControl")
 
     device.device.management_point.assert_called_once_with("climateControlZone2")
-    assert info == {"manufacturer": "Daikin", "model": "Second zone model"}
+    assert info["manufacturer"] == "Daikin"
+    assert info["model"] == "Second zone model"
 
 
-def test_device_info_uses_gateway_embedded_id() -> None:
+def test_gateway_device_info_uses_gateway_embedded_id() -> None:
     """Use gateway metadata when its embedded ID differs from its type."""
     gateway = MagicMock(
         embedded_id="0",
@@ -1758,7 +1761,7 @@ def test_device_info_uses_gateway_embedded_id() -> None:
     device.device.gateway_embedded_id = "0"
     device.device.mac_address = None
 
-    info = device.device_info()
+    info = gateway_device_info(device)
 
     device.device.management_point.assert_called_once_with("0")
     assert info["model"] == "Gateway model"

@@ -1,24 +1,19 @@
 """Support for Daikin firmware update entities."""
 
 import logging
-from typing import TYPE_CHECKING, Any, override
+from typing import Any, override
 
 from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from daikin_onecta.models import ManagementPoint
 
-from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .device import DaikinOnectaDevice
+from .entity import DaikinEntity
 from .entity_descriptions import UPDATE_DESCRIPTIONS
-
-if TYPE_CHECKING:
-    from homeassistant.helpers.device_registry import DeviceInfo
-
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -43,7 +38,7 @@ async def async_setup_entry(
     async_add_entities(entities)
 
 
-class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
+class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
     """Represents the gateway firmware for a single Daikin device."""
 
     def __init__(
@@ -54,19 +49,10 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         management_point_type: str,
     ) -> None:
         """Initialise the update entity."""
-        super().__init__(coordinator)
-        self._device = device
+        super().__init__(device, coordinator, gateway_mp.embedded_id, management_point_type)
         self._coordinator = coordinator
         self._management_point_type = management_point_type
         self._embedded_id = gateway_mp.embedded_id
-        mpt = management_point_type[0].upper() + management_point_type[1:]
-        assert self._device.ha_device_id is not None
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + self._embedded_id)},
-            "name": self._device.name + " " + mpt,
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_device_info(self._attr_device_info, self._embedded_id)
         self._attr_has_entity_name = True
         self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 

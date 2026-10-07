@@ -8,15 +8,12 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN
 from .device import DaikinOnectaDevice
+from .entity import DaikinEntity
 from .entity_descriptions import SWITCH_DESCRIPTIONS
 
 if TYPE_CHECKING:
-    from homeassistant.helpers.device_registry import DeviceInfo
-
     from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
@@ -60,28 +57,18 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class DaikinSwitch(CoordinatorEntity, ToggleEntity):
+class DaikinSwitch(DaikinEntity, ToggleEntity):
     """Represent a switchable Daikin characteristic."""
 
     def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
         """Initialize the switch from a device characteristic."""
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
-        super().__init__(coordinator)
-        self._device = device
-        self._embedded_id = embedded_id
+        super().__init__(device, coordinator, embedded_id, management_point_type)
         self._management_point_type = management_point_type
         self._value = value
         self._attr_has_entity_name = True
         self.entity_description = SWITCH_DESCRIPTIONS.get(value, SwitchEntityDescription(key=value))
         self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._value}"
-        mpt = management_point_type[0].upper() + management_point_type[1:]
-        assert self._device.ha_device_id is not None
-        self._attr_device_info: DeviceInfo = {
-            "identifiers": {(DOMAIN, self._device.id + embedded_id)},
-            "name": self._device.name + " " + mpt,
-            "via_device_id": self._device.ha_device_id,
-        }
-        self._device.fill_device_info(self._attr_device_info, embedded_id)
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -93,12 +80,6 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
     def update_state(self) -> None:
         """Refresh the state from the current device data."""
         self._switch_state = self.sensor_value()
-
-    @property
-    @override
-    def available(self) -> bool:
-        """Return whether the source device is available."""
-        return super().available and self._device.available
 
     @callback
     @override
