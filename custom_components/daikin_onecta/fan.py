@@ -175,11 +175,7 @@ class DaikinAirPurifier(DaikinManagementPointEntity, FanEntity):
         if purification is None or purification.mode is None:
             self._raise_command_failed("air_purifier_set_percentage_failed")
         if self._fixed_speed_range() is None and "manualFan" in purification.modes:
-            await self._async_execute_air_purification_command(
-                lambda purifier: purifier.set_mode("manualFan"),
-                "air_purifier_set_percentage_failed",
-            )
-            purification.mode.value = "manualFan"
+            await self.async_set_preset_mode("manualFan")
         speed_range = self._fixed_speed_range()
         if speed_range is None:
             self._raise_command_failed("air_purifier_set_percentage_failed")

@@ -1784,7 +1784,8 @@ async def test_climate(
         await hass.async_block_till_done()
 
         assert len(aioclient_mock.mock_calls) == EXPECTED_CLIMATE_WRITE_CALLS
-        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+        # The power write succeeded before the operation-mode write failed.
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.COOL
 
 
 @pytest.mark.asyncio

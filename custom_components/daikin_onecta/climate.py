@@ -428,6 +428,8 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             )
             if cc is not None and cc.on_off_mode is not None:
                 cc.on_off_mode.value = on_off_mode
+                self.update_state()
+                self.async_write_ha_state()
 
         # Only set the operationMode when it has changed, also prevents setting it when
         # it is readOnly
@@ -490,6 +492,9 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                     lambda climate: climate.set_fan_mode(operation_mode, FANMODE_FIXED),
                     "climate_set_fan_mode_failed",
                 )
+                fan_speed.current_mode.value = FANMODE_FIXED
+                self._attr_fan_mode = self.get_fan_mode()
+                self.async_write_ha_state()
             fixed = fan_speed.modes.get(FANMODE_FIXED) if fan_speed.modes else None
             new_fixed_mode = int(fan_mode)
             if fixed is not None and fixed.value != new_fixed_mode:
@@ -625,11 +630,17 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                 lambda climate: climate.set_holiday_mode(False),
                 "climate_set_preset_mode_failed",
             )
+            preset = self.preset_characteristic(daikin_mode)
+            if preset is not None:
+                preset.value.enabled = False
         else:
             await self._async_execute_climate_command(
                 lambda climate: climate.set_mode_characteristic(daikin_mode, False),
                 "climate_set_preset_mode_failed",
             )
+            preset = self.preset_characteristic(daikin_mode)
+            if preset is not None:
+                preset.value = "off"
 
     async def _async_enable_preset_mode(self, preset_mode) -> None:
         """Enable the requested Daikin preset mode."""
@@ -642,11 +653,17 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                 lambda climate: climate.set_holiday_mode(True, start_date=today, end_date=today + timedelta(days=60)),
                 "climate_set_preset_mode_failed",
             )
+            preset = self.preset_characteristic(daikin_mode)
+            if preset is not None:
+                preset.value.enabled = True
         else:
             await self._async_execute_climate_command(
                 lambda climate: climate.set_mode_characteristic(daikin_mode, True),
                 "climate_set_preset_mode_failed",
             )
+            preset = self.preset_characteristic(daikin_mode)
+            if preset is not None:
+                preset.value = "on"
 
     @override
     async def async_set_preset_mode(self, preset_mode):
@@ -654,6 +671,8 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         _LOGGER.debug("Device '%s' request set preset mode %s", self._device.name, preset_mode)
         if self.preset_mode != PRESET_NONE:
             await self._async_disable_preset_mode(self.preset_mode)
+            self._attr_preset_mode = PRESET_NONE
+            self.async_write_ha_state()
 
         if preset_mode != PRESET_NONE:
             await self._async_enable_preset_mode(preset_mode)
