@@ -1,5 +1,6 @@
 name: Lokalise Bulk Upload Existing Translations
 
+# yamllint disable-line rule:truthy
 on:
   workflow_dispatch: # Handmatig te starten via de GitHub Actions tab
 
