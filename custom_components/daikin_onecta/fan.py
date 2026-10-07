@@ -1,6 +1,7 @@
 """Support for Daikin air purifiers."""
 
 from collections.abc import Awaitable, Callable
+from math import ceil
 from typing import Any, Never, override
 
 from homeassistant.components.fan import FanEntity, FanEntityFeature
@@ -109,15 +110,18 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
         **kwargs: Any,
     ) -> None:
         """Turn on the air purifier."""
-        if self.is_on:
-            return
-        if not await self._async_execute_command(lambda purifier: purifier.set_power(True)):
-            self._raise_command_failed("air_purifier_turn_on_failed")
-        purification = self._air_purification()
-        if purification is not None and purification.power is not None:
-            purification.power.value = "on"
-        self._update_state()
-        self.coordinator.async_update_listeners()
+        if not self.is_on:
+            if not await self._async_execute_command(lambda purifier: purifier.set_power(True)):
+                self._raise_command_failed("air_purifier_turn_on_failed")
+            purification = self._air_purification()
+            if purification is not None and purification.power is not None:
+                purification.power.value = "on"
+            self._update_state()
+            self.coordinator.async_update_listeners()
+        if preset_mode is not None:
+            await self.async_set_preset_mode(preset_mode)
+        if percentage is not None:
+            await self.async_set_percentage(percentage)
 
     @override
     async def async_turn_off(self, **kwargs) -> None:
@@ -150,13 +154,16 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
     @override
     async def async_set_percentage(self, percentage: int) -> None:
         """Set the current mode's fixed fan speed."""
+        if percentage == 0:
+            await self.async_turn_off()
+            return
         speed_range = self._fixed_speed_range()
         purification = self._air_purification()
         if speed_range is None or purification is None or purification.mode is None:
             self._raise_command_failed("air_purifier_set_percentage_failed")
         mode = purification.mode
         assert mode is not None
-        speed = int(percentage_to_ranged_value(speed_range, percentage))
+        speed = ceil(percentage_to_ranged_value(speed_range, percentage))
         if not await self._async_execute_command(lambda purifier: purifier.set_fixed_fan_speed(mode.value, speed)):
             self._raise_command_failed("air_purifier_set_percentage_failed")
         operation = purification.fan_operation()
