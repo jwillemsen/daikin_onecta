@@ -106,11 +106,12 @@ class DaikinSwitch(DaikinEntity, ToggleEntity):
         """Turn the zone on."""
         result = True
         if not self.is_on:
-            result &= await self._device.api.async_execute_command(
+            await self._async_execute_command(
                 lambda client: client.management_point(self._device.id, self._embedded_id).set_characteristic(
                     self._value,
                     "on",
-                )
+                ),
+                "switch_turn_on_failed",
             )
             if result is False:
                 _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
@@ -131,11 +132,12 @@ class DaikinSwitch(DaikinEntity, ToggleEntity):
         """Turn the zone off."""
         result = True
         if self.is_on:
-            result &= await self._device.api.async_execute_command(
+            await self._async_execute_command(
                 lambda client: client.management_point(self._device.id, self._embedded_id).set_characteristic(
                     self._value,
                     "off",
-                )
+                ),
+                "switch_turn_off_failed",
             )
             if result is False:
                 _LOGGER.warning(

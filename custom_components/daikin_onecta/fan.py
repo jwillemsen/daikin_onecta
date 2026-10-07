@@ -2,19 +2,18 @@
 
 from collections.abc import Awaitable, Callable
 from math import ceil
-from typing import Any, Never, override
+from typing import Any, override
 
 from homeassistant.components.fan import FanEntity, FanEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
-from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util.percentage import percentage_to_ranged_value, ranged_value_to_percentage
 
 from daikin_onecta.air_purification import AirPurificationClient
 from daikin_onecta.models import AirPurification
 
-from .const import DOMAIN, FANMODE_FIXED
+from .const import FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator
 from .entity import DaikinEntity
 
@@ -31,7 +30,7 @@ async def async_setup_entry(
         entities.extend(
             DaikinAirPurifier(device, management_point.embedded_id, coordinator)
             for management_point in device.device.management_points_by_type("climateControl")
-            if management_point.air_purification is not None
+            if (management_point.air_purification is not None and management_point.air_purification.power is not None)
         )
     async_add_entities(entities)
 
@@ -60,9 +59,16 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
         purification = self._air_purification()
         return purification.power.value == "on" if purification and purification.power else None
 
-    async def _async_execute_command(self, command: Callable[[AirPurificationClient], Awaitable[None]]) -> bool:
+    async def _async_execute_air_purification_command(
+        self,
+        command: Callable[[AirPurificationClient], Awaitable[None]],
+        translation_key: str,
+    ) -> None:
         """Execute a typed air-purification command."""
-        return await self._device.api.async_execute_command(lambda client: command(client.air_purification(self._device.id, self._embedded_id)))
+        await self._async_execute_command(
+            lambda client: command(client.air_purification(self._device.id, self._embedded_id)),
+            translation_key,
+        )
 
     def _fixed_speed_range(self) -> tuple[float, float] | None:
         """Return the current mode's writable fixed-speed range."""
@@ -94,14 +100,6 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
             self._attr_percentage = None
         self._attr_supported_features = features
 
-    def _raise_command_failed(self, action: str) -> Never:
-        """Raise a translated command error."""
-        raise HomeAssistantError(
-            translation_domain=DOMAIN,
-            translation_key=action,
-            translation_placeholders={"device": self._device.name},
-        )
-
     @override
     async def async_turn_on(
         self,
@@ -111,8 +109,10 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
     ) -> None:
         """Turn on the air purifier."""
         if not self.is_on:
-            if not await self._async_execute_command(lambda purifier: purifier.set_power(True)):
-                self._raise_command_failed("air_purifier_turn_on_failed")
+            await self._async_execute_air_purification_command(
+                lambda purifier: purifier.set_power(True),
+                "air_purifier_turn_on_failed",
+            )
             purification = self._air_purification()
             if purification is not None and purification.power is not None:
                 purification.power.value = "on"
@@ -128,8 +128,10 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
         """Turn off the air purifier."""
         if not self.is_on:
             return
-        if not await self._async_execute_command(lambda purifier: purifier.set_power(False)):
-            self._raise_command_failed("air_purifier_turn_off_failed")
+        await self._async_execute_air_purification_command(
+            lambda purifier: purifier.set_power(False),
+            "air_purifier_turn_off_failed",
+        )
         purification = self._air_purification()
         if purification is not None and purification.power is not None:
             purification.power.value = "off"
@@ -144,8 +146,10 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
             self._raise_command_failed("air_purifier_set_mode_failed")
         if preset_mode == self.preset_mode:
             return
-        if not await self._async_execute_command(lambda purifier: purifier.set_mode(preset_mode)):
-            self._raise_command_failed("air_purifier_set_mode_failed")
+        await self._async_execute_air_purification_command(
+            lambda purifier: purifier.set_mode(preset_mode),
+            "air_purifier_set_mode_failed",
+        )
         if purification.mode is not None:
             purification.mode.value = preset_mode
         self._update_state()
@@ -164,8 +168,10 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
         mode = purification.mode
         assert mode is not None
         speed = ceil(percentage_to_ranged_value(speed_range, percentage))
-        if not await self._async_execute_command(lambda purifier: purifier.set_fixed_fan_speed(mode.value, speed)):
-            self._raise_command_failed("air_purifier_set_percentage_failed")
+        await self._async_execute_air_purification_command(
+            lambda purifier: purifier.set_fixed_fan_speed(mode.value, speed),
+            "air_purifier_set_percentage_failed",
+        )
         operation = purification.fan_operation()
         assert operation is not None and operation.fan_speed is not None and operation.fan_speed.modes is not None
         operation.fan_speed.modes[FANMODE_FIXED].value = speed

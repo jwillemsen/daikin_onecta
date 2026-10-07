@@ -96,7 +96,7 @@ class DaikinScheduleSelect(DaikinEntity, SelectEntity):
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
         selection = self.selection()
         if selection is None:
-            return False  # type: ignore[return-value]
+            return
 
         schedule_id = selection.selected
         if option != SCHEDULE_OFF:
@@ -105,25 +105,25 @@ class DaikinScheduleSelect(DaikinEntity, SelectEntity):
                 option,
             )
 
-        result = await self._device.api.async_execute_command(
+        await self._async_execute_command(
             lambda client: client.schedule(self._device.id, self._embedded_id).set_current(
                 selection.mode,
                 schedule_id,
                 enabled=option != SCHEDULE_OFF,
-            )
+            ),
+            "schedule_select_failed",
         )
-        if result:
-            point = self._device.management_point(self._embedded_id)
-            schedule_state = point.schedule_state if point is not None else None
-            if schedule_state is not None:
-                schedule_state.apply_selection(
-                    selection.mode,
-                    schedule_id,
-                    enabled=option != SCHEDULE_OFF,
-                )
-            self.update_state()
-            self.async_write_ha_state()
-        return result  # type: ignore[return-value]
+        point = self._device.management_point(self._embedded_id)
+        schedule_state = point.schedule_state if point is not None else None
+        if schedule_state is not None:
+            schedule_state.apply_selection(
+                selection.mode,
+                schedule_id,
+                enabled=option != SCHEDULE_OFF,
+            )
+        self.update_state()
+        self.async_write_ha_state()
+        return
 
     def get_options(self):
         """Return readable configured schedules."""

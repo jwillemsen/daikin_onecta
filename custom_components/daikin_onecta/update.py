@@ -70,7 +70,7 @@ class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
                 "Cannot install firmware for %s: update is not supported or no firmware ID is available",
                 self._device.name,
             )
-            return
+            self._raise_command_failed("firmware_install_failed")
 
         _LOGGER.debug(
             "Requesting firmware update for %s, firmware id %s",
@@ -78,12 +78,11 @@ class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
             firmware_id,
         )
 
-        self._attr_in_progress = await self._device.api.async_execute_command(
-            lambda client: client.firmware(self._device.id, self._embedded_id).install(firmware_id)
+        await self._async_execute_command(
+            lambda client: client.firmware(self._device.id, self._embedded_id).install(firmware_id),
+            "firmware_install_failed",
         )
-
-        if not self._attr_in_progress:
-            _LOGGER.error("Failed to trigger firmware update for %s", self._device.name)
+        self._attr_in_progress = True
 
         self.async_write_ha_state()
 

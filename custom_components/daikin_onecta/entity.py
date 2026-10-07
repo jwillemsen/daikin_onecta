@@ -1,9 +1,13 @@
 """Shared entity helpers for Daikin Onecta."""
 
-from typing import Any, override
+from collections.abc import Awaitable, Callable
+from typing import Any, Never, override
 
+from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
+
+from daikin_onecta.client import OnectaClient
 
 from .const import DOMAIN
 
@@ -76,3 +80,20 @@ class DaikinEntity(CoordinatorEntity):
     def available(self) -> bool:
         """Return whether the coordinator and Daikin device are available."""
         return super().available and self._device.available
+
+    async def _async_execute_command(
+        self,
+        command: Callable[[OnectaClient], Awaitable[None]],
+        translation_key: str,
+    ) -> None:
+        """Execute a cloud command or raise a translated Home Assistant error."""
+        if not await self._device.api.async_execute_command(command):
+            self._raise_command_failed(translation_key)
+
+    def _raise_command_failed(self, translation_key: str) -> Never:
+        """Raise a translated command error for this device."""
+        raise HomeAssistantError(
+            translation_domain=DOMAIN,
+            translation_key=translation_key,
+            translation_placeholders={"device": self._device.name},
+        )

@@ -293,6 +293,30 @@
     }
   },
   "exceptions": {
+    "climate_set_fan_mode_failed": {
+      "message": "Failed to set fan mode for {device}"
+    },
+    "climate_set_hvac_mode_failed": {
+      "message": "Failed to set HVAC mode for {device}"
+    },
+    "climate_set_preset_mode_failed": {
+      "message": "Failed to set preset mode for {device}"
+    },
+    "climate_set_swing_mode_failed": {
+      "message": "Failed to set swing mode for {device}"
+    },
+    "climate_set_temperature_failed": {
+      "message": "Failed to set temperature for {device}"
+    },
+    "climate_turn_off_failed": {
+      "message": "Failed to turn off {device}"
+    },
+    "climate_turn_on_failed": {
+      "message": "Failed to turn on {device}"
+    },
+    "firmware_install_failed": {
+      "message": "Failed to install firmware on {device}"
+    },
     "air_purifier_turn_on_failed": {
       "message": "Failed to turn on {device}"
     },
@@ -307,6 +331,27 @@
     },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    },
+    "schedule_select_failed": {
+      "message": "Failed to select schedule for {device}"
+    },
+    "switch_turn_off_failed": {
+      "message": "Failed to turn off {device}"
+    },
+    "switch_turn_on_failed": {
+      "message": "Failed to turn on {device}"
+    },
+    "water_heater_set_operation_mode_failed": {
+      "message": "Failed to set operation mode for {device}"
+    },
+    "water_heater_set_temperature_failed": {
+      "message": "Failed to set temperature for {device}"
+    },
+    "water_heater_turn_off_failed": {
+      "message": "Failed to turn off {device}"
+    },
+    "water_heater_turn_on_failed": {
+      "message": "Failed to turn on {device}"
     }
   },
   "issues": {
