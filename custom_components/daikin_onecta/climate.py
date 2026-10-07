@@ -80,23 +80,21 @@ async def async_setup_entry(
 ) -> None:
     """Set up Daikin climate based on config_entry."""
     coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
+    entities: list[ClimateEntity] = []
     for device in (coordinator.data or {}).values():
-        modes: list[str] = []
         device_model = device.device.device_model
-        embedded_id = ""
         for management_point in device.device.management_points_by_type("climateControl"):
-            embedded_id = management_point.embedded_id
             climate_control = management_point.climate_control
-            if climate_control is not None:
-                modes.extend(climate_control.setpoint_types)
-        # Remove duplicates
-        modes = list(dict.fromkeys(modes))
-        _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)
-        for mode in modes:
-            async_add_entities(
-                [DaikinClimate(device, mode, coordinator, embedded_id)],
-                update_before_add=False,
+            if climate_control is None:
+                continue
+            _LOGGER.info(
+                "Climate: Device '%s' management point '%s' has modes %s",
+                device_model,
+                management_point.embedded_id,
+                climate_control.setpoint_types,
             )
+            entities.extend(DaikinClimate(device, setpoint, coordinator, management_point.embedded_id) for setpoint in climate_control.setpoint_types)
+    async_add_entities(entities, update_before_add=False)
 
 
 class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):

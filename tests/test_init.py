@@ -66,7 +66,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
-from custom_components.daikin_onecta.climate import DaikinClimate
+from custom_components.daikin_onecta.climate import DaikinClimate, async_setup_entry as async_setup_climate_entry
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, DOMAIN, SCHEDULE_OFF
 from custom_components.daikin_onecta.device import DaikinOnectaDevice, migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
 from custom_components.daikin_onecta.diagnostics import (
@@ -93,6 +93,32 @@ def _assert_initial_climate_state(hass: HomeAssistant) -> None:
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_cool_heat_master").state == STATE_ON
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_caution_state").state == STATE_OFF
     assert hass.states.get("binary_sensor.werkkamer_climatecontrol_is_in_warning_state").state == STATE_OFF
+
+
+@pytest.mark.asyncio
+async def test_climate_setup_creates_entities_per_management_point() -> None:
+    """Create climate entities for every climate-control management point."""
+    first_point = MagicMock(embedded_id="first", climate_control=MagicMock(setpoint_types=["roomTemperature"]))
+    second_point = MagicMock(embedded_id="second", climate_control=MagicMock(setpoint_types=["roomTemperature", "leavingWaterTemperature"]))
+    device = MagicMock()
+    device.device.device_model = "Model"
+    device.device.management_points_by_type.return_value = [first_point, second_point]
+    coordinator = MagicMock(data={"device": device})
+    config_entry = MagicMock(runtime_data=coordinator)
+    async_add_entities = MagicMock()
+
+    with patch("custom_components.daikin_onecta.climate.DaikinClimate") as climate:
+        await async_setup_climate_entry(MagicMock(), config_entry, async_add_entities)
+
+    assert [constructor_call.args[1:] for constructor_call in climate.call_args_list] == [
+        ("roomTemperature", coordinator, "first"),
+        ("roomTemperature", coordinator, "second"),
+        ("leavingWaterTemperature", coordinator, "second"),
+    ]
+    async_add_entities.assert_called_once_with(
+        [climate.return_value, climate.return_value, climate.return_value],
+        update_before_add=False,
+    )
 
 
 EXPECTED_INITIAL_CLIMATE_CALLS = 3
