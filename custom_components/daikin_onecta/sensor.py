@@ -12,7 +12,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
-from .const import DOMAIN, SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_WEEKLY, SENSOR_PERIOD_YEARLY, SENSOR_PERIODS
+from .const import DOMAIN, SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_UNIQUE_IDS, SENSOR_PERIOD_WEEKLY, SENSOR_PERIOD_YEARLY, SENSOR_PERIODS
 from .device import DaikinOnectaDevice
 from .entity_descriptions import SENSOR_DESCRIPTIONS
 
@@ -202,27 +202,43 @@ def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, 
 
 
 def _legacy_energy_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
-    """Return legacy-to-current energy sensor IDs for a device."""
+    """Return older energy sensor unique IDs mapped to current IDs."""
     migrations: dict[str, str] = {}
     for management_point in device.device.management_points:
         for datatype in ("consumption", "output"):
             for sensor_type in ("electrical", "gas", "thermal"):
                 for operation_mode in ("heating", "cooling"):
                     for period in SENSOR_PERIODS:
-                        old_unique_id = f"{device.id}_{management_point.management_point_type}_{sensor_type}_{operation_mode}_{period}"
-                        migrations.setdefault(
-                            old_unique_id,
-                            f"{device.id}_{management_point.embedded_id}_{sensor_type}_{operation_mode}_{period}_{datatype}",
+                        details = EnergySensorDetails(
+                            management_point.embedded_id,
+                            management_point.management_point_type,
+                            sensor_type,
+                            operation_mode,
+                            period,
+                            datatype,
                         )
+                        old_unique_id = f"{device.id}_{management_point.management_point_type}_{sensor_type}_{operation_mode}_{period}"
+                        migrations.setdefault(old_unique_id, _energy_sensor_unique_id(device.id, details))
+                        old_current_unique_id = f"{device.id}_{management_point.embedded_id}_{sensor_type}_{operation_mode}_{period}_{datatype}"
+                        migrations[old_current_unique_id] = _energy_sensor_unique_id(device.id, details)
     return migrations
 
 
+def _energy_sensor_unique_id(device_id: str, details: EnergySensorDetails) -> str:
+    """Return the stable unique ID for an energy aggregate."""
+    return (
+        f"{device_id}_{details.embedded_id}_{details.sensor_type}_{details.operation_mode}_"
+        f"{SENSOR_PERIOD_UNIQUE_IDS[details.period]}_{details.datatype}"
+    )
+
+
 def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry, devices: dict[str, DaikinOnectaDevice]) -> None:
-    """Use embedded management-point IDs for existing sensor unique IDs.
+    """Migrate existing sensor unique IDs without replacing registry entries.
 
     The previous IDs did not distinguish management points of the same type or
-    energy consumption from output. Update registry entries before platforms
-    are loaded so existing entity IDs, customizations, and history are kept.
+    energy consumption from output. The former energy IDs also used API period
+    tokens, including ``m`` for yearly data. Update registry entries before
+    platforms are loaded so entity IDs, customizations, and history are kept.
     """
     entity_registry = er.async_get(hass)
     migrations: dict[str, str] = {}
@@ -281,7 +297,7 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         buildname = f"{details.operation_mode.capitalize()}{period_name}{details.sensor_type.capitalize()}{details.datatype.capitalize()}"
         self.entity_description = SENSOR_DESCRIPTIONS[buildname]
         self._sensor_type = details.sensor_type
-        self._attr_unique_id = f"{self._device.id}_{details.embedded_id}_{details.sensor_type}_{self._operation_mode}_{self._period}_{self._datatype}"
+        self._attr_unique_id = _energy_sensor_unique_id(self._device.id, details)
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",

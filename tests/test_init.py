@@ -1809,7 +1809,7 @@ def test_migrate_legacy_subdevice_identifier(hass: HomeAssistant, config_entry: 
 
 
 def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
-    """Preserve existing entities while adding management-point details to IDs."""
+    """Preserve existing entities while making sensor unique IDs unambiguous."""
     config_entry.add_to_hass(hass)
     entity_registry = er.async_get(hass)
     value_entry = entity_registry.async_get_or_create(
@@ -1824,14 +1824,22 @@ def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: Moc
         unique_id="device_climateControl_electrical_heating_d",
         config_entry=config_entry,
     )
+    current_energy_entry = entity_registry.async_get_or_create(
+        domain="sensor",
+        platform=DOMAIN,
+        unique_id="device_zone2_electrical_heating_m_output",
+        config_entry=config_entry,
+    )
     management_point = MagicMock(management_point_type="climateControl", embedded_id="zone1")
+    second_management_point = MagicMock(management_point_type="climateControl", embedded_id="zone2")
     device = MagicMock(id="device")
-    device.device.management_points = [management_point]
+    device.device.management_points = [management_point, second_management_point]
 
     migrate_legacy_sensor_unique_ids(hass, config_entry, {"device": device})
 
     assert entity_registry.async_get(value_entry.entity_id).unique_id == "device_zone1_None_roomTemperature"
-    assert entity_registry.async_get(energy_entry.entity_id).unique_id == "device_zone1_electrical_heating_d_consumption"
+    assert entity_registry.async_get(energy_entry.entity_id).unique_id == "device_zone1_electrical_heating_daily_consumption"
+    assert entity_registry.async_get(current_energy_entry.entity_id).unique_id == "device_zone2_electrical_heating_yearly_output"
 
 
 def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
