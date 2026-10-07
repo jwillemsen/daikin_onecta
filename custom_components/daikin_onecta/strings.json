@@ -293,6 +293,18 @@
     }
   },
   "exceptions": {
+    "air_purifier_turn_on_failed": {
+      "message": "Failed to turn on {device}"
+    },
+    "air_purifier_turn_off_failed": {
+      "message": "Failed to turn off {device}"
+    },
+    "air_purifier_set_mode_failed": {
+      "message": "Failed to set the air-purification mode for {device}"
+    },
+    "air_purifier_set_percentage_failed": {
+      "message": "Failed to set the fan speed for {device}"
+    },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
     }

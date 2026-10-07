@@ -32,6 +32,14 @@ from homeassistant.components.climate import (
 )
 from homeassistant.components.climate.const import HVACMode
 from homeassistant.components.diagnostics import REDACTED
+from homeassistant.components.fan import (
+    ATTR_PERCENTAGE,
+    ATTR_PRESET_MODE as FAN_ATTR_PRESET_MODE,
+    DOMAIN as FAN_DOMAIN,
+    SERVICE_SET_PERCENTAGE,
+    SERVICE_SET_PRESET_MODE as FAN_SERVICE_SET_PRESET_MODE,
+    SERVICE_TURN_OFF as FAN_SERVICE_TURN_OFF,
+)
 from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN, SERVICE_UPDATE_ENTITY
 from homeassistant.components.select import ATTR_OPTION, DOMAIN as SELECT_DOMAIN, SERVICE_SELECT_OPTION
 from homeassistant.components.switch import DOMAIN as SWITCH_DOMAIN
@@ -560,7 +568,44 @@ async def test_mc80z(
     snapshot_context: SnapshotTestContext,
 ) -> None:
     """Test entities."""
+    hass = snapshot_context.hass
+    aioclient_mock = snapshot_context.aioclient_mock
     await snapshot_platform_entities(snapshot_context, Platform.SENSOR, "mc80z")
+
+    endpoint = DAIKIN_API_URL + "/v1/gateway-devices/1c80e348-61c1-4f0d-a8b1-917f2f904529/" + "management-points/climateControl/characteristics/"
+    with patch("custom_components.daikin_onecta.DaikinApi.async_get_access_token", return_value="XXXXXX"):
+        aioclient_mock.patch(endpoint + "airPurificationMode", status=204)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", FAN_ATTR_PRESET_MODE: "manualFan"},
+            blocking=True,
+        )
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "manualFan"}
+        assert hass.states.get("fan.air_purifier_climatecontrol").attributes["preset_mode"] == "manualFan"
+
+        aioclient_mock.patch(endpoint + "fanControl", status=204)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            SERVICE_SET_PERCENTAGE,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", ATTR_PERCENTAGE: 50},
+            blocking=True,
+        )
+        assert aioclient_mock.mock_calls[-1][2] == {
+            "value": 2,
+            "path": "/airPurificationModes/manualFan/fanSpeed/modes/fixed",
+        }
+        assert hass.states.get("fan.air_purifier_climatecontrol").attributes["percentage"] == 50
+
+        aioclient_mock.patch(endpoint + "onOffMode", status=204)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+            blocking=True,
+        )
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "off"}
+        assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_OFF
 
     assert (
         snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"]
