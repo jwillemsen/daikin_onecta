@@ -37,7 +37,7 @@ async def async_setup_entry(
         DaikinFirmwareUpdateEntity(coordinator, device, management_point, management_point.management_point_type)
         for device in (coordinator.data or {}).values()
         for management_point in device.device.management_points
-        if management_point.firmware_version is not None or management_point.software_version is not None
+        if (firmware := management_point.firmware) is not None and firmware.has_installed_version
     ]
 
     async_add_entities(entities)
@@ -127,7 +127,7 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
             if firmware_update_type := firmware_update.get("type"):
                 self._attr_extra_state_attributes["firmware_update_type"] = firmware_update_type
 
-        if management_point.firmware_update_status is not None:
+        if firmware.has_update_status:
             self._attr_in_progress = firmware.in_progress
             self._attr_supported_features |= UpdateEntityFeature.PROGRESS
 

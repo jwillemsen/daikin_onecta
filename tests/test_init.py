@@ -1930,6 +1930,7 @@ async def test_firmware_install_without_id() -> None:
         offered_update=None,
         firmware_id=None,
         in_progress=False,
+        has_update_status=False,
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
 
@@ -1951,6 +1952,7 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
         offered_update={"id": "firmware-id"},
         firmware_id="firmware-id",
         in_progress=False,
+        has_update_status=False,
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
     entity.async_write_ha_state = MagicMock()
@@ -1971,6 +1973,7 @@ def test_firmware_update_entity_is_unavailable_when_device_is_offline() -> None:
         offered_update=None,
         firmware_id=None,
         in_progress=False,
+        has_update_status=False,
     )
     coordinator = MagicMock(last_update_success=True)
     entity = DaikinFirmwareUpdateEntity(coordinator, device, management_point, "gateway")
@@ -1988,6 +1991,7 @@ def test_read_only_firmware_entity_does_not_advertise_install() -> None:
         offered_update=None,
         firmware_id=None,
         in_progress=False,
+        has_update_status=False,
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
 

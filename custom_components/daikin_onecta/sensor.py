@@ -145,9 +145,6 @@ def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
 
 def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
     """Add sensors for sensory data exposed by one management point."""
-    if management_point.sensory_data is None:
-        return
-    sensory_data = management_point.sensory_data.value
     sensors.extend(
         DaikinValueSensor(
             device,
@@ -164,9 +161,7 @@ def add_sensory_sensors(coordinator, device, management_point, sensors) -> None:
             "pm25Concentration",
             "pm10Concentration",
         )
-        if sensor in SENSOR_DESCRIPTIONS
-        and (attribute := SENSOR_DESCRIPTIONS[sensor].model_attribute) is not None
-        and getattr(sensory_data, attribute) is not None
+        if sensor in SENSOR_DESCRIPTIONS and management_point.sensory_characteristic(sensor) is not None
     )
 
 
@@ -398,11 +393,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
         if point is None:
             return None
         if self._sub_type == "sensoryData":
-            sensory_data = point.sensory_data
-            if sensory_data is None:
-                return None
-            attribute = SENSOR_DESCRIPTIONS[self._value].model_attribute
-            characteristic = getattr(sensory_data.value, attribute) if attribute is not None else None
+            characteristic = point.sensory_characteristic(self._value)
         else:
             characteristic = point.scalar_characteristic(self._value)
         result = characteristic.value if characteristic is not None else None
