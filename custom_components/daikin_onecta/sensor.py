@@ -12,7 +12,15 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from homeassistant.util import dt as dt_util
 
-from .const import DOMAIN, SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_UNIQUE_IDS, SENSOR_PERIOD_WEEKLY, SENSOR_PERIOD_YEARLY, SENSOR_PERIODS
+from .const import (
+    DOMAIN,
+    SENSOR_PERIOD_DAILY,
+    SENSOR_PERIOD_MONTHLY,
+    SENSOR_PERIOD_UNIQUE_IDS,
+    SENSOR_PERIOD_WEEKLY,
+    SENSOR_PERIOD_YEARLY,
+    SENSOR_PERIODS,
+)
 from .device import DaikinOnectaDevice
 from .entity_descriptions import SENSOR_DESCRIPTIONS
 
@@ -46,15 +54,6 @@ class ValueSensorDetails:
     value: str
 
 
-@dataclass(frozen=True)
-class EnergySourceDetails:
-    """Energy source metadata used while creating sensors."""
-
-    sensor_type: str
-    source: object
-    datatype: str
-
-
 async def async_setup(hass, async_add_entities):
     """Old way of setting up the Daikin sensors.
 
@@ -63,56 +62,30 @@ async def async_setup(hass, async_add_entities):
     """
 
 
-def handle_energy_sensors(
-    coordinator,
-    device,
-    management_point,
-    source_details: EnergySourceDetails,
-    sensors,
-):
-    """Add energy sensors for the periods exposed by an energy source."""
-    for mode in ("heating", "cooling"):
-        series = getattr(source_details.source, mode)
-        if series is None:
-            continue
-        periods = {
-            "d": series.day,
-            "w": series.week,
-            "m": series.month,
-        }
-        for period, values in periods.items():
-            if values is None:
-                continue
-            if period == SENSOR_PERIOD_YEARLY:
-                sensors.append(
-                    DaikinEnergySensor(
-                        device,
-                        coordinator,
-                        EnergySensorDetails(
-                            management_point.embedded_id,
-                            management_point.management_point_type,
-                            source_details.sensor_type,
-                            mode,
-                            SENSOR_PERIOD_MONTHLY,
-                            source_details.datatype,
-                        ),
-                    )
-                )
-            if period in SENSOR_PERIODS:
-                sensors.append(
-                    DaikinEnergySensor(
-                        device,
-                        coordinator,
-                        EnergySensorDetails(
-                            management_point.embedded_id,
-                            management_point.management_point_type,
-                            source_details.sensor_type,
-                            mode,
-                            period,
-                            source_details.datatype,
-                        ),
-                    )
-                )
+def add_energy_sensors(coordinator, device, management_point, sensors) -> None:
+    """Add sensors for every typed energy aggregate exposed by a point."""
+    periods = {
+        "day": SENSOR_PERIOD_DAILY,
+        "week": SENSOR_PERIOD_WEEKLY,
+        "month": SENSOR_PERIOD_MONTHLY,
+        "year": SENSOR_PERIOD_YEARLY,
+    }
+    order = {"day": 0, "week": 1, "year": 2, "month": 3}
+    for aggregate in sorted(management_point.energy_aggregates, key=lambda aggregate: order[aggregate.period]):
+        sensors.append(
+            DaikinEnergySensor(
+                device,
+                coordinator,
+                EnergySensorDetails(
+                    management_point.embedded_id,
+                    management_point.management_point_type,
+                    aggregate.source,
+                    aggregate.operation_mode,
+                    periods[aggregate.period],
+                    aggregate.data_type,
+                ),
+            )
+        )
 
 
 def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
@@ -169,22 +142,7 @@ def add_management_point_sensors(coordinator, device, management_point, sensors)
     """Add all sensors exposed by a management point."""
     add_simple_sensors(coordinator, device, management_point, sensors)
     add_sensory_sensors(coordinator, device, management_point, sensors)
-    for datatype, energy_data in (
-        ("consumption", management_point.consumption),
-        ("output", management_point.energy_output),
-    ):
-        if energy_data is None:
-            continue
-        for sensor_type in ("electrical", "gas", "thermal"):
-            source = energy_data.source(sensor_type)
-            if source is not None:
-                handle_energy_sensors(
-                    coordinator,
-                    device,
-                    management_point,
-                    EnergySourceDetails(sensor_type, source, datatype),
-                    sensors,
-                )
+    add_energy_sensors(coordinator, device, management_point, sensors)
 
 
 def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
@@ -339,21 +297,26 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         point = self._device.management_point(self._embedded_id)
         if point is None:
             return None
-        energy = point.consumption if self._datatype == "consumption" else point.energy_output
-        if energy is None:
-            return None
         period = {
-            "d": "day",
+            SENSOR_PERIOD_DAILY: "day",
             SENSOR_PERIOD_WEEKLY: "week",
             SENSOR_PERIOD_YEARLY: "year",
             SENSOR_PERIOD_MONTHLY: "month",
         }[self._period]
-        return energy.current_total(
-            self._sensor_type,
-            self._operation_mode,
-            period,
-            month=dt_util.now().month if self._period == SENSOR_PERIOD_MONTHLY else None,
+        aggregate = next(
+            (
+                aggregate
+                for aggregate in point.energy_aggregates
+                if aggregate.data_type == self._datatype
+                and aggregate.source == self._sensor_type
+                and aggregate.operation_mode == self._operation_mode
+                and aggregate.period == period
+            ),
+            None,
         )
+        if aggregate is None:
+            return None
+        return aggregate.current_total(month=dt_util.now().month if period == "month" else None)
 
 
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):

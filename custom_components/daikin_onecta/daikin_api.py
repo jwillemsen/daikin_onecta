@@ -4,7 +4,6 @@ import asyncio
 from collections.abc import Awaitable, Callable
 from datetime import datetime
 import logging
-from typing import Any
 
 from homeassistant import config_entries, core
 from homeassistant.helpers import config_entry_oauth2_flow, issue_registry as ir
@@ -119,40 +118,6 @@ class DaikinApi:
                 raise
             self.update_rate_limit_issues()
             return devices
-
-    async def patch_characteristic(
-        self,
-        gateway_id: str,
-        management_point_id: str,
-        characteristic: str,
-        value: Any,
-        *,
-        path: str | None = None,
-    ) -> bool:
-        """Patch a characteristic through the standalone library."""
-        return await self.async_execute_command(
-            lambda client: client.patch_characteristic(gateway_id, management_point_id, characteristic, value, path=path)
-        )
-
-    async def post_management_point(
-        self,
-        gateway_id: str,
-        management_point_id: str,
-        resource: str,
-        value: Any,
-    ) -> bool:
-        """POST a management-point resource through the standalone library."""
-        return await self.async_execute_command(lambda client: client.post_management_point(gateway_id, management_point_id, resource, value))
-
-    async def put_management_point(
-        self,
-        gateway_id: str,
-        management_point_id: str,
-        resource: str,
-        value: Any = None,
-    ) -> bool:
-        """PUT a management-point resource through the standalone library."""
-        return await self.async_execute_command(lambda client: client.put_management_point(gateway_id, management_point_id, resource, value))
 
     async def async_execute_command(self, command: Callable[[OnectaClient], Awaitable[None]]) -> bool:
         """Execute a serialized cloud command and handle expected failures."""

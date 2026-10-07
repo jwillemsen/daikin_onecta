@@ -25,11 +25,7 @@ class DaikinOnectaDevice:
         # get name from climateControl
         self.device = device
         self.id: str = device.id
-        self.name: str = device.device_model
-
-        for management_point in device.management_points_by_type("climateControl"):
-            if management_point.name is not None and management_point.name.value:
-                self.name = management_point.name.value
+        self.name: str = device.display_name
 
         # Populated by async_register_ha_device() before any entity platform is set
         # up. Sub-entities (per-management-point devices in sensor/water_heater/
@@ -53,8 +49,7 @@ class DaikinOnectaDevice:
     @property
     def gateway_embedded_id(self) -> str | None:
         """Return the embedded ID of the gateway management point."""
-        gateway = self.device.management_point_by_type("gateway")
-        return gateway.embedded_id if gateway is not None else None
+        return self.device.gateway_embedded_id
 
     def fill_device_info(self, device_info: DeviceInfo, embedded_id: str) -> None:
         """Fill Home Assistant device information from an embedded management point ID."""
@@ -77,11 +72,10 @@ class DaikinOnectaDevice:
 
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
-        gateway = self.device.management_point_by_type("gateway")
-        mac_address = gateway.scalar_characteristic("macAddress") if gateway is not None else None
+        mac_address = self.device.mac_address
         connections = set()
-        if mac_address is not None and mac_address.value:
-            connections.add((CONNECTION_NETWORK_MAC, mac_address.value))
+        if mac_address:
+            connections.add((CONNECTION_NETWORK_MAC, mac_address))
 
         info = DeviceInfo(
             identifiers={
@@ -115,6 +109,7 @@ class DaikinOnectaDevice:
     def set_device_data(self, device: GatewayDevice) -> None:
         """Overwrite the typed and compatibility data for this device."""
         self.device = device
+        self.name = device.display_name
         self._is_present_in_cloud = True
         _LOGGER.debug(
             "Device '%s' received new data from the Daikin cloud, isCloudConnectionUp '%s'",
@@ -125,31 +120,6 @@ class DaikinOnectaDevice:
     def mark_unavailable(self) -> None:
         """Mark the device unavailable after it is absent from a cloud response."""
         self._is_present_in_cloud = False
-
-    async def patch(
-        self,
-        id: str,
-        embeddedId: str,
-        dataPoint: str,
-        dataPointPath: str | None,
-        value: Any,
-    ) -> bool:
-        """Patch a characteristic."""
-        return await self.api.patch_characteristic(
-            id,
-            embeddedId,
-            dataPoint,
-            value,
-            path=dataPointPath,
-        )
-
-    async def post(self, id: str, embeddedId: str, dataPoint: str, value: Any) -> bool:
-        """POST a management-point resource."""
-        return await self.api.post_management_point(id, embeddedId, dataPoint, value)
-
-    async def put(self, id: str, embeddedId: str, dataPoint: str, value: Any = None) -> bool:
-        """PUT a management-point resource."""
-        return await self.api.put_management_point(id, embeddedId, dataPoint, value)
 
 
 def migrate_legacy_subdevice_identifiers(

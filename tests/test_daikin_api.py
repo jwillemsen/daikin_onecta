@@ -84,7 +84,10 @@ async def test_write_success(
     setattr(api.client, method, AsyncMock())
     api.update_rate_limit_issues = MagicMock()
 
-    assert await getattr(api, method)(*arguments)
+    async def command(client) -> None:
+        await getattr(client, method)(*arguments)
+
+    assert await api.async_execute_command(command)
     getattr(api.client, method).assert_awaited_once()
     assert api.last_patch_call is not None
     api.update_rate_limit_issues.assert_called_once()
@@ -112,7 +115,10 @@ async def test_write_api_error(
         AsyncMock(side_effect=OnectaApiError(500, "failed", method="PATCH", path="/v1/test")),
     )
 
-    assert not await getattr(api, method)(*arguments)
+    async def command(client) -> None:
+        await getattr(client, method)(*arguments)
+
+    assert not await api.async_execute_command(command)
     assert api.last_patch_call is None
 
 
@@ -139,7 +145,10 @@ async def test_write_rate_limit(
     )
     api.create_rate_limit_issues = MagicMock()
 
-    assert not await getattr(api, method)(*arguments)
+    async def command(client) -> None:
+        await getattr(client, method)(*arguments)
+
+    assert not await api.async_execute_command(command)
     api.create_rate_limit_issues.assert_called_once()
     assert api.last_patch_call is None
 

@@ -130,10 +130,10 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_extra_state_attributes = {}
 
         if (firmware_update := firmware.offered_update) is not None:
-            self._attr_latest_version = firmware_update.get("version", self._attr_latest_version)
-            self._attr_release_summary = firmware_update.get("description")
+            self._attr_latest_version = firmware_update.version or self._attr_latest_version
+            self._attr_release_summary = firmware_update.description
             self._firmware_id = firmware.firmware_id
-            if firmware_update_type := firmware_update.get("type"):
+            if firmware_update_type := firmware_update.update_type:
                 self._attr_extra_state_attributes["firmware_update_type"] = firmware_update_type
 
         if firmware.has_update_status:
