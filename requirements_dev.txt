@@ -4,5 +4,5 @@ mypy==2.3.1
 pylint==4.0.9
 pylint-home-assistant @ git+https://github.com/home-assistant/core.git@dev#subdirectory=pylint/plugins
 homeassistant==2026.10.0b4
-daikin-onecta==0.4.9
+daikin-onecta==0.5.0
 pytest

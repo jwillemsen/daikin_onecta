@@ -184,7 +184,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
     def preset_characteristic(self, daikin_mode):
         """Return a preset characteristic by Daikin API name."""
         cc = self.climate_control()
-        return cc.preset(daikin_mode) if cc is not None else None
+        return cc.mode_characteristic(daikin_mode) if cc is not None else None
 
     @property
     def _homekit_fan_mode_aliases_enabled(self):
@@ -638,7 +638,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
         if preset_mode == PRESET_AWAY:
             result = await self._async_execute_climate_command(lambda climate: climate.set_holiday_mode(False))
         else:
-            result = await self._async_execute_climate_command(lambda climate: climate.set_preset_mode(daikin_mode, False))
+            result = await self._async_execute_climate_command(lambda climate: climate.set_mode_characteristic(daikin_mode, False))
         if not result:
             _LOGGER.warning("Device '%s' problem setting %s to off", self._device.name, daikin_mode)
         return result
@@ -655,7 +655,7 @@ class DaikinClimate(CoordinatorEntity[OnectaDataUpdateCoordinator], ClimateEntit
                 lambda climate: climate.set_holiday_mode(True, start_date=today, end_date=today + timedelta(days=60))
             )
         else:
-            result = await self._async_execute_climate_command(lambda climate: climate.set_preset_mode(daikin_mode, True))
+            result = await self._async_execute_climate_command(lambda climate: climate.set_mode_characteristic(daikin_mode, True))
         if not result:
             _LOGGER.warning("Device '%s' problem setting %s to on", self._device.name, daikin_mode)
         return turned_on and result
