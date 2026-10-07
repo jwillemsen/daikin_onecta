@@ -28,7 +28,7 @@ from daikin_onecta.models import ClimateControl
 
 from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 from .entity_descriptions import CLIMATE_DESCRIPTIONS
 
 _LOGGER = logging.getLogger(__name__)
@@ -99,7 +99,7 @@ async def async_setup_entry(
             )
 
 
-class DaikinClimate(DaikinEntity, ClimateEntity):
+class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
     """Representation of a Daikin HVAC."""
 
     coordinator: OnectaDataUpdateCoordinator
@@ -108,15 +108,14 @@ class DaikinClimate(DaikinEntity, ClimateEntity):
 
     # Setpoint is the setpoint string under
     # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id):
+    def __init__(self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id: str):
         """Initialize the climate device."""
-        super().__init__(device, coordinator)
+        super().__init__(device, coordinator, embedded_id)
         _LOGGER.info(
             "Device '%s' initializing Daikin Climate for controlling %s",
             device.name,
             setpoint,
         )
-        self._embedded_id = embedded_id
         self._setpoint = setpoint
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._setpoint}"

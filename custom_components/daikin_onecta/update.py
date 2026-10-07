@@ -12,7 +12,7 @@ from daikin_onecta.models import ManagementPoint
 
 from .coordinator import OnectaDataUpdateCoordinator
 from .device import DaikinOnectaDevice
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 from .entity_descriptions import UPDATE_DESCRIPTIONS
 
 _LOGGER = logging.getLogger(__name__)
@@ -38,7 +38,7 @@ async def async_setup_entry(
     async_add_entities(entities)
 
 
-class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
+class DaikinFirmwareUpdateEntity(DaikinManagementPointEntity, UpdateEntity):
     """Represents the gateway firmware for a single Daikin device."""
 
     def __init__(
@@ -52,7 +52,6 @@ class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
         super().__init__(device, coordinator, gateway_mp.embedded_id, management_point_type)
         self._coordinator = coordinator
         self._management_point_type = management_point_type
-        self._embedded_id = gateway_mp.embedded_id
         self._attr_has_entity_name = True
         self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 

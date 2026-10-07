@@ -97,3 +97,30 @@ class DaikinEntity(CoordinatorEntity):
             translation_key=translation_key,
             translation_placeholders={"device": self._device.name},
         )
+
+
+class DaikinManagementPointEntity(DaikinEntity):
+    """Base entity backed by a Daikin management point.
+
+    A management point identifier is required for its data and commands.  A
+    management point type is only required when the entity should be attached
+    to a separate Home Assistant device rather than the gateway device.
+    """
+
+    _embedded_id: str
+
+    def __init__(
+        self,
+        device: Any,
+        coordinator,
+        embedded_id: str,
+        management_point_type: str | None = None,
+    ) -> None:
+        """Initialize a management-point entity."""
+        super().__init__(
+            device,
+            coordinator,
+            embedded_id if management_point_type is not None else None,
+            management_point_type,
+        )
+        self._embedded_id = embedded_id

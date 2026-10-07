@@ -15,7 +15,7 @@ from daikin_onecta.models import AirPurification
 
 from .const import FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 
 
 async def async_setup_entry(
@@ -35,7 +35,7 @@ async def async_setup_entry(
     async_add_entities(entities)
 
 
-class DaikinAirPurifier(DaikinEntity, FanEntity):
+class DaikinAirPurifier(DaikinManagementPointEntity, FanEntity):
     """Representation of a Daikin air purifier."""
 
     _attr_has_entity_name = True
@@ -43,7 +43,6 @@ class DaikinAirPurifier(DaikinEntity, FanEntity):
     def __init__(self, device, embedded_id: str, coordinator: OnectaDataUpdateCoordinator) -> None:
         """Initialize the air purifier."""
         super().__init__(device, coordinator, embedded_id, "climateControl")
-        self._embedded_id = embedded_id
         self._attr_unique_id = f"{device.id}_{embedded_id}_air_purifier"
         self._update_state()
 

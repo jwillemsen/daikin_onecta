@@ -10,7 +10,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .const import SCHEDULE_OFF
 from .device import DaikinOnectaDevice
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 from .entity_descriptions import SELECT_DESCRIPTIONS
 
 if TYPE_CHECKING:
@@ -44,10 +44,17 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class DaikinScheduleSelect(DaikinEntity, SelectEntity):
+class DaikinScheduleSelect(DaikinManagementPointEntity, SelectEntity):
     """Daikin Schedule Select class."""
 
-    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+    def __init__(
+        self,
+        device: DaikinOnectaDevice,
+        coordinator,
+        embedded_id: str,
+        management_point_type: str,
+        value: str,
+    ) -> None:
         """Initialize a schedule selection entity."""
         _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
         super().__init__(device, coordinator, embedded_id, management_point_type)

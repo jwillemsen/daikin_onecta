@@ -10,7 +10,7 @@ from homeassistant.helpers.entity import ToggleEntity
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .device import DaikinOnectaDevice
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 from .entity_descriptions import SWITCH_DESCRIPTIONS
 
 if TYPE_CHECKING:
@@ -57,10 +57,17 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class DaikinSwitch(DaikinEntity, ToggleEntity):
+class DaikinSwitch(DaikinManagementPointEntity, ToggleEntity):
     """Represent a switchable Daikin characteristic."""
 
-    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+    def __init__(
+        self,
+        device: DaikinOnectaDevice,
+        coordinator,
+        embedded_id: str,
+        management_point_type: str,
+        value: str,
+    ) -> None:
         """Initialize the switch from a device characteristic."""
         _LOGGER.info("DaikinSwitch '%s' '%s'", management_point_type, value)
         super().__init__(device, coordinator, embedded_id, management_point_type)

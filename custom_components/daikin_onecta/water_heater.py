@@ -12,7 +12,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from daikin_onecta.client import DomesticHotWaterClient
 
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 
 if TYPE_CHECKING:
     from .coordinator import OnectaDataUpdateCoordinator
@@ -37,16 +37,15 @@ async def async_setup_entry(
                 async_add_entities([DaikinWaterTank(device, coordinator, management_point_type, management_point.embedded_id)])
 
 
-class DaikinWaterTank(DaikinEntity, WaterHeaterEntity):
+class DaikinWaterTank(DaikinManagementPointEntity, WaterHeaterEntity):
     """Representation of a Daikin Water Tank."""
 
-    def __init__(self, device, coordinator, management_point_type, embedded_id):
+    def __init__(self, device, coordinator, management_point_type: str, embedded_id: str):
         """Initialize the Water device."""
         _LOGGER.info("Initializing Daiking Altherma HotWaterTank")
         super().__init__(device, coordinator, embedded_id, management_point_type)
         assert self._attr_device_info is not None
         self._attr_device_info["name"] = self._device.name
-        self._embedded_id = embedded_id
         self._attr_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._embedded_id}"
         self._management_point_type = management_point_type
