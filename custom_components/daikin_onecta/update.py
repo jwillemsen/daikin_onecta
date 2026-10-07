@@ -107,10 +107,11 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
 
     def _update_from_management_point(self, management_point: ManagementPoint) -> None:
         """Pull the latest values out of a typed management point."""
-        installed = management_point.firmware_version or management_point.software_version
-        self._attr_installed_version = installed.value if installed is not None else None
-        supported = management_point.is_firmware_update_supported
-        self._is_update_supported = bool(supported.value) if supported is not None else False
+        firmware = management_point.firmware
+        if firmware is None:
+            return
+        self._attr_installed_version = firmware.installed_version
+        self._is_update_supported = firmware.update_supported
         self._attr_latest_version = self._attr_installed_version
         self._attr_release_url = None
         self._attr_release_summary = None
@@ -119,16 +120,15 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         self._attr_supported_features = UpdateEntityFeature.INSTALL if self._is_update_supported else UpdateEntityFeature(0)
         self._attr_extra_state_attributes = {}
 
-        if management_point.firmware_update is not None:
-            firmware_update = management_point.firmware_update.value
+        if (firmware_update := firmware.offered_update) is not None:
             self._attr_latest_version = firmware_update.get("version", self._attr_latest_version)
             self._attr_release_summary = firmware_update.get("description")
-            self._firmware_id = firmware_update.get("id")
+            self._firmware_id = firmware.firmware_id
             if firmware_update_type := firmware_update.get("type"):
                 self._attr_extra_state_attributes["firmware_update_type"] = firmware_update_type
 
         if management_point.firmware_update_status is not None:
-            self._attr_in_progress = management_point.firmware_update_status.value == "in-progress"
+            self._attr_in_progress = firmware.in_progress
             self._attr_supported_features |= UpdateEntityFeature.PROGRESS
 
     @callback

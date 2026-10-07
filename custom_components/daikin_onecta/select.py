@@ -31,7 +31,7 @@ async def async_setup_entry(
     sensors = []
     for device in (coordinator.data or {}).values():
         for management_point in device.device.management_points:
-            if management_point.schedule is not None:
+            if management_point.schedule_state is not None:
                 _LOGGER.info("Device '%s' provides schedule", device.name)
                 sensors.append(
                     DaikinScheduleSelect(
@@ -96,11 +96,10 @@ class DaikinScheduleSelect(CoordinatorEntity, SelectEntity):
     def selection(self):
         """Return the schedule selection for the current schedule mode."""
         point = self._device.management_point(self._embedded_id)
-        if point is None or point.schedule is None:
+        schedule = point.schedule_state if point is not None else None
+        if schedule is None:
             return None
-        schedule = point.schedule.value
-        current_mode = schedule.current_mode.value if schedule.current_mode is not None else None
-        return next((selection for selection in schedule.selections if selection.mode == current_mode), None)
+        return schedule.active_selection
 
     def get_current_option(self):
         """Return the selected schedule name."""

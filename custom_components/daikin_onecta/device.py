@@ -62,16 +62,12 @@ class DaikinOnectaDevice:
         point = self.device.management_point(embedded_id)
         if point is None:
             return
-        if point.eeprom_version is not None:
-            device_info["sw_version"] = point.eeprom_version.value
-        if point.model_info is not None:
-            device_info["model"] = point.model_info.value
-        if point.firmware_version is not None:
-            device_info["sw_version"] = point.firmware_version.value
-        if point.serial_number is not None:
-            device_info["serial_number"] = point.serial_number.value
-        if point.software_version is not None:
-            device_info["sw_version"] = point.software_version.value
+        if point.version is not None:
+            device_info["sw_version"] = point.version
+        if point.model is not None:
+            device_info["model"] = point.model
+        if point.serial is not None:
+            device_info["serial_number"] = point.serial
 
     def fill_gateway_device_info(self, device_info: DeviceInfo) -> None:
         """Fill device information from the gateway management point."""
@@ -82,7 +78,7 @@ class DaikinOnectaDevice:
     def device_info(self) -> DeviceInfo:
         """Return a device description for device registry."""
         gateway = self.device.management_point_by_type("gateway")
-        mac_address = gateway.characteristic("macAddress") if gateway is not None else None
+        mac_address = gateway.scalar_characteristic("macAddress") if gateway is not None else None
         connections = set()
         if mac_address is not None and mac_address.value:
             connections.add((CONNECTION_NETWORK_MAC, mac_address.value))

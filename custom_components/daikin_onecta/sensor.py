@@ -123,7 +123,7 @@ def add_simple_sensors(coordinator, device, management_point, sensors) -> None:
         "climateControl",
         "climateControlMainZone",
     }
-    for value, characteristic in management_point.simple_characteristics().items():
+    for value, characteristic in management_point.scalar_characteristics().items():
         if value not in SENSOR_DESCRIPTIONS:
             continue
         values = characteristic.values or []
@@ -175,13 +175,13 @@ def add_management_point_sensors(coordinator, device, management_point, sensors)
     add_simple_sensors(coordinator, device, management_point, sensors)
     add_sensory_sensors(coordinator, device, management_point, sensors)
     for datatype, energy_data in (
-        ("consumption", management_point.consumption_data),
-        ("output", management_point.output_data),
+        ("consumption", management_point.consumption),
+        ("output", management_point.energy_output),
     ):
         if energy_data is None:
             continue
         for sensor_type in ("electrical", "gas", "thermal"):
-            source = getattr(energy_data.value, sensor_type)
+            source = energy_data.source(sensor_type)
             if source is not None:
                 handle_energy_sensors(
                     coordinator,
@@ -328,40 +328,21 @@ class DaikinEnergySensor(CoordinatorEntity, SensorEntity):
         point = self._device.management_point(self._embedded_id)
         if point is None:
             return None
-        energy = point.consumption_data if self._datatype == "consumption" else point.output_data
+        energy = point.consumption if self._datatype == "consumption" else point.energy_output
         if energy is None:
             return None
-        source = getattr(energy.value, self._sensor_type)
-        if source is None:
-            return None
-        series = getattr(source, self._operation_mode)
-        if series is None:
-            return None
-        period_data = {
-            "d": series.day,
-            "w": series.week,
-            "m": series.month,
-            SENSOR_PERIOD_MONTHLY: series.month,
-        }.get(self._period)
-        if period_data is None:
-            return None
-
-        # Treat not-yet-published time slots as zero until Daikin provides the
-        # corresponding consumption value in a later coordinator update.
-        energy_values = [0 if value is None else value for value in period_data]
-        if self._period == SENSOR_PERIOD_WEEKLY:
-            # w[0:7] is last week; w[7:14] is this week.
-            start_index = 7
-            end_index = len(energy_values)
-        elif self._period == SENSOR_PERIOD_MONTHLY:
-            # m[12] is January of this year, so select this calendar month.
-            start_index = 11 + dt_util.now().month
-            end_index = start_index + 1
-        else:
-            # d[0:12] and m[0:12] are the preceding day/year respectively.
-            start_index = 12
-            end_index = len(energy_values)
-        return round(sum(energy_values[start_index:end_index]), 3)
+        period = {
+            "d": "day",
+            SENSOR_PERIOD_WEEKLY: "week",
+            SENSOR_PERIOD_YEARLY: "year",
+            SENSOR_PERIOD_MONTHLY: "month",
+        }[self._period]
+        return energy.current_total(
+            self._sensor_type,
+            self._operation_mode,
+            period,
+            month=dt_util.now().month if self._period == SENSOR_PERIOD_MONTHLY else None,
+        )
 
 
 class DaikinValueSensor(CoordinatorEntity, SensorEntity):
@@ -423,7 +404,7 @@ class DaikinValueSensor(CoordinatorEntity, SensorEntity):
             attribute = SENSOR_DESCRIPTIONS[self._value].model_attribute
             characteristic = getattr(sensory_data.value, attribute) if attribute is not None else None
         else:
-            characteristic = point.characteristic(self._value)
+            characteristic = point.scalar_characteristic(self._value)
         result = characteristic.value if characteristic is not None else None
         _LOGGER.debug("Device '%s' sensor '%s' value '%s'", self._device.name, self._value, result)
         return result

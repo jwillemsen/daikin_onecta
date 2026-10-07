@@ -39,7 +39,7 @@ async def async_setup_entry(
     sensors = []
     for device in (coordinator.data or {}).values():
         for management_point in device.device.management_points:
-            for value, characteristic in management_point.simple_characteristics().items():
+            for value, characteristic in management_point.scalar_characteristics().items():
                 if characteristic.values is None and isinstance(characteristic.value, bool):
                     sensors.append(
                         DaikinBinarySensor(
@@ -110,7 +110,7 @@ class DaikinBinarySensor(CoordinatorEntity, BinarySensorEntity):
     def sensor_value(self):
         """Return the binary characteristic value."""
         point = self._device.management_point(self._embedded_id)
-        characteristic = point.characteristic(self._value) if point is not None else None
+        characteristic = point.scalar_characteristic(self._value) if point is not None else None
         result = characteristic.value if characteristic is not None else None
         _LOGGER.debug("Device '%s' binary sensor '%s' value '%s'", self._device.name, self._value, result)
         return result

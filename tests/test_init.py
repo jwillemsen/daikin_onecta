@@ -1,6 +1,7 @@
 """Test daikin_onecta sensor."""
 
 from datetime import timedelta
+from types import SimpleNamespace
 from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -1724,12 +1725,10 @@ def test_device_fill_info_missing_management_point() -> None:
 def test_device_fill_info_uses_embedded_management_point_id() -> None:
     """Use the selected zone's metadata when management-point types repeat."""
     point = MagicMock(
-        eeprom_version=None,
-        firmware_version=None,
-        serial_number=None,
-        software_version=None,
+        version=None,
+        model="Second zone model",
+        serial=None,
     )
-    point.model_info.value = "Second zone model"
     device = object.__new__(DaikinOnectaDevice)
     device.device = MagicMock()
     device.device.management_point.return_value = point
@@ -1745,13 +1744,11 @@ def test_device_info_uses_gateway_embedded_id() -> None:
     """Use gateway metadata when its embedded ID differs from its type."""
     gateway = MagicMock(
         embedded_id="0",
-        eeprom_version=None,
-        firmware_version=None,
-        serial_number=None,
-        software_version=None,
+        version=None,
+        model="Gateway model",
+        serial=None,
     )
-    gateway.characteristic.return_value = None
-    gateway.model_info.value = "Gateway model"
+    gateway.scalar_characteristic.return_value = None
     device = object.__new__(DaikinOnectaDevice)
     device.id = "device"
     device.name = "Device"
@@ -1926,13 +1923,13 @@ async def test_system_health_ignores_unloaded_config_entry(hass: HomeAssistant, 
 async def test_firmware_install_without_id() -> None:
     """Do not issue a firmware update request without a firmware ID."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
-    management_point = MagicMock(
-        embedded_id="gateway",
-        firmware_version=None,
-        software_version=None,
-        is_firmware_update_supported=None,
-        firmware_update=None,
-        firmware_update_status=None,
+    management_point = MagicMock(embedded_id="gateway", firmware_update_status=None)
+    management_point.firmware = SimpleNamespace(
+        installed_version=None,
+        update_supported=False,
+        offered_update=None,
+        firmware_id=None,
+        in_progress=False,
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
 
@@ -1947,13 +1944,13 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
     device = MagicMock(id="device", ha_device_id="ha-device")
     device.name = "Device"
     device.api.async_execute_command = AsyncMock(return_value=False)
-    management_point = MagicMock(
-        embedded_id="0",
-        firmware_version=MagicMock(value="1.0"),
-        software_version=None,
-        is_firmware_update_supported=MagicMock(value=True),
-        firmware_update=MagicMock(value={"id": "firmware-id"}),
-        firmware_update_status=None,
+    management_point = MagicMock(embedded_id="0", firmware_update_status=None)
+    management_point.firmware = SimpleNamespace(
+        installed_version="1.0",
+        update_supported=True,
+        offered_update={"id": "firmware-id"},
+        firmware_id="firmware-id",
+        in_progress=False,
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
     entity.async_write_ha_state = MagicMock()
@@ -1967,13 +1964,13 @@ async def test_firmware_install_failure(caplog: pytest.LogCaptureFixture) -> Non
 def test_firmware_update_entity_is_unavailable_when_device_is_offline() -> None:
     """Do not expose firmware controls for an offline device."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device", available=False)
-    management_point = MagicMock(
-        embedded_id="gateway",
-        firmware_version=MagicMock(value="1.0"),
-        software_version=None,
-        is_firmware_update_supported=MagicMock(value=True),
-        firmware_update=None,
-        firmware_update_status=None,
+    management_point = MagicMock(embedded_id="gateway", firmware_update_status=None)
+    management_point.firmware = SimpleNamespace(
+        installed_version="1.0",
+        update_supported=True,
+        offered_update=None,
+        firmware_id=None,
+        in_progress=False,
     )
     coordinator = MagicMock(last_update_success=True)
     entity = DaikinFirmwareUpdateEntity(coordinator, device, management_point, "gateway")
@@ -1984,13 +1981,13 @@ def test_firmware_update_entity_is_unavailable_when_device_is_offline() -> None:
 def test_read_only_firmware_entity_does_not_advertise_install() -> None:
     """Only expose install for management points that support updates."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
-    management_point = MagicMock(
-        embedded_id="gateway",
-        firmware_version=None,
-        software_version=MagicMock(value="1.0"),
-        is_firmware_update_supported=MagicMock(value=False),
-        firmware_update=None,
-        firmware_update_status=None,
+    management_point = MagicMock(embedded_id="gateway", firmware_update_status=None)
+    management_point.firmware = SimpleNamespace(
+        installed_version="1.0",
+        update_supported=False,
+        offered_update=None,
+        firmware_id=None,
+        in_progress=False,
     )
     entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
 
@@ -2010,7 +2007,7 @@ async def test_switch_write_failures() -> None:
 
     on_characteristic = MagicMock(value="on")
     on_management_point = MagicMock()
-    on_management_point.characteristic.return_value = on_characteristic
+    on_management_point.scalar_characteristic.return_value = on_characteristic
     device.management_point.return_value = on_management_point
     on_entity = DaikinSwitch(device, MagicMock(), "point", "climateControl", "testMode")
     assert await on_entity.async_turn_off() is False
@@ -2053,7 +2050,7 @@ async def test_successful_writes_update_cached_models() -> None:
     object.__setattr__(switch, "_value", "testMode")
     object.__setattr__(switch, "_switch_state", "off")
     characteristic = MagicMock(value="off")
-    switch_device.management_point.return_value.characteristic.return_value = characteristic
+    switch_device.management_point.return_value.scalar_characteristic.return_value = characteristic
     switch.async_write_ha_state = MagicMock()
 
     assert await switch.async_turn_on()
@@ -2088,6 +2085,9 @@ async def test_successful_writes_update_cached_models() -> None:
     )
     schedule_point = MagicMock()
     schedule_point.schedule = Characteristic(value=schedule_data)
+    schedule_point.schedule_state = SimpleNamespace(
+        active_selection=next(selection for selection in schedule_data.selections if selection.mode == "weekly")
+    )
     schedule_device.management_point.return_value = schedule_point
     schedule.async_write_ha_state = MagicMock()
 

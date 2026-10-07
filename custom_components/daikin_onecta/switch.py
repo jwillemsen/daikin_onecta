@@ -40,7 +40,7 @@ async def async_setup_entry(
     for device in (coordinator.data or {}).values():
         for management_point in device.device.management_points:
             management_point_type = management_point.management_point_type
-            for value, characteristic in management_point.simple_characteristics().items():
+            for value, characteristic in management_point.scalar_characteristics().items():
                 values = characteristic.values or []
                 if characteristic.value is not None and characteristic.settable and "on" in values and "off" in values:
                     if value == "onOffMode" and management_point_type in supported_management_point_types:
@@ -115,7 +115,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
     def sensor_value(self):
         """Return the state of the switch."""
         point = self._device.management_point(self._embedded_id)
-        characteristic = point.characteristic(self._value) if point is not None else None
+        characteristic = point.scalar_characteristic(self._value) if point is not None else None
         result = characteristic.value if characteristic is not None else ""
         _LOGGER.debug("Device '%s' switch '%s' value '%s'", self._device.name, self._value, result)
         return result
@@ -130,7 +130,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                 _LOGGER.warning("Device '%s' problem setting '%s' to on", self._device.name, self._value)
             else:
                 point = self._device.management_point(self._embedded_id)
-                characteristic = point.characteristic(self._value) if point is not None else None
+                characteristic = point.scalar_characteristic(self._value) if point is not None else None
                 if characteristic is not None:
                     characteristic.value = "on"
                 self.update_state()
@@ -154,7 +154,7 @@ class DaikinSwitch(CoordinatorEntity, ToggleEntity):
                 )
             else:
                 point = self._device.management_point(self._embedded_id)
-                characteristic = point.characteristic(self._value) if point is not None else None
+                characteristic = point.scalar_characteristic(self._value) if point is not None else None
                 if characteristic is not None:
                     characteristic.value = "off"
                 self.update_state()

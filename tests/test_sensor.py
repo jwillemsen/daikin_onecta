@@ -3,6 +3,7 @@
 from types import SimpleNamespace
 from unittest.mock import MagicMock
 
+from daikin_onecta.models import ConsumptionData, ConsumptionSeries, ConsumptionSource, EnergyData
 import pytest
 
 from custom_components.daikin_onecta.const import SENSOR_PERIOD_MONTHLY, SENSOR_PERIOD_WEEKLY
@@ -14,11 +15,11 @@ EXPECTED_MARCH_CONSUMPTION = 5
 
 def _energy_sensor(period: str, day: list[int | None], week: list[int | None], month: list[int | None]) -> DaikinEnergySensor:
     """Build an energy sensor with one electrical heating series."""
-    series = SimpleNamespace(day=day, week=week, month=month)
-    source = SimpleNamespace(heating=series)
+    series = ConsumptionSeries(day=day, week=week, month=month)
+    source = ConsumptionSource(heating=series)
     point = SimpleNamespace(
-        consumption_data=SimpleNamespace(value=SimpleNamespace(electrical=source)),
-        output_data=None,
+        consumption=EnergyData(ConsumptionData(electrical=source)),
+        energy_output=None,
     )
     device = MagicMock()
     device.management_point.return_value = point

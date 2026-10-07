@@ -90,9 +90,9 @@ async def async_setup_entry(
         embedded_id = ""
         for management_point in device.device.management_points_by_type("climateControl"):
             embedded_id = management_point.embedded_id
-            if management_point.temperature_control is not None:
-                for operation_mode in management_point.temperature_control.value.operation_modes.values():
-                    modes.extend(operation_mode.setpoints)
+            climate_control = management_point.climate_control
+            if climate_control is not None:
+                modes.extend(climate_control.setpoint_types)
         # Remove duplicates
         modes = list(dict.fromkeys(modes))
         _LOGGER.info("Climate: Device '%s' has modes %s", device_model, modes)

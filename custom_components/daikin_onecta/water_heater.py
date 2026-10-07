@@ -96,12 +96,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def domestic_hotwater_temperature(self):
         """Return the domestic hot-water temperature setpoint."""
         point = self.hotwatertank_data
-        if point is None or point.temperature_control is None:
-            return None
-        heating = point.temperature_control.value.operation_modes.get("heating")
-        if heating is None:
-            return None
-        return heating.setpoints.get("domesticHotWaterTemperature")
+        hot_water = point.domestic_hot_water if point is not None else None
+        return hot_water.temperature if hot_water is not None else None
 
     def get_supported_features(self):
         """Return the list of supported features."""
@@ -116,11 +112,10 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def get_current_temperature(self):
         """Return tank temperature."""
         ret = None
-        hwtd = self.hotwatertank_data
-        sensory_data = hwtd.sensory_data if hwtd is not None else None
-        tank_temperature = sensory_data.value.tank_temperature if sensory_data is not None else None
-        if tank_temperature is not None:
-            ret = float(tank_temperature.value)
+        point = self.hotwatertank_data
+        hot_water = point.domestic_hot_water if point is not None else None
+        if hot_water is not None and hot_water.current_temperature is not None:
+            ret = float(hot_water.current_temperature)
             _LOGGER.debug(
                 "Device '%s' hot water tank current_temperature '%s'",
                 self._device.name,
@@ -212,11 +207,12 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def get_current_operation(self):
         """Return current operation ie. heat, cool, idle."""
         state = STATE_OFF
-        hwtd = self.hotwatertank_data
-        onoff = hwtd.on_off_mode if hwtd is not None else None
+        point = self.hotwatertank_data
+        hot_water = point.domestic_hot_water if point is not None else None
+        onoff = hot_water.power if hot_water is not None else None
         if onoff is not None and onoff.value == "on":
             state = STATE_HEAT_PUMP
-            pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
+            pwf = hot_water.powerful_mode if hot_water is not None else None
             if pwf is not None and pwf.value == "on":
                 state = STATE_PERFORMANCE
         _LOGGER.debug("Device '%s' hot water tank current mode '%s'", self._device.name, state)
@@ -225,8 +221,9 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
     def get_operation_list(self):
         """Return the list of available operation modes."""
         states = [STATE_OFF, STATE_HEAT_PUMP]
-        hwtd = self.hotwatertank_data
-        pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
+        point = self.hotwatertank_data
+        hot_water = point.domestic_hot_water if point is not None else None
+        pwf = hot_water.powerful_mode if hot_water is not None else None
         if pwf is not None and pwf.settable:
             states += [STATE_PERFORMANCE]
         _LOGGER.debug("Device '%s' hot water tank supports modes %s", self._device.name, states)
@@ -269,7 +266,8 @@ class DaikinWaterTank(CoordinatorEntity, WaterHeaterEntity):
             result &= await self._async_execute_hot_water_command(lambda hot_water: hot_water.set_powerful_mode(powerful_mode == "on"))
             if result is True:
                 hwtd = self.hotwatertank_data
-                pwf = hwtd.characteristic("powerfulMode") if hwtd is not None else None
+                hot_water = hwtd.domestic_hot_water if hwtd is not None else None
+                pwf = hot_water.powerful_mode if hot_water is not None else None
                 if pwf is not None and pwf.settable:
                     pwf.value = powerful_mode
 
