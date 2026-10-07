@@ -39,6 +39,7 @@ from homeassistant.components.fan import (
     SERVICE_SET_PERCENTAGE,
     SERVICE_SET_PRESET_MODE as FAN_SERVICE_SET_PRESET_MODE,
     SERVICE_TURN_OFF as FAN_SERVICE_TURN_OFF,
+    SERVICE_TURN_ON as FAN_SERVICE_TURN_ON,
 )
 from homeassistant.components.homeassistant import DOMAIN as HA_DOMAIN, SERVICE_UPDATE_ENTITY
 from homeassistant.components.select import ATTR_OPTION, DOMAIN as SELECT_DOMAIN, SERVICE_SELECT_OPTION
@@ -55,6 +56,7 @@ from homeassistant.components.water_heater import (
 )
 from homeassistant.const import ATTR_ENTITY_ID, STATE_OFF, STATE_ON, Platform
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import HomeAssistantError
 import homeassistant.helpers.device_registry as dr
 import homeassistant.helpers.entity_registry as er
 from homeassistant.setup import async_setup_component
@@ -584,6 +586,15 @@ async def test_mc80z(
         assert aioclient_mock.mock_calls[-1][2] == {"value": "manualFan"}
         assert hass.states.get("fan.air_purifier_climatecontrol").attributes["preset_mode"] == "manualFan"
 
+        call_count = len(aioclient_mock.mock_calls)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_SET_PRESET_MODE,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", FAN_ATTR_PRESET_MODE: "manualFan"},
+            blocking=True,
+        )
+        assert len(aioclient_mock.mock_calls) == call_count
+
         aioclient_mock.patch(endpoint + "fanControl", status=204)
         await hass.services.async_call(
             FAN_DOMAIN,
@@ -597,7 +608,39 @@ async def test_mc80z(
         }
         assert hass.states.get("fan.air_purifier_climatecontrol").attributes["percentage"] == 50
 
+        aioclient_mock.clear_requests()
         aioclient_mock.patch(endpoint + "onOffMode", status=204)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+            blocking=True,
+        )
+        assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_OFF
+
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(endpoint + "onOffMode", status=500)
+        with pytest.raises(HomeAssistantError) as exc_info:
+            await hass.services.async_call(
+                FAN_DOMAIN,
+                FAN_SERVICE_TURN_ON,
+                {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+                blocking=True,
+            )
+        assert exc_info.value.translation_key == "air_purifier_turn_on_failed"
+        assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_OFF
+
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(endpoint + "onOffMode", status=204)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+            blocking=True,
+        )
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "on"}
+        assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_ON
+
         await hass.services.async_call(
             FAN_DOMAIN,
             FAN_SERVICE_TURN_OFF,
@@ -606,6 +649,74 @@ async def test_mc80z(
         )
         assert aioclient_mock.mock_calls[-1][2] == {"value": "off"}
         assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_OFF
+
+        call_count = len(aioclient_mock.mock_calls)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_TURN_OFF,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+            blocking=True,
+        )
+        assert len(aioclient_mock.mock_calls) == call_count
+
+        aioclient_mock.patch(endpoint + "onOffMode", status=204)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+            blocking=True,
+        )
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "on"}
+        assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_ON
+
+        call_count = len(aioclient_mock.mock_calls)
+        await hass.services.async_call(
+            FAN_DOMAIN,
+            FAN_SERVICE_TURN_ON,
+            {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+            blocking=True,
+        )
+        assert len(aioclient_mock.mock_calls) == call_count
+
+        aioclient_mock.clear_requests()
+        aioclient_mock.patch(endpoint + "onOffMode", status=500)
+        with pytest.raises(HomeAssistantError) as exc_info:
+            await hass.services.async_call(
+                FAN_DOMAIN,
+                FAN_SERVICE_TURN_OFF,
+                {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol"},
+                blocking=True,
+            )
+        assert exc_info.value.translation_key == "air_purifier_turn_off_failed"
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "off"}
+        assert hass.states.get("fan.air_purifier_climatecontrol").state == STATE_ON
+
+        aioclient_mock.patch(endpoint + "airPurificationMode", status=500)
+        with pytest.raises(HomeAssistantError) as exc_info:
+            await hass.services.async_call(
+                FAN_DOMAIN,
+                FAN_SERVICE_SET_PRESET_MODE,
+                {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", FAN_ATTR_PRESET_MODE: "autoFan"},
+                blocking=True,
+            )
+        assert exc_info.value.translation_key == "air_purifier_set_mode_failed"
+        assert aioclient_mock.mock_calls[-1][2] == {"value": "autoFan"}
+        assert hass.states.get("fan.air_purifier_climatecontrol").attributes["preset_mode"] == "manualFan"
+
+        aioclient_mock.patch(endpoint + "fanControl", status=500)
+        with pytest.raises(HomeAssistantError) as exc_info:
+            await hass.services.async_call(
+                FAN_DOMAIN,
+                SERVICE_SET_PERCENTAGE,
+                {ATTR_ENTITY_ID: "fan.air_purifier_climatecontrol", ATTR_PERCENTAGE: 100},
+                blocking=True,
+            )
+        assert exc_info.value.translation_key == "air_purifier_set_percentage_failed"
+        assert aioclient_mock.mock_calls[-1][2] == {
+            "value": 4,
+            "path": "/airPurificationModes/manualFan/fanSpeed/modes/fixed",
+        }
+        assert hass.states.get("fan.air_purifier_climatecontrol").attributes["percentage"] == 50
 
     assert (
         snapshot_context.hass.states.get("climate.vloerverwarming_leaving_water_offset").attributes["current_temperature"]
