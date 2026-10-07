@@ -776,16 +776,21 @@ async def test_mc80z(
     )
 
 
+@pytest.mark.parametrize("power_settable", [None, False], ids=["missing", "read_only"])
 @pytest.mark.asyncio
-async def test_air_purifier_without_power_is_not_added(
+async def test_air_purifier_without_writable_power_is_not_added(
     hass: HomeAssistant,
     aioclient_mock: Any,
     config_entry: MockConfigEntry,
+    power_settable: bool | None,
 ) -> None:
     """Do not add a fan that cannot report or control its power state."""
     devices = load_fixture_json("mc80z")
     climate_control = devices[0]["managementPoints"][1]
-    climate_control.pop("onOffMode")
+    if power_settable is None:
+        climate_control.pop("onOffMode")
+    else:
+        climate_control["onOffMode"]["settable"] = power_settable
 
     with patch("homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation"):
         aioclient_mock.get(

@@ -30,7 +30,7 @@ async def async_setup_entry(
         entities.extend(
             DaikinAirPurifier(device, management_point.embedded_id, coordinator)
             for management_point in device.device.management_points_by_type("climateControl")
-            if (management_point.air_purification is not None and management_point.air_purification.power is not None)
+            if (management_point.air_purification is not None and (power := management_point.air_purification.power) is not None and power.settable)
         )
     async_add_entities(entities)
 
