@@ -109,6 +109,15 @@ class DaikinFirmwareUpdateEntity(CoordinatorEntity, UpdateEntity):
         """Pull the latest values out of a typed management point."""
         firmware = management_point.firmware
         if firmware is None:
+            self._attr_installed_version = None
+            self._attr_latest_version = None
+            self._attr_release_url = None
+            self._attr_release_summary = None
+            self._firmware_id = None
+            self._attr_in_progress = False
+            self._is_update_supported = False
+            self._attr_supported_features = UpdateEntityFeature(0)
+            self._attr_extra_state_attributes = {}
             return
         self._attr_installed_version = firmware.installed_version
         self._is_update_supported = firmware.update_supported

@@ -1923,6 +1923,7 @@ async def test_system_health_ignores_unloaded_config_entry(hass: HomeAssistant, 
 async def test_firmware_install_without_id() -> None:
     """Do not issue a firmware update request without a firmware ID."""
     device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    device.api.async_execute_command = AsyncMock()
     management_point = MagicMock(embedded_id="gateway", firmware_update_status=None)
     management_point.firmware = SimpleNamespace(
         installed_version=None,
@@ -1937,6 +1938,35 @@ async def test_firmware_install_without_id() -> None:
     await entity.async_install(None, False)
 
     device.put.assert_not_called()
+    device.api.async_execute_command.assert_not_awaited()
+
+
+@pytest.mark.asyncio
+async def test_firmware_update_clears_removed_firmware_data() -> None:
+    """Clear stale firmware state when the cloud no longer exposes it."""
+    device = MagicMock(id="device", name="Device", ha_device_id="ha-device")
+    device.api.async_execute_command = AsyncMock()
+    management_point = MagicMock(embedded_id="gateway")
+    management_point.firmware = SimpleNamespace(
+        installed_version="1.0",
+        update_supported=True,
+        offered_update={"version": "2.0", "description": "Update"},
+        firmware_id="firmware-id",
+        in_progress=True,
+        has_update_status=True,
+    )
+    entity = DaikinFirmwareUpdateEntity(MagicMock(), device, management_point, "gateway")
+    management_point.firmware = None
+
+    entity._update_from_management_point(management_point)  # noqa: SLF001
+
+    assert entity.installed_version is None
+    assert entity.latest_version is None
+    assert entity.release_summary is None
+    assert entity.in_progress is False
+    assert entity.supported_features == UpdateEntityFeature(0)
+    await entity.async_install(None, False)
+    device.api.async_execute_command.assert_not_awaited()
 
 
 @pytest.mark.asyncio
