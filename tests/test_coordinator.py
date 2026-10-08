@@ -162,6 +162,19 @@ class TestOnectaDataUpdateCoordinator:
 
         missing_device.mark_unavailable.assert_not_called()
 
+    async def test_existing_gateway_refreshes_device_registry(self, coordinator, mock_config_entry, mock_hass):
+        """Refresh gateway metadata in the device registry after a cloud update."""
+        existing_device = MagicMock()
+        replacement_model = MagicMock(id="gateway")
+        coordinator.data = {"gateway": existing_device}
+        coordinator.api.last_patch_call = None
+        coordinator.api.get_cloud_device_details = AsyncMock(return_value=[replacement_model])
+
+        await coordinator.async_update_data()
+
+        existing_device.set_device_data.assert_called_once_with(replacement_model)
+        existing_device.async_register_ha_device.assert_called_once_with(mock_hass, mock_config_entry)
+
     def test_update_settings(self, coordinator, mock_config_entry, mock_hass):
         """Apply changed polling options to the coordinator."""
         options = {

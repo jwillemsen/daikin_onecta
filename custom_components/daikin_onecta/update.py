@@ -12,7 +12,7 @@ from daikin_onecta.models import ManagementPoint
 
 from .coordinator import OnectaDataUpdateCoordinator
 from .device import DaikinOnectaDevice
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 from .entity_descriptions import UPDATE_DESCRIPTIONS
 
 _LOGGER = logging.getLogger(__name__)
@@ -38,7 +38,7 @@ async def async_setup_entry(
     async_add_entities(entities)
 
 
-class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
+class DaikinFirmwareUpdateEntity(DaikinManagementPointEntity, UpdateEntity):
     """Represents the gateway firmware for a single Daikin device."""
 
     def __init__(
@@ -52,7 +52,6 @@ class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
         super().__init__(device, coordinator, gateway_mp.embedded_id, management_point_type)
         self._coordinator = coordinator
         self._management_point_type = management_point_type
-        self._embedded_id = gateway_mp.embedded_id
         self._attr_has_entity_name = True
         self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 
@@ -70,7 +69,7 @@ class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
                 "Cannot install firmware for %s: update is not supported or no firmware ID is available",
                 self._device.name,
             )
-            return
+            self._raise_command_failed("firmware_install_failed")
 
         _LOGGER.debug(
             "Requesting firmware update for %s, firmware id %s",
@@ -78,12 +77,11 @@ class DaikinFirmwareUpdateEntity(DaikinEntity, UpdateEntity):
             firmware_id,
         )
 
-        self._attr_in_progress = await self._device.api.async_execute_command(
-            lambda client: client.firmware(self._device.id, self._embedded_id).install(firmware_id)
+        await self._async_execute_command(
+            lambda client: client.firmware(self._device.id, self._embedded_id).install(firmware_id),
+            "firmware_install_failed",
         )
-
-        if not self._attr_in_progress:
-            _LOGGER.error("Failed to trigger firmware update for %s", self._device.name)
+        self._attr_in_progress = True
 
         self.async_write_ha_state()
 

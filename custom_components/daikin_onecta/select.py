@@ -10,7 +10,7 @@ from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
 from .const import SCHEDULE_OFF
 from .device import DaikinOnectaDevice
-from .entity import DaikinEntity
+from .entity import DaikinManagementPointEntity
 from .entity_descriptions import SELECT_DESCRIPTIONS
 
 if TYPE_CHECKING:
@@ -44,10 +44,17 @@ async def async_setup_entry(
     async_add_entities(sensors)
 
 
-class DaikinScheduleSelect(DaikinEntity, SelectEntity):
+class DaikinScheduleSelect(DaikinManagementPointEntity, SelectEntity):
     """Daikin Schedule Select class."""
 
-    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id, management_point_type, value) -> None:
+    def __init__(
+        self,
+        device: DaikinOnectaDevice,
+        coordinator,
+        embedded_id: str,
+        management_point_type: str,
+        value: str,
+    ) -> None:
         """Initialize a schedule selection entity."""
         _LOGGER.info("DaikinScheduleSelect '%s' '%s'", management_point_type, value)
         super().__init__(device, coordinator, embedded_id, management_point_type)
@@ -96,7 +103,7 @@ class DaikinScheduleSelect(DaikinEntity, SelectEntity):
         _LOGGER.debug("Device '%s' selecting schedule %s", self._device.name, option)
         selection = self.selection()
         if selection is None:
-            return False  # type: ignore[return-value]
+            return
 
         schedule_id = selection.selected
         if option != SCHEDULE_OFF:
@@ -105,25 +112,25 @@ class DaikinScheduleSelect(DaikinEntity, SelectEntity):
                 option,
             )
 
-        result = await self._device.api.async_execute_command(
+        await self._async_execute_command(
             lambda client: client.schedule(self._device.id, self._embedded_id).set_current(
                 selection.mode,
                 schedule_id,
                 enabled=option != SCHEDULE_OFF,
-            )
+            ),
+            "schedule_select_failed",
         )
-        if result:
-            point = self._device.management_point(self._embedded_id)
-            schedule_state = point.schedule_state if point is not None else None
-            if schedule_state is not None:
-                schedule_state.apply_selection(
-                    selection.mode,
-                    schedule_id,
-                    enabled=option != SCHEDULE_OFF,
-                )
-            self.update_state()
-            self.async_write_ha_state()
-        return result  # type: ignore[return-value]
+        point = self._device.management_point(self._embedded_id)
+        schedule_state = point.schedule_state if point is not None else None
+        if schedule_state is not None:
+            schedule_state.apply_selection(
+                selection.mode,
+                schedule_id,
+                enabled=option != SCHEDULE_OFF,
+            )
+        self.update_state()
+        self.async_write_ha_state()
+        return
 
     def get_options(self):
         """Return readable configured schedules."""
