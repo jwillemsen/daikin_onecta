@@ -36,5 +36,6 @@ jobs:
               --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
               --file "$file" \
               --lang-iso "$lang" \
+              --convert-placeholders=1 \
               --replace-modified=1
           done

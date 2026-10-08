@@ -43,6 +43,7 @@ jobs:
             --token "${{ secrets.LOKALISE_API_TOKEN }}" \
             --project-id "${{ secrets.LOKALISE_PROJECT_ID }}" \
             --format "json" \
+            --placeholder-format "icu" \
             --unzip-to "custom_components/daikin_onecta/translations/" \
             --bundle-structure \
             "%LANG_ISO%.%FORMAT%" \
