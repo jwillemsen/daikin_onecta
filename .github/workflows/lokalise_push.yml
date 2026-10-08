@@ -38,5 +38,4 @@ jobs:
             --file \
             "custom_components/daikin_onecta/translations/en.json" \
             --lang-iso "en" \
-            --convert-placeholders=1 \
             --replace-modified
