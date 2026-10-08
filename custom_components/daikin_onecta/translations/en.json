@@ -294,64 +294,64 @@
   },
   "exceptions": {
     "air_purifier_set_mode_failed": {
-      "message": "Failed to set the air-purification mode for {device}"
+      "message": "Failed to set the air-purification mode for %1$s"
     },
     "air_purifier_set_percentage_failed": {
-      "message": "Failed to set the fan speed for {device}"
+      "message": "Failed to set the fan speed for %1$s"
     },
     "air_purifier_turn_off_failed": {
-      "message": "Failed to turn off {device}"
+      "message": "Failed to turn off %1$s"
     },
     "air_purifier_turn_on_failed": {
-      "message": "Failed to turn on {device}"
+      "message": "Failed to turn on %1$s"
     },
     "climate_set_fan_mode_failed": {
-      "message": "Failed to set fan mode for {device}"
+      "message": "Failed to set fan mode for %1$s"
     },
     "climate_set_hvac_mode_failed": {
-      "message": "Failed to set HVAC mode for {device}"
+      "message": "Failed to set HVAC mode for %1$s"
     },
     "climate_set_preset_mode_failed": {
-      "message": "Failed to set preset mode for {device}"
+      "message": "Failed to set preset mode for %1$s"
     },
     "climate_set_swing_mode_failed": {
-      "message": "Failed to set swing mode for {device}"
+      "message": "Failed to set swing mode for %1$s"
     },
     "climate_set_temperature_failed": {
-      "message": "Failed to set temperature for {device}"
+      "message": "Failed to set temperature for %1$s"
     },
     "climate_turn_off_failed": {
-      "message": "Failed to turn off {device}"
+      "message": "Failed to turn off %1$s"
     },
     "climate_turn_on_failed": {
-      "message": "Failed to turn on {device}"
+      "message": "Failed to turn on %1$s"
     },
     "firmware_install_failed": {
-      "message": "Failed to install firmware on {device}"
+      "message": "Failed to install firmware on %1$s"
     },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
     },
     "schedule_select_failed": {
-      "message": "Failed to select schedule for {device}"
+      "message": "Failed to select schedule for %1$s"
     },
     "switch_turn_off_failed": {
-      "message": "Failed to turn off {device}"
+      "message": "Failed to turn off %1$s"
     },
     "switch_turn_on_failed": {
-      "message": "Failed to turn on {device}"
+      "message": "Failed to turn on %1$s"
     },
     "water_heater_set_operation_mode_failed": {
-      "message": "Failed to set operation mode for {device}"
+      "message": "Failed to set operation mode for %1$s"
     },
     "water_heater_set_temperature_failed": {
-      "message": "Failed to set temperature for {device}"
+      "message": "Failed to set temperature for %1$s"
     },
     "water_heater_turn_off_failed": {
-      "message": "Failed to turn off {device}"
+      "message": "Failed to turn off %1$s"
     },
     "water_heater_turn_on_failed": {
-      "message": "Failed to turn on {device}"
+      "message": "Failed to turn on %1$s"
     }
   },
   "issues": {
