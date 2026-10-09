@@ -14,6 +14,7 @@ from homeassistant.helpers.typing import ConfigType
 from daikin_onecta.auth import get_account_id
 from daikin_onecta.exceptions import OnectaAccessTokenError
 
+from .binary_sensor import migrate_legacy_binary_sensor_unique_ids
 from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .daikin_api import DaikinApi
@@ -65,6 +66,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> b
     await config_entry.runtime_data.async_config_entry_first_refresh()
     migrate_legacy_subdevice_identifiers(hass, config_entry, config_entry.runtime_data.data or {})
     migrate_legacy_entity_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
+    migrate_legacy_binary_sensor_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
     migrate_legacy_sensor_unique_ids(hass, config_entry, config_entry.runtime_data.data or {})
     migrate_legacy_update_unique_ids(hass, config_entry)
 

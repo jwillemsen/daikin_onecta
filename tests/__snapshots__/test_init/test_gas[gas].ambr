@@ -21,7 +21,7 @@
         'original_name': 'Is holiday mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'isholidaymodeactive',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_None_isHolidayModeActive',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_isHolidayModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -51,7 +51,7 @@
         'original_name': 'Is powerful mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'ispowerfulmodeactive',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_None_isPowerfulModeActive',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_isPowerfulModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -282,7 +282,7 @@
         'original_name': 'Control mode',
         'platform': 'daikin_onecta',
         'translation_key': 'controlmode',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_None_controlMode',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_controlMode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -600,7 +600,7 @@
         'original_name': 'Heat up mode',
         'platform': 'daikin_onecta',
         'translation_key': 'heatupmode',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_None_heatupMode',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_heatupMode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -921,7 +921,7 @@
         'original_name': 'Leaving water temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'leavingwatertemperature',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_sensoryData_leavingWaterTemperature',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_sensory_data_leavingWaterTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -957,7 +957,7 @@
         'original_name': 'Outdoor temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'outdoortemperature',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_sensoryData_outdoorTemperature',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_sensory_data_outdoorTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -993,7 +993,7 @@
         'original_name': 'Room temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_sensoryData_roomTemperature',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_sensory_data_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1026,7 +1026,7 @@
         'original_name': 'Setpoint mode',
         'platform': 'daikin_onecta',
         'translation_key': 'setpointmode',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_None_setpointMode',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_1_setpointMode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1059,7 +1059,7 @@
         'original_name': 'Tank temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'tanktemperature',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_2_sensoryData_tankTemperature',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_2_sensory_data_tankTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1092,7 +1092,7 @@
         'original_name': 'IP address',
         'platform': 'daikin_onecta',
         'translation_key': 'ipaddress',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_0_None_ipAddress',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_0_ipAddress',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1122,7 +1122,7 @@
         'original_name': 'Ratelimit remaining day',
         'platform': 'daikin_onecta',
         'translation_key': 'ratelimitremainingday',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_limitsensor_remaining_day',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_rate_limit_remaining_day',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

@@ -21,7 +21,7 @@
         'original_name': 'Is holiday mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'isholidaymodeactive',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_None_isHolidayModeActive',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_isHolidayModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -51,7 +51,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_None_isInErrorState',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -82,7 +82,7 @@
         'original_name': 'Is in mode conflict',
         'platform': 'daikin_onecta',
         'translation_key': 'isinmodeconflict',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_None_isInModeConflict',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_isInModeConflict',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -113,7 +113,7 @@
         'original_name': 'Is powerful mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'ispowerfulmodeactive',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_None_isPowerfulModeActive',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_isPowerfulModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -143,7 +143,7 @@
         'original_name': 'Daylight saving time enabled',
         'platform': 'daikin_onecta',
         'translation_key': 'daylightsavingtimeenabled',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_daylightSavingTimeEnabled',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_daylightSavingTimeEnabled',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -173,7 +173,7 @@
         'original_name': 'Is firmware update supported',
         'platform': 'daikin_onecta',
         'translation_key': 'isfirmwareupdatesupported',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_isFirmwareUpdateSupported',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_isFirmwareUpdateSupported',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -203,7 +203,7 @@
         'original_name': 'LED enabled',
         'platform': 'daikin_onecta',
         'translation_key': 'ledenabled',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_ledEnabled',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_ledEnabled',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -233,7 +233,7 @@
         'original_name': 'Is holiday mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'isholidaymodeactive',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_None_isHolidayModeActive',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_isHolidayModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -263,7 +263,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_None_isInErrorState',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -294,7 +294,7 @@
         'original_name': 'Is in mode conflict',
         'platform': 'daikin_onecta',
         'translation_key': 'isinmodeconflict',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_None_isInModeConflict',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_isInModeConflict',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -325,7 +325,7 @@
         'original_name': 'Is powerful mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'ispowerfulmodeactive',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_None_isPowerfulModeActive',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_isPowerfulModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -355,7 +355,7 @@
         'original_name': 'Daylight saving time enabled',
         'platform': 'daikin_onecta',
         'translation_key': 'daylightsavingtimeenabled',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_daylightSavingTimeEnabled',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_daylightSavingTimeEnabled',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -385,7 +385,7 @@
         'original_name': 'Is firmware update supported',
         'platform': 'daikin_onecta',
         'translation_key': 'isfirmwareupdatesupported',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_isFirmwareUpdateSupported',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_isFirmwareUpdateSupported',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -415,7 +415,7 @@
         'original_name': 'LED enabled',
         'platform': 'daikin_onecta',
         'translation_key': 'ledenabled',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_ledEnabled',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_ledEnabled',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -445,7 +445,7 @@
         'original_name': 'Is holiday mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'isholidaymodeactive',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_None_isHolidayModeActive',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_isHolidayModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -475,7 +475,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_None_isInErrorState',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -506,7 +506,7 @@
         'original_name': 'Is in mode conflict',
         'platform': 'daikin_onecta',
         'translation_key': 'isinmodeconflict',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_None_isInModeConflict',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_isInModeConflict',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -537,7 +537,7 @@
         'original_name': 'Is powerful mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'ispowerfulmodeactive',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_None_isPowerfulModeActive',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_isPowerfulModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -567,7 +567,7 @@
         'original_name': 'Daylight saving time enabled',
         'platform': 'daikin_onecta',
         'translation_key': 'daylightsavingtimeenabled',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_daylightSavingTimeEnabled',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_daylightSavingTimeEnabled',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -597,7 +597,7 @@
         'original_name': 'Is firmware update supported',
         'platform': 'daikin_onecta',
         'translation_key': 'isfirmwareupdatesupported',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_isFirmwareUpdateSupported',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_isFirmwareUpdateSupported',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -627,7 +627,7 @@
         'original_name': 'LED enabled',
         'platform': 'daikin_onecta',
         'translation_key': 'ledenabled',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_ledEnabled',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_ledEnabled',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1020,7 +1020,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_None_errorCode',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1053,7 +1053,7 @@
         'original_name': 'Outdoor temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'outdoortemperature',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_sensoryData_outdoorTemperature',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_sensory_data_outdoorTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1089,7 +1089,7 @@
         'original_name': 'Room temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_sensoryData_roomTemperature',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_sensory_data_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1122,7 +1122,7 @@
         'original_name': 'IP address',
         'platform': 'daikin_onecta',
         'translation_key': 'ipaddress',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_ipAddress',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_ipAddress',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1152,7 +1152,7 @@
         'original_name': 'Ratelimit remaining day',
         'platform': 'daikin_onecta',
         'translation_key': 'ratelimitremainingday',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_limitsensor_remaining_day',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_rate_limit_remaining_day',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1183,7 +1183,7 @@
         'original_name': 'Region code',
         'platform': 'daikin_onecta',
         'translation_key': 'regioncode',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_regionCode',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_regionCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1213,7 +1213,7 @@
         'original_name': 'SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'ssid',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_ssid',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_ssid',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1243,7 +1243,7 @@
         'original_name': 'Time zone',
         'platform': 'daikin_onecta',
         'translation_key': 'timezone',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_timeZone',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_timeZone',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1273,7 +1273,7 @@
         'original_name': 'WiFi connection SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'wificonnectionssid',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_wifiConnectionSSID',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_wifiConnectionSSID',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1303,7 +1303,7 @@
         'original_name': 'WiFi connection strength',
         'platform': 'daikin_onecta',
         'translation_key': 'wificonnectionstrength',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_None_wifiConnectionStrength',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_gateway_wifiConnectionStrength',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1483,7 +1483,7 @@
         'original_name': 'Current power consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'currentpowerconsumption',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_None_currentPowerConsumption',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_currentPowerConsumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1519,7 +1519,7 @@
         'original_name': 'Current thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'currentthermaloutput',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_None_currentHeatProduction',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_outdoorUnit_currentHeatProduction',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1696,7 +1696,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_None_errorCode',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1729,7 +1729,7 @@
         'original_name': 'Room temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_sensoryData_roomTemperature',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_sensory_data_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1762,7 +1762,7 @@
         'original_name': 'IP address',
         'platform': 'daikin_onecta',
         'translation_key': 'ipaddress',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_ipAddress',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_ipAddress',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1792,7 +1792,7 @@
         'original_name': 'Ratelimit remaining day',
         'platform': 'daikin_onecta',
         'translation_key': 'ratelimitremainingday',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_limitsensor_remaining_day',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_rate_limit_remaining_day',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1823,7 +1823,7 @@
         'original_name': 'Region code',
         'platform': 'daikin_onecta',
         'translation_key': 'regioncode',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_regionCode',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_regionCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1853,7 +1853,7 @@
         'original_name': 'SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'ssid',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_ssid',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_ssid',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1883,7 +1883,7 @@
         'original_name': 'Time zone',
         'platform': 'daikin_onecta',
         'translation_key': 'timezone',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_timeZone',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_timeZone',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1913,7 +1913,7 @@
         'original_name': 'WiFi connection SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'wificonnectionssid',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_wifiConnectionSSID',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_wifiConnectionSSID',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1943,7 +1943,7 @@
         'original_name': 'WiFi connection strength',
         'platform': 'daikin_onecta',
         'translation_key': 'wificonnectionstrength',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_None_wifiConnectionStrength',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_gateway_wifiConnectionStrength',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2123,7 +2123,7 @@
         'original_name': 'Current power consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'currentpowerconsumption',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_None_currentPowerConsumption',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_currentPowerConsumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2159,7 +2159,7 @@
         'original_name': 'Current thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'currentthermaloutput',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_None_currentHeatProduction',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_outdoorUnit_currentHeatProduction',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2336,7 +2336,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_None_errorCode',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2369,7 +2369,7 @@
         'original_name': 'Room temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_sensoryData_roomTemperature',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_sensory_data_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2402,7 +2402,7 @@
         'original_name': 'IP address',
         'platform': 'daikin_onecta',
         'translation_key': 'ipaddress',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_ipAddress',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_ipAddress',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2432,7 +2432,7 @@
         'original_name': 'Ratelimit remaining day',
         'platform': 'daikin_onecta',
         'translation_key': 'ratelimitremainingday',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_limitsensor_remaining_day',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_rate_limit_remaining_day',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2463,7 +2463,7 @@
         'original_name': 'Region code',
         'platform': 'daikin_onecta',
         'translation_key': 'regioncode',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_regionCode',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_regionCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2493,7 +2493,7 @@
         'original_name': 'SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'ssid',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_ssid',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_ssid',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2523,7 +2523,7 @@
         'original_name': 'Time zone',
         'platform': 'daikin_onecta',
         'translation_key': 'timezone',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_timeZone',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_timeZone',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2553,7 +2553,7 @@
         'original_name': 'WiFi connection SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'wificonnectionssid',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_wifiConnectionSSID',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_wifiConnectionSSID',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2583,7 +2583,7 @@
         'original_name': 'WiFi connection strength',
         'platform': 'daikin_onecta',
         'translation_key': 'wificonnectionstrength',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_None_wifiConnectionStrength',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_gateway_wifiConnectionStrength',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2763,7 +2763,7 @@
         'original_name': 'Current power consumption',
         'platform': 'daikin_onecta',
         'translation_key': 'currentpowerconsumption',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_None_currentPowerConsumption',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_currentPowerConsumption',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2799,7 +2799,7 @@
         'original_name': 'Current thermal output',
         'platform': 'daikin_onecta',
         'translation_key': 'currentthermaloutput',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_None_currentHeatProduction',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_outdoorUnit_currentHeatProduction',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

@@ -66,6 +66,7 @@ from pytest_homeassistant_custom_component.common import MockConfigEntry
 from pytest_homeassistant_custom_component.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
+from custom_components.daikin_onecta.binary_sensor import migrate_legacy_binary_sensor_unique_ids
 from custom_components.daikin_onecta.climate import DaikinClimate, async_setup_entry as async_setup_climate_entry
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, DOMAIN, SCHEDULE_OFF
 from custom_components.daikin_onecta.device import DaikinOnectaDevice, migrate_legacy_entity_unique_ids, migrate_legacy_subdevice_identifiers
@@ -2122,6 +2123,18 @@ def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: Moc
         unique_id="device_climateControl_None_roomTemperature",
         config_entry=config_entry,
     )
+    sensory_entry = entity_registry.async_get_or_create(
+        domain="sensor",
+        platform=DOMAIN,
+        unique_id="device_zone1_sensoryData_roomTemperature",
+        config_entry=config_entry,
+    )
+    rate_limit_entry = entity_registry.async_get_or_create(
+        domain="sensor",
+        platform=DOMAIN,
+        unique_id="device_limitsensor_remaining_day",
+        config_entry=config_entry,
+    )
     energy_entry = entity_registry.async_get_or_create(
         domain="sensor",
         platform=DOMAIN,
@@ -2141,7 +2154,9 @@ def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: Moc
 
     migrate_legacy_sensor_unique_ids(hass, config_entry, {"device": device})
 
-    assert entity_registry.async_get(value_entry.entity_id).unique_id == "device_zone1_None_roomTemperature"
+    assert entity_registry.async_get(value_entry.entity_id).unique_id == "device_zone1_roomTemperature"
+    assert entity_registry.async_get(sensory_entry.entity_id).unique_id == "device_zone1_sensory_data_roomTemperature"
+    assert entity_registry.async_get(rate_limit_entry.entity_id).unique_id == "device_rate_limit_remaining_day"
     assert entity_registry.async_get(energy_entry.entity_id).unique_id == "device_zone1_electrical_heating_daily_consumption"
     assert entity_registry.async_get(current_energy_entry.entity_id).unique_id == "device_zone2_electrical_heating_yearly_output"
 
@@ -2173,9 +2188,10 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
     device.device.management_points = [climate_control, water_tank]
 
     migrate_legacy_entity_unique_ids(hass, config_entry, {"device": device})
+    migrate_legacy_binary_sensor_unique_ids(hass, config_entry, {"device": device})
 
     assert [entity_registry.async_get(entry.entity_id).unique_id for entry in legacy_entries] == [
-        "device_zone1_None_isInErrorState",
+        "device_zone1_isInErrorState",
         "device_zone1_schedule",
         "device_zone1_testMode",
         "device_zone1_firmware_update",

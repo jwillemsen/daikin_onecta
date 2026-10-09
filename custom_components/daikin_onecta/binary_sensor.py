@@ -6,8 +6,10 @@ from typing import TYPE_CHECKING, override
 from homeassistant.components.binary_sensor import BinarySensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
+from .const import DOMAIN
 from .device import DaikinOnectaDevice
 from .entity import DaikinEntity
 from .entity_descriptions import BINARY_SENSOR_DESCRIPTIONS
@@ -16,6 +18,29 @@ if TYPE_CHECKING:
     from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
+
+
+def migrate_legacy_binary_sensor_unique_ids(
+    hass: HomeAssistant,
+    config_entry: ConfigEntry,
+    devices: dict[str, DaikinOnectaDevice],
+) -> None:
+    """Remove the legacy ``None`` subtype from binary-sensor unique IDs."""
+    entity_registry = er.async_get(hass)
+    prefixes = tuple(
+        f"{device.id}_{management_point.embedded_id}_None_" for device in devices.values() for management_point in device.device.management_points
+    )
+
+    for entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
+        if entry.domain != "binary_sensor" or entry.platform != DOMAIN:
+            continue
+        for prefix in prefixes:
+            if not entry.unique_id.startswith(prefix):
+                continue
+            new_unique_id = f"{prefix.removesuffix('_None_')}_{entry.unique_id.removeprefix(prefix)}"
+            if entity_registry.async_get_entity_id("binary_sensor", DOMAIN, new_unique_id) is None:
+                entity_registry.async_update_entity(entry.entity_id, new_unique_id=new_unique_id)
+            break
 
 
 async def async_setup(hass, async_add_entities):
@@ -67,7 +92,7 @@ class DaikinBinarySensor(DaikinEntity, BinarySensorEntity):
         super().__init__(device, coordinator, embedded_id, management_point_type)
         self._management_point_type = management_point_type
         self._value = value
-        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_None_{self._value}"
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._value}"
         self._attr_has_entity_name = True
         self.entity_description = BINARY_SENSOR_DESCRIPTIONS[value]
         self.update_state()
