@@ -51,7 +51,7 @@
         'original_name': 'Ratelimit remaining day',
         'platform': 'daikin_onecta',
         'translation_key': 'ratelimitremainingday',
-        'unique_id': '6a84eb95-60ea-4c21-8376-a10b3886437f_limitsensor_remaining_day',
+        'unique_id': '6a84eb95-60ea-4c21-8376-a10b3886437f_rate_limit_remaining_day',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

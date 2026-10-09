@@ -150,10 +150,12 @@ def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, 
         for value in SENSOR_DESCRIPTIONS:
             for sub_type in (None, "sensoryData"):
                 old_unique_id = f"{device.id}_{management_point.management_point_type}_{sub_type}_{value}"
+                new_unique_id = _value_sensor_unique_id(device.id, management_point.embedded_id, sub_type, value)
                 migrations.setdefault(
                     old_unique_id,
-                    f"{device.id}_{management_point.embedded_id}_{sub_type}_{value}",
+                    new_unique_id,
                 )
+                migrations[f"{device.id}_{management_point.embedded_id}_{sub_type}_{value}"] = new_unique_id
     return migrations
 
 
@@ -188,6 +190,18 @@ def _energy_sensor_unique_id(device_id: str, details: EnergySensorDetails) -> st
     )
 
 
+def _value_sensor_unique_id(device_id: str, embedded_id: str, sub_type: str | None, value: str) -> str:
+    """Return a stable unique ID for a scalar or sensory-data value."""
+    if sub_type == "sensoryData":
+        return f"{device_id}_{embedded_id}_sensory_data_{value}"
+    return f"{device_id}_{embedded_id}_{value}"
+
+
+def _rate_limit_sensor_unique_id(device_id: str, limit_key: str) -> str:
+    """Return a stable unique ID for a rate-limit sensor."""
+    return f"{device_id}_rate_limit_{limit_key}"
+
+
 def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry, devices: dict[str, DaikinOnectaDevice]) -> None:
     """Migrate existing sensor unique IDs without replacing registry entries.
 
@@ -202,6 +216,7 @@ def migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: ConfigEn
     for device in devices.values():
         migrations.update(_legacy_value_sensor_id_migrations(device))
         migrations.update(_legacy_energy_sensor_id_migrations(device))
+        migrations[f"{device.id}_limitsensor_remaining_day"] = _rate_limit_sensor_unique_id(device.id, "remaining_day")
 
     for entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
         if entry.domain != "sensor" or entry.platform != DOMAIN:
@@ -313,7 +328,12 @@ class DaikinValueSensor(DaikinEntity, SensorEntity):
         self._value = details.value
         self._attr_has_entity_name = True
         self.entity_description = SENSOR_DESCRIPTIONS[details.value]
-        self._attr_unique_id = f"{self._device.id}_{details.embedded_id}_{self._sub_type}_{self._value}"
+        self._attr_unique_id = _value_sensor_unique_id(
+            self._device.id,
+            details.embedded_id,
+            self._sub_type,
+            self._value,
+        )
         self.update_state()
         _LOGGER.info(
             "Device '%s:%s' supports sensor '%s'",
@@ -364,7 +384,7 @@ class DaikinLimitSensor(DaikinEntity, SensorEntity):
         self._config_entry = config_entry
         self._limit_key = limit_key
         self._attr_has_entity_name = True
-        self._attr_unique_id = f"{self._device.id}_limitsensor_{self._limit_key}"
+        self._attr_unique_id = _rate_limit_sensor_unique_id(self._device.id, self._limit_key)
         self.entity_description = SENSOR_DESCRIPTIONS["RatelimitRemainingDay"]
         self.update_state()
         _LOGGER.info(

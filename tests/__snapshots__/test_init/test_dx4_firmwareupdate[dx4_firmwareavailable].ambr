@@ -21,7 +21,7 @@
         'original_name': 'Is holiday mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'isholidaymodeactive',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isHolidayModeActive',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_isHolidayModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -51,7 +51,7 @@
         'original_name': 'Is in caution state',
         'platform': 'daikin_onecta',
         'translation_key': 'isincautionstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInCautionState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_isInCautionState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -82,7 +82,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInErrorState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -113,7 +113,7 @@
         'original_name': 'Is in mode conflict',
         'platform': 'daikin_onecta',
         'translation_key': 'isinmodeconflict',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInModeConflict',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_isInModeConflict',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -144,7 +144,7 @@
         'original_name': 'Is in warning state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinwarningstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isInWarningState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_isInWarningState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -175,7 +175,7 @@
         'original_name': 'Is powerful mode active',
         'platform': 'daikin_onecta',
         'translation_key': 'ispowerfulmodeactive',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_isPowerfulModeActive',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_isPowerfulModeActive',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -205,7 +205,7 @@
         'original_name': 'Is firmware update supported',
         'platform': 'daikin_onecta',
         'translation_key': 'isfirmwareupdatesupported',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_isFirmwareUpdateSupported',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_isFirmwareUpdateSupported',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -235,7 +235,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_isInErrorState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -266,7 +266,7 @@
         'original_name': 'Is in caution state',
         'platform': 'daikin_onecta',
         'translation_key': 'isincautionstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_isInCautionState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_isInCautionState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -297,7 +297,7 @@
         'original_name': 'Is in error state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinerrorstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_isInErrorState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_isInErrorState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -328,7 +328,7 @@
         'original_name': 'Is in warning state',
         'platform': 'daikin_onecta',
         'translation_key': 'isinwarningstate',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_isInWarningState',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_isInWarningState',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -637,7 +637,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_None_errorCode',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -814,7 +814,7 @@
         'original_name': 'Outdoor temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'outdoortemperature',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_sensoryData_outdoorTemperature',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_sensory_data_outdoorTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -850,7 +850,7 @@
         'original_name': 'Room temperature',
         'platform': 'daikin_onecta',
         'translation_key': 'roomtemperature',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_sensoryData_roomTemperature',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_sensory_data_roomTemperature',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -883,7 +883,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_errorCode',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -913,7 +913,7 @@
         'original_name': 'IP address',
         'platform': 'daikin_onecta',
         'translation_key': 'ipaddress',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_ipAddress',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_ipAddress',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -943,7 +943,7 @@
         'original_name': 'Ratelimit remaining day',
         'platform': 'daikin_onecta',
         'translation_key': 'ratelimitremainingday',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_limitsensor_remaining_day',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_rate_limit_remaining_day',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -974,7 +974,7 @@
         'original_name': 'SSID',
         'platform': 'daikin_onecta',
         'translation_key': 'ssid',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_ssid',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_ssid',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1004,7 +1004,7 @@
         'original_name': 'Time zone',
         'platform': 'daikin_onecta',
         'translation_key': 'timezone',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_None_timeZone',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_gateway_timeZone',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1034,7 +1034,7 @@
         'original_name': 'Error code',
         'platform': 'daikin_onecta',
         'translation_key': 'errorcode',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_None_errorCode',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_outdoorUnit_errorCode',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
