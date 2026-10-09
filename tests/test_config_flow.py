@@ -105,11 +105,17 @@ async def test_options_flow_homekit_fan_mode_aliases_default(
     hass: HomeAssistant,
 ) -> None:
     """Test HomeKit fan mode aliases option defaults to disabled."""
-    config_entry = MockConfigEntry(domain=DOMAIN, data={})
+    config_entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={},
+        options={"high_scan_interval": 15},
+    )
     config_entry.add_to_hass(hass)
 
     result = await hass.config_entries.options.async_init(config_entry.entry_id)
     assert result["type"] == "form"
+    high_scan_interval = next(key for key in result["data_schema"].schema if key.schema == "high_scan_interval")
+    assert high_scan_interval.description == {"suggested_value": 15}
 
     result = await hass.config_entries.options.async_configure(
         result["flow_id"],

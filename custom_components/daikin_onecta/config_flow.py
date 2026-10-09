@@ -22,13 +22,26 @@ OAUTH_SCOPES = [
     "offline_access",
 ]
 
+OPTIONS_SCHEMA = probatio.Schema(
+    {
+        probatio.Required("high_scan_interval", default=10): NumberSelector(
+            NumberSelectorConfig(min=5, max=240, step=1),
+        ),
+        probatio.Required("low_scan_interval", default=30): NumberSelector(
+            NumberSelectorConfig(min=10, max=240, step=1),
+        ),
+        probatio.Required("high_scan_start", default="07:00:00"): TimeSelector(),
+        probatio.Required("low_scan_start", default="22:00:00"): TimeSelector(),
+        probatio.Required("scan_ignore", default=30): NumberSelector(
+            NumberSelectorConfig(min=20, max=300, step=1),
+        ),
+        probatio.Required(CONF_HOMEKIT_FAN_MODE_ALIASES, default=False): BooleanSelector(),
+    }
+)
+
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
     """Config flow options handler for Daikin Onecta ."""
-
-    def __init__(self, config_entry: ConfigEntry) -> None:
-        """Initialize Daikin Onecta options flow."""
-        self.options = dict(config_entry.options)
 
     async def async_step_init(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:
         """Handle a flow initialized by the user."""
@@ -37,39 +50,9 @@ class OptionsFlowHandler(config_entries.OptionsFlow):
 
         return self.async_show_form(
             step_id="init",
-            data_schema=probatio.Schema(
-                {
-                    probatio.Required(
-                        "high_scan_interval",
-                        default=self.options.get("high_scan_interval", 10),
-                    ): NumberSelector(
-                        NumberSelectorConfig(min=5, max=240, step=1),
-                    ),
-                    probatio.Required(
-                        "low_scan_interval",
-                        default=self.options.get("low_scan_interval", 30),
-                    ): NumberSelector(
-                        NumberSelectorConfig(min=10, max=240, step=1),
-                    ),
-                    probatio.Required(
-                        "high_scan_start",
-                        default=self.options.get("high_scan_start", "07:00:00"),
-                    ): TimeSelector(),
-                    probatio.Required(
-                        "low_scan_start",
-                        default=self.options.get("low_scan_start", "22:00:00"),
-                    ): TimeSelector(),
-                    probatio.Required(
-                        "scan_ignore",
-                        default=self.options.get("scan_ignore", 30),
-                    ): NumberSelector(
-                        NumberSelectorConfig(min=20, max=300, step=1),
-                    ),
-                    probatio.Required(
-                        CONF_HOMEKIT_FAN_MODE_ALIASES,
-                        default=self.options.get(CONF_HOMEKIT_FAN_MODE_ALIASES, False),
-                    ): BooleanSelector(),
-                }
+            data_schema=self.add_suggested_values_to_schema(
+                OPTIONS_SCHEMA,
+                self.config_entry.options,
             ),
             errors={},
         )
@@ -134,7 +117,7 @@ class FlowHandler(
     @override
     def async_get_options_flow(config_entry: ConfigEntry) -> OptionsFlowHandler:
         """Options callback for Daikin Onecta."""
-        return OptionsFlowHandler(config_entry)
+        return OptionsFlowHandler()
 
     @override
     async def async_step_zeroconf(self, _discovery_info: ZeroconfServiceInfo) -> ConfigFlowResult:
