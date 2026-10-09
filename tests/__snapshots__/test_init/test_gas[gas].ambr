@@ -1153,7 +1153,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_0_firmware_update',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_0_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1197,7 +1197,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_3_firmware_update',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_3_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1240,7 +1240,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_4_firmware_update',
+        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_4_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

@@ -81,7 +81,7 @@ from custom_components.daikin_onecta.select import DaikinScheduleSelect
 from custom_components.daikin_onecta.sensor import migrate_legacy_sensor_unique_ids
 from custom_components.daikin_onecta.switch import DaikinSwitch
 from custom_components.daikin_onecta.system_health import async_register, system_health_info
-from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity
+from custom_components.daikin_onecta.update import DaikinFirmwareUpdateEntity, migrate_legacy_update_unique_ids
 from custom_components.daikin_onecta.water_heater import DaikinWaterTank
 
 from .conftest import FAKE_ACCESS_TOKEN, SnapshotTestContext, load_fixture_json, snapshot_platform_entities
@@ -2183,6 +2183,44 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
         "device_tank",
     ]
     assert entity_registry.async_get(current_climate_entry.entity_id).unique_id == "device_zone1_leavingWaterOffset"
+
+
+def test_migrate_legacy_update_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Preserve firmware update entities while using the shared suffix."""
+    config_entry.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    legacy_entry = entity_registry.async_get_or_create(
+        UPDATE_DOMAIN,
+        DOMAIN,
+        "device_gateway_firmware_update",
+        config_entry=config_entry,
+    )
+
+    migrate_legacy_update_unique_ids(hass, config_entry)
+
+    assert entity_registry.async_get(legacy_entry.entity_id).unique_id == "device_gateway_firmware"
+
+
+def test_migrate_legacy_update_unique_ids_skips_conflicts(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Keep the legacy ID when the destination ID is already registered."""
+    config_entry.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    legacy_entry = entity_registry.async_get_or_create(
+        UPDATE_DOMAIN,
+        DOMAIN,
+        "device_gateway_firmware_update",
+        config_entry=config_entry,
+    )
+    entity_registry.async_get_or_create(
+        UPDATE_DOMAIN,
+        DOMAIN,
+        "device_gateway_firmware",
+        config_entry=config_entry,
+    )
+
+    migrate_legacy_update_unique_ids(hass, config_entry)
+
+    assert entity_registry.async_get(legacy_entry.entity_id).unique_id == "device_gateway_firmware_update"
 
 
 def test_schedule_select_missing_selection() -> None:
