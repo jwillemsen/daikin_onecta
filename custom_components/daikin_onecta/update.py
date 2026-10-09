@@ -3,13 +3,15 @@
 import logging
 from typing import Any, override
 
-from homeassistant.components.update import UpdateEntity, UpdateEntityFeature
+from homeassistant.components.update import DOMAIN as UPDATE_DOMAIN, UpdateEntity, UpdateEntityFeature
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 from daikin_onecta.models import ManagementPoint
 
+from .const import DOMAIN
 from .coordinator import OnectaDataUpdateCoordinator
 from .device import DaikinOnectaDevice
 from .entity import DaikinManagementPointEntity
@@ -18,6 +20,19 @@ from .entity_descriptions import UPDATE_DESCRIPTIONS
 _LOGGER = logging.getLogger(__name__)
 
 # The Daikin Onecta cloud API exposes firmware updates
+
+
+def migrate_legacy_update_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    """Migrate firmware update unique IDs to the shared ``_firmware`` suffix."""
+    entity_registry = er.async_get(hass)
+    for entry in er.async_entries_for_config_entry(entity_registry, config_entry.entry_id):
+        if entry.domain != UPDATE_DOMAIN or entry.platform != DOMAIN or not entry.unique_id.endswith("_firmware_update"):
+            continue
+
+        new_unique_id = entry.unique_id.removesuffix("_update")
+        if entity_registry.async_get_entity_id(UPDATE_DOMAIN, DOMAIN, new_unique_id) is not None:
+            continue
+        entity_registry.async_update_entity(entry.entity_id, new_unique_id=new_unique_id)
 
 
 async def async_setup_entry(
@@ -55,7 +70,7 @@ class DaikinFirmwareUpdateEntity(DaikinManagementPointEntity, UpdateEntity):
         self._attr_has_entity_name = True
         self.entity_description = UPDATE_DESCRIPTIONS["FirmwareUpdate"]
 
-        self._attr_unique_id = f"{device.id}_{self._embedded_id}_firmware_update"
+        self._attr_unique_id = f"{device.id}_{self._embedded_id}_firmware"
 
         # Populate initial state
         self._update_from_management_point(gateway_mp)

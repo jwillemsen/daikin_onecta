@@ -1947,7 +1947,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_gateway_firmware_update',
+        'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_gateway_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1990,7 +1990,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_indoorUnit_firmware_update',
+        'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_indoorUnit_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2033,7 +2033,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_0_firmware_update',
+        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_0_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2076,7 +2076,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_3_firmware_update',
+        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_3_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2119,7 +2119,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_4_firmware_update',
+        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_4_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -2162,7 +2162,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_5_firmware_update',
+        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_5_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({

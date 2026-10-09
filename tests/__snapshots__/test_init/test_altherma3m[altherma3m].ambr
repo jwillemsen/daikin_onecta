@@ -1131,7 +1131,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_gateway_firmware_update',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_gateway_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1174,7 +1174,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_indoorUnitHydro_firmware_update',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_indoorUnitHydro_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1217,7 +1217,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_outdoorUnit_firmware_update',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_outdoorUnit_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
@@ -1260,7 +1260,7 @@
         'original_name': 'Firmware update',
         'platform': 'daikin_onecta',
         'translation_key': 'firmwareupdate',
-        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_userInterface_firmware_update',
+        'unique_id': 'eb618890-5f42-496a-a34f-bae6e49260c2_userInterface_firmware',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
