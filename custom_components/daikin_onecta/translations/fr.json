@@ -126,7 +126,7 @@
         "name": "Code d'erreur"
       },
       "heatingdailyelectricalconsumption": {
-        "name": "consommation électrique hebdomadaire de chauffage"
+        "name": "Consommation électrique journalière de chauffage"
       },
       "heatingmonthlyelectricalconsumption": {
         "name": "consommation électrique mensuelle de chauffage"

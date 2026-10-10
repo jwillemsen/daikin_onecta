@@ -34,8 +34,84 @@
     }
   },
   "exceptions": {
+    "air_purifier_set_mode_failed": {
+      "message": "No se ha podido cambiar el modo de purificación del aire para {device}"
+    },
+    "air_purifier_set_percentage_failed": {
+      "message": "No se ha podido ajustar la velocidad del ventilador para {device}"
+    },
+    "air_purifier_turn_off_failed": {
+      "message": "No se ha podido apagar {device}"
+    },
+    "air_purifier_turn_on_failed": {
+      "message": "No se ha podido encender {device}"
+    },
+    "climate_set_fan_mode_failed": {
+      "message": "No se ha podido cambiar el modo del ventilador de {device}"
+    },
+    "climate_set_hvac_mode_failed": {
+      "message": "No se ha podido cambiar el modo de climatización de {device}"
+    },
+    "climate_set_preset_mode_failed": {
+      "message": "No se ha podido seleccionar el modo predefinido de {device}"
+    },
+    "climate_set_swing_mode_failed": {
+      "message": "No se ha podido ajustar el modo de oscilación de {device}"
+    },
+    "climate_set_temperature_failed": {
+      "message": "No se ha podido seleccionar la termeratura para {device}"
+    },
+    "climate_turn_off_failed": {
+      "message": "No se ha podido apagar {device}"
+    },
+    "climate_turn_on_failed": {
+      "message": "No se ha podido encender {device}"
+    },
+    "firmware_install_failed": {
+      "message": "No se ha podido instalar el firmware de {device}"
+    },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    },
+    "schedule_select_failed": {
+      "message": "No se ha podido seleccionar la programación de {device}"
+    },
+    "switch_turn_off_failed": {
+      "message": "No se ha podido apagar {device}"
+    },
+    "switch_turn_on_failed": {
+      "message": "No se ha podido encender {device}"
+    },
+    "water_heater_set_operation_mode_failed": {
+      "message": "No se ha podido cambiar el modo de funcionamiento de {device}"
+    },
+    "water_heater_set_temperature_failed": {
+      "message": "no se ha podido ajustar la temperatura de {device}"
+    },
+    "water_heater_turn_off_failed": {
+      "message": "No se ha podido apgar {device}"
+    },
+    "water_heater_turn_on_failed": {
+      "message": "No se ha podido encender {device}"
+    }
+  },
+  "issues": {
+    "minute_rate_limit": {
+      "description": "Has alcanzado el límite de solicitudes por minuto a la nube de Daikin. Reduce la frecuencia de las solicitudes a tus dispositivos Daikin",
+      "title": "Se ha alcanzado el límite de solicitudes por minuto"
+    }
+  },
+  "system_health": {
+    "info": {
+      "api_status": "Servidor de la API",
+      "max_day": "Límite diario de solicitudes",
+      "max_minute": "Límite de solicitudes por minuto",
+      "oauth2_status": "Servidor OAuth2",
+      "oauth2_token_valid": "Token de OAuth2 válido",
+      "ratelimit_reset": "Restablecimiento del límite de solicitudes",
+      "remaining_day": "Límite diario de solicitudes",
+      "remaining_minute": "Solicitudes restantes en este minuto",
+      "retry_after": "Tiempo de espera antes de reintentar"
     }
   }
 }
