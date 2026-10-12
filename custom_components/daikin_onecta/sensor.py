@@ -240,7 +240,27 @@ async def async_setup_entry(
         for management_point in device.device.management_points:
             add_management_point_sensors(coordinator, device, management_point, sensors)
 
+    known_unique_ids = {sensor.unique_id for sensor in sensors}
     async_add_entities(sensors)
+
+    @callback
+    def _async_add_new_sensors() -> None:
+        """Add sensors for values that were missing when the entry was set up.
+
+        The cloud does not always report every value, for example sensory data
+        of a unit that has just reconnected. Without this, such a sensor would
+        stay unavailable until the integration is reloaded.
+        """
+        candidates: list[SensorEntity] = []
+        for device in (coordinator.data or {}).values():
+            for management_point in device.device.management_points:
+                add_management_point_sensors(coordinator, device, management_point, candidates)
+        new_sensors = [sensor for sensor in candidates if sensor.unique_id not in known_unique_ids]
+        if new_sensors:
+            known_unique_ids.update(sensor.unique_id for sensor in new_sensors)
+            async_add_entities(new_sensors)
+
+    config_entry.async_on_unload(coordinator.async_add_listener(_async_add_new_sensors))
 
 
 class DaikinEnergySensor(DaikinEntity, SensorEntity):

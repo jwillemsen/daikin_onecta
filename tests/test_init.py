@@ -367,6 +367,38 @@ async def test_altherma(
 
 
 @pytest.mark.asyncio
+async def test_sensor_added_when_value_appears_later(
+    onecta_auth: AsyncMock,
+    snapshot_context: SnapshotTestContext,
+) -> None:
+    """Create a sensor once the cloud reports a value that was missing at setup."""
+    hass = snapshot_context.hass
+    aioclient_mock = snapshot_context.aioclient_mock
+    config_entry = snapshot_context.config_entry
+    entity_id = "sensor.altherma_climatecontrol_room_temperature"
+
+    devices = load_fixture_json("altherma")
+    main_zone = next(point for point in devices[0]["managementPoints"] if point["embeddedId"] == "climateControlMainZone")
+    del main_zone["sensoryData"]["value"]["roomTemperature"]
+
+    with patch(
+        "homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation",
+    ):
+        aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=devices)
+        assert await hass.config_entries.async_setup(config_entry.entry_id)
+        await hass.async_block_till_done()
+
+    assert hass.states.get(entity_id) is None
+
+    aioclient_mock.clear_requests()
+    aioclient_mock.get(DAIKIN_API_URL + "/v1/gateway-devices", status=200, json=load_fixture_json("altherma"))
+    await config_entry.runtime_data.async_refresh()
+    await hass.async_block_till_done()
+
+    assert hass.states.get(entity_id).state == "21"
+
+
+@pytest.mark.asyncio
 async def test_altherma3m(
     onecta_auth: AsyncMock,
     snapshot_context: SnapshotTestContext,
