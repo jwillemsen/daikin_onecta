@@ -219,6 +219,44 @@
         'state': 'heat',
       }),
     }),
+    'select.daikinap95800_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.daikinap95800_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '95c2f177-dd7a-4bdc-ad48-1a7f47f34a01_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'auto',
+            'dry',
+            'cooling',
+            'heating',
+            'fan_only',
+            'humidification',
+          ]),
+        }),
+        'entity_id': 'select.daikinap95800_climatecontrol_operation_mode',
+        'state': 'heating',
+      }),
+    }),
     'select.daikinap95800_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,

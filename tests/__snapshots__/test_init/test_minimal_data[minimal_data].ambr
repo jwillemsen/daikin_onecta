@@ -354,6 +354,41 @@
         'state': 'off',
       }),
     }),
+    'select.altherma_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.altherma_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': 'b84e8af3-310a-4e6e-8e52-295573423485_climateControlMainZone_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'heating',
+            'cooling',
+            'auto',
+          ]),
+        }),
+        'entity_id': 'select.altherma_climatecontrol_operation_mode',
+        'state': 'auto',
+      }),
+    }),
     'sensor.altherma_climatecontrol_control_mode': dict({
       'entry': dict({
         'area_id': None,
