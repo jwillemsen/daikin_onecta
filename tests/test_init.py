@@ -2113,6 +2113,30 @@ def test_migrate_legacy_subdevice_identifier(hass: HomeAssistant, config_entry: 
     assert device_registry.async_get_device_by_identifier((DOMAIN, "deviceclimateControl"), config_entry.entry_id) is None
 
 
+def test_migrate_legacy_subdevice_identifier_skips_existing_target(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Keep an existing embedded-ID device when a legacy device also exists."""
+    config_entry.add_to_hass(hass)
+    device_registry = dr.async_get(hass)
+    legacy_identifier = (DOMAIN, "deviceclimateControl")
+    embedded_identifier = (DOMAIN, "devicezone1")
+    legacy_entry = device_registry.async_get_or_create(
+        config_entry_id=config_entry.entry_id,
+        identifiers={legacy_identifier},
+    )
+    embedded_entry = device_registry.async_get_or_create(
+        config_entry_id=config_entry.entry_id,
+        identifiers={embedded_identifier},
+    )
+    management_point = MagicMock(management_point_type="climateControl", embedded_id="zone1")
+    device = MagicMock(id="device")
+    device.device.management_points = [management_point]
+
+    migrate_legacy_subdevice_identifiers(hass, config_entry, {"device": device})
+
+    assert device_registry.async_get_device_by_identifier(legacy_identifier, config_entry.entry_id).id == legacy_entry.id
+    assert device_registry.async_get_device_by_identifier(embedded_identifier, config_entry.entry_id).id == embedded_entry.id
+
+
 def test_migrate_legacy_sensor_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
     """Preserve existing entities while making sensor unique IDs unambiguous."""
     config_entry.add_to_hass(hass)
