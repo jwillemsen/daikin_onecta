@@ -108,6 +108,12 @@ def migrate_legacy_subdevice_identifiers(
                 continue
 
             embedded_identifier = (DOMAIN, device.id + management_points[0].embedded_id)
+            embedded_entry = device_registry.async_get_device_by_identifier(embedded_identifier, config_entry.entry_id)
+            # A previous setup may already have created the embedded-ID device.
+            # Keep that canonical entry instead of raising an identifier collision.
+            if embedded_entry is not None and embedded_entry.id != registry_entry.id:
+                continue
+
             identifiers = set(registry_entry.identifiers)
             identifiers.discard(legacy_identifier)
             identifiers.add(embedded_identifier)
