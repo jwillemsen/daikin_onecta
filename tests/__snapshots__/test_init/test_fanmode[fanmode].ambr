@@ -221,6 +221,43 @@
         'state': 'off',
       }),
     }),
+    'select.sala_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.sala_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '13995b32-fc6e-43ed-918e-5d2b01095ccb_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'auto',
+            'dry',
+            'cooling',
+            'heating',
+            'fan_only',
+          ]),
+        }),
+        'entity_id': 'select.sala_climatecontrol_operation_mode',
+        'state': 'heating',
+      }),
+    }),
     'select.sala_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,

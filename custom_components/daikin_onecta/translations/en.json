@@ -112,6 +112,19 @@
     "select": {
       "schedule": {
         "name": "Schedule"
+      },
+      "operation_mode": {
+        "name": "Operation mode",
+        "state": {
+          "auto": "Auto",
+          "cooling": "Cooling",
+          "heating": "Heating",
+          "heating_day": "Heating (day)",
+          "heating_night": "Heating (night)",
+          "dry": "Dry",
+          "fan_only": "Fan only",
+          "humidification": "Humidification"
+        }
       }
     },
     "sensor": {
@@ -310,6 +323,9 @@
     },
     "climate_set_hvac_mode_failed": {
       "message": "Failed to set HVAC mode for {device}"
+    },
+    "select_operation_mode_failed": {
+      "message": "Failed to set the operation mode of {device}"
     },
     "climate_set_preset_mode_failed": {
       "message": "Failed to set preset mode for {device}"
