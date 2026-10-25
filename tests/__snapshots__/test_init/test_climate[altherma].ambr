@@ -2619,6 +2619,41 @@
         'state': 'off',
       }),
     }),
+    'select.altherma_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.altherma_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'heating',
+            'cooling',
+            'auto',
+          ]),
+        }),
+        'entity_id': 'select.altherma_climatecontrol_operation_mode',
+        'state': 'cooling',
+      }),
+    }),
     'select.altherma_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,
@@ -2651,6 +2686,43 @@
         }),
         'entity_id': 'select.altherma_climatecontrol_schedule',
         'state': 'off',
+      }),
+    }),
+    'select.johnny_maaike_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.johnny_maaike_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'fan_only',
+            'heating',
+            'cooling',
+            'auto',
+            'dry',
+          ]),
+        }),
+        'entity_id': 'select.johnny_maaike_climatecontrol_operation_mode',
+        'state': 'cooling',
       }),
     }),
     'select.johnny_maaike_climatecontrol_schedule': dict({
@@ -2689,6 +2761,43 @@
         'state': 'off',
       }),
     }),
+    'select.linde_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.linde_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'fan_only',
+            'heating',
+            'cooling',
+            'auto',
+            'dry',
+          ]),
+        }),
+        'entity_id': 'select.linde_climatecontrol_operation_mode',
+        'state': 'cooling',
+      }),
+    }),
     'select.linde_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,
@@ -2725,6 +2834,43 @@
         'state': 'off',
       }),
     }),
+    'select.sanne_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.sanne_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'fan_only',
+            'heating',
+            'cooling',
+            'auto',
+            'dry',
+          ]),
+        }),
+        'entity_id': 'select.sanne_climatecontrol_operation_mode',
+        'state': 'cooling',
+      }),
+    }),
     'select.sanne_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,
@@ -2759,6 +2905,43 @@
         }),
         'entity_id': 'select.sanne_climatecontrol_schedule',
         'state': 'off',
+      }),
+    }),
+    'select.werkkamer_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.werkkamer_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'fan_only',
+            'heating',
+            'cooling',
+            'auto',
+            'dry',
+          ]),
+        }),
+        'entity_id': 'select.werkkamer_climatecontrol_operation_mode',
+        'state': 'cooling',
       }),
     }),
     'select.werkkamer_climatecontrol_schedule': dict({

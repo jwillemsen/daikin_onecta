@@ -892,6 +892,43 @@
         'state': 'off',
       }),
     }),
+    'select.gostinaia_woonkamer_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.gostinaia_woonkamer_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'auto',
+            'dry',
+            'cooling',
+            'heating',
+            'fan_only',
+          ]),
+        }),
+        'entity_id': 'select.gostinaia_woonkamer_climatecontrol_operation_mode',
+        'state': 'cooling',
+      }),
+    }),
     'select.gostinaia_woonkamer_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,
@@ -928,6 +965,43 @@
         'state': 'off',
       }),
     }),
+    'select.slaapkamer_andre_olha_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.slaapkamer_andre_olha_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'auto',
+            'dry',
+            'cooling',
+            'heating',
+            'fan_only',
+          ]),
+        }),
+        'entity_id': 'select.slaapkamer_andre_olha_climatecontrol_operation_mode',
+        'state': 'cooling',
+      }),
+    }),
     'select.slaapkamer_andre_olha_climatecontrol_schedule': dict({
       'entry': dict({
         'area_id': None,
@@ -962,6 +1036,43 @@
         }),
         'entity_id': 'select.slaapkamer_andre_olha_climatecontrol_schedule',
         'state': 'off',
+      }),
+    }),
+    'select.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'auto',
+            'dry',
+            'cooling',
+            'heating',
+            'fan_only',
+          ]),
+        }),
+        'entity_id': 'select.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_operation_mode',
+        'state': 'cooling',
       }),
     }),
     'select.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_schedule': dict({

@@ -764,6 +764,41 @@
         'state': 'off',
       }),
     }),
+    'select.vloerverwarming_climatecontrol_operation_mode': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'select.vloerverwarming_climatecontrol_operation_mode',
+        'has_entity_name': True,
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Operation mode',
+        'platform': 'daikin_onecta',
+        'translation_key': 'operation_mode',
+        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_1_operationMode',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:hvac',
+          <SelectEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+            'heating',
+            'cooling',
+            'auto',
+          ]),
+        }),
+        'entity_id': 'select.vloerverwarming_climatecontrol_operation_mode',
+        'state': 'heating',
+      }),
+    }),
     'select.vloerverwarming_domestichotwatertank_schedule': dict({
       'entry': dict({
         'area_id': None,
