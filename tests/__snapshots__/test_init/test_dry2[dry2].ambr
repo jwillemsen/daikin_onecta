@@ -2150,7 +2150,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.bedroom_1_room_temperature': dict({
+    'climate.bedroom_1_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2158,7 +2158,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.bedroom_1_room_temperature',
+        'entity_id': 'climate.bedroom_1_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2190,11 +2190,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.bedroom_1_room_temperature',
+        'entity_id': 'climate.bedroom_1_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.bedroom_2_room_temperature': dict({
+    'climate.bedroom_2_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2202,7 +2202,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.bedroom_2_room_temperature',
+        'entity_id': 'climate.bedroom_2_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2234,11 +2234,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.bedroom_2_room_temperature',
+        'entity_id': 'climate.bedroom_2_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.bedroom_3_room_temperature': dict({
+    'climate.bedroom_3_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2246,7 +2246,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.bedroom_3_room_temperature',
+        'entity_id': 'climate.bedroom_3_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2284,11 +2284,11 @@
             'fixed',
           ]),
         }),
-        'entity_id': 'climate.bedroom_3_room_temperature',
+        'entity_id': 'climate.bedroom_3_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.kitchen_room_temperature': dict({
+    'climate.kitchen_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2296,7 +2296,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.kitchen_room_temperature',
+        'entity_id': 'climate.kitchen_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2328,11 +2328,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.kitchen_room_temperature',
+        'entity_id': 'climate.kitchen_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.lounge_room_temperature': dict({
+    'climate.lounge_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2340,7 +2340,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.lounge_room_temperature',
+        'entity_id': 'climate.lounge_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2372,11 +2372,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.lounge_room_temperature',
+        'entity_id': 'climate.lounge_climatecontrol_room_temperature',
         'state': 'dry',
       }),
     }),
-    'climate.master_bathroom_room_temperature': dict({
+    'climate.master_bathroom_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2384,7 +2384,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.master_bathroom_room_temperature',
+        'entity_id': 'climate.master_bathroom_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2416,11 +2416,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.master_bathroom_room_temperature',
+        'entity_id': 'climate.master_bathroom_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.master_bedroom_room_temperature': dict({
+    'climate.master_bedroom_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2428,7 +2428,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.master_bedroom_room_temperature',
+        'entity_id': 'climate.master_bedroom_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2460,7 +2460,7 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.master_bedroom_room_temperature',
+        'entity_id': 'climate.master_bedroom_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),

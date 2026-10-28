@@ -88,7 +88,7 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
                     device = DaikinOnectaDevice(dev_data, self.api)
                     # Register the gateway device in the device registry now, before
                     # this coordinator's first refresh returns and platforms are set
-                    # up, so every platform can link back to it via via_device_id.
+                    # up, so every platform can link child devices to it.
                     device.async_register_ha_device(self.hass, self._config_entry)
                     devices[dev_data.id] = device
 

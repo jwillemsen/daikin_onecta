@@ -642,7 +642,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.vloerverwarming_leaving_water_offset': dict({
+    'climate.vloerverwarming_climatecontrol_leaving_water_offset': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -650,7 +650,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.vloerverwarming_leaving_water_offset',
+        'entity_id': 'climate.vloerverwarming_climatecontrol_leaving_water_offset',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -684,7 +684,7 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: -3,
         }),
-        'entity_id': 'climate.vloerverwarming_leaving_water_offset',
+        'entity_id': 'climate.vloerverwarming_climatecontrol_leaving_water_offset',
         'state': 'heat',
       }),
     }),
@@ -2185,7 +2185,7 @@
         'state': 'off',
       }),
     }),
-    'water_heater.vloerverwarming': dict({
+    'water_heater.vloerverwarming_domestichotwatertank': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -2193,7 +2193,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'water_heater.vloerverwarming',
+        'entity_id': 'water_heater.vloerverwarming_domestichotwatertank',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -2224,7 +2224,7 @@
           'target_temp_step': 1.0,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 43.0,
         }),
-        'entity_id': 'water_heater.vloerverwarming',
+        'entity_id': 'water_heater.vloerverwarming_domestichotwatertank',
         'state': 'heat_pump',
       }),
     }),

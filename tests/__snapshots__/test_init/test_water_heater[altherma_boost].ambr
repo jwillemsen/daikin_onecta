@@ -397,7 +397,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.altherma_leaving_water_offset': dict({
+    'climate.altherma_climatecontrol_leaving_water_offset': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -405,7 +405,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.altherma_leaving_water_offset',
+        'entity_id': 'climate.altherma_climatecontrol_leaving_water_offset',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -439,11 +439,11 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 0,
         }),
-        'entity_id': 'climate.altherma_leaving_water_offset',
+        'entity_id': 'climate.altherma_climatecontrol_leaving_water_offset',
         'state': 'heat',
       }),
     }),
-    'climate.altherma_leaving_water_temperature': dict({
+    'climate.altherma_climatecontrol_leaving_water_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -451,7 +451,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.altherma_leaving_water_temperature',
+        'entity_id': 'climate.altherma_climatecontrol_leaving_water_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -483,11 +483,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.altherma_leaving_water_temperature',
+        'entity_id': 'climate.altherma_climatecontrol_leaving_water_temperature',
         'state': 'heat',
       }),
     }),
-    'climate.altherma_room_temperature': dict({
+    'climate.altherma_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -495,7 +495,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.altherma_room_temperature',
+        'entity_id': 'climate.altherma_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -529,7 +529,7 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 19,
         }),
-        'entity_id': 'climate.altherma_room_temperature',
+        'entity_id': 'climate.altherma_climatecontrol_room_temperature',
         'state': 'heat',
       }),
     }),
@@ -1558,7 +1558,7 @@
         'state': 'off',
       }),
     }),
-    'water_heater.altherma': dict({
+    'water_heater.altherma_domestichotwatertank': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -1566,7 +1566,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'water_heater.altherma',
+        'entity_id': 'water_heater.altherma_domestichotwatertank',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -1597,7 +1597,7 @@
           'target_temp_step': 1.0,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 48.0,
         }),
-        'entity_id': 'water_heater.altherma',
+        'entity_id': 'water_heater.altherma_domestichotwatertank',
         'state': 'performance',
       }),
     }),

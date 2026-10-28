@@ -4,7 +4,7 @@ from collections.abc import Awaitable, Callable
 from typing import Any, Never, override
 
 from homeassistant.exceptions import HomeAssistantError
-from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, DeviceInfo
+from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, ChildDeviceInfo, DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from daikin_onecta.client import OnectaClient
@@ -30,17 +30,14 @@ def gateway_device_info(device: Any) -> DeviceInfo:
     return info
 
 
-def management_point_device_info(device: Any, embedded_id: str, management_point_type: str) -> DeviceInfo:
-    """Build Home Assistant device metadata for a management point."""
+def management_point_device_info(device: Any, embedded_id: str, management_point_type: str) -> ChildDeviceInfo:
+    """Build Home Assistant child-device metadata for a management point."""
     assert device.ha_device_id is not None
-    info = DeviceInfo(
+    return ChildDeviceInfo(
         identifiers={(DOMAIN, device.id + embedded_id)},
-        name=f"{device.name} {management_point_type[0].upper() + management_point_type[1:]}",
-        via_device_id=device.ha_device_id,
-        manufacturer="Daikin",
+        name=management_point_type[0].upper() + management_point_type[1:],
+        parent_device_id=device.ha_device_id,
     )
-    _add_management_point_metadata(info, device, embedded_id)
-    return info
 
 
 def _add_management_point_metadata(info: DeviceInfo, device: Any, embedded_id: str) -> None:
@@ -102,9 +99,8 @@ class DaikinEntity(CoordinatorEntity):
 class DaikinManagementPointEntity(DaikinEntity):
     """Base entity backed by a Daikin management point.
 
-    A management point identifier is required for its data and commands.  A
-    management point type is only required when the entity should be attached
-    to a separate Home Assistant device rather than the gateway device.
+    A management point identifier is required for its data and commands. Each
+    management point is represented as a child device of its gateway.
     """
 
     _embedded_id: str
@@ -120,7 +116,7 @@ class DaikinManagementPointEntity(DaikinEntity):
         super().__init__(
             device,
             coordinator,
-            embedded_id if management_point_type is not None else None,
+            embedded_id,
             management_point_type,
         )
         self._embedded_id = embedded_id

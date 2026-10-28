@@ -93,7 +93,16 @@ async def async_setup_entry(
                 management_point.embedded_id,
                 climate_control.setpoint_types,
             )
-            entities.extend(DaikinClimate(device, setpoint, coordinator, management_point.embedded_id) for setpoint in climate_control.setpoint_types)
+            entities.extend(
+                DaikinClimate(
+                    device,
+                    setpoint,
+                    coordinator,
+                    management_point.embedded_id,
+                    management_point.management_point_type,
+                )
+                for setpoint in climate_control.setpoint_types
+            )
     async_add_entities(entities, update_before_add=False)
 
 
@@ -106,9 +115,16 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
 
     # Setpoint is the setpoint string under
     # temperatureControl/value/operationsModes/mode/setpoints, for example roomTemperature/leavingWaterOffset
-    def __init__(self, device, setpoint, coordinator: OnectaDataUpdateCoordinator, embedded_id: str):
+    def __init__(
+        self,
+        device,
+        setpoint,
+        coordinator: OnectaDataUpdateCoordinator,
+        embedded_id: str,
+        management_point_type: str,
+    ):
         """Initialize the climate device."""
-        super().__init__(device, coordinator, embedded_id)
+        super().__init__(device, coordinator, embedded_id, management_point_type)
         _LOGGER.info(
             "Device '%s' initializing Daikin Climate for controlling %s",
             device.name,

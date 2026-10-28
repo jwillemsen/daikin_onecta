@@ -367,7 +367,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.climate_control_getr422_leaving_water_temperature': dict({
+    'climate.climate_control_getr422_climatecontrol_leaving_water_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -375,7 +375,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.climate_control_getr422_leaving_water_temperature',
+        'entity_id': 'climate.climate_control_getr422_climatecontrol_leaving_water_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -406,7 +406,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
         }),
-        'entity_id': 'climate.climate_control_getr422_leaving_water_temperature',
+        'entity_id': 'climate.climate_control_getr422_climatecontrol_leaving_water_temperature',
         'state': 'off',
       }),
     }),
@@ -1454,7 +1454,7 @@
         'state': 'off',
       }),
     }),
-    'water_heater.climate_control_getr422': dict({
+    'water_heater.climate_control_getr422_domestichotwatertank': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -1462,7 +1462,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'water_heater.climate_control_getr422',
+        'entity_id': 'water_heater.climate_control_getr422_domestichotwatertank',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -1492,7 +1492,7 @@
           'target_temp_step': 0.5,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20.0,
         }),
-        'entity_id': 'water_heater.climate_control_getr422',
+        'entity_id': 'water_heater.climate_control_getr422_domestichotwatertank',
         'state': 'off',
       }),
     }),

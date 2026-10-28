@@ -91,7 +91,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.my_living_room_calculated_leaving_water_temperature': dict({
+    'climate.my_living_room_climatecontrol_calculated_leaving_water_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -99,7 +99,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
+        'entity_id': 'climate.my_living_room_climatecontrol_calculated_leaving_water_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -132,11 +132,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
+        'entity_id': 'climate.my_living_room_climatecontrol_calculated_leaving_water_temperature',
         'state': 'heat',
       }),
     }),
-    'climate.my_living_room_leaving_water_temperature': dict({
+    'climate.my_living_room_climatecontrol_leaving_water_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -144,7 +144,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.my_living_room_leaving_water_temperature',
+        'entity_id': 'climate.my_living_room_climatecontrol_leaving_water_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -177,11 +177,11 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
         }),
-        'entity_id': 'climate.my_living_room_leaving_water_temperature',
+        'entity_id': 'climate.my_living_room_climatecontrol_leaving_water_temperature',
         'state': 'heat',
       }),
     }),
-    'climate.my_living_room_room_temperature': dict({
+    'climate.my_living_room_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -189,7 +189,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.my_living_room_room_temperature',
+        'entity_id': 'climate.my_living_room_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -223,7 +223,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|PRESET_MODE|TURN_OFF|TURN_ON: 401>,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
         }),
-        'entity_id': 'climate.my_living_room_room_temperature',
+        'entity_id': 'climate.my_living_room_climatecontrol_room_temperature',
         'state': 'heat',
       }),
     }),
@@ -1263,7 +1263,7 @@
         'state': 'off',
       }),
     }),
-    'water_heater.my_living_room': dict({
+    'water_heater.my_living_room_domestichotwatertank': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -1271,7 +1271,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'water_heater.my_living_room',
+        'entity_id': 'water_heater.my_living_room_domestichotwatertank',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -1300,7 +1300,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: None,
         }),
-        'entity_id': 'water_heater.my_living_room',
+        'entity_id': 'water_heater.my_living_room_domestichotwatertank',
         'state': 'off',
       }),
     }),

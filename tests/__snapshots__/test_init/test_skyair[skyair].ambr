@@ -727,7 +727,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.gostinaia_woonkamer_room_temperature': dict({
+    'climate.gostinaia_woonkamer_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -735,7 +735,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.gostinaia_woonkamer_room_temperature',
+        'entity_id': 'climate.gostinaia_woonkamer_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -778,11 +778,11 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
         }),
-        'entity_id': 'climate.gostinaia_woonkamer_room_temperature',
+        'entity_id': 'climate.gostinaia_woonkamer_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.slaapkamer_andre_olha_room_temperature': dict({
+    'climate.slaapkamer_andre_olha_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -790,7 +790,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.slaapkamer_andre_olha_room_temperature',
+        'entity_id': 'climate.slaapkamer_andre_olha_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -833,11 +833,11 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
         }),
-        'entity_id': 'climate.slaapkamer_andre_olha_room_temperature',
+        'entity_id': 'climate.slaapkamer_andre_olha_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
-    'climate.tretii_blok_spalnia_vtoroi_etazh_room_temperature': dict({
+    'climate.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -845,7 +845,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.tretii_blok_spalnia_vtoroi_etazh_room_temperature',
+        'entity_id': 'climate.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -888,7 +888,7 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
         }),
-        'entity_id': 'climate.tretii_blok_spalnia_vtoroi_etazh_room_temperature',
+        'entity_id': 'climate.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),

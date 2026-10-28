@@ -276,7 +276,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.ndj_room_temperature': dict({
+    'climate.ndj_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -284,7 +284,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.ndj_room_temperature',
+        'entity_id': 'climate.ndj_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -315,7 +315,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
         }),
-        'entity_id': 'climate.ndj_room_temperature',
+        'entity_id': 'climate.ndj_climatecontrol_room_temperature',
         'state': 'heat',
       }),
     }),
@@ -802,7 +802,7 @@
         'state': 'off',
       }),
     }),
-    'water_heater.ndj': dict({
+    'water_heater.ndj_domestichotwaterflowthrough': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -810,7 +810,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'water_heater.ndj',
+        'entity_id': 'water_heater.ndj_domestichotwaterflowthrough',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -840,7 +840,7 @@
           'target_temp_step': 1.0,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 49.0,
         }),
-        'entity_id': 'water_heater.ndj',
+        'entity_id': 'water_heater.ndj_domestichotwaterflowthrough',
         'state': 'heat_pump',
       }),
     }),

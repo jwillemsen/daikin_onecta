@@ -28,10 +28,7 @@ class DaikinOnectaDevice:
         self.name: str = device.display_name
 
         # Populated by async_register_ha_device() before any entity platform is set
-        # up. Sub-entities (per-management-point devices in sensor/water_heater/
-        # select/binary_sensor/switch/update) use this as via_device_id to link back
-        # to this gateway device: the older via_device=(DOMAIN, identifier) form is
-        # deprecated because identifiers are no longer guaranteed globally unique.
+        # up. Management-point child devices use this as their parent_device_id.
         self.ha_device_id: str | None = None
         self._is_present_in_cloud = True
 
@@ -57,8 +54,7 @@ class DaikinOnectaDevice:
         Called once from the coordinator, before any entity platform is set up
         (platforms are forwarded concurrently, so entity __init__ order across
         platforms can't be relied on). This guarantees self.ha_device_id is
-        already populated by the time any platform builds a sub-device's
-        DeviceInfo with via_device_id=self.ha_device_id.
+        populated before platforms build child-device metadata.
         """
         device_registry = dr.async_get(hass)
         entry = device_registry.async_get_or_create(

@@ -369,7 +369,7 @@
         'state': 'unknown',
       }),
     }),
-    'climate.johnny_maaike_room_temperature': dict({
+    'climate.johnny_maaike_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -377,7 +377,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': None,
-        'entity_id': 'climate.johnny_maaike_room_temperature',
+        'entity_id': 'climate.johnny_maaike_climatecontrol_room_temperature',
         'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
@@ -435,7 +435,7 @@
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 14.5,
         }),
-        'entity_id': 'climate.johnny_maaike_room_temperature',
+        'entity_id': 'climate.johnny_maaike_climatecontrol_room_temperature',
         'state': 'off',
       }),
     }),
