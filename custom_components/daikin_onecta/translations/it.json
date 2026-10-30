@@ -293,8 +293,32 @@
     }
   },
   "exceptions": {
+    "firmware_install_failed": {
+      "message": "Impossibile installare il firmware su"
+    },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    },
+    "schedule_select_failed": {
+      "message": "Impossibile selezionare la pianificazione per"
+    },
+    "switch_turn_off_failed": {
+      "message": "Impossibile spegnere"
+    },
+    "switch_turn_on_failed": {
+      "message": "Impossibile accendere"
+    },
+    "water_heater_set_operation_mode_failed": {
+      "message": "Impossibile impostare la modalità operativa per"
+    },
+    "water_heater_set_temperature_failed": {
+      "message": "Impossibile impostare la temperatura per"
+    },
+    "water_heater_turn_off_failed": {
+      "message": "Impossibile spegnere"
+    },
+    "water_heater_turn_on_failed": {
+      "message": "Impossibile accendere"
     }
   },
   "issues": {
