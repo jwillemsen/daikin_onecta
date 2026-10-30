@@ -295,6 +295,24 @@
   "exceptions": {
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    },
+    "switch_turn_off_failed": {
+      "message": "Uitschakelen is mislukt voor {device}"
+    },
+    "switch_turn_on_failed": {
+      "message": "Inschakelen is mislukt voor {device}"
+    },
+    "water_heater_set_operation_mode_failed": {
+      "message": "Instellen van de bedrijfsmodus is mislukt voor {device}"
+    },
+    "water_heater_set_temperature_failed": {
+      "message": "Temperatuur instellen mislukt voor {device}"
+    },
+    "water_heater_turn_off_failed": {
+      "message": "Uitschakelen is mislukt voor {device}"
+    },
+    "water_heater_turn_on_failed": {
+      "message": "Inschakelen is mislukt voor {device}"
     }
   },
   "issues": {
