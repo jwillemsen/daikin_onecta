@@ -2465,7 +2465,7 @@ async def test_successful_writes_update_cached_models() -> None:
     object.__setattr__(climate, "_device", climate_device)
     object.__setattr__(climate, "_embedded_id", "zone")
     object.__setattr__(climate, "_setpoint", "roomTemperature")
-    object.__setattr__(climate, "_attr_target_temperature", 20)
+    object.__setattr__(climate, "_attr_native_target_temperature", 20)
     climate.operation_mode = MagicMock(return_value=MagicMock(value="heating"))
     climate_setpoint = MagicMock(value=20)
     climate.setpoint = MagicMock(return_value=climate_setpoint)

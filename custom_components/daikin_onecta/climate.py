@@ -115,7 +115,7 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             setpoint,
         )
         self._setpoint = setpoint
-        self._attr_temperature_unit = UnitOfTemperature.CELSIUS
+        self._attr_native_temperature_unit = UnitOfTemperature.CELSIUS
         self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self._setpoint}"
         self._attr_has_entity_name = True
         self.entity_description = CLIMATE_DESCRIPTIONS[setpoint]
@@ -126,11 +126,11 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         # Successful writes update the typed model optimistically so Home
         # Assistant reflects the new state without waiting for the next poll.
         self._attr_supported_features = self.get_supported_features()
-        self._attr_current_temperature = self.get_current_temperature()
+        self._attr_native_current_temperature = self.get_current_temperature()
         self._attr_max_temp = self.get_max_temp()
         self._attr_min_temp = self.get_min_temp()
         self._attr_target_temperature_step = self.get_target_temperature_step()
-        self._attr_target_temperature = self.get_target_temperature()
+        self._attr_native_target_temperature = self.get_target_temperature()
         self._attr_hvac_modes = self.get_hvac_modes()
         self._attr_swing_modes = self.get_swing_modes()
         self._attr_swing_horizontal_modes = self.get_swing_horizontal_modes()
@@ -349,7 +349,7 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                 self._device.name,
                 value,
             )
-            if self._attr_target_temperature != value:
+            if self._attr_native_target_temperature != value:
                 operationmode = self.operation_mode()
                 if operationmode is not None:
                     omv = operationmode.value
@@ -360,7 +360,7 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
                     setpointdict = self.setpoint()
                     if setpointdict is not None:
                         setpointdict.value = value
-                        self._attr_target_temperature = value
+                        self._attr_native_target_temperature = value
                         self.async_write_ha_state()
 
     def get_hvac_mode(self):
