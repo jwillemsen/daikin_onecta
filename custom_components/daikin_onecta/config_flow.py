@@ -70,7 +70,6 @@ class FlowHandler(
     VERSION = 1
     MINOR_VERSION = 2
     DOMAIN = DOMAIN
-    CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     @property
     @override
