@@ -67,6 +67,17 @@ ENTITY_METADATA: tuple[DaikinEntityMetadata, ...] = (
         model_attribute=None,
     ),
     DaikinEntityMetadata(
+        key="operationModeSelect",
+        device_class=None,
+        state_class=None,
+        native_unit_of_measurement=None,
+        icon="mdi:hvac",
+        entity_registry_enabled_default=True,
+        entity_category=None,
+        translation_key="operation_mode",
+        model_attribute=None,
+    ),
+    DaikinEntityMetadata(
         key="controlMode",
         device_class=None,
         state_class=None,
