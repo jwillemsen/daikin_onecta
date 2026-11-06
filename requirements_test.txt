@@ -1,5 +1,7 @@
 -r requirements_dev.txt
-pytest-homeassistant-custom-component
+pytest-homeassistant==2026.11.0
+pytest-cov
+pytest-timeout
 anyio
 aiohttp_cors
 pytest-asyncio

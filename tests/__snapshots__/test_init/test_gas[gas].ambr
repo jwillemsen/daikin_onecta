@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.my_living_room_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -70,7 +68,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.my_living_room_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -100,7 +97,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -131,6 +127,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.my_living_room_calculated_leaving_water_temperature',
         'state': 'heat',
@@ -145,7 +142,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.my_living_room_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -176,6 +172,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.my_living_room_leaving_water_temperature',
         'state': 'heat',
@@ -190,7 +187,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.my_living_room_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -222,6 +218,7 @@
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|PRESET_MODE|TURN_OFF|TURN_ON: 401>,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.my_living_room_room_temperature',
         'state': 'heat',
@@ -236,7 +233,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.my_living_room_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -271,7 +267,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_control_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -301,7 +296,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -337,7 +331,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_daily_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -373,7 +366,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -409,7 +401,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_monthly_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -445,7 +436,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -481,7 +471,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_weekly_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -517,7 +506,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -553,7 +541,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_cooling_yearly_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -589,7 +576,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heat_up_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -619,7 +605,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -655,7 +640,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_daily_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -691,7 +675,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -727,7 +710,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_monthly_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -763,7 +745,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -799,7 +780,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_weekly_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -835,7 +815,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -871,7 +850,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_heating_yearly_gas_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -907,7 +885,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -943,7 +920,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -979,7 +955,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1015,7 +990,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_climatecontrol_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1045,7 +1019,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.my_living_room_domestichotwatertank_tank_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1081,7 +1054,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.my_living_room_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1111,7 +1083,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.my_living_room_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1142,7 +1113,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.my_living_room_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1186,7 +1156,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.my_living_room_indoorunithydro_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1229,7 +1198,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.my_living_room_outdoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1272,7 +1240,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.my_living_room',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1299,6 +1266,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_HIGH: 'target_temp_high'>: None,
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: None,
+          <WaterHeaterStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'water_heater.my_living_room',
         'state': 'off',

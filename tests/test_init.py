@@ -62,8 +62,8 @@ import homeassistant.helpers.entity_registry as er
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import URL
+from pytest_homeassistant.common import MockConfigEntry
+from pytest_homeassistant.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.binary_sensor import migrate_legacy_binary_sensor_unique_ids
@@ -2465,7 +2465,7 @@ async def test_successful_writes_update_cached_models() -> None:
     object.__setattr__(climate, "_device", climate_device)
     object.__setattr__(climate, "_embedded_id", "zone")
     object.__setattr__(climate, "_setpoint", "roomTemperature")
-    object.__setattr__(climate, "_attr_target_temperature", 20)
+    object.__setattr__(climate, "_attr_native_target_temperature", 20)
     climate.operation_mode = MagicMock(return_value=MagicMock(value="heating"))
     climate_setpoint = MagicMock(value=20)
     climate.setpoint = MagicMock(return_value=climate_setpoint)
