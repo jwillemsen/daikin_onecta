@@ -293,8 +293,65 @@
     }
   },
   "exceptions": {
+    "air_purifier_set_mode_failed": {
+      "message": "Mislukt om de luchtzuiveringsmodus in te stellen voor {device}"
+    },
+    "air_purifier_set_percentage_failed": {
+      "message": "Mislukt om de ventilatorsnelheid voor {device} in te stellen."
+    },
+    "air_purifier_turn_off_failed": {
+      "message": "Mislukt om {device} uit te schakelen."
+    },
+    "air_purifier_turn_on_failed": {
+      "message": "Mislukt om {device} in te schakelen."
+    },
+    "climate_set_fan_mode_failed": {
+      "message": "Mislukt om de ventilatormodus in te stellen voor {device}"
+    },
+    "climate_set_hvac_mode_failed": {
+      "message": "Mislukt om de HVAC-modus in te stellen voor {device}"
+    },
+    "climate_set_preset_mode_failed": {
+      "message": "Mislukt om de voorgeprogrammeerde modus voor {device} in te stellen."
+    },
+    "climate_set_swing_mode_failed": {
+      "message": "Mislukt om de swingmodus voor {device} in te stellen."
+    },
+    "climate_set_temperature_failed": {
+      "message": "Mislukt om de temperatuur voor {device} in te stellen."
+    },
+    "climate_turn_off_failed": {
+      "message": "Mislukt om {device} uit te zetten."
+    },
+    "climate_turn_on_failed": {
+      "message": "Mislukt om {device} aan te zetten."
+    },
+    "firmware_install_failed": {
+      "message": "Mislukt om firmware te installeren op {device}"
+    },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
+    },
+    "schedule_select_failed": {
+      "message": "Mislukt om schema te selecteren voor {device}"
+    },
+    "switch_turn_off_failed": {
+      "message": "Uitschakelen is mislukt voor {device}"
+    },
+    "switch_turn_on_failed": {
+      "message": "Inschakelen is mislukt voor {device}"
+    },
+    "water_heater_set_operation_mode_failed": {
+      "message": "Instellen van de bedrijfsmodus is mislukt voor {device}"
+    },
+    "water_heater_set_temperature_failed": {
+      "message": "Temperatuur instellen mislukt voor {device}"
+    },
+    "water_heater_turn_off_failed": {
+      "message": "Uitschakelen is mislukt voor {device}"
+    },
+    "water_heater_turn_on_failed": {
+      "message": "Inschakelen is mislukt voor {device}"
     }
   },
   "issues": {
