@@ -5,7 +5,7 @@ from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from daikin_onecta import GatewayDevice
-from daikin_onecta.models import Characteristic, FanSpeed, Schedule
+from daikin_onecta.models import Characteristic, FanSpeed, Schedule, ScheduleDefinition, ScheduleMode
 from homeassistant.components.button import DOMAIN as BUTTON_DOMAIN, SERVICE_PRESS
 from homeassistant.components.climate import (
     ATTR_FAN_MODE,
@@ -2058,14 +2058,14 @@ async def test_successful_writes_update_cached_models() -> None:
     schedule_data = Schedule(
         current_mode=Characteristic(value="weekly"),
         modes={
-            "weekly": {
-                "currentSchedule": {"value": "old", "values": ["old", "new"]},
-                "enabled": {"value": True, "settable": True},
-                "schedules": {
-                    "old": {"name": {"value": "Old schedule"}},
-                    "new": {"name": {"value": "New schedule"}},
+            "weekly": ScheduleMode(
+                current_schedule=Characteristic(value="old", values=["old", "new"]),
+                enabled=Characteristic(value=True, settable=True),
+                schedules={
+                    "old": ScheduleDefinition(name=Characteristic(value="Old schedule")),
+                    "new": ScheduleDefinition(name=Characteristic(value="New schedule")),
                 },
-            }
+            )
         },
     )
     schedule_point = MagicMock()
@@ -2074,8 +2074,8 @@ async def test_successful_writes_update_cached_models() -> None:
     schedule.async_write_ha_state = MagicMock()
 
     assert await schedule.async_select_option("New schedule")
-    assert schedule_data.modes["weekly"]["currentSchedule"]["value"] == "new"
-    assert schedule_data.modes["weekly"]["enabled"]["value"] is True
+    assert schedule_data.modes["weekly"].current_schedule.value == "new"
+    assert schedule_data.modes["weekly"].enabled.value is True
 
 
 @pytest.mark.asyncio
