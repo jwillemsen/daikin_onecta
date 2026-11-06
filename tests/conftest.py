@@ -9,6 +9,7 @@ from typing import Any
 from unittest.mock import AsyncMock, MagicMock, patch
 
 from _pytest.assertion import truncate
+from freezegun.api import FrozenDateTimeFactory
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.entity_registry as er
@@ -89,12 +90,19 @@ def mock_system_health_url_checks():
         yield
 
 
+@pytest.fixture(autouse=True)
+def freeze_snapshot_time(request: pytest.FixtureRequest) -> None:
+    """Freeze snapshot tests to October, when the monthly values were captured."""
+    if "snapshot_context" in request.fixturenames:
+        freezer: FrozenDateTimeFactory = request.getfixturevalue("freezer")
+        freezer.move_to("2026-10-01 12:00:00+00:00")
+
+
 @pytest.fixture(name="auto_enable_custom_integrations", autouse=True)
 def auto_enable_custom_integrations(hass: Any, enable_custom_integrations: Any) -> None:
     """Enable custom integrations defined in the test dir."""
 
 
-@pytest.mark.freeze_time("2026-01-01 12:00:00+00:00")
 async def snapshot_platform_entities(
     context: SnapshotTestContext,
     platform: Platform,
