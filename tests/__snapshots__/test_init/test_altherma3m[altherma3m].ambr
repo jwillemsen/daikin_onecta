@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_emergency_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -102,7 +99,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_installer_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -132,7 +128,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -163,7 +158,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -193,7 +187,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_emergency_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -224,7 +217,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -255,7 +247,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_installer_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -285,7 +276,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -316,7 +306,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -346,7 +335,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -376,7 +364,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.altherma_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -406,7 +393,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_leaving_water_offset',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -436,6 +422,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|PRESET_MODE|TURN_OFF|TURN_ON: 401>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 0,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.altherma_leaving_water_offset',
         'state': 'off',
@@ -450,7 +437,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.altherma_domestichotwatertank_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -483,7 +469,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_control_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -513,7 +498,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -543,7 +527,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -579,7 +562,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -615,7 +597,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -651,7 +632,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -687,7 +667,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -723,7 +702,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -759,7 +737,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -789,7 +766,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_domestichotwatertank_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -819,7 +795,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heat_up_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -849,7 +824,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -885,7 +859,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -921,7 +894,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -957,7 +929,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -993,7 +964,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1023,7 +993,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_tank_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1059,7 +1028,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1089,7 +1057,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1120,7 +1087,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1163,7 +1129,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_indoorunithydro_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1206,7 +1171,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_outdoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1249,7 +1213,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_userinterface_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1292,7 +1255,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.altherma',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1321,6 +1283,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           'target_temp_step': 1.0,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 42.0,
+          <WaterHeaterStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'water_heater.altherma',
         'state': 'heat_pump',

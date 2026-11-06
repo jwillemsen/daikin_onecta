@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_emergency_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -102,7 +99,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_installer_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -132,7 +128,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -163,7 +158,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -193,7 +187,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_emergency_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -224,7 +217,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -255,7 +247,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_installer_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -285,7 +276,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -316,7 +306,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.altherma_domestichotwatertank_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -346,7 +335,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_cool_heat_master',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -376,7 +364,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -406,7 +393,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -437,7 +423,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -468,7 +453,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_mode_conflict',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -499,7 +483,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -530,7 +513,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_lock_function_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -560,7 +542,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -590,7 +571,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_gateway_daylight_saving_time_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -620,7 +600,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -651,7 +630,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_gateway_led_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -681,7 +659,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -712,7 +689,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -743,7 +719,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.johnny_maaike_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -774,7 +749,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_cool_heat_master',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -804,7 +778,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -834,7 +807,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -865,7 +837,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -896,7 +867,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_in_mode_conflict',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -927,7 +897,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -958,7 +927,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_lock_function_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -988,7 +956,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1018,7 +985,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_gateway_daylight_saving_time_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1048,7 +1014,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1079,7 +1044,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_gateway_led_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1109,7 +1073,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1140,7 +1103,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1171,7 +1133,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.linde_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1202,7 +1163,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_cool_heat_master',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1232,7 +1192,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1262,7 +1221,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1293,7 +1251,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1324,7 +1281,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_in_mode_conflict',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1355,7 +1311,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1386,7 +1341,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_lock_function_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1416,7 +1370,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1446,7 +1399,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_gateway_daylight_saving_time_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1476,7 +1428,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1507,7 +1458,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_gateway_led_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1537,7 +1487,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1568,7 +1517,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1599,7 +1547,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sanne_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1630,7 +1577,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_cool_heat_master',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1660,7 +1606,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1690,7 +1635,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1721,7 +1665,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1752,7 +1695,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_mode_conflict',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1783,7 +1725,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1814,7 +1755,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_lock_function_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1844,7 +1784,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1874,7 +1813,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_daylight_saving_time_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1904,7 +1842,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1935,7 +1872,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_led_enabled',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1965,7 +1901,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1996,7 +1931,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2027,7 +1961,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2058,7 +1991,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.altherma_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2088,7 +2020,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.johnny_maaike_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2118,7 +2049,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.linde_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2148,7 +2078,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.sanne_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2178,7 +2107,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.werkkamer_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2208,7 +2136,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_leaving_water_offset',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2238,6 +2165,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.altherma_leaving_water_offset',
         'state': 'off',
@@ -2252,7 +2180,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2284,6 +2211,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|PRESET_MODE|TURN_OFF|TURN_ON: 401>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 19,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.altherma_leaving_water_temperature',
         'state': 'off',
@@ -2298,7 +2226,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.altherma_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2330,6 +2257,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|PRESET_MODE|TURN_OFF|TURN_ON: 401>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 24.5,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.altherma_room_temperature',
         'state': 'off',
@@ -2344,7 +2272,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.johnny_maaike_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2401,6 +2328,7 @@
           ]),
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.johnny_maaike_room_temperature',
         'state': 'off',
@@ -2415,7 +2343,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.linde_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2472,6 +2399,7 @@
           ]),
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.linde_room_temperature',
         'state': 'off',
@@ -2486,7 +2414,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.sanne_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2543,6 +2470,7 @@
           ]),
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 23,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.sanne_room_temperature',
         'state': 'off',
@@ -2557,7 +2485,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.werkkamer_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2614,6 +2541,7 @@
           ]),
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.werkkamer_room_temperature',
         'state': 'off',
@@ -2628,7 +2556,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.altherma_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2662,7 +2589,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.johnny_maaike_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2698,7 +2624,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.linde_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2734,7 +2659,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.sanne_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2770,7 +2694,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.werkkamer_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2806,7 +2729,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_control_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2836,7 +2758,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2872,7 +2793,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2908,7 +2828,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2944,7 +2863,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2980,7 +2898,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3010,7 +2927,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3046,7 +2962,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3082,7 +2997,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3118,7 +3032,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3154,7 +3067,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3190,7 +3102,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3226,7 +3137,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3262,7 +3172,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_climatecontrol_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3292,7 +3201,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_domestichotwatertank_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3322,7 +3230,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3358,7 +3265,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3394,7 +3300,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3430,7 +3335,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3466,7 +3370,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3496,7 +3399,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.altherma_domestichotwatertank_tank_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3532,7 +3434,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3562,7 +3463,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3593,7 +3493,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3623,7 +3522,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_wifi_connection_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3653,7 +3551,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_gateway_wifi_connection_strength',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3686,7 +3583,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.altherma_userinterface_date_time',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3716,7 +3612,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3752,7 +3647,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3788,7 +3682,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3824,7 +3717,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3860,7 +3752,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3890,7 +3781,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3926,7 +3816,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3962,7 +3851,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3998,7 +3886,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4034,7 +3921,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4070,7 +3956,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4106,7 +3991,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4136,7 +4020,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4167,7 +4050,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_region_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4197,7 +4079,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4227,7 +4108,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_time_zone',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4257,7 +4137,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_wifi_connection_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4287,7 +4166,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_gateway_wifi_connection_strength',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4320,7 +4198,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.johnny_maaike_indoorunit_dry_keep_setting',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4350,7 +4227,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.johnny_maaike_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4380,7 +4256,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4416,7 +4291,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4452,7 +4326,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4488,7 +4361,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4524,7 +4396,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4554,7 +4425,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4590,7 +4460,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4626,7 +4495,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4662,7 +4530,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4698,7 +4565,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4734,7 +4600,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4770,7 +4635,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4800,7 +4664,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4831,7 +4694,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_region_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4861,7 +4723,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4891,7 +4752,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_time_zone',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4921,7 +4781,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_wifi_connection_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4951,7 +4810,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_gateway_wifi_connection_strength',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4984,7 +4842,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.linde_indoorunit_dry_keep_setting',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5014,7 +4871,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.linde_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5044,7 +4900,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5080,7 +4935,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5116,7 +4970,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5152,7 +5005,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5188,7 +5040,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5218,7 +5069,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5254,7 +5104,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5290,7 +5139,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5326,7 +5174,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5362,7 +5209,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5398,7 +5244,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5434,7 +5279,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5464,7 +5308,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5495,7 +5338,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_region_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5525,7 +5367,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5555,7 +5396,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_time_zone',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5585,7 +5425,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_wifi_connection_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5615,7 +5454,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_gateway_wifi_connection_strength',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5648,7 +5486,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sanne_indoorunit_dry_keep_setting',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5678,7 +5515,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sanne_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5708,7 +5544,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5744,7 +5579,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5780,7 +5614,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5816,7 +5649,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5852,7 +5684,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5882,7 +5713,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5918,7 +5748,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5954,7 +5783,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -5990,7 +5818,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6026,7 +5853,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6062,7 +5888,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6098,7 +5923,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6128,7 +5952,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6159,7 +5982,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_region_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6189,7 +6011,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6219,7 +6040,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_time_zone',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6249,7 +6069,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_wifi_connection_ssid',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6279,7 +6098,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_wifi_connection_strength',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6312,7 +6130,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_indoorunit_dry_keep_setting',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6342,7 +6159,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6372,7 +6188,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.johnny_maaike_climatecontrol_econo_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6402,7 +6217,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.johnny_maaike_climatecontrol_streamer_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6432,7 +6246,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.linde_climatecontrol_econo_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6462,7 +6275,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.linde_climatecontrol_streamer_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6492,7 +6304,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.sanne_climatecontrol_econo_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6522,7 +6333,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.sanne_climatecontrol_streamer_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6552,7 +6362,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.werkkamer_climatecontrol_econo_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6582,7 +6391,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'switch.werkkamer_climatecontrol_streamer_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6612,7 +6420,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6655,7 +6462,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_indoorunithydro_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6698,7 +6504,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_outdoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6741,7 +6546,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.altherma_userinterface_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6784,7 +6588,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.johnny_maaike_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6827,7 +6630,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.johnny_maaike_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6870,7 +6672,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.linde_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6913,7 +6714,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.linde_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6956,7 +6756,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.sanne_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -6999,7 +6798,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.sanne_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -7042,7 +6840,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.werkkamer_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -7085,7 +6882,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.werkkamer_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -7128,7 +6924,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.altherma',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -7157,6 +6952,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           'target_temp_step': 1.0,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 48.0,
+          <WaterHeaterStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'water_heater.altherma',
         'state': 'heat_pump',

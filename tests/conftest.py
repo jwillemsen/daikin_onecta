@@ -14,8 +14,8 @@ from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 import homeassistant.helpers.entity_registry as er
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import AiohttpClientMocker
+from pytest_homeassistant.common import MockConfigEntry
+from pytest_homeassistant.test_util.aiohttp import AiohttpClientMocker
 from syrupy import SnapshotAssertion
 from syrupy.extensions.single_file import SingleFileAmberSnapshotExtension
 from syrupy.filters import props

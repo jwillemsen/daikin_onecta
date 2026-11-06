@@ -38,6 +38,7 @@ jobs:
       - name: Tests suite
         run: |
           pytest \
+            -p pytest_homeassistant \
             --timeout=9 \
             --durations=10 \
             -n auto \

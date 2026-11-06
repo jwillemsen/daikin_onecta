@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -102,7 +99,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -133,7 +129,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -163,7 +158,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -193,7 +187,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -224,7 +217,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -255,7 +247,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -286,7 +277,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.werkkamer_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -317,7 +307,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.werkkamer_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -347,7 +336,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.werkkamer_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -403,6 +391,7 @@
           ]),
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 21,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.werkkamer_room_temperature',
         'state': 'off',
@@ -417,7 +406,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.werkkamer_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -451,7 +439,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -487,7 +474,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -523,7 +509,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -559,7 +544,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -595,7 +579,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -625,7 +608,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -661,7 +643,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -697,7 +678,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -733,7 +713,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -769,7 +748,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -805,7 +783,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.werkkamer_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -841,7 +818,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -871,7 +847,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -901,7 +876,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -932,7 +906,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.werkkamer_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -962,7 +935,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.werkkamer_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1005,7 +977,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.werkkamer_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([

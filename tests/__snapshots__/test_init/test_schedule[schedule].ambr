@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -101,7 +98,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -131,7 +127,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.master_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -161,7 +156,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.master_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -202,6 +196,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|FAN_MODE|PRESET_MODE|TURN_OFF|TURN_ON: 409>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 20,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.master_room_temperature',
         'state': 'off',
@@ -216,7 +211,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.master_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -252,7 +246,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -282,7 +275,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.master_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -318,7 +310,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -348,7 +339,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -379,7 +369,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -422,7 +411,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([

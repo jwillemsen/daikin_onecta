@@ -62,8 +62,8 @@ import homeassistant.helpers.entity_registry as er
 from homeassistant.setup import async_setup_component
 from homeassistant.util import dt as dt_util
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
-from pytest_homeassistant_custom_component.test_util.aiohttp import URL
+from pytest_homeassistant.common import MockConfigEntry
+from pytest_homeassistant.test_util.aiohttp import URL
 
 from custom_components.daikin_onecta import update_listener
 from custom_components.daikin_onecta.binary_sensor import migrate_legacy_binary_sensor_unique_ids

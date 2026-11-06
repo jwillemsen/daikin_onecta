@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -102,7 +99,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -133,7 +129,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -163,7 +158,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -194,7 +188,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -225,7 +218,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -256,7 +248,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_1_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -287,7 +278,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -317,7 +307,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -348,7 +337,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -379,7 +367,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -410,7 +397,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -440,7 +426,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -471,7 +456,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -502,7 +486,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -533,7 +516,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_2_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -564,7 +546,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -594,7 +575,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -625,7 +605,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -656,7 +635,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -687,7 +665,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -717,7 +694,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -748,7 +724,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -779,7 +754,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -810,7 +784,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.bedroom_3_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -841,7 +814,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -871,7 +843,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -902,7 +873,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -933,7 +903,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -964,7 +933,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -994,7 +962,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1025,7 +992,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1056,7 +1022,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1087,7 +1052,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.kitchen_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1118,7 +1082,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1148,7 +1111,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1179,7 +1141,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1210,7 +1171,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1241,7 +1201,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1271,7 +1230,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1302,7 +1260,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1333,7 +1290,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1364,7 +1320,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.lounge_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1395,7 +1350,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1425,7 +1379,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1456,7 +1409,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1487,7 +1439,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1518,7 +1469,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1548,7 +1498,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1579,7 +1528,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1610,7 +1558,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1641,7 +1588,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bathroom_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1672,7 +1618,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1702,7 +1647,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1733,7 +1677,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1764,7 +1707,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1795,7 +1737,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1825,7 +1766,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1856,7 +1796,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_outdoorunit_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1887,7 +1826,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_outdoorunit_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1918,7 +1856,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.master_bedroom_outdoorunit_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1949,7 +1886,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.bedroom_1_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1979,7 +1915,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.bedroom_2_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2009,7 +1944,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.bedroom_3_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2039,7 +1973,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.kitchen_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2069,7 +2002,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.lounge_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2099,7 +2031,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.master_bathroom_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2129,7 +2060,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.master_bedroom_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2159,7 +2089,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.bedroom_1_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2189,6 +2118,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.bedroom_1_room_temperature',
         'state': 'off',
@@ -2203,7 +2133,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.bedroom_2_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2233,6 +2162,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.bedroom_2_room_temperature',
         'state': 'off',
@@ -2247,7 +2177,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.bedroom_3_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2283,6 +2212,7 @@
             'swing',
             'fixed',
           ]),
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.bedroom_3_room_temperature',
         'state': 'off',
@@ -2297,7 +2227,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.kitchen_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2327,6 +2256,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.kitchen_room_temperature',
         'state': 'off',
@@ -2341,7 +2271,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.lounge_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2371,6 +2300,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.lounge_room_temperature',
         'state': 'dry',
@@ -2385,7 +2315,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.master_bathroom_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2415,6 +2344,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.master_bathroom_room_temperature',
         'state': 'off',
@@ -2429,7 +2359,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.master_bedroom_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2459,6 +2388,7 @@
             'none',
           ]),
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.PRESET_MODE|TURN_OFF|TURN_ON: 400>,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.master_bedroom_room_temperature',
         'state': 'off',
@@ -2473,7 +2403,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.bedroom_1_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2509,7 +2438,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.bedroom_2_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2545,7 +2473,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.bedroom_3_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2579,7 +2506,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.kitchen_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2615,7 +2541,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.lounge_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2651,7 +2576,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.master_bathroom_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2687,7 +2611,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.master_bedroom_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2723,7 +2646,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2753,7 +2675,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.bedroom_1_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2789,7 +2710,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2819,7 +2739,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2849,7 +2768,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2880,7 +2798,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_1_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2910,7 +2827,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2940,7 +2856,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.bedroom_2_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2976,7 +2891,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3006,7 +2920,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3036,7 +2949,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3067,7 +2979,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_2_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3097,7 +3008,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3127,7 +3037,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.bedroom_3_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3163,7 +3072,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3193,7 +3101,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3223,7 +3130,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3254,7 +3160,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.bedroom_3_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3284,7 +3189,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3314,7 +3218,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.kitchen_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3350,7 +3253,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3380,7 +3282,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3410,7 +3311,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3441,7 +3341,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.kitchen_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3471,7 +3370,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3501,7 +3399,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.lounge_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3537,7 +3434,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3567,7 +3463,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3597,7 +3492,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3628,7 +3522,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.lounge_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3658,7 +3551,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3688,7 +3580,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.master_bathroom_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3724,7 +3615,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3754,7 +3644,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3784,7 +3673,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3815,7 +3703,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bathroom_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3845,7 +3732,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3875,7 +3761,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.master_bedroom_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3911,7 +3796,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3941,7 +3825,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -3971,7 +3854,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4002,7 +3884,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.master_bedroom_outdoorunit_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4032,7 +3913,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_1_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4075,7 +3955,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_1_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4118,7 +3997,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_2_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4161,7 +4039,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_2_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4204,7 +4081,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_3_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4247,7 +4123,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.bedroom_3_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4290,7 +4165,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.kitchen_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4333,7 +4207,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.kitchen_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4376,7 +4249,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.lounge_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4419,7 +4291,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.lounge_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4462,7 +4333,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bathroom_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4505,7 +4375,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bathroom_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4548,7 +4417,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bedroom_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -4591,7 +4459,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.master_bedroom_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([

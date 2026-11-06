@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_in_caution_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -102,7 +99,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -133,7 +129,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -163,7 +158,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.air_purifier_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -194,7 +188,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -224,7 +217,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_emergency_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -255,7 +247,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -286,7 +277,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_installer_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -316,7 +306,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_climatecontrol_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -347,7 +336,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -377,7 +365,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_emergency_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -408,7 +395,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -439,7 +425,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_installer_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -469,7 +454,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_in_warning_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -500,7 +484,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_domestichotwatertank_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -530,7 +513,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -560,7 +542,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.vloerverwarming_gateway_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -591,7 +572,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.air_purifier_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -621,7 +601,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.vloerverwarming_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -651,7 +630,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.vloerverwarming_leaving_water_offset',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -683,6 +661,7 @@
           <EntityStateAttribute.SUPPORTED_FEATURES: 'supported_features'>: <ClimateEntityFeature.TARGET_TEMPERATURE|PRESET_MODE|TURN_OFF|TURN_ON: 401>,
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 1,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: -3,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.vloerverwarming_leaving_water_offset',
         'state': 'heat',
@@ -697,7 +676,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'fan.air_purifier_climatecontrol',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -737,7 +715,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.air_purifier_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -773,7 +750,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.vloerverwarming_domestichotwatertank_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -806,7 +782,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_air_purification_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -836,7 +811,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -866,7 +840,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_pm10_concentration',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -899,7 +872,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_pm1_concentration',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -932,7 +904,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_pm2_5_concentration',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -965,7 +936,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_room_humidity',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -998,7 +968,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.air_purifier_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1034,7 +1003,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1064,7 +1032,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1094,7 +1061,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.air_purifier_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1125,7 +1091,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_control_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1155,7 +1120,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1191,7 +1155,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1227,7 +1190,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1263,7 +1225,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1299,7 +1260,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1329,7 +1289,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1365,7 +1324,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1401,7 +1359,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1437,7 +1394,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1473,7 +1429,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_leaving_water_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1509,7 +1464,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1545,7 +1499,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_climatecontrol_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1575,7 +1528,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1605,7 +1557,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heat_up_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1635,7 +1586,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1671,7 +1621,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1707,7 +1656,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1743,7 +1691,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1779,7 +1726,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_setpoint_mode',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1809,7 +1755,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.vloerverwarming_domestichotwatertank_tank_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1845,7 +1790,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_gateway_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1875,7 +1819,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1905,7 +1848,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.vloerverwarming_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1936,7 +1878,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.air_purifier_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -1979,7 +1920,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.air_purifier_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2022,7 +1962,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2065,7 +2004,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_indoorunithydro_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2108,7 +2046,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_outdoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2151,7 +2088,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.vloerverwarming_userinterface_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2194,7 +2130,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'water_heater.vloerverwarming',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2223,6 +2158,7 @@
           <WaterHeaterStateAttribute.TARGET_TEMP_LOW: 'target_temp_low'>: None,
           'target_temp_step': 1.0,
           <WaterHeaterStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 43.0,
+          <WaterHeaterStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'water_heater.vloerverwarming',
         'state': 'heat_pump',

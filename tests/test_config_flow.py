@@ -11,7 +11,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 from homeassistant.setup import async_setup_component
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, OAUTH2_AUTHORIZE, OAUTH2_TOKEN
 

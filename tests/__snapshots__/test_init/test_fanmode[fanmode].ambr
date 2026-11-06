@@ -10,7 +10,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_climatecontrol_is_holiday_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -40,7 +39,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_climatecontrol_is_in_error_state',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -71,7 +69,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_climatecontrol_is_powerful_mode_active',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -101,7 +98,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'binary_sensor.sala_gateway_is_firmware_update_supported',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -131,7 +127,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
         'entity_id': 'button.sala_refresh',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -161,7 +156,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'climate.sala_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -216,6 +210,7 @@
           ]),
           <ClimateEntityCapabilityAttribute.TARGET_TEMP_STEP: 'target_temp_step'>: 0.5,
           <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 25,
+          <ClimateEntityStateAttribute.TEMPERATURE_UNIT: 'temperature_unit'>: <UnitOfTemperature.CELSIUS: '°C'>,
         }),
         'entity_id': 'climate.sala_room_temperature',
         'state': 'off',
@@ -230,7 +225,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'select.sala_climatecontrol_schedule',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -266,7 +260,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -302,7 +295,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -338,7 +330,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -374,7 +365,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_cooling_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -410,7 +400,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sala_climatecontrol_error_code',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -440,7 +429,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_daily_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -476,7 +464,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_monthly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -512,7 +499,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_weekly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -548,7 +534,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_heating_yearly_electrical_consumption',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -584,7 +569,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_outdoor_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -620,7 +604,6 @@
         'disabled_by': None,
         'entity_category': None,
         'entity_id': 'sensor.sala_climatecontrol_room_temperature',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -656,7 +639,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sala_gateway_ip_address',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -686,7 +668,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'sensor.sala_gateway_ratelimit_remaining_day',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -717,7 +698,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.sala_gateway_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -760,7 +740,6 @@
         'disabled_by': None,
         'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
         'entity_id': 'update.sala_indoorunit_firmware_update',
-        'has_entity_name': True,
         'hidden_by': None,
         'icon': None,
         'labels': list([

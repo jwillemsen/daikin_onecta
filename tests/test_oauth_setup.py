@@ -8,7 +8,7 @@ from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady, OAuth2TokenRequestError, OAuth2TokenRequestReauthError
 from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 from yarl import URL
 
 from custom_components.daikin_onecta import async_setup_entry
