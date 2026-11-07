@@ -293,6 +293,21 @@
     }
   },
   "exceptions": {
+    "climate_set_fan_mode_failed": {
+      "message": "Impossibile configurare la modalità della ventola di {device}"
+    },
+    "climate_set_swing_mode_failed": {
+      "message": "Impossibile variare la modalità oscillante di {device}"
+    },
+    "climate_set_temperature_failed": {
+      "message": "Impossibile cambiare la temperatura di {device}"
+    },
+    "climate_turn_off_failed": {
+      "message": "Impossibile spegnere {device}"
+    },
+    "climate_turn_on_failed": {
+      "message": "Impossibile accendere {device}"
+    },
     "firmware_install_failed": {
       "message": "Impossibile installare il firmware su"
     },
