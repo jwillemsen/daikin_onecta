@@ -7,10 +7,15 @@ from typing import override
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
-from daikin_onecta.exceptions import OnectaConnectionError, OnectaRateLimitError
+from daikin_onecta.exceptions import (
+    OnectaAuthenticationError,
+    OnectaConnectionError,
+    OnectaRateLimitError,
+)
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
@@ -66,6 +71,8 @@ class OnectaDataUpdateCoordinator(DataUpdateCoordinator[dict[str, DaikinOnectaDe
         else:
             try:
                 cloud_devices = await self.api.get_cloud_device_details()
+            except OnectaAuthenticationError as err:
+                raise ConfigEntryAuthFailed from err
             except OnectaRateLimitError as err:
                 raise UpdateFailed(
                     RATE_LIMIT_EXCEEDED,
