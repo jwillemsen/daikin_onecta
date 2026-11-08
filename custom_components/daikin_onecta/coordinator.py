@@ -11,11 +11,7 @@ from homeassistant.exceptions import ConfigEntryAuthFailed
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from homeassistant.util import dt as dt_util
 
-from daikin_onecta.exceptions import (
-    OnectaAuthenticationError,
-    OnectaConnectionError,
-    OnectaRateLimitError,
-)
+from daikin_onecta.exceptions import OnectaAuthenticationError, OnectaConnectionError, OnectaRateLimitError
 
 from .const import DOMAIN
 from .daikin_api import DaikinApi
