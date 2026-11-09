@@ -6,19 +6,10 @@ import logging
 import re
 from typing import override
 
-from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, ClimateEntity
-from homeassistant.components.climate.const import (
-    ATTR_HVAC_MODE,
-    PRESET_AWAY,
-    PRESET_BOOST,
-    PRESET_COMFORT,
-    PRESET_ECO,
-    PRESET_NONE,
-    ClimateEntityFeature,
-    HVACMode,
-)
+from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, ClimateEntity, ClimateServiceArgument
+from homeassistant.components.climate.const import PRESET_AWAY, PRESET_BOOST, PRESET_COMFORT, PRESET_ECO, PRESET_NONE, ClimateEntityFeature, HVACMode
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
+from homeassistant.const import UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
@@ -339,11 +330,11 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
     @override
     async def async_set_temperature(self, **kwargs):
         """Set the HVAC mode and/or target temperature."""
-        if ATTR_HVAC_MODE in kwargs:
-            await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
+        if ClimateServiceArgument.HVAC_MODE in kwargs:
+            await self.async_set_hvac_mode(kwargs[ClimateServiceArgument.HVAC_MODE])
 
-        if ATTR_TEMPERATURE in kwargs:
-            value = kwargs[ATTR_TEMPERATURE]
+        if ClimateServiceArgument.TEMPERATURE in kwargs:
+            value = kwargs[ClimateServiceArgument.TEMPERATURE]
             _LOGGER.debug(
                 "Device '%s' request to set temperature to '%s'",
                 self._device.name,

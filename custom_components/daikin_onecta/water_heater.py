@@ -4,9 +4,16 @@ from collections.abc import Awaitable, Callable
 import logging
 from typing import TYPE_CHECKING, Any, override
 
-from homeassistant.components.water_heater import STATE_HEAT_PUMP, STATE_OFF, STATE_PERFORMANCE, WaterHeaterEntity, WaterHeaterEntityFeature
+from homeassistant.components.water_heater import (
+    STATE_HEAT_PUMP,
+    STATE_OFF,
+    STATE_PERFORMANCE,
+    WaterHeaterEntity,
+    WaterHeaterEntityFeature,
+    WaterHeaterServiceArgument,
+)
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
+from homeassistant.const import UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
@@ -197,7 +204,7 @@ class DaikinWaterTank(DaikinManagementPointEntity, WaterHeaterEntity):
         # The service climate.set_temperature can set the hvac_mode too, see
         # https://www.home-assistant.io/integrations/climate/#service-climateset_temperature
         # se we first set the hvac_mode, if provided, then the temperature.
-        await self.async_set_tank_temperature(kwargs[ATTR_TEMPERATURE])
+        await self.async_set_tank_temperature(kwargs[WaterHeaterServiceArgument.TEMPERATURE])
 
     def get_current_operation(self):
         """Return current operation ie. heat, cool, idle."""
