@@ -734,6 +734,8 @@
             '2',
             '3',
           ]),
+          'holiday_end_date': '2026-08-09',
+          'holiday_start_date': '2026-06-10',
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.HEAT_COOL: 'heat_cool'>,
@@ -789,6 +791,8 @@
             '2',
             '3',
           ]),
+          'holiday_end_date': '2026-08-09',
+          'holiday_start_date': '2026-06-10',
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.HEAT_COOL: 'heat_cool'>,
@@ -844,6 +848,8 @@
             '2',
             '3',
           ]),
+          'holiday_end_date': '2026-08-09',
+          'holiday_start_date': '2026-06-10',
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.HEAT_COOL: 'heat_cool'>,
@@ -1000,6 +1006,66 @@
         }),
         'entity_id': 'sensor.gostinaia_woonkamer_climatecontrol_error_code',
         'state': '00',
+      }),
+    }),
+    'sensor.gostinaia_woonkamer_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.gostinaia_woonkamer_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.gostinaia_woonkamer_climatecontrol_holiday_end_date',
+        'state': '2026-08-09',
+      }),
+    }),
+    'sensor.gostinaia_woonkamer_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.gostinaia_woonkamer_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.gostinaia_woonkamer_climatecontrol_holiday_start_date',
+        'state': '2026-06-10',
       }),
     }),
     'sensor.gostinaia_woonkamer_climatecontrol_outdoor_temperature': dict({
@@ -1658,6 +1724,66 @@
         'state': '00',
       }),
     }),
+    'sensor.slaapkamer_andre_olha_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.slaapkamer_andre_olha_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.slaapkamer_andre_olha_climatecontrol_holiday_end_date',
+        'state': '2026-08-09',
+      }),
+    }),
+    'sensor.slaapkamer_andre_olha_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.slaapkamer_andre_olha_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.slaapkamer_andre_olha_climatecontrol_holiday_start_date',
+        'state': '2026-06-10',
+      }),
+    }),
     'sensor.slaapkamer_andre_olha_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -2277,6 +2403,66 @@
         }),
         'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_error_code',
         'state': '00',
+      }),
+    }),
+    'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_holiday_end_date',
+        'state': '2026-08-09',
+      }),
+    }),
+    'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_holiday_start_date',
+        'state': '2026-06-10',
       }),
     }),
     'sensor.tretii_blok_spalnia_vtoroi_etazh_climatecontrol_room_temperature': dict({

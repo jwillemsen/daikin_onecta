@@ -2104,6 +2104,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 23.9,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2148,6 +2150,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 24.7,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2192,6 +2196,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 19.2,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2242,6 +2248,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 24.8,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2286,6 +2294,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 23.9,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2330,6 +2340,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 25.7,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2374,6 +2386,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 25.1,
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2666,6 +2680,66 @@
         'state': '-',
       }),
     }),
+    'sensor.bedroom_1_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.bedroom_1_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.bedroom_1_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.bedroom_1_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.bedroom_1_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '7bd36d96-73b3-44a1-8642-f3650e9cc732_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.bedroom_1_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
+      }),
+    }),
     'sensor.bedroom_1_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -2845,6 +2919,66 @@
         }),
         'entity_id': 'sensor.bedroom_2_climatecontrol_error_code',
         'state': '-',
+      }),
+    }),
+    'sensor.bedroom_2_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.bedroom_2_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.bedroom_2_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.bedroom_2_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.bedroom_2_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': 'df4648e9-d40b-4242-b9fe-e5d0f6451a6b_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.bedroom_2_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
       }),
     }),
     'sensor.bedroom_2_climatecontrol_room_temperature': dict({
@@ -3028,6 +3162,66 @@
         'state': '-',
       }),
     }),
+    'sensor.bedroom_3_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.bedroom_3_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.bedroom_3_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.bedroom_3_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.bedroom_3_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '4c60a395-f659-47d6-9a4b-be9aae836761_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.bedroom_3_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
+      }),
+    }),
     'sensor.bedroom_3_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -3207,6 +3401,66 @@
         }),
         'entity_id': 'sensor.kitchen_climatecontrol_error_code',
         'state': '-',
+      }),
+    }),
+    'sensor.kitchen_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.kitchen_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.kitchen_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.kitchen_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.kitchen_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '72b407b4-4e6f-47e2-814f-ee36d1548858_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.kitchen_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
       }),
     }),
     'sensor.kitchen_climatecontrol_room_temperature': dict({
@@ -3390,6 +3644,66 @@
         'state': '-',
       }),
     }),
+    'sensor.lounge_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.lounge_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.lounge_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.lounge_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.lounge_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '1bcc6300-47e8-46c8-9ca8-79b4e649e145_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.lounge_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
+      }),
+    }),
     'sensor.lounge_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -3571,6 +3885,66 @@
         'state': '-',
       }),
     }),
+    'sensor.master_bathroom_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.master_bathroom_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.master_bathroom_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.master_bathroom_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.master_bathroom_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '1b4e05a4-466d-41d8-b90e-19dded548684_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.master_bathroom_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
+      }),
+    }),
     'sensor.master_bathroom_climatecontrol_room_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -3750,6 +4124,66 @@
         }),
         'entity_id': 'sensor.master_bedroom_climatecontrol_error_code',
         'state': '-',
+      }),
+    }),
+    'sensor.master_bedroom_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.master_bedroom_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.master_bedroom_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.master_bedroom_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.master_bedroom_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': 'c7d4957f-2b0a-468f-adbc-06d150d9af39_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.master_bedroom_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
       }),
     }),
     'sensor.master_bedroom_climatecontrol_room_temperature': dict({
