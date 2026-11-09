@@ -1828,6 +1828,35 @@ async def test_minimal_data(
 
 
 @pytest.mark.asyncio
+async def test_setup_with_gateway_missing_management_points(
+    hass: HomeAssistant,
+    aioclient_mock: Any,
+    config_entry: MockConfigEntry,
+) -> None:
+    """Set up successfully when Daikin omits a gateway's management points."""
+    gateway_devices = load_fixture_json("issue_841_gateway_devices")
+    with patch("homeassistant.helpers.config_entry_oauth2_flow.async_get_config_entry_implementation"):
+        aioclient_mock.get(
+            DAIKIN_API_URL + "/v1/gateway-devices",
+            status=200,
+            json=gateway_devices,
+            headers={
+                "X-RateLimit-Limit-minute": "0",
+                "X-RateLimit-Limit-day": "0",
+                "X-RateLimit-Remaining-day": "0",
+            },
+        )
+        assert await hass.config_entries.async_setup(config_entry.entry_id)
+
+    await hass.async_block_till_done()
+
+    assert len(config_entry.runtime_data.data) == 1
+    device = config_entry.runtime_data.data["test-altherma-gateway"]
+    assert device.available
+    assert device.device.management_points == []
+
+
+@pytest.mark.asyncio
 async def test_gas(
     onecta_auth: AsyncMock,
     snapshot_context: SnapshotTestContext,
