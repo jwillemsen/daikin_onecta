@@ -2151,6 +2151,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 27,
+          'holiday_end_date': '2017-01-01',
+          'holiday_start_date': '2017-01-01',
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.HEAT: 'heat'>,
@@ -2195,6 +2197,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 27,
+          'holiday_end_date': '2017-01-01',
+          'holiday_start_date': '2017-01-01',
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.HEAT: 'heat'>,
@@ -2241,6 +2245,8 @@
       'state': dict({
         'attributes': ReadOnlyDict({
           <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 21,
+          'holiday_end_date': '2017-01-01',
+          'holiday_start_date': '2017-01-01',
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.HEAT: 'heat'>,
@@ -2297,6 +2303,8 @@
             '4',
             '5',
           ]),
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2368,6 +2376,8 @@
             '4',
             '5',
           ]),
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2439,6 +2449,8 @@
             '4',
             '5',
           ]),
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -2510,6 +2522,8 @@
             '4',
             '5',
           ]),
+          'holiday_end_date': None,
+          'holiday_start_date': None,
           <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
             <HVACMode.OFF: 'off'>,
             <HVACMode.FAN_ONLY: 'fan_only'>,
@@ -3056,6 +3070,66 @@
         }),
         'entity_id': 'sensor.altherma_climatecontrol_heating_yearly_electrical_consumption',
         'state': '1252',
+      }),
+    }),
+    'sensor.altherma_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.altherma_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.altherma_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.altherma_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.altherma_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_climateControlMainZone_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.altherma_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
       }),
     }),
     'sensor.altherma_climatecontrol_leaving_water_temperature': dict({
@@ -3912,6 +3986,66 @@
         'state': '11.5',
       }),
     }),
+    'sensor.johnny_maaike_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.johnny_maaike_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.johnny_maaike_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.johnny_maaike_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.johnny_maaike_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '32db6075-b739-4026-b661-127009254b42_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.johnny_maaike_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
+      }),
+    }),
     'sensor.johnny_maaike_climatecontrol_outdoor_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -4554,6 +4688,66 @@
         }),
         'entity_id': 'sensor.linde_climatecontrol_heating_yearly_electrical_consumption',
         'state': '18.7',
+      }),
+    }),
+    'sensor.linde_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.linde_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.linde_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.linde_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.linde_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.linde_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
       }),
     }),
     'sensor.linde_climatecontrol_outdoor_temperature': dict({
@@ -5200,6 +5394,66 @@
         'state': '31.5',
       }),
     }),
+    'sensor.sanne_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.sanne_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.sanne_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.sanne_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.sanne_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.sanne_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
+      }),
+    }),
     'sensor.sanne_climatecontrol_outdoor_temperature': dict({
       'entry': dict({
         'area_id': None,
@@ -5842,6 +6096,66 @@
         }),
         'entity_id': 'sensor.werkkamer_climatecontrol_heating_yearly_electrical_consumption',
         'state': '22.5',
+      }),
+    }),
+    'sensor.werkkamer_climatecontrol_holiday_end_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.werkkamer_climatecontrol_holiday_end_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday end date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidayenddate',
+        'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_holidayModeEndDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-end',
+        }),
+        'entity_id': 'sensor.werkkamer_climatecontrol_holiday_end_date',
+        'state': 'unavailable',
+      }),
+    }),
+    'sensor.werkkamer_climatecontrol_holiday_start_date': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': None,
+        'entity_id': 'sensor.werkkamer_climatecontrol_holiday_start_date',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Holiday start date',
+        'platform': 'daikin_onecta',
+        'translation_key': 'holidaystartdate',
+        'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_climateControl_holidayModeStartDate',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'date',
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:calendar-start',
+        }),
+        'entity_id': 'sensor.werkkamer_climatecontrol_holiday_start_date',
+        'state': 'unavailable',
       }),
     }),
     'sensor.werkkamer_climatecontrol_outdoor_temperature': dict({

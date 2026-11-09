@@ -1,6 +1,7 @@
 """Support for Daikin AC sensors."""
 
 from dataclasses import dataclass
+from datetime import date
 import logging
 from typing import TYPE_CHECKING, override
 
@@ -22,12 +23,15 @@ from .const import (
 )
 from .device import DaikinOnectaDevice
 from .entity import DaikinEntity
-from .entity_descriptions import SENSOR_DESCRIPTIONS
+from .entity_descriptions import HOLIDAY_DATE_SENSOR_DESCRIPTIONS, SENSOR_DESCRIPTIONS
 
 if TYPE_CHECKING:
     from .coordinator import OnectaDataUpdateCoordinator
 
 _LOGGER = logging.getLogger(__name__)
+
+# The Daikin cloud reports this date as start and end when no holiday has ever been set
+HOLIDAY_PLACEHOLDER_DATE = date(2017, 1, 1)
 
 
 @dataclass(frozen=True)
@@ -141,6 +145,17 @@ def add_management_point_sensors(coordinator, device, management_point, sensors)
     add_simple_sensors(coordinator, device, management_point, sensors)
     add_sensory_sensors(coordinator, device, management_point, sensors)
     add_energy_sensors(coordinator, device, management_point, sensors)
+    add_holiday_date_sensors(coordinator, device, management_point, sensors)
+
+
+def add_holiday_date_sensors(coordinator, device, management_point, sensors) -> None:
+    """Add the holiday start and end date sensors of a management point."""
+    if management_point.holiday_mode is None:
+        return
+    sensors.extend(
+        DaikinHolidayDateSensor(device, coordinator, management_point.embedded_id, management_point.management_point_type, attribute)
+        for attribute in HOLIDAY_DATE_SENSOR_DESCRIPTIONS
+    )
 
 
 def _legacy_value_sensor_id_migrations(device: DaikinOnectaDevice) -> dict[str, str]:
@@ -413,3 +428,46 @@ class DaikinLimitSensor(DaikinEntity, SensorEntity):
         """Return the current API rate-limit value."""
         daikin_api = self._config_entry.runtime_data.api
         return daikin_api.rate_limits[self._limit_key]
+
+
+class DaikinHolidayDateSensor(DaikinEntity, SensorEntity):
+    """Represent the start or end date of the holiday mode period."""
+
+    _attr_has_entity_name = True
+
+    def __init__(self, device: DaikinOnectaDevice, coordinator, embedded_id: str, management_point_type: str, attribute: str) -> None:
+        """Initialize the sensor for the ``start_date`` or ``end_date`` of the holiday mode."""
+        super().__init__(device, coordinator, embedded_id, management_point_type)
+        self._attribute = attribute
+        self.entity_description = HOLIDAY_DATE_SENSOR_DESCRIPTIONS[attribute]
+        self._attr_unique_id = f"{self._device.id}_{self._embedded_id}_{self.entity_description.key}"
+        self.update_state()
+
+    def update_state(self) -> None:
+        """Refresh the state from the current device data."""
+        self._attr_native_value = self.sensor_value()
+
+    @callback
+    @override
+    def _handle_coordinator_update(self) -> None:
+        self.update_state()
+        self.async_write_ha_state()
+
+    @property
+    @override
+    def available(self) -> bool:
+        """Return whether a real holiday date is known, Daikin reports a 2017-01-01 placeholder when none was set."""
+        return super().available and self._attr_native_value is not None
+
+    def sensor_value(self) -> date | None:
+        """Return the configured date, or None when unknown or the Daikin placeholder."""
+        point = self._device.management_point(self._embedded_id)
+        holiday = point.holiday_mode if point is not None else None
+        value = getattr(holiday.value, self._attribute, None) if holiday is not None else None
+        if not value:
+            return None
+        try:
+            result = date.fromisoformat(value)
+        except ValueError:
+            return None
+        return None if result == HOLIDAY_PLACEHOLDER_DATE else result

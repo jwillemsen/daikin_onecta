@@ -851,6 +851,21 @@ SENSOR_DESCRIPTIONS: dict[str, DaikinSensorEntityDescription] = {
     if not isinstance(metadata.device_class, BinarySensorDeviceClass) and not isinstance(metadata.device_class, UpdateDeviceClass)
 }
 
+HOLIDAY_DATE_SENSOR_DESCRIPTIONS: dict[str, SensorEntityDescription] = {
+    "start_date": SensorEntityDescription(
+        key="holidayModeStartDate",
+        device_class=SensorDeviceClass.DATE,
+        icon="mdi:calendar-start",
+        translation_key="holidaystartdate",
+    ),
+    "end_date": SensorEntityDescription(
+        key="holidayModeEndDate",
+        device_class=SensorDeviceClass.DATE,
+        icon="mdi:calendar-end",
+        translation_key="holidayenddate",
+    ),
+}
+
 BINARY_SENSOR_DESCRIPTIONS = {
     metadata.key: BinarySensorEntityDescription(
         key=metadata.key,
