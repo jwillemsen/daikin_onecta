@@ -463,6 +463,57 @@ async def test_climate_fixedfanmode(
 
 
 @pytest.mark.asyncio
+async def test_operation_mode_select(
+    onecta_auth: AsyncMock,
+    snapshot_context: SnapshotTestContext,
+) -> None:
+    """Test changing the stored operation mode without switching the unit on."""
+    hass = snapshot_context.hass
+    aioclient_mock = snapshot_context.aioclient_mock
+    await snapshot_platform_entities(snapshot_context, Platform.SELECT, "climate_fixedfanmode")
+
+    assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+    assert hass.states.get("select.werkkamer_climatecontrol_operation_mode").state == "heating"
+
+    with patch(
+        "custom_components.daikin_onecta.DaikinApi.async_get_access_token",
+        return_value="XXXXXX",
+    ):
+        aioclient_mock.patch(
+            DAIKIN_API_URL
+            + "/v1/gateway-devices/6f944461-08cb-4fee-979c-710ff66cea77/management-points/climateControl/characteristics/operationMode",
+            status=204,
+        )
+        calls_before = len(aioclient_mock.mock_calls)
+
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_operation_mode", ATTR_OPTION: "cooling"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+
+        new_calls = aioclient_mock.mock_calls[calls_before:]
+        assert len(new_calls) == 1
+        assert str(new_calls[0][1]).endswith("/characteristics/operationMode")
+        assert new_calls[0][2] == {"value": "cooling"}
+        assert hass.states.get("select.werkkamer_climatecontrol_operation_mode").state == "cooling"
+        # The unit stays off, only the stored mode changed
+        assert hass.states.get("climate.werkkamer_room_temperature").state == HVACMode.OFF
+
+        # Selecting the current mode again does not call the cloud
+        await hass.services.async_call(
+            SELECT_DOMAIN,
+            SERVICE_SELECT_OPTION,
+            {ATTR_ENTITY_ID: "select.werkkamer_climatecontrol_operation_mode", ATTR_OPTION: "cooling"},
+            blocking=True,
+        )
+        await hass.async_block_till_done()
+        assert len(aioclient_mock.mock_calls) == calls_before + 1
+
+
+@pytest.mark.asyncio
 async def test_climate_homekit_fan_mode_aliases(
     onecta_auth: AsyncMock,
     snapshot_context: SnapshotTestContext,
