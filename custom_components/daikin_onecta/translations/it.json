@@ -293,8 +293,26 @@
     }
   },
   "exceptions": {
+    "air_purifier_set_mode_failed": {
+      "message": "Impossibile impostare la modalità di purificazione per {device}"
+    },
+    "air_purifier_set_percentage_failed": {
+      "message": "Impossibile impostare la velocità della ventola per {device}"
+    },
+    "air_purifier_turn_off_failed": {
+      "message": "Impossibile spegnere {device}"
+    },
+    "air_purifier_turn_on_failed": {
+      "message": "Impossibile accendere {device}"
+    },
     "climate_set_fan_mode_failed": {
       "message": "Impossibile configurare la modalità della ventola di {device}"
+    },
+    "climate_set_hvac_mode_failed": {
+      "message": "Impossibile impostare la modalità HVAC per {device}"
+    },
+    "climate_set_preset_mode_failed": {
+      "message": "Impossibile impostare la modalità preimpostata per {device}"
     },
     "climate_set_swing_mode_failed": {
       "message": "Impossibile variare la modalità oscillante di {device}"
@@ -309,31 +327,31 @@
       "message": "Impossibile accendere {device}"
     },
     "firmware_install_failed": {
-      "message": "Impossibile installare il firmware su"
+      "message": "Impossibile installare il firmware su {device}"
     },
     "oauth2_implementation_unavailable": {
       "message": "[%key:common::exceptions::oauth2_implementation_unavailable::message%]"
     },
     "schedule_select_failed": {
-      "message": "Impossibile selezionare la pianificazione per"
+      "message": "Impossibile selezionare la pianificazione per {device}"
     },
     "switch_turn_off_failed": {
-      "message": "Impossibile spegnere"
+      "message": "Impossibile spegnere {device}"
     },
     "switch_turn_on_failed": {
-      "message": "Impossibile accendere"
+      "message": "Impossibile accendere {device}"
     },
     "water_heater_set_operation_mode_failed": {
-      "message": "Impossibile impostare la modalità operativa per"
+      "message": "Impossibile impostare la modalità operativa per {device}"
     },
     "water_heater_set_temperature_failed": {
-      "message": "Impossibile impostare la temperatura per"
+      "message": "Impossibile impostare la temperatura per {device}"
     },
     "water_heater_turn_off_failed": {
-      "message": "Impossibile spegnere"
+      "message": "Impossibile spegnere {device}"
     },
     "water_heater_turn_on_failed": {
-      "message": "Impossibile accendere"
+      "message": "Impossibile accendere {device}"
     }
   },
   "issues": {
