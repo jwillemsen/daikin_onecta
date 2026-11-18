@@ -1,0 +1,23 @@
+set_holiday_mode:
+  target:
+    entity:
+      integration: daikin_onecta
+      domain: climate
+  fields:
+    enabled:
+      required: true
+      default: true
+      selector:
+        boolean:
+    start_date:
+      selector:
+        date:
+    end_date:
+      selector:
+        date:
+    duration_days:
+      selector:
+        number:
+          min: 1
+          max: 365
+          mode: box

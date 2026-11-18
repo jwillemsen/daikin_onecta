@@ -4,7 +4,7 @@ from collections.abc import Awaitable, Callable
 from datetime import date, timedelta
 import logging
 import re
-from typing import override
+from typing import Any, override
 
 from homeassistant.components.climate import FAN_HIGH, FAN_LOW, FAN_MEDIUM, FAN_MIDDLE, ClimateEntity
 from homeassistant.components.climate.const import (
@@ -20,13 +20,16 @@ from homeassistant.components.climate.const import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_TEMPERATURE, UnitOfTemperature
 from homeassistant.core import HomeAssistant, callback
+from homeassistant.exceptions import ServiceValidationError
+from homeassistant.helpers import config_validation as cv, entity_platform
 from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 from homeassistant.util import dt as dt_util
+import voluptuous as vol
 
 from daikin_onecta.client import ClimateControlClient
 from daikin_onecta.models import ClimateControl
 
-from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, FANMODE_FIXED
+from .const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, FANMODE_FIXED
 from .coordinator import OnectaDataUpdateCoordinator
 from .entity import DaikinManagementPointEntity
 from .entity_descriptions import CLIMATE_DESCRIPTIONS
@@ -36,6 +39,9 @@ _LOGGER = logging.getLogger(__name__)
 PRESET_MODES = (PRESET_BOOST, PRESET_AWAY, PRESET_COMFORT, PRESET_ECO)
 
 DAIKIN_FAN_MODE_QUIET = "quiet"
+
+SERVICE_SET_HOLIDAY_MODE = "set_holiday_mode"
+DEFAULT_HOLIDAY_DAYS = 60
 
 HOMEKIT_FIXED_FAN_MODE_ALIASES = {
     FAN_MIDDLE: "2",
@@ -95,6 +101,20 @@ async def async_setup_entry(
             )
             entities.extend(DaikinClimate(device, setpoint, coordinator, management_point.embedded_id) for setpoint in climate_control.setpoint_types)
     async_add_entities(entities, update_before_add=False)
+
+    platform = entity_platform.async_get_current_platform()
+    platform.async_register_entity_service(
+        SERVICE_SET_HOLIDAY_MODE,
+        cv.make_entity_service_schema(
+            {
+                vol.Required("enabled"): cv.boolean,
+                vol.Optional("start_date"): cv.date,
+                vol.Optional("end_date"): cv.date,
+                vol.Optional("duration_days"): vol.All(vol.Coerce(int), vol.Range(min=1, max=365)),
+            }
+        ),
+        "async_set_holiday_mode",
+    )
 
 
 class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
@@ -607,6 +627,53 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
 
         return res
 
+    @property
+    @override
+    def extra_state_attributes(self) -> dict[str, Any] | None:
+        """Return the holiday period configured in the Daikin cloud."""
+        holiday = self.preset_characteristic("holidayMode")
+        if holiday is None:
+            return None
+        return {"holiday_start_date": holiday.value.start_date, "holiday_end_date": holiday.value.end_date}
+
+    async def async_set_holiday_mode(
+        self,
+        enabled: bool,
+        start_date: date | None = None,
+        end_date: date | None = None,
+        duration_days: int | None = None,
+    ) -> None:
+        """Enable holiday mode for a specific period, or disable it."""
+        if self.preset_characteristic("holidayMode") is None:
+            raise ServiceValidationError(
+                translation_domain=DOMAIN,
+                translation_key="holiday_mode_not_supported",
+                translation_placeholders={"device": self._device.name},
+            )
+        if enabled:
+            start = start_date or dt_util.now().date()
+            end = end_date or start + timedelta(days=duration_days or DEFAULT_HOLIDAY_DAYS)
+            if end < start:
+                raise ServiceValidationError(translation_domain=DOMAIN, translation_key="holiday_invalid_period")
+            await self._async_set_holiday_mode(True, start, end)
+        else:
+            await self._async_set_holiday_mode(False)
+
+    async def _async_set_holiday_mode(self, enabled: bool, start_date: date | None = None, end_date: date | None = None) -> None:
+        """Send the holiday mode to Daikin and update the cached state."""
+        await self._async_execute_climate_command(
+            lambda climate: climate.set_holiday_mode(enabled, start_date=start_date, end_date=end_date),
+            "climate_set_preset_mode_failed",
+        )
+        preset = self.preset_characteristic("holidayMode")
+        if preset is not None:
+            preset.value.enabled = enabled
+            if enabled:
+                preset.value.start_date = start_date.isoformat()
+                preset.value.end_date = end_date.isoformat()
+        # Refresh this entity and the holiday date sensors of the management point without a cloud request
+        self.coordinator.async_update_listeners()
+
     def get_preset_mode(self):
         """Return the active preset mode."""
         for mode in PRESET_MODES:
@@ -624,13 +691,7 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         """Disable the current Daikin preset mode."""
         daikin_mode = HA_PRESET_TO_DAIKIN[preset_mode]
         if preset_mode == PRESET_AWAY:
-            await self._async_execute_climate_command(
-                lambda climate: climate.set_holiday_mode(False),
-                "climate_set_preset_mode_failed",
-            )
-            preset = self.preset_characteristic(daikin_mode)
-            if preset is not None:
-                preset.value.enabled = False
+            await self._async_set_holiday_mode(False)
         else:
             await self._async_execute_climate_command(
                 lambda climate: climate.set_mode_characteristic(daikin_mode, False),
@@ -647,13 +708,7 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             await self.async_turn_on()
         if preset_mode == PRESET_AWAY:
             today: date = dt_util.now().date()
-            await self._async_execute_climate_command(
-                lambda climate: climate.set_holiday_mode(True, start_date=today, end_date=today + timedelta(days=60)),
-                "climate_set_preset_mode_failed",
-            )
-            preset = self.preset_characteristic(daikin_mode)
-            if preset is not None:
-                preset.value.enabled = True
+            await self._async_set_holiday_mode(True, today, today + timedelta(days=DEFAULT_HOLIDAY_DAYS))
         else:
             await self._async_execute_climate_command(
                 lambda climate: climate.set_mode_characteristic(daikin_mode, True),

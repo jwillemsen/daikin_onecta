@@ -108,9 +108,14 @@ async def test_climate_setup_creates_entities_per_management_point() -> None:
     config_entry = MagicMock(runtime_data=coordinator)
     async_add_entities = MagicMock()
 
-    with patch("custom_components.daikin_onecta.climate.DaikinClimate") as climate:
+    with (
+        patch("custom_components.daikin_onecta.climate.DaikinClimate") as climate,
+        patch("custom_components.daikin_onecta.climate.entity_platform.async_get_current_platform") as current_platform,
+    ):
         await async_setup_climate_entry(MagicMock(), config_entry, async_add_entities)
 
+    current_platform.return_value.async_register_entity_service.assert_called_once()
+    assert current_platform.return_value.async_register_entity_service.call_args.args[0] == "set_holiday_mode"
     assert [constructor_call.args[1:] for constructor_call in climate.call_args_list] == [
         ("roomTemperature", coordinator, "first"),
         ("roomTemperature", coordinator, "second"),
