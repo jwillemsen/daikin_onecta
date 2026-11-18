@@ -52,6 +52,8 @@ HA_HVAC_TO_DAIKIN = {
     HVACMode.OFF: "off",
 }
 
+TEMPERATURE_OPERATION_MODES = ("cooling", "heating", "auto")
+
 DAIKIN_HVAC_TO_HA = {
     "fanOnly": HVACMode.FAN_ONLY,
     "dry": HVACMode.DRY,
@@ -236,6 +238,16 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
         cc = self.climate_control()
         return cc.sensory_data(setpoint) if cc is not None else None
 
+    def can_set_temperature_when_turned_on(self):
+        """Return whether an off unit can accept a temperature once switched on."""
+        cc = self.climate_control()
+        operationmode = self.operation_mode()
+        if cc is None or cc.on_off_mode is None or cc.on_off_mode.value != "off":
+            return False
+        if operationmode is None or not operationmode.settable:
+            return False
+        return any(mode in TEMPERATURE_OPERATION_MODES for mode in operationmode.values or [])
+
     def get_supported_features(self):
         """Return the features supported by this climate entity."""
         supported_features = 0
@@ -243,6 +255,11 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             supported_features = ClimateEntityFeature.TURN_OFF | ClimateEntityFeature.TURN_ON
         setpointdict = self.setpoint()
         if setpointdict is not None and setpointdict.settable:
+            supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
+        elif self.can_set_temperature_when_turned_on():
+            # The setpoint only exists for the active operation mode, and an off
+            # unit rests on its last mode (e.g. fanOnly). Keep advertising the
+            # feature so climate.set_temperature with hvac_mode can turn it on.
             supported_features |= ClimateEntityFeature.TARGET_TEMPERATURE
         if len(self.get_preset_modes()) > 1:
             supported_features |= ClimateEntityFeature.PRESET_MODE
@@ -343,6 +360,14 @@ class DaikinClimate(DaikinManagementPointEntity, ClimateEntity):
             await self.async_set_hvac_mode(kwargs[ATTR_HVAC_MODE])
 
         if ATTR_TEMPERATURE in kwargs:
+            setpointdict = self.setpoint()
+            if setpointdict is None or not setpointdict.settable:
+                _LOGGER.warning(
+                    "Device '%s' has no settable %s setpoint in its current mode, ignoring temperature",
+                    self._device.name,
+                    self._setpoint,
+                )
+                return
             value = kwargs[ATTR_TEMPERATURE]
             _LOGGER.debug(
                 "Device '%s' request to set temperature to '%s'",
