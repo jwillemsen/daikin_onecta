@@ -112,6 +112,19 @@
     "select": {
       "schedule": {
         "name": "Schema"
+      },
+      "operation_mode": {
+        "name": "Werkingsmodus",
+        "state": {
+          "auto": "Automatisch",
+          "cooling": "Koelen",
+          "heating": "Verwarmen",
+          "heating_day": "Verwarmen (dag)",
+          "heating_night": "Verwarmen (nacht)",
+          "dry": "Drogen",
+          "fan_only": "Ventileren",
+          "humidification": "Bevochtigen"
+        }
       }
     },
     "sensor": {
