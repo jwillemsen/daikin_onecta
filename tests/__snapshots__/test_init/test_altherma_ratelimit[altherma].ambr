@@ -1982,7 +1982,7 @@
         'state': 'off',
       }),
     }),
-    'button.altherma_refresh': dict({
+    'button.account_refresh': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -1990,7 +1990,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.altherma_refresh',
+        'entity_id': 'button.account_refresh',
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -2001,129 +2001,13 @@
         'original_name': 'Refresh',
         'platform': 'daikin_onecta',
         'translation_key': None,
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_refresh',
+        'unique_id': '1234567890_refresh',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
           <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
         }),
-        'entity_id': 'button.altherma_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.johnny_maaike_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.johnny_maaike_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.johnny_maaike_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.linde_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.linde_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.linde_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.sanne_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.sanne_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.sanne_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.werkkamer_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.werkkamer_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.werkkamer_refresh',
+        'entity_id': 'button.account_refresh',
         'state': 'unknown',
       }),
     }),
@@ -2718,6 +2602,36 @@
         }),
         'entity_id': 'select.werkkamer_climatecontrol_schedule',
         'state': 'off',
+      }),
+    }),
+    'sensor.account_ratelimit_remaining_day': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Ratelimit remaining day',
+        'platform': 'daikin_onecta',
+        'translation_key': 'ratelimitremainingday',
+        'unique_id': '1234567890_rate_limit_remaining_day',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
+          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+        }),
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'state': '0',
       }),
     }),
     'sensor.altherma_climatecontrol_control_mode': dict({
@@ -3454,36 +3368,6 @@
         'state': '192.168.1.207',
       }),
     }),
-    'sensor.altherma_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.altherma_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '1ece521b-5401-4a42-acce-6f76fba246aa_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.altherma_gateway_ratelimit_remaining_day',
-        'state': '0',
-      }),
-    }),
     'sensor.altherma_gateway_ssid': dict({
       'entry': dict({
         'area_id': None,
@@ -4009,36 +3893,6 @@
         }),
         'entity_id': 'sensor.johnny_maaike_gateway_error_code',
         'state': '',
-      }),
-    }),
-    'sensor.johnny_maaike_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.johnny_maaike_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '32db6075-b739-4026-b661-127009254b42_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.johnny_maaike_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'sensor.johnny_maaike_gateway_region_code': dict({
@@ -4655,36 +4509,6 @@
         'state': '',
       }),
     }),
-    'sensor.linde_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.linde_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': 'c04342c4-2fbc-4a32-b54d-6067fa1311f6_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.linde_gateway_ratelimit_remaining_day',
-        'state': '0',
-      }),
-    }),
     'sensor.linde_gateway_region_code': dict({
       'entry': dict({
         'area_id': None,
@@ -5299,36 +5123,6 @@
         'state': '',
       }),
     }),
-    'sensor.sanne_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.sanne_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': 'f7ff41ad-4169-45e5-8df4-15e033a05668_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.sanne_gateway_ratelimit_remaining_day',
-        'state': '0',
-      }),
-    }),
     'sensor.sanne_gateway_region_code': dict({
       'entry': dict({
         'area_id': None,
@@ -5941,36 +5735,6 @@
         }),
         'entity_id': 'sensor.werkkamer_gateway_error_code',
         'state': '',
-      }),
-    }),
-    'sensor.werkkamer_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '6f944461-08cb-4fee-979c-710ff66cea77_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.werkkamer_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'sensor.werkkamer_gateway_region_code': dict({

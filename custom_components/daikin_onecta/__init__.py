@@ -7,7 +7,7 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryAuthFailed, ConfigEntryNotReady, OAuth2TokenRequestError, OAuth2TokenRequestReauthError
-from homeassistant.helpers import config_entry_oauth2_flow
+from homeassistant.helpers import config_entry_oauth2_flow, entity_registry as er
 from homeassistant.helpers.config_entry_oauth2_flow import ImplementationUnavailableError
 from homeassistant.helpers.typing import ConfigType
 
@@ -95,18 +95,59 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
     _LOGGER.info("Migration from version %s.%s", config_entry.version, config_entry.minor_version)
 
     if config_entry.version == 1:
-        match config_entry.minor_version:
-            case 1:
+        if config_entry.minor_version < 2:
+            try:
+                account_id = get_account_id(config_entry.data["token"]["access_token"])
+            except (KeyError, OnectaAccessTokenError):
+                _LOGGER.exception("Failed to read the account ID from the OAuth token during migration")
+                return False
+            hass.config_entries.async_update_entry(
+                config_entry,
+                minor_version=2,
+                unique_id=account_id,
+            )
+
+        if config_entry.minor_version < 3:
+            if config_entry.unique_id is None:
                 try:
-                    unique_id = get_account_id(config_entry.data["token"]["access_token"])
+                    account_id = get_account_id(config_entry.data["token"]["access_token"])
                 except (KeyError, OnectaAccessTokenError):
                     _LOGGER.exception("Failed to read the account ID from the OAuth token during migration")
                     return False
-                hass.config_entries.async_update_entry(
-                    config_entry,
-                    minor_version=2,
-                    unique_id=unique_id,
-                )
+                hass.config_entries.async_update_entry(config_entry, unique_id=account_id)
+            else:
+                account_id = str(config_entry.unique_id)
+
+            migrate_account_entity_unique_ids(hass, config_entry, account_id)
+            hass.config_entries.async_update_entry(config_entry, minor_version=3)
 
     _LOGGER.info("Migration to version %s.%s successful", config_entry.version, config_entry.minor_version)
     return True
+
+
+def migrate_account_entity_unique_ids(hass: HomeAssistant, config_entry: ConfigEntry, account_id: str) -> None:
+    """Move gateway-specific account entities to the shared account IDs.
+
+    Multiple gateways previously created a refresh button and rate-limit sensor
+    for the same account. Keep one registry entry for each account entity and
+    remove redundant gateway entries, so Home Assistant Core can reuse them.
+    """
+    entity_registry = er.async_get(hass)
+    entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
+
+    for domain, suffix in (("button", "_refresh"), ("sensor", "_rate_limit_remaining_day")):
+        target_unique_id = f"{account_id}{suffix}"
+        target_entry = entity_registry.async_get_entity_id(domain, DOMAIN, target_unique_id)
+        legacy_entries = sorted(
+            (
+                entry
+                for entry in entries
+                if entry.domain == domain and entry.platform == DOMAIN and entry.unique_id.endswith(suffix) and entry.unique_id != target_unique_id
+            ),
+            key=lambda entry: (entry.entity_id, entry.unique_id),
+        )
+        if target_entry is None and legacy_entries:
+            entity_registry.async_update_entity(legacy_entries.pop(0).entity_id, new_unique_id=target_unique_id)
+
+        for entry in legacy_entries:
+            entity_registry.async_remove(entry.entity_id)

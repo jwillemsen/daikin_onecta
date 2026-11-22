@@ -37,6 +37,11 @@
       }
     }
   },
+  "device": {
+    "account": {
+      "name": "Daikin Onecta account"
+    }
+  },
   "entity": {
     "binary_sensor": {
       "daylightsavingtimeenabled": {

@@ -65,7 +65,7 @@ import pytest
 from pytest_homeassistant.common import MockConfigEntry
 from pytest_homeassistant.test_util.aiohttp import URL
 
-from custom_components.daikin_onecta import update_listener
+from custom_components.daikin_onecta import migrate_account_entity_unique_ids, update_listener
 from custom_components.daikin_onecta.binary_sensor import migrate_legacy_binary_sensor_unique_ids
 from custom_components.daikin_onecta.climate import DaikinClimate, async_setup_entry as async_setup_climate_entry
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DAIKIN_API_URL, DOMAIN, SCHEDULE_OFF
@@ -1884,7 +1884,7 @@ async def test_gas(
         await hass.services.async_call(
             BUTTON_DOMAIN,
             SERVICE_PRESS,
-            {ATTR_ENTITY_ID: "button.my_living_room_refresh"},
+            {ATTR_ENTITY_ID: "button.account_refresh"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -1908,7 +1908,7 @@ async def test_gas(
         await hass.services.async_call(
             BUTTON_DOMAIN,
             SERVICE_PRESS,
-            {ATTR_ENTITY_ID: "button.my_living_room_refresh"},
+            {ATTR_ENTITY_ID: "button.account_refresh"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -1923,7 +1923,7 @@ async def test_gas(
         await hass.services.async_call(
             BUTTON_DOMAIN,
             SERVICE_PRESS,
-            {ATTR_ENTITY_ID: "button.my_living_room_refresh"},
+            {ATTR_ENTITY_ID: "button.account_refresh"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -1952,7 +1952,7 @@ async def test_button(
         await hass.services.async_call(
             BUTTON_DOMAIN,
             SERVICE_PRESS,
-            {ATTR_ENTITY_ID: "button.lounge_refresh"},
+            {ATTR_ENTITY_ID: "button.account_refresh"},
             blocking=True,
         )
         await hass.async_block_till_done()
@@ -2252,6 +2252,82 @@ def test_migrate_legacy_entity_unique_ids(hass: HomeAssistant, config_entry: Moc
         "device_tank",
     ]
     assert entity_registry.async_get(current_climate_entry.entity_id).unique_id == "device_zone1_leavingWaterOffset"
+
+
+def test_migrate_account_entity_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:
+    """Move legacy per-gateway account entities to one account entity each."""
+    entity_registry = er.async_get(hass)
+    button_entries = [
+        entity_registry.async_get_or_create(
+            "button",
+            DOMAIN,
+            f"{gateway_id}_refresh",
+            config_entry=config_entry,
+        )
+        for gateway_id in ("gateway-a", "gateway-b")
+    ]
+    sensor_entries = [
+        entity_registry.async_get_or_create(
+            "sensor",
+            DOMAIN,
+            f"{gateway_id}_rate_limit_remaining_day",
+            config_entry=config_entry,
+        )
+        for gateway_id in ("gateway-a", "gateway-b")
+    ]
+    unrelated_entry = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "gateway-a_gateway_roomTemperature",
+        config_entry=config_entry,
+    )
+
+    migrate_account_entity_unique_ids(hass, config_entry, "account-id")
+
+    assert entity_registry.async_get(button_entries[0].entity_id).unique_id == "account-id_refresh"
+    assert entity_registry.async_get(button_entries[1].entity_id) is None
+    assert entity_registry.async_get(sensor_entries[0].entity_id).unique_id == "account-id_rate_limit_remaining_day"
+    assert entity_registry.async_get(sensor_entries[1].entity_id) is None
+    assert entity_registry.async_get(unrelated_entry.entity_id) is not None
+
+
+def test_migrate_account_entity_unique_ids_keeps_existing_account_entities(
+    hass: HomeAssistant,
+    config_entry: MockConfigEntry,
+) -> None:
+    """Remove per-gateway duplicates when account entity IDs already exist."""
+    entity_registry = er.async_get(hass)
+    legacy_button = entity_registry.async_get_or_create(
+        "button",
+        DOMAIN,
+        "gateway-a_refresh",
+        config_entry=config_entry,
+    )
+    account_button = entity_registry.async_get_or_create(
+        "button",
+        DOMAIN,
+        "account-id_refresh",
+        config_entry=config_entry,
+    )
+    legacy_sensor = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "gateway-a_rate_limit_remaining_day",
+        config_entry=config_entry,
+    )
+    account_sensor = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "account-id_rate_limit_remaining_day",
+        config_entry=config_entry,
+    )
+
+    migrate_account_entity_unique_ids(hass, config_entry, "account-id")
+
+    assert entity_registry.async_get(legacy_button.entity_id) is None
+    assert entity_registry.async_get(legacy_sensor.entity_id) is None
+    assert entity_registry.async_get(account_button.entity_id).unique_id == "account-id_refresh"
+    assert entity_registry.async_get(account_sensor.entity_id).unique_id == "account-id_rate_limit_remaining_day"
 
 
 def test_migrate_legacy_update_unique_ids(hass: HomeAssistant, config_entry: MockConfigEntry) -> None:

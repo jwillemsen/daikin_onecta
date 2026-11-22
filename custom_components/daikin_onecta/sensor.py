@@ -21,7 +21,7 @@ from .const import (
     SENSOR_PERIODS,
 )
 from .device import DaikinOnectaDevice
-from .entity import DaikinEntity
+from .entity import DaikinAccountEntity, DaikinEntity, account_identifier
 from .entity_descriptions import SENSOR_DESCRIPTIONS
 
 if TYPE_CHECKING:
@@ -234,9 +234,8 @@ async def async_setup_entry(
 ) -> None:
     """Set up Daikin sensors based on config_entry."""
     coordinator: OnectaDataUpdateCoordinator = config_entry.runtime_data
-    sensors = []
+    sensors = [DaikinLimitSensor(config_entry, coordinator, "remaining_day")]
     for device in (coordinator.data or {}).values():
-        sensors.append(DaikinLimitSensor(hass, config_entry, device, coordinator, "remaining_day"))
         for management_point in device.device.management_points:
             add_management_point_sensors(coordinator, device, management_point, sensors)
 
@@ -366,32 +365,23 @@ class DaikinValueSensor(DaikinEntity, SensorEntity):
         return result
 
 
-class DaikinLimitSensor(DaikinEntity, SensorEntity):
+class DaikinLimitSensor(DaikinAccountEntity, SensorEntity):
     """Represent a Daikin API rate-limit value."""
 
     def __init__(
         self,
-        hass: HomeAssistant,
         config_entry: ConfigEntry,
-        device: DaikinOnectaDevice,
         coordinator,
         limit_key,
     ) -> None:
         """Initialize a rate-limit sensor."""
-        _LOGGER.info("Device '%s' LimitSensor '%s'", device.name, limit_key)
-        super().__init__(device, coordinator, device.gateway_embedded_id or "gateway", "Gateway")
-        self._hass = hass
-        self._config_entry = config_entry
+        super().__init__(config_entry, coordinator)
         self._limit_key = limit_key
+        self._api = coordinator.api
         self._attr_has_entity_name = True
-        self._attr_unique_id = _rate_limit_sensor_unique_id(self._device.id, self._limit_key)
+        self._attr_unique_id = _rate_limit_sensor_unique_id(account_identifier(config_entry), self._limit_key)
         self.entity_description = SENSOR_DESCRIPTIONS["RatelimitRemainingDay"]
         self.update_state()
-        _LOGGER.info(
-            "Device '%s' supports sensor '%s'",
-            device.name,
-            self._limit_key,
-        )
 
     def update_state(self) -> None:
         """Refresh the rate-limit value."""
@@ -411,5 +401,4 @@ class DaikinLimitSensor(DaikinEntity, SensorEntity):
 
     def sensor_value(self):
         """Return the current API rate-limit value."""
-        daikin_api = self._config_entry.runtime_data.api
-        return daikin_api.rate_limits[self._limit_key]
+        return self._api.rate_limits[self._limit_key]
