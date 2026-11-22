@@ -14,6 +14,7 @@ from homeassistant.setup import async_setup_component
 import pytest
 from pytest_homeassistant.common import MockConfigEntry
 
+from custom_components.daikin_onecta import async_migrate_entry
 from custom_components.daikin_onecta.config_flow import FlowHandler
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, OAUTH2_AUTHORIZE, OAUTH2_TOKEN
 
@@ -108,7 +109,7 @@ async def test_config_entry_unique_id_migration(
     gateway_sensor = entity_registry.async_get_or_create(
         "sensor",
         DOMAIN,
-        "gateway-a_rate_limit_remaining_day",
+        "gateway-a_limitsensor_remaining_day",
         config_entry=config_entry_v1_1,
     )
     duplicate_sensor = entity_registry.async_get_or_create(
@@ -130,6 +131,54 @@ async def test_config_entry_unique_id_migration(
     assert entity_registry.async_get(duplicate_button.entity_id) is None
     assert entity_registry.async_get(gateway_sensor.entity_id).unique_id == "1234567890_rate_limit_remaining_day"
     assert entity_registry.async_get(duplicate_sensor.entity_id) is None
+
+
+async def test_config_entry_account_entity_migration_from_v1_2_without_unique_id(
+    hass: HomeAssistant,
+) -> None:
+    """Migrate the oldest rate-limit entity ID from a version-1.2 entry."""
+    config_entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={"token": {"access_token": FAKE_ACCESS_TOKEN}},
+        version=1,
+        minor_version=2,
+    )
+    config_entry.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    legacy_sensor = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "gateway_limitsensor_remaining_day",
+        config_entry=config_entry,
+    )
+
+    assert await async_migrate_entry(hass, config_entry)
+
+    migrated_sensor = entity_registry.async_get(legacy_sensor.entity_id)
+    assert config_entry.unique_id == "1234567890"
+    assert config_entry.minor_version == CURRENT_MINOR_VERSION
+    assert migrated_sensor is not None
+    assert migrated_sensor.unique_id == "1234567890_rate_limit_remaining_day"
+
+
+@pytest.mark.parametrize(
+    "minor_version",
+    [pytest.param(1, id="before-account-id-migration"), pytest.param(2, id="account-id-missing")],
+)
+async def test_config_entry_migration_rejects_invalid_token(
+    hass: HomeAssistant,
+    minor_version: int,
+) -> None:
+    """Reject migration when the stored token cannot identify an account."""
+    config_entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={"token": {"access_token": "invalid"}},
+        version=1,
+        minor_version=minor_version,
+    )
+    config_entry.add_to_hass(hass)
+
+    assert not await async_migrate_entry(hass, config_entry)
 
 
 async def test_options_flow_homekit_fan_mode_aliases_default(

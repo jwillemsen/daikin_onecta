@@ -135,14 +135,20 @@ def migrate_account_entity_unique_ids(hass: HomeAssistant, config_entry: ConfigE
     entity_registry = er.async_get(hass)
     entries = er.async_entries_for_config_entry(entity_registry, config_entry.entry_id)
 
-    for domain, suffix in (("button", "_refresh"), ("sensor", "_rate_limit_remaining_day")):
+    for domain, suffix, legacy_suffixes in (
+        ("button", "_refresh", ("_refresh",)),
+        ("sensor", "_rate_limit_remaining_day", ("_rate_limit_remaining_day", "_limitsensor_remaining_day")),
+    ):
         target_unique_id = f"{account_id}{suffix}"
         target_entry = entity_registry.async_get_entity_id(domain, DOMAIN, target_unique_id)
         legacy_entries = sorted(
             (
                 entry
                 for entry in entries
-                if entry.domain == domain and entry.platform == DOMAIN and entry.unique_id.endswith(suffix) and entry.unique_id != target_unique_id
+                if entry.domain == domain
+                and entry.platform == DOMAIN
+                and entry.unique_id.endswith(legacy_suffixes)
+                and entry.unique_id != target_unique_id
             ),
             key=lambda entry: (entry.entity_id, entry.unique_id),
         )
