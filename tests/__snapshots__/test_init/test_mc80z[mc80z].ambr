@@ -563,7 +563,7 @@
         'state': 'off',
       }),
     }),
-    'button.air_purifier_refresh': dict({
+    'button.account_refresh': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -571,7 +571,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.air_purifier_refresh',
+        'entity_id': 'button.account_refresh',
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -582,42 +582,13 @@
         'original_name': 'Refresh',
         'platform': 'daikin_onecta',
         'translation_key': None,
-        'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_refresh',
+        'unique_id': '1234567890_refresh',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
           <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
         }),
-        'entity_id': 'button.air_purifier_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.vloerverwarming_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.vloerverwarming_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.vloerverwarming_refresh',
+        'entity_id': 'button.account_refresh',
         'state': 'unknown',
       }),
     }),
@@ -771,6 +742,36 @@
         }),
         'entity_id': 'select.vloerverwarming_domestichotwatertank_schedule',
         'state': 'User defined',
+      }),
+    }),
+    'sensor.account_ratelimit_remaining_day': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Ratelimit remaining day',
+        'platform': 'daikin_onecta',
+        'translation_key': 'ratelimitremainingday',
+        'unique_id': '1234567890_rate_limit_remaining_day',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
+          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+        }),
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'state': '0',
       }),
     }),
     'sensor.air_purifier_climatecontrol_air_purification_mode': dict({
@@ -1050,36 +1051,6 @@
         }),
         'entity_id': 'sensor.air_purifier_gateway_ip_address',
         'state': '192.168.1.31',
-      }),
-    }),
-    'sensor.air_purifier_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.air_purifier_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '1c80e348-61c1-4f0d-a8b1-917f2f904529_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.air_purifier_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'sensor.vloerverwarming_climatecontrol_control_mode': dict({
@@ -1837,36 +1808,6 @@
         }),
         'entity_id': 'sensor.vloerverwarming_gateway_ip_address',
         'state': '192.168.1.205',
-      }),
-    }),
-    'sensor.vloerverwarming_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.vloerverwarming_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '4e19a975-b0e4-4ae1-8439-c037e7d0df01_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.vloerverwarming_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'update.air_purifier_gateway_firmware_update': dict({

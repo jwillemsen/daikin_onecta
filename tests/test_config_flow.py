@@ -8,11 +8,14 @@ from homeassistant import config_entries
 from homeassistant.components.application_credentials import ClientCredential, async_import_client_credential
 from homeassistant.config_entries import SOURCE_ZEROCONF
 from homeassistant.core import HomeAssistant
+import homeassistant.helpers.entity_registry as er
 from homeassistant.helpers.service_info.zeroconf import ZeroconfServiceInfo
 from homeassistant.setup import async_setup_component
 import pytest
 from pytest_homeassistant.common import MockConfigEntry
 
+from custom_components.daikin_onecta import async_migrate_entry
+from custom_components.daikin_onecta.config_flow import FlowHandler
 from custom_components.daikin_onecta.const import CONF_HOMEKIT_FAN_MODE_ALIASES, DOMAIN, OAUTH2_AUTHORIZE, OAUTH2_TOKEN
 
 from .conftest import FAKE_ACCESS_TOKEN
@@ -20,7 +23,7 @@ from .conftest import FAKE_ACCESS_TOKEN
 TEST_CLIENT_ID = "test-client-id"
 TEST_CLIENT_SECRET = "test-client-secret"
 HTTP_OK = 200
-CURRENT_MINOR_VERSION = 2
+CURRENT_MINOR_VERSION = 3
 
 
 def oauth_state(result: dict[str, str]) -> str:
@@ -90,6 +93,31 @@ async def test_config_entry_unique_id_migration(
 ) -> None:
     """Test that old config entries use the unique id obtained from the JWT subject."""
     config_entry_v1_1.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    gateway_button = entity_registry.async_get_or_create(
+        "button",
+        DOMAIN,
+        "gateway-a_refresh",
+        config_entry=config_entry_v1_1,
+    )
+    duplicate_button = entity_registry.async_get_or_create(
+        "button",
+        DOMAIN,
+        "gateway-b_refresh",
+        config_entry=config_entry_v1_1,
+    )
+    gateway_sensor = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "gateway-a_limitsensor_remaining_day",
+        config_entry=config_entry_v1_1,
+    )
+    duplicate_sensor = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "gateway-b_rate_limit_remaining_day",
+        config_entry=config_entry_v1_1,
+    )
 
     assert config_entry_v1_1.unique_id != "1234567890"
     assert config_entry_v1_1.minor_version == 1
@@ -99,6 +127,58 @@ async def test_config_entry_unique_id_migration(
 
     assert config_entry_v1_1.unique_id == "1234567890"
     assert config_entry_v1_1.minor_version == CURRENT_MINOR_VERSION
+    assert entity_registry.async_get(gateway_button.entity_id).unique_id == "1234567890_refresh"
+    assert entity_registry.async_get(duplicate_button.entity_id) is None
+    assert entity_registry.async_get(gateway_sensor.entity_id).unique_id == "1234567890_rate_limit_remaining_day"
+    assert entity_registry.async_get(duplicate_sensor.entity_id) is None
+
+
+async def test_config_entry_account_entity_migration_from_v1_2_without_unique_id(
+    hass: HomeAssistant,
+) -> None:
+    """Migrate the oldest rate-limit entity ID from a version-1.2 entry."""
+    config_entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={"token": {"access_token": FAKE_ACCESS_TOKEN}},
+        version=1,
+        minor_version=2,
+    )
+    config_entry.add_to_hass(hass)
+    entity_registry = er.async_get(hass)
+    legacy_sensor = entity_registry.async_get_or_create(
+        "sensor",
+        DOMAIN,
+        "gateway_limitsensor_remaining_day",
+        config_entry=config_entry,
+    )
+
+    assert await async_migrate_entry(hass, config_entry)
+
+    migrated_sensor = entity_registry.async_get(legacy_sensor.entity_id)
+    assert config_entry.unique_id == "1234567890"
+    assert config_entry.minor_version == CURRENT_MINOR_VERSION
+    assert migrated_sensor is not None
+    assert migrated_sensor.unique_id == "1234567890_rate_limit_remaining_day"
+
+
+@pytest.mark.parametrize(
+    "minor_version",
+    [pytest.param(1, id="before-account-id-migration"), pytest.param(2, id="account-id-missing")],
+)
+async def test_config_entry_migration_rejects_invalid_token(
+    hass: HomeAssistant,
+    minor_version: int,
+) -> None:
+    """Reject migration when the stored token cannot identify an account."""
+    config_entry = MockConfigEntry(
+        domain=DOMAIN,
+        data={"token": {"access_token": "invalid"}},
+        version=1,
+        minor_version=minor_version,
+    )
+    config_entry.add_to_hass(hass)
+
+    assert not await async_migrate_entry(hass, config_entry)
 
 
 async def test_options_flow_homekit_fan_mode_aliases_default(
@@ -211,7 +291,7 @@ async def test_invalid_oauth_token(
     hass: HomeAssistant,
 ) -> None:
     """Abort when the OAuth access token is not a valid JWT."""
-    flow = config_entries.HANDLERS[DOMAIN]()
+    flow = FlowHandler()
     flow.hass = hass
 
     result = await flow.async_oauth_create_entry({"token": {"access_token": "invalid"}})
@@ -260,7 +340,7 @@ async def test_reauth_oauth_create_entry(
 ) -> None:
     """Update the existing entry after successful reauthentication."""
     hass.config_entries.async_update_entry(config_entry, unique_id="1234567890")
-    flow = config_entries.HANDLERS[DOMAIN]()
+    flow = FlowHandler()
     flow.hass = hass
     flow.context = {
         "source": config_entries.SOURCE_REAUTH,
@@ -287,7 +367,7 @@ async def test_reauth_confirm_continue(
     hass: HomeAssistant,
 ) -> None:
     """Continue reauthentication through the user OAuth step."""
-    flow = config_entries.HANDLERS[DOMAIN]()
+    flow = FlowHandler()
     flow.hass = hass
 
     with patch.object(flow, "async_step_user", return_value={"type": "external"}) as step_user:

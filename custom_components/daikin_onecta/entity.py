@@ -3,13 +3,36 @@
 from collections.abc import Awaitable, Callable
 from typing import Any, Never, override
 
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.exceptions import HomeAssistantError
-from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, DeviceInfo
+from homeassistant.helpers.device_registry import CONNECTION_NETWORK_MAC, DeviceEntryType, DeviceInfo
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from daikin_onecta.client import OnectaClient
 
 from .const import DOMAIN
+
+
+def account_identifier(config_entry: ConfigEntry) -> str:
+    """Return the stable account identifier used for account entities."""
+    return config_entry.unique_id or config_entry.entry_id
+
+
+class DaikinAccountEntity(CoordinatorEntity):
+    """Base entity backed by a Daikin account."""
+
+    _attr_has_entity_name = True
+
+    def __init__(self, config_entry: ConfigEntry, coordinator) -> None:
+        """Initialize a shared account entity."""
+        super().__init__(coordinator)
+        self._account_id = account_identifier(config_entry)
+        self._attr_device_info = DeviceInfo(
+            entry_type=DeviceEntryType.SERVICE,
+            identifiers={(DOMAIN, f"account_{self._account_id}")},
+            manufacturer="Daikin",
+            translation_key="account",
+        )
 
 
 def gateway_device_info(device: Any) -> DeviceInfo:

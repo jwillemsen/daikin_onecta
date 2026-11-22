@@ -59,7 +59,7 @@
         'state': 'on',
       }),
     }),
-    'button.my_living_room_refresh': dict({
+    'button.account_refresh': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -67,7 +67,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.my_living_room_refresh',
+        'entity_id': 'button.account_refresh',
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -78,13 +78,13 @@
         'original_name': 'Refresh',
         'platform': 'daikin_onecta',
         'translation_key': None,
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_refresh',
+        'unique_id': '1234567890_refresh',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
           <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
         }),
-        'entity_id': 'button.my_living_room_refresh',
+        'entity_id': 'button.account_refresh',
         'state': 'unknown',
       }),
     }),
@@ -256,6 +256,36 @@
         }),
         'entity_id': 'select.my_living_room_climatecontrol_schedule',
         'state': 'unknown',
+      }),
+    }),
+    'sensor.account_ratelimit_remaining_day': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Ratelimit remaining day',
+        'platform': 'daikin_onecta',
+        'translation_key': 'ratelimitremainingday',
+        'unique_id': '1234567890_rate_limit_remaining_day',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
+          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+        }),
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'state': '0',
       }),
     }),
     'sensor.my_living_room_climatecontrol_control_mode': dict({
@@ -1072,36 +1102,6 @@
         }),
         'entity_id': 'sensor.my_living_room_gateway_ip_address',
         'state': '192.168.0.1',
-      }),
-    }),
-    'sensor.my_living_room_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.my_living_room_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '7edb544e-2c53-405b-98bc-3d9392f4d1f9_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.my_living_room_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'update.my_living_room_gateway_firmware_update': dict({

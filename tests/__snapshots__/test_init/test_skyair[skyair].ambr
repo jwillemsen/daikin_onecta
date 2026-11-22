@@ -616,7 +616,7 @@
         'state': 'on',
       }),
     }),
-    'button.gostinaia_woonkamer_refresh': dict({
+    'button.account_refresh': dict({
       'entry': dict({
         'area_id': None,
         'categories': dict({
@@ -624,7 +624,7 @@
         'config_subentry_id': None,
         'disabled_by': None,
         'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.gostinaia_woonkamer_refresh',
+        'entity_id': 'button.account_refresh',
         'hidden_by': None,
         'icon': None,
         'labels': list([
@@ -635,71 +635,13 @@
         'original_name': 'Refresh',
         'platform': 'daikin_onecta',
         'translation_key': None,
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_refresh',
+        'unique_id': '1234567890_refresh',
       }),
       'state': dict({
         'attributes': ReadOnlyDict({
           <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
         }),
-        'entity_id': 'button.gostinaia_woonkamer_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.slaapkamer_andre_olha_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.slaapkamer_andre_olha_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.slaapkamer_andre_olha_refresh',
-        'state': 'unknown',
-      }),
-    }),
-    'button.tretii_blok_spalnia_vtoroi_etazh_refresh': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.CONFIG: 'config'>,
-        'entity_id': 'button.tretii_blok_spalnia_vtoroi_etazh_refresh',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Refresh',
-        'platform': 'daikin_onecta',
-        'translation_key': None,
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_refresh',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:refresh',
-        }),
-        'entity_id': 'button.tretii_blok_spalnia_vtoroi_etazh_refresh',
+        'entity_id': 'button.account_refresh',
         'state': 'unknown',
       }),
     }),
@@ -973,6 +915,36 @@
         'state': 'off',
       }),
     }),
+    'sensor.account_ratelimit_remaining_day': dict({
+      'entry': dict({
+        'area_id': None,
+        'categories': dict({
+        }),
+        'config_subentry_id': None,
+        'disabled_by': None,
+        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'hidden_by': None,
+        'icon': None,
+        'labels': list([
+        ]),
+        'name': None,
+        'options': ReadOnlyDict({
+        }),
+        'original_name': 'Ratelimit remaining day',
+        'platform': 'daikin_onecta',
+        'translation_key': 'ratelimitremainingday',
+        'unique_id': '1234567890_rate_limit_remaining_day',
+      }),
+      'state': dict({
+        'attributes': ReadOnlyDict({
+          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
+          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+        }),
+        'entity_id': 'sensor.account_ratelimit_remaining_day',
+        'state': '0',
+      }),
+    }),
     'sensor.gostinaia_woonkamer_climatecontrol_error_code': dict({
       'entry': dict({
         'area_id': None,
@@ -1099,36 +1071,6 @@
         }),
         'entity_id': 'sensor.gostinaia_woonkamer_gateway_ip_address',
         'state': '10.20.26.51',
-      }),
-    }),
-    'sensor.gostinaia_woonkamer_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.gostinaia_woonkamer_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '0e621e8c-0a79-4cda-b387-9ff79f9ba61a_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.gostinaia_woonkamer_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'sensor.gostinaia_woonkamer_gateway_region_code': dict({
@@ -1722,36 +1664,6 @@
         'state': '10.20.26.52',
       }),
     }),
-    'sensor.slaapkamer_andre_olha_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.slaapkamer_andre_olha_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '1200abf5-59e3-4173-a5fd-5e0560aead8d_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.slaapkamer_andre_olha_gateway_ratelimit_remaining_day',
-        'state': '0',
-      }),
-    }),
     'sensor.slaapkamer_andre_olha_gateway_region_code': dict({
       'entry': dict({
         'area_id': None,
@@ -2341,36 +2253,6 @@
         }),
         'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ip_address',
         'state': '10.20.26.53',
-      }),
-    }),
-    'sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ratelimit_remaining_day': dict({
-      'entry': dict({
-        'area_id': None,
-        'categories': dict({
-        }),
-        'config_subentry_id': None,
-        'disabled_by': None,
-        'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-        'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ratelimit_remaining_day',
-        'hidden_by': None,
-        'icon': None,
-        'labels': list([
-        ]),
-        'name': None,
-        'options': ReadOnlyDict({
-        }),
-        'original_name': 'Ratelimit remaining day',
-        'platform': 'daikin_onecta',
-        'translation_key': 'ratelimitremainingday',
-        'unique_id': '7596a914-2a79-49ca-9901-53897e03ee4c_rate_limit_remaining_day',
-      }),
-      'state': dict({
-        'attributes': ReadOnlyDict({
-          <EntityStateAttribute.ICON: 'icon'>: 'mdi:information-outline',
-          <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-        }),
-        'entity_id': 'sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_ratelimit_remaining_day',
-        'state': '0',
       }),
     }),
     'sensor.tretii_blok_spalnia_vtoroi_etazh_gateway_region_code': dict({
