@@ -4,7 +4,7 @@
       "already_configured": "[%key:common::config_flow::abort::already_configured_account%]",
       "already_in_progress": "[%key:common::config_flow::abort::already_in_progress%]",
       "authorize_url_timeout": "[%key:common::config_flow::abort::oauth2_authorize_url_timeout%]",
-      "invalid_token": "Token non valido o scaduto; riconfigurare l'integrazione.",
+      "invalid_token": "Token non valido o scaduto. Riconfigura l’integrazione.",
       "missing_configuration": "[%key:common::config_flow::abort::oauth2_missing_configuration%]",
       "no_url_available": "[%key:common::config_flow::abort::oauth2_no_url_available%]",
       "oauth_error": "[%key:common::config_flow::abort::oauth2_error%]",
@@ -32,7 +32,7 @@
         "title": "[%key:common::config_flow::title::oauth2_pick_implementation%]"
       },
       "reauth_confirm": {
-        "description": "L'integrazione Daikin Onecta deve riautenticare il tuo account",
+        "description": "Devi autenticare nuovamente il tuo account per l’integrazione Daikin Onecta.",
         "title": "[%key:common::config_flow::title::reauth%]"
       }
     }
@@ -43,7 +43,7 @@
         "name": "Ora legale attiva"
       },
       "iscoolheatmaster": {
-        "name": "Is cool\/heat master"
+        "name": "Unità master di raffreddamento\/riscaldamento"
       },
       "isfirmwareupdatesupported": {
         "name": "Aggiornamento firmware supportato"
@@ -52,7 +52,7 @@
         "name": "Modalità vacanza attiva"
       },
       "isincautionstate": {
-        "name": "Stato di cautela"
+        "name": "Stato di attenzione"
       },
       "isinemergencystate": {
         "name": "Stato di emergenza"
@@ -61,19 +61,19 @@
         "name": "Stato di errore"
       },
       "isininstallerstate": {
-        "name": "Stato di installazione"
+        "name": "Stato installatore"
       },
       "isinmodeconflict": {
         "name": "Modalità in conflitto"
       },
       "isinwarningstate": {
-        "name": "Stato di warning"
+        "name": "Stato di avviso"
       },
       "islockfunctionenabled": {
         "name": "Blocco delle funzioni attivo"
       },
       "ispowerfulmodeactive": {
-        "name": "Modalità powerful attiva"
+        "name": "Modalità Powerful attiva"
       },
       "ledenabled": {
         "name": "LED attivo"
@@ -94,14 +94,14 @@
           },
           "swing_horizontal_mode": {
             "state": {
-              "stop": "Stop",
+              "stop": "Oscillazione disattivata",
               "swing": "Oscillazione"
             }
           },
           "swing_mode": {
             "state": {
-              "floorheatingairflow": "Flusso d'aria scaldapavimento",
-              "stop": "Stop",
+              "floorheatingairflow": "Flusso d’aria per il riscaldamento del pavimento",
+              "stop": "Oscillazione disattivata",
               "swing": "Oscillazione",
               "windnice": "Flusso d'aria confortevole"
             }
@@ -116,10 +116,10 @@
     },
     "sensor": {
       "airpurificationmode": {
-        "name": "Modalità purificazione d'aria"
+        "name": "Modalità di purificazione dell’aria"
       },
       "calculatedleavingwatertemperature": {
-        "name": "Temperatura dell'acqua in uscita calcolata"
+        "name": "Temperatura calcolata dell’acqua in uscita"
       },
       "controlmode": {
         "name": "Modalità di controllo"
@@ -137,7 +137,7 @@
         "name": "Consumo di gas mensile in raffrescamento"
       },
       "coolingmonthlythermaloutput": {
-        "name": "Energia termica mensile fornita in raffreddamento"
+        "name": "Energia termica mensile fornita in raffrescamento"
       },
       "coolingweeklyelectricalconsumption": {
         "name": "Consumo elettrico settimanale in raffrescamento"
@@ -152,16 +152,16 @@
         "name": "Consumo di gas annuale in raffrescamento"
       },
       "coolingyearlythermaloutput": {
-        "name": "Energia termica annua fornita in raffreddamento"
+        "name": "Energia termica annua fornita in raffrescamento"
       },
       "currentpowerconsumption": {
-        "name": "Consumo elettrico attuale"
+        "name": "Potenza elettrica istantanea"
       },
       "currentthermaloutput": {
         "name": "Potenza termica erogata"
       },
       "datetime": {
-        "name": "Data\/Ora"
+        "name": "Data\/ora"
       },
       "deltad": {
         "name": "DeltaD"
@@ -173,7 +173,7 @@
         "name": "Codice di errore"
       },
       "fanmotorrotationspeed": {
-        "name": "Velocità di rotazione della ventola del motore"
+        "name": "Velocità di rotazione del motore della ventola"
       },
       "heatexchangertemperature": {
         "name": "Temperatura dello scambiatore di calore"
@@ -191,7 +191,7 @@
         "name": "Consumo di gas mensile in riscaldamento"
       },
       "heatingmonthlythermaloutput": {
-        "name": "Energia termica mesnile fornita in riscaldamento"
+        "name": "Energia termica mensile fornita in riscaldamento"
       },
       "heatingweeklyelectricalconsumption": {
         "name": "Consumo elettrico settimanale in riscaldamento"
@@ -221,7 +221,7 @@
         "name": "Temperatura dell'acqua in uscita"
       },
       "onoffmode": {
-        "name": "Modalità On\/Off"
+        "name": "Modalità di accensione\/spegnimento"
       },
       "operationmode": {
         "name": "Modalità operativa"
@@ -239,10 +239,10 @@
         "name": "Concentrazione di PM2.5"
       },
       "powerfulmode": {
-        "name": "Modalità powerful"
+        "name": "Modalità Powerful"
       },
       "ratelimitremainingday": {
-        "name": "Ratelimit remaining day"
+        "name": "Richieste giornaliere residue"
       },
       "regioncode": {
         "name": "Codice regionale"
@@ -254,13 +254,13 @@
         "name": "Temperatura della stanza"
       },
       "setpointmode": {
-        "name": "Modalità setpoint"
+        "name": "Modalità del setpoint"
       },
       "sgtin": {
         "name": "SGTIN"
       },
       "ssid": {
-        "name": "SSID"
+        "name": "Nome della rete (SSID)"
       },
       "suctiontemperature": {
         "name": "Temperatura di aspirazione"
@@ -272,29 +272,29 @@
         "name": "Fuso orario"
       },
       "wificonnectionssid": {
-        "name": "SSID della rete WiFi"
+        "name": "Nome della rete Wi-Fi (SSID)"
       },
       "wificonnectionstrength": {
-        "name": "Intensità del segnale WiFi"
+        "name": "Intensità del segnale Wi-Fi"
       }
     },
     "switch": {
       "economode": {
-        "name": "Econo mode"
+        "name": "Modalità Econo"
       },
       "streamermode": {
-        "name": "Streamer mode"
+        "name": "Modalità Streamer"
       }
     },
     "update": {
       "firmwareupdate": {
-        "name": "Aggiornamento Firmware"
+        "name": "Aggiornamento firmware"
       }
     }
   },
   "exceptions": {
     "air_purifier_set_mode_failed": {
-      "message": "Impossibile impostare la modalità di purificazione per {device}"
+      "message": "Impossibile impostare la modalità di purificazione dell’aria di {device}"
     },
     "air_purifier_set_percentage_failed": {
       "message": "Impossibile impostare la velocità della ventola per {device}"
@@ -306,19 +306,19 @@
       "message": "Impossibile accendere {device}"
     },
     "climate_set_fan_mode_failed": {
-      "message": "Impossibile configurare la modalità della ventola di {device}"
+      "message": "Impossibile impostare la modalità della ventola di {device}"
     },
     "climate_set_hvac_mode_failed": {
-      "message": "Impossibile impostare la modalità HVAC per {device}"
+      "message": "Impossibile impostare la modalità di funzionamento di {device}"
     },
     "climate_set_preset_mode_failed": {
       "message": "Impossibile impostare la modalità preimpostata per {device}"
     },
     "climate_set_swing_mode_failed": {
-      "message": "Impossibile variare la modalità oscillante di {device}"
+      "message": "Impossibile impostare l’oscillazione di {device}"
     },
     "climate_set_temperature_failed": {
-      "message": "Impossibile cambiare la temperatura di {device}"
+      "message": "Impossibile impostare la temperatura di {device}"
     },
     "climate_turn_off_failed": {
       "message": "Impossibile spegnere {device}"
@@ -356,26 +356,26 @@
   },
   "issues": {
     "day_rate_limit": {
-      "description": "Hai raggiunto il limite giornaliero di richieste verso il Cloud Daikin, controlla la tua frequenza di polling nella configurazione Daikin Onecta.",
-      "title": "Il limite giornaliero di richieste è stato raggiunto"
+      "description": "Hai raggiunto il limite giornaliero di richieste al cloud Daikin. Controlla la frequenza di lettura dei dati nella configurazione di Daikin Onecta.",
+      "title": "Raggiunto il limite giornaliero di richieste"
     },
     "minute_rate_limit": {
-      "description": "Hai raggiunto il limite per minuto di richieste verso il Cloud Daikin, non fare così tante chiamate al servizio Daikin in un minuto.",
-      "title": "Il limite per minuto di richieste è stato raggiunto"
+      "description": "Hai raggiunto il limite di richieste al minuto verso il cloud Daikin. Riduci la frequenza delle chiamate ai dispositivi Daikin.",
+      "title": "Raggiunto il limite di richieste al minuto"
     }
   },
   "options": {
     "step": {
       "init": {
         "data": {
-          "high_scan_interval": "Intervallo di aggiornamento del periodo ad alta frequenza (minuti)",
+          "high_scan_interval": "Intervallo di lettura dei dati nel periodo ad alta frequenza (minuti)",
           "high_scan_start": "Ora di inizio del periodo ad alta frequenza",
-          "homekit_fan_mode_aliases": "Rendi disponibili in HomeKit gli alias compatibili delle velocità della ventola",
-          "low_scan_interval": "Intervallo di aggiornamento del periodo a bassa frequenza (minuti)",
+          "homekit_fan_mode_aliases": "Rendi disponibili nomi alternativi compatibili con HomeKit per le velocità della ventola",
+          "low_scan_interval": "Intervallo di lettura dei dati nel periodo a bassa frequenza (minuti)",
           "low_scan_start": "Ora di inizio del periodo a bassa frequenza",
-          "scan_ignore": "Numero di secondi per cui un aggiornamento dei dati viene ignorato dopo un comando"
+          "scan_ignore": "Attesa dopo un comando prima di rileggere i dati dal cloud (secondi)"
         },
-        "description": "Configura il polling per Daikin Onecta Cloud",
+        "description": "Configura la lettura periodica dei dati dal cloud Daikin Onecta",
         "title": "Daikin Onecta"
       }
     }
@@ -383,13 +383,13 @@
   "system_health": {
     "info": {
       "api_status": "Stato del server API",
-      "max_day": "Massimo al giorno",
-      "max_minute": "Massimo al minuto",
+      "max_day": "Limite giornaliero di richieste",
+      "max_minute": "Limite di richieste al minuto",
       "oauth2_status": "Stato del server OAuth2",
       "oauth2_token_valid": "Token OAuth2 valido",
-      "ratelimit_reset": "Reset del limite di richieste",
-      "remaining_day": "Rimanenti al giorno",
-      "remaining_minute": "Rimanenti al minuto",
+      "ratelimit_reset": "Ripristino del limite di richieste",
+      "remaining_day": "Richieste giornaliere residue",
+      "remaining_minute": "Richieste residue nel minuto",
       "retry_after": "Riprova dopo"
     }
   }
