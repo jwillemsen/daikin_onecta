@@ -585,6 +585,39 @@ def test_homekit_fan_mode_alias_helpers() -> None:
     assert climate.resolve_homekit_fan_mode_alias(fan_speed, FAN_HIGH) == "5"
 
 
+def _off_climate(operation_mode: str, values: list[str]) -> DaikinClimate:
+    """Build a climate entity for an off unit resting on the given operation mode."""
+    climate = DaikinClimate.__new__(DaikinClimate)
+    cc = MagicMock()
+    cc.on_off_mode.value = "off"
+    cc.operation_mode.value = operation_mode
+    cc.operation_mode.values = values
+    cc.operation_mode.settable = True
+    cc.setpoint.return_value = None
+    climate.climate_control = lambda: cc
+    climate.operation_mode = lambda: cc.operation_mode
+    return climate
+
+
+def test_off_unit_without_setpoint_keeps_target_temperature_feature() -> None:
+    """An off unit resting on fanOnly has no setpoint, but can still be turned on with a temperature (#838)."""
+    climate = _off_climate("fanOnly", ["fanOnly", "cooling", "heating", "auto", "dry"])
+    assert climate.can_set_temperature_when_turned_on()
+
+
+def test_off_fan_only_unit_does_not_get_target_temperature_feature() -> None:
+    """A unit that only offers fan/dry modes never supports a target temperature."""
+    climate = _off_climate("fanOnly", ["fanOnly", "dry"])
+    assert not climate.can_set_temperature_when_turned_on()
+
+
+def test_running_unit_without_setpoint_does_not_get_target_temperature_feature() -> None:
+    """The off-unit exception does not apply while the unit is running (#830)."""
+    climate = _off_climate("fanOnly", ["fanOnly", "cooling"])
+    climate.climate_control().on_off_mode.value = "on"
+    assert not climate.can_set_temperature_when_turned_on()
+
+
 @pytest.mark.asyncio
 async def test_climate_floorheatingairflow(
     onecta_auth: AsyncMock,
